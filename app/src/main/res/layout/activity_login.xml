@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg_color">
+
+    <!-- 顶部 -->
+    <LinearLayout
+        android:id="@+id/lila_login_close"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imvi_login_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:padding="10dp"
+            android:src="@mipmap/ic_login_close" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txvi_login_tips_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="33.5dp"
+        android:text="您好，"
+        android:textColor="@color/home_location_text_color"
+        android:textSize="32sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lila_login_close" />
+
+    <TextView
+        android:id="@+id/txvi_login_tips_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16.5dp"
+        android:text="欢迎使用小满APP"
+        android:textColor="@color/home_location_text_color"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/txvi_login_tips_one"
+        app:layout_constraintTop_toBottomOf="@+id/txvi_login_tips_one" />
+
+    <!-- 手机号 -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_login_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="29.5dp"
+        android:layout_marginTop="60.5dp"
+        android:layout_marginRight="29.5dp"
+        android:theme="@style/LoginTextStyle"
+        app:errorEnabled="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvi_login_tips_two">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edit_login_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/loginactitivy_user_title"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- 密码 -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="29.5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="29.5dp"
+        android:theme="@style/LoginTextStyle"
+        app:errorEnabled="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_login_mobile">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edit_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/loginactitivy_password_title"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:maxLines="1" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- 登录 -->
+    <Button
+        android:id="@+id/btn_login"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28.5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="28.5dp"
+        android:background="@drawable/btn_bg_selector"
+        android:text="@string/loginactitivy_login_submit"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_login_password" />
+
+    <TextView
+        android:id="@+id/txvi_login_switchlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27.5dp"
+        android:layout_marginTop="39dp"
+        android:text="@string/loginactitivy_switch_sms"
+        android:textColor="@color/text_tips_color"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <TextView
+        android:id="@+id/txvi_login_forgotpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="27.5dp"
+        android:text="忘记密码"
+        android:textColor="@color/text_tips_color"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+</android.support.constraint.ConstraintLayout>

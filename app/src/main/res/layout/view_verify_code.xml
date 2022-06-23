@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_0"
+            style="@style/textview_style" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_1"
+            style="@style/textview_style" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            style="@style/textview_style" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            style="@style/textview_style" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_4"
+            style="@style/textview_style" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_5"
+            style="@style/textview_style" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <View
+            android:id="@+id/view_line_0"
+            android:layout_width="41dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/ic_login_select" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/view_line_1"
+            android:layout_width="41dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/ic_login_notselect" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/view_line_2"
+            android:layout_width="41dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/ic_login_notselect" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/view_line_3"
+            android:layout_width="41dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/ic_login_notselect" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/view_line_4"
+            android:layout_width="41dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/ic_login_notselect" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/view_line_5"
+            android:layout_width="41dp"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/ic_login_notselect" />
+
+    </LinearLayout>
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.verifycodeview.MyEditText
+        android:id="@+id/edit_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/transparent"
+        android:longClickable="false"
+        android:maxLength="6"
+        android:inputType="number" />
+</RelativeLayout>

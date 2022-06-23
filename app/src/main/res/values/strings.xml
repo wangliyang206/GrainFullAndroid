@@ -1,0 +1,110 @@
+<resources>
+    <!--系统-->
+    <string name="app_name">小满</string>
+    <string name="app_name_debug">Test小满</string>
+
+    <!--通用-->
+    <item name="tag_first" type="id" />
+    <item name="tag_second" type="id" />
+
+    <!--百度地图 API KEY-->
+    <string name="baidu_map_api_key">D7GtarVBbiB083uVtyiaDl2faZX6kHRg</string>
+    <string name="baidu_map_api_key_debug">ZMmrKpmZWf1CMrBMCHHCPWI4Qcm6txDM</string>
+
+    <string name="common_tips">温馨提示</string>
+    <string name="common_no">取消</string>
+    <string name="common_ok">确定</string>
+    <string name="common_save">保存</string>
+    <string name="common_submit">提交</string>
+    <string name="common_exit_app_tips">你真的要退出吗？</string>
+    <string name="common_execute">正在处理中，请稍候……</string>
+    <string name="common_upload">正在上传照片中，请稍候……</string>
+    <string name="common_check">正在数据校验中，请稍候……</string>
+    <string name="common_exit">再按一次退出</string>
+    <string name="common_not_yet_open">暂未开放</string>
+    <string name="common_order_no_tips">订单号</string>
+    <string name="common_status_tips">状态</string>
+    <string name="copy_tips_error">未发现订单号，请联系管理员</string>
+    <string name="common_copy_tips">复制</string>
+    <string name="common_copy_succ">复制成功</string>
+
+    <!-- MaterialDrawer -->
+    <string name="drawer_item_basicinfo">基本信息</string>
+    <string name="drawer_item_mypromotioncode">我的推广码</string>
+
+    <string name="drawer_item_setting">设置</string>
+    <string name="drawer_item_about">关于</string>
+    <string name="drawer_item_about_description">真的以为我能闭目不言\t\t早已远离世俗尘缘\t\t\t真的相信我已超然物外\t\t可将一切烦恼化青烟\t\t\t从未想过前世今生的界限\t\t竟是如此难以分辨\t\t\t从未念过往复轮回的记忆\t\t在滚滚红尘的世间\t\t\t一悲一喜 一枉然\t\t一草一木 一红颜</string>
+
+    <string name="drawer_item_NightMode">夜间模式</string>
+
+    <!-- 首页 -->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_me">我的</string>
+
+    <!--登录界面-->
+    <string name="loginactitivy_login_submit">登录</string>
+    <string name="loginactitivy_user_title">账号</string>
+    <string name="loginactitivy_password_title">密码</string>
+    <string name="loginactivity_login_processtips">正在请求中，请稍候……</string>
+    <string name="loginactivity_login_usererror">您输入的手机号码格式错误！</string>
+    <string name="loginactivity_login_usercodenotnull">您输入的账号不能为空！</string>
+    <string name="loginactivity_login_passwordnotnull">您输入的密码不能为空！</string>
+    <string name="loginactivity_login_pwderror">密码长度为6–20位，建议字母与数字组合</string>
+    <string name="loginactitivy_switch_sms">短信验证码登录</string>
+    <string name="loginactitivy_switch_account">账号密码登录</string>
+
+    <string name="loginactivity_vericode_tips">验证码已发送至 %1$s</string>
+    <string name="loginactivity_vericode_tips_t">%1$ss 后重新获取验证码</string>
+
+    <string name="instockdetails_date_order_tips">制单日期</string>
+
+    <!-- 图片 -->
+    <string name="mis_error_image_not_exist">图片错误</string>
+    <string name="mis_error_no_permission">无权限</string>
+    <string name="mis_permission_dialog_title">权限拒绝</string>
+    <string name="mis_permission_dialog_ok">好</string>
+    <string name="mis_permission_dialog_cancel">拒绝</string>
+    <string name="mis_permission_rationale">浏览图片需要您提供浏览存储的权限</string>
+    <string name="mis_permission_rationale_write_storage">保存拍照图片需要您提供写存储权限</string>
+    <string name="mis_msg_no_camera">没有系统相机</string>
+
+    <!--忘记密码界面-->
+    <string name="forgotpasswordactitivy_title">忘记密码</string>
+    <string name="forgotpasswordactitivy_user_title">请输入手机号</string>
+    <string name="forgotpasswordactitivy_idcard_title">请输入身份证号</string>
+    <string name="forgotpasswordactitivy_creditcode_title">请输入社会信用代码</string>
+    <string name="forgotpasswordactitivy_verification_code">请输入验证码</string>
+    <string name="forgotpasswordactitivy_send_the_code">发送验证码</string>
+    <string name="forgotpasswordactitivy_confimpwd_tips">请再次输入密码</string>
+    <string name="forgotpasswordactitivy_send_note_tips">正在发送验证码&#8230;</string>
+    <string name="forgotpasswordactitivy_input_verifi_code">重新发送</string>
+    <string name="forgotpasswordactitivy_input_error_pwd">您两次输入的密码不一致</string>
+    <string name="forgotpasswordactitivy_succ">密码已找回，请使用新密码重新登录。</string>
+    <string name="forgotpasswordactitivy_input_error_tips">您输入的手机号格式错误</string>
+
+    <string name="salesrecordactivity_order_tips">订单号：</string>
+    <string name="salesrecordactivity_orderstatus_tips">订单状态：</string>
+
+    <string name="state_network_error">网络错误</string>
+    <string name="state_loading">正在加载…</string>
+    <string name="state_not_more">没有更多数据</string>
+    <string name="state_load_error">加载失败</string>
+    <string name="state_refreshing">正在刷新</string>
+
+    <!-- 选择城市 -->
+    <string name="cp_located_city">定位城市</string>
+    <string name="cp_locating">正在定位…</string>
+    <string name="cp_hot_city">热门城市</string>                                                    <!-- 已开通城市 -->
+
+    <string name="qr_code">二维码/条码</string>
+
+    <!-- 审核中 -->
+    <string name="specialstoredetails_underreview_tips">当前申请单正在审核中，预计1-2个工作日内完成审核，请耐心等待\n\n请指引超级管理员 %1$s 使用微信扫以下二维码（30天有效，过期后将生成新二维码），完成核对联系信息后，可接收申请单进展通知。</string>
+    <!-- 待账户验证 -->
+    <string name="specialstoredetails_verified_tips">请指引超级管理员 %1$s 使用微信扫以下二维码（30天有效，过期后将生成新二维码），根据页面指引完成账户验证。</string>
+    <!-- 待签约 -->
+    <string name="specialstoredetails_signed_tips">请指引超级管理员 %1$s 使用微信扫以下二维码（30天有效，过期后将生成新二维码），根据页面指引完成签约。</string>
+    <!-- 开通权限中 -->
+    <string name="specialstoredetails_authority_tips">系统开通相关权限中，请耐心等待。</string>
+</resources>

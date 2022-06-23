@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="true" >
+
+    <solid
+        android:color="@color/tab_text_press" />
+    
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/home_attention_bg_color" />
+
+    <size android:width="20dp"
+          android:height="20dp" />
+</shape>

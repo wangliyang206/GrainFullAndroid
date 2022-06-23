@@ -1,0 +1,1 @@
+include ':app', ':arms', ':arms-autolayout', ':arms-imageloader-glide','loading-drawable','checkupdatelib', ':camera'

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg_color">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_aboutactivity_top"
+        layout="@layout/comm_top_layout" />
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imvi_aboutactivity_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:src="@mipmap/icon_upgrade_logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_aboutactivity_top" />
+
+    <!-- 名称 -->
+    <TextView
+        android:id="@+id/txvi_aboutactivity_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="小满APP"
+        android:textColor="@color/text_normal_color"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintRight_toRightOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintTop_toBottomOf="@+id/imvi_aboutactivity_logo" />
+
+    <!-- 版本号 -->
+    <TextView
+        android:id="@+id/txvi_aboutactivity_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Version.1.0.0"
+        android:textColor="#343434"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintRight_toRightOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintTop_toBottomOf="@+id/txvi_aboutactivity_name" />
+
+    <!-- 内容 -->
+    <TextView
+        android:id="@+id/txvi_aboutactivity_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp"
+        android:text="小满
+
+趁小满，逐梦时。
+
+小满即安，岁月静好。
+
+人生小满，杯酒话江山。
+
+须心中明亮，知凡事小满。
+
+小满天逐热，温风沐麦圆。
+
+小满初盈夏意浓，悦赏庭院满从容。
+
+麦到小满日夜黄，园藏四季时时青。
+
+江河小满好插秧，暖风十里百花香。"
+        android:textColor="#3D3D3D"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvi_aboutactivity_version" />
+</android.support.constraint.ConstraintLayout>

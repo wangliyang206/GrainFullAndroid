@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@drawable/radio_checked_text_color" android:state_enabled="false"/>
+
+    <item android:color="@color/common_text_red_color" android:state_checked="true" />
+    <item android:color="@color/common_input_edit_color" android:state_checked="false" />
+
+    <item android:color="@drawable/radio_checked_text_color" android:state_checkable="false"/>
+</selector>

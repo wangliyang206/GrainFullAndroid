@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_height">48dp</dimen>
+    <dimen name="header_padding">16dp</dimen>
+
+    <dimen name="side_letter_bar_letter_size">13sp</dimen>
+
+    <dimen name="main_top_margin">27.5dp</dimen>
+</resources>

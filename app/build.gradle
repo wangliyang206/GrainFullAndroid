@@ -1,0 +1,346 @@
+apply plugin: 'com.android.application'
+// GreenDao插件
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    // 开发时采用的sdk版本
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    // 编译时采用的编译工具版本
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    // 原来是Android 6.0不再支持 Apache HTTP client， 建议使用 HttpURLConnection 代替。如果还想要继续使用 Apache HTTP client 的，请在build.gradle中添加下面的代码
+    useLibrary 'org.apache.http.legacy'
+
+    // 编译可选项参数
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // 签名配置
+    signingConfigs {
+        // 正式
+        release {
+            // 指定签名文件的别名
+            keyAlias 'GrainFull'
+
+            // 指定签名文件的别名配对密码
+            keyPassword '12345678'
+
+            // 签名文件路径
+            storeFile file('keystore/release.keystore')
+
+            // 签名文件的密码
+            storePassword '12345678'
+        }
+        // 测试
+        debug {
+            // 签名文件路径
+            storeFile file('keystore/debug.keystore')
+        }
+    }
+
+
+    // 默认项目配置信息
+    defaultConfig {
+        // 应用的id，这里决定应用的唯一标识。
+        applicationId "com.zqw.mobile.grainfull"
+
+        // 决定此应用最低兼容的安卓系统版本
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+
+        // 决定此应用最高可兼容的安卓系统版本
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+
+        // 应用的版本号
+        versionCode rootProject.ext.android["versionCode"]
+
+        // 应用的版本名
+        versionName rootProject.ext.android["versionName"]
+
+        // 进行Instrumentation配置
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+
+        // 是否有自动更新功能
+        buildConfigField "boolean", "AUTO_UPDATES", "true"
+
+        // 是否使用本地测试数据
+        buildConfigField "boolean", "IS_DEBUG_DATA", "true"
+
+        // 使MultiDex支持
+        multiDexEnabled true
+
+        ndk {
+            // 设置支持的SO库架构(百度地图)
+//          abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi'
+        }
+    }
+
+    // 指定哪些源文件
+    sourceSets {
+        // 设置依赖SO库路径
+        main.jniLibs.srcDirs = ['libs']
+
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    // 如果使用aar必须这么写
+    repositories {
+        // 配置使用本地文件夹
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    // 构建类型(一般是release和debug，还可以自定义)
+    buildTypes {
+        // 测试版
+        debug {
+            // 默认false,是否开启断点调试
+            debuggable true
+
+            // 默认false,是否开启jni的断点调试
+            jniDebuggable true
+
+            // 版本名的后缀
+            versionNameSuffix '.测试版'
+
+            // applicationId的后缀,相当于更改了applicationId,可以认为是一个新的应用
+            applicationIdSuffix '.test'
+
+            // 配置签名方式，这里配置会覆盖defaultConfig中配置的签名方式
+            signingConfig signingConfigs.debug
+
+            // 开启“leakCanary内存泄露检查”
+            buildConfigField "boolean", "USE_CANARY", "true"
+
+            // 腾讯Bugly AppId
+            buildConfigField "String", "BUGLY_APP_ID", "\"09b10840f5\""
+
+            // SP文件名称
+            buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedGrainFullTest\""
+
+            // 服务地址
+//            buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
+//            buildConfigField "String", "SERVER_URL_VALUE", "\"http://192.168.0.54:6889/\""
+            // 路由侠
+            buildConfigField "String", "SERVER_URL_VALUE", "\"http://buypb.e2.luyouxia.net:30302/\""
+
+            // AndroidManifest中用到的配置
+            manifestPlaceholders = [APP_NAME: "@string/app_name_debug"
+                                    , BAIDU_APP_ID       : "@string/baidu_map_api_key_debug"]
+        }
+
+        // 正式发布版
+        release {
+            // 默认false,是否开启断点调试
+            debuggable false
+
+            // 默认false,是否混淆的开关
+            minifyEnabled true
+
+            // Zipalign优化
+            zipAlignEnabled true
+
+            // 默认false,是否支持本地化整理
+            pseudoLocalesEnabled true
+
+            // 加载默认混淆配置文件proguard-rules.pro
+            proguardFile 'proguard-rules.pro'
+
+            // 配置签名方式，这里配置会覆盖defaultConfig中配置的签名方式
+            signingConfig signingConfigs.release
+
+            // 开启“leakCanary内存泄露检查”
+            buildConfigField "boolean", "USE_CANARY", "false"
+
+            // 腾讯Bugly AppId
+            buildConfigField "String", "BUGLY_APP_ID", "\"ffa3afe589\""
+
+            // SP文件名称
+            buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedGrainFull\""
+
+            // 服务地址
+            buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
+
+            // AndroidManifest中用到的配置
+            manifestPlaceholders = [APP_NAME: "@string/app_name"
+                                    , BAIDU_APP_ID       : "@string/baidu_map_api_key"]
+        }
+    }
+
+    // 打包时生成指定的APK命名格式
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            // 项目名-编译类型-版本号.apk
+            def appName = "小满";
+            def filesuffix = variant.buildType.name;
+            def fileName = "${appName}-${filesuffix}-${versionName}.apk"
+
+            println "自定义输出apk的名字:" + fileName;
+            outputFileName = fileName;
+        }
+    }
+
+    // 打包忽略掉第三方jar相同的文件(为了解决部分第三方库重复打包了META-INF的问题)
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+    // 这个是解决lint报错的代码(lint工具可以通过一个xml文件来配置，它可以用来修改某些check issue是否忽略(典型的例子是第三方库里面存在问题)，同时可以修改某些issue的默认等级。)
+    lintOptions {
+        lintConfig file('lint.xml')
+
+        disable 'InvalidPackage'
+        disable "ResourceType"
+
+        // 如果发现错误，lint工具是否应该退出这个程序(这样在我们构建项目的时候如果发生错误，将直接中断构建)。true表示退出。
+        abortOnError false
+
+        // 在打包Release版本的时候进行检测
+        checkReleaseBuilds false
+    }
+}
+greendao {
+    // 数据库版本号
+    schemaVersion 1
+    // 生成的数据库相关文件的包名
+    daoPackage 'com.zqw.mobile.grainfull.app.greendao'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //support
+    implementation rootProject.ext.dependencies["annotations"]
+
+    //view
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+        exclude module: 'support-annotations'
+    }
+    implementation rootProject.ext.dependencies["cardview-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["paginate"]
+
+    //arms
+    implementation project(':arms')
+//    implementation 'me.jessyan:arms:2.5.0'
+
+    //Arms 核心库不再包含 AndroidAutoLayout, 现在可自行选择屏幕适配方案, 不想使用 AndroidAutoLayout 就不要依赖 arms-autolayout
+//    implementation project(':arms-autolayout')
+//    implementation 'me.jessyan:arms-autolayout:2.5.0'
+
+    //现在已经将 Demo 中的屏幕适配框架从 AndroidAutoLayout 替换为 AndroidAutoSize, AndroidAutoLayout 和 AndroidAutoSize 可以在项目中共存
+    //所以旧项目只要依赖 arms-autolayout 即可兼容之前的旧页面, 新页面可以使用 AndroidAutoSize 进行适配, 等有时间了再将旧页面全部替换为 AndroidAutoSize
+//    implementation rootProject.ext.dependencies["autosize"]
+
+    //Arms 核心库不再包含 Glide, 想使用其他图片加载框架或者想自行扩展 ImageLoaderStrategy 就不要依赖 arms-imageloader-glide
+    //依赖 arms-imageloader-glide 后还需要在 GlobalConfiguration 中手动注册 GlideImageLoaderStrategy
+    implementation project(':arms-imageloader-glide')
+//    implementation 'me.jessyan:arms-imageloader-glide:2.5.0'
+
+    //test
+    testImplementation rootProject.ext.dependencies["junit"]
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
+    releaseImplementation rootProject.ext.dependencies["canary-release"]
+    testImplementation rootProject.ext.dependencies["canary-release"]
+
+    //tools
+    //注意 Arms 核心库现在并不会依赖某个 EventBus, 要想使用 EventBus, 还请在项目中自行依赖对应的 EventBus
+    //现在支持两种 EventBus, greenrobot 的 EventBus 和畅销书 《Android源码设计模式解析与实战》的作者 何红辉 所作的 AndroidEventBus
+    //依赖后 Arms 会自动检测您依赖的 EventBus 并自动注册
+    //建议使用 AndroidEventBus, 特别是组件化项目, 原因请看 https://github.com/hehonghui/AndroidEventBus/issues/49
+    //这种做法可以让使用者有自行选择三方库的权利, 并且还可以减轻 Arms 的体积
+    implementation rootProject.ext.dependencies["androideventbus"]
+//    implementation rootProject.ext.dependencies["eventbus"]
+
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    implementation rootProject.ext.dependencies["progressmanager"]
+    implementation rootProject.ext.dependencies["retrofit-url-manager"]
+    implementation rootProject.ext.dependencies["lifecyclemodel"]
+
+    //network
+    implementation(rootProject.ext.dependencies["retrofit-converter-gson"]) {
+        exclude module: 'gson'
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+        exclude module: 'retrofit'
+    }
+    implementation(rootProject.ext.dependencies["retrofit-adapter-rxjava2"]) {
+        exclude module: 'rxjava'
+        exclude module: 'okhttp'
+        exclude module: 'retrofit'
+        exclude module: 'okio'
+    }
+
+    //################################第三方工具################################
+    // 添加腾讯bug崩溃日志跟踪(其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9)
+    implementation rootProject.ext.dependencies["bugly-crashreport"]
+    // 工具类(https://github.com/Blankj/AndroidUtilCode)
+    implementation rootProject.ext.dependencies["utilcode"]
+    // 支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
+    implementation rootProject.ext.dependencies["tray"]
+    // 对话框(https://github.com/afollestad/material-dialogs)
+    implementation rootProject.ext.dependencies["dialogs"]
+    // 权限注解(https://github.com/permissions-dispatcher/PermissionsDispatcher)
+    implementation(rootProject.ext.dependencies["permissionsdispatcher"]) {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+    annotationProcessor rootProject.ext.dependencies["permission-processor"]
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
+    // 自定义圆形图片控件(https://github.com/hdodenhof/CircleImageView)
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+    // TwinklingRefreshLayout延伸了Google的SwipeRefreshLayout的思想,不在列表控件上动刀,而是使用一个ViewGroup来包含列表控件,以保持其较低的耦合性和较高的通用性(https://github.com/lcodecorex/TwinklingRefreshLayout)
+//    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    // 图片查看器(https://github.com/chrisbanes/PhotoView)
+    implementation rootProject.ext.dependencies["photoview"]
+
+    //Jude95/EasyRecyclerView控件(RecyclerView是ListView和GridView的豪华增强版)(https://github.com/Jude95/EasyRecyclerView)
+    implementation 'com.jude:easyrecyclerview:4.4.0'
+    // 验证码输入框
+    implementation 'com.jyn.verificationcodeview:verificationcodeview:1.0.1'
+    // Loading
+    implementation project(':loading-drawable')
+    // 可伸缩布局
+    implementation 'com.google.android:flexbox:1.0.0'
+    // 检查更新
+    implementation project(path: ':checkupdatelib')
+    // 高仿微信图片选择器(https://github.com/Lichenwei-Dev/ImagePicker)
+    implementation 'com.lcw.library:imagepicker:2.2.8'
+    // 拍视频
+    implementation project(path: ':camera')
+    // 高仿IOS时间选择器、省市区三级联动(https://github.com/Bigkoo/Android-PickerView)
+    implementation rootProject.ext.dependencies["pickerview"]
+
+    // 适用于Android项目的灵活，易用，一体化抽屉库。(https://github.com/mikepenz/MaterialDrawer/tree/develop)
+    implementation "com.mikepenz:materialdrawer:6.0.9"
+    // Item 动画(https://github.com/mikepenz/ItemAnimators)
+    implementation 'com.mikepenz:itemanimators:1.0.2@aar'
+
+    // 百度地图
+    implementation files('libs/BaiduLBS_Android.jar')
+    // GreenDao 数据库(https://github.com/greenrobot/greenDAO)
+    implementation 'org.greenrobot:greendao:3.2.2'
+    // 图片压缩
+    implementation 'top.zibin:Luban:1.1.8'
+    // 二维码
+    api "com.google.zxing:core:3.3.0"
+    // 柱状图(https://github.com/PhilJay/MPAndroidChart)
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+}

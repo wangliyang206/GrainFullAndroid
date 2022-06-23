@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_business"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="首页"
+        app:showAsAction="ifRoom" />
+
+    <group
+        android:id="@+id/group_item"
+        android:visible="false">
+        <item
+            android:id="@+id/action_statistics"
+            android:enabled="true"
+            android:icon="@drawable/ic_statistics_black_24dp"
+            android:title="统计"
+            app:showAsAction="ifRoom" />
+    </group>
+
+    <item
+        android:id="@+id/action_incoming"
+        android:enabled="true"
+        android:icon="@drawable/ic_incoming_black_24dp"
+        android:title="其它"
+        app:showAsAction="ifRoom" />
+
+</menu>
