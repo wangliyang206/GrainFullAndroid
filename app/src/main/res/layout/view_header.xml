@@ -13,7 +13,7 @@
         android:maxLines="1"
         android:paddingLeft="@dimen/header_padding"
         android:paddingRight="@dimen/header_padding"
-        android:textColor="@color/gray"
+        android:textColor="@color/header_text_color"
         android:textStyle="bold" />
 
 </LinearLayout>

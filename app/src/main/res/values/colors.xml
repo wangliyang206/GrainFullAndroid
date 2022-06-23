@@ -6,17 +6,10 @@
     <color name="colorPrimaryDark">@color/colorPrimary</color>
     <!-- CheckBox,RadioButton,SwitchCompat等一般控件的选中效果默认采用该颜色 -->
     <color name="colorAccent">@color/colorPrimary</color>
-    <!-- 二维码背景颜色 -->
-    <color name="qr_code_bg_white40">#40FFFFFF</color>
-
-    <!-- 状态栏颜色 -->
-    <color name="colorStatusBar">#FFFFFF</color>
 
     <!-- 背景颜色 -->
     <color name="layout_bg_color">#FFFFFF</color>
     <color name="fragment_bg_color">#F8F6F9</color>
-    <color name="bg_color">#FBFBFB</color>
-    <color name="item_bg_color">#eef3fa</color>
 
     <!-- 标题颜色 -->
     <color name="comm_title_color">#000000</color>
@@ -27,92 +20,52 @@
     <color name="btn_normal_color">@color/colorPrimary</color>
     <!-- 按钮按下颜色 -->
     <color name="btn_press_color">#8ec31e</color>
-
-    <color name="financial_text_color">#262626</color>
-    <color name="financial_text_hint_color">#BFBFBF</color>
-    <color name="financial_edit_bg_color">#F5F5F5</color>
-    <color name="financial_edit_hint_color">#8C8C8C</color>
-
     <!--TextView 字体颜色-->
     <color name="text_normal_color">#333333</color>
     <color name="text_tips_color">#999999</color>
     <color name="text_hint_color">#666666</color>
-    <!--Edit 字体颜色-->
+    <!--EditView 字体颜色-->
     <color name="common_input_edit_color">#646464</color>
-    <!-- 输入框提示颜色 -->
     <color name="common_input_edit_hint_color">#999999</color>
-    <!--Radio 样式-->
-    <drawable name="radio_no_checked_bg_color">#ffffff</drawable>
-    <drawable name="radio_checked_bg_color">#45A7D8</drawable>
     <!-- 透明百分之二十 -->
     <color name="translucent_20">#20000000</color>
     <color name="common_image_normal_bak">#00ffffff</color>
     <color name="common_image_focus_bak">#a6a6a6</color>
-
     <!-- 布局正常颜色 -->
     <color name="layout_bg_normal">#ffffff</color>
     <!-- 布局按下颜色 -->
     <color name="layout_bg_pressed">#D9D9D9</color>
-
     <!-- 分隔线(边框线) -->
     <color name="line_frame_color">#e0e0e0</color>
     <color name="line_input_color">#d0d0d0</color>
-    <color name="notice_bg_color">#F5F6FF</color>
-    <color name="gray">#9e9e9e</color>
 
+    <!-- Dialog -->
     <color name="dialog_line">#EDEDED</color>
     <color name="dialog_cancel">#CCCCCC</color>
 
+    <!-- Switch -->
     <color name="switch_color">#FFBC29</color>
     <color name="switch_not_color">#E7E5E5</color>
 
-    <color name="status_text_color">#FF7970</color>
-    <color name="weight_text_color">#5AB1FF</color>
+    <!-- Header -->
+    <color name="header_text_color">#9e9e9e</color>
 
-    <color name="text_blue_color">#0F77F2</color>
-    <color name="A">#263555</color>
-    <color name="C">#9B9FA1</color>
-    <color name="D">#D2D2D2</color>
-    <color name="E">#1FBCD6</color>
-    <color name="F">#F7635F</color>
-    <color name="statistics_tab">#5392F7</color>
-    <color name="statistics_text_color">#F85F07</color>
-    <color name="statistics_state_color">#8FBD2E</color>
-
-    <color name="status_succ_layout">#E6FBF2</color>
-    <color name="status_red_layout">#EE989C</color>
-    <color name="status_red_color">#FE001E</color>
-    <color name="status_processing_layout">#FFFBE8</color>
-    <color name="status_processing_color">#FE9500</color>
-    <color name="status_pendingreview_layout">#C9EAFF</color>
-    <!-- #########################################登录######################################### -->
-    <color name="login_tips_text_color">#FF251C</color>
     <!-- #########################################首页######################################### -->
     <!-- 首页定位文字颜色 -->
     <color name="home_location_text_color">#1A1A1A</color>
     <!-- 首页搜索背景颜色 -->
     <color name="home_search_bg_color">#F9F9F9</color>
     <color name="home_search_text_color">#929292</color>
+    <!-- 首页Item的分割线 -->
+    <color name="home_item_line">#F7F7F7</color>
+    <!-- 字段颜色灰色 -->
+    <color name="home_button_text">#aaaaaa</color>
 
     <!-- Tab颜色 -->
     <color name="tab_bg_color">#FFFFFF</color>
     <color name="tab_text_normal">#BFBFBF</color>
     <color name="tab_text_press">@color/colorPrimary</color>
 
-    <!-- 首页导航文字颜色 -->
-    <color name="home_nav_text_color">#666666</color>
-    <!-- 首页关注背景颜色 -->
-    <color name="home_attention_bg_color">#FFBC2C</color>
-    <!-- 首页Item的阴影 -->
-    <color name="home_item_shadow">#DEDEEA</color>
-    <!-- 首页Item的分割线 -->
-    <color name="home_item_line">#F7F7F7</color>
-    <!-- 字段颜色灰色 -->
-    <color name="home_button_text">#aaaaaa</color>
-    <color name="mainhomeactivity_title_color">#6c6a6a</color>
-
-    <!-- #########################################消息######################################### -->
-    <color name="message_text_color">#343434</color>
     <!-- #######################################选择城市####################################### -->
     <color name="cp_alpha_gray">#CC646464</color>
     <color name="cp_gray_deep">#5c5c5c</color>
@@ -120,35 +73,15 @@
     <color name="cp_colorAccent">#F3F3F3</color>
     <color name="cp_content_bg">@color/cp_colorAccent</color>
     <color name="cp_divider">#E5E5E5</color>
-    <!-- #######################################优惠券####################################### -->
-    <color name="coupon_bg_color">#F5F5F5</color>
-    <!-- #######################################退款进度####################################### -->
-    <color name="refundprogress_item_color">#F7F6FB</color>
+
     <!-- #######################################我的####################################### -->
     <color name="instockactivity_edit_color">#F2F2F0</color>
-    <color name="orginfoactivity_bg_color">#F2F2F1</color>
 
-    <color name="coll_txt_bg_color">#FDB14E</color>
-    <color name="coll_txt_tips_color">#8a8686</color>
-    <color name="coll_txt_color">#272626</color>
-    <color name="open_quotation_txt_right_color">#535454</color>
-    <color name="common_vice_text_color">#898989</color>
-
-    <!-- 字段颜色灰色 -->
-    <color name="main_button_normal_text">#aaaaaa</color>
-
-    <color name="common_text_red_color">#eb5247</color>
-    <drawable name="radio_checked_text_color">#ffffff</drawable>
-    <drawable name="radio_no_checked_text_color">#888888</drawable>
-    <!--######################特约商户进件######################-->
-    <color name="financial_orderdetails_txt_color">#B36515</color>
-    <!--######################二维码######################-->
+    <!-- #######################################二维码####################################### -->
     <color name="zxing_possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
     <color name="zxing_result_points">#c099cc00</color> <!-- Android standard ICS color -->
     <color name="zxing_result_view">#b0000000</color>
     <color name="zxing_viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
     <color name="zxing_viewfinder_mask">#60000000</color>
 
-
-    <color name="nearby_stores_text_color">#4C97F5</color>
 </resources>
