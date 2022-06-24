@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="小满APP"
-        android:textColor="@color/text_normal_color"
+        android:textColor="@color/common_text_color"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@+id/imvi_aboutactivity_logo"
         app:layout_constraintRight_toRightOf="@+id/imvi_aboutactivity_logo"

@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 // GreenDao插件
 apply plugin: 'org.greenrobot.greendao'
+// 华为SDK
+apply plugin: 'com.huawei.agconnect'
 
 android {
     // 开发时采用的sdk版本
@@ -343,4 +345,8 @@ dependencies {
     api "com.google.zxing:core:3.3.0"
     // 柱状图(https://github.com/PhilJay/MPAndroidChart)
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    // 华为SDK
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+    // 引入银行卡plugin与识别能力集合包。
+    implementation 'com.huawei.hms:ml-computer-card-bcr:3.5.0.300'
 }

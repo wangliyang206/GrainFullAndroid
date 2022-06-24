@@ -2,7 +2,7 @@
 <paths>
     <external-path
         name="files_root"
-        path="Android/data/com.zqw.mobile.operation/" />
+        path="Android/data/com.zqw.mobile.grainfull/" />
     <external-path
         name="external_storage_root"
         path="." />

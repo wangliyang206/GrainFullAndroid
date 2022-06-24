@@ -34,6 +34,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="label">
+        <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity"></activity>
+        <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity" />
         <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.AboutActivity" />
         <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.SettingActivity" />
         <!-- 登录 -->
@@ -71,6 +73,10 @@
         <meta-data
             android:name="com.zqw.mobile.grainfull.app.global.GlobalConfiguration"
             android:value="ConfigModule" />
+        <!-- 华为 - 识别银行卡 -->
+        <meta-data
+            android:name="com.huawei.hms.ml.DEPENDENCY"
+            android:value= "bcr"/>
         <!-- 百度地图 API KEY -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

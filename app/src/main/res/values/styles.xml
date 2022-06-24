@@ -24,11 +24,11 @@
     <style name="LoginTextStyle" parent="Theme.AppCompat.Light">
         <item name="android:textSize">14sp</item>
         <!-- Label标签的颜色 -->
-        <item name="colorAccent">@color/text_hint_color</item>
+        <item name="colorAccent">@color/common_text_hint_color</item>
         <!-- 下划线没有获取焦点，也就是默认的颜色 -->
-        <item name="colorControlNormal">@color/text_tips_color</item>
+        <item name="colorControlNormal">@color/common_text_tips_color</item>
         <!-- 点击时下划线的颜色 -->
-        <item name="colorControlActivated">@color/text_tips_color</item>
+        <item name="colorControlActivated">@color/common_text_tips_color</item>
     </style>
 
     <!-- Menu调整字体大小和颜色 -->

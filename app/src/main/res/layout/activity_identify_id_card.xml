@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_identify_id_card"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_identifyidcard_top"
+        layout="@layout/comm_top_layout" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_identifyidcard_top"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- 人像面照片 -->
+                    <RelativeLayout
+                        android:id="@+id/rela_identifyidcard_idcardfont"
+                        android:layout_width="107dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/financial_bg_frame"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/rela_identifyidcard_idcardback"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:contentDescription="@null"
+                            android:src="@mipmap/icon_idcard_font" />
+
+                        <ImageView
+                            android:id="@+id/imgvi_identifyidcard_idcardfont"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="请扫描身份证正面"
+                        android:textColor="@color/common_text_tips_color"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/rela_identifyidcard_idcardfont"
+                        app:layout_constraintRight_toRightOf="@+id/rela_identifyidcard_idcardfont"
+                        app:layout_constraintTop_toBottomOf="@+id/rela_identifyidcard_idcardfont" />
+
+                    <!-- 国徽面照片 -->
+                    <RelativeLayout
+                        android:id="@+id/rela_identifyidcard_idcardback"
+                        android:layout_width="107dp"
+                        android:layout_height="74dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/financial_bg_frame"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toRightOf="@+id/rela_identifyidcard_idcardfont"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:contentDescription="@null"
+                            android:src="@mipmap/icon_idcard_back" />
+
+                        <ImageView
+                            android:id="@+id/imgvi_identifyidcard_idcardback"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="请扫描身份证反面"
+                        android:textColor="@color/common_text_tips_color"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/rela_identifyidcard_idcardback"
+                        app:layout_constraintRight_toRightOf="@+id/rela_identifyidcard_idcardback"
+                        app:layout_constraintTop_toBottomOf="@+id/rela_identifyidcard_idcardback" />
+                </android.support.constraint.ConstraintLayout>
+
+                <!-- 身份证号 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="身份证号:"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_identifyidcard_idcard"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="2.8"
+                        android:background="@drawable/edit_bg_selector"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- 起始日期 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="起始日期:"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_identifyidcard_startdate"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="2.8"
+                        android:background="@drawable/edit_bg_selector"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- 截止日期 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="截止日期:"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_identifyidcard_expirationdate"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="2.8"
+                        android:background="@drawable/edit_bg_selector"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 关闭 -->
+            <Button
+                android:id="@+id/btn_identifyidcard_close"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/btn_bg_selector"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="5dp"
+                android:text="关闭"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

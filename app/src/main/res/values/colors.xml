@@ -10,6 +10,7 @@
     <!-- 背景颜色 -->
     <color name="layout_bg_color">#FFFFFF</color>
     <color name="fragment_bg_color">#F8F6F9</color>
+    <color name="frame_bg_color">#F5F5F5</color>
 
     <!-- 标题颜色 -->
     <color name="comm_title_color">#000000</color>
@@ -21,12 +22,12 @@
     <!-- 按钮按下颜色 -->
     <color name="btn_press_color">#8ec31e</color>
     <!--TextView 字体颜色-->
-    <color name="text_normal_color">#333333</color>
-    <color name="text_tips_color">#999999</color>
-    <color name="text_hint_color">#666666</color>
+    <color name="common_text_color">#333333</color>
+    <color name="common_text_tips_color">#999999</color>
+    <color name="common_text_hint_color">#666666</color>
     <!--EditView 字体颜色-->
-    <color name="common_input_edit_color">#646464</color>
-    <color name="common_input_edit_hint_color">#999999</color>
+    <color name="common_edit_color">#646464</color>
+    <color name="common_edit_hint_color">#999999</color>
     <!-- 透明百分之二十 -->
     <color name="translucent_20">#20000000</color>
     <color name="common_image_normal_bak">#00ffffff</color>
@@ -74,14 +75,10 @@
     <color name="cp_content_bg">@color/cp_colorAccent</color>
     <color name="cp_divider">#E5E5E5</color>
 
-    <!-- #######################################我的####################################### -->
-    <color name="instockactivity_edit_color">#F2F2F0</color>
-
     <!-- #######################################二维码####################################### -->
     <color name="zxing_possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
     <color name="zxing_result_points">#c099cc00</color> <!-- Android standard ICS color -->
     <color name="zxing_result_view">#b0000000</color>
     <color name="zxing_viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
     <color name="zxing_viewfinder_mask">#60000000</color>
-
 </resources>

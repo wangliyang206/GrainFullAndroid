@@ -33,7 +33,7 @@
                 android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:text="温馨提示"
-                android:textColor="@color/text_normal_color"
+                android:textColor="@color/common_text_color"
                 android:textSize="16sp" />
 
             <!--内容-->
@@ -46,7 +46,7 @@
                 android:layout_marginRight="20dp"
                 android:gravity="center_vertical"
                 android:text=""
-                android:textColor="@color/common_input_edit_color"
+                android:textColor="@color/common_edit_color"
                 android:textSize="14sp" />
         </LinearLayout>
 

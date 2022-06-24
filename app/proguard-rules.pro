@@ -199,6 +199,35 @@
     native <methods>;
 }
 
+################华为SDK###############
+-ignorewarnings
+-keep class com.huawei.agconnect.** {*;}
+-keepresourcexmlelements **
+-keepresources */*
+
+-ignorewarnings
+-keepattributes *Annotation*
+-keepattributes Exceptions
+-keepattributes InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
+-keep class com.huawei.hianalytics.**{*;}
+-keep class com.huawei.updatesdk.**{*;}
+-keep class com.huawei.hms.**{*;}
+
+-dontwarn com.huawei.**
+-keep class com.huawei.** {*;}
+-dontwarn org.slf4j.**
+-keep class org.slf4j.** {*;}
+-dontwarn org.springframework.**
+-keep class org.springframework.** {*;}
+-dontwarn com.fasterxml.jackson.**
+-keep class com.fasterxml.jackson.** {*;}
+
+-keep class com.huawei.noah.bolttranslator.**{*;}
+
+-dontwarn com.huawei.hisi.**
+-keep class com.huawei.hisi.** {*;}
 ################support###############
 -keep class android.support.** { *; }
 -keep public class * extends android.support.v4.**

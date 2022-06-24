@@ -71,11 +71,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     private int position;                                                                           // 保存当前tab下标
     private long firstClickTime = 0;                                                                // 双击刷新功能 - 记录点击时间
 
-    // 首页(业务)
+    // 首页
     private static final int FRAGMENT_HOME = 0;
     // 统计
     private static final int FRAGMENT_STATISTICS = 1;
-    // 注册(进件)
+    // 其它
     private static final int FRAGMENT_REGISTER = 2;
 
     @Inject
