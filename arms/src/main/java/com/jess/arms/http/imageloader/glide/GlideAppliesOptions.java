@@ -16,10 +16,12 @@
 package com.jess.arms.http.imageloader.glide;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.Registry;
 import com.jess.arms.http.imageloader.BaseImageLoaderStrategy;
 
 /**
@@ -41,4 +43,13 @@ public interface GlideAppliesOptions {
      * @param builder {@link GlideBuilder} 此类被用来创建 Glide
      */
     void applyGlideOptions(@NonNull Context context, @NonNull GlideBuilder builder);
+
+    /**
+     * 注册{@link Glide}的组件，参考{@link com.bumptech.glide.module.LibraryGlideModule}
+     *
+     * @param context  Android context
+     * @param glide    {@link Glide}
+     * @param registry {@link Registry}
+     */
+    void registerComponents(@NonNull Context context, @NonNull Glide glide, @NonNull Registry registry);
 }

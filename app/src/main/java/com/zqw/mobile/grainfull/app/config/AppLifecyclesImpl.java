@@ -19,8 +19,9 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.multidex.MultiDex;
+import androidx.annotation.NonNull;
+import androidx.multidex.MultiDex;
+
 import android.widget.ImageView;
 
 import com.baidu.mapapi.SDKInitializer;
@@ -33,8 +34,7 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
+
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
@@ -45,6 +45,7 @@ import com.zqw.mobile.grainfull.app.utils.FileLoggingTree;
 import org.jetbrains.annotations.NotNull;
 
 import butterknife.ButterKnife;
+import leakcanary.LeakCanary;
 import timber.log.Timber;
 
 /**
@@ -66,12 +67,6 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void onCreate(@NonNull Application application) {
-        if (LeakCanary.isInAnalyzerProcess(application)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
-        }
-
         // 初始化工具类
         Utils.init(application);
 
@@ -163,12 +158,13 @@ public class AppLifecyclesImpl implements AppLifecycles {
      * leakCanary内存泄露检查
      */
     private void initLeakCanary(Application application) {
-        // LeakCanary 内存泄露检查
-        // 使用 IntelligentCache.KEY_KEEP 作为 key 的前缀, 可以使储存的数据永久存储在内存中
-        // 否则存储在 LRU 算法的存储空间中, 前提是 extras 使用的是 IntelligentCache (框架默认使用)
-        ArmsUtils.obtainAppComponentFromContext(application).extras()
-                .put(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName())
-                        , BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
+        //LeakCanary v2.0+ 版本会自动完成框架的初始化, 以及对 Activity#onDestroy、Fragment#onDestroy、Fragment#onDestroyView 的监听
+        //原理和 AndroidAutoSize 一致, 所以注释掉下面 v1.0 的初始化代码
+        //使用 IntelligentCache.KEY_KEEP 作为 key 的前缀, 可以使储存的数据永久存储在内存中
+        //否则存储在 LRU 算法的存储空间中, 前提是 extras 使用的是 IntelligentCache (框架默认使用)
+//        ArmsUtils.obtainAppComponentFromContext(application).extras()
+//                .put(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName())
+//                        , BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
     }
 
     /**

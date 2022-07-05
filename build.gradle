@@ -3,28 +3,36 @@ apply from: "config.gradle"
 buildscript {
     repositories {
         google()
-        jcenter()
+	    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
 
         // 配置HMS Core SDK的Maven仓地址。(华为)
         maven {url 'https://developer.huawei.com/repo/'}
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.6.0'
         //Gradle Android Maven plugin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         //Gradle Bintray Plugin
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
         // GreenDao插件
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
         // 增加agcp插件配置，推荐您使用最新版本的agcp插件。(华为)
         classpath 'com.huawei.agconnect:agcp:1.5.2.300'
     }
 }
 
 allprojects {
+//    tasks.withType(Test).configureEach {
+//        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+//        if (!project.hasProperty("createReports")) {
+//            reports.html.required = false
+//            reports.junitXml.required = false
+//        }
+//    }
+
     repositories {
         google()
-        jcenter()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url "https://jitpack.io" }
         maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }                        // PermissionsDispatcher 权限注解
         mavenCentral()                                                                              // GreenDao仓库
@@ -35,4 +43,17 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency { details ->
+            // Force all of the primary libraries to use the same version.
+            if (details.requested.name == 'appcompat'
+                    && details.requested.name == 'annotation'
+                    && details.requested.name == 'recyclerview') {
+                details.useVersion rootProject.ext.version["androidXSdkVersion"]
+            }
+        }
+    }
 }

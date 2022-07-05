@@ -17,7 +17,8 @@ package com.qiangxi.checkupdatelibrary;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.DrawableRes;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * Created by qiangxi(任强强) on 2017/10/15.

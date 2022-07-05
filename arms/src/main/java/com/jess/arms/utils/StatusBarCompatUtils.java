@@ -2,9 +2,11 @@ package com.jess.arms.utils;
 
 import android.app.Activity;
 import android.os.Build;
-import android.support.annotation.NonNull;
+
 import android.view.View;
 import android.view.Window;
+
+import androidx.annotation.NonNull;
 
 /**
  * StatusBarCompat 升级版工具类(可修改状态栏顶部)

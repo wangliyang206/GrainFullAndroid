@@ -17,8 +17,8 @@ package com.zqw.mobile.grainfull.app.global;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 
 import com.jess.arms.http.log.FormatPrinter;
 import com.zqw.mobile.grainfull.BuildConfig;
@@ -42,8 +42,6 @@ import me.jessyan.progressmanager.ProgressManager;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import okhttp3.MediaType;
 import okhttp3.Request;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
 
 /**
@@ -164,8 +162,8 @@ public final class GlobalConfiguration implements ConfigModule {
                 .retrofitConfiguration((context1, retrofitBuilder) -> {
                     //比如使用 FastJson 替代 Gson
 //                    retrofitBuilder.addConverterFactory(FastJsonConverterFactory.create());
-                    retrofitBuilder.addConverterFactory(GsonConverterFactory.create());
-                    retrofitBuilder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
+//                    retrofitBuilder.addConverterFactory(GsonConverterFactory.create());
+//                    retrofitBuilder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
                 })
                 //这里可以自己自定义配置 Okhttp 的参数
                 .okhttpConfiguration((context1, okhttpBuilder) -> {

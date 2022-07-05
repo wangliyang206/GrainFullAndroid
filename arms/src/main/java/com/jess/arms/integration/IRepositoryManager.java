@@ -16,9 +16,13 @@
 package com.jess.arms.integration;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.jess.arms.mvp.IModel;
+
+import retrofit2.Retrofit;
 
 /**
  * ================================================
@@ -66,4 +70,10 @@ public interface IRepositoryManager {
      */
     @NonNull
     Context getContext();
+
+    interface ObtainServiceDelegate {
+
+        @Nullable
+        <T> T createRetrofitService(Retrofit retrofit, Class<T> serviceClass);
+    }
 }

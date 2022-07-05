@@ -1,7 +1,7 @@
 package com.zqw.mobile.grainfull.mvp.ui.widget.verifycodeview;
 
 import android.content.Context;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;

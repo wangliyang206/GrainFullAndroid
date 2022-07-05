@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -74,7 +74,7 @@
             android:orientation="vertical">
 
             <!-- 常用应用 -->
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cola_fragmenthome_performa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,10 +118,10 @@
                     android:text="识别银行卡"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_performa_line" />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 拜访信息 -->
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cola_fragmenthome_visit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_visit_title" />
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
@@ -224,4 +224,4 @@
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,9 +14,8 @@ package com.qiangxi.checkupdatelibrary.request;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.qiangxi.checkupdatelibrary.annotation.RequestType;
 import com.qiangxi.checkupdatelibrary.callback.BaseCallback;

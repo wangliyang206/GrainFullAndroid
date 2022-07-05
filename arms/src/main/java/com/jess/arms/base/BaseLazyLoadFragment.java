@@ -1,16 +1,21 @@
 package com.jess.arms.base;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.jess.arms.mvp.IPresenter;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * 子类覆写{@link BaseLazyLoadFragment}lazyLoadData可快速实现Fragment懒加载
  */
 public abstract class BaseLazyLoadFragment<P extends IPresenter> extends BaseFragment<P> {
+
+    @Inject
+    Unused mUnused;
 
     private boolean isViewCreated; // 界面是否已创建完成
     private boolean isVisibleToUser; // 是否对用户可见

@@ -1,7 +1,6 @@
 package com.zqw.mobile.grainfull.mvp.presenter;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
+
 
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.cache.Cache;
@@ -22,6 +21,9 @@ import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 
 import static com.zqw.mobile.grainfull.BuildConfig.AUTO_UPDATES;
 import static com.zqw.mobile.grainfull.BuildConfig.IS_DEBUG_DATA;
+
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.OnLifecycleEvent;
 
 
 /**

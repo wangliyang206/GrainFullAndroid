@@ -17,35 +17,31 @@ package com.jess.arms.base;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.InflateException;
 import android.view.View;
 
-import com.jess.arms.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import com.jess.arms.base.delegate.IActivity;
 import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.CacheType;
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable;
 import com.jess.arms.mvp.IPresenter;
 import com.jess.arms.utils.ArmsUtils;
-import com.jess.arms.utils.StatusBarCompatUtils;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.Subject;
-import qiu.niorgai.StatusBarCompat;
 
 import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
 
@@ -63,52 +59,20 @@ import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity, ActivityLifecycleable, BGASwipeBackHelper.Delegate {
+public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity, ActivityLifecycleable {
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
-    private Cache<String, Object> mCache;
-    private Unbinder mUnbinder;
     @Inject
     @Nullable
     protected P mPresenter;//如果当前页面逻辑简单, Presenter 可以为 null
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回」
-        // 在 super.onCreate(savedInstanceState) 之前调用该方法
-        initSwipeBackFinish();
-        super.onCreate(savedInstanceState);
-        try {
-            int layoutResID = initView(savedInstanceState);
-            //如果initView返回0,框架则不会调用setContentView(),当然也不会 Bind ButterKnife
-            if (layoutResID != 0) {
-                setContentView(layoutResID);
-                //绑定到butterknife
-                mUnbinder = ButterKnife.bind(this);
-            }
-        } catch (Exception e) {
-            if (e instanceof InflateException) throw e;
-            e.printStackTrace();
-        }
-        setStatusBar();
-        initData(savedInstanceState);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mUnbinder != null && mUnbinder != Unbinder.EMPTY)
-            mUnbinder.unbind();
-        this.mUnbinder = null;
-        if (mPresenter != null)
-            mPresenter.onDestroy();//释放资源
-        this.mPresenter = null;
-    }
+    private Cache<String, Object> mCache;
+    private Unbinder mUnbinder;
 
     @NonNull
     @Override
     public synchronized Cache<String, Object> provideCache() {
         if (mCache == null) {
+            //noinspection unchecked
             mCache = ArmsUtils.obtainAppComponentFromContext(this).cacheFactory().build(CacheType.ACTIVITY_CACHE);
         }
         return mCache;
@@ -126,6 +90,39 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         return view == null ? super.onCreateView(name, context, attrs) : view;
     }
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try {
+            int layoutResID = initView(savedInstanceState);
+            //如果initView返回0,框架则不会调用setContentView(),当然也不会 Bind ButterKnife
+            if (layoutResID != 0) {
+                setContentView(layoutResID);
+                //绑定到butterknife
+                mUnbinder = ButterKnife.bind(this);
+            }
+        } catch (Exception e) {
+            if (e instanceof InflateException) {
+                throw e;
+            }
+            e.printStackTrace();
+        }
+        initData(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mUnbinder != null && mUnbinder != Unbinder.EMPTY) {
+            mUnbinder.unbind();
+        }
+        this.mUnbinder = null;
+        if (mPresenter != null) {
+            mPresenter.onDestroy();//释放资源
+        }
+        this.mPresenter = null;
+    }
+
     /**
      * 是否使用 EventBus
      * Arms 核心库现在并不会依赖某个 EventBus, 要想使用 EventBus, 还请在项目中自行依赖对应的 EventBus
@@ -141,7 +138,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     }
 
     /**
-     * 这个 {@link Activity} 是否会使用 {@link Fragment}, 框架会根据这个属性判断是否注册 {@link android.support.v4.app.FragmentManager.FragmentLifecycleCallbacks}
+     * 这个 {@link Activity} 是否会使用 {@link Fragment}, 框架会根据这个属性判断是否注册 {@link FragmentManager.FragmentLifecycleCallbacks}
      * 如果返回 {@code false}, 那意味着这个 {@link Activity} 不需要绑定 {@link Fragment}, 那你再在这个 {@link Activity} 中绑定继承于 {@link BaseFragment} 的 {@link Fragment} 将不起任何作用
      *
      * @return 返回 {@code true} (默认为 {@code true}), 则需要使用 {@link Fragment}
@@ -150,132 +147,4 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     public boolean useFragment() {
         return true;
     }
-
-    //#######################################################以下是CJ添加的通用需求####################################################
-
-    /**
-     * 是否设置状态栏为透明,默认为使用(true)，
-     */
-    public boolean useStatusBar() {
-        return true;
-    }
-
-    /** 将状态栏改为浅色、深色模式(状态栏 icon 和字体，false = 浅色，true = 深色) */
-    public boolean useLightStatusBar() {
-        return true;
-    }
-
-    /**
-     * 根据主题使用不同的颜色。
-     * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
-     */
-    public int useStatusBarColor() {
-        TypedValue typedValue = new TypedValue();
-        getTheme().resolveAttribute(R.attr.colorStatusBar, typedValue, true);
-        return typedValue.data;
-    }
-
-    /**
-     * 第一，设置状态栏为透明。
-     * 第二，此方法可起到刷新作用。
-     */
-    public void setStatusBar() {
-        if (useStatusBar()) {
-            if (useStatusBarColor() != -1) {
-                StatusBarCompat.setStatusBarColor(this, useStatusBarColor());
-            } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    //SDK >= 21时, 取消状态栏的阴影
-                    StatusBarCompat.translucentStatusBar(this, true);
-                } else {
-                    //透明状态栏
-                    StatusBarCompat.translucentStatusBar(this);
-                }
-            }
-
-            // 改变颜色
-            if (useLightStatusBar()) {
-                StatusBarCompatUtils.changeToLightStatusBar(this);
-            } else {
-                StatusBarCompatUtils.cancelLightStatusBar(this);
-            }
-        }
-    }
-
-    public void onClick(View v) {
-
-    }
-
-    protected BGASwipeBackHelper mSwipeBackHelper;
-
-    /**
-     * 初始化滑动返回。在 super.onCreate(savedInstanceState) 之前调用该方法
-     */
-    private void initSwipeBackFinish() {
-        mSwipeBackHelper = new BGASwipeBackHelper(this, this);
-
-        // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回」
-        // 下面几项可以不配置，这里只是为了讲述接口用法。
-
-        // 设置滑动返回是否可用。默认值为 true
-        mSwipeBackHelper.setSwipeBackEnable(true);
-        // 设置是否仅仅跟踪左侧边缘的滑动返回。默认值为 true
-        mSwipeBackHelper.setIsOnlyTrackingLeftEdge(true);
-        // 设置是否是微信滑动返回样式。默认值为 true
-        mSwipeBackHelper.setIsWeChatStyle(true);
-        // 设置阴影资源 id。默认值为 R.drawable.bga_sbl_shadow
-        mSwipeBackHelper.setShadowResId(R.drawable.bga_sbl_shadow);
-        // 设置是否显示滑动返回的阴影效果。默认值为 true
-        mSwipeBackHelper.setIsNeedShowShadow(true);
-        // 设置阴影区域的透明度是否根据滑动的距离渐变。默认值为 true
-        mSwipeBackHelper.setIsShadowAlphaGradient(true);
-        // 设置触发释放后自动滑动返回的阈值，默认值为 0.3f
-        mSwipeBackHelper.setSwipeBackThreshold(0.3f);
-        // 设置底部导航条是否悬浮在内容上，默认值为 false
-        mSwipeBackHelper.setIsNavigationBarOverlap(false);
-    }
-
-    /**
-     * 是否支持滑动返回。这里在父类中默认返回 true 来支持滑动返回，如果某个界面不想支持滑动返回则重写该方法返回 false 即可
-     *
-     * @return
-     */
-    @Override
-    public boolean isSupportSwipeBack() {
-        return false;
-    }
-
-    /**
-     * 正在滑动返回
-     *
-     * @param slideOffset 从 0 到 1
-     */
-    @Override
-    public void onSwipeBackLayoutSlide(float slideOffset) {
-    }
-
-    /**
-     * 没达到滑动返回的阈值，取消滑动返回动作，回到默认状态
-     */
-    @Override
-    public void onSwipeBackLayoutCancel() {
-    }
-
-    /**
-     * 滑动返回执行完毕，销毁当前 Activity
-     */
-    @Override
-    public void onSwipeBackLayoutExecuted() {
-        mSwipeBackHelper.swipeBackward();
-    }
-
-    @Override
-    public void onBackPressed() {
-        // 正在滑动返回的时候取消返回按钮事件
-        if (mSwipeBackHelper.isSliding()) {
-            return;
-        }
-        mSwipeBackHelper.backward();
-    }
-
 }

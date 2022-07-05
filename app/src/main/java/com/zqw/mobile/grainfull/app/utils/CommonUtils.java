@@ -10,12 +10,13 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.core.app.ActivityCompat;
 
 import com.jess.arms.cj.colorful.Colorful;
 import com.jess.arms.utils.ArmsUtils;

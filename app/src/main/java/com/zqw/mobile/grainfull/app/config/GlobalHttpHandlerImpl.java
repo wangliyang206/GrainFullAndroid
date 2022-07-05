@@ -16,8 +16,8 @@
 package com.zqw.mobile.grainfull.app.config;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.jess.arms.http.GlobalHttpHandler;
 import com.zqw.mobile.grainfull.app.global.AccountManager;

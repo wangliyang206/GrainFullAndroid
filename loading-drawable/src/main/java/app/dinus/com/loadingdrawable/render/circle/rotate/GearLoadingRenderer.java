@@ -8,10 +8,11 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.IntRange;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
+
+import androidx.annotation.IntRange;
 
 import app.dinus.com.loadingdrawable.DensityUtil;
 import app.dinus.com.loadingdrawable.render.LoadingRenderer;

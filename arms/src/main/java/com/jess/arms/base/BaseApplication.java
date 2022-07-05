@@ -17,15 +17,14 @@ package com.jess.arms.base;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.jess.arms.base.delegate.AppDelegate;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.Preconditions;
-
-import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
 /**
  * ================================================
@@ -54,24 +53,18 @@ public class BaseApplication extends Application implements App {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        if (mAppDelegate == null)
+        if (mAppDelegate == null) {
             this.mAppDelegate = new AppDelegate(base);
+        }
         this.mAppDelegate.attachBaseContext(base);
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        if (mAppDelegate != null)
+        if (mAppDelegate != null) {
             this.mAppDelegate.onCreate(this);
-
-
-        /**
-         * 必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回
-         * 第一个参数：应用程序上下文
-         * 第二个参数：如果发现滑动返回后立即触摸界面时应用崩溃，请把该界面里比较特殊的 View 的 class 添加到该集合中，目前在库中已经添加了 WebView 和 SurfaceView
-         */
-        BGASwipeBackHelper.init(this, null);
+        }
     }
 
     /**
@@ -80,15 +73,16 @@ public class BaseApplication extends Application implements App {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        if (mAppDelegate != null)
+        if (mAppDelegate != null) {
             this.mAppDelegate.onTerminate(this);
+        }
     }
 
     /**
      * 将 {@link AppComponent} 返回出去, 供其它地方使用, {@link AppComponent} 接口中声明的方法所返回的实例, 在 {@link #getAppComponent()} 拿到对象后都可以直接使用
      *
-     * @see ArmsUtils#obtainAppComponentFromContext(Context) 可直接获取 {@link AppComponent}
      * @return AppComponent
+     * @see ArmsUtils#obtainAppComponentFromContext(Context) 可直接获取 {@link AppComponent}
      */
     @NonNull
     @Override

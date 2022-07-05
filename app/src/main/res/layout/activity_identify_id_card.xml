@@ -31,7 +31,7 @@
                 android:background="@android:color/white"
                 android:orientation="vertical">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -114,7 +114,7 @@
                         app:layout_constraintLeft_toLeftOf="@+id/rela_identifyidcard_idcardback"
                         app:layout_constraintRight_toRightOf="@+id/rela_identifyidcard_idcardback"
                         app:layout_constraintTop_toBottomOf="@+id/rela_identifyidcard_idcardback" />
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- 身份证号 -->
                 <LinearLayout

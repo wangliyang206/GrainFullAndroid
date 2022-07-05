@@ -1,9 +1,10 @@
 package com.zqw.mobile.grainfull.mvp.ui.widget.verifycodeview;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 /**
  * Created by bruce on 2017/10/4.

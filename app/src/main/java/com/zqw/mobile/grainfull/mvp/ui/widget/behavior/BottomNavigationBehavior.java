@@ -2,8 +2,9 @@ package com.zqw.mobile.grainfull.mvp.ui.widget.behavior;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.view.ViewCompat;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
+
 import android.util.AttributeSet;
 import android.view.View;
 

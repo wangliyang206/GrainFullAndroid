@@ -34,7 +34,8 @@ import com.jess.arms.http.imageloader.ImageLoader;
  * ================================================
  */
 public class ImageConfigImpl extends ImageConfig {
-    private @CacheStrategy.Strategy int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
+    private @CacheStrategy.Strategy
+    int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
     private int fallback; //请求 url 为空,则使用此图片作为占位符
     private int imageRadius;//图片每个圆角的大小
     private int blurValue;//高斯模糊值, 值越大模糊效果越大
@@ -49,9 +50,6 @@ public class ImageConfigImpl extends ImageConfig {
     private boolean isCircle;//是否将图片剪切为圆形
     private boolean isClearMemory;//清理内存缓存
     private boolean isClearDiskCache;//清理本地缓存
-    private boolean isCropCenter;
-    private int resizeX;
-    private int resizeY;
 
     private ImageConfigImpl(Builder builder) {
         this.url = builder.url;
@@ -69,12 +67,14 @@ public class ImageConfigImpl extends ImageConfig {
         this.isCircle = builder.isCircle;
         this.isClearMemory = builder.isClearMemory;
         this.isClearDiskCache = builder.isClearDiskCache;
-        this.isCropCenter = builder.isCropCenter;
-        this.resizeX = builder.resizeX;
-        this.resizeY = builder.resizeY;
     }
 
-    public @CacheStrategy.Strategy int getCacheStrategy() {
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public @CacheStrategy.Strategy
+    int getCacheStrategy() {
         return cacheStrategy;
     }
 
@@ -126,28 +126,14 @@ public class ImageConfigImpl extends ImageConfig {
         return isCircle;
     }
 
-    public boolean isCropCenter(){
-        return isCropCenter;
-    }
-
-    public int getResizeX(){
-        return resizeX;
-    }
-    public int getResizeY(){
-        return resizeY;
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
     public static final class Builder {
         private String url;
         private ImageView imageView;
         private int placeholder;
         private int errorPic;
         private int fallback; //请求 url 为空,则使用此图片作为占位符
-        private @CacheStrategy.Strategy int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
+        private @CacheStrategy.Strategy
+        int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
         private int imageRadius;//图片每个圆角的大小
         private int blurValue;//高斯模糊值, 值越大模糊效果越大
         /**
@@ -161,9 +147,6 @@ public class ImageConfigImpl extends ImageConfig {
         private boolean isCircle;//是否将图片剪切为圆形
         private boolean isClearMemory;//清理内存缓存
         private boolean isClearDiskCache;//清理本地缓存
-        private boolean isCropCenter;//裁剪居中
-        private int resizeX;
-        private int resizeY;
 
         private Builder() {
         }
@@ -252,17 +235,6 @@ public class ImageConfigImpl extends ImageConfig {
 
         public Builder isClearDiskCache(boolean isClearDiskCache) {
             this.isClearDiskCache = isClearDiskCache;
-            return this;
-        }
-
-        public Builder isCropCenter(boolean isCropCenter){
-            this.isCropCenter = isCropCenter;
-            return this;
-        }
-
-        public Builder resize(int resizeX,int resizeY){
-            this.resizeX = resizeX;
-            this.resizeY = resizeY;
             return this;
         }
 

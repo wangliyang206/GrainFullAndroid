@@ -1,6 +1,6 @@
 package com.zqw.mobile.grainfull.app.utils;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 实现滑动RecyclerView,浮动按钮的显示和隐藏

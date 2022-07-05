@@ -11,14 +11,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.FileProvider;
 
 import java.io.File;
 
 import static android.app.Notification.VISIBILITY_SECRET;
 import static android.app.PendingIntent.getActivity;
-import static android.support.v4.app.NotificationCompat.PRIORITY_DEFAULT;
+
+import static androidx.core.app.NotificationCompat.PRIORITY_DEFAULT;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.FileProvider;
 
 /**
  * 作者 任强强 on 2016/10/18 11:36.

@@ -16,14 +16,14 @@
 package com.jess.arms.http.imageloader.glide;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool;
-import com.bumptech.glide.load.engine.cache.DiskCache;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
@@ -32,8 +32,8 @@ import com.bumptech.glide.module.AppGlideModule;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.OkHttpUrlLoader;
 import com.jess.arms.http.imageloader.BaseImageLoaderStrategy;
-import com.jess.arms.utils.DataHelper;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.DataHelper;
 
 import java.io.File;
 import java.io.InputStream;
@@ -55,12 +55,9 @@ public class GlideConfiguration extends AppGlideModule {
     @Override
     public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
         final AppComponent appComponent = ArmsUtils.obtainAppComponentFromContext(context);
-        builder.setDiskCache(new DiskCache.Factory() {
-            @Override
-            public DiskCache build() {
-                // Careful: the external cache directory doesn't enforce permissions
-                return DiskLruCacheWrapper.create(DataHelper.makeDirs(new File(appComponent.cacheFile(), "Glide")), IMAGE_DISK_CACHE_MAX_SIZE);
-            }
+        builder.setDiskCache(() -> {
+            // Careful: the external cache directory doesn't enforce permissions
+            return DiskLruCacheWrapper.create(DataHelper.makeDirs(new File(appComponent.cacheFile(), "Glide")), IMAGE_DISK_CACHE_MAX_SIZE);
         });
 
         MemorySizeCalculator calculator = new MemorySizeCalculator.Builder(context).build();
@@ -77,7 +74,7 @@ public class GlideConfiguration extends AppGlideModule {
         //并不能满足自己的需求,想自定义 BaseImageLoaderStrategy,那请你最好实现 GlideAppliesOptions
         //因为只有成为 GlideAppliesOptions 的实现类,这里才能调用 applyGlideOptions(),让你具有配置 Glide 的权利
         BaseImageLoaderStrategy loadImgStrategy = appComponent.imageLoader().getLoadImgStrategy();
-        if (loadImgStrategy != null && loadImgStrategy instanceof GlideAppliesOptions) {
+        if (loadImgStrategy instanceof GlideAppliesOptions) {
             ((GlideAppliesOptions) loadImgStrategy).applyGlideOptions(context, builder);
         }
     }
@@ -87,6 +84,11 @@ public class GlideConfiguration extends AppGlideModule {
         //Glide 默认使用 HttpURLConnection 做网络请求,在这切换成 Okhttp 请求
         AppComponent appComponent = ArmsUtils.obtainAppComponentFromContext(context);
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(appComponent.okHttpClient()));
+
+        BaseImageLoaderStrategy loadImgStrategy = appComponent.imageLoader().getLoadImgStrategy();
+        if (loadImgStrategy instanceof GlideAppliesOptions) {
+            ((GlideAppliesOptions) loadImgStrategy).registerComponents(context, glide, registry);
+        }
     }
 
     @Override

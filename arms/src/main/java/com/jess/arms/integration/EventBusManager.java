@@ -15,6 +15,8 @@
  */
 package com.jess.arms.integration;
 
+import org.greenrobot.eventbus.Subscribe;
+
 import java.lang.reflect.Method;
 
 import static com.jess.arms.base.Platform.DEPENDENCY_ANDROID_EVENTBUS;
@@ -35,6 +37,9 @@ import static com.jess.arms.base.Platform.DEPENDENCY_EVENTBUS;
 public final class EventBusManager {
     private static volatile EventBusManager sInstance;
 
+    private EventBusManager() {
+    }
+
     public static EventBusManager getInstance() {
         if (sInstance == null) {
             synchronized (EventBusManager.class) {
@@ -44,9 +49,6 @@ public final class EventBusManager {
             }
         }
         return sInstance;
-    }
-
-    private EventBusManager() {
     }
 
     /**
@@ -89,14 +91,6 @@ public final class EventBusManager {
     public void post(Object event) {
         if (DEPENDENCY_ANDROID_EVENTBUS) {
             org.simple.eventbus.EventBus.getDefault().post(event);
-        } else if (DEPENDENCY_EVENTBUS) {
-            org.greenrobot.eventbus.EventBus.getDefault().post(event);
-        }
-    }
-
-    public void post(Object event, String tag) {
-        if (DEPENDENCY_ANDROID_EVENTBUS) {
-            org.simple.eventbus.EventBus.getDefault().post(event, tag);
         } else if (DEPENDENCY_EVENTBUS) {
             org.greenrobot.eventbus.EventBus.getDefault().post(event);
         }
@@ -167,11 +161,10 @@ public final class EventBusManager {
                     skipSuperClasses = true;
                 }
             }
-            for (int i = 0; i < allMethods.length; i++) {
-                Method method = allMethods[i];
+            for (Method method : allMethods) {
                 Class<?>[] parameterTypes = method.getParameterTypes();
                 //查看该方法是否含有 Subscribe 注解
-                if (method.isAnnotationPresent(org.greenrobot.eventbus.Subscribe.class) && parameterTypes.length == 1) {
+                if (method.isAnnotationPresent(Subscribe.class) && parameterTypes.length == 1) {
                     return true;
                 }
             } //end for

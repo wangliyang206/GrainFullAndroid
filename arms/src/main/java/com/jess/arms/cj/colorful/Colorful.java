@@ -2,9 +2,11 @@ package com.jess.arms.cj.colorful;
 
 import android.app.Activity;
 import android.content.res.Resources.Theme;
-import android.support.v4.app.Fragment;
+
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.jess.arms.cj.colorful.setter.TextColorSetter;
 import com.jess.arms.cj.colorful.setter.ViewBackgroundColorSetter;

@@ -15,8 +15,6 @@ package com.qiangxi.checkupdatelibrary.annotation;
  * limitations under the License.
  */
 
-import android.support.annotation.StringDef;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -24,6 +22,8 @@ import java.lang.annotation.Target;
 
 import static com.qiangxi.checkupdatelibrary.constants.Const.GET;
 import static com.qiangxi.checkupdatelibrary.constants.Const.POST;
+
+import androidx.annotation.StringDef;
 
 /**
  * Created by qiangxi(任强强) on 2017/10/15.

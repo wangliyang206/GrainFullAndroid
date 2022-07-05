@@ -1,8 +1,10 @@
 package com.zqw.mobile.grainfull.mvp.ui.widget;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+
 import android.util.AttributeSet;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 /**
  * 禁止RecyclerView上下滚动/滑动

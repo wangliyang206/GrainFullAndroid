@@ -15,7 +15,7 @@
  */
 package com.zqw.mobile.grainfull.mvp.ui.widget.secondarylist;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.ViewGroup;
 
 /**

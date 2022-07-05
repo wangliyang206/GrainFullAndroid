@@ -15,11 +15,14 @@
  */
 package com.jess.arms.base;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -35,11 +38,28 @@ import java.util.List;
 public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<T>> {
     protected List<T> mInfos;
     protected OnRecyclerViewItemClickListener mOnItemClickListener = null;
-    private BaseHolder<T> mHolder;
 
     public DefaultAdapter(List<T> infos) {
         super();
         this.mInfos = infos;
+    }
+
+    /**
+     * 遍历所有 {@link BaseHolder}, 释放他们需要释放的资源
+     *
+     * @param recyclerView {@link RecyclerView}
+     */
+    public static void releaseAllHolder(RecyclerView recyclerView) {
+        if (recyclerView == null) {
+            return;
+        }
+        for (int i = recyclerView.getChildCount() - 1; i >= 0; i--) {
+            final View view = recyclerView.getChildAt(i);
+            RecyclerView.ViewHolder viewHolder = recyclerView.getChildViewHolder(view);
+            if (viewHolder instanceof BaseHolder) {
+                ((BaseHolder) viewHolder).onRelease();
+            }
+        }
     }
 
     /**
@@ -49,19 +69,16 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
      * @param viewType 布局类型
      * @return {@link BaseHolder}
      */
+    @NotNull
     @Override
     public BaseHolder<T> onCreateViewHolder(ViewGroup parent, final int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(getLayoutId(viewType), parent, false);
-        mHolder = getHolder(view, viewType);
+        BaseHolder<T> mHolder = getHolder(view, viewType);
         //设置Item点击事件
-        mHolder.setOnItemClickListener(new BaseHolder.OnViewClickListener() {
-            @Override
-            public void onViewClick(View view, int position) {
-                if (mOnItemClickListener != null && mInfos.size() > 0) {
-                    if(mInfos.size() != position){
-                        mOnItemClickListener.onItemClick(view, viewType, mInfos.get(position), position);
-                    }
-                }
+        mHolder.setOnItemClickListener((view1, position) -> {
+            if (mOnItemClickListener != null && mInfos.size() > 0) {
+                //noinspection unchecked
+                mOnItemClickListener.onItemClick(view1, viewType, mInfos.get(position), position);
             }
         });
         return mHolder;
@@ -126,19 +143,12 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
     public abstract int getLayoutId(int viewType);
 
     /**
-     * 遍历所有 {@link BaseHolder}, 释放他们需要释放的资源
+     * 设置 item 点击事件
      *
-     * @param recyclerView {@link RecyclerView}
+     * @param listener
      */
-    public static void releaseAllHolder(RecyclerView recyclerView) {
-        if (recyclerView == null) return;
-        for (int i = recyclerView.getChildCount() - 1; i >= 0; i--) {
-            final View view = recyclerView.getChildAt(i);
-            RecyclerView.ViewHolder viewHolder = recyclerView.getChildViewHolder(view);
-            if (viewHolder != null && viewHolder instanceof BaseHolder) {
-                ((BaseHolder) viewHolder).onRelease();
-            }
-        }
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
     }
 
     /**
@@ -157,14 +167,5 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
          * @param position 在 RecyclerView 中的位置
          */
         void onItemClick(@NonNull View view, int viewType, @NonNull T data, int position);
-    }
-
-    /**
-     * 设置 item 点击事件
-     *
-     * @param listener
-     */
-    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
-        this.mOnItemClickListener = listener;
     }
 }
