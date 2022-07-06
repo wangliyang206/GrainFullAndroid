@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
@@ -42,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
             android:text="3m"
             android:textColor="@color/common_text_tips_color"
             android:textSize="15sp" />
@@ -66,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
@@ -80,7 +77,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
             android:text="1.0.0"
             android:textColor="@color/common_text_tips_color"
             android:textSize="15sp" />
@@ -115,7 +111,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
@@ -123,12 +118,11 @@
             android:textColor="@color/common_text_color"
             android:textSize="15sp" />
 
-        <android.support.v7.widget.SwitchCompat
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swch_settingactivity_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
             android:checked="false"
             android:theme="@style/SwitchTheme"
             app:switchMinWidth="50dp" />

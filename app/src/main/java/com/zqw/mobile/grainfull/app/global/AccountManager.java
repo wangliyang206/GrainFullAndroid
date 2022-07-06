@@ -193,7 +193,7 @@ public final class AccountManager {
      */
     public String getToken() {
         String str = spHelper.getPref(TOKEN, "");
-        Timber.i("RetrofitFactoty：Token=" + str);
+        Timber.i("RetrofitFactoty：Token=%s", str);
         return str;
     }
 

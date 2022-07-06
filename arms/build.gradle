@@ -34,7 +34,12 @@ dependencies {
     api(rootProject.ext.dependencies["appcompat"]) {
         exclude module: 'annotation'
     }
-    compileOnly rootProject.ext.dependencies["design"]
+    compileOnly (rootProject.ext.dependencies["design"]){
+        exclude module: 'annotation'
+        exclude module: 'appcompat'
+        exclude module: 'legacy-support-v4'
+        exclude module: 'recyclerview'
+    }
     api(rootProject.ext.dependencies["recyclerview"]) {
         exclude module: 'annotation'
     }
@@ -47,6 +52,16 @@ dependencies {
         exclude module: 'core'
     }
     api(rootProject.ext.dependencies["constraintlayout"])
+    // After AndroidX
+    api (rootProject.ext.dependencies["statusbarcompatx"]) {
+        exclude group: 'androidx.appcompat:appcompat'
+        exclude group: 'com.google.android.material:material'
+    }
+    // Before AndroidX
+//    api (rootProject.ext.dependencies["statusbarcompat"]) {
+//        exclude group: 'com.android.support'
+//    }
+    api rootProject.ext.dependencies["swipeback"]
 
     //rx
     api rootProject.ext.dependencies["rxjava2"]

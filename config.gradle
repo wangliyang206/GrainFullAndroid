@@ -33,7 +33,7 @@ ext {
 
             //androidx
             "appcompat"                : "androidx.appcompat:appcompat:${version["androidXSdkVersion"]}",
-            "design"                   : "com.google.android.material:material:${version["androidXSdkVersion"]}",
+            "design"                   : "com.google.android.material:material:1.0.0}",
             "legacy-support-v4"        : "androidx.legacy:legacy-support-v4:1.0.0",
             "cardview"                 : "androidx.cardview:cardview:1.0.0",
             "annotations"              : "androidx.annotation:annotation:${version["androidXSdkVersion"]}",
@@ -65,6 +65,11 @@ ext {
             "autosize"                 : "me.jessyan:autosize:1.2.1",
             "constraintlayout"         : "androidx.constraintlayout:constraintlayout:2.1.0",
             "constraintlayout-compose" : "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02",
+            // 状态栏透明(https://github.com/niorgai/StatusBarCompat)
+            "statusbarcompatx"         : "com.github.niorgai:StatusBarCompat:2.3.3",                // After AndroidX
+            "statusbarcompat"          : "com.github.niorgai:StatusBarCompat:2.1.4",                // Before AndroidX
+            // 侧滑关闭，注意：必须和support-v4一起使用；(https://github.com/bingoogolapple/BGASwipeBackLayout-Android)
+            "swipeback"                : "com.github.bingoogolapple:BGASwipeBackLayout-Android:2.0.2",
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",

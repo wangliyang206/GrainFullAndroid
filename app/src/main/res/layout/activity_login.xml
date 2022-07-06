@@ -10,6 +10,7 @@
         android:id="@+id/lila_login_close"
         android:layout_width="match_parent"
         android:layout_height="44dp"
+        android:layout_marginTop="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -48,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txvi_login_tips_one" />
 
     <!-- 手机号 -->
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_login_mobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,16 +61,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvi_login_tips_two">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_login_mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/loginactitivy_user_title"
             android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- 密码 -->
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,7 +82,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_login_mobile">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +90,7 @@
             android:inputType="textPassword"
             android:maxLength="20"
             android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- 登录 -->
     <Button

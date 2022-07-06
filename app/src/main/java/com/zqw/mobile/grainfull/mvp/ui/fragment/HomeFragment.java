@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -21,6 +22,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.HomeContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
 import org.simple.eventbus.EventBus;
@@ -179,7 +181,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.lila_fragmenthome_search:                                                     // 拜访搜索
                 break;
             case R.id.btn_fragmenthome_bankcards:                                                   // 识别银行卡
-
+                ActivityUtils.startActivity(IdentifyBankCardsActivity.class);
                 break;
         }
     }
