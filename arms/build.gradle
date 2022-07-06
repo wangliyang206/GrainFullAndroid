@@ -31,10 +31,16 @@ dependencies {
         exclude module: 'coordinatorlayout'
     }
     //androidx
+    api("androidx.core:core:1.3.2"){
+        // 强制这个版本
+        force = true
+    }
     api(rootProject.ext.dependencies["appcompat"]) {
         exclude module: 'annotation'
     }
-    compileOnly (rootProject.ext.dependencies["design"]){
+    api (rootProject.ext.dependencies["design"]){
+        // 强制这个版本
+        force = true
         exclude module: 'annotation'
         exclude module: 'appcompat'
         exclude module: 'legacy-support-v4'
@@ -43,7 +49,10 @@ dependencies {
     api(rootProject.ext.dependencies["recyclerview"]) {
         exclude module: 'annotation'
     }
-    api rootProject.ext.dependencies["annotations"]
+    api (rootProject.ext.dependencies["annotations"]){
+        // 强制这个版本
+        force = true
+    }
 
     //view
     compileOnly rootProject.ext.dependencies["autolayout"]
@@ -51,11 +60,13 @@ dependencies {
         exclude module: 'annotation'
         exclude module: 'core'
     }
-    api(rootProject.ext.dependencies["constraintlayout"])
+    api(rootProject.ext.dependencies["constraintlayout"]){
+        exclude module: 'appcompat'
+    }
     // After AndroidX
     api (rootProject.ext.dependencies["statusbarcompatx"]) {
-        exclude group: 'androidx.appcompat:appcompat'
-        exclude group: 'com.google.android.material:material'
+        exclude module: 'appcompat'
+        exclude module: 'material'
     }
     // Before AndroidX
 //    api (rootProject.ext.dependencies["statusbarcompat"]) {

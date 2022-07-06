@@ -223,7 +223,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //androidx
-    implementation rootProject.ext.dependencies["cardview"]
+    implementation (rootProject.ext.dependencies["cardview"]){
+        exclude module: 'annotation'
+    }
 
     //tools
     //注意 Arms 核心库现在并不会依赖某个 EventBus, 要想使用 EventBus, 还请在项目中自行依赖对应的 EventBus
@@ -276,14 +278,19 @@ dependencies {
     // 支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
     implementation rootProject.ext.dependencies["tray"]
     // 对话框(https://github.com/afollestad/material-dialogs)
-    implementation rootProject.ext.dependencies["dialogs"]
+    implementation (rootProject.ext.dependencies["dialogs"]){
+        exclude module: 'annotation'
+        exclude module: 'appcompat'
+    }
     // 权限注解(https://github.com/permissions-dispatcher/PermissionsDispatcher)
     implementation(rootProject.ext.dependencies["permissionsdispatcher"]) {
         // if you don't use android.app.Fragment you can exclude support for them
         exclude module: "support-v13"
     }
     annotationProcessor rootProject.ext.dependencies["permission-processor"]
-    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
+    implementation ('com.jakewharton.rxbinding3:rxbinding:3.0.0'){
+        exclude module: 'annotation'
+    }
     // 自定义圆形图片控件(https://github.com/hdodenhof/CircleImageView)
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     // TwinklingRefreshLayout延伸了Google的SwipeRefreshLayout的思想,不在列表控件上动刀,而是使用一个ViewGroup来包含列表控件,以保持其较低的耦合性和较高的通用性(https://github.com/lcodecorex/TwinklingRefreshLayout)
@@ -302,14 +309,20 @@ dependencies {
     // 检查更新
     implementation project(path: ':checkupdatelib')
     // 高仿微信图片选择器(https://github.com/Lichenwei-Dev/ImagePicker)
-    implementation 'com.lcw.library:imagepicker:2.2.8'
+    implementation ('com.lcw.library:imagepicker:2.2.8'){
+        exclude module: 'appcompat'
+    }
     // 拍视频
     implementation project(path: ':camera')
     // 高仿IOS时间选择器、省市区三级联动(https://github.com/Bigkoo/Android-PickerView)
     implementation rootProject.ext.dependencies["pickerview"]
 
     // 适用于Android项目的灵活，易用，一体化抽屉库。(https://github.com/mikepenz/MaterialDrawer/tree/develop)
-    implementation "com.mikepenz:materialdrawer:6.0.9"
+    implementation ("com.mikepenz:materialdrawer:6.0.9"){
+        exclude module: 'annotation'
+        exclude module: 'appcompat'
+        exclude module: 'material'
+    }
     // Item 动画(https://github.com/mikepenz/ItemAnimators)
     implementation 'com.mikepenz:itemanimators:1.0.2@aar'
 
