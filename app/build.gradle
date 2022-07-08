@@ -342,4 +342,6 @@ dependencies {
     implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
     // 华为SDK - 引入银行卡plugin与识别能力集合包。
     implementation 'com.huawei.hms:ml-computer-card-bcr:2.0.3.302'
+    // 华为SDK - 身份证识别。
+    implementation 'com.huawei.hms:ml-computer-card-icr-cn:2.0.3.303'
 }

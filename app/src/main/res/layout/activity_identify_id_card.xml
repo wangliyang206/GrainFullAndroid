@@ -151,7 +151,7 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <!-- 起始日期 -->
+                <!-- 姓名 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -165,12 +165,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="起始日期:"
+                        android:text="姓名:"
                         android:textColor="@color/common_text_color"
                         android:textSize="13sp" />
 
                     <TextView
-                        android:id="@+id/txvi_identifyidcard_startdate"
+                        android:id="@+id/txvi_identifyidcard_name"
                         android:layout_width="0dp"
                         android:layout_height="36dp"
                         android:layout_weight="2.8"
@@ -186,7 +186,42 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <!-- 截止日期 -->
+                <!-- 性别 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="性别:"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_identifyidcard_sex"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="2.8"
+                        android:background="@drawable/edit_bg_selector"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/common_text_color"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- 有效期 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -201,12 +236,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="截止日期:"
+                        android:text="有效期:"
                         android:textColor="@color/common_text_color"
                         android:textSize="13sp" />
 
                     <TextView
-                        android:id="@+id/txvi_identifyidcard_expirationdate"
+                        android:id="@+id/txvi_identifyidcard_validityperiod"
                         android:layout_width="0dp"
                         android:layout_height="36dp"
                         android:layout_weight="2.8"
@@ -221,7 +256,6 @@
                         android:textColor="@color/common_text_color"
                         android:textSize="13sp" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <!-- 关闭 -->

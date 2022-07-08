@@ -23,6 +23,7 @@ import com.zqw.mobile.grainfull.mvp.contract.HomeContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
 import org.simple.eventbus.EventBus;
@@ -162,6 +163,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_home_load,                                                                     // 定位失败-重新加载
             R.id.lila_fragmenthome_search,                                                          // 拜访搜索
             R.id.btn_fragmenthome_bankcards,                                                        // 识别银行卡
+            R.id.btn_fragmenthome_idcard,                                                           // 识别身份证
     })
     @Override
     public void onClick(View v) {
@@ -182,6 +184,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_bankcards:                                                   // 识别银行卡
                 ActivityUtils.startActivity(IdentifyBankCardsActivity.class);
+                break;
+            case R.id.btn_fragmenthome_idcard:                                                      // 识别身份证
+                ActivityUtils.startActivity(IdentifyIdCardActivity.class);
                 break;
         }
     }
