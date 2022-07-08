@@ -17,7 +17,7 @@ buildscript {
         // GreenDao插件
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
         // 增加agcp插件配置，推荐您使用最新版本的agcp插件。(华为)
-        classpath 'com.huawei.agconnect:agcp:1.4.2.300'
+        classpath 'com.huawei.agconnect:agcp:1.5.2.300'
     }
 }
 
@@ -43,17 +43,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-configurations.all {
-    resolutionStrategy {
-        eachDependency { details ->
-            // Force all of the primary libraries to use the same version.
-            if (details.requested.name == 'appcompat'
-                    && details.requested.name == 'annotation'
-                    && details.requested.name == 'recyclerview') {
-                details.useVersion rootProject.ext.version["androidXSdkVersion"]
-            }
-        }
-    }
 }

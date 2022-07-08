@@ -26,8 +26,25 @@
     <uses-permission android:name="android.permission.CAMERA" /> <!-- 应用程序用到设备的摄像头。如果设备支持多个摄像头，程序使用背朝屏幕的那个。 -->
     <uses-feature android:name="android.hardware.camera" /> <!-- 子特性。应用程序用到设备摄像头的自动对焦功能 -->
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 应用需要获取您的录音权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- service前台服务 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- service前台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- 用于导航中省电设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 诱导悬浮窗 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.MANAGE_OVERLAY_PERMISSION" />
+
+    <!-- OpenGLES 2.0 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
 
     <application
         android:name="com.jess.arms.base.BaseApplication"
@@ -68,10 +85,12 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider.FileProvider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
+                android:resource="@xml/provider_paths"
+                tools:replace="android:resource"/>
         </provider>
         <!-- Arms 配置 -->
         <meta-data
@@ -80,7 +99,7 @@
         <!-- 华为 - 识别银行卡 -->
         <meta-data
             android:name="com.huawei.hms.ml.DEPENDENCY"
-            android:value= "bcr"/>
+            android:value="bcr" />
         <!-- 百度地图 API KEY -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -90,6 +109,10 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

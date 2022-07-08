@@ -7,6 +7,9 @@
     <!-- CheckBox,RadioButton,SwitchCompat等一般控件的选中效果默认采用该颜色 -->
     <color name="colorAccent">@color/colorPrimary</color>
 
+    <!-- 状态栏颜色 -->
+    <color name="colorStatusBar">#FFFFFF</color>
+
     <!-- 背景颜色 -->
     <color name="layout_bg_color">#FFFFFF</color>
     <color name="fragment_bg_color">#F8F6F9</color>

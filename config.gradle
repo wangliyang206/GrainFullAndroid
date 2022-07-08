@@ -110,12 +110,13 @@ ext {
             "retrofit-url-manager"     : "me.jessyan:retrofit-url-manager:1.4.0",
             "lifecyclemodel"           : "me.jessyan:lifecyclemodel:1.0.1",
             // 添加腾讯bug崩溃日志跟踪
-            "bugly-crashreport"        : "com.tencent.bugly:crashreport:latest.release",        // 其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-            "bugly-nativecrashreport"  : "com.tencent.bugly:nativecrashreport:latest.release",  // 其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+            "bugly-crashreport"        : "com.tencent.bugly:crashreport:latest.release",            // 其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+            "bugly-nativecrashreport"  : "com.tencent.bugly:nativecrashreport:latest.release",      // 其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
             // 工具类(https://github.com/Blankj/AndroidUtilCode)
             "utilcode"                 : "com.blankj:utilcode:1.23.7",
             "utilcodex"                 : "com.blankj:utilcodex:1.23.7",
-            "tray"                     : "net.grandcentrix.tray:tray:0.12.0",                   // 支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
+            // 支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
+            "tray"                     : "net.grandcentrix.tray:tray:0.12.0",
             // 对话框(https://github.com/afollestad/material-dialogs)
             "dialogs"                  : "com.afollestad.material-dialogs:core:0.9.6.0",
             "material-color"           : "com.afollestad.material-dialogs:color:0.9.6.0",

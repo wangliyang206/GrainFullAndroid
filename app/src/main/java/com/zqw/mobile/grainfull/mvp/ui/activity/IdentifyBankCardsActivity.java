@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +28,7 @@ import com.zqw.mobile.grainfull.mvp.presenter.IdentifyBankCardsPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 
 /**
@@ -40,12 +43,19 @@ public class IdentifyBankCardsActivity extends BaseActivity<IdentifyBankCardsPre
     @BindView(R.id.edit_identifybankcards_input)
     EditText editInput;
 
+    @BindView(R.id.txvi_identifybankcards_tips)
+    TextView txviTips;
+
+    @BindView(R.id.imvi_identifybankcards_image)
+    ImageView image;
     /*------------------------------------------业务信息------------------------------------------*/
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         this.editInput = null;
+        this.txviTips = null;
+        this.image = null;
     }
 
     @Override
@@ -116,7 +126,13 @@ public class IdentifyBankCardsActivity extends BaseActivity<IdentifyBankCardsPre
                 return;
             }
 
+            // 识别出的卡号
             editInput.setText(bankCardResult.getNumber());
+            // 银行卡图片
+            Bitmap bitmap = bankCardResult.getOriginalBitmap();
+            image.setImageBitmap(bitmap);
+            // 银行卡其它参数
+            txviTips.setText(formatIdCardResult(bankCardResult));
         }
 
         @Override
@@ -140,6 +156,36 @@ public class IdentifyBankCardsActivity extends BaseActivity<IdentifyBankCardsPre
             showMessage("相机不支持等场景处理");
         }
     };
+
+    /**
+     * 获取银行卡其它参数
+     */
+    private String formatIdCardResult(MLBcrCaptureResult bankCardResult) {
+        StringBuilder resultBuilder = new StringBuilder();
+
+//        resultBuilder.append("银行卡号：");
+//        resultBuilder.append(bankCardResult.getNumber());
+//        resultBuilder.append("\r\n");
+
+        resultBuilder.append("发卡行：");
+        resultBuilder.append(bankCardResult.getIssuer());
+        resultBuilder.append("\r\n");
+
+        resultBuilder.append("有效期: ");
+        resultBuilder.append(bankCardResult.getExpire());
+        resultBuilder.append("\r\n");
+
+        resultBuilder.append("卡类型: ");
+        resultBuilder.append(bankCardResult.getType());
+        resultBuilder.append("\r\n");
+
+        resultBuilder.append("组织: ");
+        resultBuilder.append(bankCardResult.getOrganization());
+//        resultBuilder.append("\r\n");
+
+        Timber.i("front result: %s", resultBuilder.toString());
+        return resultBuilder.toString();
+    }
 
     @Override
     public Activity getActivity() {

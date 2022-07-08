@@ -8,8 +8,8 @@
     <item name="tag_second" type="id" />
 
     <!--百度地图 API KEY-->
-    <string name="baidu_map_api_key">D7GtarVBbiB083uVtyiaDl2faZX6kHRg</string>
-    <string name="baidu_map_api_key_debug">ZMmrKpmZWf1CMrBMCHHCPWI4Qcm6txDM</string>
+    <string name="baidu_map_api_key">IAD7lYrqVL9SWRGETuE7qGeg8bd3akMy</string>
+    <string name="baidu_map_api_key_debug">HWegpto4A5GyPnkpvjpagG1xXtHFgxpd</string>
 
     <string name="common_tips">温馨提示</string>
     <string name="common_no">取消</string>

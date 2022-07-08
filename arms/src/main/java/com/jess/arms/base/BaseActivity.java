@@ -22,6 +22,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.InflateException;
 import android.view.View;
 
@@ -198,10 +199,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
      * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
      */
     public int useStatusBarColor() {
-//        TypedValue typedValue = new TypedValue();
-//        getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
-//        return typedValue.data;
-        return -1;
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.colorStatusBar, typedValue, true);
+        return typedValue.data;
     }
 
     /**

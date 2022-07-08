@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="输入卡号添加"
+            android:text="输入卡号"
             android:textColor="@color/common_text_color"
             android:textSize="16sp" />
 
@@ -52,7 +52,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/text_bg_selector"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -76,6 +75,29 @@
                 android:padding="@dimen/dp_10"
                 android:src="@mipmap/ic_evaluation_camera" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txvi_identifybankcards_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text=""
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/imvi_identifybankcards_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp">
+
+        </ImageView>
     </LinearLayout>
 
 </LinearLayout>
