@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zqw.mobile.grainfull">
+    <!-- 华为SDK -->
+    <meta-data
+        android:name="com.huawei.hms.ml.DEPENDENCY"
+        android:value="object,ocr,face,label,icr,bcr,imgseg,translate,langdetect,skeleton,handkeypoint" />
     <!-- 该权限用于读取手机状态,比如基于百度lbs定位雷达的附近的程序员功能，微博用于调用JNI -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 访问网络连接，可能产生GPRS流量 -->

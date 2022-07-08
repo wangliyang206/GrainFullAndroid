@@ -318,7 +318,7 @@ dependencies {
     implementation rootProject.ext.dependencies["pickerview"]
 
     // 适用于Android项目的灵活，易用，一体化抽屉库。(https://github.com/mikepenz/MaterialDrawer/tree/develop)
-    implementation ("com.mikepenz:materialdrawer:6.0.9"){
+    implementation ("com.mikepenz:materialdrawer:6.1.2"){
         exclude module: 'annotation'
         exclude module: 'appcompat'
         exclude module: 'material'
@@ -334,8 +334,8 @@ dependencies {
     implementation 'top.zibin:Luban:1.1.8'
     // 二维码
     api "com.google.zxing:core:3.3.0"
-    // 华为SDK
-    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
-    // 引入银行卡plugin与识别能力集合包。
-    implementation 'com.huawei.hms:ml-computer-card-bcr:3.5.0.300'
+    // 华为SDK基础包
+//    implementation 'com.huawei.agconnect:agconnect-core:1.4.2.300'
+    // 华为SDK - 引入银行卡plugin与识别能力集合包。
+    implementation 'com.huawei.hms:ml-computer-card-bcr:2.0.3.302'
 }

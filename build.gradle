@@ -6,7 +6,7 @@ buildscript {
 	    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
 
         // 配置HMS Core SDK的Maven仓地址。(华为)
-        maven {url 'https://developer.huawei.com/repo/'}
+        maven { url "https://developer.huawei.com/repo/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.0'
@@ -17,7 +17,7 @@ buildscript {
         // GreenDao插件
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
         // 增加agcp插件配置，推荐您使用最新版本的agcp插件。(华为)
-        classpath 'com.huawei.agconnect:agcp:1.5.2.300'
+        classpath 'com.huawei.agconnect:agcp:1.4.2.300'
     }
 }
 
@@ -37,7 +37,7 @@ allprojects {
         maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }                        // PermissionsDispatcher 权限注解
         mavenCentral()                                                                              // GreenDao仓库
         maven { url "http://maven.aliyun.com/nexus/content/repositories/releases" }                 // 阿里云热修复
-        maven {url 'https://developer.huawei.com/repo/'}                                            // 配置HMS Core SDK的Maven仓地址。(华为)
+        maven { url "https://developer.huawei.com/repo/" }                                          // 配置HMS Core SDK的Maven仓地址。(华为)
     }
 }
 

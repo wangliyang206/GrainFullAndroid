@@ -1,13 +1,16 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.huawei.hms.mlplugin.card.bcr.MLBcrCapture;
 import com.huawei.hms.mlplugin.card.bcr.MLBcrCaptureConfig;
@@ -23,8 +26,6 @@ import com.zqw.mobile.grainfull.mvp.presenter.IdentifyBankCardsPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
 /**
@@ -90,22 +91,31 @@ public class IdentifyBankCardsActivity extends BaseActivity<IdentifyBankCardsPre
                 // 设置银行卡识别期望返回的结果类型。
                 // MLBcrCaptureConfig.RESULT_NUM_ONLY：仅识别卡号。
                 // MLBcrCaptureConfig.RESULT_SIMPLE：仅识别卡号、有效期信息。
-                // MLBcrCaptureConfig.ALL_RESULT：识别卡号、有效期、发卡行、发卡组织和卡类别等信息。
-                .setResultType(MLBcrCaptureConfig.RESULT_SIMPLE)
+                // MLBcrCaptureConfig.RESULT_ALL：识别卡号、有效期、发卡行、发卡组织和卡类别等信息。
+                .setResultType(MLBcrCaptureConfig.RESULT_ALL)
                 // 设置识别界面横竖屏，支持三种模式：
                 // MLBcrCaptureConfig.ORIENTATION_AUTO: 自适应模式，由物理感应器决定显示方向。
                 // MLBcrCaptureConfig.ORIENTATION_LANDSCAPE: 横屏模式。
                 // MLBcrCaptureConfig.ORIENTATION_PORTRAIT: 竖屏模式。
                 .setOrientation(MLBcrCaptureConfig.ORIENTATION_AUTO)
                 .create();
-        MLBcrCapture bankCapture = MLBcrCaptureFactory.getInstance().getBcrCapture(config);
-        bankCapture.captureFrame(this, callback);
+        MLBcrCapture bcrCapture = MLBcrCaptureFactory.getInstance().getBcrCapture(config);
+        bcrCapture.captureFrame(this, callback);
     }
 
-    private MLBcrCapture.Callback callback = new MLBcrCapture.Callback() {
+    /**
+     * 使用银行卡预处理插件识别视频流银行卡。
+     * 创建识别结果回调函数，处理卡片的识别结果。
+     */
+    private final MLBcrCapture.Callback callback = new MLBcrCapture.Callback() {
         @Override
         public void onSuccess(MLBcrCaptureResult bankCardResult) {
             // 识别成功处理。
+            if (bankCardResult == null) {
+                showMessage("识别失败");
+                return;
+            }
+
             editInput.setText(bankCardResult.getNumber());
         }
 

@@ -48,8 +48,8 @@
     *;
  }
 #业务类库
--keep class com.zqw.mobile.operation.mvp.model.entity.** {*;}                                       #实体类不要混淆
--dontwarn com.zqw.mobile.operation.mvp.model.entity.**
+-keep class com.zqw.mobile.grainfull.mvp.model.entity.** {*;}                                       #实体类不要混淆
+-dontwarn com.zqw.mobile.grainfull.mvp.model.entity.**
 
 -keep class com.jess.arms.cj.** {*;}                                                                #实体类不要混淆
 -dontwarn com.jess.arms.cj.**
@@ -59,11 +59,10 @@
 -dontwarn app.dinus.com.loadingdrawable.**
 
 -keep class com.jess.arms.base.BaseApplication {*;}
--keep class com.zqw.mobile.operation.app.global.GlobalConfiguration {*;}                            #类不要混淆
--keep class com.zqw.mobile.operation.app.utils.AppCrashHandler {*;}                                 #类不要混淆
--keep class com.zqw.mobile.operation.app.global.AccountManager {*;}                                 #类不要混淆
--keep class com.zqw.mobile.operation.app.global.RequestMapper {*;}                                  #类不要混淆
--keep interface com.zqw.mobile.operation.app.global.Constant {*;}                                   #类不要混淆
+-keep class com.zqw.mobile.grainfull.app.global.GlobalConfiguration {*;}                            #类不要混淆
+-keep class com.zqw.mobile.grainfull.app.global.AccountManager {*;}                                 #类不要混淆
+-keep class com.zqw.mobile.grainfull.app.global.RequestMapper {*;}                                  #类不要混淆
+-keep interface com.zqw.mobile.grainfull.app.global.Constant {*;}                                   #类不要混淆
 
 #类库不要混淆
 -keep class javax.annotation.**{*;}
@@ -249,26 +248,6 @@
 -keep class com.alipay.sdk.app.PayTask{ public *;}
 -keep class com.alipay.sdk.app.AuthTask{ public *;}
 
-##-----------------------------------
-############ 阿里云Sophix热修复 ########
-##-----------------------------------
-
-#基线包使用，生成mapping.txt
--printmapping mapping.txt
-#生成的mapping.txt在app/buidl/outputs/mapping/release路径下，移动到/app路径下
-#修复后的项目使用，保证混淆结果一致
-#-applymapping mapping.txt
-#hotfix
--keep class com.taobao.sophix.**{*;}
--keep class com.ta.utdid2.device.**{*;}
-#防止inline
--dontoptimize
--keepclassmembers class com.jess.arms.base.BaseApplication {
-    public <init>();
-}
--keep class com.zqw.mobile.operation.app.global.SophixStubApplication {*;}          					 #类不要混淆
-# 如果不使用android.support.annotation.Keep则需加上此行
--keep class com.zqw.mobile.operation.app.global.SophixStubApplication$RealApplicationStub
 ################autolayout###############
 -keep class com.zhy.autolayout.** { *; }
 -keep interface com.zhy.autolayout.** { *; }
@@ -312,13 +291,6 @@
 }
 
 ##-----------------------------------
-############ 思必驰语音-全链路 ########
-##-----------------------------------
--dontwarn com.aispeech.**
--keep public class com.aispeech.lasa{*;}
--keep public class com.aispeech.dui.dds.luaBug{ *; }
-
-##-----------------------------------
 ############ 百度语音合成 ########
 ##-----------------------------------
 -dontwarn com.baidu.tts.**
@@ -341,9 +313,9 @@
 -keep class com.ta.utdid2.device.**{*;}
 #防止inline
 -dontoptimize
--keep class com.zqw.mobile.operation.app.global.SophixStubApplication {*;}          					 #类不要混淆
+-keep class com.zqw.mobile.grainfull.app.global.SophixStubApplication {*;}          					 #类不要混淆
 # 如果不使用android.support.annotation.Keep则需加上此行
--keep class com.zqw.mobile.operation.app.global.SophixStubApplication$RealApplicationStub
+-keep class com.zqw.mobile.grainfull.app.global.SophixStubApplication$RealApplicationStub
 ##----------------------------------------------
 ############ Gradle Retrolambda混淆规则 ########
 ##----------------------------------------------
@@ -614,8 +586,8 @@ public static java.lang.String TABLENAME;
 -dontwarn cn.jiguang.**
 -keep class cn.jiguang.** { *; }
 
--keep class com.zqw.mobile.operation.service.JPushReceiver {*;}	                				#类不要混淆
--keep class com.zqw.mobile.operation.service.JPushReceiver
+-keep class com.zqw.mobile.grainfull.service.JPushReceiver {*;}	                				#类不要混淆
+-keep class com.zqw.mobile.grainfull.service.JPushReceiver
 
 -keep public class cn.jiguang.analytics.android.api.** {*;}
 #==================gson && protobuf==========================
