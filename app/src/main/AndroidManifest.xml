@@ -5,8 +5,7 @@
     <!-- 华为SDK -->
     <meta-data
         android:name="com.huawei.hms.ml.DEPENDENCY"
-        android:value="object,ocr,face,label,icr,bcr,imgseg,translate,langdetect,skeleton,handkeypoint" />
-    <!-- 该权限用于读取手机状态,比如基于百度lbs定位雷达的附近的程序员功能，微博用于调用JNI -->
+        android:value="object,ocr,face,label,icr,bcr,imgseg,translate,langdetect,skeleton,handkeypoint" /> <!-- 该权限用于读取手机状态,比如基于百度lbs定位雷达的附近的程序员功能，微博用于调用JNI -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 访问网络连接，可能产生GPRS流量 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络连接 -->
@@ -26,19 +25,15 @@
     <uses-permission android:name="android.permission.CAMERA" /> <!-- 应用程序用到设备的摄像头。如果设备支持多个摄像头，程序使用背朝屏幕的那个。 -->
     <uses-feature android:name="android.hardware.camera" /> <!-- 子特性。应用程序用到设备摄像头的自动对焦功能 -->
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 应用需要获取您的录音权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- service前台服务 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <!-- 用于导航中省电设置 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <!-- 诱导悬浮窗 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- service前台服务 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 用于导航中省电设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 诱导悬浮窗 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.MANAGE_OVERLAY_PERMISSION" />
-
-    <!-- OpenGLES 2.0 -->
+    <uses-permission android:name="android.permission.MANAGE_OVERLAY_PERMISSION" /> <!-- OpenGLES 2.0 -->
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -55,19 +50,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="label">
-        <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity"></activity>
-        <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity" />
-        <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.AboutActivity" />
-        <activity android:name="com.zqw.mobile.grainfull.mvp.ui.activity.SettingActivity" />
-        <!-- 登录 -->
         <activity
-            android:name="com.zqw.mobile.grainfull.mvp.ui.activity.LoginActivity"
+            android:name=".mvp.ui.activity.ImageExtractionTextActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".mvp.ui.activity.IdentifyIdCardActivity" />
+        <activity android:name=".mvp.ui.activity.IdentifyBankCardsActivity" />
+        <activity android:name=".mvp.ui.activity.AboutActivity" />
+        <activity android:name=".mvp.ui.activity.SettingActivity" /> <!-- 登录 -->
+        <activity
+            android:name=".mvp.ui.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!-- 欢迎界面 -->
+            android:windowSoftInputMode="stateHidden|adjustPan" /> <!-- 欢迎界面 -->
         <activity
-            android:name="com.zqw.mobile.grainfull.mvp.ui.activity.SplashActivity"
+            android:name=".mvp.ui.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -75,12 +71,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- 首页 -->
+        </activity> <!-- 首页 -->
         <activity
-            android:name="com.zqw.mobile.grainfull.mvp.ui.activity.MainActivity"
-            android:screenOrientation="portrait" />
-        <!-- 图片查看器 -->
+            android:name=".mvp.ui.activity.MainActivity"
+            android:screenOrientation="portrait" /> <!-- 图片查看器 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider.FileProvider"
@@ -90,21 +84,17 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"
-                tools:replace="android:resource"/>
-        </provider>
-        <!-- Arms 配置 -->
+                tools:replace="android:resource" />
+        </provider> <!-- Arms 配置 -->
         <meta-data
             android:name="com.zqw.mobile.grainfull.app.global.GlobalConfiguration"
-            android:value="ConfigModule" />
-        <!-- 华为 - 识别银行卡 -->
+            android:value="ConfigModule" /> <!-- 华为 - 识别银行卡 -->
         <meta-data
             android:name="com.huawei.hms.ml.DEPENDENCY"
-            android:value="bcr" />
-        <!-- 百度地图 API KEY -->
+            android:value="bcr" /> <!-- 百度地图 API KEY -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="${BAIDU_APP_ID}" />
-        <!-- 百度地图服务 -->
+            android:value="${BAIDU_APP_ID}" /> <!-- 百度地图服务 -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

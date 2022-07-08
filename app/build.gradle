@@ -344,4 +344,9 @@ dependencies {
     implementation 'com.huawei.hms:ml-computer-card-bcr:2.0.3.302'
     // 华为SDK - 身份证识别。
     implementation 'com.huawei.hms:ml-computer-card-icr-cn:2.0.3.303'
+    // 华为SDK - 图片提取文字
+    implementation 'com.huawei.hms:ml-computer-vision-ocr:2.0.5.301'
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-cn-model:2.0.5.301'
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-jk-model:2.0.5.301'
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-latin-model:2.0.5.301'
 }

@@ -119,7 +119,6 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_performa_line" />
 
-
                 <TextView
                     android:id="@+id/btn_fragmenthome_idcard"
                     android:layout_width="wrap_content"
@@ -131,6 +130,18 @@
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_bankcards"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_bankcards"
                     app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_bankcards"/>
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_imagetotext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="@dimen/dp_10"
+                    android:text="图片提取文字"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_idcard"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_idcard"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_idcard"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 拜访信息 -->

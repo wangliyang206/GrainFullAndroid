@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg_color"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_identifybankcards_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_imageextractiontext_input"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@color/home_search_bg_color"
+            android:hint="请输入图片URL查看效果"
+            android:padding="5dp"
+            android:text=""
+            android:textColor="@color/common_edit_color"
+            android:textColorHint="@color/common_edit_hint_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@drawable/btn_bg_selector"
+            android:gravity="center"
+            android:text="检测"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txvi_imageextractiontext_selectimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/btn_bg_selector"
+            android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="选择图片"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="可输入图片URL或者上传本地图片进行效果测试。 上传的图片说明：格式为：.jpg/.jpeg/.png 等。请注意图片大小不超过10M，最长边不超过4096像素！"
+        android:textColor="@color/common_text_tips_color"
+        android:textSize="10sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="选择中图片"
+        android:textColor="@color/common_text_color"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/image_imageextractiontext_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="提取结果"
+        android:textColor="@color/common_text_color"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edit_imageextractiontext_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:layout_weight="1"
+        android:background="@color/home_search_bg_color"
+        android:gravity="top|left"
+        android:padding="5dp"
+        android:text=""
+        android:textColor="@color/common_edit_color"
+        android:textColorHint="@color/common_edit_hint_color"
+        android:textSize="12sp" />
+</LinearLayout>

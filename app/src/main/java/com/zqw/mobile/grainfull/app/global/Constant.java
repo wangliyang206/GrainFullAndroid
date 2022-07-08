@@ -92,5 +92,8 @@ public interface Constant {
      */
     int MAIN_SETTING = 10;
 
-
+    /**
+     * 选择图片
+     */
+    int REQUEST_SELECT_IMAGES_CODE = 0x01;
 }
