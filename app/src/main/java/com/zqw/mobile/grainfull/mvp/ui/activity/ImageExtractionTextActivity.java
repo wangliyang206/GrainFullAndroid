@@ -5,17 +5,17 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.CacheDiskStaticUtils;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.blankj.utilcode.util.ImageUtils;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
@@ -32,6 +32,7 @@ import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.IdentifyDialog;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
@@ -61,14 +62,14 @@ import timber.log.Timber;
 @RuntimePermissions
 public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTextPresenter> implements ImageExtractionTextContract.View {
     /*------------------------------------------控件信息------------------------------------------*/
-    @BindView(R.id.edit_imageextractiontext_input)
-    EditText editInput;
+    @BindView(R.id.radio_imageextractiontext_group)
+    RadioGroup radioGroup;
 
     @BindView(R.id.image_imageextractiontext_img)
     ImageView image;
 
-    @BindView(R.id.edit_imageextractiontext_result)
-    EditText editResult;
+    @BindView(R.id.btn_imageextractiontext_identify)
+    Button btnIdentify;
 
     /*------------------------------------------业务信息------------------------------------------*/
     @Inject
@@ -77,13 +78,20 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
     private ArrayList<String> mImagePaths = new ArrayList<>();
     // 识别操作对象
     private MLTextAnalyzer analyzer;
+    // 弹出结果框
+    private IdentifyDialog mResult;
+    // 对话框
+    private MaterialDialog mDialog;
 
     @Override
     public void onDestroy() {
+        if (mDialog != null) {
+            this.mDialog.dismiss();
+        }
         super.onDestroy();
-        this.editInput = null;
+        this.radioGroup = null;
         this.image = null;
-        this.editResult = null;
+        this.btnIdentify = null;
 
         if (CommonUtils.isNotEmpty(mImagePaths)) {
             this.mImagePaths.clear();
@@ -96,6 +104,11 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
             } catch (IOException e) {
                 Timber.e("Stop failed: %s", e.getMessage());
             }
+        }
+
+        if (mResult != null) {
+            mResult.dismiss();
+            mResult = null;
         }
 
         this.mImageLoader = null;
@@ -121,17 +134,33 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
         // 设置标题
         setTitle("图片提取文字");
 
+        initDialog();
+    }
+
+    /**
+     * 初始化Dialog
+     */
+    private void initDialog() {
+        // 初始化Loading对话框
+        mDialog = new MaterialDialog.Builder(this).content(R.string.common_execute).progress(true, 0).build();
+        // 初始化Result弹框
+        mResult = new IdentifyDialog(this);
     }
 
     @OnClick({
-            R.id.txvi_imageextractiontext_selectimg,                                                // 选择图片
+            R.id.lila_imageextractiontext_tips,                                                     // 选择图片
+            R.id.btn_imageextractiontext_identify,                                                  // 识别
     })
     @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case R.id.txvi_imageextractiontext_selectimg:                                           // 选择图片
+            case R.id.lila_imageextractiontext_tips:                                                // 选择图片
                 ImageExtractionTextActivityPermissionsDispatcher.getCameraWithPermissionCheck(this);
+                break;
+            case R.id.btn_imageextractiontext_identify:                                             // 识别
+                // 开始识别
+                localAnalyzer(mImagePaths.get(0));
                 break;
         }
     }
@@ -171,8 +200,8 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
                                 .placeholder(R.mipmap.mis_default_error)
                                 .errorPic(R.mipmap.mis_default_error)
                                 .imageView(image).build());
-                // 开始识别
-                localAnalyzer(mImagePaths.get(0));
+
+                btnIdentify.setEnabled(true);
             }
         }
     }
@@ -181,6 +210,8 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
      * 设备上的文本识别
      */
     private void localAnalyzer(String path) {
+        mDialog.show();
+
         // Create the text analyzer MLTextAnalyzer to recognize characters in images. You can set MLLocalTextSetting to
         // specify languages that can be recognized.
         // If you do not set the languages, only Romance languages can be recognized by default.
@@ -190,7 +221,7 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
         // Use the customized parameter MLLocalTextSetting to configure the text analyzer on the device.
         MLLocalTextSetting setting = new MLLocalTextSetting.Factory()
                 .setOCRMode(MLLocalTextSetting.OCR_DETECT_MODE)
-                .setLanguage("en")
+                .setLanguage(radioGroup.getCheckedRadioButtonId() == R.id.radio_imageextractiontext_zh ? "zh" : "en")
                 .create();
         this.analyzer = MLAnalyzerFactory.getInstance()
                 .getLocalTextAnalyzer(setting);
@@ -205,12 +236,14 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
             @Override
             public void onSuccess(MLText text) {
                 // Recognition success.
+                mDialog.dismiss();
                 displaySuccess(text);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
                 // Recognition failure.
+                mDialog.dismiss();
                 showMessage("提取失败！");
             }
         });
@@ -224,7 +257,13 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
                 result += line.getStringValue() + "\n";
             }
         }
-        this.editResult.setText(result);
+
+        if (TextUtils.isEmpty(result)) {
+            showMessage("未获得识别结果！");
+        } else {
+            mResult.show();
+            mResult.setData(result);
+        }
     }
 
     @Override

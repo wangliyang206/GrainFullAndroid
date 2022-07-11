@@ -74,7 +74,8 @@
         </activity> <!-- 首页 -->
         <activity
             android:name=".mvp.ui.activity.MainActivity"
-            android:screenOrientation="portrait" /> <!-- 图片查看器 -->
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider.FileProvider"

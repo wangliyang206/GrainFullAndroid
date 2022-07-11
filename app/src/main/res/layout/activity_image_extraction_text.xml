@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/layout_bg_color"
@@ -10,96 +11,148 @@
         android:id="@+id/view_identifybankcards_top"
         layout="@layout/comm_top_layout" />
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="什么是OCR文字识别？"
+        android:textColor="@color/common_text_color"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="使用智能算法扫描图片上的字符形状，为你提取出图片中的文字。"
+        android:textColor="@color/common_text_tips_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="使用场景"
+        android:textColor="@color/common_text_color"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="相机或视频画面实时处理，图片中稀疏文本识别"
+        android:textColor="@color/common_text_tips_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="支持语言"
+        android:textColor="@color/common_text_color"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="中文（简体）、日文、韩文、拉丁语（包括英文、西班牙文、葡萄牙文、意大利文、德文、法文、俄文"
+        android:textColor="@color/common_text_tips_color"
+        android:textSize="12sp" />
+
+    <RadioGroup
+        android:id="@+id/radio_imageextractiontext_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edit_imageextractiontext_input"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_weight="1"
-            android:background="@color/home_search_bg_color"
-            android:hint="请输入图片URL查看效果"
-            android:padding="5dp"
-            android:text=""
-            android:textColor="@color/common_edit_color"
-            android:textColorHint="@color/common_edit_hint_color"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
-            android:background="@drawable/btn_bg_selector"
-            android:gravity="center"
-            android:text="检测"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txvi_imageextractiontext_selectimg"
+        <RadioButton
+            android:id="@+id/radio_imageextractiontext_zh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:background="@drawable/btn_bg_selector"
-            android:gravity="center"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:text="选择图片"
-            android:textColor="@android:color/white"
+            android:checked="true"
+            android:text="中文(简体)"
+            android:textColor="@color/common_text_color"
             android:textSize="14sp" />
-    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:text="可输入图片URL或者上传本地图片进行效果测试。 上传的图片说明：格式为：.jpg/.jpeg/.png 等。请注意图片大小不超过10M，最长边不超过4096像素！"
-        android:textColor="@color/common_text_tips_color"
-        android:textSize="10sp" />
+        <RadioButton
+            android:id="@+id/radio_imageextractiontext_en"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="英文"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+    </RadioGroup>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:text="选择中图片"
-        android:textColor="@color/common_text_color"
-        android:textSize="16sp" />
-
-    <ImageView
-        android:id="@+id/image_imageextractiontext_img"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:text="提取结果"
-        android:textColor="@color/common_text_color"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/edit_imageextractiontext_result"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/dp_10"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
         android:layout_weight="1"
-        android:background="@color/home_search_bg_color"
-        android:gravity="top|left"
-        android:padding="5dp"
-        android:text=""
-        android:textColor="@color/common_edit_color"
-        android:textColorHint="@color/common_edit_hint_color"
-        android:textSize="12sp" />
+        android:background="@drawable/frame_img_selector">
+
+        <LinearLayout
+            android:id="@+id/lila_imageextractiontext_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_evaluation_camera" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加图片"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_imageextractiontext_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/layout_bg_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_imageextractiontext_identify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/btn_bg_selector"
+        android:enabled="false"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="识别文字"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
 </LinearLayout>

@@ -93,6 +93,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     private Drawer result = null;
 
     @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         this.mNavigation = null;

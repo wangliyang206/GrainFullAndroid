@@ -31,12 +31,13 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.jess.arms.base.App;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.integration.AppManager;
+import com.jess.arms.widget.etoast2.EToast2;
+import com.jess.arms.widget.etoast2.Toast;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -237,7 +238,7 @@ public class ArmsUtils {
     @SuppressLint("ShowToast")
     public static void makeText(Context context, String string) {
         if (mToast == null) {
-            mToast = Toast.makeText(context, string, Toast.LENGTH_SHORT);
+            mToast = Toast.makeText(context, string, EToast2.LENGTH_SHORT);
         }
         mToast.setText(string);
         mToast.show();
