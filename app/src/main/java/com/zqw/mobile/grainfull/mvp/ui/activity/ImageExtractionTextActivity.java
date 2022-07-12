@@ -232,20 +232,14 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
         // 动态添加图片
         MLFrame frame = MLFrame.fromBitmap(ImageUtils.getBitmap(path));
         Task<MLText> task = this.analyzer.asyncAnalyseFrame(frame);
-        task.addOnSuccessListener(new OnSuccessListener<MLText>() {
-            @Override
-            public void onSuccess(MLText text) {
-                // Recognition success.
-                mDialog.dismiss();
-                displaySuccess(text);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
-                // Recognition failure.
-                mDialog.dismiss();
-                showMessage("提取失败！");
-            }
+        task.addOnSuccessListener(text -> {
+            // Recognition success.
+            mDialog.dismiss();
+            displaySuccess(text);
+        }).addOnFailureListener(e -> {
+            // Recognition failure.
+            mDialog.dismiss();
+            showMessage("提取失败！");
         });
     }
 

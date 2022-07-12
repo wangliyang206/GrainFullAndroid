@@ -349,4 +349,8 @@ dependencies {
     implementation 'com.huawei.hms:ml-computer-vision-ocr-cn-model:2.0.5.301'
     implementation 'com.huawei.hms:ml-computer-vision-ocr-jk-model:2.0.5.301'
     implementation 'com.huawei.hms:ml-computer-vision-ocr-latin-model:2.0.5.301'
+    // 华为SDK - 动态手势识别
+    implementation 'com.huawei.hms:ml-computer-vision-handkeypoint:2.1.0.300'
+    implementation 'com.huawei.hms:ml-computer-vision-handkeypoint-model:2.1.0.300'
+    implementation 'com.huawei.hms:ml-computer-vision-gesture-model:2.1.0.300'
 }

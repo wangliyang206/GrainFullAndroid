@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg_color"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_dynamicgestures_top"
+        layout="@layout/comm_top_layout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.camera.LensEnginePreview
+            android:id="@+id/lepr_dynamicgestures_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.camera.GraphicOverlay
+                android:id="@+id/grov_dynamicgestures_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.zqw.mobile.grainfull.mvp.ui.widget.camera.LensEnginePreview>
+
+        <Button
+            android:id="@+id/btn_dynamicgestures_switch"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/front_back_switch"
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

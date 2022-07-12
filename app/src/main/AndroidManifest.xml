@@ -51,6 +51,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.DynamicGesturesActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.ImageExtractionTextActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".mvp.ui.activity.IdentifyIdCardActivity" />
@@ -76,6 +79,7 @@
             android:name=".mvp.ui.activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider.FileProvider"

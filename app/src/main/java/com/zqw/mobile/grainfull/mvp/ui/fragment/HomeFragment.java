@@ -22,6 +22,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.HomeContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
@@ -166,6 +167,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_bankcards,                                                        // 识别银行卡
             R.id.btn_fragmenthome_idcard,                                                           // 识别身份证
             R.id.btn_fragmenthome_imagetotext,                                                      // 图片提取文字
+            R.id.btn_fragmenthome_gesture,                                                          // 动态手势识别
     })
     @Override
     public void onClick(View v) {
@@ -192,6 +194,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_imagetotext:                                                 // 图片提取文字
                 ActivityUtils.startActivity(ImageExtractionTextActivity.class);
+                break;
+            case R.id.btn_fragmenthome_gesture:                                                     // 动态手势识别
+                ActivityUtils.startActivity(DynamicGesturesActivity.class);
                 break;
         }
     }
