@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">Baidu-IDL-FaceSDK</string>
+    <string name="detect_no_face">未检测到人脸</string>
+    <string name="detect_face_in">把脸移入框内</string>
+    <string name="detect_zoom_in">请将脸部靠近一点</string>
+    <string name="detect_zoom_out">请将脸部离远一点</string>
+    <string name="detect_head_up">请略微抬头</string>
+    <string name="detect_head_down">请略微低头</string>
+    <string name="detect_head_left">请略微向左转头</string>
+    <string name="detect_head_right">请略微向右转头</string>
+    <string name="detect_occ_face">脸部有遮挡</string>
+    <string name="detect_occ_left_eye">左眼有遮挡</string>
+    <string name="detect_occ_right_eye">右眼有遮挡</string>
+    <string name="detect_occ_nose">鼻子有遮挡</string>
+    <string name="detect_occ_mouth">嘴部有遮挡</string>
+    <string name="detect_occ_left_check">左脸颊有遮挡</string>
+    <string name="detect_occ_right_check">右脸颊有遮挡</string>
+    <string name="detect_occ_chin">下巴有遮挡</string>
+    <string name="detect_low_light">请使环境光线再亮些</string>
+    <string name="detect_keep">请握稳手机，视线正对屏幕</string>
+    <string name="detect_standard">请正对手机</string>
+    <string name="detect_timeout">检测超时，请按照提示重试</string>
+    <string name="detect_left_eye_close">左眼未睁开</string>
+    <string name="detect_right_eye_close">右眼未睁开</string>
+    <string name="liveness_eye">眨眨眼</string>
+    <string name="liveness_mouth">张张嘴</string>
+    <string name="liveness_random_num">大声读出随机数</string>
+    <string name="liveness_head_left">向左缓慢转头</string>
+    <string name="liveness_head_right">向右缓慢转头</string>
+    <string name="liveness_head_up">缓慢抬头</string>
+    <string name="liveness_head_down">缓慢低头</string>
+    <string name="liveness_good">非常好</string>
+    <string name="aura_start">屏幕即将闪烁，请保持正脸</string>
+    <string name="aura_color">变光中，请保持正脸</string>
+    <string name="aura_color_error"></string>
+
+    <!--home string-->
+    <string name="home_greet_txt">欢迎使用</string>
+    <string name="home_greet_sdk_txt">百度人脸采集SDK</string>
+    <string name="home_finance_txt">金融版</string>
+    <string name="home_light_txt">识别光线适中</string>
+    <string name="home_light_explain_txt">请保证光线不要过暗或过亮</string>
+    <string name="home_handset_txt">请正对手机</string>
+    <string name="home_handset_explain_txt">保持您的脸出现在取景框内</string>
+    <string name="home_mask_txt">避免遮挡</string>
+    <string name="home_mask_explain_txt">请保持您的脸部清晰无遮挡</string>
+    <string name="home_but_txt">开始人脸采集</string>
+    <string name="home_agree_txt">阅读并同意</string>
+    <string name="home_agreement_txt">《人脸采集隐私协议》</string>
+    <string name="home_agreement_txt1">《用户协议及详情》</string>
+
+    <!--home agreement string-->
+    <string name="home_agreement_titlebar_txt">人脸采集隐私协议</string>
+    <string name="home_agreement_functional_txt">功能说明</string>
+    <string name="home_agreement_functional_explain_txt">
+        为保障用户账户的安全，提供更好的服务，在提供部分产品及服务之前,
+        采用人脸核身验证功能对用户的身份进行认证，
+        用于验证操作人是否为账户持有者本人，
+        通过人脸识别结果评估是否为用户提供后续产品或服务。该功能会请求权威数据源进行身份信息确认。
+    </string>
+    <string name="home_agreement_functional_explain_old_txt">
+        该功能会请求权威数据源进行身份信息确认。
+    </string>
+    <string name="home_agreement_permission_txt">授权与许可</string>
+    <string name="home_agreement_permission_explain_txt">
+        如您点击“确认”或以其他方式选择接受本协议规则，则视为您在使用人脸识别服务时，
+        同意并授权、获取、使用您在申请过程中所提供的个人信息。
+    </string>
+    <string name="home_agreement_rmation_security_txt">信息安全声明</string>
+    <string name="home_agreement_rmation_security_explaoin_txt">
+        承诺对您的个人信息严格保密，并基于国家监管部门认可的加密算法进行数据加密传输，数据加密存储，
+        承诺尽到信息安全保护义务。
+    </string>
+
+    <!--setting string-->
+    <string name="setting_titlebar_txt">设置</string>
+    <string name="setting_prompt_txt">提示: 正式使用时，开发者可将前端设置功能隐藏</string>
+    <string name="setting_prompt_txt2">建议开启，开启后在完成随机展示眨眼或张嘴动作后，进入炫瞳活体页面</string>
+    <string name="setting_prompt_txt3">设置范围0-1，推荐阈值为0.80</string>
+    <string name="setting_announcements_txt">语音播报</string>
+    <string name="setting_quality_txt">质量控制</string>
+    <string name="setting_live_detect_txt">动作活体设置</string>
+    <string name="setting_live_score_txt">活体检测阈值</string>
+    <string name="setting_actionlive_txt">活体动作顺序随机</string>
+    <string name="setting_actionlive_blink_txt">眨眨眼</string>
+    <string name="setting_actionlive_shake_head_txt">左右摇头</string>
+    <string name="setting_actionlive_turn_left_txt">向左摇头</string>
+    <string name="setting_actionlive_turn_right_txt">向右摇头</string>
+    <string name="setting_actionlive_nod_txt">向下低头</string>
+    <string name="setting_actionlive_look_up_txt">向上抬头</string>
+    <string name="setting_actionlive_open_mouth_txt">张张嘴</string>
+    <string name="collect_bottom_txt">— 百度大脑技术支持 —</string>
+
+    <string name="collect_success">人脸采集成功</string>
+    <string name="collect_button_recollect">重新采集</string>
+    <string name="collect_button_home">回到首页</string>
+    <string name="collect_failure">人脸采集失败</string>
+    <string name="collect_tips_1">建议到光线柔和的白墙背景操作</string>
+    <string name="collect_tips_2">请确保是本人操作且正脸采集</string>
+
+</resources>

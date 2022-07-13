@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_font">18sp</dimen>
+    <dimen name="title_height">56dp</dimen>
+
+    <dimen name="collect_bottom_font">12sp</dimen>
+    <dimen name="bottom_text_margin">12dp</dimen>
+
+    <dimen name="agreement_content_font">14sp</dimen>
+    <dimen name="agreement_title_font">16sp</dimen>
+
+    <dimen name="setting_tips_font">13sp</dimen>
+    <dimen name="setting_sort_font">16sp</dimen>
+
+    <dimen name="home_title_font1">24sp</dimen>
+    <dimen name="home_title_font2">28sp</dimen>
+    <dimen name="home_sort_font">18sp</dimen>
+    <dimen name="home_sort_describe_font">14sp</dimen>
+    <dimen name="home_button_font">16sp</dimen>
+
+    <dimen name="quality_sort_font">16sp</dimen>
+    <dimen name="quality_sort_enter_font">16sp</dimen>
+    <dimen name="quality_describe_font">13sp</dimen>
+    <dimen name="qua_param_active_font">16sp</dimen>
+    <dimen name="qua_param_sort_font">16sp</dimen>
+    <dimen name="qua_param_line">1dp</dimen>
+
+    <dimen name="success_title_font">20sp</dimen>
+    <dimen name="success_score_font">16sp</dimen>
+    <dimen name="success_button_font">16sp</dimen>
+</resources>

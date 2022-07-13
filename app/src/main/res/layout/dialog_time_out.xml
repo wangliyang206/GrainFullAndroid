@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/bg_round_time_out">
+
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp"
+        android:src="@mipmap/ic_warning"/>
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="人脸采集超时"
+        android:textStyle="bold"
+        android:textColor="#171D24"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/image_icon"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btn_dialog_recollect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_title"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/success_button_recollect_selector"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="重新采集"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/btn_dialog_return"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_below="@id/btn_dialog_recollect"
+        android:background="@drawable/success_button_return_selector"
+        android:text="回到首页"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"
+        android:textColor="#171d24"/>
+</RelativeLayout>

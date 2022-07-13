@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@mipmap/mouth_00" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_01" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_02" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_03" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_04" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_05" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_06" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_07" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_08" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_09" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_10" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_11" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_12" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_13" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_14" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_15" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_16" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_17" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_18" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_19" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_20" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_21" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_22" android:duration="50"/>
+    <item android:drawable="@mipmap/mouth_23" android:duration="50"/>
+</animation-list>

@@ -51,6 +51,21 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.BaiduFaceCollectFailureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceCollectionSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceLivenessExpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceLivenessVideoExpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceRecognitionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.DynamicGesturesActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_main_color">#ffffff</color>
+    <color name="item_main_color_selected">#63B8FF</color>
+
+    <color name="item_main_text_color">#63B8FF</color>
+    <color name="item_main_text_color_selected">#ffffff</color>
+
+    <color name="home_text_color_black">#000000</color>
+    <color name="home_text_color_white">#ffffff</color>
+    <color name="home_text_color_skyblue">#00BAF2</color>
+    <color name="homr_text_color_grey">#999999</color>
+
+    <color name="background">#F0F1F2</color>
+    <color name="collect_bottom_color">#C1C7CE</color>
+    <color name="agreement_sort_color">#171D24</color>
+    <color name="agreement_content_color">#787E85</color>
+
+    <color name="setting_tips_color">#91979E</color>
+    <color name="setting_sort_color">#171D24</color>
+    
+    <color name="home_title1">#171D24</color>
+    <color name="home_title2">#171D24</color>
+    <color name="home_sort_color">#171D24</color>
+    <color name="home_sort_describe_color">#787E85</color>
+    <color name="home_agree_color">#77787A</color>
+    <color name="home_agreement_color">#0080FF</color>
+    
+    <color name="quality_sort_color">#171D24</color>
+    <color name="quality_sort_enter_color">#171D24</color>
+    <color name="quality_describe_color">#91979E</color>
+
+    <color name="qua_param_no_active_color">#4D0080FF</color>
+    <color name="qua_param_active_color">#0080FF</color>
+    <color name="qua_param_sort_color">#171D24</color>
+    <color name="qua_param_line_color">#EDF0F2</color>
+
+    <color name="success_title_color">#171D24</color>
+    <color name="success_score_color">#77787A</color>
+    <color name="success_button_re_color">#FFFFFF</color>
+    <color name="success_button_back_color">#171D24</color>
+
+    <color name="aura_red">#D8335F</color>
+    <color name="aura_green">#28BB56</color>
+    <color name="aura_blue">#4438D4</color>
+    <color name="aura_default">#F0F1F2</color>
+</resources>

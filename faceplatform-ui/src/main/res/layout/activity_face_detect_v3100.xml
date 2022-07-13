@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/background"
+    android:id="@+id/detect_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/detect_surface_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <com.baidu.idl.face.platform.ui.widget.FaceDetectRoundView
+        android:id="@+id/detect_face_round"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/detect_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="23dp"
+        android:src="@drawable/collect_image_close_selector" />
+
+    <ImageView
+        android:id="@+id/detect_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="21dp"
+        android:src="@mipmap/icon_titlebar_voice2" />
+
+    <TextView
+        android:id="@+id/detect_top_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/detect_close"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/detect_face_in"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/detect_success_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/ic_success"
+        android:visibility="gone" />
+
+    <!--底部背景及文字-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/icon_collect_bottom"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collect_bottom_txt"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/collect_bottom_font"
+        android:textColor="@color/collect_bottom_color"/>
+
+    <HorizontalScrollView
+        android:id="@+id/horizon1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/detect_result_image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"/>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/horizon2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/horizon1"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:id="@+id/detect_result_image_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"/>
+    </HorizontalScrollView>
+
+    <View
+        android:id="@+id/view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#7000"
+        android:visibility="gone"/>
+</RelativeLayout>

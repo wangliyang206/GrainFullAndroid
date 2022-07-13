@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_active_type"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--眨眨眼-->
+    <RelativeLayout
+        android:id="@+id/blink_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@color/home_text_color_white">
+
+        <CheckBox
+            android:id="@+id/actionlive_blink_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/setting_actionlive_checkbox_button_selector"
+            android:button="@null"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/actionlive_blink_checkbox"
+            android:text="@string/setting_actionlive_blink_txt"
+            android:textColor="@color/home_text_color_black" />
+    </RelativeLayout>
+
+    <!--张嘴-->
+    <RelativeLayout
+        android:id="@+id/open_mouth_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/blink_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="1dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@drawable/setting_layout_bottom_round">
+
+        <CheckBox
+            android:id="@+id/actionlive_open_mouth_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/setting_actionlive_checkbox_button_selector"
+            android:button="@null"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/actionlive_open_mouth_checkbox"
+            android:text="@string/setting_actionlive_open_mouth_txt"
+            android:textColor="@color/home_text_color_black" />
+    </RelativeLayout>
+
+    <!--向右摇头-->
+    <RelativeLayout
+        android:id="@+id/right_turn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/open_mouth_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="1dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@color/home_text_color_white">
+
+        <CheckBox
+            android:id="@+id/actionlive_right_turn_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/setting_actionlive_checkbox_button_selector"
+            android:button="@null"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/actionlive_right_turn_checkbox"
+            android:text="@string/setting_actionlive_turn_right_txt"
+            android:textSize="16sp"
+            android:textColor="@color/home_text_color_black" />
+    </RelativeLayout>
+
+    <!--向左摇头-->
+    <RelativeLayout
+        android:id="@+id/left_turn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/right_turn_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="1dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@color/home_text_color_white">
+
+        <CheckBox
+            android:id="@+id/actionlive_left_turn_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/setting_actionlive_checkbox_button_selector"
+            android:button="@null"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/actionlive_left_turn_checkbox"
+            android:text="@string/setting_actionlive_turn_left_txt"
+            android:textColor="@color/home_text_color_black" />
+    </RelativeLayout>
+
+    <!--向上抬头-->
+    <RelativeLayout
+        android:id="@+id/look_up_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/left_turn_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="1dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@color/home_text_color_white">
+
+        <CheckBox
+            android:id="@+id/actionlive_look_up_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/setting_actionlive_checkbox_button_selector"
+            android:button="@null"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/actionlive_look_up_checkbox"
+            android:text="@string/setting_actionlive_look_up_txt"
+            android:textSize="16sp"
+            android:textColor="@color/home_text_color_black" />
+    </RelativeLayout>
+
+    <!--想下低头-->
+    <RelativeLayout
+        android:id="@+id/nod_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/look_up_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="1dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@drawable/setting_layout_bottom_round">
+
+        <CheckBox
+            android:id="@+id/actionlive_nod_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/setting_actionlive_checkbox_button_selector"
+            android:button="@null"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/actionlive_nod_checkbox"
+            android:text="@string/setting_actionlive_nod_txt"
+            android:textSize="16sp"
+            android:textColor="@color/home_text_color_black" />
+    </RelativeLayout>
+
+    <!--左右摇头-->
+    <RelativeLayout
+        android:id="@+id/shake_head_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nod_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="0.4dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:visibility="gone"
+        android:background="@color/home_text_color_white">
+
+        <CheckBox
+            android:id="@+id/actionlive_shake_head_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/setting_actionlive_checkbox_button_selector"
+            android:button="@null"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/actionlive_shake_head_checkbox"
+            android:text="@string/setting_actionlive_shake_head_txt"
+            android:textSize="16sp"
+            android:textColor="@color/home_text_color_black" />
+    </RelativeLayout>
+
+</RelativeLayout>

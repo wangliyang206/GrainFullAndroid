@@ -1,0 +1,47 @@
+{
+  "loose": {
+    "minIllum": 30,
+    "maxIllum": 240,
+    "leftEyeOcclusion": 0.95,
+    "rightEyeOcclusion": 0.95,
+    "noseOcclusion": 0.95,
+    "mouseOcclusion": 0.95,
+    "leftContourOcclusion": 0.95,
+    "rightContourOcclusion": 0.95,
+    "chinOcclusion": 0.95,
+    "pitch": 30,
+    "yaw": 18,
+    "roll": 30,
+    "blur": 0.8
+  },
+  "normal": {
+    "minIllum": 40,
+    "maxIllum": 220,
+    "leftEyeOcclusion": 0.8,
+    "rightEyeOcclusion": 0.8,
+    "noseOcclusion": 0.8,
+    "mouseOcclusion": 0.8,
+    "leftContourOcclusion": 0.8,
+    "rightContourOcclusion": 0.8,
+    "chinOcclusion": 0.8,
+    "pitch": 20,
+    "yaw": 18,
+    "roll": 20,
+    "blur": 0.6
+  },
+  "strict": {
+    "minIllum": 60,
+    "maxIllum": 200,
+    "leftEyeOcclusion": 0.4,
+    "rightEyeOcclusion": 0.4,
+    "noseOcclusion": 0.4,
+    "mouseOcclusion": 0.4,
+    "leftContourOcclusion": 0.4,
+    "rightContourOcclusion": 0.4,
+    "chinOcclusion": 0.4,
+    "pitch": 15,
+    "yaw": 15,
+    "roll": 15,
+    "blur": 0.4
+  }
+}

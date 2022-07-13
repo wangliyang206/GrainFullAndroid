@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <RelativeLayout
+        android:id="@+id/success_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height">
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:onClick="onBack"
+            android:src="@drawable/collect_image_close_selector" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image_circle"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_below="@id/success_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/ic_success" />
+
+    <TextView
+        android:id="@+id/text_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_circle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/collect_success"
+        android:textColor="@color/success_title_color"
+        android:textSize="@dimen/success_title_font"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_success"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="@color/success_score_color"
+        android:textSize="@dimen/success_score_font" />
+
+    <!--底部背景及文字-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/icon_collect_bottom" />
+
+    <TextView
+        android:id="@+id/text_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="@string/collect_bottom_txt"
+        android:textColor="@color/collect_bottom_color"
+        android:textSize="@dimen/collect_bottom_font" />
+
+    <Button
+        android:id="@+id/btn_return_home"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_above="@+id/text_bottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/success_button_return_selector"
+        android:onClick="onReturnHome"
+        android:text="@string/collect_button_home"
+        android:textColor="@color/success_button_back_color"
+        android:textSize="@dimen/success_button_font"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_recollect"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_above="@+id/btn_return_home"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/success_button_recollect_selector"
+        android:onClick="onRecollect"
+        android:text="@string/collect_button_recollect"
+        android:textColor="@color/success_button_re_color"
+        android:textSize="@dimen/success_button_font"
+        android:textStyle="bold" />
+
+</RelativeLayout>
