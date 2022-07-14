@@ -28,6 +28,7 @@
     <color name="common_text_color">#333333</color>
     <color name="common_text_tips_color">#999999</color>
     <color name="common_text_hint_color">#666666</color>
+    <color name="common_text_red_color">#F34B56</color>
     <!--EditView 字体颜色-->
     <color name="common_edit_color">#646464</color>
     <color name="common_edit_hint_color">#999999</color>

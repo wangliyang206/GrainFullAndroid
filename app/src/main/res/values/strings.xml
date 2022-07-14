@@ -47,11 +47,11 @@
     <string name="loginactitivy_switch_sms">短信验证码登录</string>
     <string name="loginactitivy_switch_account">账号密码登录</string>
 
-
     <string name="state_network_error">网络错误</string>
     <string name="state_loading">正在加载…</string>
     <string name="state_not_more">没有更多数据</string>
     <string name="state_load_error">加载失败</string>
     <string name="state_refreshing">正在刷新</string>
 
+    <string name="filter_vcode">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 </resources>

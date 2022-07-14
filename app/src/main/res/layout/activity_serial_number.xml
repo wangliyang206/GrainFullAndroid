@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_identify_bank_cards"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_serialnumber_top"
+        layout="@layout/comm_top_theme_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/layout_bg_shape"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txvi_serialnumber_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="请输入16位序列号"
+            android:textColor="@color/common_text_color"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_serialnumber_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="4"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_serialnumber_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_serialnumber_one"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_serialnumber_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="5"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_serialnumber_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_serialnumber_two"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_serialnumber_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="5"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_serialnumber_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_serialnumber_three"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_serialnumber_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="5"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_serialnumber_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_serialnumber_four"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txvi_serialnumber_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="49.3dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="49.3dp"
+            android:textColor="@color/common_text_red_color"
+            android:textSize="12sp" />
+
+        <!-- 激活 -->
+        <Button
+            android:id="@+id/btn_serialnumber_activation"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/btn_bg_selector"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingTop="5dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="5dp"
+            android:text="激活"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

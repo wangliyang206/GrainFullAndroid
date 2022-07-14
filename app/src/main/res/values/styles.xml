@@ -100,4 +100,14 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+
+    <!-- 仿序列号 -->
+    <style name="SerialNumberEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#666666</item>
+        <item name="colorControlActivated">#ffffff</item>
+    </style>
+    <style name="SerialNumberEditTextError" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#F34B56</item>
+        <item name="colorControlActivated">#666666</item>
+    </style>
 </resources>

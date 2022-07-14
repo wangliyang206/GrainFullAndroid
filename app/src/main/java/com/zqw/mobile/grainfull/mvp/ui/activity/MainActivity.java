@@ -46,6 +46,7 @@ import com.zqw.mobile.grainfull.mvp.model.entity.AppUpdate;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.MainPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment;
 
 import org.simple.eventbus.Subscriber;
 import org.simple.eventbus.ThreadMode;
@@ -86,6 +87,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     // 首页(业务)
     HomeFragment mTabHome;
+    // 特效
+    SpecialEffectsFragment mTabSpecialEffects;
 
     // 侧滑Menu 之 头部 对象
     private AccountHeader headerResult = null;
@@ -346,12 +349,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 //                }
                 break;
             case FRAGMENT_REGISTER:
-//                if (mTabRegister == null) {
-//                    mTabRegister = new RegisterFragment();
-//                    ft.add(R.id.container, mTabRegister, RegisterFragment.class.getName());
-//                } else {
-//                    ft.show(mTabRegister);
-//                }
+                if (mTabSpecialEffects == null) {
+                    mTabSpecialEffects = new SpecialEffectsFragment();
+                    ft.add(R.id.container, mTabSpecialEffects, SpecialEffectsFragment.class.getName());
+                } else {
+                    ft.show(mTabSpecialEffects);
+                }
         }
 
         ft.commit();
@@ -368,9 +371,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 //        if (mTabStatistics != null) {
 //            ft.hide(mTabStatistics);
 //        }
-//        if (mTabRegister != null) {
-//            ft.hide(mTabRegister);
-//        }
+        if (mTabSpecialEffects != null) {
+            ft.hide(mTabSpecialEffects);
+        }
     }
 
     /**
