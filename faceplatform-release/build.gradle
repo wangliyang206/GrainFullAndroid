@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('faceplatform-release.aar'))
+artifacts.add("default", file('faceplatform-release-4.1.5.aar'))

@@ -34,7 +34,6 @@ import com.baidu.idl.face.platform.FaceStatusNewEnum;
 import com.baidu.idl.face.platform.IDetectStrategy;
 import com.baidu.idl.face.platform.IDetectStrategyCallback;
 import com.baidu.idl.face.platform.model.ImageInfo;
-import com.baidu.idl.face.platform.stat.Ast;
 import com.baidu.idl.face.platform.ui.utils.BrightnessUtils;
 import com.baidu.idl.face.platform.ui.utils.CameraUtils;
 import com.baidu.idl.face.platform.ui.utils.VolumeUtils;
@@ -99,6 +98,8 @@ public class FaceDetectActivity extends Activity implements
     protected int mPreviewDegree;
     // 监听系统音量广播
     protected BroadcastReceiver mVolumeReceiver;
+    // 是否弹窗
+    protected boolean mHasShownTimeoutDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -131,8 +132,14 @@ public class FaceDetectActivity extends Activity implements
         int w = mDisplayWidth;
         int h = mDisplayHeight;
 
+        // surfaceView使用屏幕分辨率的大小
+//        FrameLayout.LayoutParams cameraFL = new FrameLayout.LayoutParams(
+//                (int) (w * FaceDetectRoundView.SURFACE_RATIO), (int) (h * FaceDetectRoundView.SURFACE_RATIO),
+//                Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        // surfaceView使用640*480的大小
         FrameLayout.LayoutParams cameraFL = new FrameLayout.LayoutParams(
-                (int) (w * FaceDetectRoundView.SURFACE_RATIO), (int) (h * FaceDetectRoundView.SURFACE_RATIO),
+                (int) (w * FaceDetectRoundView.SURFACE_RATIO * FaceDetectRoundView.RECT_RATIO),
+                (int) (w * FaceDetectRoundView.SURFACE_RATIO * FaceDetectRoundView.RECT_RATIO * 640.0f / 480.0f),
                 Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
 
         mSurfaceView.setLayoutParams(cameraFL);
@@ -184,12 +191,14 @@ public class FaceDetectActivity extends Activity implements
     @Override
     public void onResume() {
         super.onResume();
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        mVolumeReceiver = VolumeUtils.registerVolumeReceiver(this, this);
-        if (mFaceDetectRoundView != null) {
-            mFaceDetectRoundView.setTipTopText("请将脸移入取景框");
+        if (!mHasShownTimeoutDialog) {
+            setVolumeControlStream(AudioManager.STREAM_MUSIC);
+            mVolumeReceiver = VolumeUtils.registerVolumeReceiver(this, this);
+            if (mFaceDetectRoundView != null) {
+                mFaceDetectRoundView.setTipTopText("请将脸移入取景框");
+            }
+            startPreview();
         }
-        startPreview();
     }
 
     @Override
@@ -222,7 +231,7 @@ public class FaceDetectActivity extends Activity implements
                 int cv = am.getStreamVolume(AudioManager.STREAM_MUSIC);
                 mIsEnableSound = cv > 0;
                 mSoundView.setImageResource(mIsEnableSound
-                        ? R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice_close);
+                        ? R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice1);
                 if (mIDetectStrategy != null) {
                     mIDetectStrategy.setDetectStrategySoundEnable(mIsEnableSound);
                 }
@@ -265,6 +274,11 @@ public class FaceDetectActivity extends Activity implements
             mSurfaceHolder.addCallback(this);
         }
 
+        if (mCamera != null) {
+            CameraUtils.releaseCamera(mCamera);
+            mCamera = null;
+        }
+
         if (mCamera == null) {
             try {
                 mCamera = open();
@@ -283,6 +297,8 @@ public class FaceDetectActivity extends Activity implements
         }
 
         mCameraParam.setPictureFormat(PixelFormat.JPEG);
+
+        // 获取前置摄像头预览角度，为90度
         int degree = displayOrientation(this);
         mCamera.setDisplayOrientation(degree);
         // 设置后无效，camera.setDisplayOrientation方法有效
@@ -292,8 +308,13 @@ public class FaceDetectActivity extends Activity implements
             mIDetectStrategy.setPreviewDegree(degree);
         }
 
+        // 以屏幕分辨率为基准选取分辨率
+//        Point point = CameraPreviewUtils.getBestPreview(mCameraParam,
+//                new Point(mDisplayWidth, mDisplayHeight));
+        // 以640 * 480为基准选取分辨率
         Point point = CameraPreviewUtils.getBestPreview(mCameraParam,
-                new Point(mDisplayWidth, mDisplayHeight));
+                new Point(640, 480));
+
         mPreviewWidth = point.x;
         mPreviewHight = point.y;
         // Preview 768,432
@@ -344,8 +365,17 @@ public class FaceDetectActivity extends Activity implements
         }
     }
 
+    /**
+     * 获取摄像头预览角度
+     * @param context 当前上下文
+     * @return
+     */
     private int displayOrientation(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (windowManager == null) {
+            return 90;
+        }
+
         int rotation = windowManager.getDefaultDisplay().getRotation();
         int degrees = 0;
         switch (rotation) {
@@ -440,8 +470,6 @@ public class FaceDetectActivity extends Activity implements
             mIsCompletion = true;
             // saveAllImage(base64ImageCropMap, base64ImageSrcMap);
         }
-        // 打点
-        Ast.getInstance().faceHit("detect");
     }
 
     private void onRefreshView(FaceStatusNewEnum status, String message) {

@@ -2,31 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/liveness_root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <FrameLayout
         android:id="@+id/liveness_surface_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
+        android:layout_height="match_parent"></FrameLayout>
 
     <com.baidu.idl.face.platform.ui.widget.FaceDetectRoundView
         android:id="@+id/liveness_face_round"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/icon_collect_bottom"
-        android:layout_alignParentBottom="true" />
-
-    <com.baidu.idl.face.platform.ui.widget.FaceAuraColorView
-        android:id="@+id/detect_aura"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
 
     <!--用于承载ImageView-->
     <RelativeLayout
@@ -74,6 +61,11 @@
         android:textSize="22sp" />
 
     <!--底部背景及文字-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/icon_collect_bottom"
+        android:layout_alignParentBottom="true"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -27,21 +27,20 @@ public class FaceDetectRoundView extends View {
 
     public static final float SURFACE_HEIGHT = 1000f;
     public static final float SURFACE_RATIO = 0.75f;
-    public static final float WIDTH_SPACE_RATIO = 0.28f;
+    public static final float WIDTH_SPACE_RATIO = 0.33f;
     public static final float HEIGHT_RATIO = 0.1f;
     public static final float HEIGHT_EXT_RATIO = 0.2f;
     // public static final int CIRCLE_SPACE = 5;
     public static final int PATH_SPACE = 16;
     public static final int PATH_SMALL_SPACE = 12;
     public static final int CIRCLE_LINE_WIDTH = 3;
+    public static final float RECT_RATIO = 0.9f;
 
-    public static final int COLOR_BG = Color.parseColor("#F0F1F2");
+    public static final int COLOR_BG = Color.parseColor("#FFFFFF");
     // public static final int COLOR_RECT = Color.parseColor("#FFFFFF");
     public static final int COLOR_ROUND = Color.parseColor("#FFA800");
     public static final int COLOR_CIRCLE_LINE = Color.parseColor("#CCCCCC");
     public static final int COLOR_CIRCLE_SELECT_LINE = Color.parseColor("#00BAF2");
-    public static final int COLOR_ROUND_BORDER1 = Color.parseColor("#26171D24");
-    public static final int COLOR_ROUND_BORDER2 = Color.parseColor("#0D171D24");
 
     private Paint mBGPaint;
     private Paint mFaceRoundPaint;
@@ -51,9 +50,6 @@ public class FaceDetectRoundView extends View {
     private Rect mFaceDetectRect;
     private Paint mTextSecondPaint;
     private Paint mTextTopPaint;
-    private Paint mCircleBorderPaint1;  // 边框1
-    private Paint mCircleBorderPaint2;  // 边框2
-    private Paint mFaceRoundShadePaint; // 遮罩
 
     private float mX;
     private float mY;
@@ -116,28 +112,8 @@ public class FaceDetectRoundView extends View {
         mTextTopPaint.setColor(Color.parseColor("#000000"));
         mTextTopPaint.setTextSize(DensityUtils.dip2px(getContext(), 22));
         mTextTopPaint.setTextAlign(Paint.Align.CENTER);
-        mTextTopPaint.setFakeBoldText(true);
         mTextTopPaint.setAntiAlias(true);
         mTextTopPaint.setDither(true);
-
-        mCircleBorderPaint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCircleBorderPaint1.setColor(COLOR_ROUND_BORDER1);
-        mCircleBorderPaint1.setStyle(Paint.Style.STROKE);
-        mCircleBorderPaint1.setStrokeWidth(10);
-        mCircleBorderPaint1.setAntiAlias(true);
-        mCircleBorderPaint1.setDither(true);
-
-        mCircleBorderPaint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCircleBorderPaint2.setColor(COLOR_ROUND_BORDER2);
-        mCircleBorderPaint2.setStyle(Paint.Style.STROKE);
-        mCircleBorderPaint2.setStrokeWidth(10);
-        mCircleBorderPaint2.setAntiAlias(true);
-        mCircleBorderPaint2.setDither(true);
-
-        mFaceRoundShadePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mFaceRoundShadePaint.setStyle(Paint.Style.FILL);
-        mFaceRoundShadePaint.setAntiAlias(true);
-        mFaceRoundShadePaint.setDither(true);
     }
 
     public void setProcessCount(int successActiveCount, int totalActiveCount) {
@@ -153,15 +129,6 @@ public class FaceDetectRoundView extends View {
 
     public void setIsActiveLive(boolean isActiveLive) {
         mIsActiveLive = isActiveLive;
-    }
-
-    public void setIsShowShade(boolean isShowShade) {
-        if (isShowShade) {
-            mFaceRoundShadePaint.setColor(Color.parseColor("#99FFFFFF"));
-        } else {
-            mFaceRoundShadePaint.setColor(Color.TRANSPARENT);
-        }
-        invalidate();
     }
 
     public void setTipTopText(String tipTopText) {
@@ -222,8 +189,6 @@ public class FaceDetectRoundView extends View {
         canvas.drawColor(Color.TRANSPARENT);
         canvas.drawPaint(mBGPaint);
         canvas.drawCircle(mX, mY, mR, mFaceRoundPaint);
-        canvas.drawCircle(mX, mY, mR - 5, mCircleBorderPaint1);
-        canvas.drawCircle(mX, mY, mR - 15, mCircleBorderPaint2);
         // TODO：画检测区域（用于调试，这4个参数分别表示屏幕宽高和手机摄像头分辨率宽高，需要手动修改）
         // TODO：（使用时，将注释放开）
         // canvas.drawRect(getPreviewDetectRect(1080, 1920, 432, 768), mCircleLinePaint);
@@ -231,8 +196,6 @@ public class FaceDetectRoundView extends View {
         // if (getFaceInfoRect(mFaceExtInfo) != null) {
         //     canvas.drawRect(getFaceInfoRect(mFaceExtInfo), mCircleLinePaint);
         // }
-        // 画圆形遮罩
-        canvas.drawCircle(mX, mY, mR, mFaceRoundShadePaint);
         // 画文字
         if (!TextUtils.isEmpty(mTipSecondText)) {
             canvas.drawText(mTipSecondText, mX, mY - mR - 40 - 25 - 59, mTextSecondPaint);

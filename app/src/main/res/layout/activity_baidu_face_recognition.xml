@@ -2,165 +2,272 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/home_text_color_white">
 
     <!--titlebar-->
     <RelativeLayout
         android:id="@+id/titlebar_layout"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="@mipmap/icon_home_image_guide" />
-
-    <ImageView
-        android:id="@+id/image_bottom_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@mipmap/icon_collect_bottom" />
-
-    <!--设置-->
-    <ImageView
-        android:id="@+id/but_setting"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/home_setting_button_selector"
-        android:visibility="invisible" />
-
-    <RelativeLayout
-        android:id="@+id/relative_home_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/but_setting"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp">
+        android:layout_height="159dp"
+        android:background="@mipmap/icon_home_image_guide">
 
         <TextView
             android:id="@+id/home_greet_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="47dp"
             android:text="@string/home_greet_txt"
-            android:textColor="@color/home_title1"
-            android:textSize="@dimen/home_title_font1" />
+            android:textColor="@color/home_text_color_black"
+            android:textSize="19sp" />
 
         <TextView
             android:id="@+id/home_greet_sdk_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/home_greet_txt"
-            android:layout_marginTop="4dp"
+            android:layout_marginLeft="50dp"
             android:text="@string/home_greet_sdk_txt"
-            android:textColor="@color/home_title2"
-            android:textSize="@dimen/home_title_font2"
-            android:textStyle="bold" />
+            android:textColor="@color/home_text_color_black"
+            android:textSize="25sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/home_greet_sdk_txt"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="6dp"
-            android:layout_toEndOf="@id/home_greet_sdk_txt"
-            android:background="@drawable/shape_circle_blue"
-            android:paddingLeft="5dp"
-            android:paddingTop="1dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="1dp"
-            android:text="@string/home_finance_txt"
-            android:textColor="#ffffff"
-            android:textSize="10sp" />
-
+        <!--设置-->
+        <ImageView
+            android:id="@+id/but_setting"
+            android:layout_width="20dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/home_greet_txt"
+            android:layout_marginRight="25dp"
+            android:src="@mipmap/icon_home__titlebar_setting" />
     </RelativeLayout>
 
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@id/titlebar_layout"-->
+    <!--android:layout_above="@+id/but_start_gather"-->
+    <!--android:layout_marginBottom="15dp">-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--&lt;!&ndash;识别光线&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/light_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="50dp"-->
+    <!--android:layout_marginTop="20dp">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/light_image"-->
+    <!--android:layout_width="60dp"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:background="@color/home_text_color_white"-->
+    <!--android:src="@mipmap/icon_home_guide_light" />-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_toRightOf="@id/light_image"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_centerVertical="true">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/light_txt"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/home_light_txt"-->
+    <!--android:textColor="@color/home_text_color_black"-->
+    <!--android:textSize="16sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/light_txt"-->
+    <!--android:layout_marginTop="9dp"-->
+    <!--android:text="@string/home_light_explain_txt"-->
+    <!--android:textColor="@color/homr_text_color_grey"-->
+    <!--android:textSize="12sp" />-->
+    <!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
+
+    <!--&lt;!&ndash;正对手机&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/handset_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/light_layout"-->
+    <!--android:layout_marginLeft="50dp"-->
+    <!--android:layout_marginTop="32dp">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/handset_image"-->
+    <!--android:layout_width="60dp"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:src="@mipmap/icon_home_guide_mask" />-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_toRightOf="@id/handset_image"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_centerVertical="true">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/handset_txt"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/home_handset_txt"-->
+    <!--android:textColor="@color/home_text_color_black"-->
+    <!--android:textSize="16sp" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/handset_txt"-->
+    <!--android:layout_marginTop="9dp"-->
+    <!--android:text="@string/home_handset_explain_txt"-->
+    <!--android:textColor="@color/homr_text_color_grey"-->
+    <!--android:textSize="12sp" />-->
+    <!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
+
+    <!--&lt;!&ndash;支持口罩识别&ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/mask_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/handset_layout"-->
+    <!--android:layout_marginLeft="50dp"-->
+    <!--android:layout_marginTop="32dp">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/mask_image"-->
+    <!--android:layout_width="60dp"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:src="@mipmap/icon_home_guide_handset" />-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_toRightOf="@id/mask_image"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_centerVertical="true">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/mask_txt"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/home_mask_txt"-->
+    <!--android:textColor="@color/home_text_color_black"-->
+    <!--android:textSize="16sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/mask_txt"-->
+    <!--android:layout_marginTop="9dp"-->
+    <!--android:text="@string/home_mask_explain_txt"-->
+    <!--android:textColor="@color/homr_text_color_grey"-->
+    <!--android:textSize="12sp" />-->
+    <!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
+
+    <!--</RelativeLayout>-->
+    <!--</ScrollView>-->
+
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/titlebar_layout"
         android:layout_above="@+id/but_start_gather"
-        android:layout_below="@id/relative_home_title"
-        android:layout_alignStart="@id/relative_home_title"
         android:layout_marginBottom="15dp">
 
         <!--正对手机-->
         <RelativeLayout
             android:id="@+id/handset_layout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp">
 
             <ImageView
                 android:id="@+id/handset_image"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@mipmap/icon_home_guide_mask" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/handset_image">
+                android:layout_toRightOf="@id/handset_image"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true">
 
                 <TextView
                     android:id="@+id/handset_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/home_handset_txt"
-                    android:textColor="@color/home_sort_color"
-                    android:textSize="@dimen/home_sort_font"
-                    android:textStyle="bold" />
+                    android:textColor="@color/home_text_color_black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/handset_txt"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="9dp"
                     android:text="@string/home_handset_explain_txt"
-                    android:textColor="@color/home_sort_describe_color"
-                    android:textSize="@dimen/home_sort_describe_font" />
+                    android:textColor="@color/homr_text_color_grey"
+                    android:textSize="12sp" />
             </RelativeLayout>
         </RelativeLayout>
 
         <!--识别光线-->
         <RelativeLayout
             android:id="@+id/light_layout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
             android:layout_above="@id/handset_layout"
             android:layout_marginBottom="32dp">
 
             <ImageView
                 android:id="@+id/light_image"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@color/home_text_color_white"
                 android:src="@mipmap/icon_home_guide_light" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/light_image">
+                android:layout_toRightOf="@id/light_image"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true">
 
                 <TextView
                     android:id="@+id/light_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/home_light_txt"
-                    android:textColor="@color/home_sort_color"
-                    android:textSize="@dimen/home_sort_font"
-                    android:textStyle="bold" />
+                    android:textColor="@color/home_text_color_black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/light_txt"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="9dp"
                     android:text="@string/home_light_explain_txt"
-                    android:textColor="@color/home_sort_describe_color"
-                    android:textSize="@dimen/home_sort_describe_font" />
+                    android:textColor="@color/homr_text_color_grey"
+                    android:textSize="12sp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -168,41 +275,41 @@
         <!--支持口罩识别-->
         <RelativeLayout
             android:id="@+id/mask_layout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/handset_layout"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="32dp">
 
             <ImageView
                 android:id="@+id/mask_image"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@mipmap/icon_home_guide_handset" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/mask_image">
+                android:layout_toRightOf="@id/mask_image"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true">
 
                 <TextView
                     android:id="@+id/mask_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/home_mask_txt"
-                    android:textColor="@color/home_sort_color"
-                    android:textSize="@dimen/home_sort_font"
-                    android:textStyle="bold" />
+                    android:textColor="@color/home_text_color_black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mask_txt"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="9dp"
                     android:text="@string/home_mask_explain_txt"
-                    android:textColor="@color/home_sort_describe_color"
-                    android:textSize="@dimen/home_sort_describe_font" />
+                    android:textColor="@color/homr_text_color_grey"
+                    android:textSize="12sp" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -217,7 +324,7 @@
         android:layout_marginBottom="15dp"
         android:text="@string/collect_bottom_txt"
         android:textColor="@color/collect_bottom_color"
-        android:textSize="@dimen/collect_bottom_font" />
+        android:textSize="@dimen/collect_bottom_font"/>
 
     <!--人脸协议-->
     <RelativeLayout
@@ -225,39 +332,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/text_home_logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true">
 
         <CheckBox
             android:id="@+id/is_check_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
             android:background="#00000000"
+            android:padding="8dp"
             android:button="@null"
-            android:checked="false"
-            android:drawableStart="@drawable/home_checkbox_button_selector"
-            android:padding="12dp" />
+            android:drawableLeft="@drawable/home_checkbox_button_selector"
+            android:checked="false" />
 
         <TextView
             android:id="@+id/is_tongyi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/is_check_box"
-            android:text="@string/home_agree_txt"
-            android:textColor="@color/home_agree_color"
+            android:layout_toRightOf="@id/is_check_box"
+            android:text="同意"
+            android:textColor="#666666"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/face_agreement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/is_tongyi"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/is_tongyi"
-            android:text="@string/home_agreement_txt1"
-            android:textColor="@color/home_agreement_color"
+            android:text="《人脸验证协议》"
+            android:textColor="@color/home_text_color_skyblue"
             android:textSize="14sp" />
 
     </RelativeLayout>
@@ -266,15 +371,15 @@
     <Button
         android:id="@+id/but_start_gather"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="50dp"
         android:layout_above="@id/relative_agree"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/success_button_recollect_selector"
         android:text="@string/home_but_txt"
         android:textColor="@color/home_text_color_white"
-        android:textSize="@dimen/home_button_font"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
+
 
 </RelativeLayout>

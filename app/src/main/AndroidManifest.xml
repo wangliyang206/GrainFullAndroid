@@ -51,16 +51,28 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
-            android:name=".mvp.ui.activity.BaiduFaceCollectFailureActivity"
+            android:name=".mvp.ui.activity.BaiduQualityParamsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduQualityControlActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceDetectExpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceAgreementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.LivenessDetectionActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.BaiduFaceCollectionSuccessActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.BaiduFaceLivenessExpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".mvp.ui.activity.BaiduFaceLivenessVideoExpActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.BaiduFaceRecognitionActivity"

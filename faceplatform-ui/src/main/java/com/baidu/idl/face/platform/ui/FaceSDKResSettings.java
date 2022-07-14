@@ -1,3 +1,6 @@
+/**
+ * Copyright (C) 2017 Baidu Inc. All rights reserved.
+ */
 package com.baidu.idl.face.platform.ui;
 
 import com.baidu.idl.face.platform.FaceEnvironment;
@@ -21,10 +24,16 @@ public class FaceSDKResSettings {
                 R.raw.detect_face_in);
         FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionTypeLiveEye,
                 R.raw.liveness_eye);
-//        FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionTypeLiveMouth,
-//                R.raw.liveness_mouth);
         FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionTypeLiveMouth,
-                R.raw.liveness_random_num);
+                R.raw.liveness_mouth);
+        FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionTypeLivePitchUp,
+                R.raw.liveness_head_up);
+        FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionTypeLivePitchDown,
+                R.raw.liveness_head_down);
+        FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionTypeLiveYawLeft,
+                R.raw.liveness_head_left);
+        FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionTypeLiveYawRight,
+                R.raw.liveness_head_right);
         FaceEnvironment.setSoundId(FaceStatusNewEnum.FaceLivenessActionComplete,
                 R.raw.face_good);
         FaceEnvironment.setSoundId(FaceStatusNewEnum.OK, R.raw.face_good);
@@ -71,18 +80,21 @@ public class FaceSDKResSettings {
 
         FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionTypeLiveEye,
                 R.string.liveness_eye);
-//        FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionTypeLiveMouth,
-//                R.string.liveness_mouth);
         FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionTypeLiveMouth,
-                R.string.liveness_random_num);
+                R.string.liveness_mouth);
+        FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionTypeLivePitchUp,
+                R.string.liveness_head_up);
+        FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionTypeLivePitchDown,
+                R.string.liveness_head_down);
+        FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionTypeLiveYawLeft,
+                R.string.liveness_head_left);
+        FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionTypeLiveYawRight,
+                R.string.liveness_head_right);
         FaceEnvironment.setTipsId(FaceStatusNewEnum.FaceLivenessActionComplete,
                 R.string.liveness_good);
         FaceEnvironment.setTipsId(FaceStatusNewEnum.OK, R.string.liveness_good);
 
         FaceEnvironment.setTipsId(FaceStatusNewEnum.DetectRemindCodeTimeout,
                 R.string.detect_timeout);
-        FaceEnvironment.setTipsId(FaceStatusNewEnum.AuraStart, R.string.aura_start);
-        FaceEnvironment.setTipsId(FaceStatusNewEnum.AuraColorChange, R.string.aura_color);
-        FaceEnvironment.setTipsId(FaceStatusNewEnum.AuraColorError, R.string.aura_color_error);
     }
 }

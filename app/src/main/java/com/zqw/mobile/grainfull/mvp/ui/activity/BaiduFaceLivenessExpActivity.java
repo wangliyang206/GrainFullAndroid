@@ -7,6 +7,7 @@ import android.view.View;
 import com.baidu.idl.face.platform.FaceStatusNewEnum;
 import com.baidu.idl.face.platform.model.ImageInfo;
 import com.baidu.idl.face.platform.ui.FaceLivenessActivity;
+import com.baidu.idl.face.platform.ui.utils.IntentUtils;
 import com.zqw.mobile.grainfull.app.dialog.TimeoutDialog;
 
 import java.util.ArrayList;
@@ -31,27 +32,22 @@ public class BaiduFaceLivenessExpActivity extends FaceLivenessActivity implement
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 添加至销毁列表
-        BaiduFaceRecognitionActivity.addDestroyActivity(this, "BaiduFaceRecognitionActivity");
+        BaiduFaceRecognitionActivity.addDestroyActivity(this, "BaiduFaceLivenessExpActivity");
     }
 
     @Override
-    public void onLivenessCompletion(FaceStatusNewEnum status, String message, HashMap<String, ImageInfo> base64ImageCropMap, HashMap<String, ImageInfo> base64ImageSrcMap, int currentLivenessCount, float livenessScore) {
-        super.onLivenessCompletion(status, message, base64ImageCropMap, base64ImageSrcMap, currentLivenessCount, livenessScore);
-        // 采集成功，则获取最优抠图和原图
+    public void onLivenessCompletion(FaceStatusNewEnum status, String message,
+                                     HashMap<String, ImageInfo> base64ImageCropMap,
+                                     HashMap<String, ImageInfo> base64ImageSrcMap, int currentLivenessCount) {
+        super.onLivenessCompletion(status, message, base64ImageCropMap, base64ImageSrcMap, currentLivenessCount);
         if (status == FaceStatusNewEnum.OK && mIsCompletion) {
             // 获取最优图片
-            getBestImage(base64ImageCropMap, base64ImageSrcMap, livenessScore);
+            getBestImage(base64ImageCropMap, base64ImageSrcMap);
         } else if (status == FaceStatusNewEnum.DetectRemindCodeTimeout) {
             if (mViewBg != null) {
                 mViewBg.setVisibility(View.VISIBLE);
             }
             showMessageDialog();
-            // 炫彩活体分数不通过，则跳转至失败页面
-        } else if (status == FaceStatusNewEnum.AuraLivenessScoreError && mIsCompletion) {
-            startFailureActivity(livenessScore, false);
-            // 炫彩颜色不通过，则跳转至失败页面
-        } else if (status == FaceStatusNewEnum.AuraColorError && mIsCompletion) {
-            startFailureActivity(0f, true);
         }
     }
 
@@ -61,7 +57,8 @@ public class BaiduFaceLivenessExpActivity extends FaceLivenessActivity implement
      * @param imageCropMap 抠图集合
      * @param imageSrcMap  原图集合
      */
-    private void getBestImage(HashMap<String, ImageInfo> imageCropMap, HashMap<String, ImageInfo> imageSrcMap, float livenessScore) {
+    private void getBestImage(HashMap<String, ImageInfo> imageCropMap, HashMap<String, ImageInfo> imageSrcMap) {
+        String bmpStr = null;
         // 将抠图集合中的图片按照质量降序排序，最终选取质量最优的一张抠图图片
         if (imageCropMap != null && imageCropMap.size() > 0) {
             List<Map.Entry<String, ImageInfo>> list1 = new ArrayList<>(imageCropMap.entrySet());
@@ -74,8 +71,14 @@ public class BaiduFaceLivenessExpActivity extends FaceLivenessActivity implement
                 return Float.valueOf(score2).compareTo(Float.valueOf(score1));
             });
 
-            // 获取抠图中的加密的base64
-//            String base64 = list1.get(0).getValue().getSecBase64();
+            // 获取抠图中的加密或非加密的base64
+//            int secType = mFaceConfig.getSecType();
+//            String base64;
+//            if (secType == 0) {
+//                base64 = list1.get(0).getValue().getBase64();
+//            } else {
+//                base64 = list1.get(0).getValue().getSecBase64();
+//            }
         }
 
         // 将原图集合中的图片按照质量降序排序，最终选取质量最优的一张原图图片
@@ -89,14 +92,22 @@ public class BaiduFaceLivenessExpActivity extends FaceLivenessActivity implement
                 // 降序排序
                 return Float.valueOf(score2).compareTo(Float.valueOf(score1));
             });
+            bmpStr = list2.get(0).getValue().getBase64();
 
-            // 获取原图中的加密的base64
-//            String base64 = list2.get(0).getValue().getSecBase64();
+            // 获取原图中的加密或非加密的base64
+//            int secType = mFaceConfig.getSecType();
+//            String base64;
+//            if (secType == 0) {
+//                base64 = list2.get(0).getValue().getBase64();
+//            } else {
+//                base64 = list2.get(0).getValue().getSecBase64();
+//            }
         }
 
         // 页面跳转
+        IntentUtils.getInstance().setBitmap(bmpStr);
         Intent intent = new Intent(this, BaiduFaceCollectionSuccessActivity.class);
-        intent.putExtra("livenessScore", livenessScore);
+        intent.putExtra("destroyType", "BaiduFaceLivenessExpActivity");
         startActivity(intent);
     }
 
@@ -107,14 +118,6 @@ public class BaiduFaceLivenessExpActivity extends FaceLivenessActivity implement
         mTimeoutDialog.setCancelable(false);
         mTimeoutDialog.show();
         onPause();
-    }
-
-    private void startFailureActivity(float livenessScore, boolean isColorError) {
-        // 页面跳转
-        Intent intent = new Intent(this, BaiduFaceCollectFailureActivity.class);
-        intent.putExtra("livenessScore", livenessScore);
-        intent.putExtra("isColorError", isColorError);
-        startActivity(intent);
     }
 
     @Override

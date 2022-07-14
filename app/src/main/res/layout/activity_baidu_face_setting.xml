@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9">
+    <!--titlebar-->
+    <RelativeLayout
+        android:id="@+id/agreement_layout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/but_setting_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/setting_image_close_selector" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/setting_titlebar_txt"
+            android:textColor="@color/home_text_color_black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_below="@id/agreement_layout"
+        android:background="#d8d8d8" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view"
+        android:layout_above="@id/text_logo"
+        android:layout_marginBottom="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--提示-->
+            <TextView
+                android:id="@+id/prompt_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="14sp"
+                android:text="@string/setting_prompt_txt"
+                android:textColor="@color/homr_text_color_grey" />
+
+            <!--语音播报开关-->
+            <RelativeLayout
+                android:id="@+id/announcements_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/prompt_txt"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_radius">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/setting_announcements_txt"
+                    android:textColor="@color/home_text_color_black"
+                    android:textSize="18sp" />
+
+                <Switch
+                    android:id="@+id/announcements_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:textOff=""
+                    android:textOn=""
+                    android:checked="false"
+                    android:thumb="@drawable/setting_switch_thumb"
+                    android:track="@drawable/setting_switch_track_selector" />
+            </RelativeLayout>
+
+            <!--质量控制-->
+            <RelativeLayout
+                android:id="@+id/quality_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/announcements_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_radius">
+
+                <TextView
+                    android:id="@+id/text_quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/setting_quality_txt"
+                    android:textColor="@color/home_text_color_black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/text_enter_quality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:drawableRight="@mipmap/icon_setting_quality_enter"
+                    android:text="正常"
+                    android:textColor="@color/setting_quality_enter"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <!--活体检测开关-->
+            <RelativeLayout
+                android:id="@+id/live_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/quality_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_top_round">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/setting_live_detect_txt"
+                    android:textColor="@color/home_text_color_black"
+                    android:textSize="18sp" />
+
+                <Switch
+                    android:id="@+id/live_detect_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/setting_switch_thumb"
+                    android:track="@drawable/setting_switch_track_selector" />
+            </RelativeLayout>
+
+            <!--活体动作顺序随机-->
+            <RelativeLayout
+                android:id="@+id/actionlive_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/live_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="1dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/setting_actionlive_txt"
+                    android:textColor="@color/home_text_color_black"
+                    android:textSize="18sp" />
+
+                <Switch
+                    android:id="@+id/actionlive_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/setting_switch_thumb"
+                    android:track="@drawable/setting_switch_track_selector" />
+            </RelativeLayout>
+
+            <include
+                layout="@layout/layout_active_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/actionlive_layout"/>
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <!-- 百度logo-->
+    <TextView
+        android:id="@+id/text_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone"
+        android:textSize="@dimen/collect_bottom_font"
+        android:text="@string/collect_bottom_txt"
+        android:textColor="@color/collect_bottom_color" />
+</RelativeLayout>

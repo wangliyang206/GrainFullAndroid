@@ -24,20 +24,15 @@
     <string name="detect_right_eye_close">右眼未睁开</string>
     <string name="liveness_eye">眨眨眼</string>
     <string name="liveness_mouth">张张嘴</string>
-    <string name="liveness_random_num">大声读出随机数</string>
     <string name="liveness_head_left">向左缓慢转头</string>
     <string name="liveness_head_right">向右缓慢转头</string>
     <string name="liveness_head_up">缓慢抬头</string>
     <string name="liveness_head_down">缓慢低头</string>
     <string name="liveness_good">非常好</string>
-    <string name="aura_start">屏幕即将闪烁，请保持正脸</string>
-    <string name="aura_color">变光中，请保持正脸</string>
-    <string name="aura_color_error"></string>
 
     <!--home string-->
     <string name="home_greet_txt">欢迎使用</string>
     <string name="home_greet_sdk_txt">百度人脸采集SDK</string>
-    <string name="home_finance_txt">金融版</string>
     <string name="home_light_txt">识别光线适中</string>
     <string name="home_light_explain_txt">请保证光线不要过暗或过亮</string>
     <string name="home_handset_txt">请正对手机</string>
@@ -45,12 +40,9 @@
     <string name="home_mask_txt">避免遮挡</string>
     <string name="home_mask_explain_txt">请保持您的脸部清晰无遮挡</string>
     <string name="home_but_txt">开始人脸采集</string>
-    <string name="home_agree_txt">阅读并同意</string>
-    <string name="home_agreement_txt">《人脸采集隐私协议》</string>
-    <string name="home_agreement_txt1">《用户协议及详情》</string>
 
     <!--home agreement string-->
-    <string name="home_agreement_titlebar_txt">人脸采集隐私协议</string>
+    <string name="home_agreement_titlebar_txt">人脸采集协议</string>
     <string name="home_agreement_functional_txt">功能说明</string>
     <string name="home_agreement_functional_explain_txt">
         为保障用户账户的安全，提供更好的服务，在提供部分产品及服务之前,
@@ -75,12 +67,9 @@
     <!--setting string-->
     <string name="setting_titlebar_txt">设置</string>
     <string name="setting_prompt_txt">提示: 正式使用时，开发者可将前端设置功能隐藏</string>
-    <string name="setting_prompt_txt2">建议开启，开启后在完成随机展示眨眼或张嘴动作后，进入炫瞳活体页面</string>
-    <string name="setting_prompt_txt3">设置范围0-1，推荐阈值为0.80</string>
     <string name="setting_announcements_txt">语音播报</string>
     <string name="setting_quality_txt">质量控制</string>
-    <string name="setting_live_detect_txt">动作活体设置</string>
-    <string name="setting_live_score_txt">活体检测阈值</string>
+    <string name="setting_live_detect_txt">活体检测</string>
     <string name="setting_actionlive_txt">活体动作顺序随机</string>
     <string name="setting_actionlive_blink_txt">眨眨眼</string>
     <string name="setting_actionlive_shake_head_txt">左右摇头</string>
@@ -91,11 +80,50 @@
     <string name="setting_actionlive_open_mouth_txt">张张嘴</string>
     <string name="collect_bottom_txt">— 百度大脑技术支持 —</string>
 
-    <string name="collect_success">人脸采集成功</string>
-    <string name="collect_button_recollect">重新采集</string>
-    <string name="collect_button_home">回到首页</string>
-    <string name="collect_failure">人脸采集失败</string>
-    <string name="collect_tips_1">建议到光线柔和的白墙背景操作</string>
-    <string name="collect_tips_2">请确保是本人操作且正脸采集</string>
 
+    <string name="setting_quality_control_txt">质量控制设置</string>
+    <string name="setting_quality_low_txt">宽松</string>
+    <string name="setting_quality_normal_txt">正常</string>
+    <string name="setting_quality_high_txt">严格</string>
+    <string name="setting_quality_custom_txt">自定义</string>
+    <string name="setting_quality_enter_params_txt">参数配置</string>
+    <string name="setting_quality_tip1_txt">实名认证场景推荐使用『严格』或『正常』模式</string>
+    <string name="setting_quality_tip2_txt">人脸比对场景推荐使用『正常』或『宽松』模式</string>
+    <string name="setting_quality_low_params_txt">宽松参数配置</string>
+    <string name="setting_quality_normal_params_txt">正常参数配置</string>
+    <string name="setting_quality_high_params_txt">严格参数配置</string>
+    <string name="setting_quality_custom_params_txt">自定义参数配置</string>
+    <string name="setting_quality_save_txt">保存</string>
+    <string name="setting_params_min_illum">最小光照值</string>
+    <string name="setting_params_max_illum">最大光照值</string>
+    <string name="setting_params_blur">模糊度</string>
+    <string name="setting_params_left_eye">左眼</string>
+    <string name="setting_params_right_eye">右眼</string>
+    <string name="setting_params_nose">鼻子</string>
+    <string name="setting_params_mouth">嘴巴</string>
+    <string name="setting_params_left_cheek">左脸颊</string>
+    <string name="setting_params_right_cheek">右脸颊</string>
+    <string name="setting_params_chin">下巴</string>
+    <string name="setting_params_pitch">俯仰角</string>
+    <string name="setting_params_yaw">左右角</string>
+    <string name="setting_params_roll">旋转角</string>
+    <string name="setting_default_normal">恢复为正常默认参数</string>
+    <string name="setting_default_low">恢复为宽松默认参数</string>
+    <string name="setting_default_high">恢复为严格默认参数</string>
+    <string name="setting_occlu_tips">遮挡阈值（0是无遮挡，1是完全遮挡）</string>
+    <string name="setting_headpose_tips">姿态阈值（绝对值，单位：度）</string>
+
+    <string name="dialog_is_save_custom">是否保存自定义配置</string>
+    <string name="dialog_is_low_default">是否恢复为宽松默认参数</string>
+    <string name="dialog_is_normal_default">是否恢复为正常默认参数</string>
+    <string name="dialog_is_high_default">是否恢复为严格默认参数</string>
+    <string name="dialog_is_save_modify">是否保存修改</string>
+    <string name="dialog_tips1">参数配置已更改，是否保存自定义配置</string>
+    <string name="dialog_tips2">参数配置已更改，是否恢复默认</string>
+    <string name="dialog_tips3">参数配置已修改，是否保存后离开</string>
+    <string name="dialog_button_cancle">取消</string>
+    <string name="dialog_button_exit">直接离开</string>
+    <string name="dialog_button_save_custom">保存自定义</string>
+    <string name="dialog_button_default">恢复默认</string>
+    <string name="dialog_button_save">保存并离开</string>
 </resources>

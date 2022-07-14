@@ -6,11 +6,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +19,7 @@ import com.baidu.idl.face.platform.FaceEnvironment;
 import com.baidu.idl.face.platform.FaceSDKManager;
 import com.baidu.idl.face.platform.LivenessTypeEnum;
 import com.baidu.idl.face.platform.listener.IInitCallback;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -51,9 +50,6 @@ import timber.log.Timber;
  */
 public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognitionPresenter> implements BaiduFaceRecognitionContract.View {
     /*------------------------------------------------------------------控件区域------------------------------------------------------------------*/
-
-    @BindView(R.id.but_setting)
-    ImageView butSetting;
     @BindView(R.id.is_check_box)
     CheckBox isCheckBox;
     @BindView(R.id.face_agreement)
@@ -61,11 +57,19 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
     @BindView(R.id.but_start_gather)
     Button butStartGather;
     /*------------------------------------------------------------------业务区域------------------------------------------------------------------*/
-    private static Map<String, Activity> destroyMap = new HashMap<>();
-    /**
-     * 动作活体条目集合
-     */
+    // 动作活体条目集合
     public static List<LivenessTypeEnum> livenessList = new ArrayList<>();
+    // 活体随机开关
+    public static boolean isLivenessRandom = true;
+    // 语音播报开关
+    public static boolean isOpenSound = true;
+    // 活体检测开关
+    public static boolean isActionLive = true;
+    // 质量等级（0：正常、1：宽松、2：严格、3：自定义）
+    public static int qualityLevel = 0;
+    // 保存UI对象，用于后面做释放
+    private static Map<String, Activity> destroyMap = new HashMap<>();
+
 
     /**
      * 炫彩活体颜色条目集合
@@ -76,20 +80,8 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
      * 统计视频录制中出现不兼容情况的手机
      */
     public static List<String> phoneList = new ArrayList<>();
-    // 活体随机开关
-    public static boolean isLivenessRandom = true;
-    // 语音播报开关
-    public static boolean isOpenSound = true;
-    // 活体检测开关
-    public static boolean isActionLive = true;
-    // 质量等级（0：正常、1：宽松、2：严格、3：自定义）
-    public static int qualityLevel = 0;
-    // 视频录制开关
-    public static boolean isOpenVideoRecord = true;
     // 是否初始化成功
     private boolean mIsInitSuccess;
-    // 错误信息
-    private String mTipsError;
 
     /**
      * 根据主题使用不同的颜色。
@@ -103,7 +95,6 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        this.butSetting = null;
         this.isCheckBox = null;
         this.faceAgreement = null;
         this.butStartGather = null;
@@ -139,6 +130,7 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
         livenessList.clear();
         livenessList.add(LivenessTypeEnum.Eye);
         livenessList.add(LivenessTypeEnum.Mouth);
+        livenessList.add(LivenessTypeEnum.HeadRight);
     }
 
     private void addLiveColor() {
@@ -181,13 +173,13 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
         // 应用上下文
         // 申请License取得的APPID
         // assets目录下License文件名
-        FaceSDKManager.getInstance().initialize(this, "aptitude-face-android",
+        FaceSDKManager.getInstance().initialize(getApplicationContext(), "GrainFull-face-android",
                 "idl-license.face-android", new IInitCallback() {
                     @Override
                     public void initSuccess() {
                         runOnUiThread(() -> {
                             Timber.e("初始化成功");
-//                            showMessage("初始化成功");
+                            showMessage("初始化成功");
                             mIsInitSuccess = true;
                         });
                     }
@@ -197,7 +189,6 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
                         runOnUiThread(() -> {
                             Timber.e("初始化失败 = " + errCode + " " + errMsg);
                             showMessage("初始化失败 = " + errCode + ", " + errMsg);
-                            mTipsError = "初始化失败 = " + errCode + ", " + errMsg;
                             mIsInitSuccess = false;
                         });
                     }
@@ -205,6 +196,7 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
     }
 
     @OnClick({
+            R.id.but_setting,                                                                       // 设置
             R.id.is_tongyi,                                                                         // 同意协议
             R.id.face_agreement,                                                                    // 查看协议
             R.id.but_start_gather,                                                                  // 开始采集
@@ -212,11 +204,14 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.but_setting:                                                                  // 设置
+                ActivityUtils.startActivity(BaiduFaceSettingActivity.class);
+                break;
             case R.id.is_tongyi:                                                                    // 同意协议
                 isCheckBox.setChecked(!isCheckBox.isChecked());
                 break;
             case R.id.face_agreement:                                                               // 查看协议
-//                ActivityUtils.startActivity(SmallLoanProtocolActivity.class);
+                ActivityUtils.startActivity(BaiduFaceAgreementActivity.class);
                 break;
             case R.id.but_start_gather:                                                             // 开始采集
                 boolean checked = isCheckBox.isChecked();
@@ -225,11 +220,7 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
                     return;
                 }
                 if (!mIsInitSuccess) {
-                    if (TextUtils.isEmpty(mTipsError)) {
-                        showMessage("初始化中，请稍候...");
-                    } else {
-                        showMessage(mTipsError);
-                    }
+                    showMessage("初始化中，请稍候...");
                     return;
                 }
                 startCollect();
@@ -241,43 +232,8 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
      * 开始收集
      */
     public void startCollect() {
-        // 打开录制功能
-        if (isOpenVideoRecord) {
-            // 如果不兼容手机列表为空，则进入视频录制页面
-            if (phoneList == null || phoneList.size() == 0) {
-                if (mPresenter != null) {
-                    mPresenter.onJump(true, false);
-                }
-                return;
-            }
-
-            // 判断是否手机不兼容
-            boolean isPhoneNoCompatible = false;
-
-            for (int i = 0; i < phoneList.size(); i++) {
-                String phone = phoneList.get(i);
-                String brand = phone.split("_")[0];
-                String model = phone.split("_")[1];
-                if (brand.equals(Build.BRAND) && model.equals(Build.MODEL)) {
-                    isPhoneNoCompatible = true;
-                }
-            }
-
-            // 如果手机不兼容，则不进入视频录制页面，则进入普通采集页面进行抽帧保存
-            if (isPhoneNoCompatible) {
-                if (mPresenter != null) {
-                    mPresenter.onJump(false, true);
-                }
-            } else {
-                if (mPresenter != null) {
-                    mPresenter.onJump(true, false);
-                }
-            }
-        } else {
-            // 关闭录制功能
-            if (mPresenter != null) {
-                mPresenter.onJump(false, false);
-            }
+        if (mPresenter != null) {
+            mPresenter.onJump(isActionLive);
         }
     }
 
@@ -379,18 +335,18 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
         // 检测框远近比率
         config.setFaceFarRatio(FaceEnvironment.VALUE_FAR_RATIO);
         config.setFaceClosedRatio(FaceEnvironment.VALUE_CLOSED_RATIO);
-        // 是否开启动作活体
-        config.setOpenActionLive(isActionLive);
-        // 设置动作活体颜色类型列表
-        config.setLivenessColorTypeList(livenessColorList);
-        // 设置活体阈值
-        config.setLivenessValue(FaceEnvironment.VALUE_LIVENESS_SCORE);
-        // 设置炫彩活体颜色分数阈值
-        config.setLivenessColorValue(FaceEnvironment.VALUE_LIVENESS_COLOR_SCORE);
-        // 设置视频录制时间
-        config.setRecordVideoTime(FaceEnvironment.TIME_RECORD_VIDEO);
-        // 视频录制中出现分辨率改变的手机或其它不兼容的手机统计
-        config.setPhoneList(phoneList);
+//        // 是否开启动作活体
+//        config.setOpenActionLive(isActionLive);
+//        // 设置动作活体颜色类型列表
+//        config.setLivenessColorTypeList(livenessColorList);
+//        // 设置活体阈值
+//        config.setLivenessValue(FaceEnvironment.VALUE_LIVENESS_SCORE);
+//        // 设置炫彩活体颜色分数阈值
+//        config.setLivenessColorValue(FaceEnvironment.VALUE_LIVENESS_COLOR_SCORE);
+//        // 设置视频录制时间
+//        config.setRecordVideoTime(FaceEnvironment.TIME_RECORD_VIDEO);
+//        // 视频录制中出现分辨率改变的手机或其它不兼容的手机统计
+//        config.setPhoneList(phoneList);
         FaceSDKManager.getInstance().setFaceConfig(config);
         return true;
     }
@@ -407,7 +363,7 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
     /**
      * 销毁指定Activity
      */
-    public static void destroyActivity() {
+    public static void destroyActivity(String activityName) {
         Set<String> keySet = destroyMap.keySet();
         for (String key : keySet) {
             destroyMap.get(key).finish();

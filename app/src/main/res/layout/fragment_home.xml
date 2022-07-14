@@ -156,13 +156,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/btn_fragmenthome_bankcards" />
 
                 <TextView
-                    android:id="@+id/btn_fragmenthome_facerecognition"
+                    android:id="@+id/btn_fragmenthome_livenessdetection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_10"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="@dimen/dp_10"
-                    android:text="人脸识别"
+                    android:text="活体检测"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_gesture"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_gesture" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -201,6 +201,17 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_visit_title" />
 
+                <TextView
+                    android:id="@+id/btn_fragmenthome_facerecognition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="@dimen/dp_10"
+                    android:text="百度人脸采集"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_visit_line" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

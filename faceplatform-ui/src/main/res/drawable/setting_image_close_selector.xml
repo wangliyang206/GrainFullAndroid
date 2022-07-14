@@ -3,5 +3,5 @@
     <item android:state_pressed="true"
         android:drawable="@mipmap/icon_titlebar_back_p" />
     <item android:state_pressed="false"
-        android:drawable="@mipmap/icon_titlebar_back" />
+        android:drawable="@mipmap/icon_home_titlebar_back_agreement_return" />
 </selector>

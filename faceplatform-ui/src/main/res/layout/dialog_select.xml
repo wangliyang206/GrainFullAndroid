@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/bg_round_time_out">
+
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_is_save_custom"
+        android:textColor="@color/home_text_color_black"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/text_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_tips1"
+        android:layout_below="@id/text_title"
+        android:textColor="@color/setting_quality_enter"
+        android:textSize="14sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"/>
+
+    <View
+        android:id="@+id/view_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/text_tips"
+        android:layout_marginTop="16dp"
+        android:background="#E0E0E0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/view_line1">
+
+        <Button
+            android:id="@+id/btn_dialog_return"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:background="@drawable/setting_layout_bottom_round"
+            android:text="@string/dialog_button_cancle"
+            android:textSize="16sp"
+            android:textColor="@color/home_text_color_black"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="#E0E0E0"/>
+
+        <Button
+            android:id="@+id/btn_dialog_recollect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:background="@drawable/setting_layout_bottom_round"
+            android:text="@string/dialog_button_save_custom"
+            android:textSize="16sp"
+            android:textColor="@color/setting_quality_blue"/>
+    </LinearLayout>
+
+</RelativeLayout>

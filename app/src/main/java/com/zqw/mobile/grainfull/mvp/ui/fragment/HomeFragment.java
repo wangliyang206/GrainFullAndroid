@@ -1,14 +1,17 @@
 package com.zqw.mobile.grainfull.mvp.ui.fragment;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
@@ -27,6 +30,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
 import org.simple.eventbus.EventBus;
@@ -40,8 +44,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 /**
  * 首页(业务)
@@ -169,7 +171,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_idcard,                                                           // 识别身份证
             R.id.btn_fragmenthome_imagetotext,                                                      // 图片提取文字
             R.id.btn_fragmenthome_gesture,                                                          // 动态手势识别
-            R.id.btn_fragmenthome_facerecognition,                                                  // 人脸识别
+            R.id.btn_fragmenthome_livenessdetection,                                                // 活体检测
+            R.id.btn_fragmenthome_facerecognition,                                                  // 百度人脸采集
     })
     @Override
     public void onClick(View v) {
@@ -200,7 +203,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_gesture:                                                     // 动态手势识别
                 ActivityUtils.startActivity(DynamicGesturesActivity.class);
                 break;
-            case R.id.btn_fragmenthome_facerecognition:                                             // 人脸识别
+            case R.id.btn_fragmenthome_livenessdetection:                                           // 活体检测
+                ActivityUtils.startActivity(LivenessDetectionActivity.class);
+                break;
+            case R.id.btn_fragmenthome_facerecognition:                                             // 百度人脸采集
                 ActivityUtils.startActivity(BaiduFaceRecognitionActivity.class);
                 break;
         }

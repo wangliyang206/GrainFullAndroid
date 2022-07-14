@@ -6,10 +6,8 @@ package com.baidu.idl.face.platform.ui;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -44,20 +42,15 @@ import com.baidu.idl.face.platform.LivenessTypeEnum;
 import com.baidu.idl.face.platform.manager.TimeManager;
 import com.baidu.idl.face.platform.model.FaceExtInfo;
 import com.baidu.idl.face.platform.model.ImageInfo;
-import com.baidu.idl.face.platform.stat.Ast;
 import com.baidu.idl.face.platform.ui.utils.BrightnessUtils;
 import com.baidu.idl.face.platform.ui.utils.CameraUtils;
 import com.baidu.idl.face.platform.ui.utils.VolumeUtils;
-import com.baidu.idl.face.platform.ui.widget.FaceAuraColorView;
 import com.baidu.idl.face.platform.ui.widget.FaceDetectRoundView;
 import com.baidu.idl.face.platform.utils.APIUtils;
 import com.baidu.idl.face.platform.utils.Base64Utils;
 import com.baidu.idl.face.platform.ui.utils.CameraPreviewUtils;
-import com.baidu.idl.face.platform.utils.BitmapUtils;
 import com.baidu.idl.face.platform.utils.DensityUtils;
-import com.baidu.idl.face.platform.utils.FileUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -93,7 +86,6 @@ public class FaceLivenessActivity extends Activity implements
     private RelativeLayout mRelativeAddImageView;
     private ImageView mImageAnim;
     public View mViewBg;
-    protected FaceAuraColorView mFaceAuraColorView;
     // 人脸信息
     protected FaceConfig mFaceConfig;
     protected ILivenessStrategy mILivenessStrategy;
@@ -117,12 +109,12 @@ public class FaceLivenessActivity extends Activity implements
     protected int mPreviewDegree;
     // 监听系统音量广播
     protected BroadcastReceiver mVolumeReceiver;
+    // 是否弹窗
+    protected boolean mHasShownTimeoutDialog;
 
     private Context mContext;
     private AnimationDrawable mAnimationDrawable;
     private LivenessTypeEnum mLivenessType = null;
-
-    private boolean mFrameExtraction;     // 判断是否抽帧
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -131,7 +123,6 @@ public class FaceLivenessActivity extends Activity implements
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_face_liveness_v3100);
         mContext = FaceLivenessActivity.this;
-        getIntentData();
         DisplayMetrics dm = new DisplayMetrics();
         Display display = this.getWindowManager().getDefaultDisplay();
         display.getMetrics(dm);
@@ -157,8 +148,14 @@ public class FaceLivenessActivity extends Activity implements
         int w = mDisplayWidth;
         int h = mDisplayHeight;
 
+        // surfaceView使用屏幕分辨率的大小
+//        FrameLayout.LayoutParams cameraFL = new FrameLayout.LayoutParams(
+//                (int) (w * FaceDetectRoundView.SURFACE_RATIO), (int) (h * FaceDetectRoundView.SURFACE_RATIO),
+//                Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        // surfaceView使用640*480的大小
         FrameLayout.LayoutParams cameraFL = new FrameLayout.LayoutParams(
-                (int) (w * FaceDetectRoundView.SURFACE_RATIO), (int) (h * FaceDetectRoundView.SURFACE_RATIO),
+                (int) (w * FaceDetectRoundView.SURFACE_RATIO * FaceDetectRoundView.RECT_RATIO),
+                (int) (w * FaceDetectRoundView.SURFACE_RATIO * FaceDetectRoundView.RECT_RATIO * 640.0f / 480.0f),
                 Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
 
         mSurfaceView.setLayoutParams(cameraFL);
@@ -172,18 +169,17 @@ public class FaceLivenessActivity extends Activity implements
         });
 
         mFaceDetectRoundView = (FaceDetectRoundView) mRootView.findViewById(R.id.liveness_face_round);
-        mFaceDetectRoundView.setIsActiveLive(false);
-        mFaceAuraColorView = (FaceAuraColorView) mRootView.findViewById(R.id.detect_aura);
+        mFaceDetectRoundView.setIsActiveLive(true);
         mCloseView = (ImageView) mRootView.findViewById(R.id.liveness_close);
         mSoundView = (ImageView) mRootView.findViewById(R.id.liveness_sound);
         mSoundView.setImageResource(mIsEnableSound ?
-                R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice_close);
+                R.mipmap.icon_titlebar_voice2 : R.drawable.collect_image_voice_selector);
         mSoundView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mIsEnableSound = !mIsEnableSound;
                 mSoundView.setImageResource(mIsEnableSound ?
-                        R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice_close);
+                        R.mipmap.icon_titlebar_voice2 : R.drawable.collect_image_voice_selector);
                 if (mILivenessStrategy != null) {
                     mILivenessStrategy.setLivenessStrategySoundEnable(mIsEnableSound);
                 }
@@ -199,18 +195,12 @@ public class FaceLivenessActivity extends Activity implements
         mViewBg = findViewById(R.id.view_live_bg);
     }
 
-    private void getIntentData() {
-        Intent intent = getIntent();
-        if (intent != null) {
-            mFrameExtraction = intent.getBooleanExtra("frame_extraction", false);
-        }
-    }
-
     /**
      * 设置屏幕亮度
      */
     private void setScreenBright() {
-        BrightnessUtils.setBrightness(this, 255);
+        int currentBright = BrightnessUtils.getScreenBrightness(this);
+        BrightnessUtils.setBrightness(this, currentBright + 100);
     }
 
     /**
@@ -239,22 +229,20 @@ public class FaceLivenessActivity extends Activity implements
     @Override
     public void onResume() {
         super.onResume();
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        mVolumeReceiver = VolumeUtils.registerVolumeReceiver(this, this);
-        if (mFaceDetectRoundView != null) {
-            mFaceDetectRoundView.setTipTopText("请将脸移入取景框");
+        if (!mHasShownTimeoutDialog) {
+            setVolumeControlStream(AudioManager.STREAM_MUSIC);
+            mVolumeReceiver = VolumeUtils.registerVolumeReceiver(this, this);
+            if (mFaceDetectRoundView != null) {
+                mFaceDetectRoundView.setTipTopText("请将脸移入取景框");
+            }
+            startPreview();
         }
-        startPreview();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         Log.e(TAG, "onRestart");
-        if (mFaceAuraColorView.getVisibility() == View.VISIBLE) {
-            mFaceAuraColorView.setVisibility(View.GONE);
-        }
-        updateOriIcon();
     }
 
     @Override
@@ -274,7 +262,6 @@ public class FaceLivenessActivity extends Activity implements
     @Override
     public void onStop() {
         super.onStop();
-        mFaceAuraColorView.release();
     }
 
     @Override
@@ -290,7 +277,7 @@ public class FaceLivenessActivity extends Activity implements
                 int cv = am.getStreamVolume(AudioManager.STREAM_MUSIC);
                 mIsEnableSound = cv > 0;
                 mSoundView.setImageResource(mIsEnableSound
-                        ? R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice_close);
+                        ? R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice1);
                 if (mILivenessStrategy != null) {
                     mILivenessStrategy.setLivenessStrategySoundEnable(mIsEnableSound);
                 }
@@ -333,6 +320,11 @@ public class FaceLivenessActivity extends Activity implements
             mSurfaceHolder.addCallback(this);
         }
 
+        if (mCamera != null) {
+            CameraUtils.releaseCamera(mCamera);
+            mCamera = null;
+        }
+
         if (mCamera == null) {
             try {
                 mCamera = open();
@@ -352,14 +344,20 @@ public class FaceLivenessActivity extends Activity implements
         }
 
         mCameraParam.setPictureFormat(PixelFormat.JPEG);
+
+        // 获取前置摄像头预览角度，为90度
         int degree = displayOrientation(this);
         mCamera.setDisplayOrientation(degree);
         // 设置后无效，camera.setDisplayOrientation方法有效
         mCameraParam.set("rotation", degree);
         mPreviewDegree = degree;
 
+        // 以屏幕分辨率为基准选取分辨率
+//        Point point = CameraPreviewUtils.getBestPreview(mCameraParam,
+//                new Point(mDisplayWidth, mDisplayHeight));
+        // 以640 * 480为基准选取分辨率
         Point point = CameraPreviewUtils.getBestPreview(mCameraParam,
-                new Point(mDisplayWidth, mDisplayHeight));
+                new Point(640, 480));
 
         mPreviewWidth = point.x;
         mPreviewHight = point.y;
@@ -415,8 +413,17 @@ public class FaceLivenessActivity extends Activity implements
         }
     }
 
+    /**
+     * 获取摄像头预览角度
+     * @param context 当前上下文
+     * @return
+     */
     private int displayOrientation(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (windowManager == null) {
+            return 90;
+        }
+
         int rotation = windowManager.getDefaultDisplay().getRotation();
         int degrees = 0;
         switch (rotation) {
@@ -484,14 +491,11 @@ public class FaceLivenessActivity extends Activity implements
             mILivenessStrategy = FaceSDKManager.getInstance().getLivenessStrategyModule(this);
             mILivenessStrategy.setPreviewDegree(mPreviewDegree);
             mILivenessStrategy.setLivenessStrategySoundEnable(mIsEnableSound);
-            // 是否抽帧
-            mILivenessStrategy.setIsFrameExtraction(mFrameExtraction);
 
             Rect detectRect = FaceDetectRoundView.getPreviewDetectRect(
                     mDisplayWidth, mPreviewHight, mPreviewWidth);
             mILivenessStrategy.setLivenessStrategyConfig(
-                    mFaceConfig.getLivenessTypeList(), mFaceConfig.getLivenessColorTypeList(),
-                    mPreviewRect, detectRect, this);
+                    mFaceConfig.getLivenessTypeList(), mPreviewRect, detectRect, this);
         }
         mILivenessStrategy.livenessStrategy(data);
     }
@@ -503,22 +507,17 @@ public class FaceLivenessActivity extends Activity implements
     @Override
     public void onLivenessCompletion(FaceStatusNewEnum status, String message,
                                      HashMap<String, ImageInfo> base64ImageCropMap,
-                                     HashMap<String, ImageInfo> base64ImageSrcMap,
-                                     int currentLivenessCount, float livenessScore) {
+                                     HashMap<String, ImageInfo> base64ImageSrcMap, int currentLivenessCount) {
         if (mIsCompletion) {
             return;
         }
 
         onRefreshView(status, message, currentLivenessCount);
 
-        if (status == FaceStatusNewEnum.OK
-                || status == FaceStatusNewEnum.AuraColorError
-                || status == FaceStatusNewEnum.AuraLivenessScoreError) {
+        if (status == FaceStatusNewEnum.OK) {
             mIsCompletion = true;
             // saveAllImage(base64ImageCropMap, base64ImageSrcMap);
         }
-        // 打点
-        Ast.getInstance().faceHit("liveness");
     }
 
     private void onRefreshView(FaceStatusNewEnum status, String message, int currentLivenessCount) {
@@ -534,15 +533,16 @@ public class FaceLivenessActivity extends Activity implements
                 mFaceDetectRoundView.setTipSecondText("");
                 mFaceDetectRoundView.setProcessCount(currentLivenessCount,
                         mFaceConfig.getLivenessTypeList().size());
-                if (mFaceAuraColorView.getVisibility() == View.VISIBLE) {
-                    mFaceAuraColorView.setTipTopText(message);
-                    mFaceAuraColorView.setTipSecondText("");
-                }
+                // onRefreshSuccessView(true);
                 stopAnim();
                 break;
-
             case FaceLivenessActionTypeLiveEye:
             case FaceLivenessActionTypeLiveMouth:
+            case FaceLivenessActionTypeLivePitchUp:
+            case FaceLivenessActionTypeLivePitchDown:
+            case FaceLivenessActionTypeLiveYawLeft:
+            case FaceLivenessActionTypeLiveYawRight:
+            case FaceLivenessActionTypeLiveYaw:
                 mFaceDetectRoundView.setTipTopText(message);
                 mFaceDetectRoundView.setTipSecondText("");
                 mFaceDetectRoundView.setProcessCount(currentLivenessCount,
@@ -550,7 +550,6 @@ public class FaceLivenessActivity extends Activity implements
                 // onRefreshTipsView(false, message);
                 // onRefreshSuccessView(false);
                 break;
-
             case DetectRemindCodePitchOutofUpRange:
             case DetectRemindCodePitchOutofDownRange:
             case DetectRemindCodeYawOutofLeftRange:
@@ -559,18 +558,12 @@ public class FaceLivenessActivity extends Activity implements
                 mFaceDetectRoundView.setTipSecondText(message);
                 mFaceDetectRoundView.setProcessCount(currentLivenessCount,
                         mFaceConfig.getLivenessTypeList().size());
-                if (mFaceAuraColorView.getVisibility() == View.VISIBLE) {
-                    mFaceAuraColorView.setTipTopText("请保持正脸");
-                    mFaceAuraColorView.setTipSecondText(message);
-                }
                 // onRefreshSuccessView(false);
                 // onRefreshTipsView(true, message);
                 break;
-
             case FaceLivenessActionCodeTimeout:    // 动作超时，播放教程动画
                 mFaceDetectRoundView.setProcessCount(currentLivenessCount,
                         mFaceConfig.getLivenessTypeList().size());
-                mFaceDetectRoundView.setIsShowShade(true);
                 // 帧动画开启
                 if (mRelativeAddImageView.getVisibility() == View.INVISIBLE) {
                     mRelativeAddImageView.setVisibility(View.VISIBLE);
@@ -584,32 +577,11 @@ public class FaceLivenessActivity extends Activity implements
                 }
                 TimeManager.getInstance().setActiveAnimTime(duration);
                 break;
-
-            case AuraStart:
-                mFaceDetectRoundView.setTipTopText(message);
-                mFaceDetectRoundView.setTipSecondText("");
-                break;
-
-            case AuraColorChange:
-                mFaceDetectRoundView.setTipTopText(" ");
-                if (mFaceAuraColorView.getVisibility() == View.VISIBLE) {
-                    mFaceAuraColorView.setTipTopText(message);
-                    mFaceAuraColorView.setTipSecondText("");
-                }
-                break;
-
-            case AuraColorError:
-                break;
-
             default:
                 mFaceDetectRoundView.setTipTopText("请保持正脸");
                 mFaceDetectRoundView.setTipSecondText(message);
                 mFaceDetectRoundView.setProcessCount(currentLivenessCount,
                         mFaceConfig.getLivenessTypeList().size());
-                if (mFaceAuraColorView.getVisibility() == View.VISIBLE) {
-                    mFaceAuraColorView.setTipTopText("请保持正脸");
-                    mFaceAuraColorView.setTipSecondText(message);
-                }
                 // onRefreshSuccessView(false);
                 // onRefreshTipsView(false, message);
                 break;
@@ -622,6 +594,21 @@ public class FaceLivenessActivity extends Activity implements
             switch (mLivenessType) {
                 case Eye:
                     mImageAnim.setBackgroundResource(R.drawable.anim_eye);
+                    break;
+//                case HeadLeftOrRight:
+//                    mImageAnim.setBackgroundResource(R.drawable.anim_shake);
+//                    break;
+                case HeadLeft:
+                    mImageAnim.setBackgroundResource(R.drawable.anim_left);
+                    break;
+                case HeadRight:
+                    mImageAnim.setBackgroundResource(R.drawable.anim_right);
+                    break;
+                case HeadDown:
+                    mImageAnim.setBackgroundResource(R.drawable.anim_down);
+                    break;
+                case HeadUp:
+                    mImageAnim.setBackgroundResource(R.drawable.anim_up);
                     break;
                 case Mouth:
                     mImageAnim.setBackgroundResource(R.drawable.anim_mouth);
@@ -662,60 +649,7 @@ public class FaceLivenessActivity extends Activity implements
         // }
     }
 
-    @Override
-    public void setBackgroundColor(int currentColor, int preColor) {
-        int preBag = -1;
-        if (preColor == 0) {
-            preBag = getResources().getColor(R.color.aura_blue);
-        } else if (preColor == 1) {
-            preBag = getResources().getColor(R.color.aura_green);
-        } else if (preColor == 2) {
-            preBag = getResources().getColor(R.color.aura_red);
-        }
-
-        switch (currentColor) {
-            case -1:
-                updateOriIcon();
-                mFaceAuraColorView.setVisibility(View.GONE);
-                break;
-            case 0:
-                updateWhiteIcon();
-                mFaceAuraColorView.setVisibility(View.VISIBLE);
-                mFaceAuraColorView.start(getResources().getColor(R.color.aura_blue));
-                mFaceAuraColorView.setColorBg(preBag);
-                break;
-            case 1:
-                updateWhiteIcon();
-                mFaceAuraColorView.setVisibility(View.VISIBLE);
-                mFaceAuraColorView.start(getResources().getColor(R.color.aura_green));
-                mFaceAuraColorView.setColorBg(preBag);
-                break;
-            case 2:
-                updateWhiteIcon();
-                mFaceAuraColorView.setVisibility(View.VISIBLE);
-                mFaceAuraColorView.start(getResources().getColor(R.color.aura_red));
-                mFaceAuraColorView.setColorBg(preBag);
-                break;
-            case 3:
-                updateOriIcon();
-                mFaceAuraColorView.setVisibility(View.VISIBLE);
-                mFaceAuraColorView.start(getResources().getColor(R.color.aura_default));
-                mFaceAuraColorView.setColorBg(preBag);
-                break;
-            default:
-                updateOriIcon();
-                mFaceAuraColorView.setVisibility(View.GONE);
-                break;
-        }
-    }
-
-    @Override
-    public void startRecordVideo(boolean lostFaceId) {
-        // 不实现
-    }
-
     private void stopAnim() {
-        mFaceDetectRoundView.setIsShowShade(false);
         if (mAnimationDrawable != null) {
             mAnimationDrawable.stop();
             mAnimationDrawable = null;
@@ -723,20 +657,6 @@ public class FaceLivenessActivity extends Activity implements
         if (mRelativeAddImageView.getVisibility() == View.VISIBLE) {
             mRelativeAddImageView.setVisibility(View.INVISIBLE);
         }
-    }
-
-    private void updateWhiteIcon() {
-        mSoundView.setImageResource(mIsEnableSound ?
-                R.mipmap.icon_titlebar_voice2_white : R.mipmap.icon_titlebar_voice_close_white);
-        mCloseView.setImageResource(R.mipmap.icon_titlebar_close_white);
-        mFaceAuraColorView.setTextColor(Color.WHITE);
-    }
-
-    private void updateOriIcon() {
-        mSoundView.setImageResource(mIsEnableSound ?
-                R.mipmap.icon_titlebar_voice2 : R.mipmap.icon_titlebar_voice_close);
-        mCloseView.setImageResource(R.mipmap.icon_titlebar_close);
-        mFaceAuraColorView.setTextColor(Color.BLACK);
     }
 
     // ----------------------------------------供调试用----------------------------------------------

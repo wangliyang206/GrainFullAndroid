@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!--titlebar-->
+    <RelativeLayout
+        android:id="@+id/agreement_layout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/agreement_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginLeft="18dp"
+            android:src="@mipmap/icon_home_titlebar_back_agreement_return" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/home_agreement_titlebar_txt"
+            android:textColor="@color/home_text_color_black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_below="@id/agreement_layout"
+        android:background="#d8d8d8" />
+
+    <!--底部背景及文字-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@mipmap/icon_collect_bottom"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/text_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/collect_bottom_txt"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/collect_bottom_font"
+        android:textColor="@color/collect_bottom_color"/>
+
+    <!--功能说明-->
+    <RelativeLayout
+        android:id="@+id/functional_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/functional_image"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_home_image_agreement" />
+
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/functional_image"
+            android:text="@string/home_agreement_functional_txt"
+            android:layout_centerVertical="true"
+            android:textColor="@color/home_text_color_black"
+            android:textSize="@dimen/agreement_title_font" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/functional_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/functional_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/home_agreement_functional_explain_txt"
+        android:textColor="@color/agreement_content_color"
+        android:textSize="@dimen/agreement_content_font" />
+
+    <TextView
+        android:id="@+id/functional_old_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/functional_txt"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/agreement_content_color"
+        android:textSize="@dimen/agreement_content_font"
+        android:visibility="gone"
+        android:text="@string/home_agreement_functional_explain_old_txt" />
+
+    <!--授权与许可-->
+    <RelativeLayout
+        android:id="@+id/permission_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/functional_old_txt"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/permission_image"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_home_image_agreement" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/permission_image"
+            android:layout_centerVertical="true"
+            android:text="@string/home_agreement_permission_txt"
+            android:textColor="@color/home_text_color_black"
+            android:textSize="@dimen/agreement_title_font" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/permission_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/permission_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/agreement_content_color"
+        android:textSize="@dimen/agreement_content_font"
+        android:text="@string/home_agreement_permission_explain_txt" />
+
+    <!--信息安全声明-->
+    <RelativeLayout
+        android:id="@+id/rmation_security_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/permission_txt"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/rmation_security_image"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_home_image_agreement" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/rmation_security_image"
+            android:text="@string/home_agreement_rmation_security_txt"
+            android:layout_centerVertical="true"
+            android:textColor="@color/home_text_color_black"
+            android:textSize="@dimen/agreement_title_font" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rmation_security_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/agreement_content_color"
+        android:textSize="@dimen/agreement_content_font"
+        android:text="@string/home_agreement_rmation_security_explaoin_txt" />
+
+</RelativeLayout>

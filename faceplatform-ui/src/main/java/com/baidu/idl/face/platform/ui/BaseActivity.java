@@ -40,12 +40,6 @@ public class BaseActivity extends Activity {
                 if (hasSdcardWrite != PackageManager.PERMISSION_GRANTED) {
                     requestPerssionArr.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 }
-
-                int hasAudio = checkSelfPermission(Manifest.permission.RECORD_AUDIO);
-                if (hasAudio != PackageManager.PERMISSION_GRANTED) {
-                    requestPerssionArr.add(Manifest.permission.RECORD_AUDIO);
-                }
-
                 // 是否应该显示权限请求
                 if (requestPerssionArr.size() >= 1) {
                     String[] requestArray = new String[requestPerssionArr.size()];

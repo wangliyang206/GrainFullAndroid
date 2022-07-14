@@ -1,32 +1,37 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
-import com.blankj.utilcode.util.FileUtils;
-import com.jess.arms.di.component.AppComponent;
+import com.baidu.idl.face.platform.FaceSDKManager;
+import com.baidu.idl.face.platform.ui.utils.IntentUtils;
+import com.baidu.idl.face.platform.ui.widget.CircleImageView;
+import com.baidu.idl.face.platform.utils.Base64Utils;
+import com.baidu.idl.face.platform.utils.BitmapUtils;
+import com.baidu.idl.face.platform.utils.DensityUtils;
+import com.baidu.idl.face.platform.utils.FileUtils;
 import com.jess.arms.base.BaseActivity;
+import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
-
+import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduFaceCollectionSuccessComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduFaceCollectionSuccessContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceCollectionSuccessPresenter;
-import com.zqw.mobile.grainfull.R;
 
-import java.text.DecimalFormat;
+import java.io.File;
 
 import butterknife.BindView;
-import timber.log.Timber;
 
 /**
  * Description:百度AI - 人脸识别 采集成功
@@ -38,11 +43,16 @@ import timber.log.Timber;
  */
 public class BaiduFaceCollectionSuccessActivity extends BaseActivity<BaiduFaceCollectionSuccessPresenter> implements BaiduFaceCollectionSuccessContract.View {
 
-    @BindView(R.id.text_score)
-    TextView mTextScore;
+    @BindView(R.id.circle_head)
+    CircleImageView mCircleHead;
 
-    // 已保存的路径
-    private String mSaveName;
+    @BindView(R.id.image_circle)
+    ImageView mImageCircle;
+
+    @BindView(R.id.image_star)
+    ImageView mImageStar;
+
+    protected String mDestroyType;
 
     /**
      * 根据主题使用不同的颜色。
@@ -50,6 +60,12 @@ public class BaiduFaceCollectionSuccessActivity extends BaseActivity<BaiduFaceCo
      */
     public int useStatusBarColor() {
         return -1;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        IntentUtils.getInstance().release();
     }
 
     @Override
@@ -76,33 +92,38 @@ public class BaiduFaceCollectionSuccessActivity extends BaseActivity<BaiduFaceCo
     private void initData() {
         Intent intent = getIntent();
         if (intent != null) {
-            float score = intent.getFloatExtra("livenessScore", 0f);
-            DecimalFormat format = new DecimalFormat("0.0000");
-            mSaveName = intent.getStringExtra("SaveName");
-            mTextScore.setText("活体分数 " + format.format(score));
+            mDestroyType = intent.getStringExtra("destroyType");
+            String bmpStr = IntentUtils.getInstance().getBitmap();
+            if (TextUtils.isEmpty(bmpStr)) {
+                return;
+            }
+            Bitmap bmp = base64ToBitmap(bmpStr);
+            saveImage(bmp);
+            bmp = FaceSDKManager.getInstance().scaleImage(bmp,
+                    DensityUtils.dip2px(getApplicationContext(), 97),
+                    DensityUtils.dip2px(getApplicationContext(), 97));
+            mCircleHead.setImageBitmap(bmp);
         }
+
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mImageCircle.setVisibility(View.VISIBLE);
+//                mImageStar.setVisibility(View.VISIBLE);
+//            }
+//        }, 500);
     }
 
     // 回到首页
     public void onReturnHome(View v) {
-        BaiduFaceRecognitionActivity.destroyActivity();
-        finish();
-    }
-
-    /**
-     * 播放
-     */
-    public void onPlay(View v) {
-        Timber.i("####%s", mSaveName);
-        if (FileUtils.isFile(mSaveName)) {
-            Intent tostart = new Intent(Intent.ACTION_VIEW);
-            tostart.setDataAndType(Uri.parse(mSaveName), "video/*");
-            startActivity(tostart);
-        } else {
-            showMessage("没有发现文件！");
+        if ("BaiduFaceLivenessExpActivity".equals(mDestroyType)) {
+            BaiduFaceRecognitionActivity.destroyActivity("BaiduFaceLivenessExpActivity");
         }
-
-
+        if ("BaiduFaceDetectExpActivity".equals(mDestroyType)) {
+            BaiduFaceRecognitionActivity.destroyActivity("BaiduFaceDetectExpActivity");
+        }
+        finish();
     }
 
     // 重新采集
@@ -110,8 +131,44 @@ public class BaiduFaceCollectionSuccessActivity extends BaseActivity<BaiduFaceCo
         finish();
     }
 
-    public void onBack(View v) {
-        finish();
+    private Bitmap base64ToBitmap(String base64Data) {
+        byte[] bytes = Base64Utils.decode(base64Data, Base64Utils.NO_WRAP);
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    }
+
+    private void saveImage(final Bitmap bitmap) {
+        // 保存图片
+        Runnable runnable = () -> {
+
+            try {
+                String path = getFrameSavePath("1");
+                if (path == null) {
+                    return;
+                }
+                BitmapUtils.saveBitmap(new File(path), bitmap);
+                bitmap.recycle();
+            } catch (Exception e) {
+                System.err.print(e.getMessage());
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+    }
+
+    /**
+     * 获取抽帧图片保存目录
+     */
+    private String getFrameSavePath(String fileName) {
+        File path = FileUtils.getSDRootFile();
+        if (path == null) {
+            return null;
+        }
+        File dir = new File(path.toString() + "/image");
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+        String imagePath = dir + "/" + fileName + ".jpg";
+        return imagePath;
     }
 
     public Activity getActivity() {

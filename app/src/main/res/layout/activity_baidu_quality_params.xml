@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9">
+
+    <!--titlebar-->
+    <RelativeLayout
+        android:id="@+id/agreement_layout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/btn_quality_param_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/setting_image_close_selector" />
+
+        <TextView
+            android:id="@+id/text_params_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/home_text_color_black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="@string/setting_quality_save_txt"
+            android:textColor="@color/setting_quality_grey"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_below="@id/agreement_layout"
+        android:background="#d8d8d8" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp">
+
+            <!--最小光照值-->
+            <RelativeLayout
+                android:id="@+id/relative_min_illum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_top_round">
+
+                <TextView
+                    android:id="@+id/text_min_illum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_min_illum"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_min_illum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+
+            </RelativeLayout>
+
+            <!--最大光照值-->
+            <RelativeLayout
+                android:id="@+id/relative_max_illum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_min_illum"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:id="@+id/text_max_illum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_max_illum"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_max_illum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+
+            </RelativeLayout>
+
+            <!--模糊度-->
+            <RelativeLayout
+                android:id="@+id/relative_blur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_max_illum"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_bottom_round">
+
+                <TextView
+                    android:id="@+id/text_blur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_blur"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_blur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_occlu_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_blur"
+                android:layout_marginTop="24dp"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/setting_occlu_tips"
+                android:textColor="@color/setting_quality_enter"/>
+
+            <!--左眼-->
+            <RelativeLayout
+                android:id="@+id/relative_left_eye"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_occlu_title"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="12dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_top_round">
+
+                <TextView
+                    android:id="@+id/text_left_eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_left_eye"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_left_eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+
+            </RelativeLayout>
+
+            <!--右眼-->
+            <RelativeLayout
+                android:id="@+id/relative_right_eye"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_left_eye"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:id="@+id/text_right_eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_right_eye"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_right_eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <!--鼻子-->
+            <RelativeLayout
+                android:id="@+id/relative_nose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_right_eye"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:id="@+id/text_nose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_nose"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_nose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <!--嘴巴-->
+            <RelativeLayout
+                android:id="@+id/relative_mouth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_nose"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:id="@+id/text_mouth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_mouth"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_mouth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <!--左脸颊-->
+            <RelativeLayout
+                android:id="@+id/relative_left_cheek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_mouth"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:id="@+id/text_left_cheek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_left_cheek"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_left_cheek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <!--右脸颊-->
+            <RelativeLayout
+                android:id="@+id/relative_right_cheek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_left_cheek"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:id="@+id/text_right_cheek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_right_cheek"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_right_cheek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <!--下巴-->
+            <RelativeLayout
+                android:id="@+id/relative_chin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_right_cheek"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_bottom_round">
+
+                <TextView
+                    android:id="@+id/text_chin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_chin"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_chin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_headpose_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_chin"
+                android:layout_marginTop="24dp"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/setting_headpose_tips"
+                android:textColor="@color/setting_quality_enter"/>
+
+            <!--俯仰角-->
+            <RelativeLayout
+                android:id="@+id/relative_pitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_headpose_title"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="12dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_top_round">
+
+                <TextView
+                    android:id="@+id/text_pitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_pitch"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_pitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <!--左右角-->
+            <RelativeLayout
+                android:id="@+id/relative_yaw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_pitch"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@color/home_text_color_white">
+
+                <TextView
+                    android:id="@+id/text_yaw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_yaw"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_yaw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <!--旋转角-->
+            <RelativeLayout
+                android:id="@+id/relative_roll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_yaw"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:background="@drawable/setting_layout_bottom_round">
+
+                <TextView
+                    android:id="@+id/text_roll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/home_text_color_black"
+                    android:text="@string/setting_params_roll"
+                    android:textSize="@dimen/setting_params_font"/>
+
+                <com.baidu.idl.face.platform.ui.widget.AmountView
+                    android:id="@+id/amount_roll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingTop="15dp"
+                android:layout_below="@id/relative_roll"
+                android:paddingBottom="15dp"
+                android:visibility="gone"
+                android:background="@drawable/setting_layout_bottom_round">
+                <TextView
+                    android:id="@+id/text_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/setting_quality_grey"
+                    android:text="@string/setting_default_normal"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+
+            <!-- 百度logo-->
+            <TextView
+                android:id="@+id/text_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/relative_default"
+                android:layout_marginTop="20dp"
+                android:textSize="@dimen/collect_bottom_font"
+                android:text="@string/collect_bottom_txt"
+                android:visibility="gone"
+                android:textColor="@color/collect_bottom_color" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <View
+        android:id="@+id/view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#7000"
+        android:visibility="gone"/>
+
+</RelativeLayout>

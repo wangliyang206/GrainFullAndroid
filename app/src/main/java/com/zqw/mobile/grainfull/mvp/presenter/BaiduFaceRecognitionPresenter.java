@@ -1,13 +1,12 @@
 package com.zqw.mobile.grainfull.mvp.presenter;
 
 import android.content.Intent;
-import android.os.Bundle;
 
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduFaceRecognitionContract;
+import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceDetectExpActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceLivenessExpActivity;
-import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceLivenessVideoExpActivity;
 
 import javax.inject.Inject;
 
@@ -33,27 +32,12 @@ public class BaiduFaceRecognitionPresenter extends BasePresenter<BaiduFaceRecogn
     /**
      * 跳转活体检测
      */
-    public void onJump(boolean isVideo, boolean frameExtraction) {
+    public void onJump(boolean isVideo) {
         if (isVideo) {
-            Intent intent = new Intent(mRootView.getActivity(), BaiduFaceLivenessVideoExpActivity.class);
-            Bundle mBundle = new Bundle();
-//            mBundle.putString("mAccountsReceivable", mAccountsReceivable);
-//            mBundle.putString("appSeq", appSeq);
-//            mBundle.putString("code", code);
-//            mBundle.putString("session_id", session_id);
-//            mBundle.putString("pId", pId);
-            intent.putExtras(mBundle);
+            Intent intent = new Intent(mRootView.getActivity(), BaiduFaceLivenessExpActivity.class);
             mRootView.getActivity().startActivity(intent);
         } else {
-            Intent intent = new Intent(mRootView.getActivity(), BaiduFaceLivenessExpActivity.class);
-            intent.putExtra("frame_extraction", frameExtraction);
-            Bundle mBundle = new Bundle();
-//            mBundle.putString("mAccountsReceivable", mAccountsReceivable);
-//            mBundle.putString("appSeq", appSeq);
-//            mBundle.putString("code", code);
-//            mBundle.putString("session_id", session_id);
-//            mBundle.putString("pId", pId);
-            intent.putExtras(mBundle);
+            Intent intent = new Intent(mRootView.getActivity(), BaiduFaceDetectExpActivity.class);
             mRootView.getActivity().startActivity(intent);
         }
     }
