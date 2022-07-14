@@ -100,7 +100,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        this.mNavigation = null;
 
         this.mTabHome = null;
 

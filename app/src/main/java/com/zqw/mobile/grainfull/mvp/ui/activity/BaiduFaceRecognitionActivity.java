@@ -95,9 +95,6 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        this.isCheckBox = null;
-        this.faceAgreement = null;
-        this.butStartGather = null;
         // 释放
         FaceSDKManager.getInstance().release();
     }

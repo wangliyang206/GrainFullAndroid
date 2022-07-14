@@ -53,9 +53,6 @@ public class IdentifyBankCardsActivity extends BaseActivity<IdentifyBankCardsPre
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.editInput = null;
-        this.txviTips = null;
-        this.image = null;
     }
 
     @Override

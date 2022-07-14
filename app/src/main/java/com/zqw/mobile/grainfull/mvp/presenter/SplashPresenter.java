@@ -83,7 +83,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
 
         if (IS_DEBUG_DATA) {
             // 将账号密码以及常用信息保存到缓存中
-            mAccountManager.updateAccountInfo(new LoginResponse("50154b09-14bd-49bf-87a7-d53ce5d29f80", "R000014", "18124027304", "18124027304"));
+            mAccountManager.updateAccountInfo(new LoginResponse("50154b09-14bd-49bf-87a7-d53ce5d29f80", "R000014", "秤砣", "18124027304"));
             // 跳转致首页
             mRootView.jumbToMain();
         } else {

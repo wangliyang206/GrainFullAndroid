@@ -98,10 +98,6 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
         this.mOutLoginTips = null;
         this.mClearCacheTips = null;
 
-        this.mClear = null;
-        this.mVersion = null;
-        this.mOutLogin = null;
-
         this.mImageLoader = null;
         this.mAccountManager = null;
     }

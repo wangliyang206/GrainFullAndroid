@@ -94,13 +94,13 @@ public class BaiduFaceSettingActivity extends BaseActivity<BaiduFaceSettingPrese
 
     @Override
     protected void onDestroy() {
+        BaiduFaceRecognitionActivity.isLivenessRandom = actionliveSwitch.isChecked();
+        BaiduFaceRecognitionActivity.isOpenSound = announcementsSwitch.isChecked();
+        BaiduFaceRecognitionActivity.isActionLive = liveDetectSwitch.isChecked();
         super.onDestroy();
         BaiduFaceRecognitionActivity.livenessList.clear();
         Collections.sort(this.livenessList, new ComparatorValues());
         BaiduFaceRecognitionActivity.livenessList = this.livenessList;
-        BaiduFaceRecognitionActivity.isLivenessRandom = actionliveSwitch.isChecked();
-        BaiduFaceRecognitionActivity.isOpenSound = announcementsSwitch.isChecked();
-        BaiduFaceRecognitionActivity.isActionLive = liveDetectSwitch.isChecked();
         setFaceConfig();
     }
 

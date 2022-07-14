@@ -107,13 +107,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         super.onDestroy();
         this.mDialog = null;
 
-        this.mTextInputMobile = null;
-        this.mEditTextMobile = null;
-        this.mTextInputPassword = null;
-        this.mEditTextPassword = null;
-        this.mTxviSwitchLogin = null;
-        this.mBtnLogin = null;
-
         this.disposMobile = null;
         this.disposPassword = null;
     }

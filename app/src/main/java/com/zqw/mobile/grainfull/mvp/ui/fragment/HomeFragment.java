@@ -89,12 +89,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.imviHead = null;
-        this.lilaSearch = null;
-        this.txviSearchHot = null;
-
-        this.lilaNotTargeted = null;
-        this.lilaLoading = null;
         this.mImageLoader = null;
     }
 

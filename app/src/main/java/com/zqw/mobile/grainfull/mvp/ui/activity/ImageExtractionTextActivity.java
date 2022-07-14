@@ -17,8 +17,6 @@ import androidx.annotation.Nullable;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.blankj.utilcode.util.ImageUtils;
-import com.huawei.hmf.tasks.OnFailureListener;
-import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
 import com.huawei.hms.mlsdk.MLAnalyzerFactory;
 import com.huawei.hms.mlsdk.common.MLFrame;
@@ -89,9 +87,6 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
             this.mDialog.dismiss();
         }
         super.onDestroy();
-        this.radioGroup = null;
-        this.image = null;
-        this.btnIdentify = null;
 
         if (CommonUtils.isNotEmpty(mImagePaths)) {
             this.mImagePaths.clear();

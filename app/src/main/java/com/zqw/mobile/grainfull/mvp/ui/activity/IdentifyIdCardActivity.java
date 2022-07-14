@@ -60,13 +60,6 @@ public class IdentifyIdCardActivity extends BaseActivity<IdentifyIdCardPresenter
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.imviFont = null;
-        this.imviBack = null;
-
-        this.txviIdCard = null;
-        this.txviName = null;
-        this.txviSex = null;
-        this.txviValidityPeriod = null;
     }
 
     @Override
