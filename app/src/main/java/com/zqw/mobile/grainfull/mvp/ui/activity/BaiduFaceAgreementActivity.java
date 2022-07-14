@@ -21,7 +21,7 @@ import com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceAgreementPresenter;
 import butterknife.OnClick;
 
 /**
- * Description:百度AI - 人脸识别 -人脸采集协议
+ * Description:百度AI - 人脸采集 -人脸采集协议
  * <p>
  * Created on 2022/07/13 16:59
  *

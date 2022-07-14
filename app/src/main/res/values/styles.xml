@@ -93,7 +93,7 @@
         <attr name="triAngleColor" format="reference|color"/>
     </declare-styleable>
 
-    <!-- 百度人脸识别 -->
+    <!-- 百度人脸采集 -->
     <style name="DefaultDialog" parent="android:style/Theme.Dialog">
         <item name="android:background">#00000000</item>
         <item name="android:windowBackground">@android:color/transparent</item>

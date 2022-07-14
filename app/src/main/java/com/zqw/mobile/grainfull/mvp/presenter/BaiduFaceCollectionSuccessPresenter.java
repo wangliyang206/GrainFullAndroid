@@ -15,7 +15,7 @@ import com.zqw.mobile.grainfull.mvp.contract.BaiduFaceCollectionSuccessContract;
 
 /**
  * ================================================
- * Description:百度AI - 人脸识别 采集成功
+ * Description:百度AI - 人脸采集 - 采集成功
  * <p>
  * Created by MVPArmsTemplate on 2022/07/12 12:30
  * ================================================

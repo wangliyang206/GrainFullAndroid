@@ -35,7 +35,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Description:百度AI - 人脸识别 - 设置
+ * Description:百度AI - 人脸采集 - 设置
  * <p>
  * Created on 2022/07/13 16:55
  *

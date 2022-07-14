@@ -41,7 +41,7 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 /**
- * Description:百度AI - 人脸识别
+ * Description:百度AI - 人脸采集
  * <p>
  * Created on 2022/07/12 17:35
  *

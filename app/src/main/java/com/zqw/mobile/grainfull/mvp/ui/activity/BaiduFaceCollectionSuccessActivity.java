@@ -34,7 +34,7 @@ import java.io.File;
 import butterknife.BindView;
 
 /**
- * Description:百度AI - 人脸识别 采集成功
+ * Description:百度AI - 人脸采集 - 采集成功
  * <p>
  * Created on 2022/07/12 18:16
  *

@@ -177,7 +177,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 EventBus.getDefault().post(new MainEvent(EventBusTags.OPEN_MENU_TAG), EventBusTags.HOME_TAG);
                 break;
             case R.id.btn_home_manual:                                                              // 定位失败-手动定位
-
+                showMessage("暂未开放！");
                 break;
             case R.id.btn_home_load:                                                                // 定位失败-重新加载
                 // 初始化首页内容

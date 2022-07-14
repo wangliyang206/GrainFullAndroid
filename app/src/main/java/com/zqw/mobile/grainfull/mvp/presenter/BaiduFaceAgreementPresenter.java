@@ -15,7 +15,7 @@ import com.zqw.mobile.grainfull.mvp.contract.BaiduFaceAgreementContract;
 
 /**
  * ================================================
- * Description:百度AI - 人脸识别 -人脸采集协议
+ * Description:百度AI - 人脸采集 -人脸采集协议
  * <p>
  * Created by MVPArmsTemplate on 2022/07/12 12:30
  * ================================================

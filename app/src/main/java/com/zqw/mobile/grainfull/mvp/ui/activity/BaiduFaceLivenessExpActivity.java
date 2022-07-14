@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Description:百度AI - 人脸识别 - 面部活力体验
+ * Description:百度AI - 人脸采集 - 面部活力体验
  * <p>
  * Created on 2022/07/12 18:10
  *

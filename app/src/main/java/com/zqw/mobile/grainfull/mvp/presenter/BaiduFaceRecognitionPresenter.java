@@ -14,7 +14,7 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 /**
  * ================================================
- * Description:百度AI - 人脸识别
+ * Description:百度AI - 人脸采集
  * <p>
  * Created by MVPArmsTemplate on 2022/07/12 12:30
  * ================================================

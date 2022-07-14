@@ -15,7 +15,7 @@ import com.zqw.mobile.grainfull.mvp.contract.BaiduFaceSettingContract;
 
 /**
  * ================================================
- * Description:百度AI - 人脸识别 - 设置
+ * Description:百度AI - 人脸采集 - 设置
  * <p>
  * Created by MVPArmsTemplate on 2022/07/12 12:30
  * ================================================

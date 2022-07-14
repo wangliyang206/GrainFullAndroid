@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Description:百度AI - 人脸识别 - 人脸检测指数
+ * Description:百度AI - 人脸采集 - 人脸检测指数
  * <p>
  * Created on 2022/07/13 18:10
  *
