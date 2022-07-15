@@ -69,6 +69,13 @@ public class SerialNumberActivity extends BaseActivity<SerialNumberPresenter> im
     /*------------------------------------------业务信息------------------------------------------*/
 
     /**
+     * 将状态栏改为浅色、深色模式(状态栏 icon 和字体，false = 浅色，true = 深色)
+     */
+    public boolean useLightStatusBar() {
+        return false;
+    }
+
+    /**
      * 根据主题使用不同的颜色。
      * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
      */

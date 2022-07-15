@@ -51,6 +51,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.LivenessCustomDetectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.SerialNumberActivity"
             android:screenOrientation="portrait" />
         <activity

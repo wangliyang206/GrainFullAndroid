@@ -1,5 +1,7 @@
 package com.zqw.mobile.grainfull.mvp.model.entity;
 
+import com.huawei.hms.mlsdk.livenessdetection.MLLivenessCaptureResult;
+
 /**
  * 包名： com.zqw.mobile.recycling.model
  * 对象名： MainEvent
@@ -34,15 +36,10 @@ public class MainEvent {
         this.position = position;
     }
 
-    /**
-     * 刷新回收订单首页
-     */
-    public MainEvent(int code, String dayRecycle, String monthRecycle, String totalRecovery, String unitRecycle) {
+    public MainEvent(int code, int type, MLLivenessCaptureResult result) {
         this.code = code;
-        this.dayRecycle = dayRecycle;
-        this.monthRecycle = monthRecycle;
-        this.totalRecovery = totalRecovery;
-        this.unitRecycle = unitRecycle;
+        this.type = type;
+        this.result = result;
     }
 
     /**
@@ -58,46 +55,14 @@ public class MainEvent {
     private int position = 0;
     private int type = 0;
 
+    private MLLivenessCaptureResult result;
 
-    // 当日回收量(重量)
-    private String dayRecycle;
-    // 当月回收量(重量)
-    private String monthRecycle;
-    // 总回收量
-    private String totalRecovery;
-    // 单位
-    private String unitRecycle;
-
-    public String getDayRecycle() {
-        return dayRecycle;
+    public MLLivenessCaptureResult getResult() {
+        return result;
     }
 
-    public void setDayRecycle(String dayRecycle) {
-        this.dayRecycle = dayRecycle;
-    }
-
-    public String getMonthRecycle() {
-        return monthRecycle;
-    }
-
-    public void setMonthRecycle(String monthRecycle) {
-        this.monthRecycle = monthRecycle;
-    }
-
-    public String getTotalRecovery() {
-        return totalRecovery;
-    }
-
-    public void setTotalRecovery(String totalRecovery) {
-        this.totalRecovery = totalRecovery;
-    }
-
-    public String getUnitRecycle() {
-        return unitRecycle;
-    }
-
-    public void setUnitRecycle(String unitRecycle) {
-        this.unitRecycle = unitRecycle;
+    public void setResult(MLLivenessCaptureResult result) {
+        this.result = result;
     }
 
     public int getType() {

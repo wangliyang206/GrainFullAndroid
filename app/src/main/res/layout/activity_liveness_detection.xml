@@ -1,8 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
     android:orientation="vertical">
 
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_livenessdetection_top"
+        layout="@layout/comm_top_layout" />
+
+    <!-- 识别结果 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_10"
+        android:layout_weight="1"
+        android:background="@drawable/layout_bg_shape"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image_livenessdetection_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/txvi_livenessdetection_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_bg_shape"
+            android:text=""
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- 操作按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_livenessdetection_default"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:gravity="center"
+            android:text="默认视图"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_livenessdetection_customize"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:gravity="center"
+            android:text="自定义视图"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 </LinearLayout>

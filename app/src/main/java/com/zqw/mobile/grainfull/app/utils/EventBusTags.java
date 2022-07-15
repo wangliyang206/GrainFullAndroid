@@ -42,29 +42,6 @@ public interface EventBusTags {
     int OPEN_MENU_TAG = 2;
     // 切换城市
     int SWITCH_CITIES_TAG = 3;
-    // 1、拜访记录》筛选》拜访标签；
-    int REFRESH_VISITLABEL_TAG = 4;
-
-    // 新门店拜访-进件
-    int NEWCUSTOMER_REGEDIT_TAG = 5;
-
-    // 签到-切换类型
-    int SIGNIN_SWITCH_TAG = 6;
-    // 订单-切换类型
-    int ORDER_SWITCH_TAG = 7;
-    // 门店-切换类型
-    int STORE_SWITCH_TAG = 8;
-    // 积分-切换类型
-    int INTEGRAL_SWITCH_TAG = 9;
-    // 吨位-切换类型
-    int TONNAGE_SWITCH_TAG = 10;
-    // 积分-切换顶部类型
-    int INTEGRAL_TOP_SWITCH_TAG = 11;
-    // 积分-刷新列表
-    int INTEGRAL_REFRESH_TAG = 12;
-
-    // 1、刷新销售送货单列表；2、拜访记录》筛选》角色；
-    int REFRESH_SALESDELIVERYORDER_TAG = 0;
-    // 刷新回收订单首页
-    int REFRESH_RECYCLEORDER_TAG = 0;
+    // 活体检测返回
+    int RETURN_LIVENESS_DETECTION = 4;
 }

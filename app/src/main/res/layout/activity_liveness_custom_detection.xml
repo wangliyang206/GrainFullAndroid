@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_livenesscustomdetection_top"
+        layout="@layout/comm_top_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/preview_container"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_below="@id/tool_bar"
+            android:background="@color/layout_bg_color"
+            android:minHeight="480dp">
+
+            <FrameLayout
+                android:id="@+id/surface_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/imageview_scanbg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@mipmap/liveness_detection_frame" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/preview_container"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="HWtext-55ST"
+            android:gravity="center"
+            android:text="把脸放框里"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+</LinearLayout>

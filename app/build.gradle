@@ -353,6 +353,8 @@ dependencies {
     implementation 'com.huawei.hms:ml-computer-vision-handkeypoint:2.1.0.300'
     implementation 'com.huawei.hms:ml-computer-vision-handkeypoint-model:2.1.0.300'
     implementation 'com.huawei.hms:ml-computer-vision-gesture-model:2.1.0.300'
+    // 华为SDK - 活体检测
+    implementation 'com.huawei.hms:ml-computer-vision-livenessdetection:2.2.0.300'
     // 百度AI - 人脸采集
     implementation project(path: ':faceplatform-ui')
 }
