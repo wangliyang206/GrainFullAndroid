@@ -45,6 +45,18 @@ public class LivenessDetectionActivity extends BaseActivity<LivenessDetectionPre
     @BindView(R.id.image_livenessdetection_result)
     ImageView mImageResult;                                                                         // 图片结果
 
+    @BindView(R.id.txvi_livenessdetection_live)
+    TextView mTextLive;                                                                             // 是否活体
+
+    @BindView(R.id.txvi_livenessdetection_score)
+    TextView mTextScore;                                                                            // 活体的量化分数
+
+    @BindView(R.id.txvi_livenessdetection_yaw)
+    TextView mTextYaw;                                                                              // 人脸左右旋转角度
+
+    @BindView(R.id.txvi_livenessdetection_pitch)
+    TextView mTextPitch;                                                                            // 人脸俯仰角度
+
     @BindView(R.id.txvi_livenessdetection_result)
     TextView mTextResult;                                                                           // 文字结果
 
@@ -135,12 +147,25 @@ public class LivenessDetectionActivity extends BaseActivity<LivenessDetectionPre
          */
         @Override
         public void onSuccess(MLLivenessCaptureResult result) {
-            mTextResult.setText("是否活体：" + result.isLive() + "\r\n" +
-                    "活体的置信度（量化分数）：" + result.getScore() + "\r\n" +
-                    "人脸左右旋转角度：" + result.getYaw() + "\r\n" +
-                    "人脸俯仰角度：" + result.getPitch() + "\r\n" +
-                    "人脸在竖直平面的旋转角度：" + result.getRoll() + "\r\n"
-            );
+
+            // true：活体。
+            // false：非活体。
+            mTextLive.setText("是否活体：" + result.isLive());
+
+            // 活体的置信度，量化分数为0.0、10.0、50.0、90.0四个分级。
+            mTextScore.setText("活体的量化分数：" + result.getScore());
+
+            // 正值表示人脸转向图像的右侧。
+            // 负值表示人脸转向图像的左侧。
+            mTextYaw.setText("人脸左右旋转角度：" + result.getYaw());
+
+            // 正值表示人脸低头角度。
+            // 负值表示人脸仰头角度。
+            mTextPitch.setText("人脸俯仰角度：" + result.getPitch());
+
+            // 正值表示人脸在图像竖直平面顺时针旋转。
+            // 负值表示人脸在图像竖直平面逆时针旋转。
+            mTextResult.setText("人脸在竖直平面的旋转角度：" + result.getRoll());
 
             mImageResult.setImageBitmap(result.getBitmap());
         }
@@ -158,12 +183,25 @@ public class LivenessDetectionActivity extends BaseActivity<LivenessDetectionPre
          */
         @Override
         public void onSuccess(MLLivenessCaptureResult result) {
-            mTextResult.setText("是否活体：" + result.isLive() + "\r\n" +
-                    "活体的置信度（量化分数）：" + result.getScore() + "\r\n" +
-                    "人脸左右旋转角度：" + result.getYaw() + "\r\n" +
-                    "人脸俯仰角度：" + result.getPitch() + "\r\n" +
-                    "人脸在竖直平面的旋转角度：" + result.getRoll() + "\r\n"
-            );
+
+            // true：活体。
+            // false：非活体。
+            mTextLive.setText("是否活体：" + result.isLive());
+
+            // 活体的置信度，量化分数为0.0、10.0、50.0、90.0四个分级。
+            mTextScore.setText("活体的量化分数：" + result.getScore());
+
+            // 正值表示人脸转向图像的右侧。
+            // 负值表示人脸转向图像的左侧。
+            mTextYaw.setText("人脸左右旋转角度：" + result.getYaw());
+
+            // 正值表示人脸低头角度。
+            // 负值表示人脸仰头角度。
+            mTextPitch.setText("人脸俯仰角度：" + result.getPitch());
+
+            // 正值表示人脸在图像竖直平面顺时针旋转。
+            // 负值表示人脸在图像竖直平面逆时针旋转。
+            mTextResult.setText("人脸在竖直平面的旋转角度：" + result.getRoll());
 
             mImageResult.setImageBitmap(result.getBitmap());
         }
