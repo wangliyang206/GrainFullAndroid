@@ -54,4 +54,10 @@
     <string name="state_refreshing">正在刷新</string>
 
     <string name="filter_vcode">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+    <string name="face_comparison_notice">
+        注意：\n
+        1、目前暂不支持比对年龄跨度过大，以及遮挡幅度相差30%以上的两张人脸。\n
+        2、若模板照片中包含多张人脸，则取最大的人脸为模板人像；若对比图像中有多张人脸，将按照人脸面积排序，取前3张人脸进行比对。
+    </string>
 </resources>

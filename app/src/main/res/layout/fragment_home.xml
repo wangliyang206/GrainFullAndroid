@@ -165,6 +165,17 @@
                     android:text="活体检测"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_gesture"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_gesture" />
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_facecomparison"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="@dimen/dp_10"
+                    android:text="人脸对比"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_livenessdetection"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_gesture" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 拜访信息 -->

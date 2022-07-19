@@ -27,6 +27,7 @@ import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
@@ -167,6 +168,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_gesture,                                                          // 动态手势识别
             R.id.btn_fragmenthome_livenessdetection,                                                // 活体检测
             R.id.btn_fragmenthome_facerecognition,                                                  // 百度人脸采集
+            R.id.btn_fragmenthome_facecomparison,                                                   // 人脸对比
     })
     @Override
     public void onClick(View v) {
@@ -202,6 +204,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_facerecognition:                                             // 百度人脸采集
                 ActivityUtils.startActivity(BaiduFaceRecognitionActivity.class);
+                break;
+            case R.id.btn_fragmenthome_facecomparison:                                              // 人脸对比
+                ActivityUtils.startActivity(FaceComparisonActivity.class);
                 break;
         }
     }
