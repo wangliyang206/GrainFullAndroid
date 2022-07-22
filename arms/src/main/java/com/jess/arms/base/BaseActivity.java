@@ -212,13 +212,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         if (useStatusBar()) {
             if (useStatusBarColor() != -1) {
                 StatusBarCompat.setStatusBarColor(this, useStatusBarColor());
-
-                if (useLightStatusBar()) {
-                    StatusBarCompatUtils.changeToLightStatusBar(this);
-                } else {
-                    StatusBarCompatUtils.cancelLightStatusBar(this);
-                }
-
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     //SDK >= 21时, 取消状态栏的阴影
@@ -227,6 +220,12 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
                     //透明状态栏
                     StatusBarCompat.translucentStatusBar(this);
                 }
+            }
+
+            if (useLightStatusBar()) {
+                StatusBarCompatUtils.changeToLightStatusBar(this);
+            } else {
+                StatusBarCompatUtils.cancelLightStatusBar(this);
             }
         }
     }
