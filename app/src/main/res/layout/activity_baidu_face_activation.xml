@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_faceactivation_top"
+        layout="@layout/comm_top_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/lila_faceactivation_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="49.3dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="49.3dp"
+            android:background="@drawable/layout_bg_shape"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="在线激活流程:"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txvi_faceactivation_tipsone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="一"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/txvi_faceactivation_tipsone"
+                    android:text="购买激活序列号"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txvi_faceactivation_tipstwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="二"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/txvi_faceactivation_tipstwo"
+                    android:text="在设备上输入序列号并触发激活"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txvi_faceactivation_serialnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lila_faceactivation_tips"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="请输入16位序列号"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/lila_faceactivation_serialnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txvi_faceactivation_serialnumber"
+            android:layout_marginLeft="49.3dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="49.3dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_faceactivation_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="4"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_faceactivation_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_faceactivation_one"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_faceactivation_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="5"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_faceactivation_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_faceactivation_two"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_faceactivation_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="5"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_faceactivation_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_faceactivation_three"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edit_faceactivation_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:digits="@string/filter_vcode"
+                    android:gravity="center_horizontal"
+                    android:maxLength="5"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="23sp"
+                    android:theme="@style/SerialNumberEditText"
+                    android:typeface="monospace" />
+
+                <View
+                    android:id="@+id/view_faceactivation_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_faceactivation_four"
+                    android:layout_marginTop="10dp"
+                    android:background="#666666" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txvi_faceactivation_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lila_faceactivation_serialnumber"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="49.3dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="49.3dp"
+            android:textColor="@color/common_text_red_color"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_faceactivation_activation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txvi_faceactivation_error"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/btn_bg_selector"
+            android:enabled="false"
+            android:padding="13dp"
+            android:text="立即激活"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txvi_faceactivation_issue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_faceactivation_activation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="激活遇到问题?"
+            android:textColor="@color/common_text_tips_color" />
+
+
+    </RelativeLayout>
+</LinearLayout>

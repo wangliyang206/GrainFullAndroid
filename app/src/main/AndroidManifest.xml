@@ -11,12 +11,14 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络连接 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- WIFI -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 读取日志权限 -->
-    <uses-permission android:name="android.permission.READ_LOGS"
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" /> <!-- 往SDCard中写入数据的权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读写存储卡 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许程序改变Wi-Fi连接状态 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" /> <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于申请调用A-GPS模块 -->
@@ -29,7 +31,8 @@
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 应用需要获取您的录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- service前台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 用于导航中省电设置 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" /> <!-- 诱导悬浮窗 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.MANAGE_OVERLAY_PERMISSION" /> <!-- OpenGLES 2.0 -->
@@ -54,6 +57,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="label">
+        <activity
+            android:name=".mvp.ui.activity.BaiduFaceActivationActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.FaceComparisonActivity"
             android:screenOrientation="portrait" />
@@ -99,19 +105,16 @@
         <activity android:name=".mvp.ui.activity.IdentifyIdCardActivity" />
         <activity android:name=".mvp.ui.activity.IdentifyBankCardsActivity" />
         <activity android:name=".mvp.ui.activity.AboutActivity" />
-        <activity android:name=".mvp.ui.activity.SettingActivity" />
-        <!-- 首页 -->
+        <activity android:name=".mvp.ui.activity.SettingActivity" /> <!-- 首页 -->
         <activity
             android:name=".mvp.ui.activity.MainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <!-- 登录 -->
+            android:screenOrientation="portrait" /> <!-- 登录 -->
         <activity
             android:name=".mvp.ui.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!-- 欢迎界面 -->
+            android:windowSoftInputMode="stateHidden|adjustPan" /> <!-- 欢迎界面 -->
         <activity
             android:name=".mvp.ui.activity.SplashActivity"
             android:exported="true"
