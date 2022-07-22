@@ -15,6 +15,7 @@
  */
 package com.jess.arms.utils;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -582,6 +583,7 @@ public class DeviceUtils {
         context.startActivity(intent);
     }
 
+    @SuppressLint("WrongConstant")
     public static void openCamera(Context context) {
         Intent intent = new Intent(); // 调用照相机
         intent.setAction("android.media.action.STILL_IMAGE_CAMERA");

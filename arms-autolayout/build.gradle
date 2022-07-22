@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    compileOnly rootProject.ext.dependencies["appcompat"]
+    implementation rootProject.ext.dependencies["appcompat"]
     compileOnly rootProject.ext.dependencies["annotations"]
     api(rootProject.ext.dependencies["design"]) {
         exclude module: 'annotation'

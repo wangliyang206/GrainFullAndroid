@@ -30,11 +30,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compileOnly(rootProject.ext.dependencies["appcompat-v7"]) {
-        exclude module: 'support-annotations'
+    implementation(rootProject.ext.dependencies["appcompat"]) {
+        exclude module: 'annotation'
     }
-    compileOnly rootProject.ext.dependencies["annotations"]
-    compileOnly rootProject.ext.dependencies["okhttp3"]
+    implementation rootProject.ext.dependencies["annotations"]
+    implementation rootProject.ext.dependencies["okhttp3"]
 }
 def siteUrl = 'https://github.com/qiangxi/CheckUpdateLibrary'      // 项目的主页
 def gitUrl = 'https://github.com/qiangxi/CheckUpdateLibrary.git'   // Git仓库的url
@@ -82,7 +82,7 @@ task javadoc(type: Javadoc) {
     options.encoding = "utf-8" //用来解决javaDoc编码不通过的问题
 }
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    classifier('javadoc')
     from javadoc.destinationDir
 }
 artifacts {

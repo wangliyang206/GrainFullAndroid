@@ -11,11 +11,13 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络连接 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- WIFI -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 读取日志权限 -->
-    <uses-permission android:name="android.permission.READ_LOGS" /> <!-- 往SDCard中写入数据的权限 -->
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" /> <!-- 往SDCard中写入数据的权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读写存储卡 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许程序改变Wi-Fi连接状态 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" /> <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请获取蓝牙信息进行室内定位 -->
@@ -27,7 +29,8 @@
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 应用需要获取您的录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- service前台服务 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 用于导航中省电设置 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 诱导悬浮窗 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" /> <!-- 诱导悬浮窗 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.MANAGE_OVERLAY_PERMISSION" /> <!-- OpenGLES 2.0 -->
     <uses-feature

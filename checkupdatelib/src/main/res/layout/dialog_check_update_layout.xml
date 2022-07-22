@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/check_update_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_100"
+        android:layout_height="10dp0"
         android:scaleType="fitXY"
         android:src="@android:color/holo_blue_dark" />
 
@@ -19,9 +19,9 @@
         android:gravity="center_vertical"
         android:maxLines="1"
         android:paddingLeft="@dimen/dp_20"
-        android:paddingTop="@dimen/dp_10"
+        android:paddingTop="10dp"
         android:paddingRight="@dimen/dp_20"
-        android:paddingBottom="@dimen/dp_10"
+        android:paddingBottom="10dp"
         android:textColor="@color/text_color_02"
         android:textSize="@dimen/sp_16" />
 
@@ -32,9 +32,9 @@
         android:gravity="center_vertical"
         android:maxLines="1"
         android:paddingLeft="@dimen/dp_20"
-        android:paddingTop="@dimen/dp_10"
+        android:paddingTop="10dp"
         android:paddingRight="@dimen/dp_20"
-        android:paddingBottom="@dimen/dp_10"
+        android:paddingBottom="10dp"
         android:textColor="@color/text_color_02"
         android:textSize="@dimen/sp_16" />
 
@@ -44,9 +44,9 @@
         android:gravity="center_vertical"
         android:maxLines="1"
         android:paddingLeft="@dimen/dp_20"
-        android:paddingTop="@dimen/dp_10"
+        android:paddingTop="10dp"
         android:paddingRight="@dimen/dp_20"
-        android:paddingBottom="@dimen/dp_10"
+        android:paddingBottom="10dp"
         android:text="更新日志："
         android:textColor="@color/text_color_01"
         android:textSize="@dimen/sp_16" />
@@ -54,7 +54,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_1"
-        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginBottom="10dp"
         android:background="@color/divider_color" />
 
     <TextView
@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="@dimen/dp_20"
         android:progressDrawable="@drawable/layer_progress_bg"
         android:visibility="gone" />
@@ -82,7 +82,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_1"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="10dp"
         android:background="@color/divider_color" />
 
     <LinearLayout

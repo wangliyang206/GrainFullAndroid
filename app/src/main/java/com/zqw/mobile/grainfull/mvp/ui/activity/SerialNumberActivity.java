@@ -273,6 +273,7 @@ public class SerialNumberActivity extends BaseActivity<SerialNumberPresenter> im
 
                     if (end.equalsIgnoreCase("AAAA-BBBB-CCCC-DDDD")) {
                         // 序列号正确
+                        txviError.setText("");
                         showMessage("恭喜您，已激活！");
                     } else {
                         // 序列号不正确

@@ -19,10 +19,10 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
-
-import android.widget.ImageView;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.blankj.utilcode.util.Utils;
@@ -34,7 +34,6 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
-
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
@@ -45,7 +44,6 @@ import com.zqw.mobile.grainfull.app.utils.FileLoggingTree;
 import org.jetbrains.annotations.NotNull;
 
 import butterknife.ButterKnife;
-import leakcanary.LeakCanary;
 import timber.log.Timber;
 
 /**

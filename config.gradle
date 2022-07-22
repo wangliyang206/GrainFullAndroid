@@ -18,7 +18,7 @@ ext {
             rxlifecycleSdkVersion   : "1.0",
             rxlifecycle2SdkVersion  : "2.2.2",
             espressoSdkVersion      : "3.0.1",
-            canarySdkVersion        : "2.2"
+            canarySdkVersion        : "2.9.1"
     ]
 
     dependencies = [

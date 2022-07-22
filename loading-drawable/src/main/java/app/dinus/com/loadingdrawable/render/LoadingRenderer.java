@@ -6,11 +6,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 
@@ -110,7 +106,7 @@ public abstract class LoadingRenderer {
     private void setupAnimators() {
         mRenderAnimator = ValueAnimator.ofFloat(0.0f, 1.0f);
         mRenderAnimator.setRepeatCount(Animation.INFINITE);
-        mRenderAnimator.setRepeatMode(Animation.RESTART);
+        mRenderAnimator.setRepeatMode(ValueAnimator.RESTART);
         mRenderAnimator.setDuration(mDuration);
         //fuck you! the default interpolator is AccelerateDecelerateInterpolator
         mRenderAnimator.setInterpolator(new LinearInterpolator());

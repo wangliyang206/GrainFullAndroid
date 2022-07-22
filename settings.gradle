@@ -1,4 +1,4 @@
 include ':app'
 include ':arms', ':arms-autolayout', ':arms-imageloader-glide'
-include 'loading-drawable','checkupdatelib', ':camera'
+include 'loading-drawable', ':camera'
 include ':faceplatform-release', ':faceplatform-ui'

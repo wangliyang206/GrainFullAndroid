@@ -31,7 +31,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_10"
+            android:layout_margin="10dp"
             android:scrollbars="none">
 
             <LinearLayout
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="@dimen/dp_10"
+                    android:layout_margin="10dp"
                     android:background="@drawable/btn_bg_selector"
                     android:gravity="center"
                     android:paddingStart="20dp"

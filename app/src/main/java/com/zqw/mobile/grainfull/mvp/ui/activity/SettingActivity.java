@@ -20,8 +20,6 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
-import com.qiangxi.checkupdatelibrary.CheckUpdateOption;
-import com.qiangxi.checkupdatelibrary.Q;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.CommTipsDialog;
@@ -236,30 +234,30 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
      */
     @Override
     public void mainAskDialog(AppUpdate info) {
-        Q.show(this, new CheckUpdateOption.Builder()
-                .setAppName(info.getName())
-                .setFileName("/" + info.getFileName())
-                .setFilePath(Constant.APP_UPDATE_PATH)
-//                .setImageUrl("http://imgsrc.baidu.com/imgad/pic/item/6c224f4a20a446233d216c4f9322720e0cf3d730.jpg")
-                .setImageResId(R.mipmap.icon_upgrade_logo)
-                .setIsForceUpdate(info.getForce() == 1)
-                .setNewAppSize(info.getNewAppSize())
-                .setNewAppUpdateDesc(info.getNewAppUpdateDesc())
-                .setNewAppUrl(info.getFilePath())
-                .setNewAppVersionName(info.getVerName())
-                .setNotificationSuccessContent("下载成功，点击安装")
-                .setNotificationFailureContent("下载失败，点击重新下载")
-                .setNotificationIconResId(R.mipmap.ic_launcher)
-                .setNotificationTitle(getString(R.string.app_name))
-                .build(), (view, imageUrl) -> {
-            view.setScaleType(ImageView.ScaleType.FIT_XY);
-            mImageLoader.loadImage(getActivity(),
-                    ImageConfigImpl
-                            .builder()
-                            .url(imageUrl)
-                            .imageView(view)
-                            .build());
-        });
+//        Q.show(this, new CheckUpdateOption.Builder()
+//                .setAppName(info.getName())
+//                .setFileName("/" + info.getFileName())
+//                .setFilePath(Constant.APP_UPDATE_PATH)
+////                .setImageUrl("http://imgsrc.baidu.com/imgad/pic/item/6c224f4a20a446233d216c4f9322720e0cf3d730.jpg")
+//                .setImageResId(R.mipmap.icon_upgrade_logo)
+//                .setIsForceUpdate(info.getForce() == 1)
+//                .setNewAppSize(info.getNewAppSize())
+//                .setNewAppUpdateDesc(info.getNewAppUpdateDesc())
+//                .setNewAppUrl(info.getFilePath())
+//                .setNewAppVersionName(info.getVerName())
+//                .setNotificationSuccessContent("下载成功，点击安装")
+//                .setNotificationFailureContent("下载失败，点击重新下载")
+//                .setNotificationIconResId(R.mipmap.ic_launcher)
+//                .setNotificationTitle(getString(R.string.app_name))
+//                .build(), (view, imageUrl) -> {
+//            view.setScaleType(ImageView.ScaleType.FIT_XY);
+//            mImageLoader.loadImage(getActivity(),
+//                    ImageConfigImpl
+//                            .builder()
+//                            .url(imageUrl)
+//                            .imageView(view)
+//                            .build());
+//        });
     }
 
     /**

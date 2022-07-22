@@ -14,8 +14,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="什么是OCR文字识别？"
         android:textColor="@color/common_text_color"
         android:textSize="16sp" />
@@ -23,8 +23,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="使用智能算法扫描图片上的字符形状，为你提取出图片中的文字。"
         android:textColor="@color/common_text_tips_color"
         android:textSize="12sp" />
@@ -32,9 +32,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginEnd="10dp"
         android:text="使用场景"
         android:textColor="@color/common_text_color"
         android:textSize="16sp" />
@@ -42,8 +42,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="相机或视频画面实时处理，图片中稀疏文本识别"
         android:textColor="@color/common_text_tips_color"
         android:textSize="12sp" />
@@ -51,9 +51,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginEnd="10dp"
         android:text="支持语言"
         android:textColor="@color/common_text_color"
         android:textSize="16sp" />
@@ -61,8 +61,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="中文（简体）、日文、韩文、拉丁语（包括英文、西班牙文、葡萄牙文、意大利文、德文、法文、俄文"
         android:textColor="@color/common_text_tips_color"
         android:textSize="12sp" />
@@ -78,7 +78,7 @@
             android:id="@+id/radio_imageextractiontext_zh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginStart="10dp"
             android:checked="true"
             android:text="中文(简体)"
             android:textColor="@color/common_text_color"
@@ -88,7 +88,7 @@
             android:id="@+id/radio_imageextractiontext_en"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginStart="10dp"
             android:text="英文"
             android:textColor="@color/common_text_color"
             android:textSize="14sp" />
@@ -98,8 +98,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_weight="1"
         android:background="@drawable/frame_img_selector">
 
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/dp_20"
+            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -144,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/btn_bg_selector"
         android:enabled="false"

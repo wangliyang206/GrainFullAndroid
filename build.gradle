@@ -1,3 +1,5 @@
+import javax.tools.JavaCompiler
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "config.gradle"
 buildscript {
@@ -22,14 +24,6 @@ buildscript {
 }
 
 allprojects {
-//    tasks.withType(Test).configureEach {
-//        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
-//        if (!project.hasProperty("createReports")) {
-//            reports.html.required = false
-//            reports.junitXml.required = false
-//        }
-//    }
-
     repositories {
         google()
         maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
@@ -43,4 +37,10 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+// 指定编译的编码
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+    classifier('javadoc')
 }

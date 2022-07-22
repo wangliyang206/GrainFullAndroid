@@ -201,8 +201,6 @@
 ################华为SDK###############
 -ignorewarnings
 -keep class com.huawei.agconnect.** {*;}
--keepresourcexmlelements **
--keepresources */*
 
 -ignorewarnings
 -keepattributes *Annotation*

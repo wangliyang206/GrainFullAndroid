@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
+        android:layout_margin="10dp"
         android:background="@drawable/layout_bg_shape"
         android:orientation="vertical">
 
@@ -48,7 +48,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
+            android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="10dp"
@@ -72,7 +72,7 @@
                 android:id="@+id/imvi_identifybankcards_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/dp_10"
+                android:padding="10dp"
                 android:src="@mipmap/ic_evaluation_camera" />
         </LinearLayout>
 

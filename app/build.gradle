@@ -132,8 +132,8 @@ android {
             buildConfigField "String", "SERVER_URL_VALUE", "\"http://buypb.e2.luyouxia.net:30302/\""
 
             // AndroidManifest中用到的配置
-            manifestPlaceholders = [APP_NAME: "@string/app_name_debug"
-                                    , BAIDU_APP_ID       : "@string/baidu_map_api_key_debug"]
+            manifestPlaceholders = [APP_NAME      : "@string/app_name_debug"
+                                    , BAIDU_APP_ID: "@string/baidu_map_api_key_debug"]
         }
 
         // 正式发布版
@@ -169,8 +169,8 @@ android {
             buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
 
             // AndroidManifest中用到的配置
-            manifestPlaceholders = [APP_NAME: "@string/app_name"
-                                    , BAIDU_APP_ID       : "@string/baidu_map_api_key"]
+            manifestPlaceholders = [APP_NAME      : "@string/app_name"
+                                    , BAIDU_APP_ID: "@string/baidu_map_api_key"]
         }
     }
 
@@ -178,12 +178,12 @@ android {
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             // 项目名-编译类型-版本号.apk
-            def appName = "小满";
-            def filesuffix = variant.buildType.name;
+            def appName = "小满"
+            def filesuffix = variant.buildType.name
             def fileName = "${appName}-${filesuffix}-${versionName}.apk"
 
-            println "自定义输出apk的名字:" + fileName;
-            outputFileName = fileName;
+            println "自定义输出apk的名字:" + fileName
+            outputFileName = fileName
         }
     }
 
@@ -223,7 +223,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //androidx
-    implementation (rootProject.ext.dependencies["cardview"]){
+    implementation(rootProject.ext.dependencies["cardview"]) {
         exclude module: 'annotation'
     }
 
@@ -278,7 +278,7 @@ dependencies {
     // 支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
     implementation rootProject.ext.dependencies["tray"]
     // 对话框(https://github.com/afollestad/material-dialogs)
-    implementation (rootProject.ext.dependencies["dialogs"]){
+    implementation(rootProject.ext.dependencies["dialogs"]) {
         exclude module: 'annotation'
         exclude module: 'appcompat'
     }
@@ -288,7 +288,7 @@ dependencies {
         exclude module: "support-v13"
     }
     annotationProcessor rootProject.ext.dependencies["permission-processor"]
-    implementation ('com.jakewharton.rxbinding3:rxbinding:3.0.0'){
+    implementation('com.jakewharton.rxbinding3:rxbinding:3.0.0') {
         exclude module: 'annotation'
     }
     // 自定义圆形图片控件(https://github.com/hdodenhof/CircleImageView)
@@ -306,10 +306,8 @@ dependencies {
     implementation project(':loading-drawable')
     // 可伸缩布局
     implementation 'com.google.android:flexbox:1.0.0'
-    // 检查更新
-    implementation project(path: ':checkupdatelib')
     // 高仿微信图片选择器(https://github.com/Lichenwei-Dev/ImagePicker)
-    implementation ('com.lcw.library:imagepicker:2.2.8'){
+    implementation('com.lcw.library:imagepicker:2.2.8') {
         exclude module: 'appcompat'
     }
     // 拍视频
@@ -318,7 +316,7 @@ dependencies {
     implementation rootProject.ext.dependencies["pickerview"]
 
     // 适用于Android项目的灵活，易用，一体化抽屉库。(https://github.com/mikepenz/MaterialDrawer/tree/develop)
-    implementation ("com.mikepenz:materialdrawer:6.1.2"){
+    implementation("com.mikepenz:materialdrawer:6.1.2") {
         exclude module: 'annotation'
         exclude module: 'appcompat'
         exclude module: 'material'
