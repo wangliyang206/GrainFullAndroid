@@ -96,14 +96,22 @@
         <activity android:name=".mvp.ui.activity.IdentifyIdCardActivity" />
         <activity android:name=".mvp.ui.activity.IdentifyBankCardsActivity" />
         <activity android:name=".mvp.ui.activity.AboutActivity" />
-        <activity android:name=".mvp.ui.activity.SettingActivity" /> <!-- 登录 -->
+        <activity android:name=".mvp.ui.activity.SettingActivity" />
+        <!-- 首页 -->
+        <activity
+            android:name=".mvp.ui.activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <!-- 登录 -->
         <activity
             android:name=".mvp.ui.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustPan" /> <!-- 欢迎界面 -->
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <!-- 欢迎界面 -->
         <activity
             android:name=".mvp.ui.activity.SplashActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -111,11 +119,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 首页 -->
-        <activity
-            android:name=".mvp.ui.activity.MainActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
