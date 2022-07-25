@@ -1,15 +1,18 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
@@ -22,8 +25,6 @@ import com.zqw.mobile.grainfull.mvp.presenter.SplashPresenter;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
 /**
@@ -89,6 +90,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
      * 申请权限成功后的逻辑
      */
     @NeedsPermission({
+            Manifest.permission.ACCESS_NETWORK_STATE,
             Manifest.permission.CAMERA,
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.READ_EXTERNAL_STORAGE,

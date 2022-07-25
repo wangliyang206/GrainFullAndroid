@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="root_screen">
+    <PreferenceCategory android:title="在线语义功能只能使用搜索模型">
+    </PreferenceCategory>
+    <PreferenceCategory android:title="语义解析-在线">
+        <ListPreference
+            android:key="pid"
+            android:entries="@array/pid"
+            android:entryValues="@array/pid"
+            android:title="语种，开启在线语义请选择15363，PID"
+            android:summary=""
+            android:defaultValue="@string/pid_default"
+            android:dialogTitle="语种"/>
+        <ListPreference
+                android:key="lm_id"
+                android:entries="@array/lm_id"
+                android:entryValues="@array/lm_id"
+                android:title="LMID，自训练平台ID，请选PID=8002生效"
+                android:summary=""
+                android:defaultValue="@string/pid_default"
+                android:dialogTitle="自训练平台ID"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="语义解析-本地，GRAMMER参数在demo的代码中设置">
+        <ListPreference
+            android:key="decoder"
+            android:defaultValue="@string/decoder_default"
+            android:dialogTitle="纯在线/在线及离线命令词，DECODER"
+            android:entries="@array/decoder_list"
+            android:entryValues="@array/decoder_list"
+            android:summary=""
+            android:title="纯在线 或 在线+离线命令词" />
+        <ListPreference
+            android:key="nlu"
+            android:defaultValue="@string/decoder_default"
+            android:dialogTitle="本地语义解析，NLU"
+            android:entries="@array/nlu_list"
+            android:entryValues="@array/nlu_list"
+            android:summary=""
+            android:title="本地语义解析，请同时勾选下面的离线命令词文件" />
+        <CheckBoxPreference
+            android:key="_grammar"
+            android:defaultValue="false"
+            android:summary="ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH"
+            android:title="本地语义文件" />
+        <CheckBoxPreference
+            android:key="_slot_data"
+            android:defaultValue="false"
+            android:summary="勾选后会覆盖原来的词条，可以测'打电话给妈妈'，但是'打电话给张三'失效。SLOT_DATA"
+            android:title="扩展词条，需代码中设置本地语义文件即bsg文件生效" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="常用">
+    </PreferenceCategory>
+    <PreferenceCategory android:title="高级">
+        <ListPreference
+            android:key="vad"
+            android:defaultValue="@string/vad_default"
+            android:dialogTitle="VAD"
+            android:entries="@array/vad_list"
+            android:entryValues="@array/vad_list"
+            android:summary=""
+            android:title="VAD" />
+        <ListPreference
+            android:key="vad.endpoint-timeout"
+            android:defaultValue="@string/vad_timeout_default"
+            android:dialogTitle="VAD_ENDPOINT_TIMEOUT"
+            android:entries="@array/vad_timeout_list"
+            android:entryValues="@array/vad_timeout_list"
+            android:summary=""
+            android:title="VAD时长设置" />
+        <ListPreference
+            android:key="infile"
+            android:defaultValue="@string/infile_default"
+            android:dialogTitle="外部音频 OUT_FILE"
+            android:entries="@array/infile_list"
+            android:entryValues="@array/infile_list"
+            android:summary=""
+            android:title="外部音频" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="不常用">
+        <CheckBoxPreference
+            android:key="_tips_sound"
+            android:defaultValue="false"
+            android:summary=""
+            android:title="提示音" />
+        <CheckBoxPreference
+            android:key="_outfile"
+            android:defaultValue="false"
+            android:summary="保存路径为临时目录。 如/sdcard/baiduAsr/outfile.pcm， OUT_FILE"
+            android:title="保存录音" />
+        <CheckBoxPreference
+            android:key="disable-punctuation"
+            android:defaultValue="false"
+            android:summary="在选择输入法模型的前提下生效。DISABLE_PUNCTUATION"
+            android:title="禁用标点" />
+        <CheckBoxPreference
+            android:key="accept-audio-data"
+            android:defaultValue="false"
+            android:summary="不需要音频回调事件，请勿开启，影响性能，ACCEPT_AUDIO_DATA"
+            android:title="开启代码中音频回调事件（asr.audio）" />
+        <CheckBoxPreference
+            android:key="accept-audio-volume"
+            android:defaultValue="false"
+            android:summary="CALLBACK_EVENT_ASR_VOLUME参数。是否需要音频的音量回调。正常使用请勿开启"
+            android:title="开启代码中音量回调事件" />
+    </PreferenceCategory>
+</PreferenceScreen>

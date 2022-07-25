@@ -33,7 +33,8 @@ ext {
             //androidx
             "appcompat"                : "androidx.appcompat:appcompat:1.2.0",
             "design"                   : "com.google.android.material:material:1.4.0",
-            "constraintlayout"         : "androidx.constraintlayout:constraintlayout:2.0.4",
+            "constraintlayout"         : "androidx.constraintlayout:constraintlayout:2.1.0",
+            "constraintlayout-compose" : "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02",
             "legacy-support-v4"        : "androidx.legacy:legacy-support-v4:1.0.0",
             "cardview"                 : "androidx.cardview:cardview:1.0.0",
             "annotations"              : "androidx.annotation:annotation:1.2.0",
@@ -63,8 +64,6 @@ ext {
             "paginate"                 : "com.github.markomilos:paginate:0.5.1",
             "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
             "autosize"                 : "me.jessyan:autosize:1.2.1",
-            "constraintlayout"         : "androidx.constraintlayout:constraintlayout:2.1.0",
-            "constraintlayout-compose" : "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02",
             // 状态栏透明(https://github.com/niorgai/StatusBarCompat)
             "statusbarcompatx"         : "com.github.niorgai:StatusBarCompat:2.3.3",                // After AndroidX
             "statusbarcompat"          : "com.github.niorgai:StatusBarCompat:2.1.4",                // Before AndroidX

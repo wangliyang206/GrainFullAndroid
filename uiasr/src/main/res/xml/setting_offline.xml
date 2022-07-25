@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:key="root_screen">
+    <PreferenceCategory android:title="GRAMMER及SLOT_DATA参数已设置在代码中">
+    </PreferenceCategory>
+    <PreferenceCategory android:title="高级">
+        <ListPreference
+                android:defaultValue="@string/vad_timeout_default"
+                android:dialogTitle="请勿选长语音。VAD_ENDPOINT_TIMEOUT"
+                android:entries="@array/vad_timeout_list"
+                android:entryValues="@array/vad_timeout_list"
+                android:key="vad.endpoint-timeout"
+                android:summary=""
+                android:title="VAD时长设置，请勿选长语音。" />
+        <ListPreference
+                android:defaultValue="@string/infile_default"
+                android:dialogTitle="外部音频 IN_FILE"
+                android:entries="@array/infile_list"
+                android:entryValues="@array/infile_list"
+                android:key="infile"
+                android:summary=""
+                android:title="外部音频" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="不常用">
+        <ListPreference
+                android:defaultValue="@string/vad_default"
+                android:dialogTitle="VAD"
+                android:entries="@array/vad_list"
+                android:entryValues="@array/vad_list"
+                android:key="vad"
+                android:summary=""
+                android:title="VAD算法，推荐DNN" />
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="_tips_sound"
+                android:summary=""
+                android:title="提示音" />
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="_outfile"
+                android:summary="保存路径为临时目录 如/sdcard/baiduAsr/outfile.pcm。 OUT_FILE参数。需要同时开启CALLBACK_EVENT_ASR_AUDIO参数"
+                android:title="保存录音"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="accept-audio-data"
+                android:summary="CALLBACK_EVENT_ASR_AUDIO参数。不需要音频二进制数据的回调，请勿开启，否则影响性能"
+                android:title="开启代码中音频回调事件"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="accept-audio-volume"
+                android:summary="CALLBACK_EVENT_ASR_VOLUME参数。是否需要音频的音量回调。正常使用请勿开启"
+                android:title="开启代码中音量回调事件" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,17 +1,14 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.app.Activity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ReplacementTransformationMethod;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -19,17 +16,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.jess.arms.di.component.AppComponent;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.baidu.idl.main.facesdk.FaceAuth;
 import com.jess.arms.base.BaseActivity;
+import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
-
+import com.jess.arms.utils.DeviceUtils;
+import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduFaceActivationComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduFaceActivationContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceActivationPresenter;
-import com.zqw.mobile.grainfull.R;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,6 +41,7 @@ import butterknife.OnClick;
  * @author 赤槿
  * module name is BaiduFaceActivationActivity
  */
+@Deprecated
 public class BaiduFaceActivationActivity extends BaseActivity<BaiduFaceActivationPresenter> implements BaiduFaceActivationContract.View {
     /*------------------------------------------控件信息------------------------------------------*/
     @BindView(R.id.edit_faceactivation_one)
@@ -69,22 +69,8 @@ public class BaiduFaceActivationActivity extends BaseActivity<BaiduFaceActivatio
     @BindView(R.id.btn_faceactivation_activation)
     Button btnActivation;
     /*------------------------------------------业务信息------------------------------------------*/
-    /**
-     * 将状态栏改为浅色、深色模式(状态栏 icon 和字体，false = 浅色，true = 深色)
-     */
-    public boolean useLightStatusBar() {
-        return false;
-    }
 
-    /**
-     * 根据主题使用不同的颜色。
-     * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
-     */
-    public int useStatusBarColor() {
-        TypedValue typedValue = new TypedValue();
-        getTheme().resolveAttribute(com.jess.arms.R.attr.colorPrimary, typedValue, true);
-        return typedValue.data;
-    }
+    private FaceAuth faceAuth;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -105,6 +91,7 @@ public class BaiduFaceActivationActivity extends BaseActivity<BaiduFaceActivatio
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("百度人脸识别激活");
 
+        faceAuth = new FaceAuth();
         initView();
         initActivation();
     }
@@ -273,16 +260,41 @@ public class BaiduFaceActivationActivity extends BaseActivity<BaiduFaceActivatio
                         end = et_one + "-" + et_two + "-" + et_three + "-" + et_four;
                     }
 
-                    if (end.equalsIgnoreCase("AAAA-BBBB-CCCC-DDDD")) {
-                        // 序列号正确
-                        txviError.setText("");
-                        showMessage("恭喜您，已激活！");
+                    boolean onNetworkConnected = DeviceUtils.netIsConnected(getApplicationContext());
+                    if (onNetworkConnected) {
+                        faceAuth.initLicenseOnLine(this, end, (code, response) -> {
+                            // 回调
+                            if (code == 0) {
+                                // 成功
+                                runOnUiThread(() -> {
+                                    txviError.setText("");
+                                    setResult(Activity.RESULT_OK);
+                                });
+                            } else {
+                                // 失败
+                                runOnUiThread(() -> {
+                                    if (response.equals("key invalid")) {
+                                        txviError.setText("序列号有误，请重新输入");
+                                    } else if (response.equals("license has actived on other device")) {
+                                        txviError.setText("激活失败，该序列号已在其它设备激活，请使用其它有效序列号");
+                                    } else if (code == 14) {
+                                        txviError.setText("激活失败，该序列号不在有效期范围内");
+                                    } else if (response.equals("在线激活失败")) {
+                                        txviError.setText("激活失败，该序列号不在有效期范围内");
+                                    } else if (response.equals("auth expired time")) {
+                                        txviError.setText("激活失败，该序列号不在有效期范围内");
+                                    } else {
+                                        txviError.setText(response);
+                                    }
+                                    initShake();
+                                });
+                            }
+                        });
                     } else {
-                        // 序列号不正确
-                        txviError.setText("序列号有误，请重新输入");
+                        txviError.setText("激活失败，请保证设备网络通畅");
+
                         initShake();
                     }
-
                 }
                 break;
             case R.id.txvi_faceactivation_issue:                                                    // 遇到的问题

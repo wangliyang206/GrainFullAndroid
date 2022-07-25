@@ -58,6 +58,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.BaiduVoiceRecogActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.BaiduFaceActivationActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -146,7 +149,7 @@
             android:value="bcr" /> <!-- 百度地图 API KEY -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="${BAIDU_APP_ID}" /> <!-- 百度地图服务 -->
+            android:value="${BAIDU_API_KEY}" /> <!-- 百度地图服务 -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

@@ -25,7 +25,9 @@ import com.zqw.mobile.grainfull.di.component.DaggerHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.HomeContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
@@ -169,6 +171,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_livenessdetection,                                                // 活体检测
             R.id.btn_fragmenthome_facerecognition,                                                  // 百度人脸采集
             R.id.btn_fragmenthome_facecomparison,                                                   // 人脸对比
+            R.id.btn_fragmenthome_voicerecog,                                                       // 语音转文字
     })
     @Override
     public void onClick(View v) {
@@ -207,6 +210,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_facecomparison:                                              // 人脸对比
                 ActivityUtils.startActivity(FaceComparisonActivity.class);
+                break;
+            case R.id.btn_fragmenthome_voicerecog:                                                  // 语音转文字
+                ActivityUtils.startActivity(BaiduVoiceRecogActivity.class);
                 break;
         }
     }

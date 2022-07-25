@@ -132,8 +132,10 @@ android {
             buildConfigField "String", "SERVER_URL_VALUE", "\"http://buypb.e2.luyouxia.net:30302/\""
 
             // AndroidManifest中用到的配置
-            manifestPlaceholders = [APP_NAME      : "@string/app_name_debug"
-                                    , BAIDU_APP_ID: "@string/baidu_map_api_key_debug"]
+            manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"
+                                    , BAIDU_APP_ID   : "@string/baidu_app_id_debug"
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"
+                                    , BAIDU_SECRET_ID: "@string/baidu_secret_key_debug"]
         }
 
         // 正式发布版
@@ -169,8 +171,10 @@ android {
             buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
 
             // AndroidManifest中用到的配置
-            manifestPlaceholders = [APP_NAME      : "@string/app_name"
-                                    , BAIDU_APP_ID: "@string/baidu_map_api_key"]
+            manifestPlaceholders = [APP_NAME         : "@string/app_name"
+                                    , BAIDU_APP_ID   : "@string/baidu_app_id"
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"
+                                    , BAIDU_SECRET_ID: "@string/baidu_secret_key"]
         }
     }
 
@@ -196,6 +200,9 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LGPL2.1'
+
+        doNotStrip "*/*/libvad.dnn.so"
+        doNotStrip "*/*/libbd_easr_s1_merge_normal_20151216.dat.so"
     }
 
     // 这个是解决lint报错的代码(lint工具可以通过一个xml文件来配置，它可以用来修改某些check issue是否忽略(典型的例子是第三方库里面存在问题)，同时可以修改某些issue的默认等级。)
@@ -358,4 +365,6 @@ dependencies {
     implementation 'com.huawei.hms:ml-computer-vision-faceverify-model:2.2.0.300'
     // 百度AI - 人脸采集
     implementation project(path: ':faceplatform-ui')
+    // 百度AI - 语音识别
+    implementation project(path: ':uiasr')
 }
