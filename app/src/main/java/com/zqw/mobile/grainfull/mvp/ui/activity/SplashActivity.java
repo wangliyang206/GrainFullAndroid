@@ -90,7 +90,6 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
      * 申请权限成功后的逻辑
      */
     @NeedsPermission({
-            Manifest.permission.ACCESS_NETWORK_STATE,
             Manifest.permission.CAMERA,
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.READ_EXTERNAL_STORAGE,

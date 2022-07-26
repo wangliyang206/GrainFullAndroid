@@ -11,6 +11,7 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +48,9 @@ import timber.log.Timber;
  */
 public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresenter> implements BaiduVoiceRecogContract.View, IStatus {
     /*------------------------------------------控件信息------------------------------------------*/
+    @BindView(R.id.txvi_voicerecog_error)
+    TextView txviError;
+
     @BindView(R.id.btn_voicerecog_start)
     Button btnStart;
     /*------------------------------------------业务信息------------------------------------------*/
@@ -142,6 +146,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
                 start();
                 status = STATUS_WAITING_READY;
                 updateBtnTextByStatus();
+                txviError.setText("");
                 break;
             case STATUS_WAITING_READY: // 调用本类的start方法后，即输入START事件后，等待引擎准备完毕。
             case STATUS_READY: // 引擎准备完毕。
@@ -193,7 +198,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
      * 开始录音，点击“开始”按钮后调用。
      * 基于DEMO集成2.1, 2.2 设置识别参数并发送开始事件
      */
-    protected void start() {
+    private void start() {
         // DEMO集成步骤2.1 拼接识别参数： 此处params可以打印出来，直接写到你的代码里去，最终的json一致即可。
         final Map<String, Object> params = fetchParams();
         // params 也可以根据文档此处手动修改，参数会以json的格式在界面和logcat日志中打印
@@ -225,7 +230,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
      * SDK会识别不会再识别停止后的录音。
      * 基于DEMO集成4.1 发送停止事件 停止录音
      */
-    protected void stop() {
+    private void stop() {
         myRecognizer.stop();
     }
 
@@ -234,11 +239,11 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
      * SDK会取消本次识别，回到原始状态。
      * 基于DEMO集成4.2 发送取消事件 取消本次识别
      */
-    protected void cancel() {
+    private void cancel() {
         myRecognizer.cancel();
     }
 
-    protected Map<String, Object> fetchParams() {
+    private Map<String, Object> fetchParams() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         //  上面的获取是为了生成下面的Map， 自己集成时可以忽略
         Map<String, Object> params = apiParams.fetch(sp);
@@ -259,9 +264,31 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
 
     };
 
-    protected void handleMsg(Message msg) {
+    private void handleMsg(Message msg) {
         if (msg.obj != null) {
             Timber.i("###" + msg.obj.toString() + "\n");
+            txviError.append(msg.obj.toString() + "\n");
+        }
+
+        switch (msg.what) { // 处理MessageStatusRecogListener中的状态回调
+            case STATUS_FINISHED:
+                if (msg.arg2 == 1) {
+                    // 识别成功
+                    Timber.i("####" + msg.obj.toString() + "\n");
+                }
+                status = msg.what;
+                updateBtnTextByStatus();
+                break;
+            case STATUS_NONE:
+            case STATUS_READY:
+            case STATUS_SPEAKING:
+            case STATUS_RECOGNITION:
+                status = msg.what;
+                updateBtnTextByStatus();
+                break;
+            default:
+                break;
+
         }
     }
 

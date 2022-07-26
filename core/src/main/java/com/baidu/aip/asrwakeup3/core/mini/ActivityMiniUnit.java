@@ -218,7 +218,8 @@ public class ActivityMiniUnit extends AppCompatActivity implements EventListener
 
     private void printLog(String text) {
         if (logTime) {
-            text += "  ;time=" + System.currentTimeMillis();
+            //            text += "  ;time=" + System.currentTimeMillis();
+            text += "  ;";
         }
         text += "\n";
         Log.i(getClass().getName(), text);

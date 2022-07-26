@@ -6,11 +6,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
 import com.baidu.speech.asr.SpeechConstant;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;

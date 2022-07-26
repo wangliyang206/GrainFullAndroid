@@ -233,7 +233,8 @@ public class ActivityMiniRecog extends AppCompatActivity implements EventListene
 
     private void printLog(String text) {
         if (logTime) {
-            text += "  ;time=" + System.currentTimeMillis();
+//            text += "  ;time=" + System.currentTimeMillis();
+            text += "  ;";
         }
         text += "\n";
         Log.i(getClass().getName(), text);

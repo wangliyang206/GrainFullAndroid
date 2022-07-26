@@ -34,14 +34,14 @@ public class MessageStatusRecogListener extends StatusRecogListener {
     @Override
     public void onAsrBegin() {
         super.onAsrBegin();
-        sendStatusMessage(SpeechConstant.CALLBACK_EVENT_ASR_BEGIN, "检测到用户说话");
+        sendStatusMessage(SpeechConstant.CALLBACK_EVENT_ASR_BEGIN, "检测到用户说话。");
     }
 
     @Override
     public void onAsrEnd() {
         super.onAsrEnd();
         speechEndTime = System.currentTimeMillis();
-        sendMessage("【asr.end事件】检测到用户说话结束");
+        sendMessage("【asr.end事件】检测到用户说话结束。");
     }
 
     @Override
@@ -54,13 +54,14 @@ public class MessageStatusRecogListener extends StatusRecogListener {
     @Override
     public void onAsrFinalResult(String[] results, RecogResult recogResult) {
         super.onAsrFinalResult(results, recogResult);
-        String message = "识别结束，结果是”" + results[0] + "”";
+        String message = "识别结束，结果是“" + results[0] + "”";
         sendStatusMessage(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL,
                 message + "；原始json：" + recogResult.getOrigalJson());
         if (speechEndTime > 0) {
             long currentTime = System.currentTimeMillis();
             long diffTime = currentTime - speechEndTime;
-            message += "；说话结束到识别结束耗时【" + diffTime + "ms】" + currentTime;
+//            message += "；说话结束到识别结束耗时【" + diffTime + "ms】" + currentTime;
+            message += "；说话结束到识别结束耗时【" + diffTime + "ms】";
 
         }
         speechEndTime = 0;
@@ -126,11 +127,11 @@ public class MessageStatusRecogListener extends StatusRecogListener {
     @Override
     public void onAsrExit() {
         super.onAsrExit();
-        sendStatusMessage(SpeechConstant.CALLBACK_EVENT_ASR_EXIT, "识别引擎结束并空闲中");
+        sendStatusMessage(SpeechConstant.CALLBACK_EVENT_ASR_EXIT, "识别引擎结束并空闲中。");
     }
 
     private void sendStatusMessage(String eventName, String message) {
-        message = "[" + eventName + "]" + message;
+        message = "【" + eventName + "】" + message;
         sendMessage(message, status);
     }
 
@@ -147,7 +148,8 @@ public class MessageStatusRecogListener extends StatusRecogListener {
 
 
         if (needTime && what != STATUS_FINISHED) {
-            message += "  ;time=" + System.currentTimeMillis();
+//            message += "  ;time=" + System.currentTimeMillis();
+            message += "  ";
         }
         if (handler == null) {
             Log.i(TAG, message);
