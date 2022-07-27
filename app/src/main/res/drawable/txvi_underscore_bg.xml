@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--在描边的外部再多1dp的margin,所以这里要多设置1dp才能完全去除对应边上的stroke-->
+    <item
+        android:left="-2dp"
+        android:right="-2dp"
+        android:top="-2dp">
+        <shape android:shape="rectangle">
+            <!--背景色-->
+            <solid android:color="@android:color/transparent" />
+            <!--边框线-->
+            <stroke
+                android:width="1px"
+                android:color="@color/common_text_color" />
+            <!--下划线颜色-->
+        </shape>
+    </item>
+</layer-list>

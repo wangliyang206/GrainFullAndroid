@@ -32,6 +32,7 @@ import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.IdentifyDialog;
+import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduVoiceRecogComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceRecogContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceRecogPresenter;
@@ -145,6 +146,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     @OnClick({
             R.id.btn_voicerecog_start,                                                              // 语音识别
             R.id.imvi_voicerecog_setting,                                                           // 设置
+            R.id.txvi_voicerecog_file,                                                              // 音视频文件识别
     })
     @Override
     public void onClick(View v) {
@@ -154,6 +156,9 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
                 break;
             case R.id.imvi_voicerecog_setting:                                                      // 设置
                 ActivityUtils.startActivity(BaiduVoiceOnlineSettingActivity.class);
+                break;
+            case R.id.txvi_voicerecog_file:                                                         // 音视频文件识别
+                onOpenFile();
                 break;
         }
     }
@@ -166,7 +171,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
                 updateBtnTextByStatus();
                 txviError.setText("");
 
-                if(mResult != null){
+                if (mResult != null) {
                     mResult.setData("");
                 }
                 break;
@@ -188,6 +193,19 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
             default:
                 break;
         }
+    }
+
+    /**
+     * 打开文件
+     */
+    private void onOpenFile() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        // 选择音频
+        intent.setType("audio/*");
+        // 选择视频 （mp4 3gp 是android支持的视频格式）
+        intent.setType("video/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        startActivityForResult(intent, Constant.REQUEST_SELECT_IMAGES_CODE);
     }
 
     private void updateBtnTextByStatus() {
