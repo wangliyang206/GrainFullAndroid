@@ -245,6 +245,128 @@
                         android:contentDescription="@null" />
                 </LinearLayout>
             </LinearLayout>
+
+
+            <!-- 保存录音 -->
+            <LinearLayout
+                android:id="@+id/lila_voiceonlinesetting_saverecording"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:text="保存录音"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_voiceonlinesetting_saverecording"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="保存路径为临时目录 如/sdcard/baiduAsr/outfile.pcm。 OUT_FILE参数。需要同时开启CALLBACK_EVENT_ASR_AUDIO参数"
+                        android:textColor="@color/common_text_tips_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkbox_voiceonlinesetting_saverecording"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@null"
+                        android:button="@drawable/checked_style"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/common_text_tips_color" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 开启代码中音频回调事件 -->
+            <LinearLayout
+                android:id="@+id/lila_voiceonlinesetting_audiocallback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:text="开启代码中音频回调事件"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_voiceonlinesetting_audiocallback"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="CALLBACK_EVENT_ASR_AUDIO参数。不需要音频二进制数据的回调，请勿开启，否则影响性能"
+                        android:textColor="@color/common_text_tips_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkbox_voiceonlinesetting_audiocallback"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@null"
+                        android:button="@drawable/checked_style"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/common_text_tips_color" />
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

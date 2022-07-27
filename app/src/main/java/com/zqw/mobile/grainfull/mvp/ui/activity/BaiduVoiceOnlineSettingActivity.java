@@ -57,6 +57,12 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
 
     @BindView(R.id.txvi_voiceonlinesetting_vadisopen)
     TextView txviVadIsOpen;
+
+    @BindView(R.id.checkbox_voiceonlinesetting_saverecording)
+    CheckBox cbSaveRecording;
+
+    @BindView(R.id.checkbox_voiceonlinesetting_audiocallback)
+    CheckBox cbAudioCallback;
     /*------------------------------------------业务信息------------------------------------------*/
     // 缓存操作对象
     private SharedPreferences sp;
@@ -71,6 +77,8 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
     private final String LONG_SPEECH = "enable.long.speech";
     private final String VAD_KEY = "vad.endpoint-timeout";
     private final String VAD_IS_OPEN_KEY = "vad";
+    private final String SAVE_RECORDING = "_outfile";
+    private final String AUDIO_CALLBACK = "accept-audio-data";
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -96,6 +104,8 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
         initLongSpeech();
         initVad();
         initVadIsOpen();
+        initSaveRecording();
+        initAudioCallback();
     }
 
     /**
@@ -108,7 +118,7 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
         PopupSelectList.ItemClick itemClick = (position, info) -> {
             // 显示内容
             txviLanguage.setText(info);
-            setSharedPreferencesByKey(PID_KEY, info);
+            setSharedPreferencesByKey(PID_KEY, (position == 0) ? "" : info);
         };
         popSelectPid = new PopupSelectList(this, "PID，语种", mList, itemClick);
 
@@ -140,7 +150,7 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
         PopupSelectList.ItemClick itemClick = (position, info) -> {
             // 显示内容
             txviVad.setText(info);
-            setSharedPreferencesByKey(VAD_KEY, info);
+            setSharedPreferencesByKey(VAD_KEY, (position == 0) ? "" : info);
         };
         popSelectVad = new PopupSelectList(this, "VAD时长设置", mList, itemClick);
 
@@ -161,7 +171,7 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
         PopupSelectList.ItemClick itemClick = (position, info) -> {
             // 显示内容
             txviVadIsOpen.setText(info);
-            setSharedPreferencesByKey(VAD_IS_OPEN_KEY, info);
+            setSharedPreferencesByKey(VAD_IS_OPEN_KEY, (position == 0) ? "" : info);
         };
         popSelectVadIsOpen = new PopupSelectList(this, "VAD是否开启", mList, itemClick);
 
@@ -171,11 +181,37 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
         }
     }
 
+    /**
+     * 保存录音
+     */
+    private void initSaveRecording() {
+        boolean val = getSharedBooleanByKey(SAVE_RECORDING);
+        cbSaveRecording.setChecked(val);
+
+        cbSaveRecording.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setSharedPreferencesByKey(SAVE_RECORDING, isChecked);
+        });
+    }
+
+    /**
+     * 音频回调
+     */
+    private void initAudioCallback() {
+        boolean val = getSharedBooleanByKey(AUDIO_CALLBACK);
+        cbAudioCallback.setChecked(val);
+
+        cbAudioCallback.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setSharedPreferencesByKey(AUDIO_CALLBACK, isChecked);
+        });
+    }
+
     @OnClick({
             R.id.lila_voiceonlinesetting_language,                                                  // 设置语种
             R.id.lila_voiceonlinesetting_longspeech,                                                // 长语音
             R.id.lila_voiceonlinesetting_vad,                                                       // VAD时长设置
             R.id.lila_voiceonlinesetting_vadisopen,                                                 // VAD是否开启
+            R.id.lila_voiceonlinesetting_saverecording,                                             // 保存录音
+            R.id.lila_voiceonlinesetting_audiocallback,                                             // 音频回调
     })
     @Override
     public void onClick(View v) {
@@ -203,6 +239,12 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
                 } else {
                     showMessage("暂无VAD是否开启，请联系管理员！");
                 }
+                break;
+            case R.id.lila_voiceonlinesetting_saverecording:                                        // 保存录音
+                cbSaveRecording.setChecked(!cbSaveRecording.isChecked());
+                break;
+            case R.id.lila_voiceonlinesetting_audiocallback:                                        // 音频回调
+                cbAudioCallback.setChecked(!cbAudioCallback.isChecked());
                 break;
         }
     }
