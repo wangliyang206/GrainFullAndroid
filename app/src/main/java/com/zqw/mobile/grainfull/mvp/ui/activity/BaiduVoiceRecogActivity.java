@@ -24,10 +24,14 @@ import com.baidu.aip.asrwakeup3.core.recog.listener.MessageStatusRecogListener;
 import com.baidu.aip.asrwakeup3.uiasr.params.CommonRecogParams;
 import com.baidu.aip.asrwakeup3.uiasr.params.OfflineRecogParams;
 import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
+import com.baidu.speech.asr.SpeechConstant;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.IdentifyDialog;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduVoiceRecogComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceRecogContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceRecogPresenter;
@@ -39,7 +43,7 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 /**
- * Description:百度AI - 语音识别
+ * Description:百度AI - 短语音识别
  * <p>
  * Created on 2022/07/25 17:21
  *
@@ -54,6 +58,8 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     @BindView(R.id.btn_voicerecog_start)
     Button btnStart;
     /*------------------------------------------业务信息------------------------------------------*/
+    // 弹出结果框
+    private IdentifyDialog mResult;
     /**
      * Api的参数类，仅仅用于生成调用START的json字符串，本身与SDK的调用无关
      */
@@ -86,6 +92,11 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
         myRecognizer.release();
 
         super.onDestroy();
+
+        if (mResult != null) {
+            mResult.dismiss();
+            mResult = null;
+        }
     }
 
     @Override
@@ -111,6 +122,9 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     }
 
     private void initRecog() {
+        // 初始化Result弹框
+        mResult = new IdentifyDialog(this);
+
         apiParams = new OnlineRecogParams();
         apiParams.initSamplePath(this);
         status = STATUS_NONE;
@@ -129,13 +143,17 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     }
 
     @OnClick({
-            R.id.btn_voicerecog_start
+            R.id.btn_voicerecog_start,                                                              // 语音识别
+            R.id.imvi_voicerecog_setting,                                                           // 设置
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_voicerecog_start:
+            case R.id.btn_voicerecog_start:                                                         // 语音识别
                 onBtn();
+                break;
+            case R.id.imvi_voicerecog_setting:                                                      // 设置
+                ActivityUtils.startActivity(BaiduVoiceOnlineSettingActivity.class);
                 break;
         }
     }
@@ -201,6 +219,16 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     private void start() {
         // DEMO集成步骤2.1 拼接识别参数： 此处params可以打印出来，直接写到你的代码里去，最终的json一致即可。
         final Map<String, Object> params = fetchParams();
+        if (BuildConfig.DEBUG) {
+            params.put(SpeechConstant.APP_ID, getString(R.string.baidu_app_id_debug));
+            params.put(SpeechConstant.APP_KEY, getString(R.string.baidu_map_api_key_debug));
+            params.put(SpeechConstant.SECRET, getString(R.string.baidu_secret_key_debug));
+        } else {
+            params.put(SpeechConstant.APP_ID, getString(R.string.baidu_app_id));
+            params.put(SpeechConstant.APP_KEY, getString(R.string.baidu_map_api_key));
+            params.put(SpeechConstant.SECRET, getString(R.string.baidu_secret_key));
+        }
+
         // params 也可以根据文档此处手动修改，参数会以json的格式在界面和logcat日志中打印
         Timber.i("设置的start输入参数：%s", params);
         // 复制此段可以自动检测常规错误
@@ -274,7 +302,18 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
             case STATUS_FINISHED:
                 if (msg.arg2 == 1) {
                     // 识别成功
+                    // ###识别结束，结果是“经过了几次对读者问题解决之后，我打算添加这一环节，非常有必要。”；说话结束到识别结束耗时【312ms】
                     Timber.i("####" + msg.obj.toString() + "\n");
+                    // 将识别的结果做一次格式化，去掉(识别结束，结果是“)和(”；说话结束到识别结束耗时【312ms】)
+                    String result = "";
+                    try {
+                        result = msg.obj.toString().substring(9, msg.obj.toString().lastIndexOf("”；说话结束到识别结束耗时"));
+                    } catch (Exception ex) {
+                        result = msg.obj.toString();
+                    }
+                    // 弹出对话框，显示结果
+                    mResult.show();
+                    mResult.setData(result);
                 }
                 status = msg.what;
                 updateBtnTextByStatus();

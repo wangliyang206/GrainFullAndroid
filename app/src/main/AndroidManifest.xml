@@ -58,6 +58,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.BaiduVoiceOnlineSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.BaiduVoiceRecogActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -133,9 +133,7 @@ android {
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"
-                                    , BAIDU_APP_ID   : "@string/baidu_app_id_debug"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"
-                                    , BAIDU_SECRET_ID: "@string/baidu_secret_key_debug"]
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"]
         }
 
         // 正式发布版
@@ -172,9 +170,7 @@ android {
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name"
-                                    , BAIDU_APP_ID   : "@string/baidu_app_id"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"
-                                    , BAIDU_SECRET_ID: "@string/baidu_secret_key"]
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"]
         }
     }
 

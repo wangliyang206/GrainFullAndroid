@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragment_bg_color"
@@ -10,60 +11,102 @@
         android:id="@+id/view_voicerecog_top"
         layout="@layout/comm_top_layout" />
 
+    <!--设置-->
+    <ImageView
+        android:id="@+id/imvi_voicerecog_setting"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="25dp"
+        android:src="@mipmap/icon_home__titlebar_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/view_voicerecog_top"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_voicerecog_top" />
 
     <LinearLayout
+        android:id="@+id/lila_voicerecog_tips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/layout_bg_shape"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_voicerecog_top">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="注意:"
+            android:text="短语音识别 - 说明:"
             android:textColor="@color/common_text_color"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:text="一、请保持设备联网，对着麦克风说出日常用语即可。"
             android:textColor="@color/common_text_color"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="二、普通录音限制60s。使用长语音无此限制。"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="二、适用于手机语音输入、语音搜索、智能语音对话等场景。"
             android:textColor="@color/common_text_color"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="三、长时间未检测到人说话，会自动关闭。"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="三、包含中文普通话输入法、英语、粤语、四川话、远场5个识别模型。"
             android:textColor="@color/common_text_color"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="四、普通录音限制60s。使用长语音无此限制。"
+            android:textColor="@color/common_text_color"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="五、长时间未检测到人说话，会自动停止。"
+            android:textColor="@color/common_text_color"
+            android:textSize="10sp" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scvi_voicerecog_tips"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_voicerecog_start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lila_voicerecog_tips">
 
         <TextView
             android:id="@+id/txvi_voicerecog_error"
@@ -79,12 +122,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/btn_bg_selector"
         android:padding="13dp"
         android:text="开始录音"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
-</LinearLayout>
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scvi_voicerecog_tips" />
+</androidx.constraintlayout.widget.ConstraintLayout>
