@@ -64,6 +64,15 @@ public class IdentifyDialog extends AlertDialog implements View.OnClickListener 
         }
     }
 
+    /**
+     * 追加内容
+     */
+    public void setAppend(String val) {
+        if (mContent != null) {
+            mContent.append(val);
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

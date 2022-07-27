@@ -165,6 +165,10 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
                 status = STATUS_WAITING_READY;
                 updateBtnTextByStatus();
                 txviError.setText("");
+
+                if(mResult != null){
+                    mResult.setData("");
+                }
                 break;
             case STATUS_WAITING_READY: // 调用本类的start方法后，即输入START事件后，等待引擎准备完毕。
             case STATUS_READY: // 引擎准备完毕。
@@ -315,7 +319,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
                     }
                     // 弹出对话框，显示结果
                     mResult.show();
-                    mResult.setData(result);
+                    mResult.setAppend(result);
                 }
                 status = msg.what;
                 updateBtnTextByStatus();
