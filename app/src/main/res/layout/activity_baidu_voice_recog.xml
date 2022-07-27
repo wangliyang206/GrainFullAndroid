@@ -89,8 +89,18 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:text="五、开启长语音识别后，如想停止，请手动点击“停止”按钮。"
+            android:textColor="@color/common_text_color"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="五、长时间未检测到人说话，会自动停止。"
+            android:text="六、短语音长时间未检测到人说话，会自动停止。"
             android:textColor="@color/common_text_color"
             android:textSize="10sp" />
     </LinearLayout>
