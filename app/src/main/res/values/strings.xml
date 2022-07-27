@@ -65,4 +65,34 @@
         1、目前暂不支持比对年龄跨度过大，以及遮挡幅度相差30%以上的两张人脸。\n
         2、若模板照片中包含多张人脸，则取最大的人脸为模板人像；若对比图像中有多张人脸，将按照人脸面积排序，取前3张人脸进行比对。
     </string>
+
+    <!-- 百度语音识别设置 之 pid语种 -->
+    <string-array name="pid">
+        <item>1537, 普通话输入法模型(默认) </item>
+        <item>15372, 普通话输入法模型(后处理带标点) </item>
+        <item>15373, 普通话输入法模型(在线语义) </item>
+        <item>8001, 自训练平台输入法模型</item>
+        <item>8002, 自训练平台搜索模型</item>
+        <item>1936, 普通话远场模型 </item>
+        <item>19362,普通话远场模型（后处理带标点） </item>
+        <item>19363,普通话远场模型（在线语义） </item>
+        <item>1737, 英语</item>
+        <item>1637, 粤语</item>
+        <item>16372, 粤语（后处理带标点）</item>
+        <item>1837, 四川话</item>
+    </string-array>
+
+    <!-- 百度语音识别设置 之 VAD时长设置 -->
+    <string-array name="vad_timeout_list">
+        <item>0, 开启长语音（离线不支持）。建议pid选择15372。</item>
+        <item>800, 毫秒，静音800ms后断句，适用于输入短语</item>
+        <item>2000, 毫秒，静音2000ms后断句，适用于输入长句</item>
+        <item>2230, 毫秒，请修改代码中的VAD_ENDPOINT_TIMEOUT，自定义时长（建议800ms-3000ms之间）</item>
+    </string-array>
+
+    <!-- 百度语音识别设置 之 VAD是否开启 -->
+    <string-array name="vad_list">
+        <item>dnn, 默认，推荐模型</item>
+        <item>touch,  关闭静音断句功能。用戶手动停止录音</item>
+    </string-array>
 </resources>

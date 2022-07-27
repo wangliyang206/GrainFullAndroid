@@ -307,7 +307,9 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
                     // 将识别的结果做一次格式化，去掉(识别结束，结果是“)和(”；说话结束到识别结束耗时【312ms】)
                     String result = "";
                     try {
-                        result = msg.obj.toString().substring(9, msg.obj.toString().lastIndexOf("”；说话结束到识别结束耗时"));
+                        result = msg.obj.toString().substring(
+                                9,
+                                msg.obj.toString().lastIndexOf("”"));
                     } catch (Exception ex) {
                         result = msg.obj.toString();
                     }
