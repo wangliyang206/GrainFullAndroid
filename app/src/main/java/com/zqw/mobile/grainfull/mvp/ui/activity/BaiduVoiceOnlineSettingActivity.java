@@ -73,11 +73,17 @@ public class BaiduVoiceOnlineSettingActivity extends BaseActivity<BaiduVoiceOnli
     // 选择VAD是否开启
     private PopupSelectList popSelectVadIsOpen;
 
+    // PID，语种
     private final String PID_KEY = "pid";
+    // 长语音
     private final String LONG_SPEECH = "enable.long.speech";
+    // VAD时长设置
     private final String VAD_KEY = "vad.endpoint-timeout";
+    // VAD是否开启
     private final String VAD_IS_OPEN_KEY = "vad";
+    // 保存录音
     private final String SAVE_RECORDING = "_outfile";
+    // 开启代码中音频回调事件
     private final String AUDIO_CALLBACK = "accept-audio-data";
 
     @Override

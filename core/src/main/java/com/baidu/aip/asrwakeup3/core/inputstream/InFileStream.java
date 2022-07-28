@@ -1,6 +1,5 @@
 package com.baidu.aip.asrwakeup3.core.inputstream;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.baidu.aip.asrwakeup3.core.util.MyLogger;

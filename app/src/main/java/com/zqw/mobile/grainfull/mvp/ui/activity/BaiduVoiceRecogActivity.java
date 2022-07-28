@@ -5,6 +5,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.baidu.aip.asrwakeup3.core.inputstream.InFileStream;
 import com.baidu.aip.asrwakeup3.core.mini.AutoCheck;
 import com.baidu.aip.asrwakeup3.core.recog.IStatus;
 import com.baidu.aip.asrwakeup3.core.recog.MyRecognizer;
@@ -26,6 +28,7 @@ import com.baidu.aip.asrwakeup3.uiasr.params.OfflineRecogParams;
 import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
 import com.baidu.speech.asr.SpeechConstant;
 import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.UriUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -37,6 +40,9 @@ import com.zqw.mobile.grainfull.di.component.DaggerBaiduVoiceRecogComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceRecogContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceRecogPresenter;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -98,6 +104,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
             mResult.dismiss();
             mResult = null;
         }
+        InFileStream.reset();
     }
 
     @Override
@@ -166,7 +173,7 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     private void onBtn() {
         switch (status) {
             case STATUS_NONE: // 初始状态
-                start();
+                start(null);
                 status = STATUS_WAITING_READY;
                 updateBtnTextByStatus();
                 txviError.setText("");
@@ -200,10 +207,8 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
      */
     private void onOpenFile() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        // 选择音频
-        intent.setType("audio/*");
-        // 选择视频 （mp4 3gp 是android支持的视频格式）
-        intent.setType("video/*");
+        // 选择音频/视频 （mp4 3gp 是android支持的视频格式）
+        intent.setType("audio/*;video/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent, Constant.REQUEST_SELECT_IMAGES_CODE);
     }
@@ -237,8 +242,10 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     /**
      * 开始录音，点击“开始”按钮后调用。
      * 基于DEMO集成2.1, 2.2 设置识别参数并发送开始事件
+     *
+     * @param file 如果有值，则说明是“音视频文件”识别；没有值则按短语音识别。
      */
-    private void start() {
+    private void start(File file) {
         // DEMO集成步骤2.1 拼接识别参数： 此处params可以打印出来，直接写到你的代码里去，最终的json一致即可。
         final Map<String, Object> params = fetchParams();
         if (BuildConfig.DEBUG) {
@@ -249,6 +256,18 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
             params.put(SpeechConstant.APP_ID, getString(R.string.baidu_app_id));
             params.put(SpeechConstant.APP_KEY, getString(R.string.baidu_map_api_key));
             params.put(SpeechConstant.SECRET, getString(R.string.baidu_secret_key));
+        }
+
+        if (file != null) {
+            // 默认读的是Assets
+//            InFileStream.setContext(this);
+            // 指定读取的文件路径
+            try {
+                InFileStream.setContext(this, new FileInputStream(file));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            params.put(SpeechConstant.IN_FILE, "#com.baidu.aip.asrwakeup3.core.inputstream.InFileStream.create16kStream()");
         }
 
         // params 也可以根据文档此处手动修改，参数会以json的格式在界面和logcat日志中打印
@@ -352,6 +371,26 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
             default:
                 break;
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == Constant.REQUEST_SELECT_IMAGES_CODE) {
+                // 获取文件路径
+                Uri uri = data.getData();
+                // 开始执行文件识别
+                start(UriUtils.uri2File(uri));
+                status = STATUS_WAITING_READY;
+                updateBtnTextByStatus();
+                txviError.setText("");
+
+                if (mResult != null) {
+                    mResult.setData("");
+                }
+            }
         }
     }
 

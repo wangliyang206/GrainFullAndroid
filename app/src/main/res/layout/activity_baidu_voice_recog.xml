@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="短语音识别 - 说明:"
+            android:text="语音识别 - 说明:"
             android:textColor="@color/common_text_color"
             android:textSize="12sp" />
 
@@ -89,7 +89,17 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:text="五、开启长语音识别后，如想停止，请手动点击“停止”按钮。"
+            android:text="五、短语音长时间未检测到人说话，会自动停止。"
+            android:textColor="@color/common_text_color"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="六、开启长语音识别后，如想停止，请手动点击“停止”按钮。"
             android:textColor="@color/common_text_color"
             android:textSize="10sp" />
 
@@ -100,7 +110,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="六、短语音长时间未检测到人说话，会自动停止。"
+            android:text="七、文件识别格式支持：pcm（不压缩）、wav（不压缩，pcm编码）、amr（压缩格式）、m4a（AAC编码）；固定16k 采样率；"
             android:textColor="@color/common_text_color"
             android:textSize="10sp" />
     </LinearLayout>
