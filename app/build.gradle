@@ -332,7 +332,8 @@ dependencies {
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Map-Navi:7.4.0'
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Search:7.4.0'
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Util:7.4.0'
-    implementation 'com.baidu.lbsyun:NaviTts:2.5.5'
+//    implementation 'com.baidu.lbsyun:NaviTts:2.5.5'
+    implementation files('libs/com.baidu.tts_2.6.2.2.20200629_44818d4.jar')
     // GreenDao 数据库(https://github.com/greenrobot/greenDAO)
     implementation 'org.greenrobot:greendao:3.3.0'
     // 图片压缩

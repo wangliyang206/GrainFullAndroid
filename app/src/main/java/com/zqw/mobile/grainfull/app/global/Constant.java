@@ -39,6 +39,11 @@ public interface Constant {
      */
     String VIDEO_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/Video/";
 
+    /**
+     * 音频缓存路径
+     */
+    String AUDIO_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/Audio/";
+
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**
      * API版本号

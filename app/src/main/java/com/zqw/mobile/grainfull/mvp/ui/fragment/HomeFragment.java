@@ -27,6 +27,7 @@ import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
@@ -171,7 +172,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_livenessdetection,                                                // 活体检测
             R.id.btn_fragmenthome_facerecognition,                                                  // 百度人脸采集
             R.id.btn_fragmenthome_facecomparison,                                                   // 人脸对比
-            R.id.btn_fragmenthome_voicerecog,                                                       // 语音转文字
+            R.id.btn_fragmenthome_voicerecog,                                                       // 语音识别
+            R.id.btn_fragmenthome_speechsynthesis,                                                  // 语音合成
     })
     @Override
     public void onClick(View v) {
@@ -211,8 +213,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_facecomparison:                                              // 人脸对比
                 ActivityUtils.startActivity(FaceComparisonActivity.class);
                 break;
-            case R.id.btn_fragmenthome_voicerecog:                                                  // 语音转文字
+            case R.id.btn_fragmenthome_voicerecog:                                                  // 语音识别
                 ActivityUtils.startActivity(BaiduVoiceRecogActivity.class);
+                break;
+            case R.id.btn_fragmenthome_speechsynthesis:                                             // 语音合成
+                ActivityUtils.startActivity(BaiduSpeechSynthesisActivity.class);
                 break;
         }
     }

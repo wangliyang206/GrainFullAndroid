@@ -191,7 +191,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
                         Constant.CACHE_PATH,
                         Constant.APP_UPDATE_PATH,
                         Constant.LOG_PATH,
-                        Constant.VIDEO_PATH);
+                        Constant.VIDEO_PATH,
+                        Constant.AUDIO_PATH);
 
                 msg.what = 1;
             } catch (Exception e) {

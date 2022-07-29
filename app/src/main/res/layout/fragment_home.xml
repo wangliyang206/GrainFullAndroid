@@ -234,6 +234,17 @@
                     android:text="语音识别"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_facerecognition"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_facerecognition" />
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_speechsynthesis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="语音合成"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_voicerecog"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_facerecognition" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

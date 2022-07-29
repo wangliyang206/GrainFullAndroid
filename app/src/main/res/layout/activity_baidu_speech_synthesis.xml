@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_baidu_speech_synthesis"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_speechsynthesis_top"
+        layout="@layout/comm_top_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 要合成的内容 -->
+            <EditText
+                android:id="@+id/edit_speechsynthesis_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg_shape"
+                android:gravity="top"
+                android:minLines="5"
+                android:padding="10dp"
+                android:hint="请输入需要合成语音的文字"
+                android:text=""
+                android:textColor="@color/common_edit_color"
+                android:textSize="14sp" />
+
+            <!-- 设置 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg_shape"
+                android:orientation="vertical">
+
+                <!-- 语速 -->
+                <TextView
+                    android:id="@+id/txvi_speechsynthesis_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="语速"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <SeekBar
+                    android:id="@+id/sebr_speechsynthesis_speed"
+                    style="@style/Widget.AppCompat.SeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="15"
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/txvi_speechsynthesis_speed"
+                    app:layout_constraintLeft_toRightOf="@+id/txvi_speechsynthesis_speed"
+                    app:layout_constraintRight_toLeftOf="@+id/txvi_speechsynthesis_speed_num"
+                    app:layout_constraintTop_toTopOf="@+id/txvi_speechsynthesis_speed" />
+
+                <TextView
+                    android:id="@+id/txvi_speechsynthesis_speed_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txvi_speechsynthesis_speed"
+                    app:layout_constraintLeft_toRightOf="@+id/sebr_speechsynthesis_speed"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txvi_speechsynthesis_speed" />
+
+
+                <!-- 语调 -->
+                <TextView
+                    android:id="@+id/txvi_speechsynthesis_intonation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="语调"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_speechsynthesis_speed" />
+
+                <SeekBar
+                    android:id="@+id/sebr_speechsynthesis_intonation"
+                    style="@style/Widget.AppCompat.SeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="15"
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/txvi_speechsynthesis_intonation"
+                    app:layout_constraintLeft_toRightOf="@+id/txvi_speechsynthesis_intonation"
+                    app:layout_constraintRight_toLeftOf="@+id/txvi_speechsynthesis_intonation_num"
+                    app:layout_constraintTop_toTopOf="@+id/txvi_speechsynthesis_intonation" />
+
+                <TextView
+                    android:id="@+id/txvi_speechsynthesis_intonation_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txvi_speechsynthesis_intonation"
+                    app:layout_constraintLeft_toRightOf="@+id/sebr_speechsynthesis_intonation"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txvi_speechsynthesis_intonation" />
+
+
+                <!-- 音量 -->
+                <TextView
+                    android:id="@+id/txvi_speechsynthesis_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="音量"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_speechsynthesis_intonation" />
+
+                <SeekBar
+                    android:id="@+id/sebr_speechsynthesis_volume"
+                    style="@style/Widget.AppCompat.SeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="15"
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/txvi_speechsynthesis_volume"
+                    app:layout_constraintLeft_toRightOf="@+id/txvi_speechsynthesis_volume"
+                    app:layout_constraintRight_toLeftOf="@+id/txvi_speechsynthesis_volume_num"
+                    app:layout_constraintTop_toTopOf="@+id/txvi_speechsynthesis_volume" />
+
+                <TextView
+                    android:id="@+id/txvi_speechsynthesis_volume_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txvi_speechsynthesis_volume"
+                    app:layout_constraintLeft_toRightOf="@+id/sebr_speechsynthesis_volume"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txvi_speechsynthesis_volume" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- 合成 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg_shape"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lila_speechsynthesis_soundlibrary"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="声线库"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_speechsynthesis_soundlibrary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:text="女声"
+                        android:textColor="@color/btn_normal_color"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@mipmap/ic_right_arrow_gray"
+                        android:contentDescription="@null" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_speechsynthesis_synthesis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/btn_bg_selector"
+                    android:padding="13dp"
+                    android:text="合成"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
