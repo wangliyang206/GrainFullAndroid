@@ -20,10 +20,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.baidu.mapapi.map.offline.OfflineMapUtil;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.AudioDialog;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduSpeechSynthesisComponent;
@@ -75,6 +77,8 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
     private SynthActivity synthActivity;
     // 选择发声人
     private PopupSelectList popSelectSpeaker;
+    // 合成结果
+    private AudioDialog mAudioDialog;
 
     @Override
     protected void onDestroy() {
@@ -112,6 +116,8 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
 
         synthActivity = new SynthActivity();
         synthActivity.initTTS(getApplicationContext());
+
+        mAudioDialog = new AudioDialog(this);
 
         initSeekBar();
         initSpeaker();
@@ -268,7 +274,13 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
                     return;
                 }
 
-                synthActivity.speak(val);
+                // 开始合成
+                synthActivity.synthesize(val);
+                if (mAudioDialog != null) {
+                    mAudioDialog.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                } else {
+                    showMessage("暂无合成结果，请联系管理员！");
+                }
                 break;
         }
     }
