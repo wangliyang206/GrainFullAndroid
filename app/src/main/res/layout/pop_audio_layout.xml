@@ -22,7 +22,7 @@
     <!--居中布局-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         android:background="@mipmap/bg_popup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -60,22 +60,37 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_popaudiolayout_play"
+            app:layout_constraintBottom_toTopOf="@+id/txvi_popaudiolayout_path"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txvi_popaudiolayout_title" />
+
+        <TextView
+            android:id="@+id/txvi_popaudiolayout_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/colorPrimary"
+            android:textSize="11sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vivi_popaudiolayout_graphics" />
 
         <Button
             android:id="@+id/btn_popaudiolayout_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/btn_bg_selector"
             android:padding="13dp"
             android:text="播放"
             android:textColor="@android:color/white"
             android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_popaudiolayout_path"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btn_popaudiolayout_save" />
 

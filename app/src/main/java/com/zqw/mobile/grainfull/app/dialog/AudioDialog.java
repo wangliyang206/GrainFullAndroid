@@ -14,10 +14,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.TimeUtils;
+import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
+import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
+import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler;
+import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
+import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
@@ -25,6 +32,7 @@ import com.zqw.mobile.grainfull.mvp.ui.widget.VisualizeView;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import timber.log.Timber;
 
@@ -39,15 +47,19 @@ import timber.log.Timber;
 public class AudioDialog extends PopupWindow implements View.OnClickListener {
     // PCM文件路径
     final String mAudioPath = Constant.AUDIO_PATH + "output-0.pcm";
+    String mSavePath;
     // 播放按钮
     private Button mPlay;
     // 保存按钮
     private Button mSave;
     // 显示音频音波的控件
     private VisualizeView visualizerView;
+    private TextView txviPath;
+
     private AudioTrack audioTrack;
     private FileInputStream fis = null;
     private Visualizer visualizer;
+    private FFmpeg ffmpeg;
 
     public AudioDialog(Context context) {
         super(context);
@@ -69,6 +81,7 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         // 关闭按钮
         view.findViewById(R.id.imvi_popaudiolayout_close).setOnClickListener(this);
         view.findViewById(R.id.lila_popaudiolayout_close).setOnClickListener(this);
+        txviPath = view.findViewById(R.id.txvi_popaudiolayout_path);
         visualizerView = view.findViewById(R.id.vivi_popaudiolayout_graphics);
         // 播放
         mPlay = view.findViewById(R.id.btn_popaudiolayout_play);
@@ -76,6 +89,16 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         // 保存
         mSave = view.findViewById(R.id.btn_popaudiolayout_save);
         mSave.setOnClickListener(this);
+
+        try {
+            // 初始化 FFMPEG
+            ffmpeg = FFmpeg.getInstance(context);
+            // 加载 FFMPEG 可执行文件
+            ffmpeg.loadBinary(new LoadBinaryResponseHandler());
+        } catch (FFmpegNotSupportedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -89,8 +112,58 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
                 onPlayPCM();
                 break;
             case R.id.btn_popaudiolayout_save:
-
+                onSave();
                 break;
+        }
+    }
+
+    /**
+     * 保存
+     */
+    private void onSave() {
+        mSavePath = Constant.AUDIO_PATH + TimeUtils.getNowString(new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss")) + ".mp3";
+
+        String cmd = "-y -f s16be -ac 2 -ar 48000 -acodec pcm_s16le -i " + mAudioPath + " " + mSavePath;
+        String[] cmdArraay = cmd.split(" ");
+        try {
+            ffmpeg.execute(cmdArraay, new ExecuteBinaryResponseHandler() {
+                @Override
+                public void onStart() {
+                    super.onStart();
+                    Timber.i("###onStart");
+                    mSave.setEnabled(false);
+                    txviPath.setText("");
+                }
+
+                @Override
+                public void onFinish() {
+                    super.onFinish();
+                    Timber.i("###onFinish");
+                    // 提示
+                    mSave.setEnabled(true);
+                    txviPath.setText("文件已保存致：" + mSavePath);
+                }
+
+                @Override
+                public void onSuccess(String message) {
+                    super.onSuccess(message);
+                    Timber.i("###onSuccess=%s", message);
+                }
+
+                @Override
+                public void onProgress(String message) {
+                    super.onProgress(message);
+                    Timber.i("###onProgress=%s", message);
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    super.onFailure(message);
+                    Timber.i("###onFailure=%s", message);
+                }
+            });
+        } catch (FFmpegCommandAlreadyRunningException e) {
+            e.printStackTrace();
         }
     }
 
