@@ -22,7 +22,7 @@
     <!--居中布局-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:background="@mipmap/bg_popup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -51,6 +51,19 @@
             android:src="@mipmap/ic_login_close"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.VisualizeView
+            android:id="@+id/vivi_popaudiolayout_graphics"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_popaudiolayout_play"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_popaudiolayout_title" />
 
         <Button
             android:id="@+id/btn_popaudiolayout_play"
