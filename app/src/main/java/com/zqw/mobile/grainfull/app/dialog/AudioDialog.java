@@ -160,7 +160,6 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
                     visualizerView.setColor(android.R.color.black);
                     visualizerView.setMode(VisualizeView.SINGLE);
                     visualizerView.setData(model);
-                    Timber.i("###=%s", model.toString());
                 }
             }, Visualizer.getMaxCaptureRate() / 2, false, true);
             // 设置Visualizer启动
