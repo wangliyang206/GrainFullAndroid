@@ -19,6 +19,7 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerSpecialEffectsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.SpecialEffectsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.SpecialEffectsPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
 
 import butterknife.BindView;
@@ -62,12 +63,16 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
 
     @OnClick({
             R.id.btn_fragmentspecialeffects_text_serialnumber,                                      // 仿序列号
+            R.id.btn_fragmentspecialeffects_other_audiowaveform,                                    // 音频波形
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_fragmentspecialeffects_text_serialnumber:                                 // 仿序列号
                 ActivityUtils.startActivity(SerialNumberActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_audiowaveform:                               // 音频波形
+                ActivityUtils.startActivity(AudioWaveformActivity.class);
                 break;
         }
     }
