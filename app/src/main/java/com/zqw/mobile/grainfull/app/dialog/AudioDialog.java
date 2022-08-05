@@ -121,9 +121,10 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
      * 保存
      */
     private void onSave() {
-        mSavePath = Constant.AUDIO_PATH + TimeUtils.getNowString(new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss")) + ".mp3";
+        mSavePath = Constant.AUDIO_PATH + "audio_" + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".mp3";
 
-        String cmd = "-y -f s16be -ac 2 -ar 48000 -acodec pcm_s16le -i " + mAudioPath + " " + mSavePath;
+        // ffmpeg -y -f 采样格式 -ac 声道数 -ar 采样率 -acodec pcm_s16le -i PCM源文件 MP3目标文件
+        String cmd = "-y -f s16be -ac 1 -ar 16000 -acodec pcm_s16le -i " + mAudioPath + " " + mSavePath;
         String[] cmdArraay = cmd.split(" ");
         try {
             ffmpeg.execute(cmdArraay, new ExecuteBinaryResponseHandler() {
