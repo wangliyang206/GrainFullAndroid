@@ -59,6 +59,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.AudioConversionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.AudioWaveformActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -73,9 +73,8 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-            <!-- 常用应用 -->
+            <!-- 华为平台 -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cola_fragmenthome_performa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -84,7 +83,7 @@
                 android:background="@drawable/layout_bg_shape">
 
                 <TextView
-                    android:id="@+id/txvi_fragmenthome_performa_title"
+                    android:id="@+id/txvi_fragmenthome_hw_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -97,7 +96,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:id="@+id/view_fragmenthome_performa_line"
+                    android:id="@+id/view_fragmenthome_hw_line"
                     android:layout_width="match_parent"
                     android:layout_height="0.1dp"
                     android:layout_marginStart="10dp"
@@ -105,7 +104,7 @@
                     android:layout_marginEnd="10dp"
                     android:background="@color/line_frame_color"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_performa_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_hw_title" />
 
                 <TextView
                     android:id="@+id/btn_fragmenthome_bankcards"
@@ -117,7 +116,7 @@
                     android:padding="10dp"
                     android:text="识别银行卡"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_performa_line" />
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_hw_line" />
 
                 <TextView
                     android:id="@+id/btn_fragmenthome_idcard"
@@ -178,9 +177,8 @@
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_gesture" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- 拜访信息 -->
+            <!-- 百度平台 -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cola_fragmenthome_visit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -189,7 +187,7 @@
                 android:background="@drawable/layout_bg_shape">
 
                 <TextView
-                    android:id="@+id/txvi_fragmenthome_visit_title"
+                    android:id="@+id/txvi_fragmenthome_bd_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -202,7 +200,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:id="@+id/view_fragmenthome_visit_line"
+                    android:id="@+id/view_fragmenthome_bd_line"
                     android:layout_width="match_parent"
                     android:layout_height="0.1dp"
                     android:layout_marginStart="10dp"
@@ -210,7 +208,7 @@
                     android:layout_marginEnd="10dp"
                     android:background="@color/line_frame_color"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_visit_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_bd_title" />
 
                 <TextView
                     android:id="@+id/btn_fragmenthome_facerecognition"
@@ -222,7 +220,7 @@
                     android:padding="10dp"
                     android:text="人脸采集"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_visit_line" />
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_bd_line" />
 
                 <TextView
                     android:id="@+id/btn_fragmenthome_voicerecog"
@@ -245,6 +243,53 @@
                     android:text="语音合成"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_voicerecog"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_facerecognition" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 其它 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cola_fragmenthome_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_bg_shape">
+
+                <TextView
+                    android:id="@+id/txvi_fragmenthome_other_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="其它"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view_fragmenthome_other_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/line_frame_color"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_other_title" />
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_audioconversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="音频转换"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_other_line" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

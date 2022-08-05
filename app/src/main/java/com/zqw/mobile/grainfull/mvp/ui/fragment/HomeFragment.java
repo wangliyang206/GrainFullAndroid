@@ -25,6 +25,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.HomeContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
@@ -165,19 +166,22 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_home_manual,                                                                   // 定位失败-手动定位
             R.id.btn_home_load,                                                                     // 定位失败-重新加载
             R.id.lila_fragmenthome_search,                                                          // 拜访搜索
+
             R.id.btn_fragmenthome_bankcards,                                                        // 识别银行卡
             R.id.btn_fragmenthome_idcard,                                                           // 识别身份证
             R.id.btn_fragmenthome_imagetotext,                                                      // 图片提取文字
             R.id.btn_fragmenthome_gesture,                                                          // 动态手势识别
             R.id.btn_fragmenthome_livenessdetection,                                                // 活体检测
-            R.id.btn_fragmenthome_facerecognition,                                                  // 百度人脸采集
             R.id.btn_fragmenthome_facecomparison,                                                   // 人脸对比
+
+            R.id.btn_fragmenthome_facerecognition,                                                  // 人脸采集
             R.id.btn_fragmenthome_voicerecog,                                                       // 语音识别
             R.id.btn_fragmenthome_speechsynthesis,                                                  // 语音合成
+
+            R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
     })
     @Override
     public void onClick(View v) {
-        Bundle bundle = new Bundle();
         switch (v.getId()) {
             case R.id.imvi_fragmenthome_head:                                                       // 点击头像
                 // 点击头像，打开侧滑
@@ -192,6 +196,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.lila_fragmenthome_search:                                                     // 拜访搜索
                 break;
+
             case R.id.btn_fragmenthome_bankcards:                                                   // 识别银行卡
                 ActivityUtils.startActivity(IdentifyBankCardsActivity.class);
                 break;
@@ -207,17 +212,20 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_livenessdetection:                                           // 活体检测
                 ActivityUtils.startActivity(LivenessDetectionActivity.class);
                 break;
-            case R.id.btn_fragmenthome_facerecognition:                                             // 百度人脸采集
-                ActivityUtils.startActivity(BaiduFaceRecognitionActivity.class);
-                break;
             case R.id.btn_fragmenthome_facecomparison:                                              // 人脸对比
                 ActivityUtils.startActivity(FaceComparisonActivity.class);
+                break;
+            case R.id.btn_fragmenthome_facerecognition:                                             // 人脸采集
+                ActivityUtils.startActivity(BaiduFaceRecognitionActivity.class);
                 break;
             case R.id.btn_fragmenthome_voicerecog:                                                  // 语音识别
                 ActivityUtils.startActivity(BaiduVoiceRecogActivity.class);
                 break;
             case R.id.btn_fragmenthome_speechsynthesis:                                             // 语音合成
                 ActivityUtils.startActivity(BaiduSpeechSynthesisActivity.class);
+                break;
+            case R.id.btn_fragmenthome_audioconversion:                                             // 音频转换
+                ActivityUtils.startActivity(AudioConversionActivity.class);
                 break;
         }
     }

@@ -40,26 +40,33 @@ import timber.log.Timber;
  * @ProjectName: GrainFullAndroid
  * @Package: com.zqw.mobile.grainfull.app.dialog
  * @ClassName: AudioDialog
- * @Description: 音频Dialog
+ * @Description: 音频播放+pcm转mp3+文件保存
  * @Author: WLY
  * @CreateDate: 2022/7/29 17:36
  */
 public class AudioDialog extends PopupWindow implements View.OnClickListener {
     // PCM文件路径
-    final String mAudioPath = Constant.AUDIO_PATH + "output-0.pcm";
+    private String mAudioPath;
     String mSavePath;
     // 播放按钮
-    private Button mPlay;
+    private final Button mPlay;
     // 保存按钮
-    private Button mSave;
+    private final Button mSave;
     // 显示音频音波的控件
-    private VisualizeView visualizerView;
-    private TextView txviPath;
+    private final VisualizeView visualizerView;
+    // 显示已保存的文件路径
+    private final TextView txviPath;
 
+    // 用于播放pcm格式的音频
     private AudioTrack audioTrack;
     private FileInputStream fis = null;
     private Visualizer visualizer;
+    // 用于文件转换
     private FFmpeg ffmpeg;
+    // 声道个数
+    private String AC = "1";
+    // 采样率
+    private String AR = "16000";
 
     public AudioDialog(Context context) {
         super(context);
@@ -101,6 +108,28 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
 
     }
 
+    /**
+     * 设置播放路径，默认使用单声道，采样率为16000Hz
+     *
+     * @param path 播放文件的路径，格式为pcm
+     */
+    public void setPlayPath(String path) {
+        setPlayPath(path, AC, AR);
+    }
+
+    /**
+     * 设置播放路径
+     *
+     * @param path 播放文件的路径，格式为pcm
+     * @param ac   声道个数(1代表单声道，2代表立体声道)
+     * @param ar   采样率(16000Hz、48000Hz)
+     */
+    public void setPlayPath(String path, String ac, String ar) {
+        this.mAudioPath = path;
+        this.AC = ac;
+        this.AR = ar;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -124,7 +153,13 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         mSavePath = Constant.AUDIO_PATH + "audio_" + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".mp3";
 
         // ffmpeg -y -f 采样格式 -ac 声道数 -ar 采样率 -acodec pcm_s16le -i PCM源文件 MP3目标文件
-        String cmd = "-y -f s16be -ac 1 -ar 16000 -acodec pcm_s16le -i " + mAudioPath + " " + mSavePath;
+        // -y : 表示允许覆盖 ;
+        // -f : 表示文件格式 , 一般是 s16le , 其中 s 表示样本是有符号整型 , 16 表示是 16 16 16 位样本 2 2 2 字节 , l 表示小端格式 , 如果是 b 则表示大端格式 ; s16le 表示 无符号 16 16 16 位整型小端格式排列 ;
+        // -ac : 声道个数 , 单声道设置 1 1 1 , 立体声设置 2 2 2 ;
+        // -ar : 采样率 , 48000 48000 48000 表示 48000 Hz 采样率 ;
+        // -acodec : 指定编码器 ;
+        // -i : 指定源文件 ;
+        String cmd = "-y -f s16be -ac " + AC + " -ar " + AR + " -acodec pcm_s16le -i " + mAudioPath + " " + mSavePath;
         String[] cmdArraay = cmd.split(" ");
         try {
             ffmpeg.execute(cmdArraay, new ExecuteBinaryResponseHandler() {

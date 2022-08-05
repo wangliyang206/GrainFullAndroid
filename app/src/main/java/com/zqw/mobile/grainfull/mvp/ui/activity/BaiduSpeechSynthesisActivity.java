@@ -27,6 +27,7 @@ import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.AudioDialog;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
+import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduSpeechSynthesisComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduSpeechSynthesisContract;
@@ -274,9 +275,11 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
                     return;
                 }
 
-                // 开始合成
+                // 开始合成(合成的文件格式为pcm，文件名称：output-0.pcm)
                 synthActivity.synthesize(val);
+                // 弹出Dialog，可以播放与保存。
                 if (mAudioDialog != null) {
+                    mAudioDialog.setPlayPath(Constant.AUDIO_PATH + "output-0.pcm");
                     mAudioDialog.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                 } else {
                     showMessage("暂无合成结果，请联系管理员！");
