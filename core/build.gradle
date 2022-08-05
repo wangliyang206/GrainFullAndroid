@@ -20,6 +20,12 @@ android {
         doNotStrip "*/*/libvad.dnn.so"
         doNotStrip "*/*/libbd_easr_s1_merge_normal_20151216.dat.so"
     }
+
+    // 这个是解决lint报错的代码(lint工具可以通过一个xml文件来配置，它可以用来修改某些check issue是否忽略(典型的例子是第三方库里面存在问题)，同时可以修改某些issue的默认等级。)
+    lintOptions {
+        // 如果发现错误，lint工具是否应该退出这个程序(这样在我们构建项目的时候如果发生错误，将直接中断构建)。true表示退出。
+        abortOnError false
+    }
 }
 
 dependencies {

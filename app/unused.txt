@@ -192,6 +192,9 @@ com.zqw.mobile.grainfull.app.utils.CommonUtils:
     private static final int DEF_DIV_SCALE
 com.bigkoo.pickerview.view.WheelOptions
 kotlin.collections.AbstractMap$toString$1
+com.zqw.mobile.grainfull.di.module.BaiduVoiceRecogModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceRecogContract$Model bindBaiduVoiceRecogModel(com.zqw.mobile.grainfull.mvp.model.BaiduVoiceRecogModel)
 kotlin.sequences.GeneratorSequence$iterator$1
 androidx.core.database.CursorWindowCompat
 kotlin.reflect.KClassifier
@@ -326,6 +329,13 @@ com.mikepenz.fastadapter.IClickable:
     public abstract com.mikepenz.fastadapter.IItem withOnItemClickListener(com.mikepenz.fastadapter.listeners.OnClickListener)
 androidx.appcompat.view.menu.MenuDialogHelper:
     public void setPresenterCallback(androidx.appcompat.view.menu.MenuPresenter$Callback)
+com.zqw.mobile.grainfull.mvp.model.AudioConversionModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.AudioConversionModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraManager:
     public synchronized void setTorch(boolean)
     public synchronized void openLight()
@@ -708,6 +718,17 @@ androidx.collection.CircularIntArray
 com.bumptech.glide.GlideBuilder$2:
     void <init>(com.bumptech.glide.GlideBuilder,com.bumptech.glide.request.RequestOptions)
     final synthetic com.bumptech.glide.GlideBuilder this$0
+com.zqw.mobile.grainfull.app.tts.control.MySyntherizer:
+    public int speak(java.lang.String)
+    public int speak(java.lang.String,java.lang.String)
+    public int synthesize(java.lang.String,java.lang.String)
+    public int batchSpeak(java.util.List)
+    public int pause()
+    public int resume()
+    public int stop()
+    public int loadModel(java.lang.String,java.lang.String)
+    public void setStereoVolume(float,float)
+    private static final java.lang.String TAG
 androidx.loader.content.AsyncTaskLoader$LoadTask
 androidx.core.os.LocaleListCompatWrapper
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$1
@@ -743,6 +764,7 @@ androidx.core.os.BuildCompat:
     public static boolean isAtLeastS()
 androidx.media.MediaBrowserServiceCompat$4:
     void onProgressUpdateSent(android.os.Bundle)
+com.zqw.mobile.grainfull.mvp.contract.BaiduSpeechSynthesisContract
 com.bumptech.glide.request.BaseRequestOptions:
     private com.bumptech.glide.request.BaseRequestOptions scaleOnlyTransform(com.bumptech.glide.load.resource.bitmap.DownsampleStrategy,com.bumptech.glide.load.Transformation)
     public com.bumptech.glide.request.BaseRequestOptions useUnlimitedSourceGeneratorsPool(boolean)
@@ -842,7 +864,8 @@ org.reactivestreams.FlowAdapters$FlowToReactiveSubscription
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$4
 kotlin.reflect.KProperty1$Getter
 androidx.core.view.WindowInsetsControllerCompat$Impl
-com.jess.arms.base.BaseHolder
+com.jess.arms.base.BaseHolder:
+    protected void onRelease()
 com.bumptech.glide.request.transition.BitmapTransitionFactory:
     public void <init>(com.bumptech.glide.request.transition.TransitionFactory)
 kotlin.coroutines.experimental.SequenceBuilderIterator
@@ -905,6 +928,19 @@ androidx.constraintlayout.motion.widget.MotionScene$Transition:
     public static final int AUTO_ANIMATE_TO_END
     static final int TRANSITION_FLAG_FIRST_DRAW
     static final int TRANSITION_FLAG_INTRA_AUTO
+com.zqw.mobile.grainfull.mvp.model.BaiduSpeechSynthesisModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.BaiduSpeechSynthesisModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
+com.github.hiteshsondhi88.libffmpeg.Log:
+    void <init>()
+    static void setTAG(java.lang.String)
+    static void e(java.lang.Object)
+    static void w(java.lang.Object)
+    static void v(java.lang.Object)
 com.zqw.mobile.grainfull.app.utils.FabScrollListener
 com.lcw.library.imagepicker.utils.Utils:
     public void <init>()
@@ -1031,7 +1067,6 @@ com.jess.arms.utils.ArmsUtils:
     public static java.lang.String encodeToMD5(java.lang.String)
     public static void statuInScreen(android.app.Activity)
     public static void configRecycleView(androidx.recyclerview.widget.RecyclerView,androidx.recyclerview.widget.RecyclerView$LayoutManager)
-    public static void configRecyclerView(androidx.recyclerview.widget.RecyclerView,androidx.recyclerview.widget.RecyclerView$LayoutManager)
     public static void exitApp()
 com.bigkoo.pickerview.listener.OnDismissListener
 kotlin.coroutines.experimental.CoroutinesKt
@@ -1042,6 +1077,8 @@ com.blankj.utilcode.util.ToastUtils$SystemToast
 kotlin.system.ProcessKt
 com.bumptech.glide.load.engine.LoadPath:
     public java.lang.Class getDataClass()
+com.zqw.mobile.grainfull.app.tts.listener.UiMessageListener:
+    private static final java.lang.String TAG
 kotlin.reflect.KProperty2$Getter
 dagger.internal.MemoizedSentinel:
     public void <init>()
@@ -1354,6 +1391,7 @@ androidx.constraintlayout.core.state.WidgetFrame:
     private static final boolean OLD_SYSTEM
 kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1
 com.jakewharton.rxbinding3.widget.TextViewEditorActionEvent
+com.zqw.mobile.grainfull.mvp.contract.AudioWaveformContract
 com.zqw.mobile.grainfull.mvp.model.MainModel_MembersInjector:
     public void <init>(javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider)
@@ -1503,8 +1541,6 @@ androidx.core.text.PrecomputedTextCompat:
     private static final char LINE_FEED
 com.jess.arms.utils.ThirdViewUtil:
     private void <init>()
-    public static boolean isUseAutolayout()
-    public static butterknife.Unbinder bindTarget(java.lang.Object,java.lang.Object)
 androidx.constraintlayout.core.motion.utils.TypedValues
 io.rx_cache2.internal.ProcessorProvidersBehaviour$3$1
 androidx.core.view.DragAndDropPermissionsCompat
@@ -1537,6 +1573,8 @@ com.zqw.mobile.grainfull.mvp.model.SettingModel:
 org.reactivestreams.FlowAdapters$ReactiveToFlowProcessor
 com.jakewharton.rxbinding3.widget.RxSearchView
 kotlin.UShortArray$Iterator
+com.zqw.mobile.grainfull.app.tts.listener.FileSaveListener:
+    private static final java.lang.String TAG
 com.zqw.mobile.grainfull.mvp.ui.widget.DisableRecyclerViewSliding:
     public void <init>(android.content.Context)
     public void <init>(android.content.Context,int,boolean)
@@ -2279,7 +2317,6 @@ com.jess.arms.utils.DeviceUtils:
     public static boolean hasStatusBar(android.app.Activity)
     public static void showSystemShareOption(android.app.Activity,java.lang.String,java.lang.String)
     public static int getNetworkType(android.content.Context)
-    public static boolean netIsConnected(android.content.Context)
     public static boolean isExitsSdcard()
     public static final int NETTYPE_WIFI
     public static final int NETTYPE_CMWAP
@@ -2330,6 +2367,7 @@ androidx.legacy.app.FragmentCompat$FragmentCompatBaseImpl$1
 kotlin.collections.MapsKt
 kotlin.UInt$Companion
 com.zqw.mobile.grainfull.mvp.ui.widget.RecycleViewDivider
+com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceRecogContract
 com.cjt2325.cameralibrary.util.EToast2$2
 com.jakewharton.rxbinding3.widget.RatingBarRatingChangeObservable$Listener
 com.blankj.utilcode.util.StringUtils
@@ -2395,6 +2433,7 @@ qiu.niorgai.StatusBarCompat:
     public static void setStatusBarColorForCollapsingToolbar(android.app.Activity,com.google.android.material.appbar.AppBarLayout,com.google.android.material.appbar.CollapsingToolbarLayout,androidx.appcompat.widget.Toolbar,int)
     public static void changeToLightStatusBar(android.app.Activity)
     public static void cancelLightStatusBar(android.app.Activity)
+com.github.hiteshsondhi88.libffmpeg.BuildConfig
 com.paginate.Paginate$Callbacks
 io.rx_cache2.internal.cache.EvictExpirableRecordsPersistence
 com.blankj.utilcode.util.NetworkUtils$Callback
@@ -2452,6 +2491,15 @@ androidx.constraintlayout.core.widgets.analyzer.ChainRun:
     void reset()
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$1
 kotlin.text.MatcherMatchResult$groupValues$1
+com.zqw.mobile.grainfull.mvp.presenter.AudioWaveformPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.AudioWaveformPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.jess.arms.integration.cache.CacheType$1:
     private static final int MAX_SIZE
     private static final float MAX_SIZE_MULTIPLIER
@@ -2545,6 +2593,15 @@ com.jakewharton.rxbinding3.view.ViewGroupHierarchyChangeEvent
 androidx.constraintlayout.core.motion.MotionConstrainedPoint
 com.jakewharton.rxbinding3.view.MenuItemActionViewEventObservable$Listener
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$KeySetIterator
+com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceActivationPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceActivationPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.cjt2325.cameralibrary.util.LogUtil:
     public void <init>()
     public static void v(java.lang.String,java.lang.String)
@@ -2733,13 +2790,6 @@ androidx.exifinterface.media.ExifInterface$ExifAttribute:
     public static androidx.exifinterface.media.ExifInterface$ExifAttribute createDouble(double[],java.nio.ByteOrder)
     public static androidx.exifinterface.media.ExifInterface$ExifAttribute createDouble(double,java.nio.ByteOrder)
     public int size()
-androidx.fragment.app.FragmentActivity:
-    private static final java.lang.String TAG
-    static final java.lang.String FRAGMENTS_TAG
-    static final java.lang.String NEXT_CANDIDATE_REQUEST_INDEX_TAG
-    static final java.lang.String ALLOCATED_REQUEST_INDICIES_TAG
-    static final java.lang.String REQUEST_FRAGMENT_WHO_TAG
-    static final int MAX_NUM_PENDING_FRAGMENT_ACTIVITY_RESULTS
 com.mikepenz.materialize.color.Material$Black
 org.reactivestreams.FlowAdapters$FlowToReactiveSubscriber
 androidx.core.app.NotificationManagerCompat$SideChannelManager
@@ -2776,11 +2826,23 @@ androidx.appcompat.widget.AppCompatHintHelper:
 com.mikepenz.itemanimators.BaseItemAnimator$VpaListenerAdapter:
     public void onAnimationStart(android.view.View)
     public void onAnimationEnd(android.view.View)
+com.zqw.mobile.grainfull.mvp.model.BaiduVoiceRecogModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.BaiduVoiceRecogModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 androidx.core.content.LocusIdCompat
 androidx.transition.AnimatorUtils:
     private void <init>()
 kotlin.reflect.KProperty$DefaultImpls
 com.jakewharton.rxbinding3.R
+com.github.hiteshsondhi88.libffmpeg.FileUtils:
+    void <init>()
+    static final java.lang.String ffmpegFileName
+    private static final int DEFAULT_BUFFER_SIZE
+    private static final int EOF
 com.jude.easyrecyclerview.decoration.DividerDecoration
 dagger.internal.MapProviderFactory$1
 com.zqw.mobile.grainfull.mvp.presenter.SerialNumberPresenter_MembersInjector:
@@ -2810,6 +2872,7 @@ androidx.constraintlayout.core.motion.utils.Easing:
 kotlin.sequences.SequencesKt___SequencesKt$zip$1
 kotlin.coroutines.experimental.CoroutineContext$Element$DefaultImpls
 org.reactivestreams.FlowAdapters$ReactivePublisherFromFlow
+com.zqw.mobile.grainfull.mvp.contract.BaiduFaceActivationContract
 kotlin.jvm.internal.Ref$BooleanRef
 com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter:
     public void <init>(android.content.Context)
@@ -2934,6 +2997,15 @@ com.jess.arms.integration.cache.CacheType$2:
     private static final float MAX_SIZE_MULTIPLIER
 com.jess.arms.di.component.AppComponent:
     public abstract java.util.concurrent.ExecutorService executorService()
+com.zqw.mobile.grainfull.mvp.ui.widget.VisualizeView:
+    private static final java.lang.String TAG
+    public static final int SINGLE
+    public static final int CIRCLE
+    public static final int NET
+    public static final int REFLECT
+    public static final int WAVE
+    public static final int GRAIN
+com.zqw.mobile.grainfull.mvp.contract.AudioConversionContract
 io.rx_cache2.internal.migration.GetClassesToEvictFromMigrations_Factory
 com.jakewharton.rxbinding3.widget.RxSearchView__SearchViewQueryConsumerKt
 androidx.core.provider.RequestExecutor:
@@ -2997,6 +3069,8 @@ androidx.swiperefreshlayout.widget.CircularProgressDrawable:
     private static final float MIN_PROGRESS_ARC
     private static final float RING_ROTATION
 androidx.loader.content.ModernAsyncTask$Status
+com.github.hiteshsondhi88.libffmpeg.CpuArch:
+    java.lang.String getSha1()
 com.mikepenz.materialdrawer.model.interfaces.Nameable:
     public abstract java.lang.Object withName(java.lang.String)
     public abstract java.lang.Object withName(int)
@@ -3135,6 +3209,7 @@ kotlin.jvm.internal.TypeReference$asString$args$1
 com.blankj.utilcode.util.KeyboardUtils$3
 androidx.recyclerview.widget.MessageThreadUtil$1
 permissions.dispatcher.BuildConfig
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_MembersInjector
 kotlin.concurrent.ThreadsKt
 io.rx_cache2.internal.RxCacheModule_ProvideMigrationsFactory
 com.blankj.utilcode.util.CacheDoubleStaticUtils
@@ -3175,6 +3250,10 @@ androidx.savedstate.Recreator:
 androidx.core.view.accessibility.AccessibilityManagerCompat
 kotlin.random.FallbackThreadLocalRandom
 kotlin.UShortArrayKt
+com.zqw.mobile.grainfull.app.tts.util.FileUtil:
+    public void <init>()
+    public static boolean fileCanRead(java.lang.String)
+    public static java.lang.String getResourceText(android.content.Context,int)
 com.jakewharton.rxbinding3.widget.SeekBarChangeObservable
 androidx.legacy.app.FragmentTabHost:
     public void addTab(android.widget.TabHost$TabSpec,java.lang.Class,android.os.Bundle)
@@ -3689,6 +3768,7 @@ androidx.fragment.app.FragmentManager:
     public abstract boolean isStateSaved()
     public static final int POP_BACK_STACK_INCLUSIVE
 dagger.internal.MapFactory$Builder
+com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceOnlineSettingContract
 com.jakewharton.rxbinding3.view.RxViewGroup
 androidx.fragment.app.FragmentTransition:
     static boolean supportsTransition()
@@ -3706,6 +3786,15 @@ androidx.constraintlayout.widget.Constraints$LayoutParams:
 kotlin.properties.NotNullVar
 androidx.constraintlayout.core.parser.CLToken$1
 androidx.recyclerview.widget.ItemTouchHelper$SimpleCallback
+com.zqw.mobile.grainfull.app.tts.SynthActivity:
+    private void switchOffTheOfflineResource()
+    private void loadModel(java.lang.String)
+    private synthetic void lambda$switchOffTheOfflineResource$0(java.util.Map,java.lang.String[],android.content.DialogInterface,int)
+    public void speak(java.lang.String)
+    public void batchSpeak(java.util.List)
+    public void pause()
+    public void resume()
+    public void stop()
 androidx.recyclerview.widget.StaggeredGridLayoutManager:
     public void <init>(int,int)
     public int getGapStrategy()
@@ -3884,6 +3973,10 @@ cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper:
     public void backwardAndFinish(java.lang.Class)
 com.blankj.utilcode.util.ThreadUtils$Task$3
 androidx.media.AudioAttributesCompat$Builder
+com.zqw.mobile.grainfull.app.tts.listener.MessageListener:
+    public void onSynthesizeStart(java.lang.String)
+    public void onSpeechProgressChanged(java.lang.String,int)
+    private static final java.lang.String TAG
 kotlin.jvm.internal.MutablePropertyReference2
 com.mikepenz.itemanimators.BaseScaleAnimator
 kotlin.collections.ArraysKt__ArraysKt
@@ -4565,7 +4658,6 @@ com.zqw.mobile.grainfull.app.dialog.CommTipsDialog:
     public void <init>(android.content.Context,java.lang.String,java.lang.String,boolean,com.zqw.mobile.grainfull.app.dialog.CommTipsDialog$ItemClick)
 androidx.core.widget.PopupMenuCompat
 kotlin.reflect.KTypeProjection$Companion
-com.jess.arms.base.DefaultAdapter$OnRecyclerViewItemClickListener
 androidx.fragment.app.FragmentController:
     public androidx.loader.app.LoaderManager getSupportLoaderManager()
     public int getActiveFragmentsCount()
@@ -4597,7 +4689,18 @@ androidx.constraintlayout.widget.StateSet:
     private static final boolean DEBUG
 kotlin.sequences.USequencesKt___USequencesKt
 dagger.internal.SetBuilder
+com.zqw.mobile.grainfull.app.tts.util.IOfflineResourceConst:
+    public static final java.lang.String VOICE_FEMALE
+    public static final java.lang.String VOICE_MALE
+    public static final java.lang.String VOICE_DUYY
+    public static final java.lang.String VOICE_DUXY
+    public static final java.lang.String TEXT_MODEL
+    public static final java.lang.String VOICE_MALE_MODEL
+    public static final java.lang.String VOICE_FEMALE_MODEL
+    public static final java.lang.String VOICE_DUXY_MODEL
+    public static final java.lang.String VOICE_DUYY_MODEL
 kotlin.sequences.TakeWhileSequence
+com.zqw.mobile.grainfull.app.tts.MainHandlerConstant
 com.cjt2325.cameralibrary.state.PreviewState:
     public void stop()
     public void restart()
@@ -4821,7 +4924,10 @@ com.jess.arms.di.module.ClientModule:
     abstract okhttp3.Interceptor bindInterceptor(com.jess.arms.http.log.RequestInterceptor)
     private static final int TIME_OUT
 androidx.annotation.experimental.R
-com.jess.arms.base.DefaultAdapter
+com.jess.arms.base.DefaultAdapter:
+    public static void releaseAllHolder(androidx.recyclerview.widget.RecyclerView)
+    public java.util.List getInfos()
+    public java.lang.Object getItem(int)
 androidx.core.view.WindowInsetsAnimationControllerCompat$Impl
 com.bumptech.glide.load.ImageHeaderParser:
     public abstract int getOrientation(java.nio.ByteBuffer,com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool)
@@ -5766,6 +5872,15 @@ androidx.recyclerview.widget.ItemTouchHelper:
 com.mikepenz.materialize.color.Material$Indigo
 kotlin.jvm.internal.ArrayCharIterator
 kotlin.sequences.SequencesKt__SequencesKt$generateSequence$1
+com.zqw.mobile.grainfull.mvp.presenter.AudioConversionPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.AudioConversionPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 androidx.core.graphics.TypefaceCompatApi21Impl:
     private static final java.lang.String TAG
     private static final java.lang.String FONT_FAMILY_CLASS
@@ -6010,9 +6125,21 @@ com.bumptech.glide.load.engine.cache.DiskCacheAdapter:
     public void delete(com.bumptech.glide.load.Key)
 androidx.core.graphics.drawable.RoundedBitmapDrawable
 kotlin.text.StringsKt__RegexExtensionsJVMKt
+com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceOnlineSettingPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceOnlineSettingPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 androidx.fragment.app.ListFragment$2
 kotlin.jvm.internal.markers.KMappedMarker
 com.blankj.utilcode.util.ProcessUtils
+com.zqw.mobile.grainfull.di.module.AudioConversionModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.AudioConversionContract$Model bindAudioConversionModel(com.zqw.mobile.grainfull.mvp.model.AudioConversionModel)
 kotlin.ranges.LongProgression
 androidx.core.net.TrafficStatsCompat
 kotlin.text.StringsKt___StringsKt$withIndex$1
@@ -6146,6 +6273,10 @@ androidx.recyclerview.widget.DiffUtil$1
 androidx.core.content.IntentCompat
 kotlin.sequences.SequencesKt___SequencesKt$minus$4
 androidx.fragment.app.FragmentStatePagerAdapter
+com.zqw.mobile.grainfull.app.tts.util.AutoCheck:
+    public java.lang.String obtainErrorMessage()
+    public java.lang.String obtainAllMessage()
+    public void clear()
 com.mikepenz.fastadapter.listeners.package-info
 kotlin.collections.ArraysKt___ArraysJvmKt$asList$5
 kotlin.ULongArray$Iterator
@@ -6188,6 +6319,8 @@ kotlin.collections.UIntIterator
 androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager:
     boolean isListening()
 kotlin.collections.ArraysKt___ArraysJvmKt$asList$4
+com.github.hiteshsondhi88.libffmpeg.CpuArchHelper:
+    void <init>()
 androidx.collection.LongSparseArray:
     public void delete(long)
     public boolean remove(long,java.lang.Object)
@@ -6200,6 +6333,7 @@ androidx.collection.LongSparseArray:
     public int indexOfValue(java.lang.Object)
     public boolean containsKey(long)
     public boolean containsValue(java.lang.Object)
+com.github.hiteshsondhi88.libffmpeg.FFmpegInterface
 androidx.core.view.ViewCompat$Api23Impl:
     private void <init>()
 com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter$1
@@ -6621,6 +6755,7 @@ kotlin.collections.ArraysKt___ArraysJvmKt$asList$6
 kotlin.collections.SetsKt__SetsKt
 androidx.core.view.WindowInsetsAnimationCompat$BoundsCompat
 kotlin.UInt
+com.zqw.mobile.grainfull.app.tts.util.Auth$AuthCheckException
 kotlin.coroutines.experimental.CombinedContext
 com.blankj.utilcode.util.CrashUtils$1
 kotlin.collections.IndexingIterable
@@ -6774,6 +6909,9 @@ com.zqw.mobile.grainfull.mvp.model.LoginModel_MembersInjector:
     private final javax.inject.Provider apiOperatorProvider
 kotlin.reflect.TypeOfKt
 org.intellij.lang.annotations.JdkConstants
+com.zqw.mobile.grainfull.di.module.AudioWaveformModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.AudioWaveformContract$Model bindAudioWaveformModel(com.zqw.mobile.grainfull.mvp.model.AudioWaveformModel)
 io.rx_cache2.internal.cache.memory.ReferenceMapMemory
 org.intellij.lang.annotations.PrintFormatPattern
 io.rx_cache2.internal.encrypt.FileEncryptor_Factory
@@ -6827,6 +6965,15 @@ com.mikepenz.materialdrawer.util.DrawerItemViewHelper$1
 kotlin.reflect.KMutableProperty0
 com.mikepenz.materialdrawer.model.AbstractToggleableDrawerItem
 kotlin.ranges.UIntProgressionIterator
+com.zqw.mobile.grainfull.mvp.presenter.BaiduSpeechSynthesisPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.BaiduSpeechSynthesisPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.bumptech.glide.util.pool.StateVerifier:
     private static final boolean DEBUG
 kotlin.TypeCastException
@@ -6928,8 +7075,12 @@ androidx.customview.widget.FocusStrategy:
 androidx.constraintlayout.core.motion.key.MotionKeyTimeCycle
 com.afollestad.materialdialogs.DialogInit:
     void <init>()
+com.zqw.mobile.grainfull.di.module.BaiduVoiceOnlineSettingModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceOnlineSettingContract$Model bindBaiduVoiceOnlineSettingModel(com.zqw.mobile.grainfull.mvp.model.BaiduVoiceOnlineSettingModel)
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_MembersInjector
 com.jess.arms.base.Unused_Factory$InstanceHolder
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_MembersInjector
 androidx.media.MediaSessionManagerImplBase
 androidx.media.AudioAttributesCompat:
     void <init>(androidx.media.AudioAttributesImpl)
@@ -7179,6 +7330,7 @@ com.bumptech.glide.request.target.BitmapThumbnailImageViewTarget:
     public void <init>(android.widget.ImageView,boolean)
 kotlin.collections.CollectionsKt__CollectionsKt
 androidx.cursoradapter.R
+com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity_MembersInjector
 com.zqw.mobile.grainfull.mvp.contract.SettingContract
 androidx.core.provider.FontsContractCompat:
     private void <init>()
@@ -7404,6 +7556,8 @@ androidx.multidex.MultiDex:
     private static final int VM_WITH_MULTIDEX_VERSION_MAJOR
     private static final int VM_WITH_MULTIDEX_VERSION_MINOR
     private static final java.lang.String NO_KEY_PREFIX
+com.github.hiteshsondhi88.libffmpeg.ShellCommand:
+    com.github.hiteshsondhi88.libffmpeg.CommandResult runWaitFor(java.lang.String[])
 androidx.constraintlayout.widget.ConstraintProperties
 androidx.recyclerview.widget.SortedList$Callback
 androidx.media.MediaBrowserServiceCompat$BrowserRoot:
@@ -7476,6 +7630,10 @@ com.jess.arms.base.BaseService:
     protected void addDispose(io.reactivex.disposables.Disposable)
 androidx.appcompat.app.AlertController$ButtonHandler:
     private static final int MSG_DISMISS_DIALOG
+com.zqw.mobile.grainfull.app.dialog.PopupSelectList:
+    public int getAdapterPosition()
+    public void setAdapterPosition(int)
+    private int mAdapterPosition
 com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity_MembersInjector
 com.bumptech.glide.util.Util:
     public static int getSize(android.graphics.Bitmap)
@@ -7564,6 +7722,7 @@ dagger.internal.MapFactory$1
 androidx.loader.app.LoaderManager$LoaderCallbacks
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$IntFloatFloatSort
 io.rx_cache2.internal.ProcessorProvidersBehaviour$4
+com.zqw.mobile.grainfull.app.tts.control.NonBlockSyntherizer
 androidx.media.session.MediaButtonReceiver:
     public static android.view.KeyEvent handleIntent(android.support.v4.media.session.MediaSessionCompat,android.content.Intent)
     public static android.app.PendingIntent buildMediaButtonPendingIntent(android.content.Context,long)
@@ -7615,6 +7774,13 @@ com.mikepenz.materialdrawer.DrawerUtils:
     public static com.mikepenz.materialdrawer.model.interfaces.IDrawerItem getDrawerItem(java.util.List,java.lang.Object)
     public static int getStickyFooterPositionByIdentifier(com.mikepenz.materialdrawer.DrawerBuilder,long)
     public static void rebuildStickyFooterView(com.mikepenz.materialdrawer.DrawerBuilder)
+com.zqw.mobile.grainfull.mvp.model.AudioWaveformModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.AudioWaveformModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.bumptech.glide.load.engine.ActiveResources:
     void setDequeuedResourceCallback(com.bumptech.glide.load.engine.ActiveResources$DequeuedResourceCallback)
     void shutdown()
@@ -7709,6 +7875,8 @@ com.bumptech.glide.request.target.PreloadTarget:
     public static com.bumptech.glide.request.target.PreloadTarget obtain(com.bumptech.glide.RequestManager,int,int)
     private void <init>(com.bumptech.glide.RequestManager,int,int)
     private static final int MESSAGE_CLEAR
+com.github.hiteshsondhi88.libffmpeg.ArmArchHelper:
+    boolean isNeonSupported(java.lang.String)
 androidx.core.view.accessibility.AccessibilityViewCommand$SetTextArguments:
     public java.lang.CharSequence getText()
 okio.SegmentedByteString:
@@ -7875,7 +8043,6 @@ androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat:
     private void <init>()
 androidx.appcompat.widget.ActivityChooserModel$DefaultSorter
 androidx.constraintlayout.core.state.helpers.Facade
-com.jess.arms.base.BaseHolder$OnViewClickListener
 kotlin.collections.EmptyList
 kotlin.jvm.internal.PropertyReference0
 com.jyn.vcview.BuildConfig
@@ -7906,6 +8073,9 @@ kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt:
     public static final kotlin.coroutines.Continuation createCoroutineUnintercepted(kotlin.jvm.functions.Function2,java.lang.Object,kotlin.coroutines.Continuation)
     private static final kotlin.coroutines.Continuation createCoroutineFromSuspendFunction$IntrinsicsKt__IntrinsicsJvmKt(kotlin.coroutines.Continuation,kotlin.jvm.functions.Function1)
     public void <init>()
+com.zqw.mobile.grainfull.di.module.BaiduFaceActivationModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.BaiduFaceActivationContract$Model bindBaiduFaceActivationModel(com.zqw.mobile.grainfull.mvp.model.BaiduFaceActivationModel)
 androidx.core.app.NotificationCompat$BubbleMetadata$Api30Impl
 androidx.dynamicanimation.animation.AnimationHandler:
     public static long getFrameTime()
@@ -8124,6 +8294,9 @@ com.zqw.mobile.grainfull.app.utils.DividerGridItemDecoration
 com.zqw.mobile.grainfull.mvp.ui.adapter.BaseRecyclerAdapter$OnItemClickListener
 okio.SegmentPool:
     static final long MAX_SIZE
+com.zqw.mobile.grainfull.di.module.BaiduSpeechSynthesisModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.BaiduSpeechSynthesisContract$Model bindBaiduSpeechSynthesisModel(com.zqw.mobile.grainfull.mvp.model.BaiduSpeechSynthesisModel)
 androidx.appcompat.view.menu.ListMenuPresenter:
     int getItemIndexOffset()
     public void setItemIndexOffset(int)
@@ -8316,6 +8489,7 @@ androidx.recyclerview.widget.DiffUtil$Callback
 androidx.appcompat.widget.ListPopupWindow$1
 com.blankj.utilcode.util.CrashUtils$2
 cn.bingoogolapple.swipebacklayout.R
+com.github.hiteshsondhi88.libffmpeg.R
 com.zqw.mobile.grainfull.di.module.BaiduQualityParamsModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.BaiduQualityParamsContract$Model bindBaiduQualityParamsModel(com.zqw.mobile.grainfull.mvp.model.BaiduQualityParamsModel)
@@ -8466,6 +8640,13 @@ com.bumptech.glide.load.resource.bitmap.HardwareConfigState:
 com.lcw.library.imagepicker.ImagePicker:
     public static final java.lang.String EXTRA_SELECT_IMAGES
 kotlin.io.FilesKt__UtilsKt$copyRecursively$1
+com.zqw.mobile.grainfull.mvp.model.BaiduVoiceOnlineSettingModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.BaiduVoiceOnlineSettingModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.jakewharton.rxbinding3.view.RxView__ViewAttachesObservableKt
 com.mikepenz.fastadapter.commons.adapters.AbstractWrapAdapter
 kotlin.ranges.RangesKt
@@ -8538,7 +8719,9 @@ com.bumptech.glide.disklrucache.DiskLruCache:
     private static final java.lang.String REMOVE
     private static final java.lang.String READ
 com.blankj.utilcode.util.LogUtils
-com.blankj.utilcode.util.UriUtils
+com.blankj.utilcode.util.UriUtils:
+    private void <init>()
+    public static android.net.Uri file2Uri(java.io.File)
 com.bumptech.glide.load.resource.bitmap.DrawableToBitmapConverter:
     private static final java.lang.String TAG
 androidx.core.util.TimeUtils
@@ -8908,6 +9091,15 @@ androidx.core.view.WindowInsetsCompat$BuilderImpl:
 com.mikepenz.iconics.typeface.IIcon:
     public abstract java.lang.String getFormattedName()
     public abstract java.lang.String getName()
+com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceRecogPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceRecogPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.ranges.LongRange$Companion
 androidx.core.location.LocationManagerCompat$GpsStatusTransport$2
 com.bumptech.glide.load.resource.bitmap.CenterCrop:
@@ -9076,8 +9268,10 @@ com.blankj.utilcode.util.ThreadUtils$3
 kotlin.jvm.JvmClassMappingKt
 androidx.constraintlayout.core.SolverVariable$1
 androidx.core.os.EnvironmentCompat
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity$AllCapTransformationMethod
 com.jakewharton.rxbinding3.view.ViewFocusChangeObservable
 androidx.legacy.app.ActionBarDrawerToggle$SetIndicatorInfo
+com.zqw.mobile.grainfull.app.tts.listener.SwitchSpeakerListener
 kotlin.sequences.SequencesKt___SequencesKt$asIterable$$inlined$Iterable$1
 androidx.constraintlayout.core.parser.CLParser$1
 androidx.recyclerview.widget.AdapterListUpdateCallback
@@ -9159,7 +9353,94 @@ androidx.appcompat.widget.AppCompatTextHelper:
     private static final int SERIF
     private static final int MONOSPACE
 androidx.transition.Styleable$Transition
-com.blankj.utilcode.util.TimeUtils
+com.blankj.utilcode.util.TimeUtils:
+    private static java.text.SimpleDateFormat getDefaultFormat()
+    private void <init>()
+    public static java.lang.String millis2String(long)
+    public static long string2Millis(java.lang.String)
+    public static long string2Millis(java.lang.String,java.text.DateFormat)
+    public static java.util.Date string2Date(java.lang.String)
+    public static java.util.Date string2Date(java.lang.String,java.text.DateFormat)
+    public static java.lang.String date2String(java.util.Date)
+    public static java.lang.String date2String(java.util.Date,java.text.DateFormat)
+    public static long date2Millis(java.util.Date)
+    public static java.util.Date millis2Date(long)
+    public static long getTimeSpan(java.lang.String,java.lang.String,int)
+    public static long getTimeSpan(java.lang.String,java.lang.String,java.text.DateFormat,int)
+    public static long getTimeSpan(java.util.Date,java.util.Date,int)
+    public static long getTimeSpan(long,long,int)
+    public static java.lang.String getFitTimeSpan(java.lang.String,java.lang.String,int)
+    public static java.lang.String getFitTimeSpan(java.lang.String,java.lang.String,java.text.DateFormat,int)
+    public static java.lang.String getFitTimeSpan(java.util.Date,java.util.Date,int)
+    public static java.lang.String getFitTimeSpan(long,long,int)
+    public static long getNowMills()
+    public static java.lang.String getNowString()
+    public static java.util.Date getNowDate()
+    public static long getTimeSpanByNow(java.lang.String,int)
+    public static long getTimeSpanByNow(java.lang.String,java.text.DateFormat,int)
+    public static long getTimeSpanByNow(java.util.Date,int)
+    public static long getTimeSpanByNow(long,int)
+    public static java.lang.String getFitTimeSpanByNow(java.lang.String,int)
+    public static java.lang.String getFitTimeSpanByNow(java.lang.String,java.text.DateFormat,int)
+    public static java.lang.String getFitTimeSpanByNow(java.util.Date,int)
+    public static java.lang.String getFitTimeSpanByNow(long,int)
+    public static java.lang.String getFriendlyTimeSpanByNow(java.lang.String)
+    public static java.lang.String getFriendlyTimeSpanByNow(java.lang.String,java.text.DateFormat)
+    public static java.lang.String getFriendlyTimeSpanByNow(java.util.Date)
+    public static java.lang.String getFriendlyTimeSpanByNow(long)
+    private static long getWeeOfToday()
+    public static long getMillis(long,long,int)
+    public static long getMillis(java.lang.String,long,int)
+    public static long getMillis(java.lang.String,java.text.DateFormat,long,int)
+    public static long getMillis(java.util.Date,long,int)
+    public static java.lang.String getString(long,long,int)
+    public static java.lang.String getString(long,java.text.DateFormat,long,int)
+    public static java.lang.String getString(java.lang.String,long,int)
+    public static java.lang.String getString(java.lang.String,java.text.DateFormat,long,int)
+    public static java.lang.String getString(java.util.Date,long,int)
+    public static java.lang.String getString(java.util.Date,java.text.DateFormat,long,int)
+    public static java.util.Date getDate(long,long,int)
+    public static java.util.Date getDate(java.lang.String,long,int)
+    public static java.util.Date getDate(java.lang.String,java.text.DateFormat,long,int)
+    public static java.util.Date getDate(java.util.Date,long,int)
+    public static long getMillisByNow(long,int)
+    public static java.lang.String getStringByNow(long,int)
+    public static java.lang.String getStringByNow(long,java.text.DateFormat,int)
+    public static java.util.Date getDateByNow(long,int)
+    public static boolean isToday(java.lang.String)
+    public static boolean isToday(java.lang.String,java.text.DateFormat)
+    public static boolean isToday(java.util.Date)
+    public static boolean isToday(long)
+    public static boolean isLeapYear(java.lang.String)
+    public static boolean isLeapYear(java.lang.String,java.text.DateFormat)
+    public static boolean isLeapYear(java.util.Date)
+    public static boolean isLeapYear(long)
+    public static boolean isLeapYear(int)
+    public static java.lang.String getChineseWeek(java.lang.String)
+    public static java.lang.String getChineseWeek(java.lang.String,java.text.DateFormat)
+    public static java.lang.String getChineseWeek(java.util.Date)
+    public static java.lang.String getChineseWeek(long)
+    public static java.lang.String getUSWeek(java.lang.String)
+    public static java.lang.String getUSWeek(java.lang.String,java.text.DateFormat)
+    public static java.lang.String getUSWeek(java.util.Date)
+    public static java.lang.String getUSWeek(long)
+    public static int getValueByCalendarField(java.lang.String,int)
+    public static int getValueByCalendarField(java.lang.String,java.text.DateFormat,int)
+    public static int getValueByCalendarField(java.util.Date,int)
+    public static int getValueByCalendarField(long,int)
+    public static java.lang.String getChineseZodiac(java.lang.String)
+    public static java.lang.String getChineseZodiac(java.lang.String,java.text.DateFormat)
+    public static java.lang.String getChineseZodiac(java.util.Date)
+    public static java.lang.String getChineseZodiac(long)
+    public static java.lang.String getChineseZodiac(int)
+    public static java.lang.String getZodiac(java.lang.String)
+    public static java.lang.String getZodiac(java.lang.String,java.text.DateFormat)
+    public static java.lang.String getZodiac(java.util.Date)
+    public static java.lang.String getZodiac(long)
+    public static java.lang.String getZodiac(int,int)
+    private static long timeSpan2Millis(long,int)
+    private static long millis2TimeSpan(long,int)
+    private static java.lang.String millis2FitTimeSpan(long,int)
 androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VFullPath:
     public boolean canApplyTheme()
     public void applyTheme(android.content.res.Resources$Theme)
@@ -9245,6 +9526,7 @@ io.rx_cache2.internal.Disk_Factory
 com.zqw.mobile.grainfull.di.module.LoginModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.LoginContract$Model bindLoginModel(com.zqw.mobile.grainfull.mvp.model.LoginModel)
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_MembersInjector
 com.mikepenz.materialdrawer.model.AbstractSwitchableDrawerItem
 kotlin.jvm.internal.ArrayIteratorKt
 kotlin.text.StringsKt___StringsKt$groupingBy$1
@@ -9299,10 +9581,7 @@ com.blankj.utilcode.util.FileUtils:
     private static boolean copyOrMoveDir(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener,boolean)
     private static boolean copyOrMoveFile(java.io.File,java.io.File,boolean)
     private static boolean copyOrMoveFile(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener,boolean)
-    public static boolean delete(java.lang.String)
-    public static boolean delete(java.io.File)
     public static boolean deleteDir(java.lang.String)
-    public static boolean deleteDir(java.io.File)
     public static boolean deleteAllInDir(java.lang.String)
     public static boolean deleteAllInDir(java.io.File)
     public static boolean deleteFilesInDir(java.lang.String)
@@ -9376,6 +9655,8 @@ kotlin.UnsafeLazyImpl
 com.jude.easyrecyclerview.swipe.MaterialProgressDrawable$Ring:
     public float getRotation()
     public float getInsets()
+com.zqw.mobile.grainfull.mvp.ui.holder.SelectFinancialItemHolder:
+    protected void onRelease()
 com.blankj.utilcode.util.DeviceUtils
 com.paginate.abslistview.AbsListViewPaginate$Builder
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceKeySet
@@ -9414,6 +9695,13 @@ androidx.loader.content.Loader$OnLoadCanceledListener:
 androidx.core.graphics.TypefaceCompatBaseImpl:
     private static final java.lang.String TAG
     private static final int INVALID_KEY
+com.zqw.mobile.grainfull.mvp.model.BaiduFaceActivationModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.BaiduFaceActivationModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.mikepenz.fastadapter.items.ModelAbstractItem
 androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 kotlin.coroutines.experimental.jvm.internal.CoroutineIntrinsics
@@ -9694,6 +9982,7 @@ androidx.constraintlayout.motion.widget.KeyTimeCycle:
     public static final int KEY_TYPE
 kotlin.text.Regex$findAll$2
 androidx.core.text.HtmlCompat
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_MembersInjector
 androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat:
     private static void dumpKeyframes(java.lang.Object[],java.lang.String)
     private void <init>()
@@ -10459,6 +10748,9 @@ androidx.constraintlayout.widget.StateSet$Variant:
     int mId
 androidx.fragment.app.FragmentTransaction$Op:
     void <init>(int,androidx.fragment.app.Fragment,androidx.lifecycle.Lifecycle$State)
+com.zqw.mobile.grainfull.app.tts.control.InitConfig:
+    private void <init>()
+    public java.lang.String getSn()
 kotlin.UIntArrayKt
 com.blankj.utilcode.util.ToastUtils$ToastWithoutNotification$2
 kotlin.native.concurrent.SharedImmutable
@@ -10495,8 +10787,16 @@ com.jess.arms.http.imageloader.ImageLoader_MembersInjector:
 androidx.recyclerview.widget.AsyncListUtil
 kotlin.ranges.CharRange
 kotlin.sequences.ConstrainedOnceSequence
+com.github.hiteshsondhi88.libffmpeg.FFmpeg:
+    public java.lang.String getDeviceFFmpegVersion()
+    public java.lang.String getLibraryFFmpegVersion()
+    public boolean isFFmpegCommandRunning()
+    public boolean killRunningProcesses()
+    public void setTimeout(long)
+    private static final long MINIMUM_TIMEOUT
 kotlin.text.MatchGroup
 io.rx_cache2.EvictDynamicKeyGroup
+com.zqw.mobile.grainfull.app.tts.control.NonBlockSyntherizer$1
 com.mikepenz.fastadapter.ISubItem:
     public abstract java.lang.Object withParent(com.mikepenz.fastadapter.IItem)
 com.zqw.mobile.grainfull.mvp.contract.SerialNumberContract
@@ -11740,6 +12040,7 @@ androidx.constraintlayout.core.widgets.ConstraintAnchor:
 kotlin.sequences.SequencesKt___SequencesKt$filterNotNull$1
 com.mikepenz.fastadapter.R
 androidx.legacy.app.FragmentPagerAdapter
+com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_MembersInjector
 com.jakewharton.rxbinding3.widget.RxAdapterView__AdapterViewItemSelectionObservableKt
 androidx.constraintlayout.core.widgets.Barrier:
     public void <init>(java.lang.String)
@@ -11888,7 +12189,11 @@ com.jess.arms.base.Platform:
     public void <init>()
 androidx.core.view.WindowInsetsControllerCompat$OnControllableInsetsChangedListener
 androidx.lifecycle.ComputableLiveData$1
+com.github.hiteshsondhi88.libffmpeg.Util:
+    void <init>()
+    static boolean killAsync(android.os.AsyncTask)
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap
+com.zqw.mobile.grainfull.app.tts.util.Auth
 androidx.constraintlayout.core.motion.utils.StepCurve:
     private static androidx.constraintlayout.core.motion.utils.MonotonicCurveFit genSpline(java.lang.String)
     private static final boolean DEBUG
@@ -12232,6 +12537,8 @@ com.cjt2325.cameralibrary.util.FileUtil:
     public static final java.io.File parentPath
 com.bumptech.glide.load.model.DataUrlLoader$StreamFactory$1:
     public final synthetic com.bumptech.glide.load.model.DataUrlLoader$StreamFactory this$0
+com.jess.arms.base.BaseHolder:
+    public final java.lang.String TAG
 kotlin.coroutines.intrinsics.CoroutineSingletons:
     public static final enum kotlin.coroutines.intrinsics.CoroutineSingletons UNDECIDED
     public static final enum kotlin.coroutines.intrinsics.CoroutineSingletons RESUMED
@@ -12316,8 +12623,6 @@ androidx.constraintlayout.core.SolverVariable:
 androidx.core.text.PrecomputedTextCompat:
     public static final java.lang.Object sLock
     public static java.util.concurrent.Executor sExecutor
-com.jess.arms.utils.ThirdViewUtil:
-    public static int HAS_AUTO_LAYOUT_META
 com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$6:
@@ -12350,6 +12655,8 @@ androidx.appcompat.widget.ListPopupWindow:
     public java.lang.Runnable mShowDropDownRunnable
 com.zqw.mobile.grainfull.app.service.LocationService:
     public com.baidu.location.LocationClientOption DIYoption
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$15:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity_ViewBinding this$0
 com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter$StateViewHolder:
@@ -12379,6 +12686,8 @@ com.bumptech.glide.load.resource.bitmap.Downsampler:
     public static final com.bumptech.glide.load.Option DOWNSAMPLE_STRATEGY
 com.lcw.library.imagepicker.utils.MediaFileUtil:
     public static java.lang.String sFileExtensions
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$14:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraConfigurationUtils:
     public static final java.util.regex.Pattern SEMICOLON
 com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity_ViewBinding$1:
@@ -12395,6 +12704,8 @@ com.lcw.library.imagepicker.adapter.ImagePickerAdapter$BaseHolder:
     public final synthetic com.lcw.library.imagepicker.adapter.ImagePickerAdapter this$0
 androidx.transition.FragmentTransitionSupport$1:
     public final synthetic androidx.transition.FragmentTransitionSupport this$0
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$13:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$12:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.transition.FragmentTransitionSupport$2:
@@ -12461,6 +12772,8 @@ androidx.media.MediaBrowserServiceCompat$ServiceCallbacksCompat:
     public void onConnect(java.lang.String,android.support.v4.media.session.MediaSessionCompat$Token,android.os.Bundle)
 androidx.drawerlayout.widget.DrawerLayout:
     public boolean mDisallowInterceptRequested
+com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding this$0
 androidx.appcompat.widget.ActivityChooserModel:
     public static final java.lang.Object sRegistryLock
     public static final java.util.Map sDataModelRegistry
@@ -12470,6 +12783,8 @@ control.NavWorkerCenter$1:
     public final synthetic control.NavWorkerCenter this$0
 control.NavHttpCenter$2:
     public final synthetic control.NavHttpCenter this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding this$0
 com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener
 com.cjt2325.cameralibrary.state.BorrowVideoState:
     public final java.lang.String TAG
@@ -12485,6 +12800,8 @@ androidx.constraintlayout.motion.widget.MotionScene$1:
     public final synthetic androidx.constraintlayout.motion.widget.MotionScene this$0
 androidx.vectordrawable.graphics.drawable.VectorDrawableCompat:
     public android.graphics.drawable.Drawable$ConstantState mCachedConstantStateDelegate
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding this$0
 com.mikepenz.fastadapter.expandable.ExpandableExtension:
     public android.util.SparseIntArray mExpanded
 com.zqw.mobile.grainfull.mvp.ui.activity.SettingActivity_ViewBinding$1:
@@ -12504,6 +12821,8 @@ com.afollestad.materialdialogs.MaterialDialog:
     public final android.os.Handler handler
 androidx.transition.ChangeBounds$7:
     public final synthetic androidx.transition.ChangeBounds this$0
+com.zqw.mobile.grainfull.app.tts.util.AutoCheck$PrintConfig:
+    public boolean withFix
 androidx.dynamicanimation.animation.DynamicAnimation:
     public static final androidx.dynamicanimation.animation.DynamicAnimation$ViewProperty TRANSLATION_X
     public static final androidx.dynamicanimation.animation.DynamicAnimation$ViewProperty TRANSLATION_Y
@@ -12591,6 +12910,8 @@ androidx.transition.Slide:
     public int mSlideEdge
 androidx.constraintlayout.core.widgets.analyzer.WidgetGroup:
     public boolean authoritative
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.analyzer.DependencyGraph:
     public java.util.ArrayList runGroups
 androidx.fragment.app.FragmentTransitionCompat21$2:
@@ -12617,6 +12938,8 @@ androidx.core.graphics.TypefaceCompatBaseImpl$1:
 com.blankj.utilcode.util.PermissionUtils$OnRationaleListener
 androidx.constraintlayout.core.LinearSystem:
     public static boolean USE_SYNONYMS
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
 androidx.fragment.app.FragmentTransitionCompat21$4:
     public final synthetic androidx.fragment.app.FragmentTransitionCompat21 this$0
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.BeepManager:
@@ -12634,6 +12957,8 @@ com.lcw.library.imagepicker.utils.MediaFileUtil$MediaFileType:
     public java.lang.String mimeType
 androidx.core.provider.CallbackWithHandler$2:
     public final synthetic androidx.core.provider.CallbackWithHandler this$0
+com.zqw.mobile.grainfull.mvp.presenter.AudioWaveformPresenter:
+    public final int mPlayTime
 control.NavHttpCenter$4:
     public final synthetic control.NavHttpCenter this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.LoginActivity_ViewBinding$4:
@@ -12650,6 +12975,8 @@ androidx.core.graphics.TypefaceCompatBaseImpl$2:
     public final synthetic androidx.core.graphics.TypefaceCompatBaseImpl this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$8:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.ChainHead:
     public boolean mOptimizable
     public boolean mHasRatio
@@ -12684,6 +13011,8 @@ androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityAction
     public static final androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_IME_ENTER
 androidx.fragment.app.FragmentTransitionImpl$1:
     public final synthetic androidx.fragment.app.FragmentTransitionImpl this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding this$0
 androidx.recyclerview.widget.SnapHelper:
     public android.widget.Scroller mGravityScroller
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$9:
@@ -12715,6 +13044,8 @@ androidx.constraintlayout.motion.widget.MotionLayout:
     public int mPreviouseRotation
 androidx.fragment.app.FragmentTransitionImpl$2:
     public final synthetic androidx.fragment.app.FragmentTransitionImpl this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding this$0
 androidx.media.MediaBrowserServiceCompat$ServiceCallbacks:
     public abstract void onConnect(java.lang.String,android.support.v4.media.session.MediaSessionCompat$Token,android.os.Bundle)
 androidx.constraintlayout.motion.widget.MotionLayout$DevModeDraw:
@@ -12737,6 +13068,8 @@ com.mikepenz.fastadapter.select.SelectExtension$1:
 androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1:
     public final synthetic android.app.SharedElementCallback$OnSharedElementsReadyListener val$listener
     public final synthetic androidx.core.app.ActivityCompat$SharedElementCallback21Impl this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding this$0
 com.cjt2325.cameralibrary.CameraInterface:
     public android.view.SurfaceHolder mHolder
     public android.hardware.SensorManager sm
@@ -12776,6 +13109,11 @@ com.bumptech.glide.load.engine.prefill.PreFillType:
     public static final android.graphics.Bitmap$Config DEFAULT_CONFIG
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$1:
     public final synthetic androidx.constraintlayout.core.motion.utils.KeyCycleOscillator this$0
+com.blankj.utilcode.util.TimeUtils:
+    public static final java.lang.ThreadLocal SDF_THREAD_LOCAL
+    public static final java.lang.String[] CHINESE_ZODIAC
+    public static final int[] ZODIAC_FLAGS
+    public static final java.lang.String[] ZODIAC
 androidx.cardview.widget.CardViewApi17Impl$1:
     public final synthetic androidx.cardview.widget.CardViewApi17Impl this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$15:
@@ -12855,6 +13193,8 @@ androidx.constraintlayout.core.motion.utils.KeyCycleOscillator:
     public androidx.constraintlayout.core.motion.utils.CurveFit mCurveFit
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$4:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$12:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
 com.jess.arms.utils.CharacterHandler:
@@ -12863,6 +13203,8 @@ androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi26$1:
     public final synthetic androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi26 this$1
 androidx.constraintlayout.core.PriorityGoalRow:
     public androidx.constraintlayout.core.Cache mCache
+com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding this$0
 com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory$1:
     public final synthetic com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory this$0
 com.blankj.utilcode.util.PermissionUtils$OnRationaleListener$ShouldRequest
@@ -12877,8 +13219,12 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding$
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding this$0
 androidx.constraintlayout.widget.StateSet$Variant:
     public boolean mIsLayout
+com.zqw.mobile.grainfull.app.tts.control.InitConfig:
+    public java.lang.String sn
 com.cjt2325.cameralibrary.util.CameraParamUtil$CameraSizeComparator:
     public final synthetic com.cjt2325.cameralibrary.util.CameraParamUtil this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$4:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 androidx.lifecycle.MethodCallsLogger:
@@ -12889,6 +13235,8 @@ androidx.media.MediaBrowserServiceCompat$ConnectionRecord:
     public final int pid
     public final int uid
     public final androidx.media.MediaSessionManager$RemoteUserInfo browserInfo
+com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding this$0
 androidx.appcompat.widget.ThemeUtils:
     public static final int[] ACTIVATED_STATE_SET
     public static final int[] SELECTED_STATE_SET
@@ -12939,6 +13287,13 @@ androidx.core.view.WindowInsetsCompat$Impl20:
     public androidx.core.graphics.Insets[] mOverriddenInsets
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$14:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity:
+    public final java.lang.String PID_KEY
+    public final java.lang.String LONG_SPEECH
+    public final java.lang.String VAD_KEY
+    public final java.lang.String VAD_IS_OPEN_KEY
+    public final java.lang.String SAVE_RECORDING
+    public final java.lang.String AUDIO_CALLBACK
 com.jess.arms.base.BaseActivity:
     public final java.lang.String TAG
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$1:
@@ -12953,12 +13308,18 @@ androidx.constraintlayout.core.PriorityGoalRow$1:
     public final synthetic androidx.constraintlayout.core.PriorityGoalRow this$0
 com.bumptech.glide.GlideBuilder$1:
     public final synthetic com.bumptech.glide.GlideBuilder this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$6:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$7:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_ViewBinding this$0
 com.lcw.library.imagepicker.loader.VideoScanner:
     public android.content.Context mContext
 control.c.b:
     public java.lang.String[] mAllowedContentTypes
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$5:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.BaseCaptureActivity:
     public com.zqw.mobile.grainfull.mvp.ui.widget.zxing.IntentSource source
 com.lcw.library.imagepicker.data.MediaFile:
@@ -12988,6 +13349,8 @@ com.jess.arms.base.Platform:
     public static final boolean DEPENDENCY_GLIDE
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_ViewBinding this$0
 com.blankj.utilcode.util.ThreadUtils:
     public static final java.util.Map TASK_SCHEDULED
 androidx.constraintlayout.motion.widget.TouchResponse$2:
