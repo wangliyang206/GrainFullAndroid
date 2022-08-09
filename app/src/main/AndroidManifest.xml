@@ -121,16 +121,19 @@
         <activity android:name=".mvp.ui.activity.IdentifyIdCardActivity" />
         <activity android:name=".mvp.ui.activity.IdentifyBankCardsActivity" />
         <activity android:name=".mvp.ui.activity.AboutActivity" />
-        <activity android:name=".mvp.ui.activity.SettingActivity" /> <!-- 首页 -->
+        <activity android:name=".mvp.ui.activity.SettingActivity" />
+        <!-- 首页 -->
         <activity
             android:name=".mvp.ui.activity.MainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" /> <!-- 登录 -->
+            android:screenOrientation="portrait" />
+        <!-- 登录 -->
         <activity
             android:name=".mvp.ui.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustPan" /> <!-- 欢迎界面 -->
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <!-- 欢迎界面 -->
         <activity
             android:name=".mvp.ui.activity.SplashActivity"
             android:exported="true"
@@ -168,6 +171,7 @@
             android:enabled="true"
             android:process=":remote" />
 
+        <!-- 千万别忘了加这一句。支持api level 28 以上编译 -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

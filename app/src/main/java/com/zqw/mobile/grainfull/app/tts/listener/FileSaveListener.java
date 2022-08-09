@@ -70,10 +70,10 @@ public class FileSaveListener extends UiMessageListener {
         } catch (IOException e) {
             // 请自行做错误处理
             e.printStackTrace();
-            sendMessage("创建文件失败:" + destDir + "/" + filename);
+            sendMessage("创建文件失败:" + destDir + filename);
             throw new RuntimeException(e);
         }
-        sendMessage("创建文件成功:" + destDir + "/" + filename);
+        sendMessage("创建文件成功:" + destDir + filename);
 
     }
 

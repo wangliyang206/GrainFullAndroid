@@ -22,7 +22,9 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.control.InitConfig;
 import com.zqw.mobile.grainfull.app.tts.control.MySyntherizer;
+import com.zqw.mobile.grainfull.app.tts.control.NonBlockSyntherizer;
 import com.zqw.mobile.grainfull.app.tts.listener.FileSaveListener;
+import com.zqw.mobile.grainfull.app.tts.listener.UiMessageListener;
 import com.zqw.mobile.grainfull.app.tts.util.AutoCheck;
 import com.zqw.mobile.grainfull.app.tts.util.IOfflineResourceConst;
 import com.zqw.mobile.grainfull.app.tts.util.OfflineResource;
@@ -91,8 +93,10 @@ public class SynthActivity {
 
     /**
      * 初始化语音合成
+     * @param context 句柄
+     * @param isSave  是否保存音频文件
      */
-    public void initTTS(Context context) {
+    public void initTTS(Context context, boolean isSave) {
         this.mContext = context;
         Timber.i("###赤槿###initTTS()");
         mainHandler = new Handler() {
@@ -118,7 +122,11 @@ public class SynthActivity {
         }
 
         // 初始化TTS引擎
-        initialTts();
+        initialTts(isSave);
+    }
+
+    public void initTTS(Context context) {
+        initTTS(context, false);
     }
 
     /**
@@ -129,23 +137,24 @@ public class SynthActivity {
      * UiMessageListener 在MessageListener的基础上，对handler发送消息，实现UI的文字更新
      * FileSaveListener 在UiMessageListener的基础上，使用 onSynthesizeDataArrived回调，获取音频流
      */
-    private void initialTts() {
+    private void initialTts(boolean isSave) {
         LoggerProxy.printable(true); // 日志打印在logcat中
-//        // 设置初始化参数
-//        // 此处可以改为 含有您业务逻辑的SpeechSynthesizerListener的实现类
-//        SpeechSynthesizerListener listener = new UiMessageListener(mainHandler);
-//        InitConfig config = getInitConfig(listener);
-//        synthesizer = new NonBlockSyntherizer(mContext, config, mainHandler); // 此处可以改为MySyntherizer 了解调用过程
+        if (isSave) {
+            // 保存录音文件
+            // 设置初始化参数
+            // 此处可以改为 含有您业务逻辑的SpeechSynthesizerListener的实现类
+            SpeechSynthesizerListener listener = new FileSaveListener(mainHandler, Constant.AUDIO_PATH);
 
-
-        // 保存录音文件
-        // 设置初始化参数
-        // 此处可以改为 含有您业务逻辑的SpeechSynthesizerListener的实现类
-        SpeechSynthesizerListener listener = new FileSaveListener(mainHandler, Constant.AUDIO_PATH);
-
-        // appId appKey secretKey 网站上您申请的应用获取。注意使用离线合成功能的话，需要应用中填写您app的包名。包名在build.gradle中获取。
-        InitConfig initConfig = getInitConfig(listener);
-        synthesizer = new MySyntherizer(mContext, initConfig, mainHandler); // 此处可以改为MySyntherizer 了解调用过程
+            // appId appKey secretKey 网站上您申请的应用获取。注意使用离线合成功能的话，需要应用中填写您app的包名。包名在build.gradle中获取。
+            InitConfig initConfig = getInitConfig(listener);
+            synthesizer = new MySyntherizer(mContext, initConfig, mainHandler); // 此处可以改为MySyntherizer 了解调用过程
+        } else {
+            // 设置初始化参数
+            // 此处可以改为 含有您业务逻辑的SpeechSynthesizerListener的实现类
+            SpeechSynthesizerListener listener = new UiMessageListener(mainHandler);
+            InitConfig config = getInitConfig(listener);
+            synthesizer = new NonBlockSyntherizer(mContext, config, mainHandler); // 此处可以改为MySyntherizer 了解调用过程
+        }
     }
 
     /**

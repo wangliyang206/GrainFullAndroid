@@ -20,7 +20,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.baidu.mapapi.map.offline.OfflineMapUtil;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -34,7 +33,6 @@ import com.zqw.mobile.grainfull.mvp.contract.BaiduSpeechSynthesisContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduSpeechSynthesisPresenter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -88,7 +86,7 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
             synthActivity = null;
         }
 
-        if(popSelectSpeaker != null){
+        if (popSelectSpeaker != null) {
             popSelectSpeaker.dismiss();
             popSelectSpeaker = null;
         }
@@ -116,7 +114,7 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
         setTitle("语音合成");
 
         synthActivity = new SynthActivity();
-        synthActivity.initTTS(getApplicationContext());
+        synthActivity.initTTS(getApplicationContext(),true);
 
         mAudioDialog = new AudioDialog(this);
 
@@ -211,7 +209,7 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
             // 显示内容
             txviSoundLibrary.setText(info);
 
-            switch (position){
+            switch (position) {
                 case 0:                                                                             // 小美（普通女声）
                     SPEAKER = "0";
                     break;
@@ -259,7 +257,7 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
     })
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.lila_speechsynthesis_soundlibrary:                                            // 选择声线
                 if (popSelectSpeaker != null) {
                     popSelectSpeaker.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
@@ -270,7 +268,7 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
             case R.id.btn_speechsynthesis_synthesis:                                                // 合成
                 String val = editInput.getText().toString();
 
-                if(TextUtils.isEmpty(val)){
+                if (TextUtils.isEmpty(val)) {
                     showMessage("请输入需要合成语音的文字！");
                     return;
                 }

@@ -42,7 +42,7 @@ public interface Constant {
     /**
      * 音频缓存路径
      */
-    String AUDIO_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/Audio/";
+    String AUDIO_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/Download/grainFull/";
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**

@@ -128,6 +128,8 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         this.mAudioPath = path;
         this.AC = ac;
         this.AR = ar;
+
+        txviPath.setText("");
     }
 
     @Override
@@ -141,7 +143,8 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
                 onPlayPCM();
                 break;
             case R.id.btn_popaudiolayout_save:
-                onSave();
+                ArmsUtils.makeText(getContentView().getContext(), "由于兼容问题，暂不开放！");
+//                onSave();
                 break;
         }
     }
@@ -226,6 +229,11 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
                 mSave.setEnabled(true);
             }
 
+            if (msg.what == 3) {
+                // 错误了
+                ArmsUtils.makeText(getContentView().getContext(), "播放报错了！");
+            }
+
             if (msg.what == 4) {
                 // 途中关闭，停止音频
                 onClose();
@@ -283,7 +291,7 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
                 audioTrack.write(buffer, 0, len);
             }
         } catch (Exception e) {
-            ArmsUtils.makeText(getContentView().getContext(), "播放报错了！");
+            mDispatcher.sendEmptyMessage(3);
         } finally {
             onClose();
             if (mDispatcher != null)
@@ -319,7 +327,6 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         }
 
         if (visualizer != null) {
-            visualizer.setEnabled(false);
             visualizer.release();
         }
     }
