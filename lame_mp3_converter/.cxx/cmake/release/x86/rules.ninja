@@ -52,7 +52,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe -HE:\git\Mp3Converter-master\library -BE:\git\Mp3Converter-master\library\.cxx\cmake\release\x86
+  command = D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe -HE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter -BE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\release\x86
   description = Re-running CMake...
   generator = 1
 

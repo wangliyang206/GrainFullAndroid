@@ -44,7 +44,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:text="2、文件转换，由PCM文件转换成MP3文件。"
+            android:text="2、文件转换，由PCM、wav、aiff文件转换成MP3文件。"
             android:textColor="@color/common_text_tips_color"
             android:textSize="12sp" />
 

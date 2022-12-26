@@ -1,3 +1,3 @@
-E:/git/Mp3Converter-master/library/.cxx/cmake/release/x86/CMakeFiles/lame-mp3-utils.dir
-E:/git/Mp3Converter-master/library/.cxx/cmake/release/x86/CMakeFiles/edit_cache.dir
-E:/git/Mp3Converter-master/library/.cxx/cmake/release/x86/CMakeFiles/rebuild_cache.dir
+E:/AndroidStudioGit/GrainFullAndroid/lame_mp3_converter/.cxx/cmake/release/x86/CMakeFiles/lame-mp3-utils.dir
+E:/AndroidStudioGit/GrainFullAndroid/lame_mp3_converter/.cxx/cmake/release/x86/CMakeFiles/edit_cache.dir
+E:/AndroidStudioGit/GrainFullAndroid/lame_mp3_converter/.cxx/cmake/release/x86/CMakeFiles/rebuild_cache.dir

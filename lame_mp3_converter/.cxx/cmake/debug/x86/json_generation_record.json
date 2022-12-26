@@ -13,30 +13,6 @@
   },
   {
     "level": "INFO",
-    "message": "Trying to locate CMake in local SDK repository.",
-    "file": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "- CMake found in SDK at \u0027D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\u0027 had version \u00273.10.2\u0027",
-    "file": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "CMake \u00273.18.1\u0027 found in SDK did not match requested version \u00273.10.2\u0027.",
-    "file": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "CMake \u00273.22.1\u0027 found in SDK did not match requested version \u00273.10.2\u0027.",
-    "file": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
     "message": "JSON \u0027E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\x86\\android_gradle_build.json\u0027 was up-to-date",
     "file": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
     "tag": "debug|x86"

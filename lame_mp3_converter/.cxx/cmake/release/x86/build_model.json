@@ -5,9 +5,9 @@
     "environmentVariables": []
   },
   "cmake": {
-    "cmakeArtifactsBaseFolder": "E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86",
-    "cmakeServerLogFile": "E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86\\cmake_server_log.txt",
-    "cmakeWrappingBaseFolder": "E:\\git\\Mp3Converter-master\\library\\.cxx\\cxx\\release\\x86",
+    "cmakeArtifactsBaseFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86",
+    "cmakeServerLogFile": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86\\cmake_server_log.txt",
+    "cmakeWrappingBaseFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cxx\\release\\x86",
     "effectiveConfiguration": {
       "name": "traditional-android-studio-cmake-environment",
       "description": "Composite reified CMakeSettings configuration",
@@ -15,7 +15,7 @@
       "inheritEnvironments": [
         "ndk"
       ],
-      "buildRoot": "E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86",
+      "buildRoot": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86",
       "cmakeToolchain": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
       "cmakeExecutable": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\cmake.exe",
       "variables": [
@@ -53,7 +53,7 @@
         },
         {
           "name": "CMAKE_LIBRARY_OUTPUT_DIRECTORY",
-          "value": "E:\\git\\Mp3Converter-master\\library\\build\\intermediates\\cmake\\release\\obj\\x86"
+          "value": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\build\\intermediates\\cmake\\release\\obj\\x86"
         },
         {
           "name": "CMAKE_MAKE_PROGRAM",
@@ -70,14 +70,14 @@
       ]
     }
   },
-  "cxxBuildFolder": "E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86",
+  "cxxBuildFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86",
   "info": {
     "abi": "X86",
     "bitness": 32,
     "deprecated": false,
     "default": true
   },
-  "originalCxxBuildFolder": "E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86",
+  "originalCxxBuildFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86",
   "variant": {
     "buildSystemArgumentList": [],
     "buildTargetSet": [],
@@ -95,12 +95,12 @@
         "ninjaExe": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe"
       },
       "cmakeToolchainFile": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
-      "cxxFolder": "E:\\git\\Mp3Converter-master\\library\\.cxx",
-      "gradleModulePathName": ":library",
-      "intermediatesFolder": "E:\\git\\Mp3Converter-master\\library\\build\\intermediates",
-      "makeFile": "E:\\git\\Mp3Converter-master\\library\\CMakeLists.txt",
-      "moduleBuildFile": "E:\\git\\Mp3Converter-master\\library\\build.gradle",
-      "moduleRootFolder": "E:\\git\\Mp3Converter-master\\library",
+      "cxxFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx",
+      "gradleModulePathName": ":lame_mp3_converter",
+      "intermediatesFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\build\\intermediates",
+      "makeFile": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
+      "moduleBuildFile": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\build.gradle",
+      "moduleRootFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter",
       "ndkDefaultAbiList": [
         "ARMEABI_V7A",
         "ARM64_V8A",
@@ -163,12 +163,12 @@
       ],
       "ndkVersion": "20.0.5594570",
       "project": {
-        "compilerSettingsCacheFolder": "E:\\git\\Mp3Converter-master\\.cxx",
-        "cxxFolder": "E:\\git\\Mp3Converter-master\\.cxx",
+        "compilerSettingsCacheFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\.cxx",
+        "cxxFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\.cxx",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
-        "rootBuildGradleFolder": "E:\\git\\Mp3Converter-master",
+        "rootBuildGradleFolder": "E:\\AndroidStudioGit\\GrainFullAndroid",
         "sdkFolder": "D:\\Android\\AndroidSDK"
       },
       "splitsAbiFilterSet": [],
@@ -184,7 +184,7 @@
         "SYSTEM": {}
       }
     },
-    "objFolder": "E:\\git\\Mp3Converter-master\\library\\build\\intermediates\\cmake\\release\\obj",
+    "objFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\build\\intermediates\\cmake\\release\\obj",
     "variantName": "release",
     "validAbiList": [
       "ARMEABI_V7A",

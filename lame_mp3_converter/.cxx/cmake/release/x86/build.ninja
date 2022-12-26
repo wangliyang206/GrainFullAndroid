@@ -208,7 +208,7 @@ build ../../../../src/main/jniLibs/x86/liblame-mp3-utils.so: CXX_SHARED_LIBRARY_
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D E:\git\Mp3Converter-master\library\.cxx\cmake\release\x86 && D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\release\x86 && D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 build edit_cache: phony CMakeFiles/edit_cache.util
@@ -217,7 +217,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D E:\git\Mp3Converter-master\library\.cxx\cmake\release\x86 && D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe -HE:\git\Mp3Converter-master\library -BE:\git\Mp3Converter-master\library\.cxx\cmake\release\x86"
+  COMMAND = cmd.exe /C "cd /D E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\release\x86 && D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe -HE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter -BE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\release\x86"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1

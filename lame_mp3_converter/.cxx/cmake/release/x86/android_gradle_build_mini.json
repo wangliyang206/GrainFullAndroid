@@ -1,19 +1,19 @@
 {
   "buildFiles": [
     "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
-    "E:\\git\\Mp3Converter-master\\library\\CMakeLists.txt",
+    "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
     "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\platforms.cmake"
   ],
   "cleanCommands": [
-    "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86\" clean"
+    "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86\" clean"
   ],
-  "buildTargetsCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
   "libraries": {
     "lame-mp3-utils-Release-x86": {
       "artifactName": "lame-mp3-utils",
-      "buildCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86\" lame-mp3-utils",
+      "buildCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86\" lame-mp3-utils",
       "abi": "x86",
-      "output": "E:\\git\\Mp3Converter-master\\library\\src\\main\\jniLibs\\x86\\liblame-mp3-utils.so"
+      "output": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\jniLibs\\x86\\liblame-mp3-utils.so"
     }
   }
 }

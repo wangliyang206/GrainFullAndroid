@@ -1,133 +1,133 @@
 {
   "stringTable": {
-    "0": "E:/git/Mp3Converter-master/library/.cxx/cmake/release/x86",
+    "0": "E:/AndroidStudioGit/GrainFullAndroid/lame_mp3_converter/.cxx/cmake/release/x86",
     "1": "--target=i686-none-linux-android19 --gcc-toolchain=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dlame_mp3_utils_EXPORTS -I../../../../src/main/cpp/lamemp3 -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
   },
   "buildFiles": [
     "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
-    "E:\\git\\Mp3Converter-master\\library\\CMakeLists.txt",
+    "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
     "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\platforms.cmake"
   ],
   "cleanCommands": [
-    "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86\" clean"
+    "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86\" clean"
   ],
-  "buildTargetsCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
   "libraries": {
     "lame-mp3-utils-Release-x86": {
-      "buildCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\git\\Mp3Converter-master\\library\\.cxx\\cmake\\release\\x86\" lame-mp3-utils",
+      "buildCommand": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\release\\x86\" lame-mp3-utils",
       "buildType": "release",
       "toolchain": "2952041376",
       "abi": "x86",
       "artifactName": "lame-mp3-utils",
       "files": [
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lame-mp3-utils.cpp",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lame-mp3-utils.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\VbrTag.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\VbrTag.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\bitstream.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\bitstream.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\encoder.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\encoder.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\fft.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\fft.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\gain_analysis.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\gain_analysis.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\id3tag.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\id3tag.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\lame.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\lame.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\mpglib_interface.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\mpglib_interface.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\newmdct.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\newmdct.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\presets.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\presets.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\psymodel.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\psymodel.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\quantize.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\quantize.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\quantize_pvt.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\quantize_pvt.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\reservoir.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\reservoir.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\set_get.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\set_get.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\tables.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\tables.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\takehiro.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\takehiro.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\util.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\util.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\vbrquantize.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\vbrquantize.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         },
         {
-          "src": "E:\\git\\Mp3Converter-master\\library\\src\\main\\cpp\\lamemp3\\version.c",
+          "src": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\cpp\\lamemp3\\version.c",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         }
       ],
       "headers": [],
-      "output": "E:\\git\\Mp3Converter-master\\library\\src\\main\\jniLibs\\x86\\liblame-mp3-utils.so"
+      "output": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\jniLibs\\x86\\liblame-mp3-utils.so"
     }
   },
   "toolchains": {
