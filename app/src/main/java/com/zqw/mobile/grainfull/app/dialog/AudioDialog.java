@@ -20,20 +20,17 @@ import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.TimeUtils;
-import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
-import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
-import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler;
-import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
-import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VisualizeView;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import jaygoo.library.converter.Mp3Converter;
 import timber.log.Timber;
 
 /**
@@ -61,12 +58,10 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
     private AudioTrack audioTrack;
     private FileInputStream fis = null;
     private Visualizer visualizer;
-    // 用于文件转换
-    private FFmpeg ffmpeg;
     // 声道个数
-    private String AC = "1";
+    private int AC = 1;
     // 采样率
-    private String AR = "16000";
+    private int AR = 8000;
 
     public AudioDialog(Context context) {
         super(context);
@@ -96,16 +91,6 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         // 保存
         mSave = view.findViewById(R.id.btn_popaudiolayout_save);
         mSave.setOnClickListener(this);
-
-        try {
-            // 初始化 FFMPEG
-            ffmpeg = FFmpeg.getInstance(context);
-            // 加载 FFMPEG 可执行文件
-            ffmpeg.loadBinary(new LoadBinaryResponseHandler());
-        } catch (FFmpegNotSupportedException e) {
-            e.printStackTrace();
-        }
-
     }
 
     /**
@@ -124,7 +109,7 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
      * @param ac   声道个数(1代表单声道，2代表立体声道)
      * @param ar   采样率(16000Hz、48000Hz)
      */
-    public void setPlayPath(String path, String ac, String ar) {
+    public void setPlayPath(String path, int ac, int ar) {
         this.mAudioPath = path;
         this.AC = ac;
         this.AR = ar;
@@ -143,8 +128,8 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
                 onPlayPCM();
                 break;
             case R.id.btn_popaudiolayout_save:
-                ArmsUtils.makeText(getContentView().getContext(), "由于兼容问题，暂不开放！");
-//                onSave();
+//                ArmsUtils.makeText(getContentView().getContext(), "由于兼容问题，暂不开放！");
+                onSave();
                 break;
         }
     }
@@ -155,56 +140,49 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
     private void onSave() {
         mSavePath = Constant.AUDIO_PATH + "audio_" + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".mp3";
 
-        // ffmpeg -y -f 采样格式 -ac 声道数 -ar 采样率 -acodec pcm_s16le -i PCM源文件 MP3目标文件
-        // -y : 表示允许覆盖 ;
-        // -f : 表示文件格式 , 一般是 s16le , 其中 s 表示样本是有符号整型 , 16 表示是 16 16 16 位样本 2 2 2 字节 , l 表示小端格式 , 如果是 b 则表示大端格式 ; s16le 表示 无符号 16 16 16 位整型小端格式排列 ;
-        // -ac : 声道个数 , 单声道设置 1 1 1 , 立体声设置 2 2 2 ;
-        // -ar : 采样率 , 48000 48000 48000 表示 48000 Hz 采样率 ;
-        // -acodec : 指定编码器 ;
-        // -i : 指定源文件 ;
-        String cmd = "-y -f s16be -ac " + AC + " -ar " + AR + " -acodec pcm_s16le -i " + mAudioPath + " " + mSavePath;
-        String[] cmdArraay = cmd.split(" ");
-        try {
-            ffmpeg.execute(cmdArraay, new ExecuteBinaryResponseHandler() {
-                @Override
-                public void onStart() {
-                    super.onStart();
-                    Timber.i("###onStart");
-                    mSave.setEnabled(false);
-                    txviPath.setText("");
-                }
+        // 1、inSampleRate 要转换的音频文件采样率，采样率每秒从连续信号中提取并组成离散信号的采样个数，单位Hz。数值越高，音质越好，常见的如8000Hz、11025Hz、22050Hz、32000Hz、44100Hz等。
+        // 2、channel 声道个数
+        // 3、mode 音频编码模式，包括VBR、ABR、CBR
+        // 4、outSampleRate 转换后音频文件采样率
+        // 5、outBitRate 输出的码率，码率又称比特率是指每秒传送的比特(bit)数，单位kbps，越高音质越好（相同编码格式下）。
+        // 6、quality 压缩质量（具体数值含义上面注释已经写的很清楚了）
 
-                @Override
-                public void onFinish() {
-                    super.onFinish();
-                    Timber.i("###onFinish");
-                    // 提示
-                    mSave.setEnabled(true);
-                    txviPath.setText("文件已保存致：" + mSavePath);
-                }
+        // CBR常数比特率编码，码率固定，速度较快，但压缩的文件相比其他模式较大，音质也不会有很大提高，适用于流式播放方案，Lame默认的方案是这种。
+        // VBR动态比特率编码，码率不固定。适用于下载后在本地播放或者在读取速度有限的设备播放，体积和为CBR的一半左右，但是输出码率不可控。
+        // ABR平均比特率编码，是Lame针对CBR不佳的文件体积比和VBR生成文件大小不定的特点独创的编码模式。是一种折中方案，码率基本可控，但是好像用的不多。
+        Mp3Converter.init(AR, AC, 0, AR, 96, 7);
+        // 原始代码
+//        Mp3Converter.init(44100, 1, 0, 44100, 96, 7);
+        fileSize = new File(mAudioPath).length();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Mp3Converter.convertMp3(mAudioPath, mSavePath);
+            }
+        }).start();
 
-                @Override
-                public void onSuccess(String message) {
-                    super.onSuccess(message);
-                    Timber.i("###onSuccess=%s", message);
-                }
-
-                @Override
-                public void onProgress(String message) {
-                    super.onProgress(message);
-                    Timber.i("###onProgress=%s", message);
-                }
-
-                @Override
-                public void onFailure(String message) {
-                    super.onFailure(message);
-                    Timber.i("###onFailure=%s", message);
-                }
-            });
-        } catch (FFmpegCommandAlreadyRunningException e) {
-            e.printStackTrace();
-        }
+        handler.postDelayed(runnable, 500);
     }
+
+    long fileSize;
+    long bytes = 0;
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            bytes = Mp3Converter.getConvertBytes();
+            float progress = (100f * bytes / fileSize);
+            if (bytes == -1) {
+                progress = 100;
+            }
+            txviPath.setText("转换进度: " + progress);
+            if (handler != null && progress < 100) {
+                handler.postDelayed(this, 1000);
+            } else {
+                txviPath.setText("文件保存路径："+mSavePath);
+            }
+        }
+    };
 
     /**
      * 播放PCM文件
@@ -328,6 +306,10 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
 
         if (visualizer != null) {
             visualizer.release();
+        }
+
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
         }
     }
 }

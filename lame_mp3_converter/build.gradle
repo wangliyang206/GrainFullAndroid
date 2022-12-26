@@ -1,0 +1,96 @@
+apply plugin: 'com.android.library'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
+}
+
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.Jay-Goo'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        externalNativeBuild {
+            cmake {
+                //设置cpp配置参数，c文件请使用CFlags
+                cppFlags ""
+                //设置生成指定ABI版本的so库
+                abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'//,'armeabi','mips','mips64'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    //解决 More than one file was found with OS independent path 'lib/x86_64/liblame-mp3-utils.so' 报错
+    packagingOptions {
+        //Paths that match a first-pick pattern will be selected into the APK.
+        //If more than one path matches the first-pick, only the first found will be selected.
+        pickFirst 'lib/armeabi-v7a/liblame-mp3-utils.so'
+        pickFirst 'lib/arm64-v8a/liblame-mp3-utils.so'
+        pickFirst 'lib/armeabi/liblame-mp3-utils.so'
+        pickFirst 'lib/x86/liblame-mp3-utils.so'
+        pickFirst 'lib/mips/liblame-mp3-utils.so'
+        pickFirst 'lib/mips64/liblame-mp3-utils.so'
+        pickFirst 'lib/x86_64/liblame-mp3-utils.so'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+}
+
+
+// 指定编码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 打包源码
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError  false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// 制作文档(Javadoc)
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}

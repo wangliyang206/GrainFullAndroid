@@ -121,7 +121,9 @@ public class AudioConversionActivity extends BaseActivity<AudioConversionPresent
     private void onOpenFile() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         // 选择音频/视频 （mp4 3gp 是android支持的视频格式）
-        intent.setType("audio/*;video/*");
+//        intent.setType("audio/*;video/*;");
+        // 无类型限制
+        intent.setType("*/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent, Constant.REQUEST_SELECT_IMAGES_CODE);
     }
@@ -134,9 +136,12 @@ public class AudioConversionActivity extends BaseActivity<AudioConversionPresent
                 // 获取文件路径
                 Uri uri = data.getData();
 
+                int ac = Integer.parseInt(editAC.getText().toString());
+                int ar = Integer.parseInt(editAR.getText().toString());
+
                 // 弹出Dialog，可以播放与保存。
                 if (mAudioDialog != null) {
-                    mAudioDialog.setPlayPath(UriUtils.uri2File(uri).getPath(), editAC.getText().toString(), editAR.getText().toString());
+                    mAudioDialog.setPlayPath(UriUtils.uri2File(uri).getPath(), ac, ar);
                     mAudioDialog.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                 }
             }

@@ -1,0 +1,23 @@
+# ninja log v5
+93	944	693729965	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/fft.c.o	e4795d68b7b1bcfb
+1	968	693729965	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o	58fd408844d7138f
+39	986	693729965	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o	ae338eaefe23c2f1
+20	1017	693729965	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o	eb42a01e33dfc059
+59	1468	693729965	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o	95ec405aa59cc731
+122	1488	693729965	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o	8a89c4eb47df4687
+968	2023	693729966	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o	45287cb69d17e7cf
+945	2055	693729966	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o	3ede51f54ce9fe24
+986	2087	693729966	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/mpglib_interface.c.o	a75650f902d03224
+1017	2147	693729966	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o	521e92181927f035
+1488	2566	693729967	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o	47685275e9475d27
+1468	3109	693729967	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o	75876890d8f7cf20
+2055	3565	693729968	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o	d0006d87884d11c1
+2088	3601	693729967	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o	7c2ec566fcd83e76
+2024	3631	693729967	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o	5c15dca16a655e96
+2147	3692	693729968	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o	6cad75814d4e24ea
+2567	3693	693729968	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o	bb22ecd321390044
+3641	4591	693729969	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o	ceda010adf61c3a3
+3109	4592	693729969	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o	7b94e431b4480cf3
+3565	4594	693729969	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o	fb490359fd779
+3601	4595	693729969	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o	69d08d9f8a793108
+4595	4895	693729970	../../../../src/main/jniLibs/armeabi-v7a/liblame-mp3-utils.so	ddbe855d9f0ee4e0

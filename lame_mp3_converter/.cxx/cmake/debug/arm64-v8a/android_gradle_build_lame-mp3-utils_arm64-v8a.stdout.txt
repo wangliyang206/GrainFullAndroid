@@ -1,0 +1,2 @@
+ninja: Entering directory `E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\debug\arm64-v8a'
+ninja: no work to do.

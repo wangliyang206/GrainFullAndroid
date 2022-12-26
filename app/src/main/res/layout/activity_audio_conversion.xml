@@ -122,7 +122,7 @@
                 android:hint="请输入采样率"
                 android:inputType="number"
                 android:padding="5dp"
-                android:text="16000"
+                android:text="8000"
                 android:textColor="@color/common_edit_color"
                 android:textColorHint="@color/common_edit_hint_color"
                 android:textSize="14sp" />
@@ -135,7 +135,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="采样率 , 常用率为 16000Hz 、 48000 Hz ;"
+            android:text="采样率 , 常用率为8000Hz、11025Hz、22050Hz、32000Hz、44100Hz等;"
             android:textColor="@color/common_text_tips_color"
             android:textSize="12sp" />
     </LinearLayout>

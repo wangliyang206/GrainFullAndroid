@@ -364,6 +364,6 @@ dependencies {
     implementation project(path: ':faceplatform-ui')
     // 百度AI - 语音识别
     implementation project(path: ':uiasr')
-    // FFmpeg 处理音视频核心包
-    implementation 'com.writingminds:FFmpegAndroid:0.3.2'
+    // LAME MP3转码库
+    implementation project(path: ':lame_mp3_converter')
 }
