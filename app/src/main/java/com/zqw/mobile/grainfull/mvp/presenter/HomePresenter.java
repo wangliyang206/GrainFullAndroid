@@ -91,11 +91,11 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
      */
     private void loadSearchHot() {
         List<String> list = new ArrayList<>();
-        list.add("拜访");
-        list.add("门店");
-        list.add("回收员");
-        list.add("回收商");
-        list.add("冶炼厂");
+        list.add("人脸采集");
+        list.add("语音识别");
+        list.add("识别身份证");
+        list.add("交给苍天");
+        list.add("取个颜色");
         mRootView.homeSearchHot(list);
     }
 

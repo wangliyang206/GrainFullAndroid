@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_lotteryturntable_top"
+        layout="@layout/comm_top_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- 第一个转盘 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.zqw.mobile.grainfull.mvp.ui.widget.RotateView
+                    android:id="@+id/rovi_lotteryturntable_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:id="@+id/imvi_lotteryturntable_one_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/node" />
+            </RelativeLayout>
+
+            <!-- 第二个转盘 -->
+            <com.zqw.mobile.grainfull.mvp.ui.widget.RotateLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="#00000000">
+
+                <com.zqw.mobile.grainfull.mvp.ui.widget.RotateView
+                    android:id="@+id/rovi_lotteryturntable_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:id="@+id/imvi_lotteryturntable_two_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/node" />
+            </com.zqw.mobile.grainfull.mvp.ui.widget.RotateLayout>
+
+            <!-- 第三个转盘 -->
+            <com.zqw.mobile.grainfull.mvp.ui.widget.RotateLayoutView
+                android:id="@+id/rlvi_lotteryturntable_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

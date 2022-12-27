@@ -139,6 +139,18 @@
                     android:text="音频波形"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_other_line" />
+
+                <TextView
+                    android:id="@+id/btn_fragmentspecialeffects_other_lottery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="抽奖转盘"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_audiowaveform"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_audiowaveform" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

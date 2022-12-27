@@ -6,4 +6,15 @@
         <attr name="vsl_sleepTime" format="integer" />
         <attr name="vsl_isCusDuration" format="boolean" />
     </declare-styleable>
+
+    <!-- 抽奖转盘数据 -->
+    <string-array name="LotteryTurntable">
+        <item>角色</item>
+        <item>体育</item>
+        <item>方块</item>
+        <item>行动</item>
+        <item>搏斗</item>
+        <item>字母</item>
+
+    </string-array>
 </resources>
