@@ -120,11 +120,8 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
      * 创建文件夹
      */
     private void initFile() {
-        FileUtils.createOrExistsDir(Constant.IMAGE_PATH);                                           // 创建图片目录
-        FileUtils.createOrExistsDir(Constant.CACHE_PATH);                                           // 创建缓存目录
         FileUtils.createOrExistsDir(Constant.LOG_PATH);                                             // 创建日志目录
         FileUtils.createOrExistsDir(Constant.APP_UPDATE_PATH);                                      // 创建升级目录
-        FileUtils.createOrExistsDir(Constant.VIDEO_PATH);                                           // 设置拍摄视频缓存路径
         FileUtils.createOrExistsDir(Constant.AUDIO_PATH);                                           // 设置音频缓存路径
 
     }
@@ -140,7 +137,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
                 //清理日志
                 ThreadUtils.getFixedPool(3).execute(() -> {
                     try {
-                        FileUtils.deleteFile(Constant.LOG_PATH + "log.txt");
+                        FileUtils.delete(Constant.LOG_PATH + "log.txt");
                         mAccountManager.setStartTime(0);
                     } catch (Exception ignored) {
                     }

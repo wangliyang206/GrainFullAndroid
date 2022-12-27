@@ -66,7 +66,7 @@ com.jess.arms.http.log.DefaultFormatPrinter:
     private static final java.lang.String CORNER_BOTTOM
     private static final java.lang.String CENTER_LINE
     private static final java.lang.String DEFAULT_LINE
-androidx.legacy.app.ActivityCompat
+kotlin.time.AbstractLongTimeSource
 androidx.constraintlayout.widget.ConstraintSet$Layout:
     public void dump(androidx.constraintlayout.motion.widget.MotionScene,java.lang.StringBuilder)
     public static final int UNSET
@@ -197,6 +197,7 @@ com.zqw.mobile.grainfull.di.module.BaiduVoiceRecogModule:
     abstract com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceRecogContract$Model bindBaiduVoiceRecogModel(com.zqw.mobile.grainfull.mvp.model.BaiduVoiceRecogModel)
 kotlin.sequences.GeneratorSequence$iterator$1
 androidx.core.database.CursorWindowCompat
+com.blankj.utilcode.util.CrashUtils$CrashInfo
 kotlin.reflect.KClassifier
 androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat:
     public float getCurrent()
@@ -257,7 +258,133 @@ androidx.collection.SparseArrayCompat:
     public boolean containsValue(java.lang.Object)
 com.zqw.mobile.grainfull.app.utils.overlayutil.MassTransitRouteOverlay
 io.rx_cache2.ActionsList$Func1Element
-androidx.core.app.NotificationCompat
+androidx.core.app.NotificationCompat:
+    static android.app.Notification[] getNotificationArrayFromBundle(android.os.Bundle,java.lang.String)
+    public static int getActionCount(android.app.Notification)
+    public static androidx.core.app.NotificationCompat$Action getAction(android.app.Notification,int)
+    public static androidx.core.app.NotificationCompat$BubbleMetadata getBubbleMetadata(android.app.Notification)
+    static androidx.core.app.NotificationCompat$Action getActionCompatFromAction(android.app.Notification$Action)
+    public static java.util.List getInvisibleActions(android.app.Notification)
+    public static java.util.List getPeople(android.app.Notification)
+    public static java.lang.CharSequence getContentTitle(android.app.Notification)
+    public static java.lang.CharSequence getContentText(android.app.Notification)
+    public static java.lang.CharSequence getContentInfo(android.app.Notification)
+    public static java.lang.CharSequence getSubText(android.app.Notification)
+    public static java.lang.String getCategory(android.app.Notification)
+    public static boolean getLocalOnly(android.app.Notification)
+    public static java.lang.String getGroup(android.app.Notification)
+    public static boolean getShowWhen(android.app.Notification)
+    public static boolean getUsesChronometer(android.app.Notification)
+    public static boolean getOnlyAlertOnce(android.app.Notification)
+    public static boolean getAutoCancel(android.app.Notification)
+    public static boolean getOngoing(android.app.Notification)
+    public static int getColor(android.app.Notification)
+    public static int getVisibility(android.app.Notification)
+    public static android.app.Notification getPublicVersion(android.app.Notification)
+    static boolean getHighPriority(android.app.Notification)
+    public static boolean isGroupSummary(android.app.Notification)
+    public static java.lang.String getSortKey(android.app.Notification)
+    public static java.lang.String getChannelId(android.app.Notification)
+    public static long getTimeoutAfter(android.app.Notification)
+    public static int getBadgeIconType(android.app.Notification)
+    public static java.lang.String getShortcutId(android.app.Notification)
+    public static java.lang.CharSequence getSettingsText(android.app.Notification)
+    public static androidx.core.content.LocusIdCompat getLocusId(android.app.Notification)
+    public static int getGroupAlertBehavior(android.app.Notification)
+    public static boolean getAllowSystemGeneratedContextualActions(android.app.Notification)
+    public void <init>()
+    public static final java.lang.String INTENT_CATEGORY_NOTIFICATION_PREFERENCES
+    public static final java.lang.String EXTRA_CHANNEL_ID
+    public static final java.lang.String EXTRA_CHANNEL_GROUP_ID
+    public static final java.lang.String EXTRA_NOTIFICATION_TAG
+    public static final java.lang.String EXTRA_NOTIFICATION_ID
+    public static final int DEFAULT_ALL
+    public static final int DEFAULT_SOUND
+    public static final int DEFAULT_VIBRATE
+    public static final int DEFAULT_LIGHTS
+    public static final int STREAM_DEFAULT
+    public static final int FLAG_SHOW_LIGHTS
+    public static final int FLAG_ONGOING_EVENT
+    public static final int FLAG_INSISTENT
+    public static final int FLAG_ONLY_ALERT_ONCE
+    public static final int FLAG_AUTO_CANCEL
+    public static final int FLAG_NO_CLEAR
+    public static final int FLAG_FOREGROUND_SERVICE
+    public static final int FLAG_HIGH_PRIORITY
+    public static final int FLAG_LOCAL_ONLY
+    public static final int FLAG_GROUP_SUMMARY
+    public static final int FLAG_BUBBLE
+    public static final int PRIORITY_DEFAULT
+    public static final int PRIORITY_LOW
+    public static final int PRIORITY_MIN
+    public static final int PRIORITY_HIGH
+    public static final int PRIORITY_MAX
+    public static final java.lang.String EXTRA_TITLE
+    public static final java.lang.String EXTRA_TITLE_BIG
+    public static final java.lang.String EXTRA_TEXT
+    public static final java.lang.String EXTRA_SUB_TEXT
+    public static final java.lang.String EXTRA_REMOTE_INPUT_HISTORY
+    public static final java.lang.String EXTRA_INFO_TEXT
+    public static final java.lang.String EXTRA_SUMMARY_TEXT
+    public static final java.lang.String EXTRA_BIG_TEXT
+    public static final java.lang.String EXTRA_SMALL_ICON
+    public static final java.lang.String EXTRA_LARGE_ICON
+    public static final java.lang.String EXTRA_LARGE_ICON_BIG
+    public static final java.lang.String EXTRA_PROGRESS
+    public static final java.lang.String EXTRA_PROGRESS_MAX
+    public static final java.lang.String EXTRA_PROGRESS_INDETERMINATE
+    public static final java.lang.String EXTRA_SHOW_CHRONOMETER
+    public static final java.lang.String EXTRA_CHRONOMETER_COUNT_DOWN
+    public static final java.lang.String EXTRA_COLORIZED
+    public static final java.lang.String EXTRA_SHOW_WHEN
+    public static final java.lang.String EXTRA_PICTURE
+    public static final java.lang.String EXTRA_TEXT_LINES
+    public static final java.lang.String EXTRA_TEMPLATE
+    public static final java.lang.String EXTRA_COMPAT_TEMPLATE
+    public static final java.lang.String EXTRA_PEOPLE
+    public static final java.lang.String EXTRA_PEOPLE_LIST
+    public static final java.lang.String EXTRA_BACKGROUND_IMAGE_URI
+    public static final java.lang.String EXTRA_MEDIA_SESSION
+    public static final java.lang.String EXTRA_COMPACT_ACTIONS
+    public static final java.lang.String EXTRA_SELF_DISPLAY_NAME
+    public static final java.lang.String EXTRA_MESSAGING_STYLE_USER
+    public static final java.lang.String EXTRA_CONVERSATION_TITLE
+    public static final java.lang.String EXTRA_MESSAGES
+    public static final java.lang.String EXTRA_HISTORIC_MESSAGES
+    public static final java.lang.String EXTRA_IS_GROUP_CONVERSATION
+    public static final java.lang.String EXTRA_HIDDEN_CONVERSATION_TITLE
+    public static final java.lang.String EXTRA_AUDIO_CONTENTS_URI
+    public static final int COLOR_DEFAULT
+    public static final int VISIBILITY_PUBLIC
+    public static final int VISIBILITY_PRIVATE
+    public static final int VISIBILITY_SECRET
+    public static final java.lang.String CATEGORY_CALL
+    public static final java.lang.String CATEGORY_NAVIGATION
+    public static final java.lang.String CATEGORY_MESSAGE
+    public static final java.lang.String CATEGORY_EMAIL
+    public static final java.lang.String CATEGORY_EVENT
+    public static final java.lang.String CATEGORY_PROMO
+    public static final java.lang.String CATEGORY_ALARM
+    public static final java.lang.String CATEGORY_PROGRESS
+    public static final java.lang.String CATEGORY_SOCIAL
+    public static final java.lang.String CATEGORY_ERROR
+    public static final java.lang.String CATEGORY_TRANSPORT
+    public static final java.lang.String CATEGORY_SYSTEM
+    public static final java.lang.String CATEGORY_SERVICE
+    public static final java.lang.String CATEGORY_REMINDER
+    public static final java.lang.String CATEGORY_RECOMMENDATION
+    public static final java.lang.String CATEGORY_STATUS
+    public static final java.lang.String CATEGORY_WORKOUT
+    public static final java.lang.String CATEGORY_LOCATION_SHARING
+    public static final java.lang.String CATEGORY_STOPWATCH
+    public static final java.lang.String CATEGORY_MISSED_CALL
+    public static final int BADGE_ICON_NONE
+    public static final int BADGE_ICON_SMALL
+    public static final int BADGE_ICON_LARGE
+    public static final int GROUP_ALERT_ALL
+    public static final int GROUP_ALERT_SUMMARY
+    public static final int GROUP_ALERT_CHILDREN
+    public static final java.lang.String GROUP_KEY_SILENT
 com.bumptech.glide.load.engine.cache.MemorySizeCalculator:
     private static final java.lang.String TAG
     static final int BYTES_PER_ARGB_8888_PIXEL
@@ -274,9 +401,10 @@ androidx.core.view.WindowInsetsCompat$Impl30:
     public androidx.core.graphics.Insets getInsets(int)
     public androidx.core.graphics.Insets getInsetsIgnoringVisibility(int)
     public boolean isVisible(int)
-androidx.core.app.NotificationCompatBuilder
-com.blankj.utilcode.util.PermissionUtils$1:
-    public void again(boolean)
+androidx.core.app.NotificationCompatBuilder:
+    public android.app.Notification$Builder getBuilder()
+    android.content.Context getContext()
+com.blankj.utilcode.util.PermissionUtils$1
 androidx.constraintlayout.core.motion.utils.ArcCurveFit:
     public static final int ARC_START_VERTICAL
     public static final int ARC_START_HORIZONTAL
@@ -285,7 +413,6 @@ androidx.constraintlayout.core.motion.utils.ArcCurveFit:
     private static final int START_VERTICAL
     private static final int START_HORIZONTAL
     private static final int START_LINEAR
-androidx.legacy.app.FragmentCompat$PermissionCompatDelegate
 io.rx_cache2.internal.migration.DeleteRecordMatchingClassName_Factory
 kotlin.text.UStringsKt
 kotlin.jvm.internal.DefaultConstructorMarker:
@@ -373,8 +500,6 @@ kotlin.jvm.internal.CallableReference
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$2
 kotlin.UIntArray
 androidx.media.MediaSessionManager$MediaSessionManagerImpl
-com.blankj.utilcode.util.FileUtils$4
-androidx.legacy.view.ViewCompat
 androidx.constraintlayout.motion.widget.ViewTransition:
     public int getSharedValueCurrent()
     public void setSharedValueCurrent(int)
@@ -408,6 +533,7 @@ androidx.constraintlayout.motion.widget.ViewTransition:
     static final int BOUNCE
     static final int OVERSHOOT
     static final int ANTICIPATE
+kotlin.time.AbstractDoubleTimeSource$DoubleTimeMark
 com.mikepenz.materialdrawer.model.AbstractDrawerItem:
     public java.lang.Object withTag(java.lang.Object)
     public java.lang.Object getTag()
@@ -528,7 +654,6 @@ androidx.transition.ViewUtilsBase:
 androidx.recyclerview.widget.ChildHelper$Bucket:
     static final int BITS_PER_WORD
     static final long LAST_BIT
-androidx.legacy.app.FragmentCompat$FragmentCompatApi15Impl
 kotlin.text.StringsKt___StringsKt$windowedSequence$1
 androidx.core.text.TextDirectionHeuristicsCompat:
     private void <init>()
@@ -558,8 +683,6 @@ com.bumptech.glide.load.engine.Engine:
 kotlin.text.StringsKt___StringsJvmKt
 com.blankj.utilcode.util.Utils:
     private void <init>()
-    static com.blankj.utilcode.util.Utils$ActivityLifecycleImpl getActivityLifecycle()
-    private static final java.lang.String PERMISSION_ACTIVITY_CLASS_NAME
 androidx.constraintlayout.core.state.helpers.BarrierReference
 com.bumptech.glide.load.data.ExifOrientationStream:
     private static final int SEGMENT_START_POSITION
@@ -571,7 +694,6 @@ com.mikepenz.materialdrawer.holder.ImageHolder:
     public void setIIcon(com.mikepenz.iconics.typeface.IIcon)
 androidx.print.PrintHelper$PrintUriAdapter$1$1
 androidx.slidingpanelayout.R
-androidx.legacy.app.FragmentTabHost$DummyTabFactory
 kotlin.sequences.SequencesKt___SequencesKt$flatMap$1
 com.mikepenz.iconics.utils.StyleContainer
 com.jakewharton.rxbinding3.view.ViewLongClickObservable$Listener
@@ -588,7 +710,6 @@ androidx.core.app.NotificationCompat$WearableExtender
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$5
 androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23:
     private void <init>()
-com.blankj.utilcode.util.FileUtils$5
 androidx.loader.app.LoaderManagerImpl$LoaderViewModel:
     void startCreatingLoader()
     boolean isCreatingLoader()
@@ -626,6 +747,7 @@ com.bumptech.glide.disklrucache.DiskLruCache$Value:
     public java.lang.String getString(int)
     public long getLength(int)
 com.zqw.mobile.grainfull.mvp.contract.FaceComparisonContract
+com.blankj.utilcode.util.ClickUtils$OnMultiClickListener
 com.mikepenz.materialize.color.Material$LightBlue
 androidx.core.net.UriCompat
 androidx.core.util.Pools
@@ -643,11 +765,12 @@ kotlin.UByteArrayKt
 com.jess.arms.http.imageloader.ImageLoader:
     public void clear(android.content.Context,com.jess.arms.http.imageloader.ImageConfig)
     public void setLoadImgStrategy(com.jess.arms.http.imageloader.BaseImageLoaderStrategy)
-com.blankj.utilcode.util.AntiShakeUtils
 androidx.constraintlayout.core.widgets.analyzer.DependencyNode:
     public java.lang.String name()
+kotlin.time.TestTimeSource
 androidx.recyclerview.widget.AsyncListUtil$ViewCallback
 kotlin.InitializedLazyImpl
+kotlin.time.MonotonicTimeSource
 androidx.transition.PatternPathMotion:
     public android.graphics.Path getPatternPath()
 com.mikepenz.materialize.color.Material$DeepPurple
@@ -670,6 +793,7 @@ kotlin.sequences.SequencesKt___SequencesKt$filterIsInstance$1
 androidx.constraintlayout.core.parser.CLContainer
 androidx.core.view.NestedScrollingChild3:
     public abstract void dispatchNestedScroll(int,int,int,int,int[],int,int[])
+com.blankj.utilcode.util.CollectionUtils$Transformer
 androidx.core.app.JobIntentService$JobWorkEnqueuer:
     void enqueueWork(android.content.Intent)
 androidx.lifecycle.LifecycleRegistry:
@@ -712,6 +836,7 @@ de.hdodenhof.circleimageview.CircleImageView:
     private static final int DEFAULT_BORDER_COLOR
     private static final int DEFAULT_CIRCLE_BACKGROUND_COLOR
     private static final boolean DEFAULT_BORDER_OVERLAY
+kotlin.time.MeasureTimeKt
 okio.Pipe
 com.jakewharton.rxbinding3.widget.AbsListViewScrollEvent
 androidx.collection.CircularIntArray
@@ -737,11 +862,6 @@ androidx.core.app.AlarmManagerCompat
 androidx.core.util.Predicate
 androidx.transition.GhostViewPlatform:
     private static final java.lang.String TAG
-com.blankj.utilcode.util.Utils$ActivityLifecycleImpl:
-    void addOnAppStatusChangedListener(java.lang.Object,com.blankj.utilcode.util.Utils$OnAppStatusChangedListener)
-    void removeOnAppStatusChangedListener(java.lang.Object)
-    void removeOnActivityDestroyedListener(android.app.Activity)
-    void addOnActivityDestroyedListener(android.app.Activity,com.blankj.utilcode.util.Utils$OnActivityDestroyedListener)
 com.blankj.utilcode.util.RomUtils$RomInfo
 androidx.core.os.ParcelableCompat:
     private void <init>()
@@ -751,6 +871,7 @@ androidx.constraintlayout.motion.widget.KeyAttributes:
     private static final java.lang.String TAG
     private static final boolean DEBUG
     public static final int KEY_TYPE
+com.blankj.utilcode.util.ClickUtils$OnUtilsTouchListener
 kotlin.collections.CollectionsKt__CollectionsJVMKt
 com.bigkoo.pickerview.adapter.NumericWheelAdapter
 androidx.core.os.BuildCompat:
@@ -816,7 +937,6 @@ com.bumptech.glide.request.BaseRequestOptions:
 com.cjt2325.cameralibrary.CaptureLayout:
     public void showTip()
 com.paginate.Paginate
-androidx.legacy.app.FragmentStatePagerAdapter
 com.blankj.utilcode.util.JsonUtils
 com.cjt2325.cameralibrary.util.FileUtil:
     public void <init>()
@@ -886,7 +1006,9 @@ qiu.niorgai.R
 androidx.recyclerview.widget.RecyclerView$ItemAnimator$ItemHolderInfo:
     public int changeFlags
 kotlin.jvm.internal.TypeReference$WhenMappings
+com.blankj.utilcode.util.BusUtils$1
 kotlin.text.CharsKt__CharKt
+com.blankj.utilcode.util.ImageUtils$ImageType
 uk.co.senab.photoview.Compat:
     public void <init>()
     private static final int SIXTY_FPS_INTERVAL
@@ -1028,6 +1150,7 @@ androidx.constraintlayout.core.motion.utils.SpringStopEngine:
     public float getVelocity(float)
     public float getAcceleration()
     private static final double UNSET
+kotlin.time.TimeMark
 com.bumptech.glide.util.MarkEnforcingInputStream:
     private static final int UNSET
     private static final int END_OF_STREAM
@@ -1186,6 +1309,7 @@ androidx.core.view.WindowInsetsCompat$BuilderImpl30:
     void setInsetsIgnoringVisibility(int,androidx.core.graphics.Insets)
     void setVisible(int,boolean)
 kotlin.collections.AbstractMap
+kotlin.time.DurationUnitKt__DurationUnitKt
 com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool:
     public abstract void put(java.lang.Object,java.lang.Class)
     public static final int STANDARD_BUFFER_SIZE_BYTES
@@ -1194,12 +1318,15 @@ kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$3
 io.rx_cache2.internal.encrypt.Encryptor
 androidx.core.app.AppOpsManagerCompat:
     private void <init>()
+    public static int noteOp(android.content.Context,java.lang.String,int,java.lang.String)
     public static int noteOpNoThrow(android.content.Context,java.lang.String,int,java.lang.String)
     public static int noteProxyOp(android.content.Context,java.lang.String,java.lang.String)
     public static final int MODE_ALLOWED
     public static final int MODE_IGNORED
     public static final int MODE_ERRORED
     public static final int MODE_DEFAULT
+com.blankj.utilcode.util.NetworkUtils$NetworkChangedReceiver$LazyHolder:
+    private void <init>()
 androidx.multidex.R
 androidx.core.view.WindowCompat$Impl30
 androidx.core.text.util.FindAddress$ZipRange
@@ -1313,6 +1440,7 @@ androidx.constraintlayout.motion.widget.MotionController:
     private static final int INTERPOLATOR_REFERENCE_ID
     private static final int INTERPOLATOR_UNDEFINED
 kotlin.Pair
+com.blankj.utilcode.util.ClickUtils$OnUtilsTouchListener$LazyHolder
 kotlin.sequences.FlatteningSequence$iterator$1
 androidx.viewpager.widget.ViewPager$SimpleOnPageChangeListener
 com.jakewharton.rxbinding3.view.MenuItemActionViewEvent
@@ -1338,9 +1466,9 @@ com.mikepenz.fastadapter.select.SelectExtension:
 com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity_MembersInjector
 androidx.appcompat.view.menu.MenuItemWrapperICS$ActionProviderWrapperJB:
     public void refreshVisibility()
-androidx.legacy.v13.R
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$Values
 uk.co.senab.photoview.R
+com.blankj.utilcode.util.MapUtils$1
 androidx.vectordrawable.graphics.drawable.AnimatorInflaterCompat$PathDataEvaluator:
     void <init>(androidx.core.graphics.PathParser$PathDataNode[])
 io.rx_cache2.ActionsList$8
@@ -1402,6 +1530,7 @@ com.zqw.mobile.grainfull.mvp.model.BaiduQualityControlModel_MembersInjector:
 com.zqw.mobile.grainfull.di.module.IdentifyBankCardsModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.IdentifyBankCardsContract$Model bindIdentifyBankCardsModel(com.zqw.mobile.grainfull.mvp.model.IdentifyBankCardsModel)
+com.blankj.utilcode.util.PermissionUtils$SimpleCallback
 com.mikepenz.materialdrawer.MiniDrawer$1
 androidx.fragment.app.FragmentManager$BackStackEntry
 androidx.drawerlayout.R
@@ -1486,7 +1615,48 @@ androidx.appcompat.view.SupportMenuInflater$MenuState:
     private static final boolean defaultItemVisible
     private static final boolean defaultItemEnabled
 com.blankj.utilcode.util.FileUtils$3
-com.blankj.utilcode.util.PathUtils
+com.blankj.utilcode.util.PathUtils:
+    private void <init>()
+    public static java.lang.String join(java.lang.String,java.lang.String)
+    private static java.lang.String getLegalSegment(java.lang.String)
+    public static java.lang.String getRootPath()
+    public static java.lang.String getDataPath()
+    public static java.lang.String getDownloadCachePath()
+    public static java.lang.String getInternalAppDataPath()
+    public static java.lang.String getInternalAppCodeCacheDir()
+    public static java.lang.String getInternalAppCachePath()
+    public static java.lang.String getInternalAppDbsPath()
+    public static java.lang.String getInternalAppDbPath(java.lang.String)
+    public static java.lang.String getInternalAppFilesPath()
+    public static java.lang.String getInternalAppSpPath()
+    public static java.lang.String getInternalAppNoBackupFilesPath()
+    public static java.lang.String getExternalStoragePath()
+    public static java.lang.String getExternalMusicPath()
+    public static java.lang.String getExternalPodcastsPath()
+    public static java.lang.String getExternalRingtonesPath()
+    public static java.lang.String getExternalAlarmsPath()
+    public static java.lang.String getExternalNotificationsPath()
+    public static java.lang.String getExternalPicturesPath()
+    public static java.lang.String getExternalMoviesPath()
+    public static java.lang.String getExternalDcimPath()
+    public static java.lang.String getExternalAppDataPath()
+    public static java.lang.String getExternalAppCachePath()
+    public static java.lang.String getExternalAppFilesPath()
+    public static java.lang.String getExternalAppMusicPath()
+    public static java.lang.String getExternalAppPodcastsPath()
+    public static java.lang.String getExternalAppRingtonesPath()
+    public static java.lang.String getExternalAppAlarmsPath()
+    public static java.lang.String getExternalAppNotificationsPath()
+    public static java.lang.String getExternalAppPicturesPath()
+    public static java.lang.String getExternalAppMoviesPath()
+    public static java.lang.String getExternalAppDownloadPath()
+    public static java.lang.String getExternalAppDcimPath()
+    public static java.lang.String getExternalAppDocumentsPath()
+    public static java.lang.String getExternalAppObbPath()
+    public static java.lang.String getRootPathExternalFirst()
+    public static java.lang.String getAppDataPathExternalFirst()
+    public static java.lang.String getFilesPathExternalFirst()
+    public static java.lang.String getCachePathExternalFirst()
 com.zqw.mobile.grainfull.mvp.model.BaiduQualityParamsModel_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
@@ -1561,6 +1731,7 @@ kotlin.sequences.DropTakeSequence
 androidx.constraintlayout.core.motion.utils.TypedValues$Attributes
 androidx.asynclayoutinflater.view.AsyncLayoutInflater$1
 kotlin.io.TextStreamsKt
+kotlin.time.AbstractLongTimeSource$LongTimeMark
 com.zqw.mobile.grainfull.mvp.model.SettingModel:
     private synthetic io.reactivex.Observable lambda$getVersion$0(com.jess.arms.cj.GsonRequest)
     public io.reactivex.Observable getVersion(java.lang.String)
@@ -1568,6 +1739,7 @@ org.reactivestreams.FlowAdapters$ReactiveToFlowProcessor
 com.jakewharton.rxbinding3.widget.RxSearchView
 kotlin.UShortArray$Iterator
 com.zqw.mobile.grainfull.app.tts.listener.FileSaveListener:
+    public static final java.lang.String fileName
     private static final java.lang.String TAG
 com.zqw.mobile.grainfull.mvp.ui.widget.DisableRecyclerViewSliding:
     public void <init>(android.content.Context)
@@ -1655,6 +1827,7 @@ androidx.constraintlayout.core.SolverVariableValues:
     public int sizeInBytes()
     private static final boolean DEBUG
     private static final boolean HASH
+com.blankj.utilcode.util.TouchUtils
 com.bumptech.glide.util.LruCache:
     public synchronized void setSizeMultiplier(float)
     protected synchronized int getCount()
@@ -1706,6 +1879,8 @@ androidx.constraintlayout.helper.widget.Flow:
     public static final int VERTICAL_ALIGN_CENTER
     public static final int VERTICAL_ALIGN_BASELINE
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$2
+com.blankj.utilcode.util.UtilsTransActivity:
+    protected static final java.lang.String EXTRA_DELEGATE
 androidx.constraintlayout.core.motion.CustomAttribute
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceValues
 com.mikepenz.fastadapter.expandable.BuildConfig
@@ -1983,6 +2158,7 @@ androidx.constraintlayout.widget.ConstraintLayoutStates:
     private static final boolean DEBUG
 androidx.recyclerview.widget.AsyncDifferConfig$Builder
 io.rx_cache2.internal.cache.TwoLayersCache
+com.blankj.utilcode.util.UtilsBridge$FileHead
 com.zqw.mobile.grainfull.mvp.contract.HomeContract
 com.bumptech.glide.ListPreloader$PreloadTargetQueue:
     void <init>(int)
@@ -1990,6 +2166,7 @@ com.jess.arms.utils.PermissionUtil$1
 androidx.lifecycle.Lifecycling$1:
     void <init>(androidx.lifecycle.LifecycleEventObserver)
 com.zqw.mobile.grainfull.mvp.contract.BaiduFaceCollectionSuccessContract
+com.blankj.utilcode.util.PermissionUtils$ThemeCallback
 androidx.core.view.ViewConfigurationCompat:
     public static int getScaledPagingTouchSlop(android.view.ViewConfiguration)
     public static boolean hasPermanentMenuKey(android.view.ViewConfiguration)
@@ -2002,6 +2179,7 @@ androidx.core.app.NotificationCompat$MessagingStyle
 androidx.appcompat.app.ActionBar$LayoutParams:
     public void <init>(int,int,int)
     public void <init>(int)
+com.blankj.utilcode.util.PermissionUtils$FullCallback
 com.jess.arms.base.delegate.ActivityDelegate:
     public static final java.lang.String LAYOUT_LINEARLAYOUT
     public static final java.lang.String LAYOUT_FRAMELAYOUT
@@ -2015,6 +2193,8 @@ kotlin.jvm.internal.Intrinsics:
     public static void checkNotNull(java.lang.Object)
     public static void checkNotNull(java.lang.Object,java.lang.String)
     public static void throwNpe(java.lang.String)
+    public static void throwJavaNpe()
+    public static void throwJavaNpe(java.lang.String)
     public static void throwUninitializedProperty(java.lang.String)
     public static void throwUninitializedPropertyAccessException(java.lang.String)
     public static void throwAssert()
@@ -2064,6 +2244,7 @@ com.afollestad.materialdialogs.internal.MDTintHelper:
 com.mikepenz.fastadapter.commons.R
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$HashIterator
 com.mikepenz.fastadapter.items.AbstractItem
+kotlin.NumbersKt__NumbersJVMKt
 com.jess.arms.integration.cache.CacheType$4:
     private static final int MAX_SIZE
     private static final float MAX_SIZE_MULTIPLIER
@@ -2228,6 +2409,7 @@ com.jakewharton.rxbinding3.view.ViewTreeObserverDrawObservable
 androidx.core.hardware.fingerprint.FingerprintManagerCompat$1
 androidx.core.graphics.PathUtils
 androidx.constraintlayout.core.state.Transition$KeyPosition
+kotlin.NumbersKt__NumbersKt
 io.rx_cache2.internal.migration.CacheVersion
 com.jakewharton.rxbinding3.view.ViewLayoutChangeEventObservable$Listener
 androidx.appcompat.resources.R
@@ -2357,18 +2539,36 @@ com.bumptech.glide.gifdecoder.GifHeaderParser:
 com.blankj.utilcode.util.SpanUtils$CustomDynamicDrawableSpan
 kotlin.jvm.internal.Ref$ShortRef
 kotlin.text.Regex$Serialized$Companion
-androidx.legacy.app.FragmentCompat$FragmentCompatBaseImpl$1
 kotlin.collections.MapsKt
+kotlin.NumbersKt__BigDecimalsKt
 kotlin.UInt$Companion
 com.zqw.mobile.grainfull.mvp.ui.widget.RecycleViewDivider
 com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceRecogContract
 com.cjt2325.cameralibrary.util.EToast2$2
+com.blankj.utilcode.util.ToastUtils$WindowManagerToast$1
 com.jakewharton.rxbinding3.widget.RatingBarRatingChangeObservable$Listener
-com.blankj.utilcode.util.StringUtils
+com.blankj.utilcode.util.StringUtils:
+    private void <init>()
+    public static boolean isEmpty(java.lang.CharSequence)
+    public static boolean isTrimEmpty(java.lang.String)
+    public static boolean equals(java.lang.CharSequence,java.lang.CharSequence)
+    public static boolean equalsIgnoreCase(java.lang.String,java.lang.String)
+    public static java.lang.String null2Length0(java.lang.String)
+    public static int length(java.lang.CharSequence)
+    public static java.lang.String upperFirstLetter(java.lang.String)
+    public static java.lang.String lowerFirstLetter(java.lang.String)
+    public static java.lang.String reverse(java.lang.String)
+    public static java.lang.String toDBC(java.lang.String)
+    public static java.lang.String toSBC(java.lang.String)
+    public static java.lang.String getString(int)
+    public static varargs java.lang.String getString(int,java.lang.Object[])
+    public static java.lang.String[] getStringArray(int)
+    public static varargs java.lang.String format(java.lang.String,java.lang.Object[])
 com.bumptech.glide.provider.ResourceEncoderRegistry:
     public synchronized void prepend(java.lang.Class,com.bumptech.glide.load.ResourceEncoder)
 androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener
 com.mikepenz.itemanimators.SlideInOutLeftAnimator
+kotlinx.android.parcel.Parceler
 com.zqw.mobile.grainfull.di.module.ImageExtractionTextModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.ImageExtractionTextContract$Model bindImageExtractionTextModel(com.zqw.mobile.grainfull.mvp.model.ImageExtractionTextModel)
@@ -2429,7 +2629,6 @@ qiu.niorgai.StatusBarCompat:
     public static void cancelLightStatusBar(android.app.Activity)
 com.paginate.Paginate$Callbacks
 io.rx_cache2.internal.cache.EvictExpirableRecordsPersistence
-com.blankj.utilcode.util.NetworkUtils$Callback
 com.bumptech.glide.request.target.ViewTarget:
     public void <init>(android.view.View,boolean)
     public static void setTagId(int)
@@ -2595,6 +2794,7 @@ com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceActivationPresenter_MembersInjec
     private final javax.inject.Provider mApplicationProvider
     private final javax.inject.Provider mImageLoaderProvider
     private final javax.inject.Provider mAppManagerProvider
+com.blankj.utilcode.util.PermissionUtils$SingleCallback
 com.cjt2325.cameralibrary.util.LogUtil:
     public void <init>()
     public static void v(java.lang.String,java.lang.String)
@@ -2606,6 +2806,8 @@ com.cjt2325.cameralibrary.util.LogUtil:
     private static final java.lang.String DEFAULT_TAG
 androidx.appcompat.app.WindowDecorActionBar$TabImpl
 androidx.core.util.AtomicFile
+com.blankj.utilcode.util.ThreadUtils$LinkedBlockingQueue4Util:
+    void <init>(int)
 com.jakewharton.rxbinding3.view.ViewHoverObservable
 com.mikepenz.fastadapter.package-info
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraConfigurationUtils:
@@ -2697,6 +2899,7 @@ com.bumptech.glide.load.engine.executor.RuntimeCompat:
     private static final java.lang.String TAG
     private static final java.lang.String CPU_NAME_REGEX
     private static final java.lang.String CPU_LOCATION
+kotlin.time.AbstractDoubleTimeSource
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$2
 kotlin.coroutines.jvm.internal.SuspendLambda
 com.mikepenz.iconics.context.IconicsFactory$1
@@ -2802,7 +3005,6 @@ com.mikepenz.materialdrawer.model.MiniDrawerItem:
 kotlin.sequences.TakeWhileSequence$iterator$1
 kotlin.jvm.internal.CollectionToArray
 kotlin.reflect.KProperty0$Getter
-kotlin.MathKt__NumbersKt
 com.zqw.mobile.grainfull.mvp.model.api.AccountService
 com.zqw.mobile.grainfull.di.module.HomeModule:
     public void <init>()
@@ -2819,6 +3021,7 @@ androidx.appcompat.widget.AppCompatHintHelper:
 com.mikepenz.itemanimators.BaseItemAnimator$VpaListenerAdapter:
     public void onAnimationStart(android.view.View)
     public void onAnimationEnd(android.view.View)
+com.blankj.utilcode.util.ClickUtils$OnDebouncingClickListener
 com.zqw.mobile.grainfull.mvp.model.BaiduVoiceRecogModel_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
@@ -2826,7 +3029,16 @@ com.zqw.mobile.grainfull.mvp.model.BaiduVoiceRecogModel_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mGsonProvider
     private final javax.inject.Provider mApplicationProvider
-androidx.core.content.LocusIdCompat
+androidx.core.content.LocusIdCompat:
+    public void <init>(java.lang.String)
+    public static androidx.core.content.LocusIdCompat toLocusIdCompat(android.content.LocusId)
+    private java.lang.String getSanitizedId()
+    public java.lang.String getId()
+    public int hashCode()
+    public boolean equals(java.lang.Object)
+    public java.lang.String toString()
+    private final java.lang.String mId
+    private final android.content.LocusId mWrapped
 androidx.transition.AnimatorUtils:
     private void <init>()
 kotlin.reflect.KProperty$DefaultImpls
@@ -2847,7 +3059,6 @@ com.bumptech.glide.load.model.ResourceLoader:
     private static final java.lang.String TAG
 androidx.recyclerview.widget.ScrollbarHelper:
     private void <init>()
-androidx.legacy.app.FragmentCompat$OnRequestPermissionsResultCallback
 androidx.constraintlayout.core.motion.utils.Easing:
     private static final java.lang.String STANDARD
     private static final java.lang.String ACCELERATE
@@ -3056,6 +3267,8 @@ androidx.swiperefreshlayout.widget.CircularProgressDrawable:
     private static final float MAX_PROGRESS_ARC
     private static final float MIN_PROGRESS_ARC
     private static final float RING_ROTATION
+com.blankj.utilcode.util.NetworkUtils$NetworkChangedReceiver:
+    boolean isRegistered(com.blankj.utilcode.util.NetworkUtils$OnNetworkStatusChangedListener)
 androidx.loader.content.ModernAsyncTask$Status
 com.mikepenz.materialdrawer.model.interfaces.Nameable:
     public abstract java.lang.Object withName(java.lang.String)
@@ -3092,8 +3305,6 @@ permissions.dispatcher.PermissionUtils:
     private void <init>()
     public static varargs boolean shouldShowRequestPermissionRationale(android.app.Activity,java.lang.String[])
     public static varargs boolean shouldShowRequestPermissionRationale(androidx.fragment.app.Fragment,java.lang.String[])
-    public static varargs boolean shouldShowRequestPermissionRationale(android.app.Fragment,java.lang.String[])
-    public static void requestPermissions(android.app.Fragment,java.lang.String[],int)
 androidx.recyclerview.widget.MessageThreadUtil$SyncQueueItem
 androidx.appcompat.widget.Toolbar$LayoutParams:
     public void <init>(int,int,int)
@@ -3101,6 +3312,7 @@ androidx.appcompat.widget.Toolbar$LayoutParams:
     static final int CUSTOM
     static final int SYSTEM
     static final int EXPANDED
+com.blankj.utilcode.util.ShadowUtils$ShadowDrawable
 androidx.lifecycle.MediatorLiveData:
     public void removeSource(androidx.lifecycle.LiveData)
 androidx.constraintlayout.motion.widget.Animatable
@@ -3143,6 +3355,7 @@ androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper
 androidx.core.graphics.PathSegment
 kotlin.UnsignedKt
 kotlin.SafePublicationLazyImpl
+com.blankj.utilcode.util.TouchUtils$OnTouchUtilsListener
 androidx.core.location.LocationManagerCompat$PreRGnssStatusTransport$4
 okio.package-info
 androidx.recyclerview.widget.PagerSnapHelper:
@@ -3194,7 +3407,6 @@ com.bumptech.glide.request.target.NotificationTarget:
 kotlin.jvm.internal.TypeReference$asString$args$1
 com.blankj.utilcode.util.KeyboardUtils$3
 androidx.recyclerview.widget.MessageThreadUtil$1
-permissions.dispatcher.BuildConfig
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_MembersInjector
 kotlin.concurrent.ThreadsKt
 io.rx_cache2.internal.RxCacheModule_ProvideMigrationsFactory
@@ -3241,8 +3453,6 @@ com.zqw.mobile.grainfull.app.tts.util.FileUtil:
     public static boolean fileCanRead(java.lang.String)
     public static java.lang.String getResourceText(android.content.Context,int)
 com.jakewharton.rxbinding3.widget.SeekBarChangeObservable
-androidx.legacy.app.FragmentTabHost:
-    public void addTab(android.widget.TabHost$TabSpec,java.lang.Class,android.os.Bundle)
 kotlin.sequences.DropWhileSequence$iterator$1
 com.mikepenz.materialdrawer.model.BaseDescribeableDrawerItem:
     public java.lang.Object withDescription(java.lang.String)
@@ -3285,7 +3495,33 @@ com.mikepenz.fastadapter.select.SelectExtension$4
 com.bumptech.glide.load.resource.bitmap.BitmapEncoder:
     private static final java.lang.String TAG
 kotlin.jvm.internal.unsafe.MonitorKt
-androidx.core.app.NotificationCompat$Style
+androidx.core.app.NotificationCompat$Style:
+    public void <init>()
+    public static androidx.core.app.NotificationCompat$Style extractStyleFromNotification(android.app.Notification)
+    private static androidx.core.app.NotificationCompat$Style constructCompatStyleByPlatformName(java.lang.String)
+    static androidx.core.app.NotificationCompat$Style constructCompatStyleByName(java.lang.String)
+    static androidx.core.app.NotificationCompat$Style constructCompatStyleForBundle(android.os.Bundle)
+    static androidx.core.app.NotificationCompat$Style constructStyleForExtras(android.os.Bundle)
+    private android.graphics.Bitmap createColoredBitmap(int,int,int)
+    private android.graphics.Bitmap createColoredBitmap(androidx.core.graphics.drawable.IconCompat,int,int)
+    private android.graphics.Bitmap createIconWithBackground(int,int,int,int)
+    private void hideNormalContent(android.widget.RemoteViews)
+    private int calculateTopPadding()
+    private static float constrain(float,float,float)
+    public void setBuilder(androidx.core.app.NotificationCompat$Builder)
+    public android.app.Notification build()
+    protected java.lang.String getClassName()
+    public boolean displayCustomViewInline()
+    protected void restoreFromCompatExtras(android.os.Bundle)
+    protected void clearCompatExtraKeys(android.os.Bundle)
+    public android.widget.RemoteViews applyStandardTemplate(boolean,int,boolean)
+    public android.graphics.Bitmap createColoredBitmap(int,int)
+    android.graphics.Bitmap createColoredBitmap(androidx.core.graphics.drawable.IconCompat,int)
+    public void buildIntoRemoteViews(android.widget.RemoteViews,android.widget.RemoteViews)
+    protected androidx.core.app.NotificationCompat$Builder mBuilder
+    java.lang.CharSequence mBigContentTitle
+    java.lang.CharSequence mSummaryText
+    boolean mSummaryTextSet
 com.bumptech.glide.request.transition.ViewAnimationFactory:
     public void <init>(android.view.animation.Animation)
     public void <init>(int)
@@ -3378,6 +3614,7 @@ androidx.core.widget.ContentLoadingProgressBar:
     private static final int MIN_DELAY
 kotlin.sequences.SubSequence$iterator$1
 kotlin.collections.RingBuffer
+com.blankj.utilcode.util.KeyboardUtils$2
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceCollectionSuccessActivity_MembersInjector
 com.zqw.mobile.grainfull.mvp.presenter.LivenessDetectionPresenter_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
@@ -3455,6 +3692,7 @@ androidx.core.app.RemoteActionCompat:
     public android.app.RemoteAction toRemoteAction()
 com.bumptech.glide.load.Key:
     public static final java.lang.String STRING_CHARSET_NAME
+com.blankj.utilcode.util.PermissionUtils$OnExplainListener$ShouldRequest
 com.bumptech.glide.load.resource.bitmap.LazyBitmapDrawableResource:
     public static com.bumptech.glide.load.resource.bitmap.LazyBitmapDrawableResource obtain(android.content.Context,android.graphics.Bitmap)
     public static com.bumptech.glide.load.resource.bitmap.LazyBitmapDrawableResource obtain(android.content.res.Resources,com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool,android.graphics.Bitmap)
@@ -3475,7 +3713,15 @@ com.jakewharton.rxbinding3.widget.RxTextView:
     public static synthetic io.reactivex.Observable editorActions$default(android.widget.TextView,kotlin.jvm.functions.Function1,int,java.lang.Object)
     public static final io.reactivex.Observable editorActions(android.widget.TextView)
     public static final com.jakewharton.rxbinding3.InitialValueObservable textChangeEvents(android.widget.TextView)
-com.blankj.utilcode.util.AdaptScreenUtils
+com.blankj.utilcode.util.AdaptScreenUtils:
+    private void <init>()
+    public static android.content.res.Resources adaptWidth(android.content.res.Resources,int)
+    public static android.content.res.Resources adaptHeight(android.content.res.Resources,int)
+    public static android.content.res.Resources adaptHeight(android.content.res.Resources,int,boolean)
+    private static int getNavBarHeight(android.content.res.Resources)
+    public static android.content.res.Resources closeAdapt(android.content.res.Resources)
+    public static int pt2Px(float)
+    public static int px2Pt(float)
 kotlin.collections.State
 kotlin.sequences.TakeSequence
 com.zqw.mobile.grainfull.mvp.model.SpecialEffectsModel_MembersInjector:
@@ -3486,11 +3732,39 @@ com.zqw.mobile.grainfull.mvp.model.SpecialEffectsModel_MembersInjector:
     private final javax.inject.Provider apiOperatorProvider
 kotlin.ULong
 io.rx_cache2.internal.cache.GetDeepCopy_Factory
+com.blankj.utilcode.util.MessengerUtils:
+    public void <init>()
+    public static void register()
+    public static void unregister()
+    public static void register(java.lang.String)
+    public static void unregister(java.lang.String)
+    public static void subscribe(java.lang.String,com.blankj.utilcode.util.MessengerUtils$MessageCallback)
+    public static void unsubscribe(java.lang.String)
+    public static void post(java.lang.String,android.os.Bundle)
+    private static void startServiceCompat(android.content.Intent)
+    private static com.blankj.utilcode.util.MessengerUtils$Client sLocalClient
+    private static final int WHAT_SUBSCRIBE
+    private static final int WHAT_UNSUBSCRIBE
+    private static final int WHAT_SEND
+    private static final java.lang.String KEY_STRING
 com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory:
     public void <init>(android.content.Context)
     public void <init>(android.content.Context,int)
     public void <init>(android.content.Context,java.lang.String,int)
-androidx.core.app.Person
+androidx.core.app.Person:
+    public static androidx.core.app.Person fromBundle(android.os.Bundle)
+    public static androidx.core.app.Person fromPersistableBundle(android.os.PersistableBundle)
+    public static androidx.core.app.Person fromAndroidPerson(android.app.Person)
+    void <init>(androidx.core.app.Person$Builder)
+    public android.os.Bundle toBundle()
+    public android.os.PersistableBundle toPersistableBundle()
+    public androidx.core.app.Person$Builder toBuilder()
+    private static final java.lang.String NAME_KEY
+    private static final java.lang.String ICON_KEY
+    private static final java.lang.String URI_KEY
+    private static final java.lang.String KEY_KEY
+    private static final java.lang.String IS_BOT_KEY
+    private static final java.lang.String IS_IMPORTANT_KEY
 kotlin.internal.PlatformImplementationsKt
 com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceSettingPresenter_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
@@ -3501,11 +3775,13 @@ com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceSettingPresenter_MembersInjector
     private final javax.inject.Provider mApplicationProvider
     private final javax.inject.Provider mImageLoaderProvider
     private final javax.inject.Provider mAppManagerProvider
+com.blankj.utilcode.util.ArrayUtils
 androidx.recyclerview.widget.MessageThreadUtil$2
 kotlin.coroutines.experimental.migration.ContextMigration
-kotlin.math.UMathKt
 kotlin.sequences.SequencesKt___SequencesKt$zipWithNext$2
+kotlin.math.UMathKt
 androidx.constraintlayout.core.parser.CLString
+com.blankj.utilcode.util.NumberUtils
 androidx.core.view.accessibility.AccessibilityManagerCompat$AccessibilityStateChangeListenerCompat
 kotlin.collections.unsigned.UArraysKt
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$SoftRef
@@ -3561,7 +3837,8 @@ okio.RealBufferedSource:
     public long indexOfElement(okio.ByteString,long)
     public boolean rangeEquals(long,okio.ByteString)
     public boolean rangeEquals(long,okio.ByteString,int,int)
-androidx.core.app.NotificationBuilderWithBuilderAccessor
+androidx.core.app.NotificationBuilderWithBuilderAccessor:
+    public abstract android.app.Notification$Builder getBuilder()
 io.rx_cache2.internal.migration.DoMigrations$4
 androidx.constraintlayout.core.widgets.Flow:
     public static final int HORIZONTAL_ALIGN_START
@@ -3623,6 +3900,8 @@ com.bumptech.glide.MemoryCategory:
     public float getMultiplier()
 androidx.lifecycle.ComputableLiveData
 com.paginate.recycler.LoadingListItemCreator
+com.blankj.utilcode.util.LogUtils$4
+com.blankj.utilcode.util.ShadowUtils$DrawableWrapper
 com.bigkoo.pickerview.view.BasePickerView
 androidx.core.view.accessibility.AccessibilityNodeProviderCompat:
     public static final int HOST_VIEW_ID
@@ -3661,7 +3940,16 @@ androidx.arch.core.R
 com.mikepenz.materialdrawer.util.DrawerItemViewHelper$OnDrawerItemClickListener
 com.bumptech.glide.load.model.FileLoader:
     private static final java.lang.String TAG
-com.blankj.utilcode.util.SizeUtils
+com.blankj.utilcode.util.SizeUtils:
+    private void <init>()
+    public static int px2dp(float)
+    public static int sp2px(float)
+    public static int px2sp(float)
+    public static float applyDimension(float,int)
+    public static void forceGetViewSize(android.view.View,com.blankj.utilcode.util.SizeUtils$OnGetSizeListener)
+    public static int getMeasuredWidth(android.view.View)
+    public static int getMeasuredHeight(android.view.View)
+    public static int[] measureView(android.view.View)
 kotlin.reflect.KMutableProperty1$Setter
 androidx.fragment.app.FragmentHostCallback:
     public void <init>(android.content.Context,android.os.Handler,int)
@@ -3727,6 +4015,7 @@ androidx.drawerlayout.widget.DrawerLayout:
     private static final boolean ALLOW_EDGE_LOCK
     private static final boolean CHILDREN_DISALLOW_INTERCEPT
     private static final float TOUCH_SLOP_SENSITIVITY
+com.blankj.utilcode.util.NetworkUtils$8$1
 androidx.core.text.ICUCompat:
     private void <init>()
     private static final java.lang.String TAG
@@ -3885,8 +4174,6 @@ kotlin.sequences.SequencesKt___SequencesKt$elementAt$1
 androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener:
     public abstract void onSharedElementsReady()
 com.blankj.utilcode.util.CloneUtils
-com.blankj.utilcode.util.PermissionUtils$PermissionActivity:
-    private static final java.lang.String TYPE
 androidx.lifecycle.Transformations:
     private void <init>()
     public static androidx.lifecycle.LiveData switchMap(androidx.lifecycle.LiveData,androidx.arch.core.util.Function)
@@ -4009,8 +4296,7 @@ androidx.constraintlayout.motion.widget.KeyPosition:
     public static final java.lang.String PERCENT_X
     public static final java.lang.String PERCENT_Y
     static final int KEY_TYPE
-com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener:
-    public abstract void onSoftInputChanged(int)
+com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener
 androidx.core.view.accessibility.AccessibilityRecordCompat:
     public void <init>(java.lang.Object)
     public static androidx.core.view.accessibility.AccessibilityRecordCompat obtain(androidx.core.view.accessibility.AccessibilityRecordCompat)
@@ -4066,6 +4352,7 @@ androidx.core.view.accessibility.AccessibilityRecordCompat:
     public boolean equals(java.lang.Object)
     private final android.view.accessibility.AccessibilityRecord mRecord
 androidx.versionedparcelable.VersionedParcelStream$FieldBuffer
+kotlin.sequences.SequencesKt___SequencesKt$scanReduceIndexed$1
 kotlin.text.StringsKt___StringsKt$windowed$1
 kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnchecked$$inlined$buildContinuationByInvokeCall$IntrinsicsKt__IntrinsicsJvmKt$1
 androidx.core.content.res.ComplexColorCompat:
@@ -4083,7 +4370,25 @@ com.cjt2325.cameralibrary.util.CheckPermission:
 com.zqw.mobile.grainfull.mvp.ui.activity.LivenessCustomDetectionActivity_MembersInjector
 androidx.core.graphics.drawable.WrappedDrawableApi21:
     private static final java.lang.String TAG
-androidx.core.app.NotificationCompat$Action
+androidx.core.app.NotificationCompat$Action:
+    public void <init>(int,java.lang.CharSequence,android.app.PendingIntent)
+    public void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent)
+    void <init>(int,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],androidx.core.app.RemoteInput[],boolean,int,boolean,boolean)
+    void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle,androidx.core.app.RemoteInput[],androidx.core.app.RemoteInput[],boolean,int,boolean,boolean)
+    public int getIcon()
+    public static final int SEMANTIC_ACTION_NONE
+    public static final int SEMANTIC_ACTION_REPLY
+    public static final int SEMANTIC_ACTION_MARK_AS_READ
+    public static final int SEMANTIC_ACTION_MARK_AS_UNREAD
+    public static final int SEMANTIC_ACTION_DELETE
+    public static final int SEMANTIC_ACTION_ARCHIVE
+    public static final int SEMANTIC_ACTION_MUTE
+    public static final int SEMANTIC_ACTION_UNMUTE
+    public static final int SEMANTIC_ACTION_THUMBS_UP
+    public static final int SEMANTIC_ACTION_THUMBS_DOWN
+    public static final int SEMANTIC_ACTION_CALL
+    static final java.lang.String EXTRA_SHOWS_USER_INTERFACE
+    static final java.lang.String EXTRA_SEMANTIC_ACTION
 dagger.internal.Preconditions:
     public static java.lang.Object checkNotNull(java.lang.Object,java.lang.String,java.lang.Object)
     private void <init>()
@@ -4130,7 +4435,6 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.DecodeThread:
     public static final java.lang.String BARCODE_BITMAP
     public static final java.lang.String BARCODE_SCALED_FACTOR
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.Intents$SearchBookContents
-com.blankj.utilcode.util.NetworkUtils$NetworkType
 androidx.legacy.coreutils.R
 kotlin.text.Charsets
 com.mikepenz.fastadapter.commons.utils.FastAdapterDiffUtil$FastAdapterListUpdateCallback
@@ -4147,6 +4451,7 @@ com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity_MembersInje
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mPresenterProvider
     private final javax.inject.Provider mImageLoaderProvider
+com.blankj.utilcode.util.ClickUtils$Back2HomeFriendlyListener
 com.jakewharton.rxbinding3.widget.TextViewAfterTextChangeEvent
 com.blankj.utilcode.util.CacheDiskStaticUtils
 androidx.core.R
@@ -4235,15 +4540,16 @@ androidx.constraintlayout.core.state.ConstraintReference
 kotlin.sequences.DropWhileSequence
 androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder
 kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineFromSuspendFunction$2
+kotlin.time.TimeSourceKt
 kotlin.text.MatchGroupCollection
 kotlin.jvm.internal.PropertyReference2
 com.zqw.mobile.grainfull.mvp.contract.ImageExtractionTextContract
+kotlin.time.Duration
 com.zqw.mobile.grainfull.mvp.contract.MainContract$Model:
     public abstract io.reactivex.Observable getVersion(java.lang.String)
 androidx.appcompat.view.menu.ListMenuItemView:
     public boolean showsIcon()
     private static final java.lang.String TAG
-com.blankj.utilcode.util.SizeUtils$onGetSizeListener
 com.bigkoo.pickerview.TimePickerView
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$8
 androidx.legacy.v4.R
@@ -4261,7 +4567,6 @@ androidx.media.VolumeProviderCompat:
     public static final int VOLUME_CONTROL_FIXED
     public static final int VOLUME_CONTROL_RELATIVE
     public static final int VOLUME_CONTROL_ABSOLUTE
-androidx.legacy.app.FragmentCompat$FragmentCompatBaseImpl
 com.mikepenz.iconics.utils.IconicsUtils
 androidx.constraintlayout.core.ArrayRow$ArrayRowVariables:
     public abstract int indexOf(androidx.constraintlayout.core.SolverVariable)
@@ -4321,9 +4626,8 @@ androidx.recyclerview.widget.RecyclerView$ItemAnimator:
     public static final int FLAG_MOVED
     public static final int FLAG_APPEARED_IN_PRE_LAYOUT
 com.zqw.mobile.grainfull.app.utils.HideScrollListener
-androidx.legacy.app.FragmentTabHost$TabInfo:
-    void <init>(java.lang.String,java.lang.Class,android.os.Bundle)
 com.zqw.mobile.grainfull.mvp.contract.IdentifyIdCardContract
+kotlin.NumbersKt__BigIntegersKt
 kotlin.text.StringsKt__IndentKt$prependIndent$1
 com.jakewharton.rxbinding3.view.MenuItemActionViewExpandEvent
 androidx.print.PrintHelper$1
@@ -4397,11 +4701,17 @@ androidx.appcompat.view.menu.MenuItemImpl:
     private static final int IS_ACTION
     static final int NO_ICON
 kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnchecked$$inlined$buildContinuationByInvokeCall$IntrinsicsKt__IntrinsicsJvmKt$2
+com.blankj.utilcode.util.ViewUtils
 androidx.constraintlayout.core.motion.CustomVariable
 com.blankj.utilcode.util.SDCardUtils:
     private void <init>()
-    public static boolean isSDCardEnableByEnvironment()
+    public static java.lang.String getSDCardPathByEnvironment()
     public static java.util.List getSDCardInfo()
+    public static java.util.List getMountedSDCardPath()
+    public static long getExternalTotalSize()
+    public static long getExternalAvailableSize()
+    public static long getInternalTotalSize()
+    public static long getInternalAvailableSize()
 com.blankj.utilcode.util.ZipUtils
 com.bumptech.glide.GenericTransitionOptions:
     public static com.bumptech.glide.GenericTransitionOptions withNoTransition()
@@ -4451,6 +4761,97 @@ com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivityPermissionsDispat
     static void onRequestPermissionsResult(com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity,int,int[])
     private static final int REQUEST_GETCOMPAREPHOTOS
     private static final int REQUEST_GETTEMPLATEIMAGE
+com.blankj.utilcode.util.UtilsBridge:
+    void <init>()
+    static void addActivityLifecycleCallbacks(com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    static void removeActivityLifecycleCallbacks(com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    static void addActivityLifecycleCallbacks(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    static void removeActivityLifecycleCallbacks(android.app.Activity)
+    static void removeActivityLifecycleCallbacks(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    static java.lang.String getLauncherActivity(java.lang.String)
+    static android.app.Activity getActivityByContext(android.content.Context)
+    static void startHomeActivity()
+    static boolean isAppRunning(java.lang.String)
+    static boolean isAppInstalled(java.lang.String)
+    static boolean isAppDebug()
+    static void relaunchApp()
+    static int getStatusBarHeight()
+    static int getNavBarHeight()
+    static java.lang.String bytes2HexString(byte[])
+    static byte[] hexString2Bytes(java.lang.String)
+    static byte[] string2Bytes(java.lang.String)
+    static java.lang.String bytes2String(byte[])
+    static byte[] jsonObject2Bytes(org.json.JSONObject)
+    static org.json.JSONObject bytes2JSONObject(byte[])
+    static byte[] jsonArray2Bytes(org.json.JSONArray)
+    static org.json.JSONArray bytes2JSONArray(byte[])
+    static byte[] parcelable2Bytes(android.os.Parcelable)
+    static java.lang.Object bytes2Parcelable(byte[],android.os.Parcelable$Creator)
+    static byte[] serializable2Bytes(java.io.Serializable)
+    static java.lang.Object bytes2Object(byte[])
+    static java.lang.String byte2FitMemorySize(long)
+    static byte[] inputStream2Bytes(java.io.InputStream)
+    static java.io.ByteArrayOutputStream input2OutputStream(java.io.InputStream)
+    static java.util.List inputStream2Lines(java.io.InputStream,java.lang.String)
+    static boolean isValid(android.view.View,long)
+    static byte[] base64Encode(byte[])
+    static byte[] base64Decode(byte[])
+    static byte[] hashTemplate(byte[],java.lang.String)
+    static boolean writeFileFromBytes(java.io.File,byte[])
+    static byte[] readFile2Bytes(java.io.File)
+    static boolean writeFileFromString(java.lang.String,java.lang.String,boolean)
+    static boolean isFileExists(java.io.File)
+    static boolean deleteAllInDir(java.io.File)
+    static boolean createOrExistsDir(java.io.File)
+    static boolean createFileByDeleteOldFile(java.io.File)
+    static long getFsTotalSize(java.lang.String)
+    static long getFsAvailableSize(java.lang.String)
+    static void notifySystemToScan(java.io.File)
+    static java.lang.String toJson(java.lang.Object)
+    static java.lang.Object fromJson(java.lang.String,java.lang.reflect.Type)
+    static com.google.gson.Gson getGson4LogUtils()
+    static byte[] bitmap2Bytes(android.graphics.Bitmap)
+    static byte[] bitmap2Bytes(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat,int)
+    static android.graphics.Bitmap bytes2Bitmap(byte[])
+    static byte[] drawable2Bytes(android.graphics.drawable.Drawable)
+    static byte[] drawable2Bytes(android.graphics.drawable.Drawable,android.graphics.Bitmap$CompressFormat,int)
+    static android.graphics.drawable.Drawable bytes2Drawable(byte[])
+    static android.graphics.Bitmap view2Bitmap(android.view.View)
+    static android.graphics.Bitmap drawable2Bitmap(android.graphics.drawable.Drawable)
+    static android.graphics.drawable.Drawable bitmap2Drawable(android.graphics.Bitmap)
+    static boolean isIntentAvailable(android.content.Intent)
+    static android.content.Intent getLaunchAppIntent(java.lang.String)
+    static android.content.Intent getInstallAppIntent(java.io.File)
+    static android.content.Intent getInstallAppIntent(android.net.Uri)
+    static android.content.Intent getUninstallAppIntent(java.lang.String)
+    static android.content.Intent getDialIntent(java.lang.String)
+    static android.content.Intent getCallIntent(java.lang.String)
+    static android.content.Intent getSendSmsIntent(java.lang.String,java.lang.String)
+    static android.content.Intent getLaunchAppDetailsSettingsIntent(java.lang.String,boolean)
+    static java.lang.String formatJson(java.lang.String)
+    static varargs boolean isGranted(java.lang.String[])
+    static boolean isGrantedDrawOverlays()
+    static boolean isMainProcess()
+    static java.lang.String getForegroundProcessName()
+    static boolean isSamsung()
+    static boolean isServiceRunning(java.lang.String)
+    static com.blankj.utilcode.util.ShellUtils$CommandResult execCmd(java.lang.String,boolean)
+    static int px2dp(float)
+    static int sp2px(float)
+    static int px2sp(float)
+    static boolean equals(java.lang.CharSequence,java.lang.CharSequence)
+    static java.lang.String getString(int)
+    static varargs java.lang.String getString(int,java.lang.Object[])
+    static varargs java.lang.String format(java.lang.String,java.lang.Object[])
+    static com.blankj.utilcode.util.Utils$Task doAsync(com.blankj.utilcode.util.Utils$Task)
+    static java.lang.String getFullStackTrace(java.lang.Throwable)
+    static java.lang.String millis2FitTimeSpan(long,int)
+    static void toastShowShort(java.lang.CharSequence)
+    static void toastCancel()
+    static android.net.Uri file2Uri(java.io.File)
+    static java.io.File uri2File(android.net.Uri)
+    static android.view.View layoutId2View(int)
+    static boolean isLayoutRtl()
 kotlin.contracts.Returns
 androidx.media.MediaBrowserServiceCompatApi26$ResultWrapper:
     public void detach()
@@ -4586,6 +4987,7 @@ androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi29:
 com.zqw.mobile.grainfull.di.module.LivenessDetectionModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.LivenessDetectionContract$Model bindLivenessDetectionModel(com.zqw.mobile.grainfull.mvp.model.LivenessDetectionModel)
+com.blankj.utilcode.util.MessengerUtils$Client$2
 androidx.core.view.accessibility.AccessibilityEventCompat:
     private void <init>()
     public static int getRecordCount(android.view.accessibility.AccessibilityEvent)
@@ -4675,6 +5077,7 @@ androidx.constraintlayout.widget.StateSet:
     private static final boolean DEBUG
 kotlin.sequences.USequencesKt___USequencesKt
 dagger.internal.SetBuilder
+com.blankj.utilcode.util.ClickUtils
 com.zqw.mobile.grainfull.app.tts.util.IOfflineResourceConst:
     public static final java.lang.String VOICE_FEMALE
     public static final java.lang.String VOICE_MALE
@@ -4822,15 +5225,18 @@ androidx.appcompat.view.menu.MenuView$ItemView:
 kotlin.collections.AbstractMap$keys$1$iterator$1
 androidx.core.view.OnReceiveContentListener
 io.rx_cache2.internal.migration.GetClassesToEvictFromMigrations
+com.blankj.utilcode.util.ArrayUtils$Closure
 kotlin.sequences.SequencesKt__SequencesKt$generateSequence$2
 com.jakewharton.rxbinding3.widget.SeekBarChangeEvent
 com.lcw.library.imagepicker.utils.PermissionUtil:
     public void <init>()
+com.blankj.utilcode.util.UiMessageUtils
 com.bumptech.glide.annotation.compiler.Index:
     public abstract java.lang.String[] modules()
     public abstract java.lang.String[] extensions()
 kotlin.coroutines.experimental.migration.ExperimentalContextMigration
 com.jakewharton.rxbinding3.view.ViewScrollChangeEvent
+com.blankj.utilcode.util.ClickUtils$Back2HomeFriendlyListener$1
 kotlin.random.AbstractPlatformRandom
 androidx.dynamicanimation.animation.DynamicAnimation:
     void <init>(androidx.dynamicanimation.animation.FloatValueHolder)
@@ -4882,6 +5288,7 @@ kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$6
 com.blankj.utilcode.util.FragmentUtils$FragmentNode
 com.jess.arms.integration.FragmentLifecycle_Factory$InstanceHolder:
     private void <init>()
+com.blankj.utilcode.util.MessengerUtils$Client$1
 kotlin.jvm.functions.Function15
 androidx.core.content.SharedPreferencesCompat$EditorCompat
 com.paginate.recycler.RecyclerPaginate$1
@@ -4899,6 +5306,8 @@ kotlin.comparisons.UComparisonsKt___UComparisonsKt
 kotlin.reflect.KProperty2
 androidx.recyclerview.widget.ListUpdateCallback
 com.paginate.recycler.LoadingListItemCreator$1
+com.blankj.utilcode.util.MessengerUtils$Client
+kotlin.time.AdjustedTimeMark
 androidx.constraintlayout.core.state.helpers.AlignVerticallyReference
 androidx.viewpager2.adapter.FragmentStateAdapter$3
 com.blankj.utilcode.util.AppUtils$AppInfo
@@ -5013,6 +5422,7 @@ com.zqw.mobile.grainfull.di.module.LivenessCustomDetectionModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.LivenessCustomDetectionContract$Model bindLivenessCustomDetectionModel(com.zqw.mobile.grainfull.mvp.model.LivenessCustomDetectionModel)
 com.mikepenz.materialdrawer.model.AbstractSwitchableDrawerItem$1
+com.blankj.utilcode.util.ApiUtils$BaseApi
 kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$buildContinuationByInvokeCall$continuation$1
 kotlin._Assertions
 androidx.appcompat.widget.ScrollingTabContainerView:
@@ -5086,6 +5496,7 @@ androidx.viewpager2.widget.ViewPager2:
 kotlin.io.FileTreeWalk
 kotlin.collections.unsigned.UArraysKt___UArraysJvmKt$asList$2
 kotlin.reflect.KMutableProperty2$Setter
+com.blankj.utilcode.util.SizeUtils$OnGetSizeListener
 kotlin.jvm.internal.Ref$CharRef
 androidx.print.PrintHelper
 kotlin.reflect.KProperty$Getter
@@ -5113,6 +5524,7 @@ androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat:
 androidx.core.location.LocationManagerCompat$InlineHandlerExecutor
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceBaseIterator
 com.jakewharton.rxbinding3.widget.RxRatingBar__RatingBarRatingChangeObservableKt
+kotlinx.android.extensions.LayoutContainer
 com.mikepenz.materialdrawer.model.BaseDrawerItem:
     public java.lang.Object withIcon(com.mikepenz.materialdrawer.holder.ImageHolder)
     public java.lang.Object withIcon(android.graphics.drawable.Drawable)
@@ -5623,7 +6035,6 @@ androidx.core.view.MenuItemCompat$1
 qiu.niorgai.StatusBarCompatLollipop$3
 androidx.constraintlayout.core.state.Transition
 com.blankj.utilcode.util.SPStaticUtils
-com.blankj.utilcode.util.KeyboardUtils$4
 androidx.constraintlayout.widget.SharedValues:
     public void removeListener(androidx.constraintlayout.widget.SharedValues$SharedValuesListener)
     public void clearListeners()
@@ -5662,6 +6073,7 @@ androidx.core.view.GravityCompat:
     public static final int START
     public static final int END
     public static final int RELATIVE_HORIZONTAL_GRAVITY_MASK
+com.blankj.utilcode.util.ApiUtils$1
 com.bumptech.glide.module.ManifestParser:
     private static final java.lang.String TAG
     private static final java.lang.String GLIDE_MODULE_VALUE
@@ -5669,6 +6081,7 @@ kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUninte
 de.hdodenhof.circleimageview.R
 kotlin.jvm.internal.ClassBasedDeclarationContainer
 androidx.core.app.NotificationManagerCompat$NotifyTask
+com.blankj.utilcode.util.ToastUtils$ActivityToast
 io.rx_cache2.internal.DaggerRxCacheComponent$Builder
 com.jakewharton.rxbinding3.view.ViewClickObservable
 androidx.constraintlayout.core.motion.utils.SplineSet$CustomSet
@@ -5687,10 +6100,65 @@ com.mikepenz.materialize.util.UIUtils:
     public static int adjustAlpha(int,int)
     public static int getScreenHeight(android.content.Context)
 com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener
-com.blankj.utilcode.util.NetworkUtils
+com.blankj.utilcode.util.NetworkUtils:
+    private void <init>()
+    public static void openWirelessSettings()
+    public static boolean isConnected()
+    public static com.blankj.utilcode.util.Utils$Task isAvailableAsync(com.blankj.utilcode.util.Utils$Consumer)
+    public static boolean isAvailable()
+    public static void isAvailableByPingAsync(com.blankj.utilcode.util.Utils$Consumer)
+    public static com.blankj.utilcode.util.Utils$Task isAvailableByPingAsync(java.lang.String,com.blankj.utilcode.util.Utils$Consumer)
+    public static boolean isAvailableByPing()
+    public static boolean isAvailableByPing(java.lang.String)
+    public static void isAvailableByDnsAsync(com.blankj.utilcode.util.Utils$Consumer)
+    public static com.blankj.utilcode.util.Utils$Task isAvailableByDnsAsync(java.lang.String,com.blankj.utilcode.util.Utils$Consumer)
+    public static boolean isAvailableByDns()
+    public static boolean isAvailableByDns(java.lang.String)
+    public static boolean getMobileDataEnabled()
+    public static boolean isBehindProxy()
+    public static boolean isUsingVPN()
+    public static boolean isMobileData()
+    public static boolean is4G()
+    public static boolean is5G()
+    public static boolean getWifiEnabled()
+    public static void setWifiEnabled(boolean)
+    public static boolean isWifiConnected()
+    public static boolean isWifiAvailable()
+    public static com.blankj.utilcode.util.Utils$Task isWifiAvailableAsync(com.blankj.utilcode.util.Utils$Consumer)
+    public static java.lang.String getNetworkOperatorName()
+    public static com.blankj.utilcode.util.Utils$Task getIPAddressAsync(boolean,com.blankj.utilcode.util.Utils$Consumer)
+    public static java.lang.String getIPAddress(boolean)
+    public static java.lang.String getBroadcastIpAddress()
+    public static com.blankj.utilcode.util.Utils$Task getDomainAddressAsync(java.lang.String,com.blankj.utilcode.util.Utils$Consumer)
+    public static java.lang.String getDomainAddress(java.lang.String)
+    public static java.lang.String getIpAddressByWifi()
+    public static java.lang.String getGatewayByWifi()
+    public static java.lang.String getNetMaskByWifi()
+    public static java.lang.String getServerAddressByWifi()
+    public static java.lang.String getSSID()
+    public static boolean isRegisteredNetworkStatusChangedListener(com.blankj.utilcode.util.NetworkUtils$OnNetworkStatusChangedListener)
+    public static com.blankj.utilcode.util.NetworkUtils$WifiScanResults getWifiScanResult()
+    public static void addOnWifiChangedConsumer(com.blankj.utilcode.util.Utils$Consumer)
+    private static void startScanWifi()
+    private static void startScanWifiIfEnabled()
+    public static void removeOnWifiChangedConsumer(com.blankj.utilcode.util.Utils$Consumer)
+    private static void stopScanWifi()
+    private static boolean isSameScanResults(java.util.List,java.util.List)
+    private static boolean isSameScanResultContent(android.net.wifi.ScanResult,android.net.wifi.ScanResult)
+    static synthetic java.util.Set access$100()
+    static synthetic void access$200()
+    static synthetic com.blankj.utilcode.util.NetworkUtils$WifiScanResults access$300()
+    static synthetic void access$400()
+    static synthetic boolean access$600(java.util.List,java.util.List)
+    static synthetic com.blankj.utilcode.util.NetworkUtils$WifiScanResults access$302(com.blankj.utilcode.util.NetworkUtils$WifiScanResults)
+    static synthetic void access$700()
+    private static final long SCAN_PERIOD_MILLIS
+    private static java.util.Timer sScanWifiTimer
+    private static com.blankj.utilcode.util.NetworkUtils$WifiScanResults sPreWifiScanResults
 kotlin.jvm.internal.SpreadBuilder
 kotlin.UByte
 kotlin.collections.CollectionsKt__ReversedViewsKt
+kotlin.text.StringsKt__AppendableKt
 androidx.media.MediaSessionManagerImplBase$RemoteUserInfoImplBase:
     public java.lang.String getPackageName()
     public int getPid()
@@ -6086,6 +6554,7 @@ com.zqw.mobile.grainfull.mvp.presenter.IdentifyIdCardPresenter_MembersInjector:
 kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsKt
 kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnintercepted$$inlined$createCoroutineFromSuspendFunction$IntrinsicsKt__IntrinsicsJvmKt$4
 com.blankj.utilcode.util.ToastUtils$IToast
+com.blankj.utilcode.util.UiMessageUtils$UiMessageCallback
 kotlin.text.StringsKt__StringBuilderKt
 qiu.niorgai.StatusBarCompatLollipop$2
 com.mikepenz.itemanimators.SlideInOutRightAnimator
@@ -6110,6 +6579,7 @@ androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi21:
 com.bumptech.glide.load.engine.cache.DiskCacheAdapter:
     public void delete(com.bumptech.glide.load.Key)
 androidx.core.graphics.drawable.RoundedBitmapDrawable
+com.blankj.utilcode.util.BusUtils$BusInfo
 kotlin.text.StringsKt__RegexExtensionsJVMKt
 com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceOnlineSettingPresenter_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
@@ -6122,7 +6592,13 @@ com.zqw.mobile.grainfull.mvp.presenter.BaiduVoiceOnlineSettingPresenter_MembersI
     private final javax.inject.Provider mAppManagerProvider
 androidx.fragment.app.ListFragment$2
 kotlin.jvm.internal.markers.KMappedMarker
-com.blankj.utilcode.util.ProcessUtils
+com.blankj.utilcode.util.ProcessUtils:
+    private void <init>()
+    public static java.lang.String getForegroundProcessName()
+    public static java.util.Set getAllBackgroundProcesses()
+    public static java.util.Set killAllBackgroundProcesses()
+    public static boolean killBackgroundProcesses(java.lang.String)
+    public static boolean isMainProcess()
 com.zqw.mobile.grainfull.di.module.AudioConversionModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.AudioConversionContract$Model bindAudioConversionModel(com.zqw.mobile.grainfull.mvp.model.AudioConversionModel)
@@ -6142,6 +6618,7 @@ androidx.constraintlayout.core.motion.key.MotionKey
 com.jess.arms.http.imageloader.glide.CacheStrategy
 io.rx_cache2.internal.cache.SaveRecord_Factory
 kotlin.jvm.functions.Function5
+com.blankj.utilcode.util.UiMessageUtils$UiMessage
 com.mikepenz.fastadapter.ITypeInstanceCache:
     public abstract void clear()
 com.zqw.mobile.grainfull.mvp.presenter.LivenessCustomDetectionPresenter_MembersInjector:
@@ -6166,7 +6643,9 @@ com.lcw.library.imagepicker.data.MediaFolder:
     public void setCheck(boolean)
     private boolean isCheck
 kotlin.KotlinVersion
+com.blankj.utilcode.util.LogUtils$IFileWriter
 androidx.core.os.MessageCompat
+com.blankj.utilcode.util.ClickUtils$2
 com.bumptech.glide.load.model.ByteBufferEncoder:
     private static final java.lang.String TAG
 kotlin.jvm.functions.Function12
@@ -6282,7 +6761,6 @@ androidx.constraintlayout.core.state.ConstraintReference$IncorrectConstraintExce
 kotlin.math.MathKt__MathJVMKt
 com.jakewharton.rxbinding3.view.ViewDragObservable
 io.rx_cache2.internal.cache.EvictExpiredRecordsPersistence_Factory
-androidx.legacy.app.FragmentCompat$FragmentCompatApi24Impl
 androidx.constraintlayout.core.motion.Motion
 io.rx_cache2.internal.cache.EvictRecord
 androidx.constraintlayout.motion.widget.OnSwipe
@@ -6301,6 +6779,7 @@ androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments:
     public float getProgress()
 kotlin.sequences.SequencesKt___SequencesKt$minus$1$iterator$1
 com.jakewharton.rxbinding3.widget.RxAdapterView__AdapterViewItemLongClickEventObservableKt
+kotlin.io.ExposingBufferByteArrayOutputStream
 kotlin.collections.UIntIterator
 androidx.appcompat.app.AppCompatDelegateImpl$AutoNightModeManager:
     boolean isListening()
@@ -6328,14 +6807,44 @@ com.zqw.mobile.grainfull.mvp.presenter.HomePresenter_MembersInjector:
     private final javax.inject.Provider mErrorHandlerProvider
     private final javax.inject.Provider mAccountManagerProvider
     private final javax.inject.Provider mApplicationProvider
-androidx.core.app.RemoteInput
+androidx.core.app.RemoteInput:
+    void <init>(java.lang.String,java.lang.CharSequence,java.lang.CharSequence[],boolean,int,android.os.Bundle,java.util.Set)
+    public static java.util.Map getDataResultsFromIntent(android.content.Intent,java.lang.String)
+    public static android.os.Bundle getResultsFromIntent(android.content.Intent)
+    public static void addResultsToIntent(androidx.core.app.RemoteInput[],android.content.Intent,android.os.Bundle)
+    public static void addDataResultToIntent(androidx.core.app.RemoteInput,android.content.Intent,java.util.Map)
+    public static void setResultsSource(android.content.Intent,int)
+    public static int getResultsSource(android.content.Intent)
+    private static java.lang.String getExtraResultsKeyForData(java.lang.String)
+    static androidx.core.app.RemoteInput fromPlatform(android.app.RemoteInput)
+    private static android.content.Intent getClipDataIntentFromIntent(android.content.Intent)
+    public boolean isDataOnly()
+    private final java.lang.String mResultKey
+    private final java.lang.CharSequence mLabel
+    private final java.lang.CharSequence[] mChoices
+    private final boolean mAllowFreeFormTextInput
+    private final int mEditChoicesBeforeSending
+    private final android.os.Bundle mExtras
+    private final java.util.Set mAllowedDataTypes
+    private static final java.lang.String TAG
+    public static final java.lang.String RESULTS_CLIP_LABEL
+    public static final java.lang.String EXTRA_RESULTS_DATA
+    private static final java.lang.String EXTRA_DATA_TYPE_RESULTS_DATA
+    private static final java.lang.String EXTRA_RESULTS_SOURCE
+    public static final int SOURCE_FREE_FORM_INPUT
+    public static final int SOURCE_CHOICE
+    public static final int EDIT_CHOICES_BEFORE_SENDING_AUTO
+    public static final int EDIT_CHOICES_BEFORE_SENDING_DISABLED
+    public static final int EDIT_CHOICES_BEFORE_SENDING_ENABLED
 androidx.interpolator.R
+kotlin.time.DurationKt
 com.zqw.mobile.grainfull.app.utils.CommonUtils$1
 com.zqw.mobile.grainfull.mvp.ui.adapter.BaseRecyclerAdapter
 uk.co.senab.photoview.log.LogManager:
     public void <init>()
     public static void setLogger(uk.co.senab.photoview.log.Logger)
 kotlin.reflect.KProperty$Accessor
+com.blankj.utilcode.util.ToastUtils$WindowManagerToast
 androidx.constraintlayout.core.state.State$Helper
 kotlin.coroutines.AbstractCoroutineContextElement
 com.zqw.mobile.grainfull.app.utils.overlayutil.BikingRouteOverlay
@@ -6428,29 +6937,56 @@ com.blankj.utilcode.util.CacheMemoryUtils$CacheValue
 com.zqw.mobile.grainfull.R
 com.blankj.utilcode.util.KeyboardUtils:
     private void <init>()
+    public static void showSoftInput()
     public static void showSoftInput(android.app.Activity)
-    public static void showSoftInput(android.app.Activity,int)
     public static void showSoftInput(android.view.View)
     public static void showSoftInput(android.view.View,int)
+    public static void hideSoftInputByToggle(android.app.Activity)
     public static boolean isSoftInputVisible(android.app.Activity)
-    private static int getDecorViewInvisibleHeight(android.app.Activity)
+    private static int getDecorViewInvisibleHeight(android.view.Window)
     public static void registerSoftInputChangedListener(android.app.Activity,com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener)
+    public static void registerSoftInputChangedListener(android.view.Window,com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener)
     public static void fixAndroidBug5497(android.app.Activity)
-    private static int getContentViewInvisibleHeight(android.app.Activity)
-    public static void fixSoftInputLeaks(android.app.Activity)
+    public static void fixAndroidBug5497(android.view.Window)
+    private static int getContentViewInvisibleHeight(android.view.Window)
     public static void clickBlankArea2HideSoftInput()
-    private static int getStatusBarHeight()
-    private static int getNavBarHeight()
-    static synthetic com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener access$000()
-    static synthetic int access$100(android.app.Activity)
-    static synthetic int access$200()
-    static synthetic int access$202(int)
-    static synthetic int access$300(android.app.Activity)
-    static synthetic int access$400()
-    static synthetic int access$402(int)
-    private static int sDecorViewInvisibleHeightPre
-    private static int sContentViewInvisibleHeightPre5497
-androidx.core.app.NotificationCompatJellybean
+    static synthetic int access$000(android.view.Window)
+    static synthetic int access$100(android.view.Window)
+    private static final int TAG_ON_GLOBAL_LAYOUT_LISTENER
+    private static long millis
+androidx.core.app.NotificationCompatJellybean:
+    public static androidx.core.app.NotificationCompat$Action readAction(int,java.lang.CharSequence,android.app.PendingIntent,android.os.Bundle)
+    public static int getActionCount(android.app.Notification)
+    public static androidx.core.app.NotificationCompat$Action getAction(android.app.Notification,int)
+    private static java.lang.Object[] getActionObjectsLocked(android.app.Notification)
+    private static boolean ensureActionReflectionReadyLocked()
+    static androidx.core.app.NotificationCompat$Action getActionFromBundle(android.os.Bundle)
+    private static androidx.core.app.RemoteInput fromBundle(android.os.Bundle)
+    private static androidx.core.app.RemoteInput[] fromBundleArray(android.os.Bundle[])
+    private static android.os.Bundle[] getBundleArrayFromBundle(android.os.Bundle,java.lang.String)
+    private void <init>()
+    public static final java.lang.String TAG
+    static final java.lang.String EXTRA_DATA_ONLY_REMOTE_INPUTS
+    static final java.lang.String EXTRA_ALLOW_GENERATED_REPLIES
+    private static final java.lang.String KEY_ICON
+    private static final java.lang.String KEY_TITLE
+    private static final java.lang.String KEY_ACTION_INTENT
+    private static final java.lang.String KEY_EXTRAS
+    private static final java.lang.String KEY_REMOTE_INPUTS
+    private static final java.lang.String KEY_DATA_ONLY_REMOTE_INPUTS
+    private static final java.lang.String KEY_RESULT_KEY
+    private static final java.lang.String KEY_LABEL
+    private static final java.lang.String KEY_CHOICES
+    private static final java.lang.String KEY_ALLOW_FREE_FORM_INPUT
+    private static final java.lang.String KEY_ALLOWED_DATA_TYPES
+    private static final java.lang.String KEY_SEMANTIC_ACTION
+    private static final java.lang.String KEY_SHOWS_USER_INTERFACE
+    private static java.lang.reflect.Field sActionsField
+    private static java.lang.reflect.Field sActionIconField
+    private static java.lang.reflect.Field sActionTitleField
+    private static java.lang.reflect.Field sActionIntentField
+    private static boolean sActionsAccessFailed
+com.blankj.utilcode.util.MapUtils$Closure
 com.bumptech.glide.load.resource.bitmap.CircleCrop:
     private static final int VERSION
     private static final java.lang.String ID
@@ -6516,8 +7052,10 @@ uk.co.senab.photoview.IPhotoView:
     public static final float DEFAULT_MIN_SCALE
     public static final int DEFAULT_ZOOM_DURATION
 kotlin.collections.AbstractMutableCollection
+kotlin.reflect.KClasses
 com.mikepenz.iconics.utils.IconicsTypefaceSpan:
     public void <init>(java.lang.String,android.graphics.Typeface)
+com.blankj.utilcode.util.UtilsActivityLifecycleImpl$1
 kotlin.sequences.SequencesKt
 com.blankj.utilcode.util.SpanUtils$CustomTypefaceSpan:
     private void <init>(android.graphics.Typeface)
@@ -6538,6 +7076,7 @@ androidx.transition.Slide:
     public int getSlideEdge()
     private static final java.lang.String PROPNAME_SCREEN_POSITION
 androidx.dynamicanimation.animation.FlingAnimation
+kotlinx.android.parcel.Parceler$DefaultImpls
 com.jakewharton.rxbinding3.view.RxView__ViewFocusChangeObservableKt
 androidx.cursoradapter.widget.ResourceCursorAdapter:
     public void <init>(android.content.Context,int,android.database.Cursor)
@@ -6546,8 +7085,14 @@ androidx.cursoradapter.widget.ResourceCursorAdapter:
     public void setDropDownViewResource(int)
 com.blankj.utilcode.util.ActivityUtils:
     private void <init>()
-    public static android.app.Activity getActivityByView(android.view.View)
+    public static void addActivityLifecycleCallbacks(com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    public static void addActivityLifecycleCallbacks(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    public static void removeActivityLifecycleCallbacks(com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    public static void removeActivityLifecycleCallbacks(android.app.Activity)
+    public static void removeActivityLifecycleCallbacks(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
     public static android.app.Activity getActivityByContext(android.content.Context)
+    private static android.app.Activity getActivityByContextInner(android.content.Context)
+    private static android.app.Activity getActivityFromDecorContext(android.content.Context)
     public static boolean isActivityExists(java.lang.String,java.lang.String)
     public static void startActivity(java.lang.Class,android.os.Bundle)
     public static void startActivity(java.lang.Class,int,int)
@@ -6599,6 +7144,22 @@ com.blankj.utilcode.util.ActivityUtils:
     public static void startActivityForResult(android.app.Activity,android.content.Intent,int,android.os.Bundle)
     public static varargs void startActivityForResult(android.app.Activity,android.content.Intent,int,android.view.View[])
     public static void startActivityForResult(android.app.Activity,android.content.Intent,int,int,int)
+    public static void startActivityForResult(androidx.fragment.app.Fragment,java.lang.Class,int)
+    public static void startActivityForResult(androidx.fragment.app.Fragment,java.lang.Class,int,android.os.Bundle)
+    public static varargs void startActivityForResult(androidx.fragment.app.Fragment,java.lang.Class,int,android.view.View[])
+    public static void startActivityForResult(androidx.fragment.app.Fragment,java.lang.Class,int,int,int)
+    public static void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.Class,int)
+    public static void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.Class,int,android.os.Bundle)
+    public static varargs void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.Class,int,android.view.View[])
+    public static void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.Class,int,int,int)
+    public static void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.String,java.lang.String,int)
+    public static void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.String,java.lang.String,int,android.os.Bundle)
+    public static varargs void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.String,java.lang.String,int,android.view.View[])
+    public static void startActivityForResult(android.os.Bundle,androidx.fragment.app.Fragment,java.lang.String,java.lang.String,int,int,int)
+    public static void startActivityForResult(androidx.fragment.app.Fragment,android.content.Intent,int)
+    public static void startActivityForResult(androidx.fragment.app.Fragment,android.content.Intent,int,android.os.Bundle)
+    public static varargs void startActivityForResult(androidx.fragment.app.Fragment,android.content.Intent,int,android.view.View[])
+    public static void startActivityForResult(androidx.fragment.app.Fragment,android.content.Intent,int,int,int)
     public static void startActivities(android.content.Intent[])
     public static void startActivities(android.content.Intent[],android.os.Bundle)
     public static void startActivities(android.content.Intent[],int,int)
@@ -6606,10 +7167,14 @@ com.blankj.utilcode.util.ActivityUtils:
     public static void startActivities(android.app.Activity,android.content.Intent[],android.os.Bundle)
     public static void startActivities(android.app.Activity,android.content.Intent[],int,int)
     public static void startHomeActivity()
+    public static void startLauncherActivity()
+    public static void startLauncherActivity(java.lang.String)
     public static java.util.List getActivityList()
     public static java.lang.String getLauncherActivity()
     public static java.lang.String getLauncherActivity(java.lang.String)
-    public static android.app.Activity getTopActivity()
+    public static java.util.List getMainActivities()
+    public static java.util.List getMainActivities(java.lang.String)
+    public static boolean isActivityAlive(android.content.Context)
     public static boolean isActivityExistsInStack(android.app.Activity)
     public static boolean isActivityExistsInStack(java.lang.Class)
     public static void finishActivity(android.app.Activity)
@@ -6627,8 +7192,6 @@ com.blankj.utilcode.util.ActivityUtils:
     public static void finishOtherActivities(java.lang.Class)
     public static void finishOtherActivities(java.lang.Class,boolean)
     public static void finishOtherActivities(java.lang.Class,int,int)
-    public static void finishAllActivities()
-    public static void finishAllActivities(boolean)
     public static void finishAllActivities(int,int)
     public static void finishAllActivitiesExceptNewest()
     public static void finishAllActivitiesExceptNewest(boolean)
@@ -6642,7 +7205,11 @@ com.blankj.utilcode.util.ActivityUtils:
     private static boolean startActivityForResult(android.app.Activity,android.os.Bundle,java.lang.String,java.lang.String,int,android.os.Bundle)
     private static boolean startActivityForResult(android.content.Intent,android.app.Activity,int,android.os.Bundle)
     private static void startActivities(android.content.Intent[],android.content.Context,android.os.Bundle)
+    private static boolean startActivityForResult(androidx.fragment.app.Fragment,android.os.Bundle,java.lang.String,java.lang.String,int,android.os.Bundle)
+    private static boolean startActivityForResult(android.content.Intent,androidx.fragment.app.Fragment,int,android.os.Bundle)
+    private static android.os.Bundle getOptionsBundle(androidx.fragment.app.Fragment,int,int)
     private static android.os.Bundle getOptionsBundle(android.content.Context,int,int)
+    private static android.os.Bundle getOptionsBundle(androidx.fragment.app.Fragment,android.view.View[])
     private static android.os.Bundle getOptionsBundle(android.app.Activity,android.view.View[])
 com.jakewharton.rxbinding3.widget.RxSeekBar__SeekBarChangeEventObservableKt
 androidx.appcompat.widget.DecorToolbar:
@@ -6711,7 +7278,6 @@ androidx.constraintlayout.core.widgets.analyzer.Direct:
 androidx.core.view.GestureDetectorCompat:
     public boolean isLongpressEnabled()
     public void setIsLongpressEnabled(boolean)
-androidx.legacy.app.FragmentCompat$FragmentCompatApi23Impl
 androidx.core.content.MimeTypeFilter
 androidx.transition.TransitionSet:
     public int getOrdering()
@@ -6732,6 +7298,7 @@ androidx.recyclerview.widget.SortedList$BatchedCallback
 com.mikepenz.fastadapter.utils.DefaultTypeInstanceCache:
     public void clear()
 com.jude.easyrecyclerview.adapter.EventDelegate
+com.blankj.utilcode.util.ClickUtils$1
 kotlin.concurrent.TimersKt$timerTask$1
 com.mikepenz.materialdrawer.model.AbstractSwitchableDrawerItem$ViewHolder
 kotlin.collections.ArraysKt___ArraysJvmKt$asList$6
@@ -6742,7 +7309,33 @@ com.zqw.mobile.grainfull.app.tts.util.Auth$AuthCheckException
 kotlin.coroutines.experimental.CombinedContext
 com.blankj.utilcode.util.CrashUtils$1
 kotlin.collections.IndexingIterable
-com.blankj.utilcode.util.ScreenUtils
+com.blankj.utilcode.util.ScreenUtils:
+    private void <init>()
+    public static int getScreenWidth()
+    public static int getScreenHeight()
+    public static int getAppScreenHeight()
+    public static float getScreenDensity()
+    public static int getScreenDensityDpi()
+    public static float getScreenXDpi()
+    public static float getScreenYDpi()
+    public static void setFullScreen(android.app.Activity)
+    public static void setNonFullScreen(android.app.Activity)
+    public static void toggleFullScreen(android.app.Activity)
+    public static boolean isFullScreen(android.app.Activity)
+    public static void setLandscape(android.app.Activity)
+    public static void setPortrait(android.app.Activity)
+    public static boolean isLandscape()
+    public static boolean isPortrait()
+    public static int getScreenRotation(android.app.Activity)
+    public static android.graphics.Bitmap screenShot(android.app.Activity)
+    public static android.graphics.Bitmap screenShot(android.app.Activity,boolean)
+    public static boolean isScreenLock()
+    public static void setSleepDuration(int)
+    public static int getSleepDuration()
+    public int calculateDistanceByX(android.view.View)
+    public int calculateDistanceByY(android.view.View)
+    public int getViewX(android.view.View)
+    public int getViewY(android.view.View)
 androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl
 androidx.constraintlayout.core.state.State$Chain
 com.mikepenz.iconics.context.ReflectionUtils
@@ -6762,10 +7355,29 @@ androidx.recyclerview.widget.SimpleItemAnimator:
     public void setSupportsChangeAnimations(boolean)
     private static final boolean DEBUG
     private static final java.lang.String TAG
+kotlinx.android.extensions.CacheImplementation$Companion:
+    public final kotlinx.android.extensions.CacheImplementation getDEFAULT()
 androidx.transition.Styleable$TransitionTarget
 androidx.constraintlayout.core.motion.parse.KeyParser$DataType
 androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl
-com.blankj.utilcode.util.NotificationUtils
+com.blankj.utilcode.util.NotificationUtils:
+    public void <init>()
+    public static boolean areNotificationsEnabled()
+    public static void notify(int,com.blankj.utilcode.util.Utils$Consumer)
+    public static void notify(java.lang.String,int,com.blankj.utilcode.util.Utils$Consumer)
+    public static void notify(int,com.blankj.utilcode.util.NotificationUtils$ChannelConfig,com.blankj.utilcode.util.Utils$Consumer)
+    public static void notify(java.lang.String,int,com.blankj.utilcode.util.NotificationUtils$ChannelConfig,com.blankj.utilcode.util.Utils$Consumer)
+    public static void cancel(java.lang.String,int)
+    public static void cancel(int)
+    public static void cancelAll()
+    public static void setNotificationBarVisibility(boolean)
+    private static void invokePanels(java.lang.String)
+    public static final int IMPORTANCE_UNSPECIFIED
+    public static final int IMPORTANCE_NONE
+    public static final int IMPORTANCE_MIN
+    public static final int IMPORTANCE_LOW
+    public static final int IMPORTANCE_DEFAULT
+    public static final int IMPORTANCE_HIGH
 kotlin.jvm.internal.FunctionReferenceImpl
 kotlin.UByteArray
 com.zqw.mobile.grainfull.mvp.model.AboutModel_MembersInjector:
@@ -6793,7 +7405,55 @@ kotlin.collections.ArraysKt___ArraysKt
 kotlin.coroutines.experimental.migration.ExperimentalSuspendFunction0Migration
 com.zqw.mobile.grainfull.app.utils.overlayutil.TransitRouteOverlay$1
 androidx.core.app.NotificationCompatExtras
-com.blankj.utilcode.util.FileIOUtils
+com.blankj.utilcode.util.FileIOUtils:
+    private void <init>()
+    public static boolean writeFileFromIS(java.lang.String,java.io.InputStream,boolean)
+    public static boolean writeFileFromIS(java.io.File,java.io.InputStream)
+    public static boolean writeFileFromIS(java.io.File,java.io.InputStream,boolean)
+    public static boolean writeFileFromIS(java.lang.String,java.io.InputStream,com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static boolean writeFileFromIS(java.lang.String,java.io.InputStream,boolean,com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static boolean writeFileFromIS(java.io.File,java.io.InputStream,com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static boolean writeFileFromBytesByStream(java.lang.String,byte[])
+    public static boolean writeFileFromBytesByStream(java.lang.String,byte[],boolean)
+    public static boolean writeFileFromBytesByStream(java.io.File,byte[])
+    public static boolean writeFileFromBytesByStream(java.io.File,byte[],boolean)
+    public static boolean writeFileFromBytesByStream(java.lang.String,byte[],com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static boolean writeFileFromBytesByStream(java.lang.String,byte[],boolean,com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static boolean writeFileFromBytesByStream(java.io.File,byte[],com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static boolean writeFileFromBytesByStream(java.io.File,byte[],boolean,com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static boolean writeFileFromBytesByChannel(java.lang.String,byte[],boolean)
+    public static boolean writeFileFromBytesByChannel(java.lang.String,byte[],boolean,boolean)
+    public static boolean writeFileFromBytesByChannel(java.io.File,byte[],boolean)
+    public static boolean writeFileFromBytesByChannel(java.io.File,byte[],boolean,boolean)
+    public static boolean writeFileFromBytesByMap(java.lang.String,byte[],boolean)
+    public static boolean writeFileFromBytesByMap(java.lang.String,byte[],boolean,boolean)
+    public static boolean writeFileFromBytesByMap(java.io.File,byte[],boolean)
+    public static boolean writeFileFromBytesByMap(java.io.File,byte[],boolean,boolean)
+    public static boolean writeFileFromString(java.lang.String,java.lang.String)
+    public static boolean writeFileFromString(java.lang.String,java.lang.String,boolean)
+    public static boolean writeFileFromString(java.io.File,java.lang.String)
+    public static boolean writeFileFromString(java.io.File,java.lang.String,boolean)
+    public static java.util.List readFile2List(java.lang.String)
+    public static java.util.List readFile2List(java.lang.String,java.lang.String)
+    public static java.util.List readFile2List(java.io.File)
+    public static java.util.List readFile2List(java.io.File,java.lang.String)
+    public static java.util.List readFile2List(java.lang.String,int,int)
+    public static java.util.List readFile2List(java.lang.String,int,int,java.lang.String)
+    public static java.util.List readFile2List(java.io.File,int,int)
+    public static java.util.List readFile2List(java.io.File,int,int,java.lang.String)
+    public static java.lang.String readFile2String(java.lang.String)
+    public static java.lang.String readFile2String(java.lang.String,java.lang.String)
+    public static java.lang.String readFile2String(java.io.File)
+    public static java.lang.String readFile2String(java.io.File,java.lang.String)
+    public static byte[] readFile2BytesByStream(java.lang.String)
+    public static byte[] readFile2BytesByStream(java.io.File)
+    public static byte[] readFile2BytesByStream(java.lang.String,com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static byte[] readFile2BytesByStream(java.io.File,com.blankj.utilcode.util.FileIOUtils$OnProgressUpdateListener)
+    public static byte[] readFile2BytesByChannel(java.lang.String)
+    public static byte[] readFile2BytesByChannel(java.io.File)
+    public static byte[] readFile2BytesByMap(java.lang.String)
+    public static byte[] readFile2BytesByMap(java.io.File)
+    public static void setBufferSize(int)
 androidx.core.content.res.GrowingArrayUtils:
     public static long[] append(long[],int,long)
     public static boolean[] append(boolean[],int,boolean)
@@ -6818,8 +7478,22 @@ androidx.constraintlayout.core.widgets.analyzer.WidgetGroup:
 androidx.slidingpanelayout.widget.SlidingPaneLayout$SimplePanelSlideListener
 kotlin.collections.AbstractSet$Companion
 com.jakewharton.rxbinding3.widget.RxTextView__TextViewEditorActionObservableKt
-androidx.core.app.NotificationCompat$BubbleMetadata
+androidx.core.app.NotificationCompat$BubbleMetadata:
+    private void <init>(android.app.PendingIntent,android.app.PendingIntent,androidx.core.graphics.drawable.IconCompat,int,int,int,java.lang.String)
+    public static androidx.core.app.NotificationCompat$BubbleMetadata fromPlatform(android.app.Notification$BubbleMetadata)
+    synthetic void <init>(android.app.PendingIntent,android.app.PendingIntent,androidx.core.graphics.drawable.IconCompat,int,int,int,java.lang.String,androidx.core.app.NotificationCompat$1)
+    public void setFlags(int)
+    private android.app.PendingIntent mPendingIntent
+    private android.app.PendingIntent mDeleteIntent
+    private androidx.core.graphics.drawable.IconCompat mIcon
+    private int mDesiredHeight
+    private int mDesiredHeightResId
+    private int mFlags
+    private java.lang.String mShortcutId
+    private static final int FLAG_AUTO_EXPAND_BUBBLE
+    private static final int FLAG_SUPPRESS_NOTIFICATION
 androidx.versionedparcelable.VersionedParcelStream$1
+com.blankj.utilcode.util.NetworkUtils$9
 kotlin.collections.ULongIterator
 com.cjt2325.cameralibrary.state.State:
     public abstract void stop()
@@ -6855,6 +7529,7 @@ androidx.recyclerview.widget.OrientationHelper:
     private static final int INVALID_SIZE
     public static final int HORIZONTAL
     public static final int VERTICAL
+com.blankj.utilcode.util.UtilsActivityLifecycleImpl$2
 com.mikepenz.itemanimators.ScaleYAnimator
 androidx.legacy.app.ActionBarDrawerToggle$Delegate
 com.zqw.mobile.grainfull.mvp.presenter.SpecialEffectsPresenter_MembersInjector:
@@ -6880,6 +7555,7 @@ com.mikepenz.fastadapter.IAdapter:
     public abstract int getAdapterPosition(com.mikepenz.fastadapter.IItem)
 kotlin.jvm.internal.DoubleCompanionObject
 io.rx_cache2.internal.RxCacheComponent
+com.blankj.utilcode.util.UiMessageUtils$1
 androidx.core.net.ConnectivityManagerCompat
 androidx.constraintlayout.core.motion.utils.SplineSet$Sort:
     private void <init>()
@@ -6975,9 +7651,9 @@ io.rx_cache2.ActionsList$10
 kotlin.sequences.SequencesKt___SequencesKt$minus$2
 androidx.appcompat.widget.AbsActionBarView$1
 kotlin.coroutines.CoroutineContext$Element$DefaultImpls
-com.blankj.utilcode.util.ToastUtils$ToastWithoutNotification
 kotlin.reflect.KParameter
 kotlin.collections.SlidingWindowKt$windowedSequence$$inlined$Sequence$1
+kotlin.time.TimeSourcesKt
 com.jakewharton.rxbinding3.view.RxView__ViewScrollChangeEventObservableKt
 com.zqw.mobile.grainfull.mvp.ui.activity.MainActivity_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
@@ -7135,9 +7811,11 @@ androidx.slidingpanelayout.widget.SlidingPaneLayout:
     private static final int DEFAULT_FADE_COLOR
     private static final int MIN_FLING_VELOCITY
 kotlin.text.StringsKt___StringsKt$asIterable$$inlined$Iterable$1
+com.blankj.utilcode.util.NetworkUtils$8
 com.bumptech.glide.load.engine.GlideException:
     public java.lang.Exception getOrigin()
 kotlin.jvm.functions.Function22
+kotlin.sequences.SequencesKt___SequencesKt$scanReduce$1
 com.mikepenz.materialize.Materialize:
     public void setFullscreen(boolean)
     public void setTintStatusBar(boolean)
@@ -7148,7 +7826,36 @@ com.mikepenz.materialize.Materialize:
     public void keyboardSupportEnabled(android.app.Activity,boolean)
 com.jakewharton.rxbinding3.view.RxView__ViewSystemUiVisibilityChangeObservableKt
 kotlin.jvm.internal.Ref$FloatRef
-com.blankj.utilcode.util.SPUtils
+com.blankj.utilcode.util.SPUtils:
+    public static com.blankj.utilcode.util.SPUtils getInstance()
+    public static com.blankj.utilcode.util.SPUtils getInstance(int)
+    private void <init>(java.lang.String)
+    public void put(java.lang.String,java.lang.String)
+    public void put(java.lang.String,java.lang.String,boolean)
+    public void put(java.lang.String,int)
+    public void put(java.lang.String,int,boolean)
+    public int getInt(java.lang.String)
+    public int getInt(java.lang.String,int)
+    public void put(java.lang.String,long)
+    public void put(java.lang.String,long,boolean)
+    public long getLong(java.lang.String)
+    public long getLong(java.lang.String,long)
+    public void put(java.lang.String,float)
+    public void put(java.lang.String,float,boolean)
+    public float getFloat(java.lang.String)
+    public float getFloat(java.lang.String,float)
+    public void put(java.lang.String,boolean)
+    public void put(java.lang.String,boolean,boolean)
+    public boolean getBoolean(java.lang.String)
+    public boolean getBoolean(java.lang.String,boolean)
+    public void put(java.lang.String,java.util.Set)
+    public void put(java.lang.String,java.util.Set,boolean)
+    public java.util.Set getStringSet(java.lang.String)
+    public java.util.Set getStringSet(java.lang.String,java.util.Set)
+    public java.util.Map getAll()
+    public boolean contains(java.lang.String)
+    public void clear()
+    public void clear(boolean)
 androidx.viewpager2.adapter.FragmentStateAdapter:
     public void <init>(androidx.fragment.app.FragmentActivity)
     public void <init>(androidx.fragment.app.Fragment)
@@ -7234,6 +7941,7 @@ kotlin.Result$Companion:
     private final java.lang.Object success(java.lang.Object)
     private final java.lang.Object failure(java.lang.Throwable)
 kotlin.internal.PlatformImplementations
+com.blankj.utilcode.util.PermissionUtils$OnRationaleListener
 kotlin.jvm.internal.BooleanSpreadBuilder
 okio.InflaterSource:
     public void <init>(okio.Source,java.util.zip.Inflater)
@@ -7264,7 +7972,9 @@ androidx.constraintlayout.core.LinearSystem:
     public static final boolean DEBUG
     public static final boolean MEASURE
     private static final boolean DEBUG_CONSTRAINTS
+com.blankj.utilcode.util.ApiUtils
 com.jakewharton.rxbinding3.view.RxView__ViewLayoutChangeEventObservableKt
+com.blankj.utilcode.util.UtilsActivityLifecycleImpl$3
 kotlin.jvm.internal.FloatCompanionObject
 com.cjt2325.cameralibrary.util.DeviceUtil:
     public void <init>()
@@ -7297,6 +8007,7 @@ androidx.appcompat.graphics.drawable.DrawerArrowDrawable:
     public static final int ARROW_DIRECTION_RIGHT
     public static final int ARROW_DIRECTION_START
     public static final int ARROW_DIRECTION_END
+kotlin.time.TimeSource$Companion
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap
 androidx.transition.Styleable$ChangeBounds
 androidx.constraintlayout.core.state.helpers.VerticalChainReference
@@ -7331,6 +8042,7 @@ androidx.core.provider.FontsContractCompat:
 kotlin.collections.MapAccessorsKt
 androidx.core.app.Person$Builder
 com.jakewharton.rxbinding3.widget.RxAbsListView
+com.blankj.utilcode.util.LogUtils$OnFileOutputListener
 kotlin.sequences.SequencesKt___SequencesKt$minus$1
 com.mikepenz.fastadapter.AbstractAdapter:
     public synthetic bridge com.mikepenz.fastadapter.IAdapter withFastAdapter(com.mikepenz.fastadapter.FastAdapter)
@@ -7344,6 +8056,7 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.BeepManager:
 androidx.appcompat.widget.Toolbar$SavedState:
     public void <init>(android.os.Parcel)
 com.jakewharton.rxbinding3.widget.RxAdapter__AdapterDataChangeObservableKt
+kotlin.coroutines.CoroutineContextImplKt
 kotlin.io.ConsoleKt$decoder$2
 com.bigkoo.pickerview.OptionsPickerView
 io.rx_cache2.ActionsList$22
@@ -7418,6 +8131,7 @@ com.bigkoo.pickerview.adapter.ArrayWheelAdapter
 com.cjt2325.cameralibrary.listener.ReturnListener:
     public abstract void onReturn()
 kotlin.jvm.internal.markers.KMutableIterable
+com.blankj.utilcode.BuildConfig
 androidx.constraintlayout.core.motion.MotionWidget$PropertySet
 androidx.loader.app.LoaderManagerImpl:
     private androidx.loader.content.Loader createAndInstallLoader(int,android.os.Bundle,androidx.loader.app.LoaderManager$LoaderCallbacks,androidx.loader.content.Loader)
@@ -7431,7 +8145,6 @@ kotlin.UByteArray$Iterator
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$nullsFirst$1
 androidx.core.graphics.drawable.IconCompat:
     public static androidx.core.graphics.drawable.IconCompat createWithResource(android.content.Context,int)
-    public static androidx.core.graphics.drawable.IconCompat createWithResource(android.content.res.Resources,java.lang.String,int)
     public static androidx.core.graphics.drawable.IconCompat createWithBitmap(android.graphics.Bitmap)
     public static androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmap(android.graphics.Bitmap)
     public static androidx.core.graphics.drawable.IconCompat createWithData(byte[],int,int)
@@ -7439,7 +8152,6 @@ androidx.core.graphics.drawable.IconCompat:
     public static androidx.core.graphics.drawable.IconCompat createWithContentUri(android.net.Uri)
     public static androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmapContentUri(java.lang.String)
     public static androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmapContentUri(android.net.Uri)
-    private void <init>(int)
     private android.graphics.drawable.Drawable loadDrawableInner(android.content.Context)
     private static android.content.res.Resources getResources(android.content.Context,java.lang.String)
     public static androidx.core.graphics.drawable.IconCompat createFromBundle(android.os.Bundle)
@@ -7447,21 +8159,13 @@ androidx.core.graphics.drawable.IconCompat:
     public static androidx.core.graphics.drawable.IconCompat createFromIcon(android.graphics.drawable.Icon)
     public static androidx.core.graphics.drawable.IconCompat createFromIconOrNullIfZeroResId(android.graphics.drawable.Icon)
     private static int getType(android.graphics.drawable.Icon)
-    private static java.lang.String getResPackage(android.graphics.drawable.Icon)
-    private static android.net.Uri getUri(android.graphics.drawable.Icon)
-    static android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)
     public int getType()
-    public java.lang.String getResPackage()
     public android.graphics.Bitmap getBitmap()
-    public android.net.Uri getUri()
     public androidx.core.graphics.drawable.IconCompat setTint(int)
     public androidx.core.graphics.drawable.IconCompat setTintList(android.content.res.ColorStateList)
     public androidx.core.graphics.drawable.IconCompat setTintMode(android.graphics.PorterDuff$Mode)
-    public android.graphics.drawable.Icon toIcon()
-    public android.graphics.drawable.Icon toIcon(android.content.Context)
     public void checkResource(android.content.Context)
     public android.graphics.drawable.Drawable loadDrawable(android.content.Context)
-    public java.io.InputStream getUriInputStream(android.content.Context)
     public void addToShortcutIntent(android.content.Intent,android.graphics.drawable.Drawable,android.content.Context)
     public android.os.Bundle toBundle()
     private static final java.lang.String TAG
@@ -7555,6 +8259,7 @@ androidx.transition.Styleable$ChangeTransform
 com.jakewharton.rxbinding3.widget.RxAdapter
 kotlin.reflect.KParameter$DefaultImpls
 kotlin.collections.CollectionsKt
+com.blankj.utilcode.util.NetworkUtils$7
 androidx.core.content.ContentProviderCompat
 com.jakewharton.rxbinding3.widget.TextViewAfterTextChangeEventObservable
 com.jakewharton.rxbinding3.view.ViewAttachAttachedEvent
@@ -7590,6 +8295,7 @@ io.rx_cache2.internal.RxCache$Builder:
     public io.victoralbertos.jolyglot.JolyglotGenerics getJolyglot()
     private java.lang.Integer maxMBPersistenceCache
 com.jakewharton.rxbinding3.widget.RxCompoundButton
+kotlin.sequences.SequencesKt___SequencesKt$scanIndexed$1
 kotlin.coroutines.CoroutineContext$Element:
     public abstract kotlin.coroutines.CoroutineContext$Key getKey()
     public abstract kotlin.coroutines.CoroutineContext$Element get(kotlin.coroutines.CoroutineContext$Key)
@@ -7744,6 +8450,7 @@ com.bumptech.glide.util.MultiClassKey:
     public void <init>(java.lang.Class,java.lang.Class)
     public void set(java.lang.Class,java.lang.Class)
 kotlin.jvm.internal.PropertyReference1
+kotlin.UNumbersKt
 androidx.core.telephony.mbms.MbmsHelper
 kotlin.properties.Delegates$observable$1
 androidx.documentfile.provider.DocumentFile
@@ -7806,10 +8513,12 @@ androidx.constraintlayout.motion.widget.KeyCycle$Loader:
     private static final int WAVE_PHASE
 kotlin.LazyKt__LazyJVMKt
 kotlin.collections.ArraysKt___ArraysKt$groupingBy$1
+com.blankj.utilcode.util.ShadowUtils
 com.mikepenz.fastadapter.utils.DefaultItemListImpl:
     public void remove(int,int)
     public void move(int,int,int)
     public boolean isEmpty()
+com.blankj.utilcode.util.ThreadUtils$Task$5
 com.blankj.utilcode.util.ReflectUtils$1
 com.zqw.mobile.grainfull.app.utils.AppPreferencesHelper:
     public long getPref(java.lang.String,long)
@@ -7854,6 +8563,7 @@ com.bumptech.glide.load.resource.bitmap.BitmapDrawableDecoder:
     public void <init>(android.content.Context,com.bumptech.glide.load.ResourceDecoder)
     public void <init>(android.content.res.Resources,com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool,com.bumptech.glide.load.ResourceDecoder)
 com.blankj.utilcode.constant.PermissionConstants
+com.blankj.utilcode.util.ClickUtils$OnDebouncingClickListener$1
 androidx.core.content.ContextCompat$MainHandlerExecutor
 com.bumptech.glide.request.target.PreloadTarget:
     public static com.bumptech.glide.request.target.PreloadTarget obtain(com.bumptech.glide.RequestManager,int,int)
@@ -7874,18 +8584,22 @@ okio.SegmentedByteString:
     public int lastIndexOf(byte[],int)
 androidx.core.view.inputmethod.EditorInfoCompat$Impl30
 kotlin.reflect.KType
+com.blankj.utilcode.util.LogUtils$OnConsoleOutputListener
 com.mikepenz.materialize.util.KeyboardUtil$1
 androidx.recyclerview.widget.SnapHelper:
     public int[] calculateScrollDistance(int,int)
     static final float MILLISECONDS_PER_INCH
+com.blankj.utilcode.util.PermissionUtils$OnExplainListener
 io.rx_cache2.internal.RxCacheModule_UseExpiredDataIfLoaderNotAvailableFactory
 com.mikepenz.materialdrawer.util.DrawerItemViewHelper
 androidx.constraintlayout.motion.utils.ViewOscillator:
     private static final java.lang.String TAG
+kotlin.time.FormatToDecimalsKt
 androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener
 com.mikepenz.materialdrawer.model.AbstractToggleableDrawerItem$1
 kotlin.jvm.internal.FunctionImpl
 androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject
+com.blankj.utilcode.util.LanguageUtils$1
 com.zqw.mobile.grainfull.di.module.SettingModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.SettingContract$Model bindSettingModel(com.zqw.mobile.grainfull.mvp.model.SettingModel)
@@ -7905,8 +8619,8 @@ com.bumptech.glide.util.pool.GlideTrace:
     public static void beginSectionFormat(java.lang.String,java.lang.Object,java.lang.Object)
     private static final boolean TRACING_ENABLED
     private static final int MAX_LENGTH
-kotlin.ranges.ULongProgressionIterator
 kotlin.jvm.KotlinReflectionNotSupportedError
+kotlin.ranges.ULongProgressionIterator
 kotlin.sequences.SequencesKt___SequencesKt$groupingBy$1
 kotlin.text.MatchNamedGroupCollection
 com.mikepenz.materialdrawer.DrawerBuilder:
@@ -8058,7 +8772,9 @@ kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt:
 com.zqw.mobile.grainfull.di.module.BaiduFaceActivationModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.BaiduFaceActivationContract$Model bindBaiduFaceActivationModel(com.zqw.mobile.grainfull.mvp.model.BaiduFaceActivationModel)
-androidx.core.app.NotificationCompat$BubbleMetadata$Api30Impl
+androidx.core.app.NotificationCompat$BubbleMetadata$Api30Impl:
+    private void <init>()
+    static androidx.core.app.NotificationCompat$BubbleMetadata fromPlatform(android.app.Notification$BubbleMetadata)
 androidx.dynamicanimation.animation.AnimationHandler:
     public static long getFrameTime()
     public void setProvider(androidx.dynamicanimation.animation.AnimationHandler$AnimationFrameCallbackProvider)
@@ -8170,6 +8886,8 @@ com.bumptech.glide.manager.RequestManagerRetriever:
     private static final java.lang.String FRAGMENT_INDEX_KEY
 kotlin.reflect.KProperty
 kotlin.text.CharCategory$Companion$categoryMap$2
+com.blankj.utilcode.util.ThreadUtils$ThreadPoolExecutor4Util:
+    private int getSubmittedCount()
 kotlin.native.concurrent.ThreadLocal
 androidx.appcompat.app.NavItemSelectedListener
 androidx.core.app.NotificationManagerCompat$CancelTask
@@ -8318,6 +9036,7 @@ com.jess.arms.integration.ActivityLifecycle_MembersInjector:
     private final javax.inject.Provider mFragmentLifecyclesProvider
 androidx.core.app.NotificationChannelCompat
 androidx.media.VolumeProviderCompatApi21
+com.blankj.utilcode.util.LanguageUtils$2
 androidx.dynamicanimation.animation.DynamicAnimation$15
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplBase$3
 com.bumptech.glide.request.target.ViewTarget$SizeDeterminer:
@@ -8384,6 +9103,7 @@ com.lcw.library.imagepicker.loader.MediaHandler:
     public void <init>()
     public static final int ALL_MEDIA_FOLDER
     public static final int ALL_VIDEO_FOLDER
+com.blankj.utilcode.util.Utils$Supplier
 androidx.core.text.BidiFormatter$DirectionalityEstimator:
     private static final int DIR_TYPE_CACHE_SIZE
 dagger.internal.MembersInjectors
@@ -8401,6 +9121,17 @@ kotlin.ExceptionsKt__ExceptionsKt
 kotlin.ranges.RangesKt___RangesKt
 androidx.core.view.WindowInsetsCompat$BuilderImpl29:
     void setDisplayCutout(androidx.core.view.DisplayCutoutCompat)
+com.blankj.utilcode.util.NotificationUtils$ChannelConfig:
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setBypassDnd(boolean)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setDescription(java.lang.String)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setGroup(java.lang.String)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setImportance(int)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setLightColor(int)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setLockscreenVisibility(int)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setName(java.lang.CharSequence)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setShowBadge(boolean)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setSound(android.net.Uri,android.media.AudioAttributes)
+    public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setVibrationPattern(long[])
 kotlin.collections.ArraysKt
 com.mikepenz.itemanimators.SlideDownAlphaAnimator
 kotlin.collections.ArraysKt___ArraysJvmKt$asList$7
@@ -8468,8 +9199,9 @@ androidx.appcompat.widget.Toolbar$ExpandedActionViewMenuPresenter:
 com.bumptech.glide.load.model.ByteBufferFileLoader:
     private static final java.lang.String TAG
 androidx.recyclerview.widget.DiffUtil$Callback
+kotlinx.android.extensions.CacheImplementation:
+    public static final synthetic kotlinx.android.extensions.CacheImplementation access$getDEFAULT$cp()
 androidx.appcompat.widget.ListPopupWindow$1
-com.blankj.utilcode.util.CrashUtils$2
 cn.bingoogolapple.swipebacklayout.R
 com.zqw.mobile.grainfull.di.module.BaiduQualityParamsModule:
     public void <init>()
@@ -8702,9 +9434,13 @@ com.bumptech.glide.disklrucache.DiskLruCache:
     private static final java.lang.String REMOVE
     private static final java.lang.String READ
 com.blankj.utilcode.util.LogUtils
+com.blankj.utilcode.util.ThreadUtils$Task$OnTimeoutListener
 com.blankj.utilcode.util.UriUtils:
     private void <init>()
+    public static android.net.Uri res2Uri(java.lang.String)
     public static android.net.Uri file2Uri(java.io.File)
+    public static java.io.File uri2FileNoCacheCopy(android.net.Uri)
+    public static byte[] uri2Bytes(android.net.Uri)
 com.bumptech.glide.load.resource.bitmap.DrawableToBitmapConverter:
     private static final java.lang.String TAG
 androidx.core.util.TimeUtils
@@ -8865,9 +9601,10 @@ com.zqw.mobile.grainfull.di.module.MainModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.MainContract$Model bindMainModel(com.zqw.mobile.grainfull.mvp.model.MainModel)
 com.jakewharton.rxbinding3.widget.SearchViewQueryTextChangesObservable$Listener
-com.blankj.utilcode.util.ThreadUtils$4
+com.blankj.utilcode.util.ClipboardUtils
 com.afollestad.materialdialogs.util.RippleHelper:
     public void <init>()
+kotlin.time.DurationUnitKt$WhenMappings
 androidx.print.PrintHelper$OnPrintFinishCallback
 androidx.core.text.BidiFormatter:
     public static androidx.core.text.BidiFormatter getInstance(boolean)
@@ -8914,7 +9651,92 @@ com.jess.arms.integration.RepositoryManager:
     private com.jess.arms.integration.cache.Cache mCacheServiceCache
 io.rx_cache2.internal.ProxyProviders$1
 com.bigkoo.pickerview.view.BasePickerView$4
-androidx.core.app.NotificationCompat$Builder
+androidx.core.app.NotificationCompat$Builder:
+    public void <init>(android.content.Context,android.app.Notification)
+    private static android.os.Bundle getExtrasWithoutDuplicateData(android.app.Notification,androidx.core.app.NotificationCompat$Style)
+    private android.graphics.Bitmap reduceLargeIconSize(android.graphics.Bitmap)
+    private void setFlag(int,boolean)
+    private boolean useExistingRemoteView()
+    protected static java.lang.CharSequence limitCharSequenceLength(java.lang.CharSequence)
+    public androidx.core.app.NotificationCompat$Builder setWhen(long)
+    public androidx.core.app.NotificationCompat$Builder setShowWhen(boolean)
+    public androidx.core.app.NotificationCompat$Builder setSmallIcon(androidx.core.graphics.drawable.IconCompat)
+    public androidx.core.app.NotificationCompat$Builder setUsesChronometer(boolean)
+    public androidx.core.app.NotificationCompat$Builder setChronometerCountDown(boolean)
+    public androidx.core.app.NotificationCompat$Builder setSmallIcon(int)
+    public androidx.core.app.NotificationCompat$Builder setSmallIcon(int,int)
+    public androidx.core.app.NotificationCompat$Builder setNotificationSilent()
+    public androidx.core.app.NotificationCompat$Builder setSilent(boolean)
+    public androidx.core.app.NotificationCompat$Builder setContentTitle(java.lang.CharSequence)
+    public androidx.core.app.NotificationCompat$Builder setContentText(java.lang.CharSequence)
+    public androidx.core.app.NotificationCompat$Builder setSubText(java.lang.CharSequence)
+    public androidx.core.app.NotificationCompat$Builder setSettingsText(java.lang.CharSequence)
+    public androidx.core.app.NotificationCompat$Builder setRemoteInputHistory(java.lang.CharSequence[])
+    public androidx.core.app.NotificationCompat$Builder setNumber(int)
+    public androidx.core.app.NotificationCompat$Builder setContentInfo(java.lang.CharSequence)
+    public androidx.core.app.NotificationCompat$Builder setProgress(int,int,boolean)
+    public androidx.core.app.NotificationCompat$Builder setContent(android.widget.RemoteViews)
+    public androidx.core.app.NotificationCompat$Builder setContentIntent(android.app.PendingIntent)
+    public androidx.core.app.NotificationCompat$Builder setDeleteIntent(android.app.PendingIntent)
+    public androidx.core.app.NotificationCompat$Builder setFullScreenIntent(android.app.PendingIntent,boolean)
+    public androidx.core.app.NotificationCompat$Builder setTicker(java.lang.CharSequence)
+    public androidx.core.app.NotificationCompat$Builder setTicker(java.lang.CharSequence,android.widget.RemoteViews)
+    public androidx.core.app.NotificationCompat$Builder setLargeIcon(android.graphics.Bitmap)
+    public androidx.core.app.NotificationCompat$Builder setSound(android.net.Uri)
+    public androidx.core.app.NotificationCompat$Builder setSound(android.net.Uri,int)
+    public androidx.core.app.NotificationCompat$Builder setVibrate(long[])
+    public androidx.core.app.NotificationCompat$Builder setLights(int,int,int)
+    public androidx.core.app.NotificationCompat$Builder setOngoing(boolean)
+    public androidx.core.app.NotificationCompat$Builder setColorized(boolean)
+    public androidx.core.app.NotificationCompat$Builder setOnlyAlertOnce(boolean)
+    public androidx.core.app.NotificationCompat$Builder setAutoCancel(boolean)
+    public androidx.core.app.NotificationCompat$Builder setLocalOnly(boolean)
+    public androidx.core.app.NotificationCompat$Builder setCategory(java.lang.String)
+    public androidx.core.app.NotificationCompat$Builder setDefaults(int)
+    public androidx.core.app.NotificationCompat$Builder setPriority(int)
+    public androidx.core.app.NotificationCompat$Builder addPerson(java.lang.String)
+    public androidx.core.app.NotificationCompat$Builder addPerson(androidx.core.app.Person)
+    public androidx.core.app.NotificationCompat$Builder clearPeople()
+    public androidx.core.app.NotificationCompat$Builder setGroup(java.lang.String)
+    public androidx.core.app.NotificationCompat$Builder setGroupSummary(boolean)
+    public androidx.core.app.NotificationCompat$Builder setSortKey(java.lang.String)
+    public androidx.core.app.NotificationCompat$Builder addExtras(android.os.Bundle)
+    public androidx.core.app.NotificationCompat$Builder setExtras(android.os.Bundle)
+    public androidx.core.app.NotificationCompat$Builder addAction(int,java.lang.CharSequence,android.app.PendingIntent)
+    public androidx.core.app.NotificationCompat$Builder addAction(androidx.core.app.NotificationCompat$Action)
+    public androidx.core.app.NotificationCompat$Builder clearActions()
+    public androidx.core.app.NotificationCompat$Builder addInvisibleAction(int,java.lang.CharSequence,android.app.PendingIntent)
+    public androidx.core.app.NotificationCompat$Builder addInvisibleAction(androidx.core.app.NotificationCompat$Action)
+    public androidx.core.app.NotificationCompat$Builder clearInvisibleActions()
+    public androidx.core.app.NotificationCompat$Builder setStyle(androidx.core.app.NotificationCompat$Style)
+    public androidx.core.app.NotificationCompat$Builder setColor(int)
+    public androidx.core.app.NotificationCompat$Builder setVisibility(int)
+    public androidx.core.app.NotificationCompat$Builder setPublicVersion(android.app.Notification)
+    public android.widget.RemoteViews createContentView()
+    public android.widget.RemoteViews createBigContentView()
+    public android.widget.RemoteViews createHeadsUpContentView()
+    public androidx.core.app.NotificationCompat$Builder setCustomContentView(android.widget.RemoteViews)
+    public androidx.core.app.NotificationCompat$Builder setCustomBigContentView(android.widget.RemoteViews)
+    public androidx.core.app.NotificationCompat$Builder setCustomHeadsUpContentView(android.widget.RemoteViews)
+    public androidx.core.app.NotificationCompat$Builder setTimeoutAfter(long)
+    public androidx.core.app.NotificationCompat$Builder setShortcutId(java.lang.String)
+    public androidx.core.app.NotificationCompat$Builder setShortcutInfo(androidx.core.content.pm.ShortcutInfoCompat)
+    public androidx.core.app.NotificationCompat$Builder setLocusId(androidx.core.content.LocusIdCompat)
+    public androidx.core.app.NotificationCompat$Builder setBadgeIconType(int)
+    public androidx.core.app.NotificationCompat$Builder setGroupAlertBehavior(int)
+    public androidx.core.app.NotificationCompat$Builder setBubbleMetadata(androidx.core.app.NotificationCompat$BubbleMetadata)
+    public androidx.core.app.NotificationCompat$Builder extend(androidx.core.app.NotificationCompat$Extender)
+    public androidx.core.app.NotificationCompat$Builder setAllowSystemGeneratedContextualActions(boolean)
+    public android.app.Notification getNotification()
+    public android.widget.RemoteViews getContentView()
+    public android.widget.RemoteViews getBigContentView()
+    public android.widget.RemoteViews getHeadsUpContentView()
+    public long getWhenIfShowing()
+    public int getPriority()
+    public int getColor()
+    public androidx.core.app.NotificationCompat$BubbleMetadata getBubbleMetadata()
+    boolean mChronometerCountDown
+    private static final int MAX_CHARSEQUENCE_LENGTH
 com.jude.easyrecyclerview.R
 com.bumptech.glide.load.resource.drawable.ResourceDrawableDecoder:
     private static final java.lang.String ANDROID_PACKAGE_NAME
@@ -8965,7 +9787,6 @@ com.bumptech.glide.load.engine.cache.DiskLruCacheFactory:
     public void <init>(java.lang.String,java.lang.String,long)
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenByDescending$1
 io.rx_cache2.internal.cache.memory.apache.KeyValue
-androidx.legacy.app.FragmentCompat$FragmentCompatImpl
 io.rx_cache2.internal.ProcessorProvidersBehaviour$2
 com.jess.arms.base.BaseLazyLoadFragment_MembersInjector
 kotlin.contracts.ReturnsNotNull
@@ -9062,6 +9883,7 @@ com.jakewharton.rxbinding3.widget.AdapterViewItemLongClickEvent
 androidx.core.view.WindowInsetsCompat$Impl29:
     androidx.core.graphics.Insets getSystemGestureInsets()
     androidx.core.graphics.Insets getTappableElementInsets()
+kotlin.time.DurationUnitKt__DurationUnitJvmKt
 kotlin.coroutines.jvm.internal.RestrictedSuspendLambda
 kotlin.coroutines.experimental.CoroutineContext
 com.zqw.mobile.grainfull.mvp.ui.widget.secondarylist.SimpleSectionedAdapter
@@ -9112,7 +9934,6 @@ androidx.transition.ViewUtils:
 kotlin.coroutines.jvm.internal.RestrictedContinuationImpl
 com.cjt2325.cameralibrary.CameraInterface$ErrorCallback:
     public abstract void onError()
-kotlin.MathKt
 androidx.constraintlayout.core.motion.utils.HyperSpline
 androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView:
     public void clearSelection()
@@ -9264,6 +10085,7 @@ kotlin.coroutines.jvm.internal.DebugMetadataKt:
     private static final int COROUTINES_DEBUG_METADATA_VERSION
 kotlin.comparisons.ComparisonsKt
 androidx.recyclerview.widget.AsyncListDiffer$1
+com.blankj.utilcode.util.NetworkUtils$2
 androidx.lifecycle.ComputableLiveData$2
 com.bumptech.glide.load.engine.prefill.PreFillType:
     void <init>(int,int,android.graphics.Bitmap$Config,int)
@@ -9339,13 +10161,19 @@ androidx.appcompat.widget.AppCompatTextHelper:
 androidx.transition.Styleable$Transition
 com.blankj.utilcode.util.TimeUtils:
     private static java.text.SimpleDateFormat getDefaultFormat()
+    public static boolean isUsingNetworkProvidedTime()
+    public static java.text.SimpleDateFormat getSafeDateFormat(java.lang.String)
     private void <init>()
     public static java.lang.String millis2String(long)
+    public static java.lang.String millis2String(long,java.lang.String)
     public static long string2Millis(java.lang.String)
+    public static long string2Millis(java.lang.String,java.lang.String)
     public static long string2Millis(java.lang.String,java.text.DateFormat)
     public static java.util.Date string2Date(java.lang.String)
+    public static java.util.Date string2Date(java.lang.String,java.lang.String)
     public static java.util.Date string2Date(java.lang.String,java.text.DateFormat)
     public static java.lang.String date2String(java.util.Date)
+    public static java.lang.String date2String(java.util.Date,java.lang.String)
     public static java.lang.String date2String(java.util.Date,java.text.DateFormat)
     public static long date2Millis(java.util.Date)
     public static java.util.Date millis2Date(long)
@@ -9408,6 +10236,17 @@ com.blankj.utilcode.util.TimeUtils:
     public static java.lang.String getUSWeek(java.lang.String,java.text.DateFormat)
     public static java.lang.String getUSWeek(java.util.Date)
     public static java.lang.String getUSWeek(long)
+    public static boolean isAm()
+    public static boolean isAm(java.lang.String)
+    public static boolean isAm(java.lang.String,java.text.DateFormat)
+    public static boolean isAm(java.util.Date)
+    public static boolean isAm(long)
+    public static boolean isPm()
+    public static boolean isPm(java.lang.String)
+    public static boolean isPm(java.lang.String,java.text.DateFormat)
+    public static boolean isPm(java.util.Date)
+    public static boolean isPm(long)
+    public static int getValueByCalendarField(int)
     public static int getValueByCalendarField(java.lang.String,int)
     public static int getValueByCalendarField(java.lang.String,java.text.DateFormat,int)
     public static int getValueByCalendarField(java.util.Date,int)
@@ -9424,7 +10263,8 @@ com.blankj.utilcode.util.TimeUtils:
     public static java.lang.String getZodiac(int,int)
     private static long timeSpan2Millis(long,int)
     private static long millis2TimeSpan(long,int)
-    private static java.lang.String millis2FitTimeSpan(long,int)
+    static java.lang.String millis2FitTimeSpan(long,int)
+com.blankj.utilcode.util.CollectionUtils$Predicate
 androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VFullPath:
     public boolean canApplyTheme()
     public void applyTheme(android.content.res.Resources$Theme)
@@ -9468,7 +10308,6 @@ androidx.constraintlayout.core.Metrics:
 com.blankj.utilcode.util.BrightnessUtils
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$3
 androidx.recyclerview.widget.BatchingListUpdateCallback
-com.blankj.utilcode.util.ToastUtils$ToastFactory
 kotlin.collections.CollectionsKt__CollectionsKt$binarySearchBy$1
 androidx.core.graphics.Insets:
     public static androidx.core.graphics.Insets add(androidx.core.graphics.Insets,androidx.core.graphics.Insets)
@@ -9517,9 +10356,9 @@ kotlin.text.StringsKt___StringsKt$groupingBy$1
 com.bigkoo.pickerview.view.BasePickerView$1
 androidx.constraintlayout.core.parser.CLParser$TYPE
 androidx.asynclayoutinflater.view.AsyncLayoutInflater$BasicInflater
-kotlin.concurrent.LocksKt
 com.lcw.library.imagepicker.view.ImageFolderPopupWindow:
     private static final int DEFAULT_IMAGE_FOLDER_SELECT
+kotlin.concurrent.LocksKt
 com.blankj.utilcode.util.ColorUtils
 com.mikepenz.iconics.context.InternalLayoutInflater$WrapperFactory
 kotlin.jvm.internal.ClassReference
@@ -9533,8 +10372,9 @@ com.bumptech.glide.request.target.CustomViewTarget$SizeDeterminer:
     private static final int PENDING_SIZE
 com.blankj.utilcode.util.FileUtils:
     private void <init>()
-    public static boolean isFileExists(java.lang.String)
     public static boolean isFileExists(java.io.File)
+    public static boolean isFileExists(java.lang.String)
+    private static boolean isFileExistsApi29(java.lang.String)
     public static boolean rename(java.lang.String,java.lang.String)
     public static boolean rename(java.io.File,java.lang.String)
     public static boolean isDir(java.lang.String)
@@ -9542,30 +10382,22 @@ com.blankj.utilcode.util.FileUtils:
     public static boolean isFile(java.lang.String)
     public static boolean isFile(java.io.File)
     public static boolean createOrExistsFile(java.lang.String)
-    public static boolean createOrExistsFile(java.io.File)
     public static boolean createFileByDeleteOldFile(java.lang.String)
     public static boolean createFileByDeleteOldFile(java.io.File)
-    public static boolean copyDir(java.lang.String,java.lang.String)
-    public static boolean copyDir(java.lang.String,java.lang.String,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    public static boolean copyDir(java.io.File,java.io.File)
-    public static boolean copyDir(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    public static boolean copyFile(java.lang.String,java.lang.String)
-    public static boolean copyFile(java.lang.String,java.lang.String,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    public static boolean copyFile(java.io.File,java.io.File)
-    public static boolean copyFile(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    public static boolean moveDir(java.lang.String,java.lang.String)
-    public static boolean moveDir(java.lang.String,java.lang.String,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    public static boolean moveDir(java.io.File,java.io.File)
+    public static boolean copy(java.lang.String,java.lang.String)
+    public static boolean copy(java.lang.String,java.lang.String,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
+    public static boolean copy(java.io.File,java.io.File)
+    public static boolean copy(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
+    private static boolean copyDir(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
+    private static boolean copyFile(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
+    public static boolean move(java.lang.String,java.lang.String)
+    public static boolean move(java.lang.String,java.lang.String,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
+    public static boolean move(java.io.File,java.io.File)
+    public static boolean move(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
     public static boolean moveDir(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    public static boolean moveFile(java.lang.String,java.lang.String)
-    public static boolean moveFile(java.lang.String,java.lang.String,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    public static boolean moveFile(java.io.File,java.io.File)
     public static boolean moveFile(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener)
-    private static boolean copyOrMoveDir(java.io.File,java.io.File,boolean)
     private static boolean copyOrMoveDir(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener,boolean)
-    private static boolean copyOrMoveFile(java.io.File,java.io.File,boolean)
     private static boolean copyOrMoveFile(java.io.File,java.io.File,com.blankj.utilcode.util.FileUtils$OnReplaceListener,boolean)
-    public static boolean deleteDir(java.lang.String)
     public static boolean deleteAllInDir(java.lang.String)
     public static boolean deleteAllInDir(java.io.File)
     public static boolean deleteFilesInDir(java.lang.String)
@@ -9574,26 +10406,39 @@ com.blankj.utilcode.util.FileUtils:
     public static boolean deleteFilesInDirWithFilter(java.io.File,java.io.FileFilter)
     public static java.util.List listFilesInDir(java.lang.String)
     public static java.util.List listFilesInDir(java.io.File)
+    public static java.util.List listFilesInDir(java.lang.String,java.util.Comparator)
+    public static java.util.List listFilesInDir(java.io.File,java.util.Comparator)
     public static java.util.List listFilesInDir(java.lang.String,boolean)
     public static java.util.List listFilesInDir(java.io.File,boolean)
+    public static java.util.List listFilesInDir(java.lang.String,boolean,java.util.Comparator)
+    public static java.util.List listFilesInDir(java.io.File,boolean,java.util.Comparator)
     public static java.util.List listFilesInDirWithFilter(java.lang.String,java.io.FileFilter)
     public static java.util.List listFilesInDirWithFilter(java.io.File,java.io.FileFilter)
+    public static java.util.List listFilesInDirWithFilter(java.lang.String,java.io.FileFilter,java.util.Comparator)
+    public static java.util.List listFilesInDirWithFilter(java.io.File,java.io.FileFilter,java.util.Comparator)
     public static java.util.List listFilesInDirWithFilter(java.lang.String,java.io.FileFilter,boolean)
     public static java.util.List listFilesInDirWithFilter(java.io.File,java.io.FileFilter,boolean)
+    public static java.util.List listFilesInDirWithFilter(java.lang.String,java.io.FileFilter,boolean,java.util.Comparator)
+    public static java.util.List listFilesInDirWithFilter(java.io.File,java.io.FileFilter,boolean,java.util.Comparator)
+    private static java.util.List listFilesInDirWithFilterInner(java.io.File,java.io.FileFilter,boolean)
     public static long getFileLastModified(java.lang.String)
     public static long getFileLastModified(java.io.File)
     public static java.lang.String getFileCharsetSimple(java.lang.String)
     public static java.lang.String getFileCharsetSimple(java.io.File)
+    public static boolean isUtf8(java.lang.String)
+    public static boolean isUtf8(java.io.File)
+    private static int isUtf8(byte[])
     public static int getFileLines(java.lang.String)
     public static int getFileLines(java.io.File)
-    public static java.lang.String getDirSize(java.lang.String)
-    public static java.lang.String getDirSize(java.io.File)
-    public static java.lang.String getFileSize(java.lang.String)
-    public static java.lang.String getFileSize(java.io.File)
-    public static long getDirLength(java.lang.String)
-    public static long getDirLength(java.io.File)
+    public static java.lang.String getSize(java.lang.String)
+    public static java.lang.String getSize(java.io.File)
+    private static java.lang.String getDirSize(java.io.File)
+    private static java.lang.String getFileSize(java.io.File)
+    public static long getLength(java.lang.String)
+    public static long getLength(java.io.File)
+    private static long getDirLength(java.io.File)
     public static long getFileLength(java.lang.String)
-    public static long getFileLength(java.io.File)
+    private static long getFileLength(java.io.File)
     public static java.lang.String getFileMD5ToString(java.lang.String)
     public static java.lang.String getFileMD5ToString(java.io.File)
     public static byte[] getFileMD5(java.lang.String)
@@ -9606,9 +10451,10 @@ com.blankj.utilcode.util.FileUtils:
     public static java.lang.String getFileNameNoExtension(java.lang.String)
     public static java.lang.String getFileExtension(java.io.File)
     public static java.lang.String getFileExtension(java.lang.String)
-    private static java.lang.String bytes2HexString(byte[])
-    private static java.lang.String byte2FitMemorySize(long)
-    private static boolean writeFileFromIS(java.io.File,java.io.InputStream)
+    public static void notifySystemToScan(java.lang.String)
+    public static void notifySystemToScan(java.io.File)
+    public static long getFsTotalSize(java.lang.String)
+    public static long getFsAvailableSize(java.lang.String)
 androidx.constraintlayout.core.motion.MotionWidget
 okio.Pipe$PipeSink
 com.mikepenz.fastadapter.commons.utils.DiffCallbackImpl
@@ -9621,6 +10467,7 @@ com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool:
     public synchronized void setSizeMultiplier(float)
     private static final java.lang.String TAG
 kotlin.text.CharCategory
+com.blankj.utilcode.util.NetworkUtils$1
 control.NavHttpManager$Holder:
     private void <init>()
 androidx.constraintlayout.core.motion.utils.Oscillator:
@@ -9649,6 +10496,7 @@ kotlin.coroutines.experimental.migration.ExperimentalContinuationInterceptorMigr
 androidx.core.text.util.LinkifyCompat$1
 com.blankj.utilcode.util.GsonUtils
 androidx.constraintlayout.core.motion.utils.KeyFrameArray$CustomVar
+com.blankj.utilcode.util.ToastUtils$ActivityToast$1
 com.blankj.utilcode.util.ThreadUtils$2
 com.bumptech.glide.load.engine.EngineJob:
     synchronized boolean isCancelled()
@@ -9686,6 +10534,7 @@ com.zqw.mobile.grainfull.mvp.model.BaiduFaceActivationModel_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mGsonProvider
     private final javax.inject.Provider mApplicationProvider
+com.blankj.utilcode.util.ThreadUtils$SyncValue
 com.mikepenz.fastadapter.items.ModelAbstractItem
 androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 kotlin.coroutines.experimental.jvm.internal.CoroutineIntrinsics
@@ -9823,6 +10672,7 @@ androidx.constraintlayout.motion.widget.Debug:
     public static void dumpLayoutParams(android.view.ViewGroup$LayoutParams,java.lang.String)
 kotlin.UIntArray$Iterator
 com.mikepenz.materialdrawer.model.ToggleDrawerItem
+com.blankj.utilcode.util.UiMessageUtils$LazyHolder
 androidx.cardview.R
 com.mikepenz.materialdrawer.model.ExpandableDrawerItem$ViewHolder
 com.blankj.utilcode.util.CacheDiskUtils$DiskCacheManager$1
@@ -9834,6 +10684,7 @@ kotlin.coroutines.jvm.internal.DebugProbesKt:
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity:
     private static final int VALUE_MIN_ACTIVE_NUM
 androidx.core.content.SharedPreferencesCompat
+kotlin.time.TimeSource$Monotonic
 com.zqw.mobile.grainfull.app.global.LongDefaultAdapter
 com.blankj.utilcode.util.ThreadUtils$Task
 androidx.core.hardware.fingerprint.FingerprintManagerCompat
@@ -9866,6 +10717,7 @@ com.zqw.mobile.grainfull.mvp.presenter.LoginPresenter_MembersInjector:
     private final javax.inject.Provider mErrorHandlerProvider
     private final javax.inject.Provider mAccountManagerProvider
     private final javax.inject.Provider extrasProvider
+com.blankj.utilcode.util.ToastUtils$ActivityToast$2
 com.jess.arms.http.OkHttpStreamFetcher:
     private static final java.lang.String TAG
 androidx.versionedparcelable.VersionedParcel$ParcelException
@@ -9893,10 +10745,12 @@ kotlin.coroutines.experimental.CoroutineContext$DefaultImpls
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$ValuesIterator
 androidx.core.view.MenuCompat
 androidx.recyclerview.widget.MessageThreadUtil
+com.blankj.utilcode.util.Utils$Func1
 com.blankj.utilcode.util.ThreadUtils$1
 androidx.constraintlayout.motion.widget.ProxyInterface
 kotlin.random.KotlinRandom
 androidx.core.view.WindowInsetsCompat$TypeImpl30
+kotlin.coroutines.AbstractCoroutineContextKey
 com.bumptech.glide.load.engine.cache.DiskCache$Factory:
     public static final int DEFAULT_DISK_CACHE_SIZE
     public static final java.lang.String DEFAULT_DISK_CACHE_DIR
@@ -9944,6 +10798,7 @@ com.cjt2325.cameralibrary.state.CameraMachine:
     public void restart()
     public com.cjt2325.cameralibrary.state.State getState()
 kotlin.collections.UCollectionsKt___UCollectionsKt
+kotlin.sequences.SequencesKt___SequencesKt$scan$1
 com.jakewharton.rxbinding3.widget.RxToolbar__ToolbarNavigationClickObservableKt
 com.zqw.mobile.grainfull.mvp.model.SplashModel:
     private synthetic io.reactivex.Observable lambda$validToken$0(com.jess.arms.cj.GsonRequest)
@@ -10034,6 +10889,7 @@ androidx.core.view.ViewPropertyAnimatorCompat:
     public androidx.core.view.ViewPropertyAnimatorCompat withLayer()
     public androidx.core.view.ViewPropertyAnimatorCompat withStartAction(java.lang.Runnable)
     static final int LISTENER_TAG_ID
+com.blankj.utilcode.util.ShellUtils$1
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_MembersInjector
 com.jess.arms.base.AdapterViewPager
 io.rx_cache2.ActionsList$19
@@ -10094,6 +10950,7 @@ me.jessyan.progressmanager.body.ProgressInfo:
     public boolean isFinish()
     public int getPercent()
     public long getSpeed()
+com.blankj.utilcode.util.DebouncingUtils
 androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat:
     public static androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat obtain(int,int,int,int,boolean)
     public int getColumnIndex()
@@ -10114,12 +10971,23 @@ androidx.core.graphics.TypefaceCompatApi24Impl:
     private static final java.lang.String CREATE_FROM_FAMILIES_WITH_DEFAULT_METHOD
 kotlin.collections.unsigned.UArraysKt___UArraysKt
 kotlin.reflect.KCallable$DefaultImpls
-kotlin.NoWhenBranchMatchedException
 androidx.transition.Styleable:
     private void <init>()
+kotlin.NoWhenBranchMatchedException
 com.bumptech.glide.load.resource.ImageDecoderResourceDecoder:
     private static final java.lang.String TAG
 com.zqw.mobile.grainfull.mvp.ui.widget.secondarylist.SectionedSpanSizeLookup
+com.blankj.utilcode.util.UtilsActivityLifecycleImpl:
+    private void addActivityLifecycleCallbacksInner(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    private void removeActivityLifecycleCallbacksInner(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    static synthetic void access$000(com.blankj.utilcode.util.UtilsActivityLifecycleImpl,android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    static synthetic java.util.Map access$100(com.blankj.utilcode.util.UtilsActivityLifecycleImpl)
+    static synthetic void access$200(com.blankj.utilcode.util.UtilsActivityLifecycleImpl,android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    void addActivityLifecycleCallbacks(com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    void addActivityLifecycleCallbacks(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    void removeActivityLifecycleCallbacks(com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
+    void removeActivityLifecycleCallbacks(android.app.Activity)
+    void removeActivityLifecycleCallbacks(android.app.Activity,com.blankj.utilcode.util.Utils$ActivityLifecycleCallbacks)
 com.bigkoo.pickerview.BuildConfig
 com.mikepenz.itemanimators.BuildConfig
 com.blankj.utilcode.util.CacheDiskUtils$DiskCacheManager$2
@@ -10127,7 +10995,6 @@ androidx.constraintlayout.core.motion.utils.KeyFrameArray
 com.jakewharton.rxbinding3.view.ViewTreeObserverGlobalLayoutObservable
 io.rx_cache2.internal.ProcessorProvidersBehaviour$7
 kotlin.sequences.SequencesKt__SequencesKt$asSequence$$inlined$Sequence$1
-kotlin.ranges.RangesKt__RangesJVMKt
 androidx.appcompat.widget.AppCompatSpinner$SpinnerPopup:
     public abstract int getHorizontalOriginalOffset()
 kotlin.internal.UProgressionUtilKt
@@ -10185,6 +11052,8 @@ androidx.recyclerview.widget.StaggeredGridLayoutManager$Span:
 com.blankj.utilcode.util.SpanUtils$SpaceSpan
 com.mikepenz.materialdrawer.model.interfaces.Tagable
 androidx.exifinterface.media.ExifInterface$ByteOrderedDataOutputStream
+com.blankj.utilcode.util.ApiUtils$LazyHolder
+kotlin.time.DurationUnitKt
 kotlin.ranges.ClosedRange
 androidx.recyclerview.widget.ChildHelper:
     private static final boolean DEBUG
@@ -10233,6 +11102,7 @@ androidx.core.graphics.TypefaceCompatApi26Impl:
     private static final java.lang.String ABORT_CREATION_METHOD
     private static final int RESOLVE_BY_FONT_TABLE
 kotlin.collections.CollectionsKt__IteratorsKt
+com.blankj.utilcode.util.CollectionUtils$Closure
 com.blankj.utilcode.constant.TimeConstants
 androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener
 kotlin.sequences.TakeSequence$iterator$1
@@ -10245,8 +11115,8 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.DecodeHintManager:
     private static java.util.Map splitQuery(java.lang.String)
     static java.util.Map parseDecodeHints(android.net.Uri)
 androidx.core.view.ContentInfoCompat$Builder
-com.blankj.utilcode.util.ToastUtils$ToastWithoutNotification$1
 dagger.internal.MapBuilder
+kotlin.collections.ArrayDeque
 okio.HashingSink
 io.rx_cache2.ActionsList$18
 androidx.core.provider.FontRequestWorker:
@@ -10360,6 +11230,7 @@ androidx.constraintlayout.core.state.ConstraintReference$ConstraintReferenceFact
 jaygoo.library.converter.R
 androidx.transition.Styleable$Fade
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_MembersInjector
+com.blankj.utilcode.util.MapUtils
 androidx.constraintlayout.motion.widget.ViewTransitionController:
     static synthetic androidx.constraintlayout.motion.widget.MotionLayout access$000(androidx.constraintlayout.motion.widget.ViewTransitionController)
     void remove(int)
@@ -10538,6 +11409,7 @@ com.bumptech.glide.load.engine.prefill.PreFillType$Builder:
     private final int height
     private android.graphics.Bitmap$Config config
     private int weight
+com.blankj.utilcode.util.SpanUtils$SerializableSpannableStringBuilder
 com.jess.arms.http.imageloader.glide.R
 com.bumptech.glide.load.engine.Engine$EngineJobFactory:
     void shutdown()
@@ -10574,6 +11446,28 @@ com.jess.arms.utils.CharacterHandler:
     private void <init>()
     public static java.lang.String str2HexStr(java.lang.String)
 androidx.cursoradapter.widget.SimpleCursorAdapter$ViewBinder
+com.blankj.utilcode.util.LanguageUtils:
+    private void <init>()
+    public static void applySystemLanguage()
+    public static void applySystemLanguage(boolean)
+    public static void applyLanguage(java.util.Locale)
+    public static void applyLanguage(java.util.Locale,boolean)
+    private static void applyLanguageReal(java.util.Locale,boolean)
+    private static void restart(boolean)
+    public static boolean isAppliedLanguage()
+    public static boolean isAppliedLanguage(java.util.Locale)
+    public static java.util.Locale getAppliedLanguage()
+    public static java.util.Locale getContextLanguage(android.content.Context)
+    public static java.util.Locale getAppContextLanguage()
+    public static java.util.Locale getSystemLanguage()
+    public static void updateAppContextLanguage(java.util.Locale,com.blankj.utilcode.util.Utils$Consumer)
+    static void pollCheckAppContextLocal(java.util.Locale,int,com.blankj.utilcode.util.Utils$Consumer)
+    public static android.content.Context attachBaseContext(android.content.Context)
+    private static java.lang.String locale2String(java.util.Locale)
+    private static boolean isSameLocale(java.util.Locale,java.util.Locale)
+    static synthetic void access$000(boolean)
+    private static final java.lang.String KEY_LOCALE
+    private static final java.lang.String VALUE_FOLLOW_SYSTEM
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi26$1:
     public void detach()
 com.mikepenz.materialdrawer.model.interfaces.Typefaceable
@@ -10609,10 +11503,10 @@ kotlin.random.RandomKt
 com.zqw.mobile.grainfull.app.utils.QualityConfigManager:
     private static final java.lang.String FILE_NAME_QUALITY
     private static final java.lang.String FILE_NAME_CUSTOM
-com.blankj.utilcode.util.PermissionUtils$OnRationaleListener$ShouldRequest:
-    public abstract void again(boolean)
+com.blankj.utilcode.util.PermissionUtils$OnRationaleListener$ShouldRequest
 androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicImpl:
     public boolean isRtl(char[],int,int)
+com.blankj.utilcode.util.CollectionUtils
 kotlin.io.FilesKt__FileReadWriteKt
 com.jess.arms.integration.cache.CacheType:
     public static final int RETROFIT_SERVICE_CACHE_TYPE_ID
@@ -10719,11 +11613,14 @@ androidx.appcompat.view.menu.CascadingMenuPopup:
     static final int SUBMENU_TIMEOUT_MS
 kotlin.text.Typography
 androidx.constraintlayout.core.motion.utils.TypedValues$Custom
+kotlin.collections.ArrayDequeKt
+com.blankj.utilcode.util.NetworkUtils$6
 io.rx_cache2.ActionsList$17
 io.rx_cache2.internal.cache.RetrieveRecord
 androidx.core.view.WindowInsetsControllerCompat$Impl20
 androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams:
     public void <init>(android.view.ViewGroup$MarginLayoutParams)
+com.blankj.utilcode.util.VolumeUtils
 androidx.loader.content.ModernAsyncTask$AsyncTaskResult
 kotlin.jvm.internal.BooleanCompanionObject
 com.mikepenz.fastadapter.expandable.items.AbstractExpandableItem
@@ -10736,7 +11633,7 @@ androidx.fragment.app.FragmentTransaction$Op:
 com.zqw.mobile.grainfull.app.tts.control.InitConfig:
     public java.lang.String getSn()
 kotlin.UIntArrayKt
-com.blankj.utilcode.util.ToastUtils$ToastWithoutNotification$2
+com.blankj.utilcode.util.Utils$Task
 kotlin.native.concurrent.SharedImmutable
 kotlin.io.FileTreeWalk$WalkState
 kotlin.coroutines.experimental.migration.ExperimentalContextMigration$Key
@@ -10915,6 +11812,7 @@ com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem:
     public synthetic bridge java.lang.Object withBadge(com.mikepenz.materialdrawer.holder.StringHolder)
     public synthetic bridge java.lang.Object withBadge(int)
     public synthetic bridge java.lang.Object withBadge(java.lang.String)
+com.blankj.utilcode.util.NumberUtils$1
 androidx.coordinatorlayout.R
 androidx.exifinterface.media.ExifInterface:
     public void <init>(java.lang.String)
@@ -11344,6 +12242,7 @@ com.zqw.mobile.grainfull.mvp.presenter.AboutPresenter_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mErrorHandlerProvider
 kotlin.io.ConstantsKt
+kotlin.time.Duration$Companion
 kotlin.PreconditionsKt
 kotlin.coroutines.CombinedContext
 androidx.constraintlayout.motion.widget.MotionLayout$MyTracker:
@@ -11352,11 +12251,12 @@ androidx.constraintlayout.motion.widget.MotionLayout$MyTracker:
     public float getXVelocity(int)
     public float getYVelocity(int)
 androidx.core.app.NotificationCompat$1
+com.blankj.utilcode.util.NetworkUtils$5
+com.blankj.utilcode.util.PermissionUtils$PermissionActivityImpl$1
 control.NavPerformanceFramework:
     private static final java.lang.String TAG
 androidx.lifecycle.ViewModelStore:
     java.util.Set keys()
-kotlin.MathKt__BigDecimalsKt
 androidx.appcompat.R
 io.rx_cache2.internal.cache.EvictRecord_Factory
 com.jess.arms.integration.ManifestParser:
@@ -11442,8 +12342,8 @@ androidx.constraintlayout.motion.utils.ViewTimeCycle:
     private static final java.lang.String TAG
 com.jakewharton.rxbinding3.view.ViewTreeObserverDrawObservable$Listener
 kotlin.collections.AbstractIterator$WhenMappings
-kotlin.collections.CollectionsKt___CollectionsKt$groupingBy$1
 kotlin.jvm.internal.ArrayShortIterator
+kotlin.collections.CollectionsKt___CollectionsKt$groupingBy$1
 androidx.constraintlayout.core.widgets.analyzer.RunGroup:
     private boolean defineTerminalWidget(androidx.constraintlayout.core.widgets.analyzer.WidgetRun,int)
     public void defineTerminalWidgets(boolean,boolean)
@@ -11503,11 +12403,15 @@ com.bumptech.glide.load.data.mediastore.MediaStoreUtil:
 com.mikepenz.fastadapter.commons.utils.FastAdapterUIUtils
 androidx.media.MediaBrowserServiceCompatApi23:
     private void <init>()
+kotlin.time.TimeSource
 org.reactivestreams.FlowAdapters$ReactiveToFlowSubscriber
-androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl
+androidx.core.app.NotificationCompat$BubbleMetadata$Api29Impl:
+    private void <init>()
+    static androidx.core.app.NotificationCompat$BubbleMetadata fromPlatform(android.app.Notification$BubbleMetadata)
 androidx.media.MediaBrowserCompatUtils:
     public static boolean hasDuplicatedItems(android.os.Bundle,android.os.Bundle)
     private void <init>()
+com.blankj.utilcode.util.ShadowUtils$Config
 com.mikepenz.iconics.utils.Utils:
     public void <init>()
     public static java.lang.String getString(android.content.res.TypedArray,int,int)
@@ -11515,11 +12419,13 @@ com.mikepenz.iconics.utils.Utils:
     public static android.graphics.drawable.StateListDrawable getCheckableIconStateList(android.content.Context,android.graphics.drawable.Drawable,android.graphics.drawable.Drawable,boolean)
 com.blankj.utilcode.util.ImageUtils:
     private void <init>()
-    public static byte[] bitmap2Bytes(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat)
+    public static byte[] bitmap2Bytes(android.graphics.Bitmap)
+    public static byte[] bitmap2Bytes(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat,int)
     public static android.graphics.Bitmap bytes2Bitmap(byte[])
     public static android.graphics.Bitmap drawable2Bitmap(android.graphics.drawable.Drawable)
     public static android.graphics.drawable.Drawable bitmap2Drawable(android.graphics.Bitmap)
-    public static byte[] drawable2Bytes(android.graphics.drawable.Drawable,android.graphics.Bitmap$CompressFormat)
+    public static byte[] drawable2Bytes(android.graphics.drawable.Drawable)
+    public static byte[] drawable2Bytes(android.graphics.drawable.Drawable,android.graphics.Bitmap$CompressFormat,int)
     public static android.graphics.drawable.Drawable bytes2Drawable(byte[])
     public static android.graphics.Bitmap view2Bitmap(android.view.View)
     public static android.graphics.Bitmap getBitmap(java.io.File)
@@ -11554,13 +12460,18 @@ com.blankj.utilcode.util.ImageUtils:
     public static android.graphics.Bitmap toRound(android.graphics.Bitmap,int,int,boolean)
     public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float)
     public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float,boolean)
-    public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float,int,int)
-    public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float,int,int,boolean)
-    public static android.graphics.Bitmap addCornerBorder(android.graphics.Bitmap,int,int,float)
-    public static android.graphics.Bitmap addCornerBorder(android.graphics.Bitmap,int,int,float,boolean)
-    public static android.graphics.Bitmap addCircleBorder(android.graphics.Bitmap,int,int)
-    public static android.graphics.Bitmap addCircleBorder(android.graphics.Bitmap,int,int,boolean)
-    private static android.graphics.Bitmap addBorder(android.graphics.Bitmap,int,int,boolean,float,boolean)
+    public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float,float,int)
+    public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float[],float,int)
+    public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float,float,int,boolean)
+    public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,float[],float,int,boolean)
+    public static android.graphics.Bitmap addCornerBorder(android.graphics.Bitmap,float,int,float)
+    public static android.graphics.Bitmap addCornerBorder(android.graphics.Bitmap,float,int,float[])
+    public static android.graphics.Bitmap addCornerBorder(android.graphics.Bitmap,float,int,float[],boolean)
+    public static android.graphics.Bitmap addCornerBorder(android.graphics.Bitmap,float,int,float,boolean)
+    public static android.graphics.Bitmap addCircleBorder(android.graphics.Bitmap,float,int)
+    public static android.graphics.Bitmap addCircleBorder(android.graphics.Bitmap,float,int,boolean)
+    private static android.graphics.Bitmap addBorder(android.graphics.Bitmap,float,int,boolean,float,boolean)
+    private static android.graphics.Bitmap addBorder(android.graphics.Bitmap,float,int,boolean,float[],boolean)
     public static android.graphics.Bitmap addReflection(android.graphics.Bitmap,int)
     public static android.graphics.Bitmap addReflection(android.graphics.Bitmap,int,boolean)
     public static android.graphics.Bitmap addTextWatermark(android.graphics.Bitmap,java.lang.String,int,int,float,float)
@@ -11582,13 +12493,24 @@ com.blankj.utilcode.util.ImageUtils:
     public static boolean save(android.graphics.Bitmap,java.io.File,android.graphics.Bitmap$CompressFormat)
     public static boolean save(android.graphics.Bitmap,java.lang.String,android.graphics.Bitmap$CompressFormat,boolean)
     public static boolean save(android.graphics.Bitmap,java.io.File,android.graphics.Bitmap$CompressFormat,boolean)
+    public static boolean save(android.graphics.Bitmap,java.lang.String,android.graphics.Bitmap$CompressFormat,int)
+    public static boolean save(android.graphics.Bitmap,java.io.File,android.graphics.Bitmap$CompressFormat,int)
+    public static boolean save(android.graphics.Bitmap,java.lang.String,android.graphics.Bitmap$CompressFormat,int,boolean)
+    public static boolean save(android.graphics.Bitmap,java.io.File,android.graphics.Bitmap$CompressFormat,int,boolean)
+    public static java.io.File save2Album(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat)
+    public static java.io.File save2Album(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat,boolean)
+    public static java.io.File save2Album(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat,int)
+    public static java.io.File save2Album(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat,int,boolean)
+    public static java.io.File save2Album(android.graphics.Bitmap,java.lang.String,android.graphics.Bitmap$CompressFormat)
+    public static java.io.File save2Album(android.graphics.Bitmap,java.lang.String,android.graphics.Bitmap$CompressFormat,boolean)
+    public static java.io.File save2Album(android.graphics.Bitmap,java.lang.String,android.graphics.Bitmap$CompressFormat,int)
+    public static java.io.File save2Album(android.graphics.Bitmap,java.lang.String,android.graphics.Bitmap$CompressFormat,int,boolean)
     public static boolean isImage(java.io.File)
     public static boolean isImage(java.lang.String)
-    public static java.lang.String getImageType(java.lang.String)
-    public static java.lang.String getImageType(java.io.File)
-    private static java.lang.String getFileExtension(java.lang.String)
-    private static java.lang.String getImageType(java.io.InputStream)
-    private static java.lang.String getImageType(byte[])
+    public static com.blankj.utilcode.util.ImageUtils$ImageType getImageType(java.lang.String)
+    public static com.blankj.utilcode.util.ImageUtils$ImageType getImageType(java.io.File)
+    private static com.blankj.utilcode.util.ImageUtils$ImageType getImageType(java.io.InputStream)
+    private static com.blankj.utilcode.util.ImageUtils$ImageType getImageType(byte[])
     private static boolean isJPEG(byte[])
     private static boolean isGIF(byte[])
     private static boolean isPNG(byte[])
@@ -11598,21 +12520,17 @@ com.blankj.utilcode.util.ImageUtils:
     public static android.graphics.Bitmap compressByScale(android.graphics.Bitmap,int,int,boolean)
     public static android.graphics.Bitmap compressByScale(android.graphics.Bitmap,float,float)
     public static android.graphics.Bitmap compressByScale(android.graphics.Bitmap,float,float,boolean)
-    public static android.graphics.Bitmap compressByQuality(android.graphics.Bitmap,int)
-    public static android.graphics.Bitmap compressByQuality(android.graphics.Bitmap,int,boolean)
-    public static android.graphics.Bitmap compressByQuality(android.graphics.Bitmap,long)
-    public static android.graphics.Bitmap compressByQuality(android.graphics.Bitmap,long,boolean)
+    public static byte[] compressByQuality(android.graphics.Bitmap,int)
+    public static byte[] compressByQuality(android.graphics.Bitmap,int,boolean)
+    public static byte[] compressByQuality(android.graphics.Bitmap,long)
+    public static byte[] compressByQuality(android.graphics.Bitmap,long,boolean)
     public static android.graphics.Bitmap compressBySampleSize(android.graphics.Bitmap,int)
     public static android.graphics.Bitmap compressBySampleSize(android.graphics.Bitmap,int,boolean)
     public static android.graphics.Bitmap compressBySampleSize(android.graphics.Bitmap,int,int)
     public static android.graphics.Bitmap compressBySampleSize(android.graphics.Bitmap,int,int,boolean)
     public static int[] getSize(java.lang.String)
     public static int[] getSize(java.io.File)
-    private static int calculateInSampleSize(android.graphics.BitmapFactory$Options,int,int)
-    private static java.io.File getFileByPath(java.lang.String)
-    private static boolean createFileByDeleteOldFile(java.io.File)
-    private static boolean createOrExistsDir(java.io.File)
-    private static byte[] input2Byte(java.io.InputStream)
+    public static int calculateInSampleSize(android.graphics.BitmapFactory$Options,int,int)
 com.bumptech.glide.disklrucache.Util:
     static java.lang.String readFully(java.io.Reader)
 androidx.constraintlayout.motion.widget.MotionHelperInterface:
@@ -11631,6 +12549,7 @@ com.bumptech.glide.signature.ApplicationVersionSignature:
     private static android.content.pm.PackageInfo getPackageInfo(android.content.Context)
     private static final java.lang.String TAG
 kotlin.sequences.SequencesKt___SequencesKt$filterIndexed$1
+com.blankj.utilcode.util.PermissionUtils$PermissionActivityImpl
 androidx.exifinterface.media.ExifInterface$Rational:
     void <init>(double)
 com.mikepenz.fastadapter.commons.adapters.FastItemAdapter
@@ -11658,7 +12577,6 @@ kotlin.jvm.internal.ReflectionFactory:
     public kotlin.reflect.KMutableProperty2 mutableProperty2(kotlin.jvm.internal.MutablePropertyReference2)
     public kotlin.reflect.KType typeOf(kotlin.reflect.KClassifier,java.util.List,boolean)
     private static final java.lang.String KOTLIN_JVM_FUNCTIONS
-kotlin.MathKt__BigIntegersKt
 com.jakewharton.rxbinding3.view.RxView__ViewTreeObserverGlobalLayoutObservableKt
 androidx.loader.content.ModernAsyncTask$WorkerRunnable
 androidx.core.content.FileProvider:
@@ -11843,6 +12761,7 @@ com.lcw.library.imagepicker.activity.ImagePickerActivity:
 com.jakewharton.rxbinding3.view.RxView__ViewLongClickObservableKt
 kotlin.jvm.internal.CallableReference$NoReceiver
 com.bigkoo.pickerview.TimePickerView$Builder
+kotlin.NumbersKt
 com.jakewharton.rxbinding3.widget.RxAdapterView__AdapterViewSelectionObservableKt
 androidx.media.MediaBrowserProtocol
 androidx.core.net.MailTo
@@ -11850,8 +12769,10 @@ androidx.constraintlayout.core.motion.utils.TypedValues$Motion
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceStrength
 com.mikepenz.materialize.color.Material$BlueGrey
 kotlin.collections.EmptyMap
+com.blankj.utilcode.util.NetworkUtils$4
 androidx.core.app.NotificationManagerCompat$Task
 androidx.core.os.ConfigurationCompat
+com.blankj.utilcode.util.PermissionUtils$PermissionActivityImpl$2
 kotlin.text.StringsKt___StringsKt$asSequence$$inlined$Sequence$1
 androidx.asynclayoutinflater.R
 io.rx_cache2.ActionsList$15
@@ -11927,8 +12848,8 @@ androidx.fragment.app.FragmentManagerViewModel:
     androidx.fragment.app.FragmentManagerNonConfig getSnapshot()
 androidx.core.app.ActivityManagerCompat
 kotlin.collections.GroupingKt__GroupingJVMKt
-kotlin.coroutines.experimental.SafeContinuation
 kotlin.coroutines.experimental.CombinedContext$toString$1
+kotlin.coroutines.experimental.SafeContinuation
 androidx.recyclerview.R
 androidx.core.view.WindowInsetsAnimationCompat$Impl21$Impl21OnApplyWindowInsetsListener$3
 kotlin.collections.RingBuffer$iterator$1
@@ -11971,7 +12892,6 @@ androidx.appcompat.graphics.drawable.DrawableContainer$DrawableContainerState:
     public final int getExitFadeDuration()
     public final boolean isStateful()
 com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter$OnErrorListener
-androidx.legacy.app.FragmentCompat
 kotlin.reflect.KMutableProperty$Setter
 com.mikepenz.materialdrawer.Drawer$OnDrawerItemSelectedListener
 io.rx_cache2.DynamicKey
@@ -12001,6 +12921,7 @@ androidx.loader.content.ModernAsyncTask
 androidx.core.view.accessibility.AccessibilityManagerCompat$AccessibilityStateChangeListener
 com.blankj.utilcode.util.CacheDiskUtils
 androidx.core.os.ExecutorCompat$HandlerExecutor
+kotlin.time.TimedValue
 androidx.constraintlayout.core.widgets.ConstraintAnchor:
     private boolean isConnectionToMe(androidx.constraintlayout.core.widgets.ConstraintWidget,java.util.HashSet)
     public void copyFrom(androidx.constraintlayout.core.widgets.ConstraintAnchor,java.util.HashMap)
@@ -12012,9 +12933,9 @@ androidx.constraintlayout.core.widgets.ConstraintAnchor:
     public boolean isConnectionAllowed(androidx.constraintlayout.core.widgets.ConstraintWidget)
     private static final boolean ALLOW_BINARY
     private static final int UNSET_GONE_MARGIN
+kotlin.jvm.internal.ClassReference$Companion
 kotlin.sequences.SequencesKt___SequencesKt$filterNotNull$1
 com.mikepenz.fastadapter.R
-androidx.legacy.app.FragmentPagerAdapter
 com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_MembersInjector
 com.jakewharton.rxbinding3.widget.RxAdapterView__AdapterViewItemSelectionObservableKt
 androidx.constraintlayout.core.widgets.Barrier:
@@ -12059,21 +12980,9 @@ androidx.core.widget.AutoScrollHelper:
     private static final int DEFAULT_RAMP_DOWN_DURATION
 com.zqw.mobile.grainfull.app.utils.overlayutil.DrivingRouteOverlay
 kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt
-com.blankj.utilcode.util.PermissionUtils:
-    public static varargs boolean isGranted(java.lang.String[])
-    public static void requestWriteSettings(com.blankj.utilcode.util.PermissionUtils$SimpleCallback)
-    public static void requestDrawOverlays(com.blankj.utilcode.util.PermissionUtils$SimpleCallback)
-    public static varargs com.blankj.utilcode.util.PermissionUtils permission(java.lang.String[])
-    private varargs void <init>(java.lang.String[])
-    private void startPermissionActivity()
-    static synthetic void access$000(com.blankj.utilcode.util.PermissionUtils)
-    static synthetic void access$100(com.blankj.utilcode.util.PermissionUtils)
-    public com.blankj.utilcode.util.PermissionUtils rationale(com.blankj.utilcode.util.PermissionUtils$OnRationaleListener)
-    public com.blankj.utilcode.util.PermissionUtils callback(com.blankj.utilcode.util.PermissionUtils$SimpleCallback)
-    public com.blankj.utilcode.util.PermissionUtils callback(com.blankj.utilcode.util.PermissionUtils$FullCallback)
-    public com.blankj.utilcode.util.PermissionUtils theme(com.blankj.utilcode.util.PermissionUtils$ThemeCallback)
-    public void request()
+com.blankj.utilcode.util.PermissionUtils
 com.jakewharton.rxbinding3.view.ViewAttachEventObservable$Listener
+com.blankj.utilcode.util.BusUtils$LazyHolder
 com.zqw.mobile.grainfull.mvp.ui.widget.secondarylist.SectionedRecyclerViewAdapter$SectionDataObserver
 io.rx_cache2.ActionsList$Func3
 okio.BufferedSink:
@@ -12089,6 +12998,7 @@ okio.BufferedSink:
     public abstract java.io.OutputStream outputStream()
 com.jakewharton.rxbinding3.widget.RatingBarRatingChangeObservable
 kotlin.comparisons.ComparisonsKt__ComparisonsKt
+com.blankj.utilcode.util.MapUtils$Transformer
 com.jakewharton.rxbinding3.widget.RxRadioGroup
 com.mikepenz.fastadapter.utils.package-info
 androidx.constraintlayout.motion.widget.MotionScene:
@@ -12169,19 +13079,21 @@ com.zqw.mobile.grainfull.app.tts.util.Auth
 androidx.constraintlayout.core.motion.utils.StepCurve:
     private static androidx.constraintlayout.core.motion.utils.MonotonicCurveFit genSpline(java.lang.String)
     private static final boolean DEBUG
+com.blankj.utilcode.util.NetworkUtils$3
 com.mikepenz.materialize.color.Material$Elements$Light
 androidx.recyclerview.widget.DividerItemDecoration:
     public android.graphics.drawable.Drawable getDrawable()
     public static final int HORIZONTAL
     public static final int VERTICAL
     private static final java.lang.String TAG
+com.blankj.utilcode.util.PermissionUtils$PermissionActivityImpl$3
 com.blankj.utilcode.util.ThreadUtils:
     public void <init>()
     public static boolean isMainThread()
+    public static android.os.Handler getMainHandler()
     public static java.util.concurrent.ExecutorService getFixedPool(int,int)
     public static java.util.concurrent.ExecutorService getSinglePool()
     public static java.util.concurrent.ExecutorService getSinglePool(int)
-    public static java.util.concurrent.ExecutorService getCachedPool()
     public static java.util.concurrent.ExecutorService getCachedPool(int)
     public static java.util.concurrent.ExecutorService getIoPool()
     public static java.util.concurrent.ExecutorService getIoPool(int)
@@ -12232,15 +13144,17 @@ com.blankj.utilcode.util.ThreadUtils:
     public static void executeByCustomAtFixRate(java.util.concurrent.ExecutorService,com.blankj.utilcode.util.ThreadUtils$Task,long,java.util.concurrent.TimeUnit)
     public static void executeByCustomAtFixRate(java.util.concurrent.ExecutorService,com.blankj.utilcode.util.ThreadUtils$Task,long,long,java.util.concurrent.TimeUnit)
     public static void cancel(com.blankj.utilcode.util.ThreadUtils$Task)
+    public static varargs void cancel(com.blankj.utilcode.util.ThreadUtils$Task[])
+    public static void cancel(java.util.List)
+    public static void cancel(java.util.concurrent.ExecutorService)
     public static void setDeliver(java.util.concurrent.Executor)
     private static void execute(java.util.concurrent.ExecutorService,com.blankj.utilcode.util.ThreadUtils$Task)
     private static void executeWithDelay(java.util.concurrent.ExecutorService,com.blankj.utilcode.util.ThreadUtils$Task,long,java.util.concurrent.TimeUnit)
     private static void executeAtFixedRate(java.util.concurrent.ExecutorService,com.blankj.utilcode.util.ThreadUtils$Task,long,long,java.util.concurrent.TimeUnit)
-    private static synchronized java.util.concurrent.ScheduledExecutorService getScheduledByTask(com.blankj.utilcode.util.ThreadUtils$Task)
-    private static synchronized void removeScheduleByTask(com.blankj.utilcode.util.ThreadUtils$Task)
-    private static java.util.concurrent.Executor getDeliver()
-    static synthetic java.util.concurrent.Executor access$100()
-    static synthetic void access$200(com.blankj.utilcode.util.ThreadUtils$Task)
+    private static void execute(java.util.concurrent.ExecutorService,com.blankj.utilcode.util.ThreadUtils$Task,long,long,java.util.concurrent.TimeUnit)
+    private static java.util.concurrent.Executor getGlobalDeliver()
+    static synthetic java.util.concurrent.Executor access$600()
+    static synthetic java.util.Map access$700()
     private static final byte TYPE_SINGLE
     private static final byte TYPE_CACHED
     private static final byte TYPE_IO
@@ -12259,6 +13173,7 @@ androidx.fragment.app.FragmentManagerImpl$FragmentTag:
     public static final int Fragment_tag
 androidx.core.os.CancellationSignal
 io.rx_cache2.internal.cache.HasRecordExpired_Factory
+com.blankj.utilcode.util.NetworkUtils$WifiScanResults
 androidx.core.view.ViewCompat$CompatImplApi28$1
 kotlin.ULongKt
 androidx.core.os.LocaleListCompat
@@ -12330,6 +13245,7 @@ androidx.core.app.NotificationCompat$Action$Extender
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$EntrySetIterator
 kotlin.coroutines.experimental.SequenceBuilderKt
 com.jakewharton.rxbinding3.view.RxViewGroup__ViewGroupHierarchyChangeEventObservableKt
+com.blankj.utilcode.util.ClickUtils$ClickDrawableWrapper
 kotlin.Result:
     public static synthetic void value$annotations()
     private synthetic void <init>(java.lang.Object)
@@ -12367,22 +13283,10 @@ com.bumptech.glide.GlideBuilder:
     com.bumptech.glide.GlideBuilder setEngine(com.bumptech.glide.load.engine.Engine)
 com.blankj.utilcode.util.AppUtils:
     private void <init>()
-    public static void registerAppStatusChangedListener(java.lang.Object,com.blankj.utilcode.util.Utils$OnAppStatusChangedListener)
-    public static void unregisterAppStatusChangedListener(java.lang.Object)
     public static void installApp(java.lang.String)
     public static void installApp(java.io.File)
-    public static void installApp(android.app.Activity,java.lang.String,int)
-    public static void installApp(android.app.Activity,java.io.File,int)
-    public static boolean installAppSilent(java.lang.String)
-    public static boolean installAppSilent(java.io.File)
-    public static boolean installAppSilent(java.lang.String,java.lang.String)
-    public static boolean installAppSilent(java.io.File,java.lang.String)
-    public static boolean installAppSilent(java.io.File,java.lang.String,boolean)
+    public static void installApp(android.net.Uri)
     public static void uninstallApp(java.lang.String)
-    public static void uninstallApp(android.app.Activity,java.lang.String,int)
-    public static boolean uninstallAppSilent(java.lang.String)
-    public static boolean uninstallAppSilent(java.lang.String,boolean)
-    public static boolean uninstallAppSilent(java.lang.String,boolean,boolean)
     public static boolean isAppInstalled(java.lang.String)
     public static boolean isAppRoot()
     public static boolean isAppDebug()
@@ -12391,14 +13295,20 @@ com.blankj.utilcode.util.AppUtils:
     public static boolean isAppSystem(java.lang.String)
     public static boolean isAppForeground()
     public static boolean isAppForeground(java.lang.String)
+    public static boolean isAppRunning(java.lang.String)
     public static void launchApp(java.lang.String)
-    public static void launchApp(android.app.Activity,java.lang.String,int)
     public static void relaunchApp()
     public static void relaunchApp(boolean)
     public static void launchAppDetailsSettings()
     public static void launchAppDetailsSettings(java.lang.String)
+    public static void launchAppDetailsSettings(android.app.Activity,int)
+    public static void launchAppDetailsSettings(android.app.Activity,int,java.lang.String)
     public static android.graphics.drawable.Drawable getAppIcon()
     public static android.graphics.drawable.Drawable getAppIcon(java.lang.String)
+    public static int getAppIconId()
+    public static int getAppIconId(java.lang.String)
+    public static boolean isFirstTimeInstall()
+    public static boolean isAppUpgraded()
     public static java.lang.String getAppPackageName()
     public static java.lang.String getAppName()
     public static java.lang.String getAppName(java.lang.String)
@@ -12408,34 +13318,29 @@ com.blankj.utilcode.util.AppUtils:
     public static java.lang.String getAppVersionName(java.lang.String)
     public static int getAppVersionCode()
     public static int getAppVersionCode(java.lang.String)
-    public static android.content.pm.Signature[] getAppSignature()
-    public static android.content.pm.Signature[] getAppSignature(java.lang.String)
-    public static java.lang.String getAppSignatureSHA1()
-    public static java.lang.String getAppSignatureSHA1(java.lang.String)
-    public static java.lang.String getAppSignatureSHA256()
-    public static java.lang.String getAppSignatureSHA256(java.lang.String)
-    public static java.lang.String getAppSignatureMD5()
-    public static java.lang.String getAppSignatureMD5(java.lang.String)
-    private static java.lang.String getAppSignatureHash(java.lang.String,java.lang.String)
+    public static int getAppMinSdkVersion()
+    public static int getAppMinSdkVersion(java.lang.String)
+    public static int getAppTargetSdkVersion()
+    public static int getAppTargetSdkVersion(java.lang.String)
+    public static android.content.pm.Signature[] getAppSignatures()
+    public static android.content.pm.Signature[] getAppSignatures(java.lang.String)
+    public static android.content.pm.Signature[] getAppSignatures(java.io.File)
+    public static java.util.List getAppSignaturesSHA1()
+    public static java.util.List getAppSignaturesSHA1(java.lang.String)
+    public static java.util.List getAppSignaturesSHA256()
+    public static java.util.List getAppSignaturesSHA256(java.lang.String)
+    public static java.util.List getAppSignaturesMD5()
+    public static java.util.List getAppSignaturesMD5(java.lang.String)
+    public static int getAppUid()
+    public static int getAppUid(java.lang.String)
+    private static java.util.List getAppSignaturesHash(java.lang.String,java.lang.String)
     public static com.blankj.utilcode.util.AppUtils$AppInfo getAppInfo()
     public static com.blankj.utilcode.util.AppUtils$AppInfo getAppInfo(java.lang.String)
     public static java.util.List getAppsInfo()
     public static com.blankj.utilcode.util.AppUtils$AppInfo getApkInfo(java.io.File)
     public static com.blankj.utilcode.util.AppUtils$AppInfo getApkInfo(java.lang.String)
+    public static boolean isFirstTimeInstalled()
     private static com.blankj.utilcode.util.AppUtils$AppInfo getBean(android.content.pm.PackageManager,android.content.pm.PackageInfo)
-    private static boolean isFileExists(java.io.File)
-    private static java.io.File getFileByPath(java.lang.String)
-    private static boolean isSpace(java.lang.String)
-    private static boolean isDeviceRooted()
-    private static byte[] hashTemplate(byte[],java.lang.String)
-    private static java.lang.String bytes2HexString(byte[])
-    private static android.content.Intent getInstallAppIntent(java.io.File)
-    private static android.content.Intent getInstallAppIntent(java.io.File,boolean)
-    private static android.content.Intent getUninstallAppIntent(java.lang.String)
-    private static android.content.Intent getUninstallAppIntent(java.lang.String,boolean)
-    private static android.content.Intent getLaunchAppIntent(java.lang.String)
-    private static android.content.Intent getLaunchAppIntent(java.lang.String,boolean)
-    private static java.lang.String getForegroundProcessName()
 androidx.appcompat.view.StandaloneActionMode:
     public void onCloseMenu(androidx.appcompat.view.menu.MenuBuilder,boolean)
     public boolean onSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder)
@@ -12449,7 +13354,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$11:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
-com.blankj.utilcode.util.PermissionUtils$1
+androidx.core.app.NotificationCompatBuilder:
+    public final android.content.Context mContext
 androidx.constraintlayout.core.motion.utils.LinearCurveFit:
     public double mTotalLength
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding$4:
@@ -12586,6 +13492,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBindin
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding this$0
 com.bumptech.glide.load.model.ModelCache$1:
     public final synthetic com.bumptech.glide.load.model.ModelCache this$0
+com.blankj.utilcode.util.PathUtils:
+    public static final char SEP
 androidx.constraintlayout.core.SolverVariable:
     public java.util.HashSet inRows
     public static int uniqueSlackId
@@ -12613,7 +13521,6 @@ androidx.constraintlayout.motion.utils.ViewSpline$CustomSet:
     public java.lang.String mAttributeName
 androidx.constraintlayout.widget.ConstraintSet:
     public boolean mValidate
-com.blankj.utilcode.util.PermissionUtils$FullCallback
 com.jess.arms.base.delegate.FragmentDelegateImpl:
     public androidx.fragment.app.FragmentManager mFragmentManager
 com.bumptech.glide.load.resource.bitmap.DownsampleStrategy:
@@ -12728,6 +13635,8 @@ com.tencent.bugly.proguard.ai$2:
     public final synthetic com.tencent.bugly.proguard.ai c
 control.NavWorkerCenter$2:
     public final synthetic control.NavWorkerCenter this$0
+com.blankj.utilcode.util.MessengerUtils:
+    public static java.util.Map sClientMap
 androidx.constraintlayout.core.widgets.ConstraintWidgetContainer:
     public int mPaddingRight
     public int mPaddingBottom
@@ -12765,7 +13674,6 @@ control.NavHttpCenter$2:
     public final synthetic control.NavHttpCenter this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding this$0
-com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener
 com.cjt2325.cameralibrary.state.BorrowVideoState:
     public final java.lang.String TAG
 com.mikepenz.materialdrawer.MiniDrawer:
@@ -12853,6 +13761,8 @@ androidx.constraintlayout.widget.SharedValues:
     public android.util.SparseIntArray mValues
 com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity_ViewBinding this$0
+com.blankj.utilcode.util.NetworkUtils:
+    public static final java.util.Set SCAN_RESULT_CONSUMERS
 androidx.viewpager2.widget.AnimateLayoutChangeDetector$1:
     public final synthetic androidx.viewpager2.widget.AnimateLayoutChangeDetector this$0
 androidx.core.view.ViewCompat:
@@ -12883,13 +13793,28 @@ com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity_ViewBinding$1
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity_ViewBinding this$0
 com.jess.arms.integration.cache.LruCache:
     public final int initialMaxSize
+androidx.core.app.RemoteInput:
+    public java.lang.CharSequence getLabel()
+    public java.lang.CharSequence[] getChoices()
+    public java.util.Set getAllowedDataTypes()
+    public boolean getAllowFreeFormInput()
+    public int getEditChoicesBeforeSending()
+    public android.os.Bundle getExtras()
 com.blankj.utilcode.util.KeyboardUtils:
-    public static com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener onSoftInputChangedListener
     public static int sDecorViewDelta
+androidx.core.app.NotificationCompatJellybean:
+    public static final java.lang.Object sActionsLock
 androidx.transition.Slide:
     public int mSlideEdge
 androidx.constraintlayout.core.widgets.analyzer.WidgetGroup:
     public boolean authoritative
+androidx.core.app.NotificationCompat$BubbleMetadata:
+    public android.app.PendingIntent getDeleteIntent()
+    public androidx.core.graphics.drawable.IconCompat getIcon()
+    public int getDesiredHeight()
+    public int getDesiredHeightResId()
+    public boolean getAutoExpandBubble()
+    public boolean isNotificationSuppressed()
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.analyzer.DependencyGraph:
@@ -12917,7 +13842,6 @@ androidx.viewpager2.adapter.FragmentStateAdapter:
     public abstract void placeFragmentInViewHolder(androidx.viewpager2.adapter.FragmentViewHolder)
 androidx.core.graphics.TypefaceCompatBaseImpl$1:
     public final synthetic androidx.core.graphics.TypefaceCompatBaseImpl this$0
-com.blankj.utilcode.util.PermissionUtils$OnRationaleListener
 androidx.constraintlayout.core.LinearSystem:
     public static boolean USE_SYNONYMS
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$1:
@@ -12957,6 +13881,8 @@ androidx.core.graphics.TypefaceCompatBaseImpl$2:
     public final synthetic androidx.core.graphics.TypefaceCompatBaseImpl this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$8:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.blankj.utilcode.util.UtilsActivityLifecycleImpl$4:
+    public final synthetic com.blankj.utilcode.util.UtilsActivityLifecycleImpl this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.ChainHead:
@@ -13047,6 +13973,11 @@ androidx.constraintlayout.core.widgets.Guideline:
     public int mMinimumPosition
 com.mikepenz.fastadapter.select.SelectExtension$1:
     public final synthetic com.mikepenz.fastadapter.select.SelectExtension this$0
+kotlinx.android.extensions.CacheImplementation:
+    public static final enum kotlinx.android.extensions.CacheImplementation SPARSE_ARRAY
+    public static final enum kotlinx.android.extensions.CacheImplementation NO_CACHE
+    public static final kotlinx.android.extensions.CacheImplementation DEFAULT
+    public static final kotlinx.android.extensions.CacheImplementation$Companion Companion
 androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1:
     public final synthetic android.app.SharedElementCallback$OnSharedElementsReadyListener val$listener
     public final synthetic androidx.core.app.ActivityCompat$SharedElementCallback21Impl this$0
@@ -13108,7 +14039,6 @@ com.mikepenz.fastadapter.IAdapterNotifier:
     public static final com.mikepenz.fastadapter.IAdapterNotifier LEGACY_DEFAULT
 com.blankj.utilcode.util.FileUtils:
     public static final java.lang.String LINE_SEP
-    public static final char[] HEX_DIGITS
 com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool:
     public final long initialMaxSize
 androidx.constraintlayout.core.motion.utils.Oscillator:
@@ -13191,7 +14121,6 @@ com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding this$0
 com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory$1:
     public final synthetic com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory this$0
-com.blankj.utilcode.util.PermissionUtils$OnRationaleListener$ShouldRequest
 com.jess.arms.integration.cache.CacheType:
     public static final com.jess.arms.integration.cache.CacheType RETROFIT_SERVICE_CACHE
     public static final com.jess.arms.integration.cache.CacheType CACHE_SERVICE_CACHE
@@ -13221,6 +14150,8 @@ androidx.media.MediaBrowserServiceCompat$ConnectionRecord:
     public final androidx.media.MediaSessionManager$RemoteUserInfo browserInfo
 com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding this$0
+com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory$2:
+    public final synthetic com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory this$0
 androidx.appcompat.widget.ThemeUtils:
     public static final int[] ACTIVATED_STATE_SET
     public static final int[] SELECTED_STATE_SET
@@ -13310,18 +14241,6 @@ com.lcw.library.imagepicker.data.MediaFile:
     public java.lang.String mime
 com.bumptech.glide.load.engine.ActiveResources$1$1:
     public final synthetic com.bumptech.glide.load.engine.ActiveResources$1 this$1
-com.blankj.utilcode.util.PermissionUtils:
-    public static boolean isGranted(java.lang.String)
-    public final void getPermissionsStatus(android.app.Activity)
-    public final void requestCallback()
-    public com.blankj.utilcode.util.PermissionUtils$OnRationaleListener mOnRationaleListener
-    public com.blankj.utilcode.util.PermissionUtils$SimpleCallback mSimpleCallback
-    public com.blankj.utilcode.util.PermissionUtils$FullCallback mFullCallback
-    public java.util.Set mPermissions
-    public java.util.List mPermissionsGranted
-    public java.util.List mPermissionsDenied
-    public java.util.List mPermissionsDeniedForever
-    public static final java.util.List PERMISSIONS
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$3:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.LoginActivity:
@@ -13336,7 +14255,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$2:
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_ViewBinding this$0
 com.blankj.utilcode.util.ThreadUtils:
-    public static final java.util.Map TASK_SCHEDULED
+    public static final java.util.Map TASK_POOL_MAP
+    public static final java.util.Timer TIMER
 androidx.constraintlayout.motion.widget.TouchResponse$2:
     public final synthetic androidx.constraintlayout.motion.widget.TouchResponse this$0
 com.mikepenz.fastadapter.FastAdapter$RelativeInfo:
@@ -13356,8 +14276,6 @@ androidx.constraintlayout.motion.widget.MotionConstrainedPoint:
     public static java.lang.String[] names
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$6:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
-com.blankj.utilcode.util.AppUtils:
-    public static final char[] HEX_DIGITS
 androidx.appcompat.view.StandaloneActionMode:
     public boolean mFocusable
 com.jess.arms.mvp.IView$-CC

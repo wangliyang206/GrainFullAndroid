@@ -48,13 +48,17 @@ public class QualityConfigManager {
             String json = FileUtils.readAssetFileUtf8String(context.getAssets(), FILE_NAME_QUALITY);
             JSONObject jsonObject = new JSONObject(json);
             JSONObject newObject = null;
-            if (qualityGrade == 0) {  // normal
+            if (qualityGrade == 0) {
+                // normal
                 newObject = jsonObject.optJSONObject("normal");
-            } else if (qualityGrade == 1) {  // low
+            } else if (qualityGrade == 1) {
+                // low
                 newObject = jsonObject.optJSONObject("loose");
-            } else if (qualityGrade == 2) {  // high
+            } else if (qualityGrade == 2) {
+                // high
                 newObject = jsonObject.optJSONObject("strict");
-            } else if (qualityGrade == 3) {  // custom
+            } else if (qualityGrade == 3) {
+                // custom /data/data/packageName/
                 json = FileUtils.readFileText(context.getFilesDir() + "/" + FILE_NAME_CUSTOM);
                 if (TextUtils.isEmpty(json)) {
                     newObject = jsonObject.optJSONObject("normal");

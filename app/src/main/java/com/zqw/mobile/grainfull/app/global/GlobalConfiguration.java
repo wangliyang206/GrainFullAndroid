@@ -17,10 +17,16 @@ package com.zqw.mobile.grainfull.app.global;
 
 import android.app.Application;
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
+import com.jess.arms.base.delegate.AppLifecycles;
+import com.jess.arms.di.module.GlobalConfigModule;
+import com.jess.arms.http.imageloader.glide.GlideImageLoaderStrategy;
 import com.jess.arms.http.log.FormatPrinter;
+import com.jess.arms.http.log.RequestInterceptor;
+import com.jess.arms.integration.ConfigModule;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.app.config.ActivityLifecycleCallbacksImpl;
 import com.zqw.mobile.grainfull.app.config.AppLifecyclesImpl;
@@ -28,13 +34,7 @@ import com.zqw.mobile.grainfull.app.config.FragmentLifecycleCallbacksImpl;
 import com.zqw.mobile.grainfull.app.config.GlobalHttpHandlerImpl;
 import com.zqw.mobile.grainfull.app.config.ResponseErrorListenerImpl;
 import com.zqw.mobile.grainfull.app.config.SSLSocketClient;
-import com.jess.arms.base.delegate.AppLifecycles;
-import com.jess.arms.di.module.GlobalConfigModule;
-import com.jess.arms.http.imageloader.glide.GlideImageLoaderStrategy;
-import com.jess.arms.http.log.RequestInterceptor;
-import com.jess.arms.integration.ConfigModule;
 
-import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -155,7 +155,7 @@ public final class GlobalConfiguration implements ConfigModule {
                             .serializeNulls()
                             //支持将序列化 key 为 Object 的 Map, 默认只能序列化 key 为 String 的 Map
                             .enableComplexMapKeySerialization();
-                            //解决接口数据中的null改为默认值“”
+                    //解决接口数据中的null改为默认值“”
 //                            .registerTypeAdapter(String.class, new StringNullAdapter());
                 })
                 //这里可以自己自定义配置 Retrofit 的参数, 甚至您可以替换框架配置好的 OkHttpClient 对象 (但是不建议这样做, 这样做您将损失框架提供的很多功能)
@@ -189,7 +189,7 @@ public final class GlobalConfiguration implements ConfigModule {
                     //想自定义 RxCache 的缓存文件夹或者解析方式, 如改成 FastJson, 请 return rxCacheBuilder.persistence(cacheDirectory, new FastJsonSpeaker());
                     //否则请 return null;
                     return null;
-                }).cacheFile(new File(Constant.CACHE_PATH));
+                }).cacheFile(context.getExternalCacheDir());
     }
 
     @Override

@@ -135,7 +135,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="采样率 , 常用率为8000Hz、11025Hz、22050Hz、32000Hz、44100Hz等;"
+            android:text="采样率 , 常用率为8000Hz、16000Hz、11025Hz、22050Hz、32000Hz、44100Hz等;"
             android:textColor="@color/common_text_tips_color"
             android:textSize="12sp" />
     </LinearLayout>

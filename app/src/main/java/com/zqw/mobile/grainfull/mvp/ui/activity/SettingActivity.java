@@ -1,24 +1,25 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
-import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
@@ -41,8 +42,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 /**
  * 设置
@@ -187,11 +186,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
             Message msg = new Message();
             try {
                 DataCleanManager.cleanApplicationData(context,
-                        Constant.IMAGE_PATH,
-                        Constant.CACHE_PATH,
                         Constant.APP_UPDATE_PATH,
                         Constant.LOG_PATH,
-                        Constant.VIDEO_PATH,
                         Constant.AUDIO_PATH);
 
                 msg.what = 1;

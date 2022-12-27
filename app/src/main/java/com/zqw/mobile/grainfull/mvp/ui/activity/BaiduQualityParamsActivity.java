@@ -487,7 +487,7 @@ public class BaiduQualityParamsActivity extends BaseActivity<BaiduQualityParamsP
             jsonObject.put("yaw", mYaw);
             jsonObject.put("roll", mRoll);
             jsonObject.put("blur", NumberUtils.floatToDouble(mBlur));
-            // 保存文件
+            // 保存文件 /data/data/packageName/
             FileUtils.writeToFile(new File(getFilesDir() + "/" + "custom_quality.txt"),
                     jsonObject.toString());
         } catch (JSONException e) {

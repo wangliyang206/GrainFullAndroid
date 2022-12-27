@@ -1,5 +1,3 @@
-import javax.tools.JavaCompiler
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "config.gradle"
 buildscript {
@@ -32,6 +30,7 @@ allprojects {
         mavenCentral()                                                                              // GreenDao仓库
         maven { url "http://maven.aliyun.com/nexus/content/repositories/releases" }                 // 阿里云热修复
         maven { url "https://developer.huawei.com/repo/" }                                          // 配置HMS Core SDK的Maven仓地址。(华为)
+        maven { url = uri("https://maven.pkg.github.com/GCX-HCI/tray") }                            // Tray - SharedPreferences
     }
 }
 

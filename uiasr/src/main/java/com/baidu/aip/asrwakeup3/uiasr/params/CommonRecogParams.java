@@ -64,6 +64,7 @@ public class CommonRecogParams {
         String sampleDir = "baiduASR";
         samplePath = Environment.getExternalStorageDirectory().toString() + "/" + sampleDir;
         if (!FileUtil.makeDir(samplePath)) {
+            // 获取外部私有存储路径   /sdcard/Android/data/packageName/
             samplePath = context.getExternalFilesDir(sampleDir).getAbsolutePath();
             if (!FileUtil.makeDir(samplePath)) {
                 throw new RuntimeException("创建临时目录失败 :" + samplePath);

@@ -1,6 +1,6 @@
 package com.zqw.mobile.grainfull.app.global;
 
-import com.blankj.utilcode.util.SDCardUtils;
+import com.blankj.utilcode.util.PathUtils;
 
 /**
  * 包名： com.zqw.mobile.operation.app.global
@@ -15,34 +15,19 @@ public interface Constant {
     /*----------------------------------------------APP SdCard目录地址-------------------------------------------------*/
 
     /**
-     * 图片路径
-     */
-    String IMAGE_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/ImageInfo/";
-
-    /**
-     * 业务缓存目录
-     */
-    String CACHE_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/Cache/";
-
-    /**
      * APP升级路径
      */
-    String APP_UPDATE_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/AppUpdate/";
+    String APP_UPDATE_PATH = PathUtils.getExternalDocumentsPath() + "/GrainFull/AppUpdate/";
 
     /**
      * log路径
      */
-    String LOG_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/Log/";
-
-    /**
-     * 视频缓存路径
-     */
-    String VIDEO_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/ZQW/grainFull/Video/";
+    String LOG_PATH = PathUtils.getExternalDocumentsPath() + "/GrainFull/Log/";
 
     /**
      * 音频缓存路径
      */
-    String AUDIO_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/Download/grainFull/";
+    String AUDIO_PATH = PathUtils.getExternalDownloadsPath() + "/GrainFull/";
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**

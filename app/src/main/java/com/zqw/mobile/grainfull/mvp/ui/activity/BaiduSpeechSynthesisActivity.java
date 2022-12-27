@@ -28,6 +28,7 @@ import com.zqw.mobile.grainfull.app.dialog.AudioDialog;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
+import com.zqw.mobile.grainfull.app.tts.listener.FileSaveListener;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduSpeechSynthesisComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduSpeechSynthesisContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduSpeechSynthesisPresenter;
@@ -114,7 +115,7 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
         setTitle("语音合成");
 
         synthActivity = new SynthActivity();
-        synthActivity.initTTS(getApplicationContext(),true);
+        synthActivity.initTTS(getApplicationContext(), true);
 
         mAudioDialog = new AudioDialog(this);
 
@@ -277,7 +278,7 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
                 synthActivity.synthesize(val);
                 // 弹出Dialog，可以播放与保存。
                 if (mAudioDialog != null) {
-                    mAudioDialog.setPlayPath(Constant.AUDIO_PATH + "output-0.pcm");
+                    mAudioDialog.setPlayPath(Constant.AUDIO_PATH + FileSaveListener.fileName);
                     mAudioDialog.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                 } else {
                     showMessage("暂无合成结果，请联系管理员！");

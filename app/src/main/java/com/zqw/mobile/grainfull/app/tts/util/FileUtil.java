@@ -20,6 +20,7 @@ public class FileUtil {
         String sampleDir = "baiduTTS";
         String tmpDir = Environment.getExternalStorageDirectory().toString() + "/" + sampleDir;
         if (!FileUtil.makeDir(tmpDir)) {
+            // 获取外部私有存储路径   /sdcard/Android/data/packageName/
             tmpDir = context.getExternalFilesDir(sampleDir).getAbsolutePath();
             if (tmpDir == null || !FileUtil.makeDir(tmpDir)) {
                 throw new RuntimeException("create model resources dir failed :" + tmpDir);
