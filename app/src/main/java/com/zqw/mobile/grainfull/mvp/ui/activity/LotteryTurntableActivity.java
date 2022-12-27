@@ -36,6 +36,7 @@ import butterknife.OnClick;
  * module name is LotteryTurntableActivity
  */
 public class LotteryTurntableActivity extends BaseActivity<LotteryTurntablePresenter> implements LotteryTurntableContract.View {
+    /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.rovi_lotteryturntable_one)
     RotateView roviOne;
 

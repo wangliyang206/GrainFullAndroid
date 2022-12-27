@@ -39,9 +39,16 @@ public class RotateView extends View {
     private int radius = 0;
     private int verPanRadius;
     private int diffRadius;
+
+    // 轮盘中的图片
     private List<Integer> images = new ArrayList<>();
+    // 轮盘中的文字
     private List<String> strs = new ArrayList<>();
 
+    // 扇形A的颜色
+    private int oneSectorColor = Color.rgb(255, 133, 132);
+    // 扇形B的颜色
+    private int twoSectorColor = Color.rgb(254, 104, 105);
 
     private List<Bitmap> bitmaps = new ArrayList<>();
     private ScrollerCompat scroller;
@@ -83,9 +90,9 @@ public class RotateView extends View {
         //初始角度的一半
         diffRadius = verPanRadius / 2;
         //两个扇形的颜色
-        dPaint.setColor(Color.rgb(255, 133, 132));
+        dPaint.setColor(oneSectorColor);
         //两个扇形的颜色
-        sPaint.setColor(Color.rgb(254, 104, 105));
+        sPaint.setColor(twoSectorColor);
         textPaint.setColor(Color.WHITE);
         textPaint.setTextSize(DensityUtils.dip2px(context, 16));
         setClickable(true);
@@ -183,7 +190,9 @@ public class RotateView extends View {
 
     private static final long ONE_WHEEL_TIME = 500;
 
-    //旋转的动画
+    /**
+     * 旋转的动画
+     */
     public void startAnimation(int pos) {
 
         //Rotate lap. 随机的圈数，>4圈，修改可以控制旋转的圈数和时长
@@ -286,6 +295,15 @@ public class RotateView extends View {
      */
     public void setStrName(List<String> name) {
         this.strs.addAll(name);
+        initDate();
+    }
+
+    /**
+     * 设置扇形颜色
+     */
+    public void setSectorColor(int oneColor, int twoColor) {
+        this.oneSectorColor = oneColor;
+        this.twoSectorColor = twoColor;
         initDate();
     }
 

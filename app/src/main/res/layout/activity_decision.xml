@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
     android:orientation="vertical">
 
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_decisionactivity_top"
+        layout="@layout/comm_top_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.RotateView
+            android:id="@+id/rovi_decisionactivity_turntable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/imvi_decisionactivity_one_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/node" />
+    </RelativeLayout>
 </LinearLayout>
