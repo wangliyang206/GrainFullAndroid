@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_turntable_shape"
             android:text="默认"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/rmb_dark_green_color" />
     </LinearLayout>
 
     <RelativeLayout
@@ -37,10 +37,20 @@
             android:layout_centerInParent="true" />
 
         <ImageView
-            android:id="@+id/imvi_decisionactivity_one_start"
+            android:id="@+id/imvi_decisionactivity_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@mipmap/node" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/imvi_decisionactivity_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/common_text_color"
+        android:textSize="16sp" />
 </LinearLayout>

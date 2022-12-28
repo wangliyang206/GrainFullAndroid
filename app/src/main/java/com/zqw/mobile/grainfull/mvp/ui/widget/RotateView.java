@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 转盘 - 旋转位置
+ * 转盘 - 旋转罗盘
  */
 
 public class RotateView extends View {

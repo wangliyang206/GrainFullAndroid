@@ -4,9 +4,9 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +40,8 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
     @BindView(R.id.rovi_decisionactivity_turntable)
     TurntableView mTurntable;
 
+    @BindView(R.id.imvi_decisionactivity_result)
+    TextView txviResult;
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 转盘中的文字
     private List<String> names = new ArrayList<>();
@@ -81,21 +83,21 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
             if (num % 2 == 0) {
                 // 两个颜色
                 if (i % 2 == 0) {
-                    colors.add(Color.parseColor("#3c76cc"));
+                    colors.add(getResources().getColor(R.color.rmb_light_color));
                 } else {
-                    colors.add(Color.parseColor("#97b9dc"));
+                    colors.add(getResources().getColor(R.color.rmb_green_color));
                 }
             } else {
                 // 三个颜色
                 if (i == num - 1) {
                     // 最后一个颜色
-//                    colors.add(getResources().getColor(R.color.colorAccent));
-                    colors.add(Color.parseColor("#eed1bd"));
+                    colors.add(getResources().getColor(R.color.rmb_light_blue_color));
+//                    colors.add(Color.parseColor("#eed1bd"));
                 } else {
                     if (i % 2 == 0) {
-                        colors.add(Color.parseColor("#3c76cc"));
+                        colors.add(getResources().getColor(R.color.rmb_light_color));
                     } else {
-                        colors.add(Color.parseColor("#97b9dc"));
+                        colors.add(getResources().getColor(R.color.rmb_green_color));
                     }
                 }
 
@@ -114,22 +116,22 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
     }
 
     @OnClick({
-            R.id.imvi_decisionactivity_one_start,                                                   // 转盘 - 开始按钮
+            R.id.imvi_decisionactivity_start,                                                       // 转盘 - 开始按钮
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.imvi_decisionactivity_one_start:                                              // 转盘 - 开始按钮
+            case R.id.imvi_decisionactivity_start:                                                  // 转盘 - 开始按钮
                 // 以下为随即抽奖
                 mTurntable.startRotate(new TurntableView.ITurntableListener() {
                     @Override
                     public void onStart() {
-                        showMessage("开始抽奖");
+//                        showMessage("开始抽奖");
                     }
 
                     @Override
                     public void onEnd(int position, String name) {
-                        showMessage("抽中抽奖:" + name);
+                        txviResult.setText(name);
                     }
                 });
 

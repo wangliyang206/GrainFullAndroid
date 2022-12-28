@@ -303,8 +303,7 @@ public class TurntableView extends View {
      */
     public int getRandom(int num) {
         Random random = new Random();
-        int s = random.nextInt(num);
-        return s;
+        return random.nextInt(num);
     }
 
     /**

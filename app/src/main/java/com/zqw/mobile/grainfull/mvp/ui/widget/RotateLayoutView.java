@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 转盘 - 完整品
+ * 转盘 - 完整品(罗盘+灯)
  */
 
 public class RotateLayoutView extends View {
