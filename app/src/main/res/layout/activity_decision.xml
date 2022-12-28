@@ -10,12 +10,27 @@
         android:id="@+id/view_decisionactivity_top"
         layout="@layout/comm_top_layout" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_turntable_shape"
+            android:text="默认"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="20dp">
 
-        <com.zqw.mobile.grainfull.mvp.ui.widget.RotateView
+        <com.zqw.mobile.grainfull.mvp.ui.widget.TurntableView
             android:id="@+id/rovi_decisionactivity_turntable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

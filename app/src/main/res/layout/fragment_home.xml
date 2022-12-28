@@ -298,7 +298,7 @@
                     android:layout_marginStart="10dp"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
-                    android:text="交给苍天"
+                    android:text="做个决定"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_audioconversion"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_audioconversion" />
 

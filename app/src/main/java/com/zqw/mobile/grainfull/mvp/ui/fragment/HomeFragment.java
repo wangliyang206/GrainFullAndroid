@@ -180,7 +180,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_speechsynthesis,                                                  // 语音合成
 
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
-            R.id.btn_fragmenthome_other_decision,                                                   // 交给苍天
+            R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
     })
     @Override
     public void onClick(View v) {
@@ -229,7 +229,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_audioconversion:                                             // 音频转换
                 ActivityUtils.startActivity(AudioConversionActivity.class);
                 break;
-            case R.id.btn_fragmenthome_other_decision:                                              // 交给苍天
+            case R.id.btn_fragmenthome_other_decision:                                              // 做个决定
                 ActivityUtils.startActivity(DecisionActivity.class);
                 break;
         }

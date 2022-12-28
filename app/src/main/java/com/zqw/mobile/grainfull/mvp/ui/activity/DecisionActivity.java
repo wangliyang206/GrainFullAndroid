@@ -18,7 +18,7 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerDecisionComponent;
 import com.zqw.mobile.grainfull.mvp.contract.DecisionContract;
 import com.zqw.mobile.grainfull.mvp.presenter.DecisionPresenter;
-import com.zqw.mobile.grainfull.mvp.ui.widget.RotateView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.TurntableView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +28,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Description:交给苍天
+ * Description:做个决定
  * <p>
  * Created on 2022/12/27 16:16
  *
@@ -38,11 +38,9 @@ import butterknife.OnClick;
 public class DecisionActivity extends BaseActivity<DecisionPresenter> implements DecisionContract.View {
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.rovi_decisionactivity_turntable)
-    RotateView mRotateView;
+    TurntableView mTurntable;
 
     /*------------------------------------------------业务区域------------------------------------------------*/
-    // 转盘中的图片
-    private List<Integer> images = new ArrayList<>();
     // 转盘中的文字
     private List<String> names = new ArrayList<>();
 
@@ -63,22 +61,56 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("交给苍天");
+        setTitle("做个决定");
 
-        names = Arrays.asList(getResources().getStringArray(R.array.LotteryTurntable));
+        // 加载默认数据
+        names = Arrays.asList(getResources().getStringArray(R.array.foodName));
 
-        // 初始化-转盘
-        images.add(R.mipmap.role);
-        images.add(R.mipmap.sports);
-        images.add(R.mipmap.words);
-        images.add(R.mipmap.action);
-        images.add(R.mipmap.combat);
-        images.add(R.mipmap.moba);
-        mRotateView.setSectorColor(Color.rgb(60, 149, 143),Color.rgb(200, 255, 251));
-        mRotateView.setImageIcon(images);
-        mRotateView.setStrName(names);
-        // 获取到位置
-        mRotateView.setOnCallBackPosition(pos -> showMessage("位置：" + names.get(pos)));
+        changeColors();
+        changeDatas();
+    }
+
+    /**
+     * 变更扇形颜色
+     */
+    private void changeColors() {
+        int num = names.size();
+        ArrayList<Integer> colors = new ArrayList<>();
+
+        for (int i = 0; i < num; i++) {
+            if (num % 2 == 0) {
+                // 两个颜色
+                if (i % 2 == 0) {
+                    colors.add(Color.parseColor("#3c76cc"));
+                } else {
+                    colors.add(Color.parseColor("#97b9dc"));
+                }
+            } else {
+                // 三个颜色
+                if (i == num - 1) {
+                    // 最后一个颜色
+//                    colors.add(getResources().getColor(R.color.colorAccent));
+                    colors.add(Color.parseColor("#eed1bd"));
+                } else {
+                    if (i % 2 == 0) {
+                        colors.add(Color.parseColor("#3c76cc"));
+                    } else {
+                        colors.add(Color.parseColor("#97b9dc"));
+                    }
+                }
+
+            }
+        }
+
+        mTurntable.setBackColor(colors);
+    }
+
+    /**
+     * 变更数据
+     */
+    private void changeDatas() {
+        int num = names.size();
+        mTurntable.setDatas(num, names);
     }
 
     @OnClick({
@@ -88,8 +120,31 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imvi_decisionactivity_one_start:                                              // 转盘 - 开始按钮
-                // -1为随机数或者指定位置，但必须小于总个数
-                mRotateView.startAnimation(-1);
+                // 以下为随即抽奖
+                mTurntable.startRotate(new TurntableView.ITurntableListener() {
+                    @Override
+                    public void onStart() {
+                        showMessage("开始抽奖");
+                    }
+
+                    @Override
+                    public void onEnd(int position, String name) {
+                        showMessage("抽中抽奖:" + name);
+                    }
+                });
+
+                // 以下为指定抽奖
+//                mTurntable.startRotate(3,new TurntableView.ITurntableListener() {
+//                    @Override
+//                    public void onStart() {
+//                        showMessage("开始抽奖");
+//                    }
+//
+//                    @Override
+//                    public void onEnd(int position, String name) {
+//                        showMessage("抽中抽奖:" + name);
+//                    }
+//                });
                 break;
         }
     }

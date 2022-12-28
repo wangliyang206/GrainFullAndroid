@@ -15,6 +15,35 @@
         <item>行动</item>
         <item>搏斗</item>
         <item>字母</item>
-
     </string-array>
+
+    <!--注意：pannum的数量一定要和names和icons的数量相同-->
+    <declare-styleable name="TurntableView">
+        <!--转盘的item数量-->
+        <attr name="pannum" format="integer" />
+        <!--转盘的item的文本-->
+        <attr name="names" format="reference" />
+        <!--转盘背景的颜色-->
+        <attr name="colors" format="reference" />
+        <!--控件宽占屏幕宽的比例-->
+        <attr name="percentage" format="float" />
+    </declare-styleable>
+
+    <!-- DecisionActivity 随即食物 -->
+    <string-array name="foodName">
+        <item>手擀面</item>
+        <item>全鸡汉堡</item>
+        <item>麻辣烫</item>
+        <item>火锅</item>
+        <item>烤肉拌饭</item>
+        <item>过桥米线</item>
+        <item>驴肉火烧</item>
+        <item>家常菜</item>
+    </string-array>
+
+    <!-- DecisionActivity 默认颜色 -->
+    <integer-array name="colors">
+        <item>@color/btn_press_color</item>
+        <item>@color/colorPrimary</item>
+    </integer-array>
 </resources>
