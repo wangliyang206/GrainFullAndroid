@@ -29,8 +29,8 @@
         <attr name="percentage" format="float" />
     </declare-styleable>
 
-    <!-- DecisionActivity 随即食物 -->
-    <string-array name="foodName">
+    <!-- DecisionActivity 晚餐食物 -->
+    <string-array name="dinnerFoodName">
         <item>手擀面</item>
         <item>全鸡汉堡</item>
         <item>麻辣烫</item>
@@ -39,6 +39,51 @@
         <item>过桥米线</item>
         <item>驴肉火烧</item>
         <item>家常菜</item>
+    </string-array>
+
+    <!-- DecisionActivity 早餐食物 -->
+    <string-array name="breakfastFoodName">
+        <item>小笼包</item>
+        <item>豆浆油条</item>
+        <item>胡辣汤</item>
+        <item>米粥</item>
+        <item>手抓饼</item>
+        <item>里脊饼</item>
+    </string-array>
+
+    <!-- DecisionActivity 下午做什么 -->
+    <string-array name="afternoonName">
+        <item>读书学习</item>
+        <item>打游戏</item>
+        <item>约会</item>
+        <item>逛街</item>
+        <item>看电影</item>
+    </string-array>
+
+    <!-- DecisionActivity 掷个骰子 -->
+    <string-array name="diceName">
+        <item>.</item>
+        <item>..</item>
+        <item>...</item>
+        <item>....</item>
+        <item>.....</item>
+        <item>......</item>
+    </string-array>
+
+    <!-- DecisionActivity 约会 -->
+    <string-array name="appointmentName">
+        <item>约</item>
+        <item>不约</item>
+    </string-array>
+
+    <!-- DecisionActivity 游戏 -->
+    <string-array name="gameName">
+        <item>我的世界</item>
+        <item>原神</item>
+        <item>Dota</item>
+        <item>英雄联盟</item>
+        <item>多多自走棋</item>
+        <item>和平精英</item>
     </string-array>
 
     <!-- DecisionActivity 默认颜色 -->

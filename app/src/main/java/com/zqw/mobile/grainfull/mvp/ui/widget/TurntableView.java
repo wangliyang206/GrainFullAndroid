@@ -5,8 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -34,6 +32,10 @@ import java.util.Random;
 
 public class TurntableView extends View {
 
+    /**
+     * 扇形内停止位置是否随机：默认false不随机(停在中间)，true为扇形内随机停
+     */
+    private boolean isSectorPositionRandom = false;
     /**
      * 转盘中的项数
      */
@@ -160,7 +162,7 @@ public class TurntableView extends View {
         if (array != null) {
             mPanNum = array.getInteger(R.styleable.TurntableView_pannum, 8);
             int colorsId = array.getResourceId(R.styleable.TurntableView_colors, R.array.colors);
-            int namesArray = array.getResourceId(R.styleable.TurntableView_names, R.array.foodName);
+            int namesArray = array.getResourceId(R.styleable.TurntableView_names, R.array.dinnerFoodName);
             mPercentage = array.getFloat(R.styleable.TurntableView_percentage, (float) 0.75);
             int[] colors = context.getResources().getIntArray(colorsId);
             String[] namesStrs = context.getResources().getStringArray(namesArray);
@@ -312,7 +314,14 @@ public class TurntableView extends View {
      * @param position
      */
     private void setScrollToPosition(final int position) {
-        mRandomPositionPro = getRandomPositionPro();
+        if (isSectorPositionRandom) {
+            // 扇形内随机停
+            mRandomPositionPro = getRandomPositionPro();
+        } else {
+            // 停在扇形中间
+            mRandomPositionPro = 0.5f;
+        }
+
         //计算转动到position位置停止后的角度值
         float entAngle = 270 - mOffsetAngle * ((float) position + mRandomPositionPro);
         if (entAngle < mCurrentAngle) {
@@ -514,6 +523,13 @@ public class TurntableView extends View {
             mNamesStrs.addAll(names);
             invalidate();
         }
+    }
+
+    /**
+     * 单个扇形内是否随机停
+     */
+    public void setPositionRandom(boolean isPositionRandom) {
+        this.isSectorPositionRandom = isPositionRandom;
     }
 
     public interface ITurntableListener {

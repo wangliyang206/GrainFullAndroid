@@ -5,7 +5,10 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +18,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
 import com.zqw.mobile.grainfull.di.component.DaggerDecisionComponent;
 import com.zqw.mobile.grainfull.mvp.contract.DecisionContract;
 import com.zqw.mobile.grainfull.mvp.presenter.DecisionPresenter;
@@ -37,14 +41,22 @@ import butterknife.OnClick;
  */
 public class DecisionActivity extends BaseActivity<DecisionPresenter> implements DecisionContract.View {
     /*------------------------------------------------控件信息------------------------------------------------*/
+    @BindView(R.id.activity_decision)
+    LinearLayout contentLayout;                                                                     // 主布局
+
+    @BindView(R.id.btn_decisionactivity_title)
+    Button txviTitle;
+
     @BindView(R.id.rovi_decisionactivity_turntable)
     TurntableView mTurntable;
 
-    @BindView(R.id.imvi_decisionactivity_result)
+    @BindView(R.id.txvi_decisionactivity_result)
     TextView txviResult;
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 转盘中的文字
     private List<String> names = new ArrayList<>();
+    // 选择器
+    private PopupSelectList mPopup;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -66,10 +78,48 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
         setTitle("做个决定");
 
         // 加载默认数据
-        names = Arrays.asList(getResources().getStringArray(R.array.foodName));
+        names = Arrays.asList(getResources().getStringArray(R.array.dinnerFoodName));
 
+        initPop();
         changeColors();
         changeDatas();
+    }
+
+    /**
+     * 初始化选择器
+     */
+    private void initPop() {
+        List<String> mList = new ArrayList<>();
+        mList.add("今晚吃什么？");
+        mList.add("早上吃什么？");
+        mList.add("下午做什么？");
+        mList.add("掷个骰子");
+        mList.add("约她出去吗？");
+        mList.add("打什么游戏？");
+
+        PopupSelectList.ItemClick itemClick = (position, info) -> {
+            // 显示内容
+            txviTitle.setText(info);
+
+            if (position == 0) {
+                names = Arrays.asList(getResources().getStringArray(R.array.dinnerFoodName));
+            } else if (position == 1) {
+                names = Arrays.asList(getResources().getStringArray(R.array.breakfastFoodName));
+            } else if (position == 2) {
+                names = Arrays.asList(getResources().getStringArray(R.array.afternoonName));
+            } else if (position == 3) {
+                names = Arrays.asList(getResources().getStringArray(R.array.diceName));
+            } else if (position == 4) {
+                names = Arrays.asList(getResources().getStringArray(R.array.appointmentName));
+            } else if (position == 5) {
+                names = Arrays.asList(getResources().getStringArray(R.array.gameName));
+            }
+
+            changeColors();
+            changeDatas();
+            txviResult.setText("");
+        };
+        mPopup = new PopupSelectList(this, "转盘", mList, itemClick);
     }
 
     /**
@@ -91,7 +141,7 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
                 // 三个颜色
                 if (i == num - 1) {
                     // 最后一个颜色
-                    colors.add(getResources().getColor(R.color.rmb_light_blue_color));
+                    colors.add(getResources().getColor(R.color.rmb_dark_green_color));
 //                    colors.add(Color.parseColor("#eed1bd"));
                 } else {
                     if (i % 2 == 0) {
@@ -116,17 +166,24 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
     }
 
     @OnClick({
+            R.id.btn_decisionactivity_title,                                                        // 选择转盘
             R.id.imvi_decisionactivity_start,                                                       // 转盘 - 开始按钮
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_decisionactivity_title:                                                   // 选择转盘
+                if (mPopup != null) {
+                    mPopup.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                }
+                break;
             case R.id.imvi_decisionactivity_start:                                                  // 转盘 - 开始按钮
                 // 以下为随即抽奖
                 mTurntable.startRotate(new TurntableView.ITurntableListener() {
                     @Override
                     public void onStart() {
 //                        showMessage("开始抽奖");
+                        txviResult.setText("");
                     }
 
                     @Override
