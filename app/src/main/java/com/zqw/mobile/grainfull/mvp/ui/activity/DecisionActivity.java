@@ -14,11 +14,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
+import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.di.component.DaggerDecisionComponent;
 import com.zqw.mobile.grainfull.mvp.contract.DecisionContract;
 import com.zqw.mobile.grainfull.mvp.presenter.DecisionPresenter;
@@ -78,7 +80,7 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
         setTitle("做个决定");
 
         // 加载默认数据
-        names = Arrays.asList(getResources().getStringArray(R.array.dinnerFoodName));
+        names = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.dinnerFoodName)));
 
         initPop();
         changeColors();
@@ -102,17 +104,17 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
             txviTitle.setText(info);
 
             if (position == 0) {
-                names = Arrays.asList(getResources().getStringArray(R.array.dinnerFoodName));
+                names = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.dinnerFoodName)));
             } else if (position == 1) {
-                names = Arrays.asList(getResources().getStringArray(R.array.breakfastFoodName));
+                names = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.breakfastFoodName)));
             } else if (position == 2) {
-                names = Arrays.asList(getResources().getStringArray(R.array.afternoonName));
+                names = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.afternoonName)));
             } else if (position == 3) {
-                names = Arrays.asList(getResources().getStringArray(R.array.diceName));
+                names = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.diceName)));
             } else if (position == 4) {
-                names = Arrays.asList(getResources().getStringArray(R.array.appointmentName));
+                names = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.appointmentName)));
             } else if (position == 5) {
-                names = Arrays.asList(getResources().getStringArray(R.array.gameName));
+                names = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.gameName)));
             }
 
             changeColors();
@@ -167,6 +169,7 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
 
     @OnClick({
             R.id.btn_decisionactivity_title,                                                        // 选择转盘
+            R.id.btn_decisionactivity_edit,                                                         // 编辑转盘
             R.id.imvi_decisionactivity_start,                                                       // 转盘 - 开始按钮
     })
     @Override
@@ -176,6 +179,9 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
                 if (mPopup != null) {
                     mPopup.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                 }
+                break;
+            case R.id.btn_decisionactivity_edit:                                                    // 编辑转盘
+                ActivityUtils.startActivityForResult(this, EditTurntableActivity.class, Constant.MAIN_BASICINFO);
                 break;
             case R.id.imvi_decisionactivity_start:                                                  // 转盘 - 开始按钮
                 // 以下为随即抽奖
@@ -206,6 +212,19 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
 //                });
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constant.MAIN_BASICINFO && resultCode == RESULT_OK) {
+            names.clear();
+            names.addAll(data.getStringArrayListExtra("Turntable"));
+            txviTitle.setText(data.getStringExtra("title"));
+            changeColors();
+            changeDatas();
+        }
+
     }
 
     public Activity getActivity() {

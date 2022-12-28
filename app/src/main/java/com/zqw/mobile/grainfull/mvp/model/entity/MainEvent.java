@@ -36,6 +36,12 @@ public class MainEvent {
         this.position = position;
     }
 
+    public MainEvent(int code, int position, String msg) {
+        this.code = code;
+        this.position = position;
+        this.msg = msg;
+    }
+
     public MainEvent(int code, int type, MLLivenessCaptureResult result) {
         this.code = code;
         this.type = type;

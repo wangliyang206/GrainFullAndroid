@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_edit_turntable"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!-- 头部 -->
+        <include
+            android:id="@+id/view_editturntable_top"
+            layout="@layout/comm_top_layout" />
+
+        <ImageView
+            android:id="@+id/imvi_editturntable_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:src="@mipmap/icon_add_decision"
+            app:layout_constraintBottom_toBottomOf="@+id/view_editturntable_top"
+            app:layout_constraintRight_toLeftOf="@+id/imvi_editturntable_ok"
+            app:layout_constraintTop_toTopOf="@+id/view_editturntable_top" />
+
+        <ImageView
+            android:id="@+id/imvi_editturntable_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:src="@mipmap/icon_ok_decision"
+            app:layout_constraintBottom_toBottomOf="@+id/view_editturntable_top"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_editturntable_top" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 标题 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="标题"
+        android:textColor="@color/rmb_dark_green_color"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edit_editturntable_title"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/financial_bg_frame"
+        android:gravity="center_vertical"
+        android:hint="请填写标题"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
+        android:text=""
+        android:textColor="@color/common_text_color"
+        android:textColorHint="@color/common_text_hint_color"
+        android:textSize="13sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="选项"
+        android:textColor="@color/rmb_dark_green_color"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/revi_editturntable_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="20dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
