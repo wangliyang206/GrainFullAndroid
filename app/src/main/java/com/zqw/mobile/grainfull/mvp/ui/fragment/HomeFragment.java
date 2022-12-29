@@ -33,6 +33,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
@@ -181,6 +182,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
+            R.id.btn_fragmenthome_other_bulletchat,                                                 // 手持弹幕
     })
     @Override
     public void onClick(View v) {
@@ -231,6 +233,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_other_decision:                                              // 做个决定
                 ActivityUtils.startActivity(DecisionActivity.class);
+                break;
+            case R.id.btn_fragmenthome_other_bulletchat:                                            // 手持弹幕
+                ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
                 break;
         }
     }

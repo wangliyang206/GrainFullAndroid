@@ -22,7 +22,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * Created by tomas on 01/06/15.
+ * 页眉
  */
 public class HeaderViewHolder extends RecyclerView.ViewHolder {
 

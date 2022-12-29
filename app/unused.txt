@@ -984,8 +984,6 @@ org.reactivestreams.FlowAdapters$FlowToReactiveSubscription
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$4
 kotlin.reflect.KProperty1$Getter
 androidx.core.view.WindowInsetsControllerCompat$Impl
-com.jess.arms.base.BaseHolder:
-    protected void onRelease()
 com.bumptech.glide.request.transition.BitmapTransitionFactory:
     public void <init>(com.bumptech.glide.request.transition.TransitionFactory)
 kotlin.coroutines.experimental.SequenceBuilderIterator
@@ -2299,6 +2297,10 @@ com.afollestad.materialdialogs.MaterialDialog$ButtonCallback:
     protected final void finalize()
     public final int hashCode()
     public final java.lang.String toString()
+com.zqw.mobile.grainfull.mvp.ui.widget.RotateLayout:
+    private static final java.lang.String TAG
+    private static final java.lang.String START_BTN_TAG
+    public static final int DEFAULT_TIME_PERIOD
 com.mikepenz.iconics.Iconics
 com.zqw.mobile.grainfull.mvp.ui.activity.MainActivity:
     private static final java.lang.String POSITION
@@ -2351,6 +2353,7 @@ androidx.appcompat.widget.ListPopupWindow:
     public static final int INPUT_METHOD_FROM_FOCUSABLE
     public static final int INPUT_METHOD_NEEDED
     public static final int INPUT_METHOD_NOT_NEEDED
+com.zqw.mobile.grainfull.di.module.EditTurntableModule_ProvideAccountManagerFactory
 kotlin.sequences.Sequence
 androidx.core.location.LocationManagerCompat$GpsStatusTransport
 androidx.recyclerview.widget.StaggeredGridLayoutManager$LayoutParams:
@@ -2781,6 +2784,8 @@ uk.co.senab.photoview.log.Logger:
     public abstract int w(java.lang.String,java.lang.String,java.lang.Throwable)
     public abstract int e(java.lang.String,java.lang.String)
     public abstract int e(java.lang.String,java.lang.String,java.lang.Throwable)
+com.zqw.mobile.grainfull.mvp.ui.widget.RotateView:
+    private static final long ONE_WHEEL_TIME
 com.jakewharton.rxbinding3.view.ViewGroupHierarchyChangeEvent
 androidx.constraintlayout.core.motion.MotionConstrainedPoint
 com.jakewharton.rxbinding3.view.MenuItemActionViewEventObservable$Listener
@@ -3004,6 +3009,7 @@ com.mikepenz.materialdrawer.model.MiniDrawerItem:
     public com.mikepenz.materialdrawer.model.MiniDrawerItem withCustomHeight(com.mikepenz.materialdrawer.holder.DimenHolder)
 kotlin.sequences.TakeWhileSequence$iterator$1
 kotlin.jvm.internal.CollectionToArray
+com.zqw.mobile.grainfull.di.module.EditTurntableModule_ProviderOperatorFactory
 kotlin.reflect.KProperty0$Getter
 com.zqw.mobile.grainfull.mvp.model.api.AccountService
 com.zqw.mobile.grainfull.di.module.HomeModule:
@@ -3439,6 +3445,15 @@ androidx.core.accessibilityservice.AccessibilityServiceInfoCompat
 com.mikepenz.itemanimators.BaseItemAnimator:
     public java.lang.Object withInterpolator(android.view.animation.Interpolator)
     private static final boolean DEBUG
+com.zqw.mobile.grainfull.mvp.presenter.EditTurntablePresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.EditTurntablePresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.internal.ProgressionUtilKt
 com.jakewharton.rxbinding3.widget.PopupMenuItemClickObservable
 kotlin.ranges.IntProgressionIterator
@@ -3604,6 +3619,9 @@ com.bumptech.glide.disklrucache.StrictLineReader:
 androidx.core.view.inputmethod.InputContentInfoCompat
 kotlin.contracts.ConditionalEffect
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceMapIterator
+com.zqw.mobile.grainfull.di.module.LotteryTurntableModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.LotteryTurntableContract$Model bindLotteryTurntableModel(com.zqw.mobile.grainfull.mvp.model.LotteryTurntableModel)
 androidx.core.app.NotificationCompat$BigTextStyle
 androidx.core.widget.ImageViewCompat:
     private void <init>()
@@ -3898,11 +3916,14 @@ androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat$2
 com.zqw.mobile.grainfull.mvp.contract.MainContract
 com.bumptech.glide.MemoryCategory:
     public float getMultiplier()
+com.zqw.mobile.grainfull.mvp.contract.LotteryTurntableContract
 androidx.lifecycle.ComputableLiveData
 com.paginate.recycler.LoadingListItemCreator
 com.blankj.utilcode.util.LogUtils$4
 com.blankj.utilcode.util.ShadowUtils$DrawableWrapper
 com.bigkoo.pickerview.view.BasePickerView
+com.zqw.mobile.grainfull.di.module.EditTurntableModule_ProvideListFactory$InstanceHolder:
+    private void <init>()
 androidx.core.view.accessibility.AccessibilityNodeProviderCompat:
     public static final int HOST_VIEW_ID
 com.mikepenz.materialize.util.KeyboardUtil:
@@ -4060,6 +4081,8 @@ androidx.constraintlayout.widget.Constraints$LayoutParams:
     public void <init>(androidx.constraintlayout.widget.Constraints$LayoutParams)
 kotlin.properties.NotNullVar
 androidx.constraintlayout.core.parser.CLToken$1
+com.zqw.mobile.grainfull.mvp.ui.widget.TurntableView:
+    public void startRotate(int,com.zqw.mobile.grainfull.mvp.ui.widget.TurntableView$ITurntableListener)
 androidx.recyclerview.widget.ItemTouchHelper$SimpleCallback
 com.zqw.mobile.grainfull.app.tts.SynthActivity:
     private void switchOffTheOfflineResource()
@@ -4153,6 +4176,15 @@ androidx.fragment.app.BackStackRecord:
     static final java.lang.String TAG
 kotlin.collections.ArraysKt___ArraysKt$withIndex$6
 com.jakewharton.rxbinding3.widget.RxRatingBar__RatingBarRatingChangeEventObservableKt
+com.zqw.mobile.grainfull.mvp.presenter.LotteryTurntablePresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.LotteryTurntablePresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.jvm.functions.Function18
 io.rx_cache2.internal.ProxyTranslator
 kotlin.ranges.UIntRange$Companion
@@ -5320,7 +5352,6 @@ com.jess.arms.di.module.ClientModule:
     private static final int TIME_OUT
 androidx.annotation.experimental.R
 com.jess.arms.base.DefaultAdapter:
-    public static void releaseAllHolder(androidx.recyclerview.widget.RecyclerView)
     public java.util.List getInfos()
     public java.lang.Object getItem(int)
 androidx.core.view.WindowInsetsAnimationControllerCompat$Impl
@@ -7128,7 +7159,6 @@ com.blankj.utilcode.util.ActivityUtils:
     public static void startActivity(android.app.Activity,android.content.Intent,android.os.Bundle)
     public static varargs void startActivity(android.app.Activity,android.content.Intent,android.view.View[])
     public static void startActivity(android.app.Activity,android.content.Intent,int,int)
-    public static void startActivityForResult(android.app.Activity,java.lang.Class,int)
     public static void startActivityForResult(android.app.Activity,java.lang.Class,int,android.os.Bundle)
     public static varargs void startActivityForResult(android.app.Activity,java.lang.Class,int,android.view.View[])
     public static void startActivityForResult(android.app.Activity,java.lang.Class,int,int,int)
@@ -7202,8 +7232,6 @@ com.blankj.utilcode.util.ActivityUtils:
     public static android.graphics.drawable.Drawable getActivityLogo(android.app.Activity)
     public static android.graphics.drawable.Drawable getActivityLogo(java.lang.Class)
     public static android.graphics.drawable.Drawable getActivityLogo(android.content.ComponentName)
-    private static boolean startActivityForResult(android.app.Activity,android.os.Bundle,java.lang.String,java.lang.String,int,android.os.Bundle)
-    private static boolean startActivityForResult(android.content.Intent,android.app.Activity,int,android.os.Bundle)
     private static void startActivities(android.content.Intent[],android.content.Context,android.os.Bundle)
     private static boolean startActivityForResult(androidx.fragment.app.Fragment,android.os.Bundle,java.lang.String,java.lang.String,int,android.os.Bundle)
     private static boolean startActivityForResult(android.content.Intent,androidx.fragment.app.Fragment,int,android.os.Bundle)
@@ -7240,6 +7268,7 @@ androidx.appcompat.widget.DecorToolbar:
     public abstract int getVisibility()
 androidx.core.os.LocaleListInterface
 kotlin.random.URandomKt
+com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity_MembersInjector
 io.rx_cache2.internal.cache.memory.apache.AbstractMapEntry
 androidx.constraintlayout.motion.widget.KeyCycle:
     public void setValue(java.lang.String,java.lang.Object)
@@ -8539,6 +8568,7 @@ androidx.constraintlayout.core.motion.utils.FloatRect
 kotlin.jvm.functions.Function20
 androidx.core.location.LocationManagerCompat$GpsStatusTransport$1
 kotlin.jvm.internal.LocalVariableReference
+com.zqw.mobile.grainfull.di.module.EditTurntableModule_ProviderRequestMapperFactory
 com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory:
     private static final int DEFAULT_PRIORITY
 androidx.core.app.NotificationCompat$DecoratedCustomViewStyle
@@ -8592,6 +8622,9 @@ androidx.recyclerview.widget.SnapHelper:
 com.blankj.utilcode.util.PermissionUtils$OnExplainListener
 io.rx_cache2.internal.RxCacheModule_UseExpiredDataIfLoaderNotAvailableFactory
 com.mikepenz.materialdrawer.util.DrawerItemViewHelper
+com.zqw.mobile.grainfull.di.module.DecisionModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.DecisionContract$Model bindDecisionModel(com.zqw.mobile.grainfull.mvp.model.DecisionModel)
 androidx.constraintlayout.motion.utils.ViewOscillator:
     private static final java.lang.String TAG
 kotlin.time.FormatToDecimalsKt
@@ -9263,6 +9296,13 @@ com.zqw.mobile.grainfull.mvp.ui.adapter.FragmentPagerAdapter
 kotlin.text.RegexKt$fromInt$$inlined$apply$lambda$1
 com.bumptech.glide.request.target.ViewTarget$1:
     void <init>(com.bumptech.glide.request.target.ViewTarget)
+com.zqw.mobile.grainfull.mvp.model.LotteryTurntableModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.LotteryTurntableModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 androidx.core.app.NotificationCompat$Action$WearableExtender
 com.mikepenz.materialdrawer.model.interfaces.Badgeable
 androidx.core.view.ViewCompat$Api21Impl:
@@ -9754,7 +9794,63 @@ androidx.appcompat.widget.AppCompatDrawableManager:
     private static final java.lang.String TAG
     private static final boolean DEBUG
 kotlin.properties.ReadWriteProperty
-com.blankj.utilcode.util.ConvertUtils
+com.blankj.utilcode.util.ConvertUtils:
+    private void <init>()
+    public static java.lang.String int2HexString(int)
+    public static int hexString2Int(java.lang.String)
+    public static java.lang.String bytes2Bits(byte[])
+    public static byte[] bits2Bytes(java.lang.String)
+    public static char[] bytes2Chars(byte[])
+    public static byte[] chars2Bytes(char[])
+    public static java.lang.String bytes2HexString(byte[])
+    public static java.lang.String bytes2HexString(byte[],boolean)
+    public static byte[] hexString2Bytes(java.lang.String)
+    private static int hex2Dec(char)
+    public static java.lang.String bytes2String(byte[])
+    public static java.lang.String bytes2String(byte[],java.lang.String)
+    public static byte[] string2Bytes(java.lang.String)
+    public static byte[] string2Bytes(java.lang.String,java.lang.String)
+    public static org.json.JSONObject bytes2JSONObject(byte[])
+    public static byte[] jsonObject2Bytes(org.json.JSONObject)
+    public static org.json.JSONArray bytes2JSONArray(byte[])
+    public static byte[] jsonArray2Bytes(org.json.JSONArray)
+    public static java.lang.Object bytes2Parcelable(byte[],android.os.Parcelable$Creator)
+    public static byte[] parcelable2Bytes(android.os.Parcelable)
+    public static java.lang.Object bytes2Object(byte[])
+    public static byte[] serializable2Bytes(java.io.Serializable)
+    public static android.graphics.Bitmap bytes2Bitmap(byte[])
+    public static byte[] bitmap2Bytes(android.graphics.Bitmap)
+    public static byte[] bitmap2Bytes(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat,int)
+    public static android.graphics.drawable.Drawable bytes2Drawable(byte[])
+    public static byte[] drawable2Bytes(android.graphics.drawable.Drawable)
+    public static byte[] drawable2Bytes(android.graphics.drawable.Drawable,android.graphics.Bitmap$CompressFormat,int)
+    public static long memorySize2Byte(long,int)
+    public static double byte2MemorySize(long,int)
+    public static java.lang.String byte2FitMemorySize(long)
+    public static java.lang.String byte2FitMemorySize(long,int)
+    public static long timeSpan2Millis(long,int)
+    public static long millis2TimeSpan(long,int)
+    public static java.lang.String millis2FitTimeSpan(long,int)
+    public static java.io.ByteArrayOutputStream input2OutputStream(java.io.InputStream)
+    public static java.io.ByteArrayInputStream output2InputStream(java.io.OutputStream)
+    public static byte[] inputStream2Bytes(java.io.InputStream)
+    public static java.io.InputStream bytes2InputStream(byte[])
+    public static byte[] outputStream2Bytes(java.io.OutputStream)
+    public static java.io.OutputStream bytes2OutputStream(byte[])
+    public static java.lang.String inputStream2String(java.io.InputStream,java.lang.String)
+    public static java.io.InputStream string2InputStream(java.lang.String,java.lang.String)
+    public static java.lang.String outputStream2String(java.io.OutputStream,java.lang.String)
+    public static java.io.OutputStream string2OutputStream(java.lang.String,java.lang.String)
+    public static java.util.List inputStream2Lines(java.io.InputStream)
+    public static java.util.List inputStream2Lines(java.io.InputStream,java.lang.String)
+    public static android.graphics.Bitmap drawable2Bitmap(android.graphics.drawable.Drawable)
+    public static android.graphics.drawable.Drawable bitmap2Drawable(android.graphics.Bitmap)
+    public static android.graphics.Bitmap view2Bitmap(android.view.View)
+    public static int px2dp(float)
+    public static int sp2px(float)
+    public static int px2sp(float)
+    private static java.lang.String getSafeCharset(java.lang.String)
+    private static final int BUFFER_SIZE
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceEntrySetIterator
 androidx.constraintlayout.motion.widget.Key:
     public abstract void setValue(java.lang.String,java.lang.Object)
@@ -9953,6 +10049,7 @@ cn.bingoogolapple.swipebacklayout.BGAKeyboardUtil$1
 androidx.core.location.LocationManagerCompat$GnssStatusTransport
 com.bumptech.glide.load.data.mediastore.ThumbnailStreamOpener:
     private static final java.lang.String TAG
+com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_MembersInjector
 com.jakewharton.rxbinding3.view.RxView__ViewTouchObservableKt
 kotlin.coroutines.CombinedContext$Serialized
 com.jakewharton.rxbinding3.widget.RxPopupMenu
@@ -10067,6 +10164,13 @@ androidx.vectordrawable.graphics.drawable.AndroidResources:
     public static final int FAST_OUT_LINEAR_IN
     public static final int FAST_OUT_SLOW_IN
     public static final int LINEAR_OUT_SLOW_IN
+com.zqw.mobile.grainfull.mvp.model.EditTurntableModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.EditTurntableModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.paginate.recycler.RecyclerPaginate
 com.blankj.utilcode.util.ThreadUtils$3
 kotlin.jvm.JvmClassMappingKt
@@ -10486,8 +10590,6 @@ kotlin.UnsafeLazyImpl
 com.jude.easyrecyclerview.swipe.MaterialProgressDrawable$Ring:
     public float getRotation()
     public float getInsets()
-com.zqw.mobile.grainfull.mvp.ui.holder.SelectFinancialItemHolder:
-    protected void onRelease()
 com.blankj.utilcode.util.DeviceUtils
 com.paginate.abslistview.AbsListViewPaginate$Builder
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceKeySet
@@ -10626,6 +10728,13 @@ kotlin.collections.CollectionsKt___CollectionsKt$withIndex$1
 com.jess.arms.base.BaseLazyLoadFragment
 kotlin.collections.MapsKt__MapsKt
 kotlin.NotImplementedError
+com.zqw.mobile.grainfull.mvp.model.DecisionModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.DecisionModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 androidx.appcompat.widget.PopupMenu$OnMenuItemClickListener
 androidx.core.math.MathUtils:
     private void <init>()
@@ -10741,6 +10850,7 @@ androidx.viewpager2.widget.FakeDrag:
     private long mFakeDragBeginTime
 androidx.appcompat.widget.TooltipCompat:
     private void <init>()
+com.zqw.mobile.grainfull.mvp.contract.DecisionContract
 kotlin.coroutines.experimental.CoroutineContext$DefaultImpls
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$ValuesIterator
 androidx.core.view.MenuCompat
@@ -11621,6 +11731,7 @@ androidx.core.view.WindowInsetsControllerCompat$Impl20
 androidx.appcompat.widget.ActionBarOverlayLayout$LayoutParams:
     public void <init>(android.view.ViewGroup$MarginLayoutParams)
 com.blankj.utilcode.util.VolumeUtils
+com.zqw.mobile.grainfull.mvp.contract.EditTurntableContract
 androidx.loader.content.ModernAsyncTask$AsyncTaskResult
 kotlin.jvm.internal.BooleanCompanionObject
 com.mikepenz.fastadapter.expandable.items.AbstractExpandableItem
@@ -12242,6 +12353,12 @@ com.zqw.mobile.grainfull.mvp.presenter.AboutPresenter_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mErrorHandlerProvider
 kotlin.io.ConstantsKt
+com.zqw.mobile.grainfull.di.module.EditTurntableModule:
+    public void <init>()
+    static com.zqw.mobile.grainfull.app.global.AccountManager provideAccountManager(com.zqw.mobile.grainfull.mvp.contract.EditTurntableContract$View)
+    static com.jess.arms.cj.IRequestMapper providerRequestMapper(com.zqw.mobile.grainfull.mvp.contract.EditTurntableContract$View,com.zqw.mobile.grainfull.app.global.AccountManager)
+    static com.jess.arms.cj.ApiOperator providerOperator(com.jess.arms.cj.IRequestMapper)
+    abstract com.zqw.mobile.grainfull.mvp.contract.EditTurntableContract$Model bindEditTurntableModel(com.zqw.mobile.grainfull.mvp.model.EditTurntableModel)
 kotlin.time.Duration$Companion
 kotlin.PreconditionsKt
 kotlin.coroutines.CombinedContext
@@ -12768,6 +12885,15 @@ androidx.core.net.MailTo
 androidx.constraintlayout.core.motion.utils.TypedValues$Motion
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceStrength
 com.mikepenz.materialize.color.Material$BlueGrey
+com.zqw.mobile.grainfull.mvp.presenter.DecisionPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.DecisionPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.collections.EmptyMap
 com.blankj.utilcode.util.NetworkUtils$4
 androidx.core.app.NotificationManagerCompat$Task
@@ -12899,6 +13025,15 @@ com.bumptech.glide.load.engine.cache.DiskCache:
     public abstract void delete(com.bumptech.glide.load.Key)
 kotlin.random.Random$Companion
 kotlin.properties.ReadOnlyProperty
+com.zqw.mobile.grainfull.mvp.ui.activity.EditTurntableActivity_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.ui.activity.EditTurntableActivity)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mPresenterProvider
+    private final javax.inject.Provider mLayoutManagerProvider
+    private final javax.inject.Provider mListProvider
+    private final javax.inject.Provider mAdapterProvider
 androidx.transition.ChangeTransform:
     public boolean getReparentWithOverlay()
     public void setReparentWithOverlay(boolean)
@@ -12998,6 +13133,8 @@ okio.BufferedSink:
     public abstract java.io.OutputStream outputStream()
 com.jakewharton.rxbinding3.widget.RatingBarRatingChangeObservable
 kotlin.comparisons.ComparisonsKt__ComparisonsKt
+com.zqw.mobile.grainfull.mvp.ui.widget.RotateLayoutView:
+    private static final long ONE_WHEEL_TIME
 com.blankj.utilcode.util.MapUtils$Transformer
 com.jakewharton.rxbinding3.widget.RxRadioGroup
 com.mikepenz.fastadapter.utils.package-info
@@ -13361,6 +13498,8 @@ androidx.constraintlayout.core.motion.utils.LinearCurveFit:
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding$4:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding this$0
 com.mikepenz.materialdrawer.model.interfaces.ColorfulBadgeable
+com.zqw.mobile.grainfull.mvp.ui.activity.EditTurntableActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.EditTurntableActivity_ViewBinding this$0
 androidx.core.app.JobIntentService:
     public boolean mStopped
     public static final java.lang.Object sLock
@@ -13509,6 +13648,8 @@ com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$6:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.lifecycle.Lifecycle:
     public java.util.concurrent.atomic.AtomicReference mInternalScopeRef
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$16:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.bumptech.glide.load.model.ByteArrayLoader$StreamFactory$1:
     public final synthetic com.bumptech.glide.load.model.ByteArrayLoader$StreamFactory this$0
 com.lcw.library.imagepicker.adapter.ImagePickerAdapter$MediaHolder:
@@ -13567,6 +13708,8 @@ com.lcw.library.imagepicker.utils.MediaFileUtil:
     public static java.lang.String sFileExtensions
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$14:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.widget.RotateView:
+    public androidx.core.widget.ScrollerCompat scroller
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraConfigurationUtils:
     public static final java.util.regex.Pattern SEMICOLON
 com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity_ViewBinding$1:
@@ -13623,6 +13766,8 @@ com.mikepenz.fastadapter.FastAdapter$3:
     public final synthetic com.mikepenz.fastadapter.FastAdapter this$0
 androidx.appcompat.app.ActionBarDrawerToggle:
     public android.graphics.drawable.Drawable mHomeAsUpIndicator
+com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding this$0
 com.jess.arms.mvp.BaseModel:
     public com.jess.arms.integration.IRepositoryManager mRepositoryManager
 com.tencent.bugly.proguard.at$1:
@@ -13637,6 +13782,8 @@ control.NavWorkerCenter$2:
     public final synthetic control.NavWorkerCenter this$0
 com.blankj.utilcode.util.MessengerUtils:
     public static java.util.Map sClientMap
+com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.ConstraintWidgetContainer:
     public int mPaddingRight
     public int mPaddingBottom
@@ -13661,6 +13808,9 @@ androidx.media.MediaBrowserServiceCompat$ServiceCallbacksCompat:
     public void onConnect(java.lang.String,android.support.v4.media.session.MediaSessionCompat$Token,android.os.Bundle)
 androidx.drawerlayout.widget.DrawerLayout:
     public boolean mDisallowInterceptRequested
+com.zqw.mobile.grainfull.mvp.ui.widget.TurntableView:
+    public int mRadius
+    public int mScreenHeight
 com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding this$0
 androidx.appcompat.widget.ActivityChooserModel:
@@ -13674,6 +13824,8 @@ control.NavHttpCenter$2:
     public final synthetic control.NavHttpCenter this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding this$0
 com.cjt2325.cameralibrary.state.BorrowVideoState:
     public final java.lang.String TAG
 com.mikepenz.materialdrawer.MiniDrawer:
@@ -13720,6 +13872,8 @@ androidx.dynamicanimation.animation.DynamicAnimation:
     public static final androidx.dynamicanimation.animation.DynamicAnimation$ViewProperty Z
     public static final androidx.dynamicanimation.animation.DynamicAnimation$ViewProperty SCROLL_X
     public static final androidx.dynamicanimation.animation.DynamicAnimation$ViewProperty SCROLL_Y
+com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.app.config.AppLifecyclesImpl$2:
     public final synthetic com.zqw.mobile.grainfull.app.config.AppLifecyclesImpl this$0
 androidx.transition.ChangeBounds$10:
@@ -13733,6 +13887,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBindin
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding this$0
 androidx.transition.ChangeBounds$8:
     public final synthetic androidx.transition.ChangeBounds this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding this$0
 androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat:
     public android.animation.Animator$AnimatorListener mAnimatorListener
     public java.util.ArrayList mAnimationCallbacks
@@ -13775,6 +13931,8 @@ com.bumptech.glide.load.engine.prefill.BitmapPreFillRunner:
     public static final com.bumptech.glide.load.engine.prefill.BitmapPreFillRunner$Clock DEFAULT_CLOCK
 com.lcw.library.imagepicker.data.MediaFolder:
     public int folderId
+com.zqw.mobile.grainfull.mvp.ui.activity.EditTurntableActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.EditTurntableActivity_ViewBinding this$0
 com.bumptech.glide.load.resource.bitmap.VideoDecoder$ByteBufferInitializer$1:
     public final synthetic com.bumptech.glide.load.resource.bitmap.VideoDecoder$ByteBufferInitializer this$0
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$CycleOscillator:
@@ -13852,6 +14010,8 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.BeepManager:
     public boolean vibrate
 com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.adapter.EditTurntableAdapter$ViewHolder:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.adapter.EditTurntableAdapter this$0
 com.bumptech.glide.RequestBuilder:
     public final com.bumptech.glide.Glide glide
     public static final com.bumptech.glide.request.RequestOptions DOWNLOAD_ONLY_OPTIONS
@@ -13967,6 +14127,8 @@ androidx.recyclerview.widget.ItemTouchHelper$RecoverAnimation:
     public final int mAnimationType
 com.lcw.library.imagepicker.adapter.ImagePickerAdapter$ImageHolder:
     public final synthetic com.lcw.library.imagepicker.adapter.ImagePickerAdapter this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.LoginActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LoginActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.Guideline:
@@ -14003,6 +14165,9 @@ androidx.transition.ChangeClipBounds$1:
 com.bumptech.glide.load.model.LazyHeaders$Builder:
     public boolean copyOnModify
     public boolean isUserAgentDefault
+com.blankj.utilcode.util.ConvertUtils:
+    public static final char[] HEX_DIGITS_UPPER
+    public static final char[] HEX_DIGITS_LOWER
 androidx.core.view.WindowInsetsCompat$Impl29:
     public androidx.core.graphics.Insets mSystemGestureInsets
     public androidx.core.graphics.Insets mTappableElementInsets
@@ -14243,6 +14408,8 @@ com.bumptech.glide.load.engine.ActiveResources$1$1:
     public final synthetic com.bumptech.glide.load.engine.ActiveResources$1 this$1
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$3:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.widget.RotateLayoutView:
+    public androidx.core.widget.ScrollerCompat scroller
 com.zqw.mobile.grainfull.mvp.ui.activity.LoginActivity:
     public io.reactivex.disposables.Disposable disposMobile
     public io.reactivex.disposables.Disposable disposPassword

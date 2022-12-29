@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import androidx.appcompat.widget.AppCompatEditText;
 
 /**
+ * 自定义输入框 - 仿序列号
  * Created by bruce on 2017/10/4.
  */
 

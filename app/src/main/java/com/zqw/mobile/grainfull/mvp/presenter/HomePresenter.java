@@ -94,8 +94,8 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
         list.add("人脸采集");
         list.add("语音识别");
         list.add("识别身份证");
-        list.add("交给苍天");
-        list.add("取个颜色");
+        list.add("做个决定");
+        list.add("手持弹幕");
         mRootView.homeSearchHot(list);
     }
 

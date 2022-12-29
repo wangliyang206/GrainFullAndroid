@@ -32,6 +32,9 @@ import com.huawei.hms.mlsdk.common.LensEngine;
 
 import java.io.IOException;
 
+/**
+ * 动态手势识别 - 镜头引擎预览
+ */
 public class LensEnginePreview extends ViewGroup {
     private static final String TAG = LensEnginePreview.class.getSimpleName();
 

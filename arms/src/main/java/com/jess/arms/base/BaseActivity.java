@@ -91,7 +91,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     }
 
     @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs) {
+    public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
         View view = convertAutoView(name, context, attrs);
         return view == null ? super.onCreateView(name, context, attrs) : view;
     }
@@ -291,14 +291,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
      */
     @Override
     public void onSwipeBackLayoutExecuted() {
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
         mSwipeBackHelper.swipeBackward();
-//        } else {
-//            BGAKeyboardUtil.closeKeyboard(this);
-//            finish();
-//            overridePendingTransition(0, 0);
-//        }
-
     }
 
     @Override

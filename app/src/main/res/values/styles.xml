@@ -19,6 +19,10 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="LoginTextStyle" parent="Theme.AppCompat.Light">
@@ -90,7 +94,7 @@
 
     <!-- 二维码 -->
     <declare-styleable name="AutoScannerView">
-        <attr name="triAngleColor" format="reference|color"/>
+        <attr name="triAngleColor" format="reference|color" />
     </declare-styleable>
 
     <!-- 百度人脸采集 -->
@@ -106,6 +110,7 @@
         <item name="colorControlNormal">#666666</item>
         <item name="colorControlActivated">#ffffff</item>
     </style>
+
     <style name="SerialNumberEditTextError" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">#F34B56</item>
         <item name="colorControlActivated">#666666</item>

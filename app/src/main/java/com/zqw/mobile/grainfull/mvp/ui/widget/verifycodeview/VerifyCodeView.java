@@ -1,7 +1,6 @@
 package com.zqw.mobile.grainfull.mvp.ui.widget.verifycodeview;
 
 import android.content.Context;
-import androidx.core.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -10,9 +9,13 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
+
 import com.zqw.mobile.grainfull.R;
 
-
+/**
+ * 短信验证码 - 输入完成后自动进入下一步
+ */
 public class VerifyCodeView extends RelativeLayout {
     private EditText editText;
     private TextView[] textViews;
