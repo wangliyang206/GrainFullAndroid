@@ -19,19 +19,20 @@ import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.InflateException;
 import android.view.View;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.jaeger.library.StatusBarUtil;
 import com.jess.arms.R;
 import com.jess.arms.base.delegate.IActivity;
 import com.jess.arms.integration.cache.Cache;
@@ -49,7 +50,6 @@ import butterknife.Unbinder;
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.Subject;
-import qiu.niorgai.StatusBarCompat;
 
 /**
  * ================================================
@@ -188,6 +188,13 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     }
 
     /**
+     * 是否Fragment使用StatusBar
+     */
+    public boolean isStatusBarFragment() {
+        return false;
+    }
+
+    /**
      * 将状态栏改为浅色、深色模式(状态栏 icon 和字体，false = 浅色，true = 深色)
      */
     public boolean useLightStatusBar() {
@@ -199,37 +206,56 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
      * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
      */
     public int useStatusBarColor() {
-        TypedValue typedValue = new TypedValue();
-        getTheme().resolveAttribute(R.attr.colorStatusBar, typedValue, true);
-        return typedValue.data;
+        return getResources().getColor(android.R.color.white);
     }
 
     /**
-     * 第一，设置状态栏为透明。
-     * 第二，此方法可起到刷新作用。
+     * 设置状态栏
      */
     public void setStatusBar() {
-        if (useStatusBar()) {
-            if (useStatusBarColor() != -1) {
-                StatusBarCompat.setStatusBarColor(this, useStatusBarColor());
-            } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    //SDK >= 21时, 取消状态栏的阴影
-                    StatusBarCompat.translucentStatusBar(this, true);
+        if (isStatusBarFragment()) {
+            // Fragment
+            StatusBarUtil.setTranslucentForImageViewInFragment(this, null);
+        } else {
+            // Activity
+            // 判断是否启用了  侧滑功能
+            if (isSupportSwipeBack()) {
+                // 已启用侧滑功能
+
+                // 是否设置状态栏为透明
+                if (useStatusBar()) {
+                    setStatusBarColor(useStatusBarColor(), 0);
                 } else {
-                    //透明状态栏
-                    StatusBarCompat.translucentStatusBar(this);
+                    setStatusBarColor(useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+                }
+            } else {
+                // 关闭侧滑功能
+
+                // 是否设置状态栏为透明
+                if (useStatusBar()) {
+                    StatusBarUtil.setColor(this, useStatusBarColor(), 0);
+                } else {
+                    StatusBarUtil.setColor(this, useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
                 }
             }
+        }
 
-            if (useLightStatusBar()) {
-                StatusBarCompatUtils.changeToLightStatusBar(this);
-            } else {
-                StatusBarCompatUtils.cancelLightStatusBar(this);
-            }
+        if (useLightStatusBar()) {
+            StatusBarCompatUtils.changeToLightStatusBar(this);
+        } else {
+            StatusBarCompatUtils.cancelLightStatusBar(this);
         }
     }
 
+    /**
+     * 设置状态栏颜色
+     *
+     * @param color          状态栏颜色
+     * @param statusBarAlpha 透明度 0 ~ 255，可以改变状态栏的透明度值，默认值是112(StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA)。
+     */
+    public void setStatusBarColor(@ColorInt int color, @IntRange(from = 0, to = 255) int statusBarAlpha) {
+        StatusBarUtil.setColorForSwipeBack(this, color, statusBarAlpha);
+    }
 
     protected BGASwipeBackHelper mSwipeBackHelper;
 

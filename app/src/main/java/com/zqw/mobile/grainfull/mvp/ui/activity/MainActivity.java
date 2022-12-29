@@ -1,23 +1,24 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.text.TextUtils;
-import android.widget.ImageView;
-
 import com.blankj.utilcode.util.ActivityUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.jaeger.library.StatusBarUtil;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
-import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.mikepenz.itemanimators.AlphaCrossFadeAnimator;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -52,8 +53,6 @@ import org.simple.eventbus.ThreadMode;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
 /**
@@ -93,9 +92,19 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     // 侧滑Menu 之 内容 对象
     private Drawer result = null;
 
+    /**
+     * 禁止侧滑关闭
+     */
     @Override
     public boolean isSupportSwipeBack() {
         return false;
+    }
+
+    /**
+     * 是否Fragment使用StatusBar
+     */
+    public boolean isStatusBarFragment() {
+        return true;
     }
 
     @Override

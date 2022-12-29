@@ -80,9 +80,7 @@ public class SerialNumberActivity extends BaseActivity<SerialNumberPresenter> im
      * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
      */
     public int useStatusBarColor() {
-        TypedValue typedValue = new TypedValue();
-        getTheme().resolveAttribute(com.jess.arms.R.attr.colorPrimary, typedValue, true);
-        return typedValue.data;
+        return getResources().getColor(R.color.colorPrimary);
     }
 
     @Override
