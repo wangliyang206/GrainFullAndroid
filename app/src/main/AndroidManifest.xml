@@ -65,6 +65,10 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.BulletChatActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/SplashTheme" />
+        <activity
             android:name=".mvp.ui.activity.HandheldBulletScreenActivity"
             android:screenOrientation="portrait" />
         <activity

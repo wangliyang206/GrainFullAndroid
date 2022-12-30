@@ -72,6 +72,7 @@ public class EditTurntableActivity extends BaseActivity<EditTurntablePresenter> 
         super.onDestroy();
         this.mLayoutManager = null;
         this.mAdapter = null;
+        this.mList = null;
 
     }
 

@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 /**
- * author zaaach on 2015/1/26.
+ * 横向展示 - 经典用例：运营端-选择区域-热门区域
  */
 public class WrapHeightGridView extends GridView {
     public WrapHeightGridView(Context context) {
