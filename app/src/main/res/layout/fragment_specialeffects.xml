@@ -151,6 +151,17 @@
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_audiowaveform"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_audiowaveform" />
 
+                <TextView
+                    android:id="@+id/btn_fragmentspecialeffects_other_spiderwebgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="蜘蛛网等级"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_lottery"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_lottery" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
