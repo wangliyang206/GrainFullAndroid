@@ -179,9 +179,15 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     }
 
+    /**
+     * 状态栏是否设置成透明
+     */
+    public boolean isStatusBarTransparent() {
+        return true;
+    }
 
     /**
-     * 是否设置状态栏为透明,默认为使用(true)
+     * 是否使用状态栏为透明功能,默认为使用(true)
      */
     public boolean useStatusBar() {
         return true;
@@ -213,29 +219,31 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
      * 设置状态栏
      */
     public void setStatusBar() {
-        if (isStatusBarFragment()) {
-            // Fragment
-            StatusBarUtil.setTranslucentForImageViewInFragment(this, null);
-        } else {
-            // Activity
-            // 判断是否启用了  侧滑功能
-            if (isSupportSwipeBack()) {
-                // 已启用侧滑功能
-
-                // 是否设置状态栏为透明
-                if (useStatusBar()) {
-                    setStatusBarColor(useStatusBarColor(), 0);
-                } else {
-                    setStatusBarColor(useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
-                }
+        if (useStatusBar()) {
+            if (isStatusBarFragment()) {
+                // Fragment
+                StatusBarUtil.setTranslucentForImageViewInFragment(this, null);
             } else {
-                // 关闭侧滑功能
+                // Activity
+                // 判断是否启用了  侧滑功能
+                if (isSupportSwipeBack()) {
+                    // 已启用侧滑功能
 
-                // 是否设置状态栏为透明
-                if (useStatusBar()) {
-                    StatusBarUtil.setColor(this, useStatusBarColor(), 0);
+                    // 是否设置状态栏为透明
+                    if (isStatusBarTransparent()) {
+                        setStatusBarColor(useStatusBarColor(), 0);
+                    } else {
+                        setStatusBarColor(useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+                    }
                 } else {
-                    StatusBarUtil.setColor(this, useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+                    // 关闭侧滑功能
+
+                    // 是否设置状态栏为透明
+                    if (isStatusBarTransparent()) {
+                        StatusBarUtil.setColor(this, useStatusBarColor(), 0);
+                    } else {
+                        StatusBarUtil.setColor(this, useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+                    }
                 }
             }
         }

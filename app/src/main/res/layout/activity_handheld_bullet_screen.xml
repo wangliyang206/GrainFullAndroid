@@ -32,10 +32,7 @@
         android:background="@drawable/financial_bg_frame"
         android:gravity="center_vertical"
         android:hint="请输入弹幕"
-        android:paddingStart="10dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="5dp"
+        android:padding="10dp"
         android:text=""
         android:textColor="@color/common_text_color"
         android:textColorHint="@color/common_text_hint_color"
@@ -65,11 +62,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:max="30"
+            android:max="50"
             android:min="1"
             android:progress="14" />
 
         <TextView
+            android:id="@+id/txvi_handheldbulletscreen_txtsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -108,6 +106,7 @@
             android:progress="14" />
 
         <TextView
+            android:id="@+id/txvi_handheldbulletscreen_rollingspeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

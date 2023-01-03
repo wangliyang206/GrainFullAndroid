@@ -5,8 +5,12 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +25,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerHandheldBulletScreenComponent
 import com.zqw.mobile.grainfull.mvp.contract.HandheldBulletScreenContract;
 import com.zqw.mobile.grainfull.mvp.presenter.HandheldBulletScreenPresenter;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -32,6 +37,21 @@ import butterknife.OnClick;
  * module name is HandheldBulletScreenActivity
  */
 public class HandheldBulletScreenActivity extends BaseActivity<HandheldBulletScreenPresenter> implements HandheldBulletScreenContract.View {
+    /*------------------------------------------------控件信息------------------------------------------------*/
+    @BindView(R.id.edit_handheldbulletscreen_content)
+    EditText editContent;
+
+    @BindView(R.id.seba_handheldbulletscreen_txtsize)
+    SeekBar sebrTxtSize;
+
+    @BindView(R.id.txvi_handheldbulletscreen_txtsize)
+    TextView txviTxtSize;
+
+    @BindView(R.id.seba_handheldbulletscreen_rollingspeed)
+    SeekBar sebrRollingSpeed;
+
+    @BindView(R.id.txvi_handheldbulletscreen_rollingspeed)
+    TextView txviRollingSpeed;
 
     @Override
     protected void onDestroy() {
@@ -59,6 +79,40 @@ public class HandheldBulletScreenActivity extends BaseActivity<HandheldBulletScr
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("手持弹幕");
 
+
+        sebrTxtSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                txviTxtSize.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        sebrRollingSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                txviRollingSpeed.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @OnClick({
@@ -69,8 +123,16 @@ public class HandheldBulletScreenActivity extends BaseActivity<HandheldBulletScr
         hideInput();
         switch (v.getId()) {
             case R.id.btn_handheldbulletscreen_show:                                                // 显示弹幕
+                String mStr = editContent.getText().toString();
+                if (TextUtils.isEmpty(mStr)) {
+                    showMessage("请输入弹幕！");
+                    return;
+                }
+
                 Bundle mBundle = new Bundle();
-                mBundle.putString("", "");
+                mBundle.putString("text", mStr);
+                mBundle.putInt("txtSize", sebrTxtSize.getProgress());
+                mBundle.putInt("speed", sebrRollingSpeed.getProgress());
                 ActivityUtils.startActivity(mBundle, BulletChatActivity.class);
                 break;
         }
