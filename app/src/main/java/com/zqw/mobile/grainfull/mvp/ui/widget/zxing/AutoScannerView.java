@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.baidu.idl.face.platform.utils.DensityUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraManager;
 
@@ -31,9 +32,9 @@ public class AutoScannerView extends View {
     private final int triAngleColor = Color.parseColor("#76EE00");                        //边角的颜色
     private final int lineColor = Color.parseColor("#FF0000");                            //中间线的颜色
     private final int textColor = Color.parseColor("#CCCCCC");                            //文字的颜色
-    private final int triAngleLength = dp2px(20);                                         //每个角的点距离
-    private final int triAngleWidth = dp2px(4);                                           //每个角的点宽度
-    private final int textMarinTop = dp2px(30);                                           //文字距离识别框的距离
+    private final int triAngleLength = DensityUtils.dip2px(getContext(), 20);                    //每个角的点距离
+    private final int triAngleWidth = DensityUtils.dip2px(getContext(), 4);                      //每个角的点宽度
+    private final int textMarinTop = DensityUtils.dip2px(getContext(), 30);                      //文字距离识别框的距离
     private int lineOffsetCount = 0;
 
     public AutoScannerView(Context context, AttributeSet attrs) {
@@ -55,7 +56,7 @@ public class AutoScannerView extends View {
 
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setColor(textColor);
-        textPaint.setTextSize(dp2px(14));
+        textPaint.setTextSize(DensityUtils.dip2px(getContext(), 14));
     }
 
     public void setCameraManager(CameraManager cameraManager) {
@@ -111,7 +112,7 @@ public class AutoScannerView extends View {
         canvas.drawPath(rightBottomPath, traAnglePaint);
 
         //循环划线，从上到下
-        if (lineOffsetCount > frame.bottom - frame.top - dp2px(10)) {
+        if (lineOffsetCount > frame.bottom - frame.top - DensityUtils.dip2px(getContext(), 10)) {
             lineOffsetCount = 0;
         } else {
             lineOffsetCount = lineOffsetCount + 6;
@@ -120,14 +121,9 @@ public class AutoScannerView extends View {
             lineRect.left = frame.left;
             lineRect.top = frame.top + lineOffsetCount;
             lineRect.right = frame.right;
-            lineRect.bottom = frame.top + dp2px(10) + lineOffsetCount;
+            lineRect.bottom = frame.top + DensityUtils.dip2px(getContext(), 10) + lineOffsetCount;
             canvas.drawBitmap(((BitmapDrawable) (getResources().getDrawable(R.drawable.qr_scan_line))).getBitmap(), null, lineRect, linePaint);
         }
         postInvalidateDelayed(10L, frame.left, frame.top, frame.right, frame.bottom);
-    }
-
-    private int dp2px(int dp) {
-        float density = getContext().getResources().getDisplayMetrics().density;
-        return (int) (dp * density + 0.5f);
     }
 }

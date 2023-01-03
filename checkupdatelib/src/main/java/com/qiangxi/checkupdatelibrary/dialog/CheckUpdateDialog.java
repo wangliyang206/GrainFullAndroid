@@ -164,7 +164,7 @@ class InternalDialog extends Dialog implements DownloadCallback {
                         if (permissionStatus != PackageManager.PERMISSION_GRANTED) {
                             mCheckUpdateDialog.requestPermissions(new String[]{Manifest.permission.
                                     WRITE_EXTERNAL_STORAGE}, 0x007);
-                        }else {
+                        } else {
                             downloadInBackgroundIfNeeded();
                         }
                     } else {
@@ -283,14 +283,9 @@ class InternalDialog extends Dialog implements DownloadCallback {
         if (window == null) return;
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.gravity = Gravity.CENTER;
-        lp.width = dp2px(260);//宽高固定为260dp
+        lp.width = DensityUtils.dip2px(getContext(), 260);//宽高固定为260dp
         lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
         window.setAttributes(lp);
-    }
-
-    private int dp2px(float dp) {
-        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-        return (int) ((dp * displayMetrics.density) + 0.5);
     }
 
 }

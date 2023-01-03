@@ -92,4 +92,12 @@
     <color name="rmb_light_blue_color">#79bac0</color>
     <color name="rmb_green_color">#66988c</color>
     <color name="rmb_dark_green_color">#345c53</color>
+
+    <!-- 水鸭色 -->
+    <color name="teal">#008080</color>
+    <!-- 自定义进度橙色进度 -->
+    <color name="custom_progress_orange_progress">#ffff8800</color>
+    <!-- 小米绿 -->
+    <color name="green_xiaomi">#52BA97</color>
+
 </resources>

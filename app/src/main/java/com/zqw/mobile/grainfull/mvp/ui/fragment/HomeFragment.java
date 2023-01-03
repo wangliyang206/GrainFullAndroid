@@ -38,6 +38,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
 import org.simple.eventbus.EventBus;
@@ -183,6 +184,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
             R.id.btn_fragmenthome_other_bulletchat,                                                 // 手持弹幕
+            R.id.btn_fragmenthome_other_spiderwebgrade,                                             // 蜘蛛网等级
     })
     @Override
     public void onClick(View v) {
@@ -236,6 +238,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_other_bulletchat:                                            // 手持弹幕
                 ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
+                break;
+            case R.id.btn_fragmenthome_other_spiderwebgrade:                                        // 蜘蛛网等级
+                ActivityUtils.startActivity(SpiderWebGradeActivity.class);
                 break;
         }
     }
