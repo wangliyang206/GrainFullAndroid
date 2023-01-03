@@ -65,6 +65,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.ColorPickerActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.SpiderWebGradeActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -6,4 +6,16 @@
     <dimen name="side_letter_bar_letter_size">13sp</dimen>
 
     <dimen name="main_top_margin">27.5dp</dimen>
+
+
+    <!-- 颜色选择器 -->
+    <dimen name="default_slider_height">36dp</dimen>
+    <dimen name="default_slider_margin">24dp</dimen>
+    <dimen name="default_slider_bar_height">4dp</dimen>
+    <dimen name="default_slider_handler_radius">10dp</dimen>
+    <dimen name="default_padding_side">24dp</dimen>
+    <dimen name="default_preview_height">40dp</dimen>
+    <dimen name="default_preview_image_height">36dp</dimen>
+    <dimen name="default_slider_margin_btw_title">20dp</dimen>
+
 </resources>

@@ -29,6 +29,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
@@ -182,7 +183,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
             R.id.btn_fragmenthome_other_bulletchat,                                                 // 手持弹幕
-//            R.id.btn_fragmenthome_other_spiderwebgrade,                                             // 蜘蛛网等级
+            R.id.btn_fragmenthome_other_colorpicker,                                                // 取色器
     })
     @Override
     public void onClick(View v) {
@@ -237,9 +238,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_other_bulletchat:                                            // 手持弹幕
                 ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
                 break;
-//            case R.id.btn_fragmenthome_other_spiderwebgrade:                                        // 蜘蛛网等级
-//
-//                break;
+            case R.id.btn_fragmenthome_other_colorpicker:                                           // 取色器
+                ActivityUtils.startActivity(ColorPickerActivity.class);
+                break;
         }
     }
 
