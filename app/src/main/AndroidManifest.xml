@@ -177,6 +177,8 @@
             </intent-filter>
         </activity>
 
+        <service android:name="com.zqw.mobile.grainfull.app.service.FloatingWindowService" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider.FileProvider"

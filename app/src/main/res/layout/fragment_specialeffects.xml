@@ -169,7 +169,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
-                    android:text="悬浮按钮"
+                    android:text="悬浮窗口/按钮"
                     app:layout_constraintLeft_toLeftOf="@+id/btn_fragmentspecialeffects_other_audiowaveform"
                     app:layout_constraintTop_toBottomOf="@+id/btn_fragmentspecialeffects_other_audiowaveform" />
 
