@@ -126,9 +126,9 @@
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
                     android:text="识别身份证"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_bankcards"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_bankcards"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_bankcards"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_bankcards"/>
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_bankcards" />
 
                 <TextView
                     android:id="@+id/btn_fragmenthome_imagetotext"
@@ -138,9 +138,9 @@
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
                     android:text="图片提取文字"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_idcard"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_idcard"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_idcard"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_idcard"/>
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_idcard" />
 
                 <TextView
                     android:id="@+id/btn_fragmenthome_gesture"
@@ -320,10 +320,20 @@
                     android:layout_marginStart="10dp"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
-                    android:text="取色器"
+                    android:text="取色板"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_other_bulletchat"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_other_bulletchat" />
 
+                <TextView
+                    android:id="@+id/btn_fragmenthome_other_magnifier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="放大镜"
+                    app:layout_constraintLeft_toLeftOf="@+id/btn_fragmenthome_audioconversion"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmenthome_audioconversion" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -16,6 +16,8 @@
         android:id="@+id/color_picker_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:alphaSlider="true"
         app:alphaSliderView="@+id/v_alpha_slider"
         app:density="12"
@@ -26,17 +28,24 @@
     <com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.slider.LightnessSlider
         android:id="@+id/v_lightness_slider"
         android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
 
     <com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.slider.AlphaSlider
         android:id="@+id/v_alpha_slider"
         android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1">
 
+        <!-- 背景 -->
         <View
             android:id="@+id/view_colorpicker_bg"
             android:layout_width="0dp"
@@ -46,17 +55,29 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- 当前选择的颜色值：十六进制(默认白色) -->
         <TextView
             android:id="@+id/txvi_colorpicker_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="#FFFFFF"
             android:textColor="@color/common_text_color"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 复制 -->
+        <ImageView
+            android:id="@+id/btn_colorpicker_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@mipmap/icon_copy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

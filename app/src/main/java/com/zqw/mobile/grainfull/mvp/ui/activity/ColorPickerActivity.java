@@ -5,6 +5,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.ClipboardUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -24,9 +26,10 @@ import com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.ColorPickerView;
 import com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.OnColorSelectedListener;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
- * Description:取色器
+ * Description:取色板
  * <p>
  * Created on 2023/01/03 17:48
  *
@@ -65,12 +68,12 @@ public class ColorPickerActivity extends BaseActivity<ColorPickerPresenter> impl
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("取色器");
+        setTitle("取色板");
 
         colorPickerView.addOnColorChangedListener(selectedColor -> {
             // 颜色变化时的手柄
             viewBg.setBackgroundColor(selectedColor);
-            txviColor.setText(ColorsUtil.getHexString(selectedColor, true));
+            txviColor.setText(ColorsUtil.getHexString(selectedColor, false));
         });
         colorPickerView.addOnColorSelectedListener(new OnColorSelectedListener() {
             @Override
@@ -78,6 +81,22 @@ public class ColorPickerActivity extends BaseActivity<ColorPickerPresenter> impl
 
             }
         });
+    }
+
+    @OnClick({
+            R.id.btn_colorpicker_copy,                                                              // 复制按钮
+    })
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_colorpicker_copy:                                                         // 复制按钮
+                String mColor = txviColor.getText().toString();
+                if (!TextUtils.isEmpty(mColor)) {
+                    ClipboardUtils.copyText(mColor);
+                    showMessage("复制成功！");
+                }
+                break;
+        }
     }
 
     public Activity getActivity() {
