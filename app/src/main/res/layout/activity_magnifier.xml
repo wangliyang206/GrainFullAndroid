@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_magnifier"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_magnifieractivity_top"
+        layout="@layout/comm_top_layout" />
+
+    <!-- 添加图片 -->
+    <LinearLayout
+        android:id="@+id/view_magnifieractivity_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_turntable_shape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_add_picture" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="添加图片"
+            android:textColor="@color/rmb_dark_green_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.LoupeView
+        android:id="@+id/view_magnifieractivity_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="@drawable/financial_bg_frame"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_loupe"
+        app:radius="200"
+        app:scale="2" />
+</LinearLayout>

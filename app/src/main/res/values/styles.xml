@@ -145,4 +145,10 @@
         <attr name="pickerButtonOk" format="reference|string"/>
         <attr name="pickerButtonCancel" format="reference|string"/>
     </declare-styleable>
+
+    <!-- 放大镜 -->
+    <declare-styleable name="LoupeView">
+        <attr name="radius" format="integer|reference"/>
+        <attr name="scale" format="integer|reference"/>
+    </declare-styleable>
 </resources>
