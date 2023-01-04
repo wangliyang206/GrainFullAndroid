@@ -101,8 +101,11 @@ public class FloatingWindowService extends Service {
 
     @Override
     public void onDestroy() {
+        if(button != null){
+            windowManager.removeViewImmediate(button);
+        }
         super.onDestroy();
         isStarted = false;
-        windowManager.removeViewImmediate(button);
+
     }
 }
