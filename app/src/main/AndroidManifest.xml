@@ -65,6 +65,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.LevitationButtonActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.MagnifierActivity"
             android:screenOrientation="portrait" />
         <activity

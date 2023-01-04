@@ -20,6 +20,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerSpecialEffectsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.SpecialEffectsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.SpecialEffectsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity;
@@ -68,6 +69,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_audiowaveform,                                    // 音频波形
             R.id.btn_fragmentspecialeffects_other_lottery,                                          // 抽奖转盘
             R.id.btn_fragmentspecialeffects_other_spiderwebgrade,                                   // 蜘蛛网等级
+            R.id.btn_fragmentspecialeffects_other_levitationbutton,                                 // 悬浮按钮
     })
     @Override
     public void onClick(View v) {
@@ -83,6 +85,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_spiderwebgrade:                              // 蜘蛛网等级
                 ActivityUtils.startActivity(SpiderWebGradeActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_levitationbutton:                            // 悬浮按钮
+                ActivityUtils.startActivity(LevitationButtonActivity.class);
                 break;
         }
     }

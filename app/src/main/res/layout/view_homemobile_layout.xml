@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/view_suspension_bg_selector"
+    android:padding="7dp">
+
+    <ImageView
+        android:id="@+id/imvi_viewhomemobilelayout_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_financial_call" />
+
+    <TextView
+        android:id="@+id/txvi_viewhomemobilelayout_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imvi_viewhomemobilelayout_img"
+        android:layout_alignBottom="@+id/imvi_viewhomemobilelayout_img"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/imvi_viewhomemobilelayout_img"
+        android:gravity="center_vertical"
+        android:text="专属联系人"
+        android:textColor="@color/common_text_color"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:id="@+id/lila_viewhomemobilelayout_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imvi_viewhomemobilelayout_img"
+        android:layout_alignBottom="@+id/imvi_viewhomemobilelayout_img"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/txvi_viewhomemobilelayout_tips"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txvi_viewhomemobilelayout_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btn_viewhomemobilelayout_call"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/btn_bg_selector"
+            android:gravity="center"
+            android:paddingStart="3dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="3dp"
+            android:paddingBottom="2dp"
+            android:text="呼叫"
+            android:textColor="@android:color/white"
+            android:textSize="11sp" />
+
+        <Button
+            android:id="@+id/btn_viewhomemobilelayout_cancel"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/financial_order_selector"
+            android:gravity="center"
+            android:paddingStart="3dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="3dp"
+            android:paddingBottom="2dp"
+            android:text="取消"
+            android:textColor="@color/cp_gray"
+            android:textSize="11sp" />
+    </LinearLayout>
+</RelativeLayout>

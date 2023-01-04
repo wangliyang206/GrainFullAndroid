@@ -158,9 +158,20 @@
                     android:layout_marginStart="10dp"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
-                    android:text="蜘蛛网等级"
+                    android:text="蛛网等级"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_lottery"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_lottery" />
+
+                <TextView
+                    android:id="@+id/btn_fragmentspecialeffects_other_levitationbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="悬浮按钮"
+                    app:layout_constraintLeft_toLeftOf="@+id/btn_fragmentspecialeffects_other_audiowaveform"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmentspecialeffects_other_audiowaveform" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
