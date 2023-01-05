@@ -34,6 +34,8 @@
     <color name="common_edit_hint_color">#999999</color>
     <!-- 透明百分之二十 -->
     <color name="translucent_20">#20000000</color>
+    <color name="translucent_50">#50000000</color>
+    <color name="translucent_70">#70000000</color>
     <color name="common_image_normal_bak">#00ffffff</color>
     <color name="common_image_focus_bak">#a6a6a6</color>
     <!-- 布局正常颜色 -->
@@ -100,4 +102,5 @@
     <!-- 小米绿 -->
     <color name="green_xiaomi">#52BA97</color>
 
+    <color name="colorpicker_txt_color">#707070</color>
 </resources>

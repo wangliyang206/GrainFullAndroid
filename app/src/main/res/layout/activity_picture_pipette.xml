@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_picture_pipette"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,16 +12,87 @@
         android:id="@+id/view_picturepipette_top"
         layout="@layout/comm_top_layout" />
 
-    <TextView
-        android:id="@+id/txvi_picturepipette_show"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="颜色"
-        android:textColor="@color/common_text_color" />
+        android:layout_height="160dp"
+        android:layout_margin="10dp">
+
+        <!-- 背景 -->
+        <View
+            android:id="@+id/view_picturepipette_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/financial_order_selector" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cola_picturepipette_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/txvi_round_transparent">
+
+            <ImageView
+                android:id="@+id/imvi_picturepipette_tips"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@mipmap/icon_add_picture"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 当前选择的颜色值：十六进制(默认白色) -->
+            <TextView
+                android:id="@+id/txvi_picturepipette_color"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:hint="请选择图片"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/txvi_picturepipette_rgb"
+                app:layout_constraintLeft_toRightOf="@+id/imvi_picturepipette_tips"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txvi_picturepipette_rgb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/txvi_picturepipette_color"
+                app:layout_constraintRight_toRightOf="@+id/txvi_picturepipette_color"
+                app:layout_constraintTop_toBottomOf="@+id/txvi_picturepipette_color" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 复制 -->
+        <ImageView
+            android:id="@+id/btn_picturepipette_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@mipmap/icon_copy" />
+    </RelativeLayout>
 
     <com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.ImageColorPickerView
         android:id="@+id/view_picturepipette_image"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1" />
+
 </LinearLayout>
