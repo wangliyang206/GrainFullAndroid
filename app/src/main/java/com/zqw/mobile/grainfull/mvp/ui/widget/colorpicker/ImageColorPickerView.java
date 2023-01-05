@@ -282,4 +282,43 @@ public class ImageColorPickerView extends AppCompatImageView {
         mGradualChangeBitmap = null;
         initAutoObtain = true;
     }
+
+    /**
+     * 横向移动
+     */
+    public void setHorizontalMovePoint(boolean isLeft) {
+        boolean isMove = false;
+
+        if (isLeft) {
+            // 向左移动
+            if (mSelectPoint.x == -(mLocationBitmap.getWidth() / 2)) {
+                // 不能移动
+                isMove = false;
+            } else {
+                // 可以移动
+                isMove = true;
+                mSelectPoint.x = mSelectPoint.x - 1;
+            }
+
+        } else {
+            // 向右移动
+            if (mSelectPoint.x == getWidth() - mLocationBitmap.getWidth() / 2) {
+                // 不能移动
+                isMove = false;
+            } else {
+                // 可以移动
+                isMove = true;
+                mSelectPoint.x = mSelectPoint.x + 1;
+            }
+        }
+
+        if (isMove) {
+            // 获取颜色
+            if (mChangedListener != null)
+                mChangedListener.onColorChanged(getLeftColor(mSelectPoint.x, mSelectPoint.y));
+
+            invalidate();
+        }
+
+    }
 }

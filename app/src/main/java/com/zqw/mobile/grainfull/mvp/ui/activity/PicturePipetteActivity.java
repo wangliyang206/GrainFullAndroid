@@ -115,6 +115,11 @@ public class PicturePipetteActivity extends BaseActivity<PicturePipettePresenter
     @OnClick({
             R.id.btn_picturepipette_copy,                                                           // 复制
             R.id.cola_picturepipette_select,                                                        // 选择图片
+
+            R.id.btn_picturepipette_up,                                                             // 上
+            R.id.btn_picturepipette_down,                                                           // 下
+            R.id.btn_picturepipette_left,                                                           // 左
+            R.id.btn_picturepipette_right,                                                          // 右
     })
     @Override
     public void onClick(View v) {
@@ -128,6 +133,18 @@ public class PicturePipetteActivity extends BaseActivity<PicturePipettePresenter
                 break;
             case R.id.cola_picturepipette_select:                                                   // 选择图片
                 PicturePipetteActivityPermissionsDispatcher.addAvatarWithPermissionCheck(this);
+                break;
+
+            case R.id.btn_picturepipette_up:                                                        // 上
+
+                break;
+            case R.id.btn_picturepipette_down:                                                      // 下
+                break;
+            case R.id.btn_picturepipette_left:                                                      // 左
+                viewImage.setHorizontalMovePoint(true);
+                break;
+            case R.id.btn_picturepipette_right:                                                     // 右
+                viewImage.setHorizontalMovePoint(false);
                 break;
         }
     }

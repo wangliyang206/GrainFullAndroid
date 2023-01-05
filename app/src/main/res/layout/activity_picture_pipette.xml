@@ -96,4 +96,52 @@
         android:layout_weight="1"
         android:scaleType="fitXY" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_picturepipette_up"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:text="上"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_picturepipette_down"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:text="下"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_picturepipette_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:text="左"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_picturepipette_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:text="右"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
 </LinearLayout>
