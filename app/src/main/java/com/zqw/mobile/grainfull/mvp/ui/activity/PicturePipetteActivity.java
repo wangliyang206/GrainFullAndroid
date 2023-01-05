@@ -40,7 +40,7 @@ import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
 /**
- * Description:图片吸管(图片中提取颜色)
+ * Description:吸管工具(图片中提取颜色)
  * <p>
  * Created on 2023/01/05 11:12
  *
@@ -84,7 +84,7 @@ public class PicturePipetteActivity extends BaseActivity<PicturePipettePresenter
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("图片吸管");
+        setTitle("吸管工具");
 
         viewImage.setOnColorChangedListenner(color -> {
             // 显示背景色
