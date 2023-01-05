@@ -39,6 +39,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
 import org.simple.eventbus.EventBus;
@@ -186,6 +187,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_other_bulletchat,                                                 // 手持弹幕
             R.id.btn_fragmenthome_other_colorpicker,                                                // 取色板
             R.id.btn_fragmenthome_other_magnifier,                                                  // 放大镜
+            R.id.btn_fragmenthome_other_picturepipette,                                             // 图片吸管
     })
     @Override
     public void onClick(View v) {
@@ -245,6 +247,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_other_magnifier:                                             // 放大镜
                 ActivityUtils.startActivity(MagnifierActivity.class);
+                break;
+            case R.id.btn_fragmenthome_other_picturepipette:                                        // 图片吸管
+                ActivityUtils.startActivity(PicturePipetteActivity.class);
                 break;
         }
     }

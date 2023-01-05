@@ -334,6 +334,17 @@
                     android:text="放大镜"
                     app:layout_constraintLeft_toLeftOf="@+id/btn_fragmenthome_audioconversion"
                     app:layout_constraintTop_toBottomOf="@+id/btn_fragmenthome_audioconversion" />
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_other_picturepipette"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="图片吸管"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_other_magnifier"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_other_magnifier" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
