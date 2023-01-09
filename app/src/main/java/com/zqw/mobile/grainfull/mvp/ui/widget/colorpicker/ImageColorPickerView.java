@@ -90,7 +90,7 @@ public class ImageColorPickerView extends AppCompatImageView {
         BitmapDrawable drawable = (BitmapDrawable) getDrawable();
         if (drawable == null) {
             // 默认图
-            bitmapTemp = BitmapFactory.decodeResource(getResources(), R.drawable.text_image);
+            bitmapTemp = BitmapFactory.decodeResource(getResources(), R.drawable.icon_bg_default);
         } else {
             bitmapTemp = drawable.getBitmap();
         }
