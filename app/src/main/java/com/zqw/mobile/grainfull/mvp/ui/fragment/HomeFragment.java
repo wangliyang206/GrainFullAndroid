@@ -29,6 +29,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
@@ -184,6 +185,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
             R.id.btn_fragmenthome_color_colorpicker,                                                // 取色板
             R.id.btn_fragmenthome_color_picturepipette,                                             // 吸管工具
+            R.id.btn_fragmenthome_color_codeconversion,                                             // 颜色码转换
 
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
@@ -251,6 +253,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_color_picturepipette:                                        // 吸管工具
                 ActivityUtils.startActivity(PicturePipetteActivity.class);
+                break;
+            case R.id.btn_fragmenthome_color_codeconversion:                                        // 颜色码转换
+                ActivityUtils.startActivity(ColorCodeConversionActivity.class);
                 break;
         }
     }

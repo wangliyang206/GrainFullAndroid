@@ -67,6 +67,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.ColorCodeConversionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.PicturePipetteActivity"
             android:screenOrientation="portrait" />
         <activity
