@@ -136,9 +136,10 @@ public class PicturePipetteActivity extends BaseActivity<PicturePipettePresenter
                 break;
 
             case R.id.btn_picturepipette_up:                                                        // 上
-
+                viewImage.setVerticalMovePoint(true);
                 break;
             case R.id.btn_picturepipette_down:                                                      // 下
+                viewImage.setVerticalMovePoint(false);
                 break;
             case R.id.btn_picturepipette_left:                                                      // 左
                 viewImage.setHorizontalMovePoint(true);

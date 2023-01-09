@@ -168,7 +168,7 @@ public class ImageColorPickerView extends AppCompatImageView {
                 break;
             case MotionEvent.ACTION_UP:
                 // 抬起
-                Timber.i("#### x=" + x + "  y=" + y);
+                Timber.i("####抬起  x=" + x + "  y=" + y);
                 invalidate();
         }
         return true;
@@ -207,7 +207,9 @@ public class ImageColorPickerView extends AppCompatImageView {
         return mGradualChangeBitmap;
     }
 
-    // 校正xy
+    /**
+     * 校正xy
+     */
     private void proofLeft(float x, float y) {
         if (x < 0) {
             mSelectPoint.x = 0;
@@ -223,6 +225,7 @@ public class ImageColorPickerView extends AppCompatImageView {
         } else {
             mSelectPoint.y = y;
         }
+        Timber.i("####校正xy  mSelectPoint.x =" + mSelectPoint.x + "  mSelectPoint.y=" + mSelectPoint.y);
     }
 
     /**
@@ -242,7 +245,7 @@ public class ImageColorPickerView extends AppCompatImageView {
             intY = temp.getHeight() - 1;
         }
 
-        Timber.i("leftColor=%s", temp.getPixel(intX, intY));
+//        Timber.i("####leftColor=%s", temp.getPixel(intX, intY));
         return temp.getPixel(intX, intY);
     }
 
@@ -287,11 +290,13 @@ public class ImageColorPickerView extends AppCompatImageView {
      * 横向移动
      */
     public void setHorizontalMovePoint(boolean isLeft) {
-        boolean isMove = false;
+        // 是否需要移动
+        boolean isMove;
 
+        Timber.i("####横向移动  X =" + mSelectPoint.x + "  getWidth()=" + getWidth() + "  BitmapWidth()=" + mLocationBitmap.getWidth() + "  num=" + mLocationBitmap.getWidth() / 2);
         if (isLeft) {
             // 向左移动
-            if (mSelectPoint.x == -(mLocationBitmap.getWidth() / 2)) {
+            if (mSelectPoint.x <= 0) {
                 // 不能移动
                 isMove = false;
             } else {
@@ -302,13 +307,55 @@ public class ImageColorPickerView extends AppCompatImageView {
 
         } else {
             // 向右移动
-            if (mSelectPoint.x == getWidth() - mLocationBitmap.getWidth() / 2) {
+            if (mSelectPoint.x == getWidth()) {
                 // 不能移动
                 isMove = false;
             } else {
                 // 可以移动
                 isMove = true;
                 mSelectPoint.x = mSelectPoint.x + 1;
+            }
+        }
+
+        if (isMove) {
+            // 获取颜色
+            if (mChangedListener != null)
+                mChangedListener.onColorChanged(getLeftColor(mSelectPoint.x, mSelectPoint.y));
+
+            invalidate();
+        }
+
+    }
+
+
+    /**
+     * 竖向移动
+     */
+    public void setVerticalMovePoint(boolean isUp) {
+        // 是否需要移动
+        boolean isMove;
+
+        Timber.i("####竖向移动  Y =" + mSelectPoint.y + "  getHeight()=" + getHeight() + "  BitmapHeight()=" + mLocationBitmap.getHeight() + "  num=" + mLocationBitmap.getHeight() / 2);
+        if (isUp) {
+            // 向上移动
+            if (mSelectPoint.y <= 0) {
+                // 不能移动
+                isMove = false;
+            } else {
+                // 可以移动
+                isMove = true;
+                mSelectPoint.y = mSelectPoint.y - 1;
+            }
+
+        } else {
+            // 向下移动
+            if (mSelectPoint.y == getHeight()) {
+                // 不能移动
+                isMove = false;
+            } else {
+                // 可以移动
+                isMove = true;
+                mSelectPoint.y = mSelectPoint.y + 1;
             }
         }
 
