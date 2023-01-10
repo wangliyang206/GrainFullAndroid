@@ -15,14 +15,18 @@ public class ColorsUtil {
         throw new Error("Do not need instantiate!");
     }
 
-    /** 获取十六进制字符串 */
+    /**
+     * 获取十六进制字符串
+     */
     public static String getHexString(int color, boolean showAlpha) {
         int base = showAlpha ? 0xFFFFFFFF : 0xFFFFFF;
         String format = showAlpha ? "#%08X" : "#%06X";
         return String.format(format, (base & color)).toUpperCase();
     }
 
-    /** 颜色亮度 */
+    /**
+     * 颜色亮度
+     */
     public static int colorAtLightness(int color, float lightness) {
         float[] hsv = new float[3];
         Color.colorToHSV(color, hsv);
@@ -33,16 +37,21 @@ public class ColorsUtil {
     public static int adjustAlpha(float alpha, int color) {
         return alphaValueAsInt(alpha) << 24 | (0x00ffffff & color);
     }
+
     public static int alphaValueAsInt(float alpha) {
         return Math.round(alpha * 255);
     }
 
-    /** 获取字母百分比 */
+    /**
+     * 获取字母百分比
+     */
     public static float getAlphaPercent(int argb) {
         return Color.alpha(argb) / 255f;
     }
 
-    /** 颜色的亮度 */
+    /**
+     * 颜色的亮度
+     */
     public static float lightnessOfColor(int color) {
         float[] hsv = new float[3];
         Color.colorToHSV(color, hsv);
@@ -58,7 +67,7 @@ public class ColorsUtil {
      * @return float[]
      */
 
-    public static float[] getCMYK(int red, int green, int blue){
+    public static float[] getCMYK(int red, int green, int blue) {
         float[] list = new float[4];
         float r;
         float g;
@@ -70,11 +79,29 @@ public class ColorsUtil {
         highestValue = Math.max(r, g);
         highestValue = Math.max(highestValue, b);
 
-        list[3] = (float)1-highestValue;
+        list[3] = (float) 1 - highestValue;
 
-        list[0] = (1-r-list[3]) / (1-list[3]);
-        list[1] = (1-g-list[3]) / (1-list[3]);
-        list[2] = (1-b-list[3]) / (1-list[3]);
+        list[0] = (1 - r - list[3]) / (1 - list[3]);
+        list[1] = (1 - g - list[3]) / (1 - list[3]);
+        list[2] = (1 - b - list[3]) / (1 - list[3]);
         return list;
+    }
+
+    /**
+     * Returns the rgb value according to the cmyk parameters
+     *
+     * @param cyan
+     * @param magenta
+     * @param yellow
+     * @param key
+     * @return int[]
+     */
+
+    public static int[] getRGB(float cyan, float magenta, float yellow, float key) {
+        int[] arrReturn = new int[3];
+        arrReturn[0] = Math.round(255 * (1 - cyan) * (1 - key));
+        arrReturn[1] = Math.round(255 * (1 - magenta) * (1 - key));
+        arrReturn[2] = Math.round(255 * (1 - yellow) * (1 - key));
+        return arrReturn;
     }
 }
