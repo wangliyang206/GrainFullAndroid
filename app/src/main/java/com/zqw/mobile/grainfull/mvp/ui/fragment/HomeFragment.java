@@ -32,6 +32,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity;
@@ -187,9 +188,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_color_picturepipette,                                             // 吸管工具
             R.id.btn_fragmenthome_color_codeconversion,                                             // 颜色码转换
 
+            R.id.btn_fragmenthome_text_digital,                                                     // 数字转中文
+            R.id.btn_fragmenthome_text_bulletchat,                                                  // 手持弹幕
+
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
-            R.id.btn_fragmenthome_other_bulletchat,                                                 // 手持弹幕
             R.id.btn_fragmenthome_other_magnifier,                                                  // 放大镜
     })
     @Override
@@ -227,6 +230,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_facecomparison:                                              // 人脸对比
                 ActivityUtils.startActivity(FaceComparisonActivity.class);
                 break;
+
             case R.id.btn_fragmenthome_facerecognition:                                             // 人脸采集
                 ActivityUtils.startActivity(BaiduFaceRecognitionActivity.class);
                 break;
@@ -236,18 +240,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_speechsynthesis:                                             // 语音合成
                 ActivityUtils.startActivity(BaiduSpeechSynthesisActivity.class);
                 break;
-            case R.id.btn_fragmenthome_audioconversion:                                             // 音频转换
-                ActivityUtils.startActivity(AudioConversionActivity.class);
-                break;
-            case R.id.btn_fragmenthome_other_decision:                                              // 做个决定
-                ActivityUtils.startActivity(DecisionActivity.class);
-                break;
-            case R.id.btn_fragmenthome_other_bulletchat:                                            // 手持弹幕
-                ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
-                break;
-            case R.id.btn_fragmenthome_other_magnifier:                                             // 放大镜
-                ActivityUtils.startActivity(MagnifierActivity.class);
-                break;
+
             case R.id.btn_fragmenthome_color_colorpicker:                                           // 取色板
                 ActivityUtils.startActivity(ColorPickerActivity.class);
                 break;
@@ -257,6 +250,24 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_color_codeconversion:                                        // 颜色码转换
                 ActivityUtils.startActivity(ColorCodeConversionActivity.class);
                 break;
+
+            case R.id.btn_fragmenthome_text_digital:                                                // 数字转中文
+                ActivityUtils.startActivity(DigitalToChineseActivity.class);
+                break;
+            case R.id.btn_fragmenthome_text_bulletchat:                                             // 手持弹幕
+                ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
+                break;
+
+            case R.id.btn_fragmenthome_audioconversion:                                             // 音频转换
+                ActivityUtils.startActivity(AudioConversionActivity.class);
+                break;
+            case R.id.btn_fragmenthome_other_decision:                                              // 做个决定
+                ActivityUtils.startActivity(DecisionActivity.class);
+                break;
+            case R.id.btn_fragmenthome_other_magnifier:                                             // 放大镜
+                ActivityUtils.startActivity(MagnifierActivity.class);
+                break;
+
         }
     }
 
