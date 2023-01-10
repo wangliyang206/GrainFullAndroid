@@ -86,7 +86,7 @@ public class DigitalToChineseActivity extends BaseActivity<DigitalToChinesePrese
                 } else {
                     // 有数字，显示布局
                     lilaResult.setVisibility(View.VISIBLE);
-                    txviAmount.setText(ChineseNumUtils.upperRMB(s.toString()));
+                    txviAmount.setText(ChineseNumUtils.getRmb(Double.parseDouble(s.toString())));
                 }
             }
 

@@ -9,6 +9,10 @@ package com.zqw.mobile.grainfull.app.utils;
  * @CreateDate: 2023/1/10 17:52
  */
 public class ChineseNumUtils {
+    public static String[] chineseCode = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
+    private static String unit[][] = { { "", "万", "亿"}, { "", "拾", "佰", "仟"}};
+    private static String[] elseUnit = {"分", "角"};
+
     /**
      * 中文数字转阿拉伯数字
      * (长度不能超过long最大值)
@@ -72,43 +76,60 @@ public class ChineseNumUtils {
     }
 
     /**
-     * @param num 人民币阿拉伯数字
-     * @return 中文大写人民币
-     * @author Jarry Leo
+     * 人民币阿拉伯数字
      */
-    public static String upperRMB(String num) {
-        // 单位
-        char dw[] = {'圆', '拾', '佰', '仟', '萬', '拾', '佰', '仟', '亿', '拾', '佰',
-                '仟', '萬', '拾', '佰', '仟', '兆', '拾', '佰', '仟', '萬', '拾', '佰',
-                '仟', '亿', '拾', '佰', '仟', '萬', '拾', '佰', '仟'};
-
-        // 中文数字
-        char sz[] = {'零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'};
-
-        // 数字转成字符数组
-        char s[] = num.toCharArray();
-
-        // 创建字符串生成器
-        StringBuilder sb = new StringBuilder();
-        int index = 0;
-        for (int i = s.length - 1; i >= 0; i--) {
-            // 倒着插入中文数字和单位
-            sb.append("" + dw[index++] + sz[s[i] - 48]);
-
+    public static String getRmb(double num) {
+        String s = "";
+        String numString = String.format("%.2f", num);
+        String[] strings = numString.split("\\.");
+        if (num == 0) {
+            s = "零圆整";
+        } else {
+            s += getRmbValue(false, strings[0]) + getRmbValue(true, strings[1]);
         }
-        // 字符串反转
-        String str = sb.reverse().toString();
-        String lastStr;
+        return s;
+    }
 
-        do {
-            // 语法调整
-            lastStr = str;
-            str = str.replaceAll("零[零拾佰仟]", "零");
-            str = str.replaceAll("零([萬亿兆])", "$1零");
-            str = str.replaceAll("亿萬", "亿");
-            str = str.replaceAll("兆[萬万]", "兆");
-            str = str.replaceAll("零圆", "圆");
-        } while (!lastStr.equals(str));
-        return str;
+    /**
+     * 返回格式化人民币结果
+     */
+    private static String getRmbValue(boolean isPoint, String snum) {
+        String result = "";
+        String[] numArray = snum.split("");
+        //判断是整数部分还是小数部分
+        if (isPoint) {
+            //小数部分
+            //判断是否是00
+            if (snum.equals("00")) {
+                // 00加圆整
+                result += "圆整";
+            } else {
+                result += "圆";
+                //非00需要加角分单位
+                for (int i = 0; i < numArray.length; i++) {
+                    int value = Integer.valueOf(numArray[i]) % 10;
+                    result += (chineseCode[value] + elseUnit[numArray.length - 1 - i]);
+                }
+            }
+        } else {
+            //整数部分
+            int integerPart = (int) Math.floor(Double.valueOf(snum));
+            for (int i = 0; i < unit[0].length && integerPart > 0; i++) {
+                String p = "";
+                for (int j = 0; j < unit[1].length; j++) {
+                    //每次除以10确定当前大写汉字是什么
+                    p = chineseCode[integerPart % 10] + unit[1][j] + p;
+                    integerPart = integerPart / 10;
+                }
+                //使用正则去判断0
+                result = p.replaceAll("(零.)*零$", "") + unit[0][i] + result;
+            }
+        }
+        //把多余的零替换掉
+        result = result.replaceAll("(零.)+", "零");
+        if (result.substring(0, 1).equals("零")) {
+            result = result.substring(1, result.length());
+        }
+        return result;
     }
 }
