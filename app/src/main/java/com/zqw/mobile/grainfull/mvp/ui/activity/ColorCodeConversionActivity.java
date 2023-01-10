@@ -21,6 +21,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.ColorsUtil;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerColorCodeConversionComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ColorCodeConversionContract;
 import com.zqw.mobile.grainfull.mvp.presenter.ColorCodeConversionPresenter;
@@ -106,16 +107,8 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
         editRgb.setText(r + "," + g + "," + b);
 
         // 显示 CMYK 颜色
-//        int _r = (r / 255);
-//        int _g = (g / 255);
-//        int _b = (b / 255);
-//
-//        int black = 1 - max(_r, _g, _b);
-//
-//        int cyan = (1 - _r - black) / (1 - black);
-//        int magenta = (1 - _g - black) / (1 - black);
-//        int yellow = (1 - _b - black) / (1 - black);
-//        editCmyk.setText(cyan + "," + magenta + "," + yellow + "," + black);
+        float[] mCmyk = ColorsUtil.getCMYK(r, g, b);
+        editCmyk.setText(format(mCmyk[0]) + "," + format(mCmyk[1]) + "," + format(mCmyk[2]) + "," + format(mCmyk[3]));
 
         // 显示 HSV 颜色
         float[] hsv = new float[3];
@@ -127,6 +120,17 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
                         + "," +
                         mDecimalFormat.format(hsv[2]));
 
+    }
+
+    /**
+     * 取小数点后两位
+     */
+    private int format(float num) {
+        int mVal = 0;
+        String str = CommonUtils.formatMoney(num);
+        str = str.substring(str.indexOf(".") + 1);
+        mVal = Integer.parseInt(str);
+        return mVal;
     }
 
     @OnClick({
@@ -167,21 +171,6 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
                 }
                 break;
         }
-    }
-
-    /**
-     * 计算CMYK
-     */
-    private int max(int a, int b, int c) {
-        if (a > b && a > c)
-            return a;
-        if (b > a && b > c)
-            return b;
-        if (c > a && c > b)
-            return c;
-
-        // all equal just return a
-        return a;
     }
 
     public Activity getActivity() {
