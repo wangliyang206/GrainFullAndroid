@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ClipboardUtils;
+import com.blankj.utilcode.util.KeyboardUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -56,6 +58,12 @@ public class DigitalToChineseActivity extends BaseActivity<DigitalToChinesePrese
     /*------------------------------------------------业务区域------------------------------------------------*/
 
     @Override
+    protected void onDestroy() {
+        KeyboardUtils.unregisterSoftInputChangedListener(getWindow());
+        super.onDestroy();
+    }
+
+    @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerDigitalToChineseComponent
                 .builder()
@@ -85,6 +93,7 @@ public class DigitalToChineseActivity extends BaseActivity<DigitalToChinesePrese
     })
     @Override
     public void onClick(View v) {
+        hideInput();
         switch (v.getId()) {
             case R.id.lila_digitaltochinese_lowercase:                                              // 复制 简体小写
                 String mLowercase = txviLowercase.getText().toString();
@@ -157,6 +166,19 @@ public class DigitalToChineseActivity extends BaseActivity<DigitalToChinesePrese
 
         }
     };
+
+    /**
+     * 隐藏软键盘
+     */
+    private void hideInput() {
+        KeyboardUtils.hideSoftInput(this);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        hideInput();
+        return super.onTouchEvent(event);
+    }
 
     public Activity getActivity() {
         return this;

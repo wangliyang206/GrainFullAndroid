@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_chinese_to_pinyin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_chinesetopinyin_top"
+        layout="@layout/comm_top_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- 上部分 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/layout_bg_shape"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="请输入中文"
+                    android:textColor="@color/rmb_dark_green_color"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edit_chinesetopinyin_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/financial_bg_frame"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="@color/common_text_color"
+                    android:textColorHint="@color/common_text_hint_color"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:text="说明：点击结果行可复制相关内容！"
+                android:textColor="@color/common_text_hint_color"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/radio_chinesetopinyin_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_chinesetopinyin_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="全拼音"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_chinesetopinyin_short"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="首字母"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/chbo_chinesetopinyin_symbols"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="音标"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_chinesetopinyin_convert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_bg_selector"
+                android:paddingStart="50dp"
+                android:paddingEnd="50dp"
+                android:text="转换"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <!-- 下部分 -->
+            <TextView
+                android:id="@+id/txvi_chinesetopinyin_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/layout_bg_shape"
+                android:gravity="center_vertical"
+                android:padding="15dp"
+                android:text=""
+                android:textColor="@color/common_text_color"
+                android:textColorHint="@color/common_text_hint_color"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

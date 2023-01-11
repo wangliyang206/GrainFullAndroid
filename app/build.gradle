@@ -366,4 +366,8 @@ dependencies {
     implementation project(path: ':uiasr')
     // LAME MP3转码库
     implementation project(path: ':lame_mp3_converter')
+    // TinyPinyin核心包(拼音，翻译后字母大写)，约80KB，https://github.com/promeG/TinyPinyin
+//    implementation 'com.github.promeg:tinypinyin:2.0.3'
+    // jpinyin开源库(拼音，翻译后字母可带音标)，https://github.com/qzw1210/jpinyin
+    implementation 'com.github.stuxuhai:jpinyin:1.1.7'
 }

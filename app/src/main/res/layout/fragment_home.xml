@@ -361,6 +361,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_text_line" />
 
                 <TextView
+                    android:id="@+id/btn_fragmenthome_text_chinesetopinyin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="中文转拼音"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_text_digital"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_text_digital" />
+
+                <TextView
                     android:id="@+id/btn_fragmenthome_text_bulletchat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -368,8 +379,8 @@
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
                     android:text="手持弹幕"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_text_digital"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_text_digital" />
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_text_chinesetopinyin"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_text_chinesetopinyin" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

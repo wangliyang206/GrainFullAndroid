@@ -29,6 +29,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity;
@@ -189,6 +190,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_color_codeconversion,                                             // 颜色码转换
 
             R.id.btn_fragmenthome_text_digital,                                                     // 数字转中文
+            R.id.btn_fragmenthome_text_chinesetopinyin,                                             // 中文转拼音
             R.id.btn_fragmenthome_text_bulletchat,                                                  // 手持弹幕
 
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
@@ -253,6 +255,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
             case R.id.btn_fragmenthome_text_digital:                                                // 数字转中文
                 ActivityUtils.startActivity(DigitalToChineseActivity.class);
+                break;
+            case R.id.btn_fragmenthome_text_chinesetopinyin:                                        // 中文转拼音
+                ActivityUtils.startActivity(ChineseToPinyinActivity.class);
                 break;
             case R.id.btn_fragmenthome_text_bulletchat:                                             // 手持弹幕
                 ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
