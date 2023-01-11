@@ -21,3 +21,4 @@
 35	499	695030753	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o	e629d70e750dbe7
 29	541	695030753	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o	5d9c4937167ab85c
 738	1074	695030754	../../../../src/main/jniLibs/arm64-v8a/liblame-mp3-utils.so	88f433b543bc2584
+0	14	0	clean	989fffd6a9495a26

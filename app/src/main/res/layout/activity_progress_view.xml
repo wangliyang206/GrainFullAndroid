@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_progress_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_progressview_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <com.white.progressview.CircleProgressView
+            android:id="@+id/cpvi_progressview_normal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:progress="68"
+            app:progressNormalSize="4dp"
+            app:progressReachSize="4dp"
+            app:progressStyle="Normal"
+            app:radius="28dp" />
+
+        <com.white.progressview.CircleProgressView
+            android:id="@+id/cpvi_progressview_fill_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:progress="80"
+            app:progressStyle="FillInner"
+            app:progressTextColor="@android:color/white"
+            app:radius="28dp" />
+
+        <com.white.progressview.CircleProgressView
+            android:id="@+id/cpvi_progressview_fill_in_arc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:progress="100"
+            app:innerPadding="3dp"
+            app:outerSize="2dp"
+            app:progressReachColor="@android:color/darker_gray"
+            app:progressStyle="FillInnerArc"
+            app:radius="28dp" />
+    </LinearLayout>
+
+    <com.white.progressview.HorizontalProgressView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:progress="2"
+        app:progressTextVisible="true" />
+
+    <com.white.progressview.HorizontalProgressView
+        android:id="@+id/cpvi_progressview_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:progress="20"
+        app:progressTextVisible="true" />
+
+    <com.white.progressview.HorizontalProgressView
+        android:id="@+id/cpvi_progressview_40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:progress="40"
+        app:progressReachColor="#f04134"
+        app:progressTextColor="#f04134"
+        app:progressTextVisible="true" />
+
+    <com.white.progressview.HorizontalProgressView
+        android:id="@+id/cpvi_progressview_60"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:progress="60"
+        app:progressReachColor="#00a854"
+        app:progressTextColor="#00a854"
+        app:progressTextVisible="false" />
+
+    <com.white.progressview.HorizontalProgressView
+        android:id="@+id/cpvi_progressview_80"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:progress="80"
+        app:progressReachColor="#ffff8800"
+        app:progressTextColor="#ffff8800"
+        app:progressTextVisible="true" />
+
+    <com.white.progressview.HorizontalProgressView
+        android:id="@+id/cpvi_progressview_100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:progress="100"
+        app:progressReachColor="@color/colorPrimary"
+        app:progressTextColor="@color/colorPrimary"
+        app:progressTextVisible="true" />
+
+    <Button
+        android:id="@+id/btn_progressview_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/btn_bg_selector"
+        android:text="start"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+</LinearLayout>
