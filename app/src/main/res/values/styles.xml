@@ -148,7 +148,7 @@
 
     <!-- 放大镜 -->
     <declare-styleable name="LoupeView">
-        <attr name="radius" format="integer|reference" />
+        <attr name="mirrorRadius" format="integer|reference" />
         <attr name="scale" format="integer|reference" />
     </declare-styleable>
 

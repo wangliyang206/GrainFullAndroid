@@ -62,6 +62,11 @@ public final class AccountManager {
 
     // 是否提醒过 APP升级
     private final String UPGRADE = "Upgrade";
+
+    // 是否保持清醒
+    private final String KEEP_WAKE = "keepWake";
+    // 金属探测仪的报警值
+    private final String ALARM_LIMIT = "alarmLimit";
     /*----------------------------------------------操作对象-------------------------------------------------*/
 
     private AppPreferencesHelper spHelper;
@@ -364,5 +369,30 @@ public final class AccountManager {
      */
     public void setSelectCity(String val) {
         spHelper.put(SELECT_CITY, val);
+    }
+
+    /**
+     * 获取是否保持清醒
+     *
+     * @return 回调
+     */
+    public boolean getKeepWake() {
+        return spHelper.getPref(KEEP_WAKE, true);
+    }
+
+    /**
+     * 设置是否保持清醒
+     */
+    public void setKeepWake(boolean val) {
+        spHelper.put(KEEP_WAKE, val);
+    }
+
+    /**
+     * 金属探测仪的报警值
+     *
+     * @return 回调
+     */
+    public String getAlarmLimit() {
+        return spHelper.getPref(ALARM_LIMIT, "");
     }
 }

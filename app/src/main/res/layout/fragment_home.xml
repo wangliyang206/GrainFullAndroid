@@ -330,7 +330,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="文字应用"
+                    android:text="文字"
                     android:textColor="@color/common_text_color"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -381,6 +381,65 @@
                     android:text="手持弹幕"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_text_chinesetopinyin"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_text_chinesetopinyin" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 设备 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cola_fragmenthome_equipment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_bg_shape">
+
+                <TextView
+                    android:id="@+id/txvi_fragmenthome_equipment_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="设备"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view_fragmenthome_equipment_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/line_frame_color"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_equipment_title" />
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_equipment_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="查看设备详细信息"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_equipment_line" />
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_equipment_metaldetector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="金属探测仪"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_equipment_info"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_equipment_info" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

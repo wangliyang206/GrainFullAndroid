@@ -42,6 +42,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
@@ -193,6 +194,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_text_chinesetopinyin,                                             // 中文转拼音
             R.id.btn_fragmenthome_text_bulletchat,                                                  // 手持弹幕
 
+            R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备详细信息
+            R.id.btn_fragmenthome_equipment_metaldetector,                                          // 金属探测仪
+
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
             R.id.btn_fragmenthome_other_magnifier,                                                  // 放大镜
@@ -261,6 +265,13 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_text_bulletchat:                                             // 手持弹幕
                 ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
+                break;
+
+            case R.id.btn_fragmenthome_equipment_info:                                              // 查看设备详情信息
+                showMessage("暂未开放！");
+                break;
+            case R.id.btn_fragmenthome_equipment_metaldetector:                                     // 金属探测仪
+                ActivityUtils.startActivity(MetalDetectorActivity.class);
                 break;
 
             case R.id.btn_fragmenthome_audioconversion:                                             // 音频转换

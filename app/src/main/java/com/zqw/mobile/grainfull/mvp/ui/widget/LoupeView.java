@@ -55,7 +55,7 @@ public class LoupeView extends AppCompatImageView {
 
     private void initAttr(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoupeView);
-        radius = typedArray.getInt(R.styleable.LoupeView_radius, 100);
+        radius = typedArray.getInt(R.styleable.LoupeView_mirrorRadius, 100);
         SCALE = typedArray.getInt(R.styleable.LoupeView_scale, 3);
         typedArray.recycle();
     }

@@ -46,6 +46,6 @@
         android:background="@drawable/financial_bg_frame"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_loupe"
-        app:radius="200"
+        app:mirrorRadius="200"
         app:scale="2" />
 </LinearLayout>

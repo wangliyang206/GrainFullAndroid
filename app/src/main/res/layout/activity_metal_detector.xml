@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_metal_detector"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_metaldetector_top"
+        layout="@layout/comm_top_layout" />
+
+    <!-- 探测结果 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/layout_bg_shape">
+
+        <com.white.progressview.CircleProgressView
+            android:id="@+id/cpvi_metaldetector_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:progress="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:progressNormalSize="4dp"
+            app:progressReachSize="4dp"
+            app:progressStyle="Normal"
+            app:radius="28dp" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text=""
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/txvi_metaldetector_introduce"
+            app:layout_constraintLeft_toRightOf="@+id/cpvi_metaldetector_progress"
+            app:layout_constraintTop_toTopOf="@+id/cpvi_metaldetector_progress" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_introduce"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="请将手机接近探测目标，一般情况下仅能探测铁元素金属。"
+            android:textColor="@color/common_text_hint_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/txvi_metaldetector_tips"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_metaldetector_tips" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 探测数值 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_bg_shape">
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_strength_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="总磁感应强度"
+            android:textColor="@color/common_text_color"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_strength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text=""
+            android:textColor="@color/common_text_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_metaldetector_strength_tips"
+            app:layout_constraintLeft_toRightOf="@+id/txvi_metaldetector_strength_tips"
+            app:layout_constraintTop_toTopOf="@+id/txvi_metaldetector_strength_tips" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_x_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="X轴"
+            android:textColor="@color/common_text_hint_color"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@+id/txvi_metaldetector_strength_tips"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_metaldetector_strength_tips" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text=""
+            android:textColor="@color/common_text_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_metaldetector_x_tips"
+            app:layout_constraintLeft_toRightOf="@+id/txvi_metaldetector_x_tips"
+            app:layout_constraintTop_toTopOf="@+id/txvi_metaldetector_x_tips" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_y_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Y轴"
+            android:textColor="@color/common_text_hint_color"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@+id/txvi_metaldetector_strength_tips"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_metaldetector_x_tips" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text=""
+            android:textColor="@color/common_text_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_metaldetector_y_tips"
+            app:layout_constraintLeft_toRightOf="@+id/txvi_metaldetector_y_tips"
+            app:layout_constraintTop_toTopOf="@+id/txvi_metaldetector_y_tips" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_z_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="Z轴"
+            android:textColor="@color/common_text_hint_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/txvi_metaldetector_strength_tips"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_metaldetector_y_tips" />
+
+        <TextView
+            android:id="@+id/txvi_metaldetector_z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text=""
+            android:textColor="@color/common_text_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_metaldetector_z_tips"
+            app:layout_constraintLeft_toRightOf="@+id/txvi_metaldetector_z_tips"
+            app:layout_constraintTop_toTopOf="@+id/txvi_metaldetector_z_tips" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <lecho.lib.hellocharts.view.LineChartView
+        android:id="@+id/lcvi_metaldetector_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

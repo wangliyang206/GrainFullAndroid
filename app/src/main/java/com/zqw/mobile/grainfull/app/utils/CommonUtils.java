@@ -10,6 +10,8 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -45,6 +47,15 @@ import java.util.regex.Pattern;
  */
 
 public class CommonUtils {
+
+    /**
+     * 判断设备是否支持霍尔传感器
+     */
+    public static Boolean isMagneticSensorAvailable(Context context) {
+        SensorManager sensorManager = (SensorManager) context.getSystemService(context.SENSOR_SERVICE);
+        Sensor magneticSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        return magneticSensor != null;
+    }
 
     /**
      * List深复制

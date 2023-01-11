@@ -370,4 +370,8 @@ dependencies {
 //    implementation 'com.github.promeg:tinypinyin:2.0.3'
     // jpinyin开源库(拼音，翻译后字母可带音标)，https://github.com/qzw1210/jpinyin
     implementation 'com.github.stuxuhai:jpinyin:1.1.7'
+    // 进度条，https://github.com/KevenT/ProgressView
+    implementation 'com.white:progressview:1.0.1'
+    // Hello 图表，https://github.com/lecho/hellocharts-android
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }
