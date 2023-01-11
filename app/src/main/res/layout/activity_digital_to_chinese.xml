@@ -91,13 +91,13 @@
                     android:background="@drawable/coll_item_up_bg_selector"
                     android:orientation="vertical">
 
-                    <!-- 小写 -->
+                    <!-- 简体小写 -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="10dp"
-                        android:text="小写"
+                        android:text="简体小写"
                         android:textColor="@color/rmb_dark_green_color"
                         android:textSize="14sp" />
 
@@ -129,13 +129,13 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/coll_item_middle_bg_selector"
                     android:orientation="vertical">
-                    <!-- 大写 -->
+                    <!-- 简体大写 -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="10dp"
-                        android:text="大写"
+                        android:text="简体大写"
                         android:textColor="@color/rmb_dark_green_color"
                         android:textSize="14sp" />
 
@@ -161,23 +161,23 @@
                     android:background="@color/line_frame_color" />
 
                 <LinearLayout
-                    android:id="@+id/lila_digitaltochinese_amount"
+                    android:id="@+id/lila_digitaltochinese_capitalamount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/coll_item_down_bg_selector"
                     android:orientation="vertical">
-                    <!-- 金额 -->
+                    <!-- 大写金额 -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="10dp"
-                        android:text="金额"
+                        android:text="大写金额"
                         android:textColor="@color/rmb_dark_green_color"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/txvi_digitaltochinese_amount"
+                        android:id="@+id/txvi_digitaltochinese_capitalamount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
