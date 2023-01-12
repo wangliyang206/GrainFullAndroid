@@ -168,8 +168,12 @@ public class EquipmentInfoActivity extends BaseActivity<EquipmentInfoPresenter> 
             return;
         }
         txviMeid.append(PhoneUtils.getMEID());
-        // IMSI
-        txviImsi.append(PhoneUtils.getIMSI());
+        try {
+            // IMSI
+            txviImsi.append(PhoneUtils.getIMSI());
+        } catch (Exception ignored) {
+
+        }
         // Build标签
         txviBuild.append(Build.TAGS);
         // TYPE
