@@ -395,4 +395,13 @@ public final class AccountManager {
     public String getAlarmLimit() {
         return spHelper.getPref(ALARM_LIMIT, "");
     }
+
+    /**
+     * 金属探测仪的报警值
+     *
+     * @return 回调
+     */
+    public void setAlarmLimit(String val) {
+        spHelper.put(ALARM_LIMIT, val);
+    }
 }

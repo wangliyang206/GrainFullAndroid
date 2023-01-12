@@ -11,6 +11,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ import com.jess.arms.utils.ArmsUtils;
 import com.white.progressview.CircleProgressView;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.CommTipsDialog;
+import com.zqw.mobile.grainfull.app.dialog.PopupMetalDetector;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.LineCharts;
@@ -37,6 +41,7 @@ import java.math.BigDecimal;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import lecho.lib.hellocharts.view.LineChartView;
 
 /**
@@ -76,8 +81,9 @@ public class MetalDetectorActivity extends BaseActivity<MetalDetectorPresenter> 
     private SensorManager sensorManager;
     // 折线图
     private LineCharts lineCharts = new LineCharts();
-    // 报警限值
-    private double alarmLim;
+
+    // 设置界面
+    private PopupMetalDetector mPopup;
 
     @Override
     protected void onDestroy() {
@@ -85,6 +91,7 @@ public class MetalDetectorActivity extends BaseActivity<MetalDetectorPresenter> 
         this.lineCharts = null;
         this.sensorManager = null;
         this.mAccountManager = null;
+        this.mPopup = null;
     }
 
     @Override
@@ -131,6 +138,28 @@ public class MetalDetectorActivity extends BaseActivity<MetalDetectorPresenter> 
         // 判断设备是否支持霍尔传感器
         if (!CommonUtils.isMagneticSensorAvailable(getApplicationContext())) {
             mDialog.show();
+        }
+
+        mPopup = new PopupMetalDetector(getApplicationContext(), (isSucc, val) -> {
+            if (isSucc) {
+                mAccountManager.setAlarmLimit(val);
+            }
+        });
+    }
+
+    @OnClick({
+            R.id.txvi_metaldetector_settings,                                                       // 设置
+    })
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txvi_metaldetector_settings:                                                  // 设置
+                if (mPopup != null) {
+                    String str = mAccountManager.getAlarmLimit();
+                    mPopup.setContent(TextUtils.isEmpty(str) ? "80" : str);
+                    mPopup.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                }
+                break;
         }
     }
 
@@ -193,6 +222,8 @@ public class MetalDetectorActivity extends BaseActivity<MetalDetectorPresenter> 
             txviStrength.setText(res + " μT");
             String alarmLimStr = mAccountManager.getAlarmLimit();
             // 防止用户非法输入导致软件崩溃影响体验
+            // 报警限值
+            double alarmLim;
             if (!alarmLimStr.isEmpty()) {
                 alarmLim = Double.valueOf(alarmLimStr);
             } else {
