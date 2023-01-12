@@ -175,39 +175,45 @@ public class MetalDetectorActivity extends BaseActivity<MetalDetectorPresenter> 
             } else {
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
-            //分别计算三轴磁感应强度
+            // 分别计算三轴磁感应强度
             float X_lateral = sensorEvent.values[0];
             float Y_lateral = sensorEvent.values[1];
             float Z_lateral = sensorEvent.values[2];
             //Log.d(TAG,X_lateral + "");
-            //计算出总磁感应强度
+            // 计算出总磁感应强度
             rawTotal = Math.sqrt(X_lateral * X_lateral + Y_lateral * Y_lateral + Z_lateral * Z_lateral);
-            //初始化BigDecimal类
+            // 初始化BigDecimal类
             BigDecimal total = new BigDecimal(rawTotal);
             double res = total.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-            //实时绘图
+            // 实时绘图
             lineCharts.makeCharts(lcviChart, (float) res);
             txviXz.setText(X_lateral + " μT");
             txviYz.setText(Y_lateral + " μT");
             txviZz.setText(Z_lateral + " μT");
             txviStrength.setText(res + " μT");
             String alarmLimStr = mAccountManager.getAlarmLimit();
-            //防止用户非法输入导致软件崩溃影响体验
+            // 防止用户非法输入导致软件崩溃影响体验
             if (!alarmLimStr.isEmpty()) {
                 alarmLim = Double.valueOf(alarmLimStr);
             } else {
                 alarmLim = 80;
             }
             if (res < alarmLim) {
-                metalState.setTextColor(Color.rgb(0, 0, 0));//设置文字颜色为黑色
+                // 设置文字颜色为黑色
+                metalState.setTextColor(Color.rgb(0, 0, 0));
                 metalState.setText("未探测到金属");
-                int progress = (int) ((res / alarmLim) * 100);//计算进度
+                // 计算进度
+                int progress = (int) ((res / alarmLim) * 100);
                 progressView.setReachBarColor(Color.rgb(30, 144, 255));
-                progressView.setProgress(progress);//进度条
+                progressView.setTextColor(Color.rgb(30, 144, 255));
+                // 进度条
+                progressView.setProgress(progress);
             } else {
-                metalState.setTextColor(Color.rgb(255, 0, 0));//红色
+                // 红色
+                metalState.setTextColor(Color.rgb(255, 0, 0));
                 metalState.setText("探测到金属!");
                 progressView.setReachBarColor(Color.rgb(255, 0, 0));
+                progressView.setTextColor(Color.rgb(255, 0, 0));
                 // 进度条满
                 progressView.setProgress(100);
                 // 震动，100毫秒

@@ -138,6 +138,7 @@
                     android:padding="10dp"
                     android:text="音频波形"
                     app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_fragmentspecialeffects_other_lottery"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_other_line" />
 
                 <TextView
@@ -149,6 +150,7 @@
                     android:padding="10dp"
                     android:text="抽奖转盘"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_audiowaveform"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_fragmentspecialeffects_other_spiderwebgrade"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_audiowaveform" />
 
                 <TextView
@@ -160,6 +162,7 @@
                     android:padding="10dp"
                     android:text="蛛网等级"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_lottery"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_fragmentspecialeffects_other_progress"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_lottery" />
 
                 <TextView
@@ -167,10 +170,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
                     android:text="进度条"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_spiderwebgrade"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_spiderwebgrade" />
 
                 <TextView
