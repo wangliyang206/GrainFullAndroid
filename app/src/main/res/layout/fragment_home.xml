@@ -426,7 +426,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
-                    android:text="查看设备详细信息"
+                    android:text="查看设备信息"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_equipment_line" />
 

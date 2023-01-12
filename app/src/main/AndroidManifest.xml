@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.EquipmentInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.ProgressViewActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -35,6 +35,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.EquipmentInfoActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
@@ -194,7 +195,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_text_chinesetopinyin,                                             // 中文转拼音
             R.id.btn_fragmenthome_text_bulletchat,                                                  // 手持弹幕
 
-            R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备详细信息
+            R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备信息
             R.id.btn_fragmenthome_equipment_metaldetector,                                          // 金属探测仪
 
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
@@ -267,8 +268,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
                 break;
 
-            case R.id.btn_fragmenthome_equipment_info:                                              // 查看设备详情信息
-                showMessage("暂未开放！");
+            case R.id.btn_fragmenthome_equipment_info:                                              // 查看设备信息
+                ActivityUtils.startActivity(EquipmentInfoActivity.class);
                 break;
             case R.id.btn_fragmenthome_equipment_metaldetector:                                     // 金属探测仪
                 ActivityUtils.startActivity(MetalDetectorActivity.class);
