@@ -103,4 +103,9 @@
     <color name="green_xiaomi">#52BA97</color>
 
     <color name="colorpicker_txt_color">#707070</color>
+
+    <!-- 噪音测量 -->
+    <color name="noise_bg_color">#393429</color>
+    <color name="noise_big_circle_color">#9C8673</color>
+    <color name="noise_small_circle_color">#DEDBCE</color>
 </resources>

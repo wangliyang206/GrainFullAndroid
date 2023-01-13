@@ -441,6 +441,17 @@
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_equipment_info"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_equipment_info" />
 
+                <TextView
+                    android:id="@+id/btn_fragmenthome_equipment_noisemeasurement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="噪音测量"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_equipment_metaldetector"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_equipment_metaldetector" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 其它 -->

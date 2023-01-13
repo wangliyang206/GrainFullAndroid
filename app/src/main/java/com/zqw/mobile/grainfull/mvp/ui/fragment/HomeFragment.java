@@ -44,6 +44,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.NoiseMeasurementActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
@@ -197,6 +198,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
             R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备信息
             R.id.btn_fragmenthome_equipment_metaldetector,                                          // 金属探测仪
+            R.id.btn_fragmenthome_equipment_noisemeasurement,                                       // 噪音测量
 
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
@@ -273,6 +275,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_equipment_metaldetector:                                     // 金属探测仪
                 ActivityUtils.startActivity(MetalDetectorActivity.class);
+                break;
+            case R.id.btn_fragmenthome_equipment_noisemeasurement:                                  // 噪音测量
+                ActivityUtils.startActivity(NoiseMeasurementActivity.class);
                 break;
 
             case R.id.btn_fragmenthome_audioconversion:                                             // 音频转换
