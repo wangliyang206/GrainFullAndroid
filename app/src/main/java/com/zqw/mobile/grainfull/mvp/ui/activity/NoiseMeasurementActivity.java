@@ -83,6 +83,10 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
     @Override
     protected void onDestroy() {
         this.isGetVoiceRun = false;
+        if (mHandler != null) {
+            this.mHandler.removeCallbacksAndMessages(null);
+            this.mHandler = null;
+        }
         super.onDestroy();
         this.mDialog = null;
     }
@@ -160,16 +164,12 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
      * 获取噪声级别
      */
     public void getNoiseLevel() {
-        if (isGetVoiceRun) {
-            Timber.e("%s正在记录中", TAG);
-            return;
-        }
-        // 更新记录
-        refreshT.start();
+        isGetVoiceRun = true;
         mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
                 SAMPLE_RATE_IN_HZ, AudioFormat.CHANNEL_IN_DEFAULT,
                 AudioFormat.ENCODING_PCM_16BIT, BUFFER_SIZE);
-        isGetVoiceRun = true;
+        // 更新记录
+        refreshT.start();
         new Thread(() -> {
             mAudioRecord.startRecording();
             short[] buffer = new short[BUFFER_SIZE];
@@ -207,7 +207,7 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
     }
 
     //------------------------多线程部分，负责控制控件显示噪音值-----------------//
-    final Handler handler = new Handler();
+    Handler mHandler = new Handler();
     final Runnable runnable = () -> {
         if (!isDestroyed()) {
             mCircleProgressView.setProgress(curDb);
@@ -225,8 +225,14 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
         @Override
         public void run() {
             while (true) {
+                if (!isGetVoiceRun) {
+                    // 结束，跳出
+                    return;
+                }
                 // 加入到消息队列
-                handler.post(runnable);
+                if (mHandler != null){
+                    mHandler.post(runnable);
+                }
                 try {
                     // 更新时间
                     sleep(100);
