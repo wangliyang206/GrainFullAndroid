@@ -4,11 +4,13 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -21,12 +23,14 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.white.progressview.CircleProgressView;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.NoiseLevelDialog;
 import com.zqw.mobile.grainfull.app.utils.RxUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerNoiseMeasurementComponent;
 import com.zqw.mobile.grainfull.mvp.contract.NoiseMeasurementContract;
 import com.zqw.mobile.grainfull.mvp.presenter.NoiseMeasurementPresenter;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 /**
@@ -51,7 +55,12 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
     CircleProgressView mCircleProgressView;
     @BindView(R.id.txvi_noisemeasurement_tips)
     TextView txviTips;
+    @BindView(R.id.txvi_noisemeasurement_intr)
+    TextView txviIntr;
+
     /*------------------------------------------------业务区域------------------------------------------------*/
+    // 噪音等级弹框
+    private NoiseLevelDialog mDialog;
     // 获取语音运行是否运行着？
     private boolean isGetVoiceRun;
     // 录音操作对象
@@ -75,6 +84,7 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
     protected void onDestroy() {
         this.isGetVoiceRun = false;
         super.onDestroy();
+        this.mDialog = null;
     }
 
     /**
@@ -123,8 +133,27 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        // 增加下划线
+        txviIntr.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+        // 初始化弹框
+        mDialog = new NoiseLevelDialog(this);
+
         // 延迟一秒后执行
         RxUtils.startDelayed(1, this, this::getNoiseLevel);
+    }
+
+    @OnClick({
+            R.id.txvi_noisemeasurement_intr,                                                        // 查看噪音等级
+    })
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txvi_noisemeasurement_intr:                                                   // 查看噪音等级
+                if (mDialog != null)
+                    mDialog.show();
+                break;
+        }
     }
 
     /**
@@ -184,7 +213,10 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
             mCircleProgressView.setProgress(curDb);
             txviMin.setText(String.valueOf(minDb));
             txviMax.setText(String.valueOf(maxDb));
-            txviTips.setText(goBewrite(curDb));
+            String tips = goBewrite(curDb);
+            if (!tips.isEmpty()) {
+                txviTips.setText(tips);
+            }
 
         }
     };
@@ -255,8 +287,8 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
         if (degree > 100) {
             return "人无法忍受的环境";
         }
-        return "正在获取环境...";
-
+//        return "正在获取环境...";
+        return "";
     }
 
     public Activity getActivity() {

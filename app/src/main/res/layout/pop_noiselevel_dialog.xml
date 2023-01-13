@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <!--居中布局-->
+    <RelativeLayout
+        android:id="@+id/view_popnoiselevel_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:background="@drawable/layout_bg_shape">
+
+        <!--内部上下结构布局-->
+        <LinearLayout
+            android:id="@+id/liay_popnoiselevel_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!--提示-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="噪音级别"
+                android:textColor="@color/common_text_color"
+                android:textSize="16sp" />
+
+            <!--内容-->
+            <TextView
+                android:id="@+id/txvi_popnoiselevel_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
+                android:text="@string/noise_level_txt"
+                android:textColor="@color/common_edit_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!--分割线-->
+        <View
+            android:id="@+id/view_popnoiselevel_line_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_below="@+id/liay_popnoiselevel_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/dialog_line" />
+
+        <!--确定、取消-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/view_popnoiselevel_line_layout"
+            android:orientation="horizontal">
+
+            <!--确定-->
+            <TextView
+                android:id="@+id/txvi_popnoiselevel_yes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/common_ok"
+                android:textColor="@color/tab_text_press"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

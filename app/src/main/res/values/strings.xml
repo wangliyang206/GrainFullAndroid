@@ -61,8 +61,8 @@
     <string name="filter_vcode">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 
     <string name="face_comparison_notice">
-        注意：\n
-        1、目前暂不支持比对年龄跨度过大，以及遮挡幅度相差30%以上的两张人脸。\n
+        注意：；\n
+        1、目前暂不支持比对年龄跨度过大，以及遮挡幅度相差30%以上的两张人脸。；\n
         2、若模板照片中包含多张人脸，则取最大的人脸为模板人像；若对比图像中有多张人脸，将按照人脸面积排序，取前3张人脸进行比对。
     </string>
 
@@ -98,4 +98,7 @@
         <item>dnn, 默认，推荐模型</item>
         <item>touch,  关闭静音断句功能。用戶手动停止录音</item>
     </string-array>
+
+    <!-- 噪音等级 -->
+    <string name="noise_level_txt">0 - 19\u3000\u3000\u00A0极静，几乎感觉不到；\n20 - 39\u3000\u0020\u00A0\u00A0安静，犹如轻声语；\n40 - 59\u3000\u0020\u00A0\u00A0正常，一般普通室内谈话；\n60 - 69\u3000\u0020\u00A0\u00A0吵闹，有损神经；\n70 - 89\u3000\u0020\u00A0\u00A0很吵，神经细胞受到破坏；\n90 - 109\u3000\u0020\u00A0吵闹加剧，听力受损；\n110 - 129\u3000震耳欲聋；\n130 - 179\u3000无法忍受；\n180及上\u3000\u00A0\u00A0完全丧失听力；</string>
 </resources>
