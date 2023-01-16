@@ -133,7 +133,8 @@ android {
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"]
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"
+                                    , UM_APP_KEY  : "@string/um_app_key_manifest_debug"]
         }
 
         // 正式发布版
@@ -170,7 +171,8 @@ android {
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"]
+                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"
+                                    , UM_APP_KEY  : "@string/um_app_key_manifest"]
         }
     }
 
@@ -374,4 +376,7 @@ dependencies {
     implementation 'com.white:progressview:1.0.1'
     // Hello 图表，https://github.com/lecho/hellocharts-android
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    // 友盟统计SDK
+    implementation  'com.umeng.umsdk:common:9.4.7'// 必选
+    implementation  'com.umeng.umsdk:asms:1.4.0'// 必选
 }

@@ -16,6 +16,12 @@
     <string name="baidu_map_api_key_debug">HWegpto4A5GyPnkpvjpagG1xXtHFgxpd</string>
     <string name="baidu_secret_key_debug">mf3yynLu7Pt1fYSNGFZX4FPUkNnSmGze</string>
 
+    <!-- 友盟统计 -->
+    <string name="um_app_key_debug">63c12ce3d64e686139175477</string>
+    <string name="um_app_key">63c4f06fba6a5259c4ebb3f8</string>
+    <string name="um_app_key_manifest_debug">um.63c12ce3d64e686139175477</string>
+    <string name="um_app_key_manifest">um.63c4f06fba6a5259c4ebb3f8</string>
+
     <string name="common_tips">温馨提示</string>
     <string name="common_no">取消</string>
     <string name="common_ok">确定</string>
@@ -101,4 +107,10 @@
 
     <!-- 噪音等级 -->
     <string name="noise_level_txt">0 - 19\u3000\u3000\u00A0极静，几乎感觉不到；\n20 - 39\u3000\u0020\u00A0\u00A0安静，犹如轻声语；\n40 - 59\u3000\u0020\u00A0\u00A0正常，一般普通室内谈话；\n60 - 69\u3000\u0020\u00A0\u00A0吵闹，有损神经；\n70 - 89\u3000\u0020\u00A0\u00A0很吵，神经细胞受到破坏；\n90 - 109\u3000\u0020\u00A0吵闹加剧，听力受损；\n110 - 129\u3000震耳欲聋；\n130 - 179\u3000无法忍受；\n180及上\u3000\u00A0\u00A0完全丧失听力；</string>
+
+    <!-- 隐私政策 -->
+    <string name="privacy_policy_tips">感谢您使用小满APP！\n\n在使用前请仔细阅读《服务协议》和《隐私政策》，以了解我们在使用你个人信息时所遵循的条款。我们将严格按照政策内容使用你的个人信息，尽全力保护您的个人信息安全。感谢信任。</string>
+    <string name="privacy_policy_tips_x">点击同意即表示您已阅读并同意《服务协议》和《隐私政策》</string>
+
+    <string name="not_privacy_policy_tips">不同意将无法使用我们的产品和服务，并会退出App。</string>
 </resources>

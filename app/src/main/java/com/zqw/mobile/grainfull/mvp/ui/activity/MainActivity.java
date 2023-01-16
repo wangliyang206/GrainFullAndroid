@@ -15,7 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.jaeger.library.StatusBarUtil;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;

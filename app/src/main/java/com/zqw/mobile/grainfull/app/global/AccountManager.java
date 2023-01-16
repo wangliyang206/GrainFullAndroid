@@ -67,6 +67,11 @@ public final class AccountManager {
     private final String KEEP_WAKE = "keepWake";
     // 金属探测仪的报警值
     private final String ALARM_LIMIT = "alarmLimit";
+
+    /**
+     * 是否同意隐私政策
+     */
+    private static final String PRIVACY_POLICY = "privacyPolicy";
     /*----------------------------------------------操作对象-------------------------------------------------*/
 
     private AppPreferencesHelper spHelper;
@@ -404,4 +409,20 @@ public final class AccountManager {
     public void setAlarmLimit(String val) {
         spHelper.put(ALARM_LIMIT, val);
     }
+
+
+    /**
+     * 获取当前是否同意隐私政策
+     */
+    public boolean getPrivacyPolicy() {
+        return spHelper.getPref(PRIVACY_POLICY, false);
+    }
+
+    /**
+     * 设置隐私政策
+     */
+    public void setPrivacyPolicy(boolean isValue) {
+        spHelper.put(PRIVACY_POLICY, isValue);
+    }
+
 }

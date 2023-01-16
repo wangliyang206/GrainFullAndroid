@@ -15,13 +15,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.AppUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.commonsdk.UMConfigure;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.NotPrivacyPolicyDialog;
+import com.zqw.mobile.grainfull.app.dialog.PrivacyPolicyDialog;
+import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.di.component.DaggerSplashComponent;
 import com.zqw.mobile.grainfull.mvp.contract.SplashContract;
 import com.zqw.mobile.grainfull.mvp.presenter.SplashPresenter;
+
+import javax.inject.Inject;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
@@ -34,6 +41,8 @@ import permissions.dispatcher.RuntimePermissions;
  */
 @RuntimePermissions
 public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashContract.View {
+    @Inject
+    AccountManager mAccountManager;
 
     /**
      * 是否使用StatusBarCompat
@@ -76,8 +85,54 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        //获取权限
+        if (mPresenter != null) {
+            mPresenter.initData();
+        }
+    }
+
+    @Override
+    public void approved() {
+        // 已同意 - 获取权限
         SplashActivityPermissionsDispatcher.runAppWithPermissionCheck(this);
+        // 友盟统计 - 同意隐私政策
+        UMConfigure.submitPolicyGrantResult(getApplicationContext(), true);
+    }
+
+    @Override
+    public void disagree() {
+        // 未同意
+        PrivacyPolicyDialog mDialog = new PrivacyPolicyDialog(this,
+                isVal -> {
+                    if (isVal) {
+                        // 设置隐私政策
+                        mAccountManager.setPrivacyPolicy(isVal);
+                        approved();
+                    } else {
+                        // 不同意就再问一次
+                        notPrivacyPolicyDialog();
+                    }
+                });
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.show();
+    }
+
+    /**
+     * 不同意就再问一次
+     */
+    private void notPrivacyPolicyDialog() {
+        NotPrivacyPolicyDialog mDialog = new NotPrivacyPolicyDialog(this,
+                isVal -> {
+                    if (isVal) {
+                        // 设置隐私政策
+                        mAccountManager.setPrivacyPolicy(isVal);
+                        approved();
+                    } else {
+                        // 关闭APP
+                        AppUtils.exitApp();
+                    }
+                });
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.show();
     }
 
     @Override

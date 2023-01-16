@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.NewWindowX5Activity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.NoiseMeasurementActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -201,6 +204,16 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- 友盟统计 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${UM_APP_KEY}" />
             </intent-filter>
         </activity>
 

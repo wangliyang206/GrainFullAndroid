@@ -31,6 +31,21 @@ public interface Constant {
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**
+     * 金莱特-服务协议
+     */
+    String serviceAgreementUrl = "http://www.buypb.cn/useragreement/zqwservicegreement_jlt.html";
+
+    /**
+     * 金莱特-隐私政策
+     */
+    String privacyPolicyUrl = "http://www.buypb.cn/useragreement/ruserprivacy_jlt.html";
+
+    /**
+     * 友盟统计 - 渠道
+     */
+    String UM_CHANNEL = "test_channel";
+
+    /**
      * API版本号
      */
     int version = 1;

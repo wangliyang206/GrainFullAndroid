@@ -35,8 +35,10 @@ import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.commonsdk.UMConfigure;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.service.LocationService;
 import com.zqw.mobile.grainfull.app.service.MyLocationListener;
 import com.zqw.mobile.grainfull.app.utils.FileLoggingTree;
@@ -83,6 +85,9 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
         // 初始化MaterialDrawer
         initMaterialDrawer();
+
+        // 初始化友盟统计
+        initUM(application);
     }
 
     @Override
@@ -201,5 +206,17 @@ public class AppLifecyclesImpl implements AppLifecycles {
                 return super.placeholder(ctx, tag);
             }
         });
+    }
+
+    /**
+     * 初始化友盟统计
+     */
+    private void initUM(@NonNull Application application) {
+        //设置LOG开关，默认为false
+        UMConfigure.setLogEnabled(true);
+        // 友盟统计的隐私政策，未通过不可以初始化友盟统计。
+        UMConfigure.preInit(application.getApplicationContext(),
+                BuildConfig.DEBUG ? application.getString(R.string.um_app_key_debug) : application.getString(R.string.um_app_key),
+                Constant.UM_CHANNEL);
     }
 }

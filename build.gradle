@@ -7,6 +7,8 @@ buildscript {
 
         // 配置HMS Core SDK的Maven仓地址。(华为)
         maven { url "https://developer.huawei.com/repo/" }
+        // 友盟统计
+        maven { url 'https://repo1.maven.org/maven2/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.0'
@@ -31,6 +33,7 @@ allprojects {
         maven { url "http://maven.aliyun.com/nexus/content/repositories/releases" }                 // 阿里云热修复
         maven { url "https://developer.huawei.com/repo/" }                                          // 配置HMS Core SDK的Maven仓地址。(华为)
         maven { url = uri("https://maven.pkg.github.com/GCX-HCI/tray") }                            // Tray - SharedPreferences
+        maven { url 'https://repo1.maven.org/maven2/' }                                             // 友盟统计
     }
 }
 

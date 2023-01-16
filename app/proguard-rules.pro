@@ -198,6 +198,19 @@
     native <methods>;
 }
 
+################友盟SDK###############
+-keep class com.umeng.** {*;}
+-keep class org.repackage.** {*;}
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep public class com.zqw.mobile.grainfull.R$*{
+public static final int *;
+}
 ################华为SDK###############
 -ignorewarnings
 -keep class com.huawei.agconnect.** {*;}

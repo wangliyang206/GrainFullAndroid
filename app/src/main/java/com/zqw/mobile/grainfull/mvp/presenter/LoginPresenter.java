@@ -7,6 +7,7 @@ import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.IntelligentCache;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.DeviceUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.service.LocationService;
 import com.zqw.mobile.grainfull.app.utils.RxUtils;
@@ -98,6 +99,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
             mAccountManager.saveAccountInfo(username, password, new LoginResponse("50154b09-14bd-49bf-87a7-d53ce5d29f80", "R000014", "秤砣", "18124027304"));
             // 跳转致首页
             mRootView.jumbToMain();
+            // 当用户使用自有账号登录时，可以这样统计：
+            MobclickAgent.onProfileSignIn("R000014");
         } else {
             mModel.btnLogin(username, password)
                     .compose(RxUtils.applySchedulers(mRootView))                                    // 切换线程
@@ -107,6 +110,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
                             if (loginResponse != null) {
                                 // 将账号密码以及常用信息保存到缓存中
                                 mAccountManager.saveAccountInfo(username, password, loginResponse);
+                                // 当用户使用自有账号登录时，可以这样统计：
+                                MobclickAgent.onProfileSignIn(loginResponse.getUserId());
                             }
 
                             // 跳转致首页

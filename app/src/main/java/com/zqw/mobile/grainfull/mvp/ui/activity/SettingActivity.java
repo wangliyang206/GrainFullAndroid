@@ -21,6 +21,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.CommTipsDialog;
@@ -141,6 +142,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
                 .onPositive((dialog, which) -> {
                     // 清除缓存
                     mAccountManager.clearAccountInfo();
+                    // 登出
+                    MobclickAgent.onProfileSignOff();
                     // 通知退出登录
                     EventBus.getDefault().post(new MainEvent(EventBusTags.LOGIN_SUCC_TAG), EventBusTags.HOME_TAG);
                     ActivityUtils.startActivity(LoginActivity.class);
