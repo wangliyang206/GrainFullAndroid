@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.AudioDialog;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
@@ -118,6 +119,9 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
         synthActivity.initTTS(getApplicationContext(), true);
 
         mAudioDialog = new AudioDialog(this);
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "baidu_speech_synthesis_open");
 
         initSeekBar();
         initSpeaker();
@@ -273,6 +277,9 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
                     showMessage("请输入需要合成语音的文字！");
                     return;
                 }
+
+                // 友盟统计 - 自定义事件
+                MobclickAgent.onEvent(getApplicationContext(), "baidu_speech_synthesis");
 
                 // 开始合成(合成的文件格式为pcm，文件名称：output-0.pcm)
                 synthActivity.synthesize(val);

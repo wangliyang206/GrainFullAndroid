@@ -18,6 +18,7 @@ import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
@@ -84,6 +85,8 @@ public class MagnifierActivity extends BaseActivity<MagnifierPresenter> implemen
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("放大镜");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "magnifier");
     }
 
     @OnClick({

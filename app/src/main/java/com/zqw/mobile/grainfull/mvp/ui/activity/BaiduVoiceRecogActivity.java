@@ -32,6 +32,7 @@ import com.blankj.utilcode.util.UriUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.IdentifyDialog;
@@ -126,6 +127,9 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("语音识别");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "baidu_voice_recog_open");
+
         initRecog();
     }
 
@@ -171,6 +175,8 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
     }
 
     private void onBtn() {
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "baidu_voice_recog");
         switch (status) {
             case STATUS_NONE: // 初始状态
                 start(null);
@@ -211,6 +217,9 @@ public class BaiduVoiceRecogActivity extends BaseActivity<BaiduVoiceRecogPresent
         intent.setType("audio/*;video/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent, Constant.REQUEST_SELECT_IMAGES_CODE);
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "baidu_voice_recog");
     }
 
     private void updateBtnTextByStatus() {

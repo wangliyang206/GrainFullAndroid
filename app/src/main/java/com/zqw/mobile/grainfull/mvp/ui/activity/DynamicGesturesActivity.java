@@ -21,6 +21,7 @@ import com.huawei.hms.mlsdk.gesture.MLGestureAnalyzerSetting;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerDynamicGesturesComponent;
 import com.zqw.mobile.grainfull.mvp.contract.DynamicGesturesContract;
@@ -117,6 +118,9 @@ public class DynamicGesturesActivity extends BaseActivity<DynamicGesturesPresent
         if (savedInstanceState != null) {
             mLensType = savedInstanceState.getInt("lensType");
         }
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "dynamic_gestures");
 
         createHandAnalyzer();
     }

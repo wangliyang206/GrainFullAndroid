@@ -31,6 +31,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.BitmapUtils;
@@ -117,6 +118,9 @@ public class FaceComparisonActivity extends BaseActivity<FaceComparisonPresenter
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("人脸对比");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "face_comparison_open");
+
         initAnalyzer();
     }
 
@@ -156,6 +160,9 @@ public class FaceComparisonActivity extends BaseActivity<FaceComparisonPresenter
      * 对比
      */
     private void onCompare() {
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "face_comparison");
+
         final long startTime = System.currentTimeMillis();
         try {
             Task<List<MLFaceVerificationResult>> task = analyzer.asyncAnalyseFrame(MLFrame.fromBitmap(compareBitmap));

@@ -21,6 +21,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.white.progressview.CircleProgressView;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.NoiseLevelDialog;
@@ -145,6 +146,9 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
 
         // 延迟一秒后执行
         RxUtils.startDelayed(1, this, this::getNoiseLevel);
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "noise_measurement");
     }
 
     @OnClick({

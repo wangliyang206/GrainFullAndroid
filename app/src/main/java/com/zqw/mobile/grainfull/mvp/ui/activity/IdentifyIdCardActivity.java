@@ -20,6 +20,7 @@ import com.huawei.hms.mlplugin.card.icr.cn.MLCnIcrCaptureResult;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerIdentifyIdCardComponent;
 import com.zqw.mobile.grainfull.mvp.contract.IdentifyIdCardContract;
@@ -81,6 +82,9 @@ public class IdentifyIdCardActivity extends BaseActivity<IdentifyIdCardPresenter
     public void initData(@Nullable Bundle savedInstanceState) {
         // 设置标题
         setTitle("识别身份证");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "identify_id_card_open");
     }
 
     @OnClick({
@@ -130,11 +134,15 @@ public class IdentifyIdCardActivity extends BaseActivity<IdentifyIdCardPresenter
             }
             Bitmap bitmap = idCardResult.cardBitmap;
             if (isFront) {
+                // 显示识别结果(人像面)
                 imviFont.setImageBitmap(bitmap);
                 txviIdCard.setText(idCardResult.idNum);
                 txviName.setText(idCardResult.name);
                 txviSex.setText(idCardResult.sex);
+                // 友盟统计 - 自定义事件
+                MobclickAgent.onEvent(getApplicationContext(), "identify_id_card");
             } else {
+                // 显示识别结果(国徽面)
                 imviBack.setImageBitmap(bitmap);
                 txviValidityPeriod.setText(idCardResult.validDate);
             }

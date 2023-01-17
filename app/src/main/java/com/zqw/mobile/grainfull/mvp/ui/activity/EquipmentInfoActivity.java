@@ -23,6 +23,7 @@ import com.blankj.utilcode.util.PhoneUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerEquipmentInfoComponent;
 import com.zqw.mobile.grainfull.mvp.contract.EquipmentInfoContract;
@@ -113,6 +114,9 @@ public class EquipmentInfoActivity extends BaseActivity<EquipmentInfoPresenter> 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("查看设备信息");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "equipment_info");
 
         /* 加载设备信息 */
         try {

@@ -40,7 +40,7 @@
     <string name="common_copy_succ">复制成功</string>
 
     <!-- MaterialDrawer -->
-    <string name="drawer_item_basicinfo">基本信息</string>
+    <string name="drawer_item_basicinfo">友盟数据统计</string>
     <string name="drawer_item_mypromotioncode">我的推广码</string>
 
     <string name="drawer_item_setting">设置</string>

@@ -25,6 +25,7 @@ import com.github.stuxuhai.jpinyin.PinyinHelper;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerChineseToPinyinComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ChineseToPinyinContract;
@@ -85,6 +86,9 @@ public class ChineseToPinyinActivity extends BaseActivity<ChineseToPinyinPresent
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("中文转拼音");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "chinese_to_pinyin_open");
+
         // 监听
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.radio_chinesetopinyin_all) {
@@ -111,6 +115,9 @@ public class ChineseToPinyinActivity extends BaseActivity<ChineseToPinyinPresent
                     showMessage("请输入汉字！");
                     return;
                 }
+
+                // 友盟统计 - 自定义事件
+                MobclickAgent.onEvent(getApplicationContext(), "chinese_to_pinyin");
 
                 txviResult.setVisibility(View.VISIBLE);
 

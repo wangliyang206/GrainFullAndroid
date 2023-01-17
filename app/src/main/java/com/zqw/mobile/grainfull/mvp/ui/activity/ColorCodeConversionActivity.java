@@ -21,6 +21,7 @@ import com.blankj.utilcode.util.ClipboardUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.ColorsUtil;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
@@ -88,6 +89,9 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("颜色码转换");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "color_code_conversion");
 
         setCurrentColor(0, mDefaultColor);
     }

@@ -21,6 +21,7 @@ import com.huawei.hms.mlplugin.card.bcr.MLBcrCaptureResult;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerIdentifyBankCardsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.IdentifyBankCardsContract;
@@ -75,6 +76,8 @@ public class IdentifyBankCardsActivity extends BaseActivity<IdentifyBankCardsPre
         // 设置标题
         setTitle("识别银行卡");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "identify_bank_cards_open");
     }
 
     @OnClick({
@@ -130,6 +133,9 @@ public class IdentifyBankCardsActivity extends BaseActivity<IdentifyBankCardsPre
             image.setImageBitmap(bitmap);
             // 银行卡其它参数
             txviTips.setText(formatIdCardResult(bankCardResult));
+
+            // 友盟统计 - 自定义事件
+            MobclickAgent.onEvent(getApplicationContext(), "identify_bank_cards");
         }
 
         @Override

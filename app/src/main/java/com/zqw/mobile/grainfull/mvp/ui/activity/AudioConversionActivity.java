@@ -19,6 +19,7 @@ import com.blankj.utilcode.util.UriUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.AudioDialog;
 import com.zqw.mobile.grainfull.app.global.Constant;
@@ -80,6 +81,9 @@ public class AudioConversionActivity extends BaseActivity<AudioConversionPresent
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("音频转换");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "audio_conversion_open");
+
         mAudioDialog = new AudioDialog(this);
     }
 
@@ -119,6 +123,9 @@ public class AudioConversionActivity extends BaseActivity<AudioConversionPresent
      * 打开文件
      */
     private void onOpenFile() {
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "audio_conversion");
+
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         // 选择音频/视频 （mp4 3gp 是android支持的视频格式）
 //        intent.setType("audio/*;video/*;");

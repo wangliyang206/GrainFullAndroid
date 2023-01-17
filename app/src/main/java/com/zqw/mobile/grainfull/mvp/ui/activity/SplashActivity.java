@@ -94,8 +94,6 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     public void approved() {
         // 已同意 - 获取权限
         SplashActivityPermissionsDispatcher.runAppWithPermissionCheck(this);
-        // 友盟统计 - 同意隐私政策
-        UMConfigure.submitPolicyGrantResult(getApplicationContext(), true);
     }
 
     @Override
@@ -127,6 +125,8 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
                         mAccountManager.setPrivacyPolicy(isVal);
                         approved();
                     } else {
+                        // 不同意隐私协议，退出app
+                        UMConfigure.submitPolicyGrantResult(getApplicationContext(), false);
                         // 关闭APP
                         AppUtils.exitApp();
                     }

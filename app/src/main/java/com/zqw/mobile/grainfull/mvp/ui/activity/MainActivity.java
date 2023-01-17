@@ -300,8 +300,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         RxUtils.startDelayed((long) 0.5, this, () -> {
             if (position == Constant.MAIN_AVATAR) {                                                 // 头像
 
-            } else if (position == Constant.MAIN_BASICINFO) {                                       // 基本信息
-//                ActivityUtils.startActivity(BasicInfoActivity.class);
+            } else if (position == Constant.MAIN_BASICINFO) {                                       // 友盟数据统计
+                ActivityUtils.startActivity(UmDataStatisticsActivity.class);
             } else if (position == Constant.MAIN_SETTING) {                                         // 设置
                 ActivityUtils.startActivity(SettingActivity.class);
             } else if (position == Constant.MAIN_ABOUT) {                                           // 关于

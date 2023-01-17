@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.UmDataStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.NewWindowX5Activity"
             android:screenOrientation="portrait" />
         <activity

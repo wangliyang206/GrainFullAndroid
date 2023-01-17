@@ -73,6 +73,9 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
         // 定时清理日志
         initLog();
 
+        // 友盟统计 - 同意隐私政策
+        UMConfigure.submitPolicyGrantResult(mRootView.getActivity().getApplicationContext(), true);
+
         /**
          *
          * 初始化友盟统计SDK
@@ -86,7 +89,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
                 Constant.UM_CHANNEL,
                 UMConfigure.DEVICE_TYPE_PHONE,
                 "");
-        //统计SDK是否支持采集在子进程中打点的自定义事件，默认不支持
+        // 统计SDK是否支持采集在子进程中打点的自定义事件，默认不支持
         UMConfigure.setProcessEvent(true);//支持多进程打点
 
         // 页面数据采集模式

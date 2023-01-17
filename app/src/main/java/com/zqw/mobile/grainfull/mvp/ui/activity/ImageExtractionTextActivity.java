@@ -29,6 +29,7 @@ import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.IdentifyDialog;
 import com.zqw.mobile.grainfull.app.global.Constant;
@@ -128,6 +129,9 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
     public void initData(@Nullable Bundle savedInstanceState) {
         // 设置标题
         setTitle("图片提取文字");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "image_extraction_text_open");
 
         initDialog();
     }
@@ -236,6 +240,9 @@ public class ImageExtractionTextActivity extends BaseActivity<ImageExtractionTex
             mDialog.dismiss();
             showMessage("提取失败！");
         });
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "image_extraction_text");
     }
 
     private void displaySuccess(MLText mlText) {

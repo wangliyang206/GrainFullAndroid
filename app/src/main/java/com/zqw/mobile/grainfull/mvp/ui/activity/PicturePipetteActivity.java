@@ -23,6 +23,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.ColorsUtil;
@@ -85,6 +86,9 @@ public class PicturePipetteActivity extends BaseActivity<PicturePipettePresenter
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("吸管工具");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "picture_pipette");
 
         viewImage.setOnColorChangedListenner(color -> {
             // 显示背景色

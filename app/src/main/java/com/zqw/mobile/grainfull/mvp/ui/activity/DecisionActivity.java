@@ -18,6 +18,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
 import com.zqw.mobile.grainfull.app.global.Constant;
@@ -85,6 +86,9 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
         initPop();
         changeColors();
         changeDatas();
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "decision_open");
     }
 
     /**
@@ -184,6 +188,10 @@ public class DecisionActivity extends BaseActivity<DecisionPresenter> implements
                 ActivityUtils.startActivityForResult(this, EditTurntableActivity.class, Constant.MAIN_BASICINFO);
                 break;
             case R.id.imvi_decisionactivity_start:                                                  // 转盘 - 开始按钮
+
+                // 友盟统计 - 自定义事件
+                MobclickAgent.onEvent(getApplicationContext(), "decision");
+
                 // 以下为随即抽奖
                 mTurntable.startRotate(new TurntableView.ITurntableListener() {
                     @Override

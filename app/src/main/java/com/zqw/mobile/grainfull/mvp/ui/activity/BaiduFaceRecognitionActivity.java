@@ -23,6 +23,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.QualityConfigManager;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduFaceRecognitionComponent;
@@ -116,6 +117,9 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "baidu_face_recognition_open");
+
         addActionLive();
         addLiveColor();
         addVideoPhone();
@@ -229,6 +233,9 @@ public class BaiduFaceRecognitionActivity extends BaseActivity<BaiduFaceRecognit
      * 开始收集
      */
     public void startCollect() {
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "baidu_face_recognition");
+
         if (mPresenter != null) {
             mPresenter.onJump(isActionLive);
         }
