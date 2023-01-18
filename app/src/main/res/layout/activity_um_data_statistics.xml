@@ -1,8 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_um_data_statistics"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
     android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_umdatastatistics_top"
+        layout="@layout/comm_top_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- 累计用户 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="使用此APP累计用户为"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txvi_umdatastatistics_cumulativeusers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="0"
+                    android:textColor="@color/nm_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 统计 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/um_top_bg_selector"
+                android:orientation="horizontal">
+
+                <!-- 新增用户 -->
+                <LinearLayout
+                    android:id="@+id/lila_umdatastatistics_newuser_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/view_bg_left_selector"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:text="新增用户"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_umdatastatistics_newuser_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:text="今日：0"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_umdatastatistics_newuser_yesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="昨日：0"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- 间隔 -->
+                <ImageView
+                    android:id="@+id/imvi_umdatastatistics_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/b62" />
+
+                <!-- 活跃用户 -->
+                <LinearLayout
+                    android:id="@+id/lila_umdatastatistics_activeuser_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="活跃用户"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_umdatastatistics_activeuser_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="今日：0"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_umdatastatistics_activeuser_yesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="昨日：0"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- 间隔 -->
+                <ImageView
+                    android:id="@+id/imvi_umdatastatistics_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/b62"
+                    android:visibility="invisible" />
+
+                <!-- 启动次数  -->
+                <LinearLayout
+                    android:id="@+id/lila_umdatastatistics_startsnum_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="启动次数"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_umdatastatistics_startsnum_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="今日：0"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txvi_umdatastatistics_startsnum_yesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="昨日：0"
+                        android:textColor="@color/common_text_color"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 七日 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/um_bottom_bg_selector"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="七日统计"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/revi_umdatastatistics_sevendays"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp" />
+
+            </LinearLayout>
+            <!-- 时长 -->
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

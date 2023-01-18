@@ -1,12 +1,19 @@
 package com.zqw.mobile.grainfull.di.module;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.jess.arms.cj.ApiOperator;
+import com.jess.arms.cj.IRequestMapper;
 import com.jess.arms.di.scope.ActivityScope;
+import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.global.RequestMapper;
+import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
+import com.zqw.mobile.grainfull.mvp.model.UmDataStatisticsModel;
 
 import dagger.Binds;
 import dagger.Module;
-
-import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
-import com.zqw.mobile.grainfull.mvp.model.UmDataStatisticsModel;
+import dagger.Provides;
 
 /**
  * ================================================
@@ -21,4 +28,40 @@ public abstract class UmDataStatisticsModule {
 
     @Binds
     abstract UmDataStatisticsContract.Model bindUmDataStatisticsModel(UmDataStatisticsModel model);
+
+    @ActivityScope
+    @Provides
+    static AccountManager provideAccountManager(UmDataStatisticsContract.View view) {
+        return new AccountManager(view.getActivity());
+    }
+
+    @ActivityScope
+    @Provides
+    static IRequestMapper providerRequestMapper(UmDataStatisticsContract.View view, AccountManager mAccountManager) {
+        return new RequestMapper(view.getActivity(), mAccountManager);
+    }
+
+    @ActivityScope
+    @Provides
+    static ApiOperator providerOperator(IRequestMapper requestMapper) {
+        return new ApiOperator(requestMapper);
+    }
+
+    @ActivityScope
+    @Provides
+    static RecyclerView.LayoutManager provideLayoutManager(UmDataStatisticsContract.View view) {
+        return new LinearLayoutManager(view.getActivity());
+    }
+
+//    @ActivityScope
+//    @Provides
+//    static List<BankCardInfo> provideBankCardInfo() {
+//        return new ArrayList<>();
+//    }
+//
+//    @ActivityScope
+//    @Provides
+//    static BankCardAdapter provideBankCardAdapter(List<BankCardInfo> list) {
+//        return new BankCardAdapter(list);
+//    }
 }
