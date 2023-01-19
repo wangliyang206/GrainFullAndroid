@@ -12,8 +12,10 @@ import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.model.UmDataStatisticsModel;
 import com.zqw.mobile.grainfull.mvp.model.entity.SevenStatistics;
 import com.zqw.mobile.grainfull.mvp.model.entity.SingleDuration;
+import com.zqw.mobile.grainfull.mvp.model.entity.UmEvent;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.UmEventAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,5 +108,32 @@ public abstract class UmDataStatisticsModule {
     @Provides
     static SingleDurationAdapter provideSingleAdapter(@Named("mSingle") List<SingleDuration> list) {
         return new SingleDurationAdapter(list);
+    }
+
+
+    @Named("mEventLayoutManager")
+    @ActivityScope
+    @Provides
+    static RecyclerView.LayoutManager provideEventLayoutManager(UmDataStatisticsContract.View view) {
+        return new LinearLayoutManager(view.getActivity()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+    }
+
+    @Named("mEvent")
+    @ActivityScope
+    @Provides
+    static List<UmEvent> provideEvent() {
+        return new ArrayList<>();
+    }
+
+    @Named("mEventAdapter")
+    @ActivityScope
+    @Provides
+    static UmEventAdapter provideUmEventAdapter(@Named("mEvent") List<UmEvent> list) {
+        return new UmEventAdapter(list);
     }
 }

@@ -20,6 +20,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.uapp.param.UmengUappAllAppData;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
@@ -28,6 +29,7 @@ import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.UmDataStatisticsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.UmEventAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -94,6 +96,9 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     RecyclerView mSingleList;                                                                       // 单次使用时长分布
     @BindView(R.id.revi_umdatastatistics_single_not)
     TextView txviDurationNot;                                                                       // 无数据
+
+    @BindView(R.id.revi_umdatastatistics_event)
+    RecyclerView mEventList;                                                                        // 事件
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 选项：1代表 新增用户；2代表活跃用户；3代表启动次数；
     private int mTab = 1;
@@ -113,6 +118,14 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     @Inject
     SingleDurationAdapter mSingleAdapter;                                                           // 单次使用时长分布 适配器
 
+
+    @Named("mEventLayoutManager")
+    @Inject
+    RecyclerView.LayoutManager mEventLayoutManager;
+    @Named("mEventAdapter")
+    @Inject
+    UmEventAdapter mEventAdapter;                                                                   // 事件 适配器
+
     // 日期时间
     private Calendar calendar = Calendar.getInstance(Locale.CHINA);
 
@@ -121,6 +134,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         // super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
         DefaultAdapter.releaseAllHolder(mSevenList);
         DefaultAdapter.releaseAllHolder(mSingleList);
+        DefaultAdapter.releaseAllHolder(mEventList);
         super.onDestroy();
 
         this.mSevenLayoutManager = null;
@@ -128,6 +142,9 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
         this.mSingleLayoutManager = null;
         this.mSingleAdapter = null;
+
+        this.mEventLayoutManager = null;
+        this.mEventAdapter = null;
 
         this.calendar = null;
     }
@@ -151,12 +168,18 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("数据统计");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "um_data_statistics");
+
         // 初始控件
         ArmsUtils.configRecyclerView(mSevenList, mSevenLayoutManager);
         mSevenList.setAdapter(mSevenAdapter);
 
         ArmsUtils.configRecyclerView(mSingleList, mSingleLayoutManager);
         mSingleList.setAdapter(mSingleAdapter);
+
+        ArmsUtils.configRecyclerView(mEventList, mEventLayoutManager);
+        mEventList.setAdapter(mEventAdapter);
 
         // 前一天
         calendar.add(Calendar.DAY_OF_MONTH, -1);

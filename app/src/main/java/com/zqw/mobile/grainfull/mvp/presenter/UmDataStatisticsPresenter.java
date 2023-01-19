@@ -7,6 +7,7 @@ import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.umeng.uapp.param.UmengUappCountData;
 import com.umeng.uapp.param.UmengUappDurationInfo;
+import com.umeng.uapp.param.UmengUappEventInfo;
 import com.umeng.uapp.param.UmengUappEventListParam;
 import com.umeng.uapp.param.UmengUappEventListResult;
 import com.umeng.uapp.param.UmengUappGetActiveUsersParam;
@@ -29,8 +30,10 @@ import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.SevenStatistics;
 import com.zqw.mobile.grainfull.mvp.model.entity.SingleDuration;
+import com.zqw.mobile.grainfull.mvp.model.entity.UmEvent;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.UmEventAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -70,6 +73,13 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     @Inject
     List<SingleDuration> mSingle;                                                                   // 单次使用时长分布 数据集
 
+    @Named("mEventAdapter")
+    @Inject
+    UmEventAdapter mEventAdapter;                                                                   // 事件 适配器
+    @Named("mEvent")
+    @Inject
+    List<UmEvent> mEvent;                                                                           // 事件 数据集
+
     @Inject
     public UmDataStatisticsPresenter(UmDataStatisticsContract.Model model, UmDataStatisticsContract.View rootView) {
         super(model, rootView);
@@ -87,6 +97,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
         getAllAppData();
         getNewUsers();
         getDurations(mYesterday);
+        getEventList(mYesterday);
     }
 
     /**
@@ -324,6 +335,68 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     }
 
     /**
+     * 获取事件列表
+     */
+    private void getEventList(String mYesterday) {
+        new Thread() {
+            @Override
+            public void run() {
+                UmengUappEventListParam param = new UmengUappEventListParam();
+                // 测试环境只支持http
+                // param.getOceanRequestPolicy().setUseHttps(false);
+                param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
+//                param.setStartDate("2023-01-16");
+                param.setStartDate(mYesterday);
+                param.setEndDate(mYesterday);
+                param.setPerPage(50);
+                param.setPage(1);
+//                param.setVersion("");
+
+                try {
+                    // 清理历史数据
+                    mEvent.clear();
+                    UmengUappEventListResult result = apiExecutor.execute(param);
+                    for (UmengUappEventInfo info : result.getEventInfo()) {
+                        mEvent.add(new UmEvent(info.getId(), info.getName(), info.getCount(), info.getDisplayName()));
+                    }
+                } catch (OceanException e) {
+                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+                }
+                mRootView.getActivity().runOnUiThread(() -> {
+                    // 刷新数据
+                    mEventAdapter.notifyDataSetChanged();
+                });
+            }
+        }.start();
+
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                UmengUappEventGetDataParam param = new UmengUappEventGetDataParam();
+//                // 测试环境只支持http
+//                // param.getOceanRequestPolicy().setUseHttps(false);
+//                param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
+//                param.setStartDate("2023-01-16");
+//                param.setEndDate("2023-01-19");
+//                // 63c622254d182e302fa21b39
+//                // picture_pipette
+//
+//                // 63c621fe0a26f850ba2a1a2f
+//                // color_picker
+//                param.setEventName("picture_pipette");
+//
+//                try {
+//                    UmengUappEventGetDataResult result = apiExecutor.execute(param);
+//                    System.out.println();
+//                } catch (OceanException e) {
+//                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+//                }
+//            }
+//        }.start();
+
+    }
+
+    /**
      * 获取App统计数据
      * 请求：应用ID、查询日期
      * 响应：统计日期、活跃用户数、总用户数、启动数、新增用户数、游戏付费用户数（仅游戏sdk）
@@ -364,28 +437,6 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
         }
     }
 
-    /**
-     * 获取事件列表
-     */
-    private void getEventList() {
-        UmengUappEventListParam param = new UmengUappEventListParam();
-        // 测试环境只支持http
-        // param.getOceanRequestPolicy().setUseHttps(false);
-        param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
-        param.setStartDate("2023-01-16");
-        param.setEndDate("2023-01-17");
-        param.setPerPage(50);
-        param.setPage(1);
-//        param.setVersion("");
-
-        try {
-            UmengUappEventListResult result = apiExecutor.execute(param);
-            System.out.println();
-        } catch (OceanException e) {
-            System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
-        }
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -396,5 +447,8 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
 
         this.mSingleAdapter = null;
         this.mSingle = null;
+
+        this.mEventAdapter = null;
+        this.mEvent = null;
     }
 }
