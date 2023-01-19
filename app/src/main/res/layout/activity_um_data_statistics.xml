@@ -379,6 +379,18 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp" />
 
+                <TextView
+                    android:id="@+id/revi_umdatastatistics_single_not"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text="暂无相关数据"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
             </LinearLayout>
 
             <!-- 事件统计 -->

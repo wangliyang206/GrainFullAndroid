@@ -3,6 +3,7 @@ package com.zqw.mobile.grainfull.mvp.ui.activity;
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,17 +15,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.umeng.uapp.param.UmengUappAllAppData;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerUmDataStatisticsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.UmDataStatisticsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -85,6 +92,8 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     TextView txviSingleDuration;                                                                    // 平均单次使用时长
     @BindView(R.id.revi_umdatastatistics_single)
     RecyclerView mSingleList;                                                                       // 单次使用时长分布
+    @BindView(R.id.revi_umdatastatistics_single_not)
+    TextView txviDurationNot;                                                                       // 无数据
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 选项：1代表 新增用户；2代表活跃用户；3代表启动次数；
     private int mTab = 1;
@@ -104,6 +113,9 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     @Inject
     SingleDurationAdapter mSingleAdapter;                                                           // 单次使用时长分布 适配器
 
+    // 日期时间
+    private Calendar calendar = Calendar.getInstance(Locale.CHINA);
+
     @Override
     protected void onDestroy() {
         // super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
@@ -116,6 +128,8 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
         this.mSingleLayoutManager = null;
         this.mSingleAdapter = null;
+
+        this.calendar = null;
     }
 
     @Override
@@ -144,8 +158,11 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         ArmsUtils.configRecyclerView(mSingleList, mSingleLayoutManager);
         mSingleList.setAdapter(mSingleAdapter);
 
+        // 前一天
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+
         if (mPresenter != null) {
-            mPresenter.initDate();
+            mPresenter.initDate(TimeUtils.date2String(calendar.getTime(), new SimpleDateFormat("yyyy-MM-dd")));
         }
     }
 
@@ -197,10 +214,22 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         });
     }
 
+    /**
+     * 控制时长列表是否显示无数据
+     */
+    @Override
+    public void viewDurations(boolean isShow) {
+        runOnUiThread(() -> {
+            txviDurationNot.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        });
+    }
+
     @OnClick({
             R.id.lila_umdatastatistics_newuser_layout,                                              // 新增用户
             R.id.lila_umdatastatistics_activeuser_layout,                                           // 活跃用户
             R.id.lila_umdatastatistics_startsnum_layout,                                            // 启动次数
+
+            R.id.txvi_umdatastatistics_durationdate,                                                // 使用时长 - 筛选日期
     })
     @Override
     public void onClick(View v) {
@@ -254,7 +283,34 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
                 }
 
                 break;
+            case R.id.txvi_umdatastatistics_durationdate:                                           // 使用时长 - 筛选日期
+                showDatePickerDialog();
+                break;
         }
+    }
+
+    /**
+     * 日期选择
+     */
+    public void showDatePickerDialog() {
+        // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
+        // 绑定监听器(How the parent is notified that the date is set.)
+        new DatePickerDialog(getActivity(), (view, year, monthOfYear, dayOfMonth) -> {
+            // 此处得到选择的时间，可以进行你想要的操作
+            String mVal = year + "-" + CommonUtils.format0Right(String.valueOf(monthOfYear + 1)) + "-" + dayOfMonth;
+
+            // 保留选中的时间
+            calendar.set(year, monthOfYear, dayOfMonth);
+
+            txviDurationDate.setText(mVal);
+            if (mPresenter != null) {
+                mPresenter.getDurations(mVal);
+            }
+        }
+                // 设置初始日期
+                , calendar.get(Calendar.YEAR)
+                , calendar.get(Calendar.MONTH)
+                , calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     public Activity getActivity() {

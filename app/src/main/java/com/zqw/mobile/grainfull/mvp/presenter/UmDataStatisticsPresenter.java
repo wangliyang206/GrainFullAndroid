@@ -78,7 +78,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     /**
      * 初始化
      */
-    public void initDate() {
+    public void initDate(String mYesterday) {
         // 请替换apiKey和apiSecurity
         apiExecutor = new ApiExecutor("3981280", "PW0nOdKBCsM");
         apiExecutor.setServerHost("gateway.open.umeng.com");
@@ -86,7 +86,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
 
         getAllAppData();
         getNewUsers();
-        getDurations("");
+        getDurations(mYesterday);
     }
 
     /**
@@ -139,9 +139,9 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 param.setPeriodType("daily");
 
                 try {
-                    UmengUappGetNewUsersResult result = apiExecutor.execute(param);
                     // 清理数据
                     mSevenStatistics.clear();
+                    UmengUappGetNewUsersResult result = apiExecutor.execute(param);
                     // 组织数据
                     for (UmengUappCountData info : result.getNewUserInfo()) {
                         mSevenStatistics.add(new SevenStatistics(info.getDate(), String.valueOf(info.getValue())));
@@ -184,9 +184,9 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 param.setPeriodType("daily");
 
                 try {
-                    UmengUappGetActiveUsersResult result = apiExecutor.execute(param);
                     // 清理数据
                     mSevenStatistics.clear();
+                    UmengUappGetActiveUsersResult result = apiExecutor.execute(param);
                     // 组织数据
                     for (UmengUappCountData info : result.getActiveUserInfo()) {
                         mSevenStatistics.add(new SevenStatistics(info.getDate(), String.valueOf(info.getValue())));
@@ -228,9 +228,9 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 param.setPeriodType("daily");
 
                 try {
-                    UmengUappGetLaunchesResult result = apiExecutor.execute(param);
                     // 清理数据
                     mSevenStatistics.clear();
+                    UmengUappGetLaunchesResult result = apiExecutor.execute(param);
                     // 组织数据
                     for (UmengUappCountData info : result.getLaunchInfo()) {
                         mSevenStatistics.add(new SevenStatistics(info.getDate(), String.valueOf(info.getValue())));
@@ -252,25 +252,10 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
      * 获取APP使用时长
      */
     public void getDurations(String mDate) {
-        if (mDate.isEmpty()) {
-            mDate = getYesterday();
-        }
-
         mRootView.loadDate(mDate);
 
         getDurations(true, mDate);
         getDurations(false, mDate);
-    }
-
-    /**
-     * 获取昨日日期
-     */
-    private String getYesterday() {
-        // 获取当天日期
-        Date mSameDay = new Date();
-        // 计算出前一天的日期
-        Date mNewData = new Date(mSameDay.getTime() - 86400000L);
-        return TimeUtils.date2String(mNewData, new SimpleDateFormat("yyyy-MM-dd"));
     }
 
     /**
@@ -305,21 +290,30 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
 //                param.setVersion(BuildConfig.VERSION_NAME);
 
                 try {
-                    UmengUappGetDurationsResult result = apiExecutor.execute(param);
-                    // 加载平均时长
-                    mRootView.loadDurations(isDaily, CommonUtils.timeConversion(true, result.getAverage().intValue()));
                     // 清理缓存
                     mSingle.clear();
-                    if (!isDaily) {
-                        // 加载单次详情
-                        for (UmengUappDurationInfo info : result.getDurationInfos()) {
-                            mSingle.add(new SingleDuration(info.getName(), info.getValue(), info.getPercent()));
-                        }
-                    }
+                    UmengUappGetDurationsResult result = apiExecutor.execute(param);
 
+                    if (result.getDurationInfos().length > 0) {
+                        // 有数据
+                        mRootView.viewDurations(false);
+                        // 加载平均时长
+                        mRootView.loadDurations(isDaily, CommonUtils.timeConversion(true, result.getAverage().intValue()));
+                        if (!isDaily) {
+                            // 加载单次详情
+                            for (UmengUappDurationInfo info : result.getDurationInfos()) {
+                                mSingle.add(new SingleDuration(info.getName(), info.getValue(), info.getPercent()));
+                            }
+                        }
+                    } else {
+                        // 无数据
+                        mRootView.loadDurations(isDaily, "0");
+                        mRootView.viewDurations(true);
+                    }
                 } catch (OceanException e) {
                     System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
                     mRootView.loadDurations(isDaily, "0");
+                    mRootView.viewDurations(true);
                 }
                 mRootView.getActivity().runOnUiThread(() -> {
                     // 刷新数据
