@@ -17,6 +17,9 @@ public interface UmDataStatisticsContract {
         // 加载 所有App统计数据
         void loadAllAppData(UmengUappAllAppData info);
 
+        // 加载时长日期
+        void loadDate(String mDate);
+
         // 加载时长
         void loadDurations(boolean isDaily, String duration);
     }

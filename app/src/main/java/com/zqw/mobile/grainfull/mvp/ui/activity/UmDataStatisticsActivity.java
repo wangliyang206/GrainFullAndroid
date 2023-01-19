@@ -77,6 +77,8 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     RecyclerView mSevenList;                                                                        // 七日详情
 
 
+    @BindView(R.id.txvi_umdatastatistics_durationdate)
+    TextView txviDurationDate;                                                                      // 日期
     @BindView(R.id.txvi_umdatastatistics_dayduration)
     TextView txviDayDuration;                                                                       // 平均日使用时长
     @BindView(R.id.txvi_umdatastatistics_singleduration)
@@ -168,6 +170,14 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
             txviStartsNumToday.setText("今日：" + info.getTodayLaunches());
             txviStartsNumYesterday.setText("昨日：" + info.getYesterdayLaunches());
         });
+    }
+
+    /**
+     * 加载时长日期
+     */
+    @Override
+    public void loadDate(String mDate) {
+        txviDurationDate.setText(mDate);
     }
 
     /**

@@ -83,10 +83,10 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
         apiExecutor = new ApiExecutor("3981280", "PW0nOdKBCsM");
         apiExecutor.setServerHost("gateway.open.umeng.com");
 
+
         getAllAppData();
         getNewUsers();
-        getDurations(true);
-        getDurations(false);
+        getDurations("");
     }
 
     /**
@@ -249,6 +249,31 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     }
 
     /**
+     * 获取APP使用时长
+     */
+    public void getDurations(String mDate) {
+        if (mDate.isEmpty()) {
+            mDate = getYesterday();
+        }
+
+        mRootView.loadDate(mDate);
+
+        getDurations(true, mDate);
+        getDurations(false, mDate);
+    }
+
+    /**
+     * 获取昨日日期
+     */
+    private String getYesterday() {
+        // 获取当天日期
+        Date mSameDay = new Date();
+        // 计算出前一天的日期
+        Date mNewData = new Date(mSameDay.getTime() - 86400000L);
+        return TimeUtils.date2String(mNewData, new SimpleDateFormat("yyyy-MM-dd"));
+    }
+
+    /**
      * 获取App使用时长
      * 请求：应用ID、查询日期(单日)、查询时长统计类型（按天daily，按次daily_per_launch）
      * 响应：
@@ -257,7 +282,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
      *
      * @param isDaily 是否按天
      */
-    public void getDurations(boolean isDaily) {
+    public void getDurations(boolean isDaily, String mDate) {
         new Thread() {
             @Override
             public void run() {
@@ -265,8 +290,8 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 // 应用ID
                 param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
                 // 查询日期
-                param.setDate("2023-01-18");
-//                param.setDate(TimeUtils.getNowString(new SimpleDateFormat("yyyy-MM-dd")));
+//                param.setDate("2023-01-18");
+                param.setDate(mDate);
                 // 查询时长统计类型（按天daily，按次daily_per_launch）
                 if (isDaily) {
                     param.setStatType("daily");
