@@ -83,7 +83,8 @@
                         android:layout_marginTop="10dp"
                         android:text="新增用户"
                         android:textColor="@color/common_text_color"
-                        android:textSize="12sp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txvi_umdatastatistics_newuser_today"
@@ -130,7 +131,8 @@
                         android:layout_marginTop="10dp"
                         android:text="活跃用户"
                         android:textColor="@color/common_text_color"
-                        android:textSize="12sp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txvi_umdatastatistics_activeuser_today"
@@ -176,7 +178,8 @@
                         android:layout_marginTop="10dp"
                         android:text="启动次数"
                         android:textColor="@color/common_text_color"
-                        android:textSize="12sp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txvi_umdatastatistics_startsnum_today"
@@ -216,7 +219,8 @@
                     android:layout_marginEnd="16dp"
                     android:text="七日统计"
                     android:textColor="@color/common_text_color"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/revi_umdatastatistics_sevendays"

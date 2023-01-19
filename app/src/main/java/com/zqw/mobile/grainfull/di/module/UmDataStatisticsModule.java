@@ -10,6 +10,11 @@ import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.RequestMapper;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.model.UmDataStatisticsModel;
+import com.zqw.mobile.grainfull.mvp.model.entity.SevenStatistics;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import dagger.Binds;
 import dagger.Module;
@@ -53,15 +58,15 @@ public abstract class UmDataStatisticsModule {
         return new LinearLayoutManager(view.getActivity());
     }
 
-//    @ActivityScope
-//    @Provides
-//    static List<BankCardInfo> provideBankCardInfo() {
-//        return new ArrayList<>();
-//    }
-//
-//    @ActivityScope
-//    @Provides
-//    static BankCardAdapter provideBankCardAdapter(List<BankCardInfo> list) {
-//        return new BankCardAdapter(list);
-//    }
+    @ActivityScope
+    @Provides
+    static List<SevenStatistics> provideSevenStatistics() {
+        return new ArrayList<>();
+    }
+
+    @ActivityScope
+    @Provides
+    static SevenStatisticsAdapter provideSevenStatisticsAdapter(List<SevenStatistics> list) {
+        return new SevenStatisticsAdapter(list);
+    }
 }

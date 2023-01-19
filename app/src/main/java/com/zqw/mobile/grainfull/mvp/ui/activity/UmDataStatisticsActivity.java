@@ -23,6 +23,7 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerUmDataStatisticsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.UmDataStatisticsPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
 
 import javax.inject.Inject;
 
@@ -73,20 +74,24 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     TextView txviStartsNumYesterday;                                                                // 启动次数 - 昨日
 
     @BindView(R.id.revi_umdatastatistics_sevendays)
-    RecyclerView mRecyclerView;                                                                     // 七日统计
+    RecyclerView mSevenList;                                                                        // 七日统计
     /*------------------------------------------------业务区域------------------------------------------------*/
+    // 选项：1代表 新增用户；2代表活跃用户；3代表启动次数；
+    private int mTab = 1;
 
     @Inject
-    RecyclerView.LayoutManager mLayoutManager;
+    RecyclerView.LayoutManager mSevenLayoutManager;
+    @Inject
+    SevenStatisticsAdapter mSevenAdapter;                                                           // 七日统计适配器
 
     @Override
     protected void onDestroy() {
         // super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
-        DefaultAdapter.releaseAllHolder(mRecyclerView);
+        DefaultAdapter.releaseAllHolder(mSevenList);
         super.onDestroy();
 
-        this.mLayoutManager = null;
-//        this.mAdapter = null;
+        this.mSevenLayoutManager = null;
+        this.mSevenAdapter = null;
     }
 
     @Override
@@ -107,6 +112,10 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("数据统计");
+
+        // 初始控件
+        ArmsUtils.configRecyclerView(mSevenList, mSevenLayoutManager);
+        mSevenList.setAdapter(mSevenAdapter);
 
         if (mPresenter != null) {
             mPresenter.initDate();
@@ -145,29 +154,53 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.lila_umdatastatistics_newuser_layout:                                         // 新增用户
-                lilaNewUser.setBackgroundResource(R.drawable.view_bg_left_selector);
-                lilaActiveUser.setBackground(null);
-                imviLeft.setVisibility(View.VISIBLE);
-                imviLeft.setImageResource(R.mipmap.b62);
-                imviRight.setVisibility(View.INVISIBLE);
-                lilaStartsNum.setBackground(null);
+                if(mTab != 1){
+                    mTab = 1;
+                    lilaNewUser.setBackgroundResource(R.drawable.view_bg_left_selector);
+                    lilaActiveUser.setBackground(null);
+                    imviLeft.setVisibility(View.VISIBLE);
+                    imviLeft.setImageResource(R.mipmap.b62);
+                    imviRight.setVisibility(View.INVISIBLE);
+                    lilaStartsNum.setBackground(null);
+
+                    if (mPresenter != null) {
+                        mPresenter.getNewUsers();
+                    }
+                }
+
                 break;
             case R.id.lila_umdatastatistics_activeuser_layout:                                      // 活跃用户
-                lilaNewUser.setBackground(null);
-                lilaActiveUser.setBackgroundResource(R.drawable.view_bg_centre_selector);
-                imviLeft.setVisibility(View.VISIBLE);
-                imviLeft.setImageResource(R.mipmap.b61);
-                imviRight.setVisibility(View.VISIBLE);
-                imviRight.setImageResource(R.mipmap.b62);
-                lilaStartsNum.setBackground(null);
+                if(mTab != 2){
+                    mTab = 2;
+                    lilaNewUser.setBackground(null);
+                    lilaActiveUser.setBackgroundResource(R.drawable.view_bg_centre_selector);
+                    imviLeft.setVisibility(View.VISIBLE);
+                    imviLeft.setImageResource(R.mipmap.b61);
+                    imviRight.setVisibility(View.VISIBLE);
+                    imviRight.setImageResource(R.mipmap.b62);
+                    lilaStartsNum.setBackground(null);
+
+                    if (mPresenter != null) {
+                        mPresenter.getActiveUsers();
+                    }
+                }
+
                 break;
             case R.id.lila_umdatastatistics_startsnum_layout:                                       // 启动次数
-                lilaNewUser.setBackground(null);
-                lilaActiveUser.setBackground(null);
-                imviLeft.setVisibility(View.INVISIBLE);
-                imviRight.setVisibility(View.VISIBLE);
-                imviRight.setImageResource(R.mipmap.b61);
-                lilaStartsNum.setBackgroundResource(R.drawable.view_bg_right_selector);
+                if(mTab != 3){
+                    mTab = 3;
+                    lilaNewUser.setBackground(null);
+                    lilaActiveUser.setBackground(null);
+                    imviLeft.setVisibility(View.INVISIBLE);
+                    imviRight.setVisibility(View.VISIBLE);
+                    imviRight.setImageResource(R.mipmap.b61);
+                    lilaStartsNum.setBackgroundResource(R.drawable.view_bg_right_selector);
+
+                    if (mPresenter != null) {
+                        mPresenter.getLaunches();
+                    }
+                }
+
                 break;
         }
     }

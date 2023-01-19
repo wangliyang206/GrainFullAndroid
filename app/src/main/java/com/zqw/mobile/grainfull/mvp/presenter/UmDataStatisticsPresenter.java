@@ -5,14 +5,19 @@ import com.alibaba.ocean.rawsdk.client.exception.OceanException;
 import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
+import com.umeng.uapp.param.UmengUappCountData;
 import com.umeng.uapp.param.UmengUappEventListParam;
 import com.umeng.uapp.param.UmengUappEventListResult;
+import com.umeng.uapp.param.UmengUappGetActiveUsersParam;
+import com.umeng.uapp.param.UmengUappGetActiveUsersResult;
 import com.umeng.uapp.param.UmengUappGetAllAppDataParam;
 import com.umeng.uapp.param.UmengUappGetAllAppDataResult;
 import com.umeng.uapp.param.UmengUappGetDailyDataParam;
 import com.umeng.uapp.param.UmengUappGetDailyDataResult;
 import com.umeng.uapp.param.UmengUappGetDurationsParam;
 import com.umeng.uapp.param.UmengUappGetDurationsResult;
+import com.umeng.uapp.param.UmengUappGetLaunchesParam;
+import com.umeng.uapp.param.UmengUappGetLaunchesResult;
 import com.umeng.uapp.param.UmengUappGetNewUsersParam;
 import com.umeng.uapp.param.UmengUappGetNewUsersResult;
 import com.umeng.uapp.param.UmengUappGetTodayDataParam;
@@ -20,9 +25,13 @@ import com.umeng.uapp.param.UmengUappGetTodayDataResult;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
+import com.zqw.mobile.grainfull.mvp.model.entity.SevenStatistics;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -43,6 +52,11 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     private ApiExecutor apiExecutor;
 
     @Inject
+    SevenStatisticsAdapter mSevenAdapter;                                                           // 七日统计适配器
+    @Inject
+    List<SevenStatistics> mSevenStatistics;                                                         // 七日统计数据集
+
+    @Inject
     public UmDataStatisticsPresenter(UmDataStatisticsContract.Model model, UmDataStatisticsContract.View rootView) {
         super(model, rootView);
     }
@@ -55,17 +69,10 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
         apiExecutor = new ApiExecutor("3981280", "PW0nOdKBCsM");
         apiExecutor.setServerHost("gateway.open.umeng.com");
 
-
-        new Thread() {
-            @Override
-            public void run() {
-                getAllAppData();
-                getNewUsers();
-                getDurations(true);
-                getDurations(false);
-            }
-        }.start();
-
+        getAllAppData();
+        getNewUsers();
+        getDurations(true);
+        getDurations(false);
     }
 
     /**
@@ -76,44 +83,196 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
      * 昨日活跃用户、昨日新增用户、昨日启动次数、昨日独立新增用户数、昨日独立活跃用户数
      * 总用户数
      */
-    public void getAllAppData() {
-        UmengUappGetAllAppDataParam param = new UmengUappGetAllAppDataParam();
-        // 测试环境只支持http
-        // param.getOceanRequestPolicy().setUseHttps(false);
+    private void getAllAppData() {
+        new Thread() {
+            @Override
+            public void run() {
+                UmengUappGetAllAppDataParam param = new UmengUappGetAllAppDataParam();
+                // 测试环境只支持http
+                // param.getOceanRequestPolicy().setUseHttps(false);
 
-        try {
-            UmengUappGetAllAppDataResult result = apiExecutor.execute(param);
-            mRootView.loadAllAppData(result.getAllAppData()[0]);
-        } catch (OceanException e) {
-            System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
-        }
+                try {
+                    UmengUappGetAllAppDataResult result = apiExecutor.execute(param);
+                    mRootView.loadAllAppData(result.getAllAppData()[0]);
+                } catch (OceanException e) {
+                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+                }
+            }
+        }.start();
     }
 
     /**
      * 获取App新增用户数
      * 请求：应用ID、查询起始日期、查询截止日期、查询类型（按日daily,按周weekly,按月monthly 查询）
+     * 响应：统计日期、按版本或渠道的统计信息、按小时查询返回数组、其它情况返回整型，按天无版本无渠道，按周，按月查询。
      */
     public void getNewUsers() {
-        UmengUappGetNewUsersParam param = new UmengUappGetNewUsersParam();
-        // 测试环境只支持http
-        // param.getOceanRequestPolicy().setUseHttps(false);
-        param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
+        new Thread() {
+            @Override
+            public void run() {
+                UmengUappGetNewUsersParam param = new UmengUappGetNewUsersParam();
+                // 测试环境只支持http
+                // param.getOceanRequestPolicy().setUseHttps(false);
+                param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
 
-        // 获取当天日期
-        Date mSameDay = new Date();
-        // 计算出7天前的日期
-        Date mNewData = new Date(mSameDay.getTime() - 604800000L);
-        param.setStartDate(TimeUtils.date2String(mNewData, new SimpleDateFormat("yyyy-MM-dd")));
-        param.setEndDate(TimeUtils.date2String(mSameDay, new SimpleDateFormat("yyyy-MM-dd")));
-        // 按天查询
-        param.setPeriodType("daily");
+                // 获取当天日期
+                Date mSameDay = new Date();
+                // 计算出7天前的日期
+                Date mNewData = new Date(mSameDay.getTime() - 604800000L);
+                param.setStartDate(TimeUtils.date2String(mNewData, new SimpleDateFormat("yyyy-MM-dd")));
+                param.setEndDate(TimeUtils.date2String(mSameDay, new SimpleDateFormat("yyyy-MM-dd")));
+                // 按天查询
+                param.setPeriodType("daily");
 
-        try {
-            UmengUappGetNewUsersResult result = apiExecutor.execute(param);
-            System.out.println();
-        } catch (OceanException e) {
-            System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
-        }
+                try {
+                    UmengUappGetNewUsersResult result = apiExecutor.execute(param);
+                    // 清理数据
+                    mSevenStatistics.clear();
+                    // 组织数据
+                    for (UmengUappCountData info : result.getNewUserInfo()) {
+                        mSevenStatistics.add(new SevenStatistics(info.getDate(), String.valueOf(info.getValue())));
+                    }
+                    // 倒序
+                    Collections.reverse(mSevenStatistics);
+                } catch (OceanException e) {
+                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+                }
+
+                mRootView.getActivity().runOnUiThread(() -> {
+                    // 刷新数据
+                    mSevenAdapter.notifyDataSetChanged();
+                });
+            }
+        }.start();
+    }
+
+    /**
+     * 获取App活跃用户数
+     * 请求：应用ID、查询起始日期、查询截止日期、查询类型（按日daily,按周weekly,按月monthly,近7日7day,近30日30day 查询，接口限制：periodType=daily/7day/30day时，返回结果数量限制为60条；periodType=weekly时，返回结果数量限制为8条；periodType=monthly时，返回结果数量限制为3条。实际返回结果数量以接口为准。）
+     * 响应：统计日期、按版本或渠道的统计信息、按小时查询返回数组、其它情况返回整型，按天无版本无渠道，按周，按月查询。
+     */
+    public void getActiveUsers() {
+        new Thread() {
+            @Override
+            public void run() {
+                UmengUappGetActiveUsersParam param = new UmengUappGetActiveUsersParam();
+                // 测试环境只支持http
+                // param.getOceanRequestPolicy().setUseHttps(false);
+                param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
+
+                // 获取当天日期
+                Date mSameDay = new Date();
+                // 计算出7天前的日期
+                Date mNewData = new Date(mSameDay.getTime() - 604800000L);
+                param.setStartDate(TimeUtils.date2String(mNewData, new SimpleDateFormat("yyyy-MM-dd")));
+                param.setEndDate(TimeUtils.date2String(mSameDay, new SimpleDateFormat("yyyy-MM-dd")));
+                // 按天查询
+                param.setPeriodType("daily");
+
+                try {
+                    UmengUappGetActiveUsersResult result = apiExecutor.execute(param);
+                    // 清理数据
+                    mSevenStatistics.clear();
+                    // 组织数据
+                    for (UmengUappCountData info : result.getActiveUserInfo()) {
+                        mSevenStatistics.add(new SevenStatistics(info.getDate(), String.valueOf(info.getValue())));
+                    }
+                    // 倒序
+                    Collections.reverse(mSevenStatistics);
+                } catch (OceanException e) {
+                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+                }
+                mRootView.getActivity().runOnUiThread(() -> {
+                    // 刷新数据
+                    mSevenAdapter.notifyDataSetChanged();
+                });
+            }
+        }.start();
+    }
+
+    /**
+     * 获取App启动次数
+     * 请求：应用ID、查询起始日期、查询截止日期、查询类型（按日daily,按周weekly,按月monthly,近7日7day,近30日30day 查询，接口限制：periodType=daily/7day/30day时，返回结果数量限制为60条；periodType=weekly时，返回结果数量限制为8条；periodType=monthly时，返回结果数量限制为3条。实际返回结果数量以接口为准。）
+     * 响应：统计日期、按版本或渠道的统计信息、按小时查询返回数组、其它情况返回整型，按天无版本无渠道，按周，按月查询。
+     */
+    public void getLaunches() {
+        new Thread() {
+            @Override
+            public void run() {
+                UmengUappGetLaunchesParam param = new UmengUappGetLaunchesParam();
+                // 测试环境只支持http
+                // param.getOceanRequestPolicy().setUseHttps(false);
+                param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
+
+                // 获取当天日期
+                Date mSameDay = new Date();
+                // 计算出7天前的日期
+                Date mNewData = new Date(mSameDay.getTime() - 604800000L);
+                param.setStartDate(TimeUtils.date2String(mNewData, new SimpleDateFormat("yyyy-MM-dd")));
+                param.setEndDate(TimeUtils.date2String(mSameDay, new SimpleDateFormat("yyyy-MM-dd")));
+                // 按天查询
+                param.setPeriodType("daily");
+
+                try {
+                    UmengUappGetLaunchesResult result = apiExecutor.execute(param);
+                    // 清理数据
+                    mSevenStatistics.clear();
+                    // 组织数据
+                    for (UmengUappCountData info : result.getLaunchInfo()) {
+                        mSevenStatistics.add(new SevenStatistics(info.getDate(), String.valueOf(info.getValue())));
+                    }
+                    // 倒序
+                    Collections.reverse(mSevenStatistics);
+                } catch (OceanException e) {
+                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+                }
+                mRootView.getActivity().runOnUiThread(() -> {
+                    // 刷新数据
+                    mSevenAdapter.notifyDataSetChanged();
+                });
+            }
+        }.start();
+    }
+
+    /**
+     * 获取App使用时长
+     * 请求：应用ID、查询日期(单日)、查询时长统计类型（按天daily，按次daily_per_launch）
+     * 响应：
+     * 每次启动的平均使用时长
+     * 时间区间单位秒、启动次数/用户数、此区间的时长占
+     *
+     * @param isDaily 是否按天
+     */
+    public void getDurations(boolean isDaily) {
+        new Thread() {
+            @Override
+            public void run() {
+                UmengUappGetDurationsParam param = new UmengUappGetDurationsParam();
+                // 应用ID
+                param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
+                // 查询日期
+                param.setDate("2023-01-16");
+//        param.setDate(TimeUtils.getNowString(new SimpleDateFormat("yyyy-MM-dd")));
+                // 查询时长统计类型（按天daily，按次daily_per_launch）
+                if (isDaily) {
+                    param.setStatType("daily");
+                } else {
+                    param.setStatType("daily_per_launch");
+                }
+
+                // 渠道名称（仅限一个App%20Store）
+//        param.setChannel(Constant.UM_CHANNEL);
+                // 版本名称（仅限一个1.0.0）
+//        param.setVersion(BuildConfig.VERSION_NAME);
+
+                try {
+                    UmengUappGetDurationsResult result = apiExecutor.execute(param);
+                    System.out.println();
+                } catch (OceanException e) {
+                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+                }
+            }
+        }.start();
     }
 
     /**
@@ -158,43 +317,6 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     }
 
     /**
-     * 获取App使用时长
-     * 请求：应用ID、查询日期(单日)、查询时长统计类型（按天daily，按次daily_per_launch）
-     * 响应：
-     * 每次启动的平均使用时长
-     * 时间区间单位秒、启动次数/用户数、此区间的时长占
-     *
-     * @param isDaily 是否按天
-     */
-    public void getDurations(boolean isDaily) {
-        UmengUappGetDurationsParam param = new UmengUappGetDurationsParam();
-        // 应用ID
-        param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
-        // 查询日期
-        param.setDate("2023-01-16");
-//        param.setDate(TimeUtils.getNowString(new SimpleDateFormat("yyyy-MM-dd")));
-        // 查询时长统计类型（按天daily，按次daily_per_launch）
-        if (isDaily) {
-            param.setStatType("daily");
-        } else {
-            param.setStatType("daily_per_launch");
-        }
-
-        // 渠道名称（仅限一个App%20Store）
-//        param.setChannel(Constant.UM_CHANNEL);
-        // 版本名称（仅限一个1.0.0）
-//        param.setVersion(BuildConfig.VERSION_NAME);
-
-        try {
-            UmengUappGetDurationsResult result = apiExecutor.execute(param);
-            System.out.println();
-        } catch (OceanException e) {
-            System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
-        }
-    }
-
-
-    /**
      * 获取事件列表
      */
     private void getEventList() {
@@ -220,5 +342,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
+        this.mSevenAdapter = null;
+        this.mSevenStatistics = null;
     }
 }
