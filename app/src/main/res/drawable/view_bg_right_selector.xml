@@ -10,6 +10,6 @@
         android:bottomLeftRadius="0dip"
         android:bottomRightRadius="0dip"
         android:topLeftRadius="0dip"
-        android:topRightRadius="20dip" />
+        android:topRightRadius="5dip" />
 
 </shape>

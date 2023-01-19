@@ -11,10 +11,14 @@ import com.zqw.mobile.grainfull.app.global.RequestMapper;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.model.UmDataStatisticsModel;
 import com.zqw.mobile.grainfull.mvp.model.entity.SevenStatistics;
+import com.zqw.mobile.grainfull.mvp.model.entity.SingleDuration;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Named;
 
 import dagger.Binds;
 import dagger.Module;
@@ -52,21 +56,55 @@ public abstract class UmDataStatisticsModule {
         return new ApiOperator(requestMapper);
     }
 
+    @Named("mSevenLayoutManager")
     @ActivityScope
     @Provides
     static RecyclerView.LayoutManager provideLayoutManager(UmDataStatisticsContract.View view) {
-        return new LinearLayoutManager(view.getActivity());
+        return new LinearLayoutManager(view.getActivity()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
     }
 
+    @Named("mSevenStatistics")
     @ActivityScope
     @Provides
     static List<SevenStatistics> provideSevenStatistics() {
         return new ArrayList<>();
     }
 
+    @Named("mSevenAdapter")
     @ActivityScope
     @Provides
-    static SevenStatisticsAdapter provideSevenStatisticsAdapter(List<SevenStatistics> list) {
+    static SevenStatisticsAdapter provideSevenStatisticsAdapter(@Named("mSevenStatistics") List<SevenStatistics> list) {
         return new SevenStatisticsAdapter(list);
+    }
+
+    @Named("mSingleLayoutManager")
+    @ActivityScope
+    @Provides
+    static RecyclerView.LayoutManager provideSingleLayoutManager(UmDataStatisticsContract.View view) {
+        return new LinearLayoutManager(view.getActivity()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+    }
+
+    @Named("mSingle")
+    @ActivityScope
+    @Provides
+    static List<SingleDuration> provideSingle() {
+        return new ArrayList<>();
+    }
+
+    @Named("mSingleAdapter")
+    @ActivityScope
+    @Provides
+    static SingleDurationAdapter provideSingleAdapter(@Named("mSingle") List<SingleDuration> list) {
+        return new SingleDurationAdapter(list);
     }
 }

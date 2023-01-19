@@ -49,6 +49,51 @@ import java.util.regex.Pattern;
 public class CommonUtils {
 
     /**
+     * 通过秒换算成时分秒
+     *
+     * @param isWhole 小时/分钟为零时是否显示
+     * @param second  秒
+     */
+    public static String timeConversion(boolean isWhole, int second) {
+        int h = 0;
+        int d = 0;
+        int s = 0;
+        int temp = second % 3600;
+        if (second > 3600) {
+            h = second / 3600;
+            if (temp != 0) {
+                if (temp > 60) {
+                    d = temp / 60;
+                    if (temp % 60 != 0) {
+                        s = temp % 60;
+                    }
+                } else {
+                    s = temp;
+                }
+            }
+        } else {
+            d = second / 60;
+            if (second % 60 != 0) {
+                s = second % 60;
+            }
+        }
+        if (isWhole) {
+            return h + "时" + d + "分" + s + "秒";
+        } else {
+            if (h == 0) {
+                // 判断分钟是否为零
+                if (d == 0) {
+                    return s + "秒";
+                } else {
+                    return d + "分" + s + "秒";
+                }
+            } else {
+                return h + "时" + d + "分" + s + "秒";
+            }
+        }
+    }
+
+    /**
      * 判断设备是否支持霍尔传感器
      */
     public static Boolean isMagneticSensorAvailable(Context context) {

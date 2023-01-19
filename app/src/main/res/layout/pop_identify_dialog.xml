@@ -44,7 +44,7 @@
                     android:id="@+id/liay_popidentify_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/financial_bg_frame"
+                    android:background="@drawable/edit_bg_selector"
                     android:gravity="center"
                     android:orientation="vertical">
                     <!--内容-->

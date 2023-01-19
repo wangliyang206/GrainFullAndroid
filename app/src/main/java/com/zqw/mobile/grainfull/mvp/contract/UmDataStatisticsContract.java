@@ -16,6 +16,9 @@ public interface UmDataStatisticsContract {
     interface View extends IView {
         // 加载 所有App统计数据
         void loadAllAppData(UmengUappAllAppData info);
+
+        // 加载时长
+        void loadDurations(boolean isDaily, String duration);
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存

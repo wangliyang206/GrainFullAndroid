@@ -6,6 +6,7 @@ import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.umeng.uapp.param.UmengUappCountData;
+import com.umeng.uapp.param.UmengUappDurationInfo;
 import com.umeng.uapp.param.UmengUappEventListParam;
 import com.umeng.uapp.param.UmengUappEventListResult;
 import com.umeng.uapp.param.UmengUappGetActiveUsersParam;
@@ -24,9 +25,12 @@ import com.umeng.uapp.param.UmengUappGetTodayDataParam;
 import com.umeng.uapp.param.UmengUappGetTodayDataResult;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.SevenStatistics;
+import com.zqw.mobile.grainfull.mvp.model.entity.SingleDuration;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -34,6 +38,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
@@ -51,10 +56,19 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     // 操作对象
     private ApiExecutor apiExecutor;
 
+    @Named("mSevenAdapter")
     @Inject
-    SevenStatisticsAdapter mSevenAdapter;                                                           // 七日统计适配器
+    SevenStatisticsAdapter mSevenAdapter;                                                           // 七日详情适配器
+    @Named("mSevenStatistics")
     @Inject
-    List<SevenStatistics> mSevenStatistics;                                                         // 七日统计数据集
+    List<SevenStatistics> mSevenStatistics;                                                         // 七日详情数据集
+
+    @Named("mSingleAdapter")
+    @Inject
+    SingleDurationAdapter mSingleAdapter;                                                           // 单次使用时长分布 适配器
+    @Named("mSingle")
+    @Inject
+    List<SingleDuration> mSingle;                                                                   // 单次使用时长分布 数据集
 
     @Inject
     public UmDataStatisticsPresenter(UmDataStatisticsContract.Model model, UmDataStatisticsContract.View rootView) {
@@ -251,8 +265,8 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 // 应用ID
                 param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
                 // 查询日期
-                param.setDate("2023-01-16");
-//        param.setDate(TimeUtils.getNowString(new SimpleDateFormat("yyyy-MM-dd")));
+                param.setDate("2023-01-18");
+//                param.setDate(TimeUtils.getNowString(new SimpleDateFormat("yyyy-MM-dd")));
                 // 查询时长统计类型（按天daily，按次daily_per_launch）
                 if (isDaily) {
                     param.setStatType("daily");
@@ -261,16 +275,31 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 }
 
                 // 渠道名称（仅限一个App%20Store）
-//        param.setChannel(Constant.UM_CHANNEL);
+//                param.setChannel(Constant.UM_CHANNEL);
                 // 版本名称（仅限一个1.0.0）
-//        param.setVersion(BuildConfig.VERSION_NAME);
+//                param.setVersion(BuildConfig.VERSION_NAME);
 
                 try {
                     UmengUappGetDurationsResult result = apiExecutor.execute(param);
-                    System.out.println();
+                    // 加载平均时长
+                    mRootView.loadDurations(isDaily, CommonUtils.timeConversion(true, result.getAverage().intValue()));
+                    // 清理缓存
+                    mSingle.clear();
+                    if (!isDaily) {
+                        // 加载单次详情
+                        for (UmengUappDurationInfo info : result.getDurationInfos()) {
+                            mSingle.add(new SingleDuration(info.getName(), info.getValue(), info.getPercent()));
+                        }
+                    }
+
                 } catch (OceanException e) {
                     System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
+                    mRootView.loadDurations(isDaily, "0");
                 }
+                mRootView.getActivity().runOnUiThread(() -> {
+                    // 刷新数据
+                    mSingleAdapter.notifyDataSetChanged();
+                });
             }
         }.start();
     }
@@ -342,7 +371,11 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
+
         this.mSevenAdapter = null;
         this.mSevenStatistics = null;
+
+        this.mSingleAdapter = null;
+        this.mSingle = null;
     }
 }

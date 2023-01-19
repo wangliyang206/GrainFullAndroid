@@ -55,7 +55,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="25dp"
-        android:background="@drawable/financial_bg_frame"
+        android:background="@drawable/edit_bg_selector"
         android:gravity="center_vertical"
         android:hint="请填写标题"
         android:paddingStart="10dp"

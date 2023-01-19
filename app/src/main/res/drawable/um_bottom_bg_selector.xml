@@ -7,8 +7,8 @@
     <!-- 设置按钮的四个角为弧形 -->
     <!-- android:radius 弧形的半径 -->
     <corners
-        android:bottomLeftRadius="20dip"
-        android:bottomRightRadius="20dip"
+        android:bottomLeftRadius="5dip"
+        android:bottomRightRadius="5dip"
         android:topLeftRadius="0dip"
         android:topRightRadius="0dip" />
 

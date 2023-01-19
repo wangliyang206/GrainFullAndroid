@@ -48,7 +48,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/financial_bg_frame"
+                    android:background="@drawable/edit_bg_selector"
                     android:digits="0123456789."
                     android:gravity="center_vertical"
                     android:inputType="number"

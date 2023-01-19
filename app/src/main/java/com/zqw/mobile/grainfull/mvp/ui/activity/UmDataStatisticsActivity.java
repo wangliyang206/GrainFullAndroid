@@ -24,8 +24,10 @@ import com.zqw.mobile.grainfull.di.component.DaggerUmDataStatisticsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.UmDataStatisticsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,7 +57,6 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     @BindView(R.id.imvi_umdatastatistics_left)
     ImageView imviLeft;                                                                             // 左侧间隔
 
-
     @BindView(R.id.lila_umdatastatistics_activeuser_layout)
     LinearLayout lilaActiveUser;                                                                    // 活跃用户
     @BindView(R.id.txvi_umdatastatistics_activeuser_today)
@@ -65,7 +66,6 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     @BindView(R.id.imvi_umdatastatistics_right)
     ImageView imviRight;                                                                            // 右侧间隔
 
-
     @BindView(R.id.lila_umdatastatistics_startsnum_layout)
     LinearLayout lilaStartsNum;                                                                     // 启动次数
     @BindView(R.id.txvi_umdatastatistics_startsnum_today)
@@ -74,24 +74,46 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     TextView txviStartsNumYesterday;                                                                // 启动次数 - 昨日
 
     @BindView(R.id.revi_umdatastatistics_sevendays)
-    RecyclerView mSevenList;                                                                        // 七日统计
+    RecyclerView mSevenList;                                                                        // 七日详情
+
+
+    @BindView(R.id.txvi_umdatastatistics_dayduration)
+    TextView txviDayDuration;                                                                       // 平均日使用时长
+    @BindView(R.id.txvi_umdatastatistics_singleduration)
+    TextView txviSingleDuration;                                                                    // 平均单次使用时长
+    @BindView(R.id.revi_umdatastatistics_single)
+    RecyclerView mSingleList;                                                                       // 单次使用时长分布
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 选项：1代表 新增用户；2代表活跃用户；3代表启动次数；
     private int mTab = 1;
 
+    @Named("mSevenLayoutManager")
     @Inject
     RecyclerView.LayoutManager mSevenLayoutManager;
+    @Named("mSevenAdapter")
     @Inject
     SevenStatisticsAdapter mSevenAdapter;                                                           // 七日统计适配器
+
+
+    @Named("mSingleLayoutManager")
+    @Inject
+    RecyclerView.LayoutManager mSingleLayoutManager;
+    @Named("mSingleAdapter")
+    @Inject
+    SingleDurationAdapter mSingleAdapter;                                                           // 单次使用时长分布 适配器
 
     @Override
     protected void onDestroy() {
         // super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
         DefaultAdapter.releaseAllHolder(mSevenList);
+        DefaultAdapter.releaseAllHolder(mSingleList);
         super.onDestroy();
 
         this.mSevenLayoutManager = null;
         this.mSevenAdapter = null;
+
+        this.mSingleLayoutManager = null;
+        this.mSingleAdapter = null;
     }
 
     @Override
@@ -116,6 +138,9 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         // 初始控件
         ArmsUtils.configRecyclerView(mSevenList, mSevenLayoutManager);
         mSevenList.setAdapter(mSevenAdapter);
+
+        ArmsUtils.configRecyclerView(mSingleList, mSingleLayoutManager);
+        mSingleList.setAdapter(mSingleAdapter);
 
         if (mPresenter != null) {
             mPresenter.initDate();
@@ -145,6 +170,23 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         });
     }
 
+    /**
+     * 加载平均时长
+     *
+     * @param isDaily  是否是按天
+     * @param duration 时长
+     */
+    @Override
+    public void loadDurations(boolean isDaily, String duration) {
+        runOnUiThread(() -> {
+            if (isDaily) {
+                txviDayDuration.setText(duration);
+            } else {
+                txviSingleDuration.setText(duration);
+            }
+        });
+    }
+
     @OnClick({
             R.id.lila_umdatastatistics_newuser_layout,                                              // 新增用户
             R.id.lila_umdatastatistics_activeuser_layout,                                           // 活跃用户
@@ -154,7 +196,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.lila_umdatastatistics_newuser_layout:                                         // 新增用户
-                if(mTab != 1){
+                if (mTab != 1) {
                     mTab = 1;
                     lilaNewUser.setBackgroundResource(R.drawable.view_bg_left_selector);
                     lilaActiveUser.setBackground(null);
@@ -170,7 +212,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
                 break;
             case R.id.lila_umdatastatistics_activeuser_layout:                                      // 活跃用户
-                if(mTab != 2){
+                if (mTab != 2) {
                     mTab = 2;
                     lilaNewUser.setBackground(null);
                     lilaActiveUser.setBackgroundResource(R.drawable.view_bg_centre_selector);
@@ -187,7 +229,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
                 break;
             case R.id.lila_umdatastatistics_startsnum_layout:                                       // 启动次数
-                if(mTab != 3){
+                if (mTab != 3) {
                     mTab = 3;
                     lilaNewUser.setBackground(null);
                     lilaActiveUser.setBackground(null);
