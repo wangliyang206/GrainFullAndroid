@@ -79,7 +79,7 @@ public class NoiseMeasurementActivity extends BaseActivity<NoiseMeasurementPrese
     // 锁
     private final Object mLock = new Object();
     // 设置采样速度
-    public int mSampleTime = 20;
+    public int mSampleTime = 5;
 
     @Override
     protected void onDestroy() {
