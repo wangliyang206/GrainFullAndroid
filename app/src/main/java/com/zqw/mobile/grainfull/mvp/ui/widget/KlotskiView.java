@@ -2,24 +2,18 @@ package com.zqw.mobile.grainfull.mvp.ui.widget;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.zqw.mobile.grainfull.app.utils.KlotskiBoard;
 import com.zqw.mobile.grainfull.app.utils.KlotskiPoint;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import timber.log.Timber;
 
@@ -143,7 +137,7 @@ public class KlotskiView extends AppCompatImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        if (isStartGame && event.getAction() == MotionEvent.ACTION_DOWN) {
             KlotskiPoint point = xyToIndex((int) event.getX(), (int) event.getY());
 
             for (int i = 0; i < dir.length; i++) {
