@@ -18,6 +18,7 @@ import com.jess.arms.utils.ArmsUtils;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerklotskiGameComponent;
 import com.zqw.mobile.grainfull.mvp.contract.klotskiGameContract;
@@ -65,6 +66,8 @@ public class klotskiGameActivity extends BaseActivity<klotskiGamePresenter> impl
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("华容道");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "klotski_game_open");
     }
 
     @OnClick({
@@ -75,6 +78,8 @@ public class klotskiGameActivity extends BaseActivity<klotskiGamePresenter> impl
         switch (v.getId()){
             case R.id.btn_klotskigame_start:                                                        // 开始游戏
                 if (!CommonUtils.isDoubleClick()) {
+                    // 友盟统计 - 自定义事件
+                    MobclickAgent.onEvent(getApplicationContext(), "klotski_game");
                     v.setEnabled(false);
                     klviView.startGame();
                 }
