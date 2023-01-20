@@ -93,7 +93,6 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
         apiExecutor = new ApiExecutor("3981280", "PW0nOdKBCsM");
         apiExecutor.setServerHost("gateway.open.umeng.com");
 
-
         getAllAppData();
         getNewUsers();
         getDurations(mYesterday);
@@ -365,35 +364,10 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 mRootView.getActivity().runOnUiThread(() -> {
                     // 刷新数据
                     mEventAdapter.notifyDataSetChanged();
+                    mRootView.loadEventCount(mEvent.size());
                 });
             }
         }.start();
-
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                UmengUappEventGetDataParam param = new UmengUappEventGetDataParam();
-//                // 测试环境只支持http
-//                // param.getOceanRequestPolicy().setUseHttps(false);
-//                param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
-//                param.setStartDate("2023-01-16");
-//                param.setEndDate("2023-01-19");
-//                // 63c622254d182e302fa21b39
-//                // picture_pipette
-//
-//                // 63c621fe0a26f850ba2a1a2f
-//                // color_picker
-//                param.setEventName("picture_pipette");
-//
-//                try {
-//                    UmengUappEventGetDataResult result = apiExecutor.execute(param);
-//                    System.out.println();
-//                } catch (OceanException e) {
-//                    System.out.println("errorCode=" + e.getErrorCode() + ", errorMessage=" + e.getErrorMessage());
-//                }
-//            }
-//        }.start();
-
     }
 
     /**
@@ -441,6 +415,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
+        this.apiExecutor = null;
 
         this.mSevenAdapter = null;
         this.mSevenStatistics = null;

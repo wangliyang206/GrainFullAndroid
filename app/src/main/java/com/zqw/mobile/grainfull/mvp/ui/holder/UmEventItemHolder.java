@@ -66,6 +66,7 @@ public class UmEventItemHolder extends BaseHolder<UmEvent> implements View.OnCli
         txviId.setText(CommonUtils.isEmptyReturnStr(data.getName()));
         txviName.setText(CommonUtils.isEmptyReturnStr(data.getDisplayName()));
         txviValue.setText(String.valueOf(data.getCount()));
+        txviSelect.setOnClickListener(this);
     }
 
     /**

@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
@@ -26,6 +27,7 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerUmDataStatisticsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.UmDataStatisticsContract;
+import com.zqw.mobile.grainfull.mvp.model.entity.UmEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.UmDataStatisticsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SevenStatisticsAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.SingleDurationAdapter;
@@ -49,7 +51,7 @@ import butterknife.OnClick;
  * @author 赤槿
  * module name is UmDataStatisticsActivity
  */
-public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPresenter> implements UmDataStatisticsContract.View {
+public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPresenter> implements UmDataStatisticsContract.View, DefaultAdapter.OnRecyclerViewItemClickListener {
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.activity_um_data_statistics)
     LinearLayout contentLayout;                                                                     // 主布局
@@ -97,6 +99,8 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     @BindView(R.id.revi_umdatastatistics_single_not)
     TextView txviDurationNot;                                                                       // 无数据
 
+    @BindView(R.id.txvi_umdatastatistics_event)
+    TextView txviEventTips;                                                                         // 事件提示
     @BindView(R.id.revi_umdatastatistics_event)
     RecyclerView mEventList;                                                                        // 事件
     /*------------------------------------------------业务区域------------------------------------------------*/
@@ -180,6 +184,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
         ArmsUtils.configRecyclerView(mEventList, mEventLayoutManager);
         mEventList.setAdapter(mEventAdapter);
+        mEventAdapter.setOnItemClickListener(this);
 
         // 前一天
         calendar.add(Calendar.DAY_OF_MONTH, -1);
@@ -247,6 +252,14 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         });
     }
 
+    /**
+     * 显示事件条数
+     */
+    @Override
+    public void loadEventCount(int count) {
+        txviEventTips.append("(" + count + ")");
+    }
+
     @OnClick({
             R.id.lila_umdatastatistics_newuser_layout,                                              // 新增用户
             R.id.lila_umdatastatistics_activeuser_layout,                                           // 活跃用户
@@ -310,6 +323,17 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
                 showDatePickerDialog();
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(@NonNull View view, int viewType, @NonNull Object data, int position) {
+        UmEvent info = (UmEvent) data;
+        Bundle mBundle = new Bundle();
+        mBundle.putString("id", info.getId());
+        mBundle.putString("name", info.getName());
+        mBundle.putString("displayName", info.getDisplayName());
+
+        ActivityUtils.startActivity(mBundle, UmEventDetailsActivity.class);
     }
 
     /**

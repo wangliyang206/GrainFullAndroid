@@ -400,7 +400,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/layout_bg_shape"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/txvi_umdatastatistics_event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
