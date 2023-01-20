@@ -109,6 +109,7 @@ public class ZQWFont implements ITypeface {
 
     public enum Icon implements IIcon {
         zqw_menu_home('\ue622'),
+        zqw_menu_statistics('\ue608'),
         zqw_menu_basicinfo('\ue7df'),
         zqw_menu_promotioncode('\ue603'),
 

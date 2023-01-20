@@ -228,7 +228,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 .withSavedInstance(savedInstanceState)
                 .build();
 
-        IDrawerItem basicInfo = new PrimaryDrawerItem().withName(R.string.drawer_item_basicinfo).withIcon(ZQWFont.Icon.zqw_menu_basicinfo).withIdentifier(Constant.MAIN_BASICINFO).withSelectable(false);
+        IDrawerItem basicInfo = new PrimaryDrawerItem().withName(R.string.drawer_item_basicinfo).withIcon(ZQWFont.Icon.zqw_menu_statistics).withIdentifier(Constant.MAIN_BASICINFO).withSelectable(false);
 
         IDrawerItem myPromotionCode = null;
 //            myPromotionCode = new PrimaryDrawerItem().withName(R.string.drawer_item_mypromotioncode).withIcon(ZQWFont.Icon.zqw_menu_promotioncode).withIdentifier(Constant.MAIN_MYPROMOTIONCODE).withSelectable(false);
