@@ -76,15 +76,6 @@ public class KlotskiView extends AppCompatImageView {
 
         BitmapDrawable drawable = (BitmapDrawable) getDrawable();
         bitmap = drawable.getBitmap();
-
-//        // 载入图像，并将图片切成块
-//        AssetManager assetManager = context.getAssets();
-//        try {
-//            InputStream assetInputStream = assetManager.open("klotski_bg.jpg");
-//            Bitmap bitmap = BitmapFactory.decodeStream(assetInputStream);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     @Override
