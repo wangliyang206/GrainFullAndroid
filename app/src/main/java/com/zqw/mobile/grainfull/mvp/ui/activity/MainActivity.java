@@ -43,6 +43,7 @@ import com.zqw.mobile.grainfull.mvp.contract.MainContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.AppUpdate;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.MainPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.GameFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment;
 
@@ -71,8 +72,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     // 首页
     private static final int FRAGMENT_HOME = 0;
-    // 统计
-    private static final int FRAGMENT_STATISTICS = 1;
+    // 游戏
+    private static final int FRAGMENT_GAME = 1;
     // 其它
     private static final int FRAGMENT_REGISTER = 2;
 
@@ -83,6 +84,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     // 首页(业务)
     HomeFragment mTabHome;
+    // 游戏
+    GameFragment mTabGame;
     // 特效
     SpecialEffectsFragment mTabSpecialEffects;
 
@@ -147,16 +150,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_business:
-                    menuChecked(true);
                     showFragment(FRAGMENT_HOME);
                     doubleClick(FRAGMENT_HOME);
                     break;
-                case R.id.action_statistics:
-                    menuChecked(false);
-                    showFragment(FRAGMENT_STATISTICS);
+                case R.id.action_game:
+                    showFragment(FRAGMENT_GAME);
                     break;
                 case R.id.action_incoming:
-                    menuChecked(true);
                     showFragment(FRAGMENT_REGISTER);
                     break;
             }
@@ -346,13 +346,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     ft.show(mTabHome);
                 }
                 break;
-            case FRAGMENT_STATISTICS:
-//                if (mTabStatistics == null) {
-//                    mTabStatistics = new StatisticsFragment();
-//                    ft.add(R.id.container, mTabStatistics, StatisticsFragment.class.getName());
-//                } else {
-//                    ft.show(mTabStatistics);
-//                }
+            case FRAGMENT_GAME:
+                if (mTabGame == null) {
+                    mTabGame = new GameFragment();
+                    ft.add(R.id.container, mTabGame, GameFragment.class.getName());
+                } else {
+                    ft.show(mTabGame);
+                }
                 break;
             case FRAGMENT_REGISTER:
                 if (mTabSpecialEffects == null) {
@@ -374,9 +374,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         if (mTabHome != null) {
             ft.hide(mTabHome);
         }
-//        if (mTabStatistics != null) {
-//            ft.hide(mTabStatistics);
-//        }
+        if (mTabGame != null) {
+            ft.hide(mTabGame);
+        }
         if (mTabSpecialEffects != null) {
             ft.hide(mTabSpecialEffects);
         }
@@ -478,24 +478,5 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 //                            .imageView(view)
 //                            .build());
 //        });
-    }
-
-    /**
-     * 取消Menu选中项
-     */
-    private void menuChecked(boolean isValue) {
-        if (isValue) {
-            if (mNavigation != null) {
-                mNavigation.getMenu().setGroupCheckable(R.id.group_item, false, true);
-                mNavigation.getMenu().setGroupCheckable(0, true, true);
-            }
-        } else {
-            if (mNavigation != null) {
-                mNavigation.getMenu().setGroupCheckable(0, false, true);
-                mNavigation.getMenu().setGroupCheckable(R.id.group_item, true, true);
-            }
-
-        }
-
     }
 }

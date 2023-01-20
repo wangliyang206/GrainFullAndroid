@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_klotski_game"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_klotskigame_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_weight="1"
+        android:background="@drawable/layout_bg_shape">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.KlotskiView
+            android:id="@+id/klvi_klotskigame_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/klotski_bg"/>
+
+    </LinearLayout>
+
+    <!-- 开始游戏 -->
+    <Button
+        android:id="@+id/btn_klotskigame_start"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28.5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28.5dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn_bg_selector"
+        android:text="开始游戏"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+</LinearLayout>
