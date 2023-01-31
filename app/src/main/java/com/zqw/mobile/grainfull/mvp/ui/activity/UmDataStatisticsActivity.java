@@ -89,7 +89,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
 
     @BindView(R.id.txvi_umdatastatistics_durationdate)
-    TextView txviDurationDate;                                                                      // 日期
+    TextView txviDurationDate;                                                                      // 筛选日期
     @BindView(R.id.txvi_umdatastatistics_dayduration)
     TextView txviDayDuration;                                                                       // 平均日使用时长
     @BindView(R.id.txvi_umdatastatistics_singleduration)
@@ -101,6 +101,8 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
     @BindView(R.id.txvi_umdatastatistics_event)
     TextView txviEventTips;                                                                         // 事件提示
+    @BindView(R.id.txvi_umdatastatistics_eventdate)
+    TextView txviEventDate;                                                                         // 筛选日期
     @BindView(R.id.revi_umdatastatistics_event)
     RecyclerView mEventList;                                                                        // 事件
     /*------------------------------------------------业务区域------------------------------------------------*/
@@ -130,8 +132,10 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     @Inject
     UmEventAdapter mEventAdapter;                                                                   // 事件 适配器
 
-    // 日期时间
-    private Calendar calendar = Calendar.getInstance(Locale.CHINA);
+    // 使用时长 - 日期时间
+    private Calendar mDurationCalendar = Calendar.getInstance(Locale.CHINA);
+    // 事件统计 - 日期时间
+    private Calendar mEventCalendar = Calendar.getInstance(Locale.CHINA);
 
     @Override
     protected void onDestroy() {
@@ -150,7 +154,8 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         this.mEventLayoutManager = null;
         this.mEventAdapter = null;
 
-        this.calendar = null;
+        this.mDurationCalendar = null;
+        this.mEventCalendar = null;
     }
 
     @Override
@@ -187,10 +192,11 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         mEventAdapter.setOnItemClickListener(this);
 
         // 前一天
-        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        mDurationCalendar.add(Calendar.DAY_OF_MONTH, -1);
+        mEventCalendar.add(Calendar.DAY_OF_MONTH, -1);
 
         if (mPresenter != null) {
-            mPresenter.initDate(TimeUtils.date2String(calendar.getTime(), new SimpleDateFormat("yyyy-MM-dd")));
+            mPresenter.initDate(TimeUtils.date2String(mDurationCalendar.getTime(), new SimpleDateFormat("yyyy-MM-dd")));
         }
     }
 
@@ -221,7 +227,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
      * 加载时长日期
      */
     @Override
-    public void loadDate(String mDate) {
+    public void loadDurationDate(String mDate) {
         txviDurationDate.setText(mDate);
     }
 
@@ -253,11 +259,19 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     }
 
     /**
+     * 加载事件日期
+     */
+    @Override
+    public void loadEventDate(String mDate) {
+        txviEventDate.setText(mDate);
+    }
+
+    /**
      * 显示事件条数
      */
     @Override
     public void loadEventCount(int count) {
-        txviEventTips.append("(" + count + ")");
+        txviEventTips.setText("事件统计(" + count + ")");
     }
 
     @OnClick({
@@ -266,6 +280,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
             R.id.lila_umdatastatistics_startsnum_layout,                                            // 启动次数
 
             R.id.txvi_umdatastatistics_durationdate,                                                // 使用时长 - 筛选日期
+            R.id.txvi_umdatastatistics_eventdate,                                                   // 事件统计 - 筛选日期
     })
     @Override
     public void onClick(View v) {
@@ -320,7 +335,10 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
 
                 break;
             case R.id.txvi_umdatastatistics_durationdate:                                           // 使用时长 - 筛选日期
-                showDatePickerDialog();
+                showDurationDatePickerDialog();
+                break;
+            case R.id.txvi_umdatastatistics_eventdate:                                              // 事件统计 - 筛选日期
+                showEventDatePickerDialog();
                 break;
         }
     }
@@ -337,9 +355,9 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
     }
 
     /**
-     * 日期选择
+     * 使用时长 - 选择日期
      */
-    public void showDatePickerDialog() {
+    public void showDurationDatePickerDialog() {
         // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
         // 绑定监听器(How the parent is notified that the date is set.)
         new DatePickerDialog(getActivity(), (view, year, monthOfYear, dayOfMonth) -> {
@@ -347,17 +365,40 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
             String mVal = year + "-" + CommonUtils.format0Right(String.valueOf(monthOfYear + 1)) + "-" + dayOfMonth;
 
             // 保留选中的时间
-            calendar.set(year, monthOfYear, dayOfMonth);
+            mDurationCalendar.set(year, monthOfYear, dayOfMonth);
 
-            txviDurationDate.setText(mVal);
             if (mPresenter != null) {
                 mPresenter.getDurations(mVal);
             }
         }
                 // 设置初始日期
-                , calendar.get(Calendar.YEAR)
-                , calendar.get(Calendar.MONTH)
-                , calendar.get(Calendar.DAY_OF_MONTH)).show();
+                , mDurationCalendar.get(Calendar.YEAR)
+                , mDurationCalendar.get(Calendar.MONTH)
+                , mDurationCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+
+    /**
+     * 事件统计 - 选择日期
+     */
+    public void showEventDatePickerDialog() {
+        // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
+        // 绑定监听器(How the parent is notified that the date is set.)
+        new DatePickerDialog(getActivity(), (view, year, monthOfYear, dayOfMonth) -> {
+            // 此处得到选择的时间，可以进行你想要的操作
+            String mVal = year + "-" + CommonUtils.format0Right(String.valueOf(monthOfYear + 1)) + "-" + dayOfMonth;
+
+            // 保留选中的时间
+            mEventCalendar.set(year, monthOfYear, dayOfMonth);
+
+            if (mPresenter != null) {
+                mPresenter.getEventList(mVal);
+            }
+        }
+                // 设置初始日期
+                , mEventCalendar.get(Calendar.YEAR)
+                , mEventCalendar.get(Calendar.MONTH)
+                , mEventCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     public Activity getActivity() {

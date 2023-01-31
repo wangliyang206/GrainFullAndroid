@@ -18,12 +18,14 @@ public interface UmDataStatisticsContract {
         void loadAllAppData(UmengUappAllAppData info);
 
         // 加载时长日期
-        void loadDate(String mDate);
+        void loadDurationDate(String mDate);
         // 加载时长
         void loadDurations(boolean isDaily, String duration);
         // 控制时长布局
         void viewDurations(boolean isShow);
 
+        // 加载事件日期
+        void loadEventDate(String mDate);
         // 显示事件条数
         void loadEventCount(int count);
     }

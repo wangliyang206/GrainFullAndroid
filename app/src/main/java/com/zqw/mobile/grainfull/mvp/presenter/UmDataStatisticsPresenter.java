@@ -262,7 +262,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
      * 获取APP使用时长
      */
     public void getDurations(String mDate) {
-        mRootView.loadDate(mDate);
+        mRootView.loadDurationDate(mDate);
 
         getDurations(true, mDate);
         getDurations(false, mDate);
@@ -336,7 +336,8 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
     /**
      * 获取事件列表
      */
-    private void getEventList(String mYesterday) {
+    public void getEventList(String mYesterday) {
+        mRootView.loadEventDate(mYesterday);
         new Thread() {
             @Override
             public void run() {
