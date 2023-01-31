@@ -13,8 +13,58 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="当前关卡："
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txvi_klotskigame_level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="当前步数："
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txvi_klotskigame_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:background="@drawable/layout_bg_shape">
 
@@ -22,22 +72,19 @@
             android:id="@+id/klvi_klotskigame_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/klotski_bg"/>
+            android:src="@mipmap/klotski_level_1" />
 
-    </LinearLayout>
+        <!-- 开始游戏 -->
+        <Button
+            android:id="@+id/btn_klotskigame_start"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_bg_selector"
+            android:text="开始游戏"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
-    <!-- 开始游戏 -->
-    <Button
-        android:id="@+id/btn_klotskigame_start"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="28.5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="28.5dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_bg_selector"
-        android:text="开始游戏"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
 </LinearLayout>
