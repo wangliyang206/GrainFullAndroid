@@ -68,7 +68,8 @@ public class SingleDurationItemHolder extends BaseHolder<SingleDuration> impleme
 
         String mStart = CommonUtils.timeConversion(false, Integer.parseInt(value[0]));
         txviName.setText(mStart);
-        if (value[1] != null && !value[1].isEmpty()) {
+
+        if (value.length == 2) {
             txviName.append("-");
             txviName.append(CommonUtils.timeConversion(false, Integer.parseInt(value[1])));
         }

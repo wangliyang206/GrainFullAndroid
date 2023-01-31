@@ -211,6 +211,11 @@
 -keep public class com.zqw.mobile.grainfull.R$*{
 public static final int *;
 }
+-keep class com.uc.** {*;}
+-keep class com.efs.** {*;}
+-keepclassmembers class *{
+     public<init>(org.json.JSONObject);
+}
 ################华为SDK###############
 -ignorewarnings
 -keep class com.huawei.agconnect.** {*;}

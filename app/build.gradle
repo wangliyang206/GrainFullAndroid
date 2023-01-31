@@ -377,8 +377,9 @@ dependencies {
     // Hello 图表，https://github.com/lecho/hellocharts-android
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
     // 友盟统计SDK
-    implementation  'com.umeng.umsdk:common:9.4.7'// 必选
-    implementation  'com.umeng.umsdk:asms:1.4.0'// 必选
+    implementation 'com.umeng.umsdk:common:9.5.4'       // 版本号(必选)
+    implementation 'com.umeng.umsdk:asms:1.4.1'         // asms包依赖(必选)
+
     // 友盟 - 数据返还OpenAPI
     implementation files('libs/commons-logging-1.1.1.jar')
     implementation files('libs/umeng.api.client.java.biz.jar')
