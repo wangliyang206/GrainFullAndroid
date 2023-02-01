@@ -68,6 +68,12 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.AircraftWarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvp.ui.activity.OneLineToEndActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.klotskiGameActivity"
             android:screenOrientation="portrait" />
         <activity

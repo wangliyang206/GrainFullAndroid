@@ -110,4 +110,10 @@
 
     <!-- 友盟统计 -->
     <color name="nm_text_color">#188EFF</color>
+    <!-- #######################################一笔画完####################################### -->
+    <color name="onepen_item_bg">#61b499</color>
+    <color name="onepen_bg">#458B74</color>
+    <color name="onepen_tran">#778899</color>
+    <color name="onepen_transparency">#0000</color>
+    <color name="onepen_deep">#686868</color>
 </resources>
