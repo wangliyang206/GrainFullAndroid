@@ -52,8 +52,10 @@ public class UmEventDetailsPresenter extends BasePresenter<UmEventDetailsContrac
     // 事件中文
     private String displayName;
 
-    // 日期时间
-    private Calendar calendar = Calendar.getInstance(Locale.CHINA);
+    // 昨天日期时间
+    private Calendar mYesterDay = Calendar.getInstance(Locale.CHINA);
+    // 半个月前的日期日间
+    private Calendar mHalfMonthAgo = Calendar.getInstance(Locale.CHINA);
 
     @Inject
     public UmEventDetailsPresenter(UmEventDetailsContract.Model model, UmEventDetailsContract.View rootView) {
@@ -82,7 +84,9 @@ public class UmEventDetailsPresenter extends BasePresenter<UmEventDetailsContrac
         apiExecutor.setServerHost("gateway.open.umeng.com");
 
         // 今天的前一天
-        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        mYesterDay.add(Calendar.DAY_OF_MONTH, -1);
+        // 半月前
+        mHalfMonthAgo.add(Calendar.DAY_OF_MONTH, -15);
 
         // 加载数据
         mRootView.loadData(id, name,displayName);
@@ -92,6 +96,7 @@ public class UmEventDetailsPresenter extends BasePresenter<UmEventDetailsContrac
 
     /**
      * 获取事件详情
+     * 逻辑：查询半月前至前一天的数据。
      */
     private void getEventList() {
         new Thread() {
@@ -101,8 +106,9 @@ public class UmEventDetailsPresenter extends BasePresenter<UmEventDetailsContrac
                 // 测试环境只支持http
                 // param.getOceanRequestPolicy().setUseHttps(false);
                 param.setAppkey(BuildConfig.DEBUG ? mRootView.getActivity().getString(R.string.um_app_key_debug) : mRootView.getActivity().getString(R.string.um_app_key));
-                param.setStartDate("2023-01-16");
-                param.setEndDate(TimeUtils.date2String(calendar.getTime(), new SimpleDateFormat("yyyy-MM-dd")));
+                // 2023-01-16号开通友盟数据统计
+                param.setStartDate(TimeUtils.date2String(mHalfMonthAgo.getTime(), new SimpleDateFormat("yyyy-MM-dd")));
+                param.setEndDate(TimeUtils.date2String(mYesterDay.getTime(), new SimpleDateFormat("yyyy-MM-dd")));
                 // 63c622254d182e302fa21b39
                 // picture_pipette
 
@@ -138,6 +144,7 @@ public class UmEventDetailsPresenter extends BasePresenter<UmEventDetailsContrac
         this.apiExecutor = null;
         this.mAdapter = null;
         this.mEventList = null;
-        this.calendar = null;
+        this.mYesterDay = null;
+        this.mHalfMonthAgo = null;
     }
 }

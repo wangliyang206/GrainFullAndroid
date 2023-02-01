@@ -58,11 +58,22 @@
             android:textSize="12sp" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center_vertical"
+        android:text="只统计半月前至昨天的数据，如果查看更多，请到友盟官网后台查看！"
+        android:textColor="@color/common_edit_color"
+        android:textSize="12sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/layout_bg_shape"
