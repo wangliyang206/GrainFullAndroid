@@ -27,7 +27,7 @@ import butterknife.BindView;
  */
 public class MoleHitStartFragment extends BaseFragment<MoleHitPresenter> implements MoleHitContract.View, View.OnClickListener {
     /*------------------------------------------------控件信息------------------------------------------------*/
-    @BindView(R.id.id_start_next)
+    @BindView(R.id.btn_molehitstart_start)
     View mNextView;
 
     /*------------------------------------------------业务区域------------------------------------------------*/
@@ -44,7 +44,7 @@ public class MoleHitStartFragment extends BaseFragment<MoleHitPresenter> impleme
 
     @Override
     public View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_game_start, container, false);
+        return inflater.inflate(R.layout.fragment_molehit_start, container, false);
     }
 
     @Override

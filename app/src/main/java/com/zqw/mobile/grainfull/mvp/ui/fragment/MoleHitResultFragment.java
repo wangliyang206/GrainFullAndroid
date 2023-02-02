@@ -34,9 +34,9 @@ public class MoleHitResultFragment extends BaseFragment<MoleHitPresenter> implem
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.fragment_molehit_result)
     FrameLayout contentLayout;                                                                      // 主布局
-    @BindView(R.id.id_game_rate)
+    @BindView(R.id.txvi_molehitresult_rate)
     TextView mGameRateView;
-    @BindView(R.id.id_pride_text)
+    @BindView(R.id.txvi_molehitresult_pride_text)
     TextView mPrideTextView;
 
     /*------------------------------------------------业务区域------------------------------------------------*/
@@ -131,7 +131,7 @@ public class MoleHitResultFragment extends BaseFragment<MoleHitPresenter> implem
     }
 
     @OnClick({
-            R.id.id_start_button,                                                                   // 再来一局
+            R.id.btn_molehitresult_start,                                                                   // 再来一局
     })
     @Override
     public void onClick(View v) {

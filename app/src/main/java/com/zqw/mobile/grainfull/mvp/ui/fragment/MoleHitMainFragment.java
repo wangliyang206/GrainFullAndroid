@@ -47,51 +47,51 @@ import butterknife.BindView;
  */
 public class MoleHitMainFragment extends BaseFragment<MoleHitPresenter> implements MoleHitContract.View, View.OnClickListener {
     /*------------------------------------------------控件信息------------------------------------------------*/
-    @BindView(R.id.id_count_time)
+    @BindView(R.id.txvi_molehitmain_count_time)
     TextView mCountDownView;
-    @BindView(R.id.total_score)
+    @BindView(R.id.txvi_molehitmain_total_score)
     TextView mScoreView;
-    @BindView(R.id.id_shadow_view)
+    @BindView(R.id.lila_molehitmain_shadow_view)
     ViewGroup mShadowView;
-    @BindView(R.id.id_count_down_view)
+    @BindView(R.id.txvi_molehitmain_count_down_view)
     TextView mCountDown;
 
-    @BindView(R.id.id_mole1)
+    @BindView(R.id.imvi_molehitmain_mole1)
     ImageView mMoleView1;
-    @BindView(R.id.id_mole2)
+    @BindView(R.id.imvi_molehitmain_mole2)
     ImageView mMoleView2;
-    @BindView(R.id.id_mole3)
+    @BindView(R.id.imvi_molehitmain_mole3)
     ImageView mMoleView3;
-    @BindView(R.id.id_mole4)
+    @BindView(R.id.imvi_molehitmain_mole4)
     ImageView mMoleView4;
-    @BindView(R.id.id_mole5)
+    @BindView(R.id.imvi_molehitmain_mole5)
     ImageView mMoleView5;
-    @BindView(R.id.id_mole6)
+    @BindView(R.id.imvi_molehitmain_mole6)
     ImageView mMoleView6;
-    @BindView(R.id.id_mole7)
+    @BindView(R.id.imvi_molehitmain_mole7)
     ImageView mMoleView7;
-    @BindView(R.id.id_mole8)
+    @BindView(R.id.imvi_molehitmain_mole8)
     ImageView mMoleView8;
-    @BindView(R.id.id_mole9)
+    @BindView(R.id.imvi_molehitmain_mole9)
     ImageView mMoleView9;
 
-    @BindView(R.id.id_anim_view1)
+    @BindView(R.id.lottie_molehitmain_anim_view1)
     LottieAnimationView lottie1;
-    @BindView(R.id.id_anim_view2)
+    @BindView(R.id.lottie_molehitmain_anim_view2)
     LottieAnimationView lottie2;
-    @BindView(R.id.id_anim_view3)
+    @BindView(R.id.lottie_molehitmain_anim_view3)
     LottieAnimationView lottie3;
-    @BindView(R.id.id_anim_view4)
+    @BindView(R.id.lottie_molehitmain_anim_view4)
     LottieAnimationView lottie4;
-    @BindView(R.id.id_anim_view5)
+    @BindView(R.id.lottie_molehitmain_anim_view5)
     LottieAnimationView lottie5;
-    @BindView(R.id.id_anim_view6)
+    @BindView(R.id.lottie_molehitmain_anim_view6)
     LottieAnimationView lottie6;
-    @BindView(R.id.id_anim_view7)
+    @BindView(R.id.lottie_molehitmain_anim_view7)
     LottieAnimationView lottie7;
-    @BindView(R.id.id_anim_view8)
+    @BindView(R.id.lottie_molehitmain_anim_view8)
     LottieAnimationView lottie8;
-    @BindView(R.id.id_anim_view9)
+    @BindView(R.id.lottie_molehitmain_anim_view9)
     LottieAnimationView lottie9;
 
     /*------------------------------------------------业务区域------------------------------------------------*/

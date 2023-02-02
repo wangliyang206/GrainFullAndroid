@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/id_count_time"
+        android:id="@+id/txvi_molehitmain_count_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -16,7 +16,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/total_score"
+        android:id="@+id/txvi_molehitmain_total_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -26,14 +26,8 @@
         android:textColor="#333333"
         android:textSize="18sp" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/test_anim"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="80dp" />
-
     <LinearLayout
-        android:id="@+id/id_shadow_view"
+        android:id="@+id/lila_molehitmain_shadow_view"
         android:layout_width="180dp"
         android:layout_height="110dp"
         android:layout_gravity="center_horizontal"
@@ -55,7 +49,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:src="@mipmap/img_sign_in_whack_mole_target" />
     </LinearLayout>
 
@@ -74,14 +68,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole1"
+                android:id="@+id/imvi_molehitmain_mole1"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view1"
+                android:id="@+id/lottie_molehitmain_anim_view1"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -94,14 +88,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole2"
+                android:id="@+id/imvi_molehitmain_mole2"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view2"
+                android:id="@+id/lottie_molehitmain_anim_view2"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -114,14 +108,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole3"
+                android:id="@+id/imvi_molehitmain_mole3"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view3"
+                android:id="@+id/lottie_molehitmain_anim_view3"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -134,14 +128,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole4"
+                android:id="@+id/imvi_molehitmain_mole4"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view4"
+                android:id="@+id/lottie_molehitmain_anim_view4"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -154,14 +148,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole5"
+                android:id="@+id/imvi_molehitmain_mole5"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view5"
+                android:id="@+id/lottie_molehitmain_anim_view5"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -174,14 +168,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole6"
+                android:id="@+id/imvi_molehitmain_mole6"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view6"
+                android:id="@+id/lottie_molehitmain_anim_view6"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -194,14 +188,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole7"
+                android:id="@+id/imvi_molehitmain_mole7"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view7"
+                android:id="@+id/lottie_molehitmain_anim_view7"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -214,14 +208,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole8"
+                android:id="@+id/imvi_molehitmain_mole8"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view8"
+                android:id="@+id/lottie_molehitmain_anim_view8"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -234,14 +228,14 @@
             android:layout_columnWeight="1">
 
             <ImageView
-                android:id="@+id/id_mole9"
+                android:id="@+id/imvi_molehitmain_mole9"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="fitEnd" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/id_anim_view9"
+                android:id="@+id/lottie_molehitmain_anim_view9"
                 android:layout_width="105dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center_horizontal|top" />
@@ -250,7 +244,7 @@
     </GridLayout>
 
     <TextView
-        android:id="@+id/id_count_down_view"
+        android:id="@+id/txvi_molehitmain_count_down_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
