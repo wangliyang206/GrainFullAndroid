@@ -21,6 +21,7 @@ import com.zqw.mobile.grainfull.mvp.contract.GameContract;
 import com.zqw.mobile.grainfull.mvp.presenter.GamePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AircraftWarActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.OneLineToEndActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.WhacAMoleActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.klotskiGameActivity;
 
 import butterknife.OnClick;
@@ -61,6 +62,7 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
     @OnClick({
             R.id.btn_fragmentgame_common_klotski,                                                   // 华容道
             R.id.btn_fragmentgame_common_aircraftwar,                                               // 飞机大战
+            R.id.btn_fragmentgame_common_whacamole,                                                 // 打地鼠
             R.id.btn_fragmentgame_common_onepen,                                                    // 一笔画完
     })
     @Override
@@ -71,6 +73,9 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
                 break;
             case R.id.btn_fragmentgame_common_aircraftwar:                                          // 飞机大战
                 ActivityUtils.startActivity(AircraftWarActivity.class);
+                break;
+            case R.id.btn_fragmentgame_common_whacamole:                                            // 打地鼠
+                ActivityUtils.startActivity(WhacAMoleActivity.class);
                 break;
             case R.id.btn_fragmentgame_common_onepen:                                               // 一笔画完
                 ActivityUtils.startActivity(OneLineToEndActivity.class);

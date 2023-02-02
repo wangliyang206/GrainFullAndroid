@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+  <!-- 第一组 70ms -->
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_pit_0"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_1"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_2"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_3"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_4"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_5"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_6"
+      android:duration="10"/>
+
+  <!-- 第二组 120ms -->
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_7"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_8"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_9"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_10"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_11"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_12"
+      android:duration="20"/>
+
+  <!-- 第三组 120ms -->
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_13"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_14"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_15"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_16"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_17"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_17"
+      android:duration="20"/>
+
+  <!-- 中间层 -->
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_17"
+      android:duration="380"/>
+  <!-- 中间层 -->
+
+  <!-- 第四组 120ms -->
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_17"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_17"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_16"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_15"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_14"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_13"
+      android:duration="20"/>
+
+  <!-- 第五组 120ms -->
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_12"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_11"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_10"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_9"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_8"
+      android:duration="20"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_7"
+      android:duration="20"/>
+
+  <!-- 第六组 70ms -->
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_6"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_5"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_4"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_3"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_2"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_mushroom_normal_1"
+      android:duration="10"/>
+  <item
+      android:drawable="@mipmap/img_sign_in_whack_mole_pit_0"
+      android:duration="10"/>
+
+</animation-list>

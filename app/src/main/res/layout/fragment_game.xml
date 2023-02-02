@@ -105,6 +105,18 @@
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentgame_common_klotski" />
 
                 <TextView
+                    android:id="@+id/btn_fragmentgame_common_whacamole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="打地鼠"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmentgame_common_aircraftwar"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentgame_common_aircraftwar"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentgame_common_aircraftwar" />
+
+                <TextView
                     android:id="@+id/btn_fragmentgame_common_onepen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,9 +124,9 @@
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
                     android:text="一笔画完"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmentgame_common_aircraftwar"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentgame_common_aircraftwar"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentgame_common_aircraftwar" />
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmentgame_common_whacamole"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentgame_common_whacamole"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentgame_common_whacamole" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

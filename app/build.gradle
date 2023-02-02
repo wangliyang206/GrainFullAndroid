@@ -384,4 +384,7 @@ dependencies {
     implementation files('libs/commons-logging-1.1.1.jar')
     implementation files('libs/umeng.api.client.java.biz.jar')
     implementation files('libs/umeng.api.client.java.biz-sources.jar')
+
+    // 动画库，https://github.com/airbnb/lottie-android
+    implementation 'com.airbnb.android:lottie:3.6.0'
 }

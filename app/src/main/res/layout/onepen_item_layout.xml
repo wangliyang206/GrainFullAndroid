@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentyibi"
+    android:layout_width="60dp"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:id="@+id/topyibi"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/baseyibi"
+        android:layout_alignEnd="@+id/baseyibi"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:id="@+id/bottomyibi"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/baseyibi"
+        android:layout_alignEnd="@+id/baseyibi"
+        android:layout_alignParentBottom="true" />
+
+    <ImageView
+        android:id="@+id/leftyibi"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/baseyibi"
+        android:layout_alignBottom="@+id/baseyibi"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/rightyibi"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/baseyibi"
+        android:layout_alignBottom="@+id/baseyibi"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/baseyibi"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_gray_unselected" />
+
+</RelativeLayout>
