@@ -362,7 +362,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         // 绑定监听器(How the parent is notified that the date is set.)
         new DatePickerDialog(getActivity(), (view, year, monthOfYear, dayOfMonth) -> {
             // 此处得到选择的时间，可以进行你想要的操作
-            String mVal = year + "-" + CommonUtils.format0Right(String.valueOf(monthOfYear + 1)) + "-" + dayOfMonth;
+            String mVal = year + "-" + CommonUtils.format0Right(String.valueOf(monthOfYear + 1)) + "-" + CommonUtils.format0Right(String.valueOf(dayOfMonth));
 
             // 保留选中的时间
             mDurationCalendar.set(year, monthOfYear, dayOfMonth);
@@ -386,7 +386,7 @@ public class UmDataStatisticsActivity extends BaseActivity<UmDataStatisticsPrese
         // 绑定监听器(How the parent is notified that the date is set.)
         new DatePickerDialog(getActivity(), (view, year, monthOfYear, dayOfMonth) -> {
             // 此处得到选择的时间，可以进行你想要的操作
-            String mVal = year + "-" + CommonUtils.format0Right(String.valueOf(monthOfYear + 1)) + "-" + dayOfMonth;
+            String mVal = year + "-" + CommonUtils.format0Right(String.valueOf(monthOfYear + 1)) + "-" + CommonUtils.format0Right(String.valueOf(dayOfMonth));
 
             // 保留选中的时间
             mEventCalendar.set(year, monthOfYear, dayOfMonth);
