@@ -2,7 +2,7 @@ package com.zqw.mobile.grainfull.di.module;
 
 import com.jess.arms.cj.ApiOperator;
 import com.jess.arms.cj.IRequestMapper;
-import com.jess.arms.di.scope.FragmentScope;
+import com.jess.arms.di.scope.ActivityScope;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.RequestMapper;
 import com.zqw.mobile.grainfull.app.utils.DaoManager;
@@ -27,25 +27,25 @@ public abstract class OneLineToEndModule {
     @Binds
     abstract OneLineToEndContract.Model bindOneLineToEndModel(OneLineToEndModel model);
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     static AccountManager provideAccountManager(OneLineToEndContract.View view) {
         return new AccountManager(view.getActivity());
     }
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     static IRequestMapper providerRequestMapper(OneLineToEndContract.View view, AccountManager mAccountManager) {
         return new RequestMapper(view.getActivity(), mAccountManager);
     }
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     static ApiOperator providerOperator(IRequestMapper requestMapper) {
         return new ApiOperator(requestMapper);
     }
 
-    @FragmentScope
+    @ActivityScope
     @Provides
     static DaoManager providerDaoManager(OneLineToEndContract.View view) {
         return new DaoManager(view.getActivity());
