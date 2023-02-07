@@ -219,7 +219,7 @@ android {
 }
 greendao {
     // 数据库版本号
-    schemaVersion 1
+    schemaVersion 2
     // 生成的数据库相关文件的包名
     daoPackage 'com.zqw.mobile.grainfull.app.greendao'
 }

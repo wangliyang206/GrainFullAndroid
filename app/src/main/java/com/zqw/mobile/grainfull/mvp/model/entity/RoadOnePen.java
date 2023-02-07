@@ -5,6 +5,9 @@ import androidx.annotation.NonNull;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 一笔画完
+ */
 public class RoadOnePen {
     private final int rows;
     private final int columns;
