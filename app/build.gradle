@@ -78,6 +78,9 @@ android {
 //          abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
             abiFilters 'armeabi-v7a'
         }
+
+        // 可帮助您添加 Material图标以及将可扩展矢量图形 (SVG) 和 Adobe Photoshop Document (PSD) 文件作为矢量图资源导入到项目中
+        vectorDrawables.useSupportLibrary = true
     }
 
     // 指定哪些源文件

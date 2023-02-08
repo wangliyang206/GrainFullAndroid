@@ -44,4 +44,6 @@ public interface EventBusTags {
     int SWITCH_CITIES_TAG = 3;
     // 活体检测返回
     int RETURN_LIVENESS_DETECTION = 4;
+    // 一笔画完游戏 中 清空数据库操作
+    int ONE_LINE_TO_END_CLEAR = 5;
 }

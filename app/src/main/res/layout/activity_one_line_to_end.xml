@@ -11,10 +11,70 @@
         android:id="@+id/view_onelinetoend_top"
         layout="@layout/comm_top_layout" />
 
+    <!-- 关卡 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关卡"
+            android:textColor="@color/common_text_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txvi_onelinetoend_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text=""
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 视图 -->
     <com.zqw.mobile.grainfull.mvp.ui.widget.onepen.FinishWithOneStroke
         android:id="@+id/view_onelinetoend_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:scrollbars="none" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <!-- 帮助 -->
+        <ImageButton
+            android:id="@+id/btn_onelinetoend_help"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_help" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <!-- 统计 -->
+        <ImageButton
+            android:id="@+id/btn_onelinetoend_collection"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_collection" />
+    </LinearLayout>
 </LinearLayout>

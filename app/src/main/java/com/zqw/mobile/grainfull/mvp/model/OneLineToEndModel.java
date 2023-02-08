@@ -8,6 +8,7 @@ import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 import com.zqw.mobile.grainfull.app.greendao.OnePenErrorDao;
 import com.zqw.mobile.grainfull.app.greendao.OnePenLevelDao;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.DaoManager;
 import com.zqw.mobile.grainfull.mvp.contract.OneLineToEndContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.OnePenError;
@@ -67,27 +68,17 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
     }
 
     /**
-     * 转变格式
+     * 记录错误图，减少下次寻路时间
      */
-    public List<Integer> getIntListFromStrs(String[] strings) {
-        final List<Integer> list = new ArrayList<>();
-        for (String p : strings) {
-            try {
-                list.add(Integer.parseInt(p));
-            } catch (Exception e) {
-                list.clear();
-                break;
-            }
-        }
-        return list;
-    }
-
     @Override
     public void insertErrorYibi(int rows, int columns, String difficultiesStr, int startPosition) {
         if (checkErrorYibi(rows, columns, difficultiesStr, startPosition)) return;
         mDaoManager.getDaoSession().getOnePenErrorDao().insert(new OnePenError(rows, columns, difficultiesStr, startPosition));
     }
 
+    /**
+     * 检查是否是错误路线
+     */
     @Override
     public boolean checkErrorYibi(int rows, int columns, String difficultiesStr, int startPosition) {
         if (TextUtils.isEmpty(difficultiesStr)) return true;
@@ -100,6 +91,9 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
         return count > 0;
     }
 
+    /**
+     * 保存通关记录
+     */
     @Override
     public void insertPassedYibi(RoadOnePen road) {
         // 先查询
@@ -110,10 +104,16 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
                 OnePenLevelDao.Properties.Passed.eq(false)
         ).list();
 
-        OnePenLevel mOnePenLevel = mList.get(0);
-        mOnePenLevel.setPassed(true);
-        // 再变更通关状态
-        mDaoManager.getDaoSession().getOnePenLevelDao().update(mOnePenLevel);
+        if (CommonUtils.isNotEmpty(mList)) {
+            // 有数据，则直接修改
+            OnePenLevel mOnePenLevel = mList.get(0);
+            mOnePenLevel.setPassed(true);
+            // 再变更通关状态
+            mDaoManager.getDaoSession().getOnePenLevelDao().update(mOnePenLevel);
+        } else {
+            // 无数据，则直接保存
+            mDaoManager.getDaoSession().getOnePenLevelDao().insert(new OnePenLevel(road.getRows(), road.getColumns(), road.getDifficulties(), road.getRoadString(), true));
+        }
     }
 
     /**
@@ -133,12 +133,18 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
         return count > 0;
     }
 
+    /**
+     * 生成关卡，并保存到数据库中
+     */
     @Override
     public void insertSavedYibi(RoadOnePen road) {
         if (checkSavedYibi(road)) return;
         mDaoManager.getDaoSession().getOnePenLevelDao().insert(new OnePenLevel(road.getRows(), road.getColumns(), road.getDifficulties(), road.getRoadString(), false));
     }
 
+    /**
+     * 检查关卡是否保存重复
+     */
     @Override
     public boolean checkSavedYibi(RoadOnePen road) {
         long count = mDaoManager.getDaoSession().getOnePenLevelDao().queryBuilder().where(
@@ -150,8 +156,41 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
         return count > 0;
     }
 
+    /**
+     * 清理已生成的关卡数据
+     */
     @Override
     public void clearPassedYibi() {
         mDaoManager.getDaoSession().getOnePenLevelDao().deleteAll();
+    }
+
+    /**
+     * 获取过关总数
+     */
+    @Override
+    public int getPassedCount(int rows, int columns, int difficulties) {
+        long count = mDaoManager.getDaoSession().getOnePenLevelDao().queryBuilder().where(
+                OnePenLevelDao.Properties.Rows.eq(rows),
+                OnePenLevelDao.Properties.Columns.eq(columns),
+                OnePenLevelDao.Properties.Difficulties.eq(difficulties),
+                OnePenLevelDao.Properties.Passed.eq(true)
+        ).count();
+        return (int) count;
+    }
+
+    /**
+     * 转变格式
+     */
+    private List<Integer> getIntListFromStrs(String[] strings) {
+        final List<Integer> list = new ArrayList<>();
+        for (String p : strings) {
+            try {
+                list.add(Integer.parseInt(p));
+            } catch (Exception e) {
+                list.clear();
+                break;
+            }
+        }
+        return list;
     }
 }

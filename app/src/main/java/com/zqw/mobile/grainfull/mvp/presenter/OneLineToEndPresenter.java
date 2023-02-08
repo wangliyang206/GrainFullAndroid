@@ -88,37 +88,23 @@ public class OneLineToEndPresenter extends BasePresenter<OneLineToEndContract.Mo
 
             mRootView.getActivity().runOnUiThread(() -> {
                 if (road != null) {
-                    // 是否已经通过
-                    checkPassedView(road);
-//                    if (isCreatedHint) {
-//                        createdHint.setVisibility(View.VISIBLE);
-//                        AnimUtil.doScale(createdHint, 0, 1, 0, 1, null, true);
-//                    }
-                    mRootView.loadView(road);
-//                    saveYibi(road, new ArrayList<>());
-//                    setting.setText("点击设置\n" + rows + "*" + columns + " | " + difficulties);
+                    // 显示关卡
+                    int num = mModel.getPassedCount(rows, columns, difficulties);
+
+                    if (road.get_no() == null) {
+                        num = num + 1;
+                    }else {
+                        num = Math.toIntExact(road.get_no());
+                    }
+
+                    mRootView.showLevel(String.valueOf(num));
+                    // 加载游戏
+                    mRootView.loadGame(road);
                 } else {
                     mRootView.showMessage("取消构图");
-//                    if (rows != initRows || initColums != columns || difficulties != initDifficulties)
-//                        ValueUtil.findRoadToQueue(getContext(), rows, columns, difficulties, passPassed);
                 }
             });
         });
-    }
-
-    /**
-     * 是否已经通关
-     */
-    private void checkPassedView(RoadOnePen road) {
-//        runOnUiThread(() -> {
-//            if (getMySql().checkPassedYibi(road)) {
-//                passedHint.setVisibility(View.VISIBLE);
-//                passPassedCheckBox.setVisibility(View.VISIBLE);
-//            } else {
-//                passedHint.setVisibility(View.GONE);
-//                passPassedCheckBox.setVisibility(View.GONE);
-//            }
-//        });
     }
 
     /**
@@ -494,10 +480,24 @@ public class OneLineToEndPresenter extends BasePresenter<OneLineToEndContract.Mo
         mModel.insertPassedYibi(road);
     }
 
+    /**
+     * 收集统计信息
+     */
+    public void getCollection() {
+        int num = mModel.getPassedCount(rows, columns, difficulties);
+        mRootView.showCollection(rows, columns, difficulties, num);
+    }
+
+    /**
+     * 清空关卡数据
+     */
+    public void clearPassedData() {
+        // 清理已通过的关卡
+        mModel.clearPassedYibi();
+    }
+
     @Override
     public void onDestroy() {
-        // 退出游戏时清理已通过的关卡
-        mModel.clearPassedYibi();
         super.onDestroy();
         this.mErrorHandler = null;
         this.random = null;
