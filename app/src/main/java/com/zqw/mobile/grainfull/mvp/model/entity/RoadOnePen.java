@@ -9,12 +9,19 @@ import java.util.List;
  * 一笔画完
  */
 public class RoadOnePen {
+    private Long _no;
     private final int rows;
     private final int columns;
     private final List<Integer> roadList;
 
+    public RoadOnePen(Long _no, int rows, int columns, List<Integer> roadList) {
+        this._no = _no;
+        this.rows = rows;
+        this.columns = columns;
+        this.roadList = roadList;
+    }
+
     public RoadOnePen(int rows, int columns, @NonNull List<Integer> road) {
-        if (road == null) throw new NullPointerException("List<Integer> road 不能为null");
         this.rows = rows;
         this.columns = columns;
         this.roadList = road;
@@ -57,5 +64,13 @@ public class RoadOnePen {
             }
         }
         return roadString.toString();
+    }
+
+    public Long get_no() {
+        return _no;
+    }
+
+    public void set_no(Long _no) {
+        this._no = _no;
     }
 }

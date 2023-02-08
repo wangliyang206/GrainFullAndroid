@@ -19,6 +19,9 @@ public interface OneLineToEndContract {
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel {
+        /**
+         * 获取数据库中第一条未通关的关卡
+         */
         RoadOnePen getSavedYibi(int rows, int columns, int difficulties);
 
         /**
@@ -50,5 +53,10 @@ public interface OneLineToEndContract {
          * 检查是否有新增
          */
         boolean checkSavedYibi(RoadOnePen road);
+
+        /**
+         * 清理关卡内容
+         */
+        void clearPassedYibi();
     }
 }

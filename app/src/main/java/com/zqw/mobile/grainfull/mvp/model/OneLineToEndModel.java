@@ -7,18 +7,15 @@ import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 import com.zqw.mobile.grainfull.app.greendao.OnePenErrorDao;
-import com.zqw.mobile.grainfull.app.greendao.OnePenPassedDao;
-import com.zqw.mobile.grainfull.app.greendao.OnePenSavedDao;
+import com.zqw.mobile.grainfull.app.greendao.OnePenLevelDao;
 import com.zqw.mobile.grainfull.app.utils.DaoManager;
 import com.zqw.mobile.grainfull.mvp.contract.OneLineToEndContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.OnePenError;
-import com.zqw.mobile.grainfull.mvp.model.entity.OnePenPassed;
-import com.zqw.mobile.grainfull.mvp.model.entity.OnePenSaved;
+import com.zqw.mobile.grainfull.mvp.model.entity.OnePenLevel;
 import com.zqw.mobile.grainfull.mvp.model.entity.RoadOnePen;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -36,8 +33,6 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
     @Inject
     DaoManager mDaoManager;
 
-    private Random random = new Random();
-
     @Inject
     public OneLineToEndModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
@@ -48,22 +43,25 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
         super.onDestroy();
         this.apiOperator = null;
         this.mDaoManager = null;
-        this.random = null;
     }
 
+    /**
+     * 获取数据库中第一条未通关的关卡
+     */
     @Override
     public RoadOnePen getSavedYibi(int rows, int columns, int difficulties) {
-        List<OnePenSaved> mList = mDaoManager.getDaoSession().getOnePenSavedDao().queryBuilder().where(
-                OnePenSavedDao.Properties.Rows.eq(rows),
-                OnePenSavedDao.Properties.Columns.eq(columns),
-                OnePenSavedDao.Properties.Difficulties.eq(difficulties)
+        List<OnePenLevel> mList = mDaoManager.getDaoSession().getOnePenLevelDao().queryBuilder().where(
+                OnePenLevelDao.Properties.Rows.eq(rows),
+                OnePenLevelDao.Properties.Columns.eq(columns),
+                OnePenLevelDao.Properties.Difficulties.eq(difficulties),
+                OnePenLevelDao.Properties.Passed.eq(false)
         ).list();
 
         RoadOnePen mRoadOnePen = null;
         if (mList.size() > 0) {
-            OnePenSaved info = mList.get(random.nextInt(mList.size()));
-            String[] roadpositions = info.getRoad().split("[,]");
-            mRoadOnePen = new RoadOnePen(info.getRows(), info.getColumns(), getIntListFromStrs(roadpositions));
+            OnePenLevel info = mList.get(0);
+            String[] roadPositions = info.getRoad().split("[,]");
+            mRoadOnePen = new RoadOnePen(info.get_no(), info.getRows(), info.getColumns(), getIntListFromStrs(roadPositions));
         }
         return mRoadOnePen;
     }
@@ -104,20 +102,33 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
 
     @Override
     public void insertPassedYibi(RoadOnePen road) {
-        if (checkPassedYibi(road) || road == null) return;
-        mDaoManager.getDaoSession().getOnePenPassedDao().insert(new OnePenPassed(road.getRows(), road.getColumns(), road.getDifficulties(), road.getRoadString()));
+        // 先查询
+        List<OnePenLevel> mList = mDaoManager.getDaoSession().getOnePenLevelDao().queryBuilder().where(
+                OnePenLevelDao.Properties.Rows.eq(road.getRows()),
+                OnePenLevelDao.Properties.Columns.eq(road.getColumns()),
+                OnePenLevelDao.Properties.Difficulties.eq(road.getDifficulties()),
+                OnePenLevelDao.Properties.Passed.eq(false)
+        ).list();
+
+        OnePenLevel mOnePenLevel = mList.get(0);
+        mOnePenLevel.setPassed(true);
+        // 再变更通关状态
+        mDaoManager.getDaoSession().getOnePenLevelDao().update(mOnePenLevel);
     }
 
-
+    /**
+     * 检查当前关卡是否通关
+     */
     @Override
     public boolean checkPassedYibi(RoadOnePen road) {
         if (road == null) return false;
 
-        long count = mDaoManager.getDaoSession().getOnePenPassedDao().queryBuilder().where(
-                OnePenPassedDao.Properties.Rows.eq(road.getRows()),
-                OnePenPassedDao.Properties.Columns.eq(road.getColumns()),
-                OnePenPassedDao.Properties.Difficulties.eq(road.getDifficulties()),
-                OnePenPassedDao.Properties.Road.eq(road.getRoadString())
+        long count = mDaoManager.getDaoSession().getOnePenLevelDao().queryBuilder().where(
+                OnePenLevelDao.Properties.Rows.eq(road.getRows()),
+                OnePenLevelDao.Properties.Columns.eq(road.getColumns()),
+                OnePenLevelDao.Properties.Difficulties.eq(road.getDifficulties()),
+                OnePenLevelDao.Properties.Road.eq(road.getRoadString()),
+                OnePenLevelDao.Properties.Passed.eq(true)
         ).count();
         return count > 0;
     }
@@ -125,17 +136,22 @@ public class OneLineToEndModel extends BaseModel implements OneLineToEndContract
     @Override
     public void insertSavedYibi(RoadOnePen road) {
         if (checkSavedYibi(road)) return;
-        mDaoManager.getDaoSession().getOnePenSavedDao().insert(new OnePenSaved(road.getRows(), road.getColumns(), road.getDifficulties(), road.getRoadString()));
+        mDaoManager.getDaoSession().getOnePenLevelDao().insert(new OnePenLevel(road.getRows(), road.getColumns(), road.getDifficulties(), road.getRoadString(), false));
     }
 
     @Override
     public boolean checkSavedYibi(RoadOnePen road) {
-        long count = mDaoManager.getDaoSession().getOnePenSavedDao().queryBuilder().where(
-                OnePenSavedDao.Properties.Rows.eq(road.getRows()),
-                OnePenSavedDao.Properties.Columns.eq(road.getColumns()),
-                OnePenSavedDao.Properties.Difficulties.eq(road.getDifficulties()),
-                OnePenSavedDao.Properties.Road.eq(road.getRoadString())
+        long count = mDaoManager.getDaoSession().getOnePenLevelDao().queryBuilder().where(
+                OnePenLevelDao.Properties.Rows.eq(road.getRows()),
+                OnePenLevelDao.Properties.Columns.eq(road.getColumns()),
+                OnePenLevelDao.Properties.Difficulties.eq(road.getDifficulties()),
+                OnePenLevelDao.Properties.Road.eq(road.getRoadString())
         ).count();
         return count > 0;
+    }
+
+    @Override
+    public void clearPassedYibi() {
+        mDaoManager.getDaoSession().getOnePenLevelDao().deleteAll();
     }
 }

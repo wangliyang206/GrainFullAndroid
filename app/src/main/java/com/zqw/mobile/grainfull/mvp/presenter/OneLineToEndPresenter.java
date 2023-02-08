@@ -36,7 +36,7 @@ public class OneLineToEndPresenter extends BasePresenter<OneLineToEndContract.Mo
     // 用来判断是否获取了一张指定图的指定数量的路径
     public boolean findingRoad = false;
     // 行数、列数、障碍物
-    private int rows = 5, columns = 5, difficulties = 4;
+    private int rows, columns, difficulties;
 
     private Random random = new Random();
     private Comparator<Integer> integerComparator;
@@ -53,38 +53,38 @@ public class OneLineToEndPresenter extends BasePresenter<OneLineToEndContract.Mo
     /**
      * 初始化
      */
-    public void initGirdRoad() {
-        ThreadUtil.getInstance().addRunableToSingleThead("initGirdRoad", () -> {
-            RoadOnePen aRoad = null;
-//            // 先从数据库中随机找
-            aRoad = mModel.getSavedYibi(rows, columns, difficulties);
+    public void initGirdRoad(final int initRows, final int initColums, final int initDifficulties) {
+        this.rows = initRows;
+        this.columns = initColums;
+        this.difficulties = initDifficulties;
 
-//            //找不到再从队列拿或直接生成
+        ThreadUtil.getInstance().addRunableToSingleThead("initGirdRoad", () -> {
+            RoadOnePen aRoad;
+            // 先从数据库中找，获取数据库中第一条未通关的关卡
+            aRoad = mModel.getSavedYibi(initRows, initColums, initDifficulties);
+
+            // 找不到再直接生成
             if (aRoad == null) {
-//                if (!ValueUtil.roadQueue.isEmpty()) {
-//                    aRoad = ValueUtil.roadQueue.poll();
-//                } else {
                 aRoad = getAppointedRoad(false);
-//                }
             }
 
             final RoadOnePen road = aRoad;
 
-            final boolean ispassed;
+            // 是否通关
+            final boolean isPassed;
             if (road != null) {
-                ispassed = mModel.checkPassedYibi(road);
+                // 检查是否通关
+                isPassed = mModel.checkPassedYibi(road);
             } else {
-                ispassed = false;
+                isPassed = false;
             }
-//            if (road != null && (road.getRows() != initRows || road.getColumns() != initColums || road.getDifficulties() != initDifficulties) && getNoPassedRoad) {
-//                initGirdRoad(initRows, initColums, initDifficulties);
-//                return;
-//            }
-//
-//            if (passPassed && ispassed && getNoPassedRoad) {
-//                initGirdRoad(initRows, initColums, initDifficulties);
-//                return;
-//            }
+
+            // 已通关
+            if (isPassed) {
+                // 如果已通关，则重新查询或生成数据。
+                initGirdRoad(initRows, initColums, initDifficulties);
+                return;
+            }
 
             mRootView.getActivity().runOnUiThread(() -> {
                 if (road != null) {
@@ -94,9 +94,6 @@ public class OneLineToEndPresenter extends BasePresenter<OneLineToEndContract.Mo
 //                        createdHint.setVisibility(View.VISIBLE);
 //                        AnimUtil.doScale(createdHint, 0, 1, 0, 1, null, true);
 //                    }
-//                    rows = initRows;
-//                    columns = initColums;
-//                    difficulties = initDifficulties;
                     mRootView.loadView(road);
 //                    saveYibi(road, new ArrayList<>());
 //                    setting.setText("点击设置\n" + rows + "*" + columns + " | " + difficulties);
@@ -490,8 +487,17 @@ public class OneLineToEndPresenter extends BasePresenter<OneLineToEndContract.Mo
         return roadString.toString();
     }
 
+    /**
+     * 成功通关，保存已通关内容
+     */
+    public void insertPassedYibi(RoadOnePen road) {
+        mModel.insertPassedYibi(road);
+    }
+
     @Override
     public void onDestroy() {
+        // 退出游戏时清理已通过的关卡
+        mModel.clearPassedYibi();
         super.onDestroy();
         this.mErrorHandler = null;
         this.random = null;

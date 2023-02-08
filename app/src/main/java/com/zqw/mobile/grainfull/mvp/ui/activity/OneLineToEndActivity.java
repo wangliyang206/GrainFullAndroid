@@ -14,6 +14,8 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.CommTipsDialog;
+import com.zqw.mobile.grainfull.app.utils.ThreadUtil;
 import com.zqw.mobile.grainfull.di.component.DaggerOneLineToEndComponent;
 import com.zqw.mobile.grainfull.mvp.contract.OneLineToEndContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.RoadOnePen;
@@ -43,6 +45,16 @@ public class OneLineToEndActivity extends BaseActivity<OneLineToEndPresenter> im
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 是否正在帮助
     private boolean mIsHelping = false;
+    // 首次通过
+    private boolean firstPassed = false;
+    // 行数、列数、障碍物
+    private int initRows = 5, initColums = 5, initDifficulties = 4;
+
+    @Override
+    protected void onDestroy() {
+        ThreadUtil.getInstance().removeRunable("getRoadToQueue");
+        super.onDestroy();
+    }
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -63,9 +75,7 @@ public class OneLineToEndActivity extends BaseActivity<OneLineToEndPresenter> im
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("一笔画完");
 
-        if (mPresenter != null) {
-            mPresenter.initGirdRoad();
-        }
+        initGirdRoad(initRows, initColums, initDifficulties);
     }
 
     @Override
@@ -107,8 +117,9 @@ public class OneLineToEndActivity extends BaseActivity<OneLineToEndPresenter> im
     @Override
     public void initGirdRoad(int initRows, int initColums, int initDifficulties) {
         Timber.i("#### initGirdRoad");
+        firstPassed = false;
         if (mPresenter != null) {
-            mPresenter.initGirdRoad();
+            mPresenter.initGirdRoad(initRows, initColums, initDifficulties);
         }
     }
 
@@ -135,6 +146,20 @@ public class OneLineToEndActivity extends BaseActivity<OneLineToEndPresenter> im
     @Override
     public void passed(RoadOnePen road) {
         Timber.i("#### passed = 通过");
+        if (road == null) return;
+        if (!firstPassed) {
+            firstPassed = true;
+            if (mPresenter != null) {
+                mPresenter.insertPassedYibi(road);
+            }
+
+            CommTipsDialog mDialog = new CommTipsDialog(this, "温馨提示", "恭喜通过！是否继续下一关？", isVal -> {
+                if (isVal) {
+                    initGirdRoad(initRows, initColums, initDifficulties);
+                }
+            });
+            mDialog.show();
+        }
     }
 
     /**
