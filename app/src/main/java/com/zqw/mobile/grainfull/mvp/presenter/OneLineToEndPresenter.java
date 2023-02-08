@@ -90,13 +90,7 @@ public class OneLineToEndPresenter extends BasePresenter<OneLineToEndContract.Mo
                 if (road != null) {
                     // 显示关卡
                     int num = mModel.getPassedCount(rows, columns, difficulties);
-
-                    if (road.get_no() == null) {
-                        num = num + 1;
-                    }else {
-                        num = Math.toIntExact(road.get_no());
-                    }
-
+                    num = num + 1;
                     mRootView.showLevel(String.valueOf(num));
                     // 加载游戏
                     mRootView.loadGame(road);
