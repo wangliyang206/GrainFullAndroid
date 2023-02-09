@@ -45,6 +45,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.NoiseMeasurementActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.PictureMosaicActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
@@ -203,6 +204,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
             R.id.btn_fragmenthome_other_magnifier,                                                  // 放大镜
+            R.id.btn_fragmenthome_other_picturemosaic,                                              // 图片拼接
     })
     @Override
     public void onClick(View v) {
@@ -288,6 +290,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_other_magnifier:                                             // 放大镜
                 ActivityUtils.startActivity(MagnifierActivity.class);
+                break;
+            case R.id.btn_fragmenthome_other_picturemosaic:                                         // 图片拼接
+                ActivityUtils.startActivity(PictureMosaicActivity.class);
                 break;
 
         }

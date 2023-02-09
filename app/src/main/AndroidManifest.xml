@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.PictureMosaicActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.WhacAMoleActivity"
             android:screenOrientation="portrait" />
         <activity

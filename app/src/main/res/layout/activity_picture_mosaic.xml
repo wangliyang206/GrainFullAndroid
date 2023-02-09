@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_picture_mosaic"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_picturemosaic_top"
+        layout="@layout/comm_top_layout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/radio_picturemosaic_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/radio_picturemosaic_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@mipmap/icon_longitudinal_pic"
+                android:drawablePadding="16dp"
+                android:text="纵图" />
+
+            <RadioButton
+                android:id="@+id/radio_picturemosaic_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableEnd="@mipmap/icon_horizontal_pic"
+                android:drawablePadding="16dp"
+                android:text="横图" />
+
+            <RadioButton
+                android:id="@+id/radio_picturemosaic_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableEnd="@mipmap/icon_two_column"
+                android:drawablePadding="16dp"
+                android:text="2列纵向" />
+
+            <RadioButton
+                android:id="@+id/radio_picturemosaic_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableEnd="@mipmap/icon_three_column"
+                android:drawablePadding="16dp"
+                android:text="3列纵向" />
+        </RadioGroup>
+
+        <!-- 添加图片 -->
+        <LinearLayout
+            android:id="@+id/view_picturemosaic_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_turntable_shape"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/radio_picturemosaic_group"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_add_picture" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="添加图片"
+                android:textColor="@color/rmb_dark_green_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
