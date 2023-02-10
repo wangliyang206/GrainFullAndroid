@@ -6,18 +6,26 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.base.BaseActivity;
@@ -69,8 +77,16 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
     @BindView(R.id.radio_picturemosaic_three)
     RadioButton radioThree;
 
+    @BindView(R.id.view_picturemosaic_vertical)
+    NestedScrollView mNestedScrollView;
     @BindView(R.id.revi_picturemosaic_content)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.view_picturemosaic_horizontal)
+    RelativeLayout mHorizontalScrollView;
+    @BindView(R.id.lila_picturemosaic_horizontal)
+    LinearLayout mHorizontal;
+
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 最大张图
     private int mMaxCount = 9;
@@ -127,35 +143,28 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
             // 根据选项控制视图展现方式
             if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_vertical) {
                 // 纵图
-                ArmsUtils.configRecyclerView(mRecyclerView, new LinearLayoutManager(PictureMosaicActivity.this) {
-                    @Override
-                    public boolean canScrollVertically() {
-                        return false;
-                    }
-                });
+                ArmsUtils.configRecyclerView(mRecyclerView, new LinearLayoutManager(PictureMosaicActivity.this));
                 mAdapter.setType(1);
+                mNestedScrollView.setVisibility(View.VISIBLE);
+                mHorizontalScrollView.setVisibility(View.GONE);
             } else if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_horizontal) {
                 // 横图
                 ArmsUtils.configRecyclerView(mRecyclerView, new LinearLayoutManager(PictureMosaicActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 mAdapter.setType(2);
+                mNestedScrollView.setVisibility(View.GONE);
+                mHorizontalScrollView.setVisibility(View.VISIBLE);
             } else if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_two) {
                 // 2列纵向
-                ArmsUtils.configRecyclerView(mRecyclerView, new GridLayoutManager(PictureMosaicActivity.this, 2) {
-                    @Override
-                    public boolean canScrollVertically() {
-                        return false;
-                    }
-                });
+                ArmsUtils.configRecyclerView(mRecyclerView, new GridLayoutManager(PictureMosaicActivity.this, 2));
                 mAdapter.setType(3);
+                mNestedScrollView.setVisibility(View.VISIBLE);
+                mHorizontalScrollView.setVisibility(View.GONE);
             } else if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_three) {
                 // 3列纵向
-                ArmsUtils.configRecyclerView(mRecyclerView, new GridLayoutManager(PictureMosaicActivity.this, 3) {
-                    @Override
-                    public boolean canScrollVertically() {
-                        return false;
-                    }
-                });
+                ArmsUtils.configRecyclerView(mRecyclerView, new GridLayoutManager(PictureMosaicActivity.this, 3));
                 mAdapter.setType(4);
+                mNestedScrollView.setVisibility(View.VISIBLE);
+                mHorizontalScrollView.setVisibility(View.GONE);
             }
 
             mAdapter.notifyDataSetChanged();
@@ -168,7 +177,8 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
             R.id.imvi_picturemosaic_three,
             R.id.imvi_picturemosaic_four,
             R.id.view_picturemosaic_open,                                                           // 选择图片
-            R.id.btn_picturemosaic_create,                                                          // 生成图片
+            R.id.btn_picturemosaic_vertical_create,                                                 // 生成图片 - 纵图
+            R.id.btn_picturemosaic_horizontal_create,                                               // 生成图片 - 横图
     })
     @Override
     public void onClick(View v) {
@@ -188,23 +198,48 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
             case R.id.view_picturemosaic_open:                                                      // 选择图片
                 PictureMosaicActivityPermissionsDispatcher.addAvatarWithPermissionCheck(this);
                 break;
-            case R.id.btn_picturemosaic_create:                                                     // 生成图片
-                // 将View转换成BitMap格式。
-                Bitmap mBitmap = ImageUtils.view2Bitmap(mRecyclerView);
-                // 生成文件路径及名称
-                String path = Constant.IMAGE_PATH + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".png";
-
-                new Thread(() -> {
-                    // 保存图片
-                    ImageUtils.save(mBitmap, path, Bitmap.CompressFormat.PNG);
-
-                    runOnUiThread(() -> {
-                        // 弹出成功提示
-                        showMessage("图片保存成功！路径：" + path);
-                    });
-                }).start();
+            case R.id.btn_picturemosaic_vertical_create:                                            // 生成图片 - 纵图
+                onSaveImage(mRecyclerView);
+                break;
+            case R.id.btn_picturemosaic_horizontal_create:                                          // 生成图片 - 横图
+                onSaveImage(mHorizontal);
                 break;
         }
+    }
+
+    /**
+     * 保存图片
+     */
+    private void onSaveImage(View view) {
+        // 将View转换成BitMap格式。缺点：有时会导致View的内容偏移。
+//                Bitmap mBitmap = ImageUtils.view2Bitmap(mRecyclerView);
+        // 将View转换成BitMap格式。除图片增大，暂时未发现缺点。
+        Bitmap mBitmap = getBitmapByScorw(view);
+        // 生成文件路径及名称
+        String path = Constant.IMAGE_PATH + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".png";
+
+        new Thread(() -> {
+            // 保存图片
+            ImageUtils.save(mBitmap, path, Bitmap.CompressFormat.PNG);
+
+            runOnUiThread(() -> {
+                // 弹出成功提示
+                showMessage("图片保存成功！路径：" + path);
+            });
+        }).start();
+    }
+
+    /**
+     * 截取View的屏幕
+     *
+     * @return Bitmap
+     */
+    public Bitmap getBitmapByScorw(View viewLayout) {
+        Bitmap bmp = Bitmap.createBitmap(viewLayout.getWidth(), viewLayout.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bmp);
+        canvas.drawColor(Color.WHITE);
+        viewLayout.draw(canvas);
+        return bmp;
     }
 
     /**
@@ -233,8 +268,38 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
             if (requestCode == Constant.REQUEST_SELECT_IMAGES_CODE) {
                 // 清除缓存
                 mList.clear();
-                // 返回的参数
+                // 给纵图加载数据
                 mList.addAll(data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES));
+
+                // 给横图加载数据
+                mHorizontal.removeAllViews();
+
+                for (int i = 0; i < mList.size(); i++) {
+                    String val = mList.get(i);
+                    View view = LayoutInflater.from(this).inflate(R.layout.picturemosaic_item_layout, null);
+                    ImageView mImageView = view.findViewById(R.id.imvi_picturemosaicitemlayout_pic);
+                    // 显示图片
+                    mImageView.setImageBitmap(BitmapFactory.decodeFile(val));
+
+                    LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(ArmsUtils.dip2px(this, 160), ArmsUtils.dip2px(this, 160));
+                    if (i == 0) {
+                        mParams.setMargins(0, 0, 0, 0);
+                    } else {
+                        mParams.setMargins(ConvertUtils.dp2px(5), 0, 0, 0);
+                    }
+                    view.setLayoutParams(mParams);
+                    mHorizontal.addView(view);
+                }
+
+                if (mAdapter.getType() == 2) {
+                    // 横图
+                    mNestedScrollView.setVisibility(View.GONE);
+                    mHorizontalScrollView.setVisibility(View.VISIBLE);
+                } else {
+                    // 纵图
+                    mNestedScrollView.setVisibility(View.VISIBLE);
+                    mHorizontalScrollView.setVisibility(View.GONE);
+                }
 
                 mAdapter.notifyDataSetChanged();
             }

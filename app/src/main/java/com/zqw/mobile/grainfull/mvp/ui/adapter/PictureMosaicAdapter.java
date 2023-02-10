@@ -48,4 +48,8 @@ public class PictureMosaicAdapter extends DefaultAdapter<String> {
     public void setType(int type) {
         this.type = type;
     }
+
+    public int getType() {
+        return type;
+    }
 }
