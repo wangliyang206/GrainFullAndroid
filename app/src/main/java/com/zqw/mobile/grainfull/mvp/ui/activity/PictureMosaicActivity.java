@@ -34,6 +34,7 @@ import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
@@ -133,7 +134,7 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
         setTitle("图片拼接");
 
         // 友盟统计 - 自定义事件
-//        MobclickAgent.onEvent(getApplicationContext(), "picture_mosaic");
+        MobclickAgent.onEvent(getApplicationContext(), "picture_mosaic");
 
         // 初始控件
         ArmsUtils.configRecyclerView(mRecyclerView, new LinearLayoutManager(this));
