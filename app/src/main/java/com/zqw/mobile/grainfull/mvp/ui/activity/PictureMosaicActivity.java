@@ -6,7 +6,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -32,6 +31,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
 import com.zqw.mobile.grainfull.R;
@@ -279,7 +279,14 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
                     View view = LayoutInflater.from(this).inflate(R.layout.picturemosaic_item_layout, null);
                     ImageView mImageView = view.findViewById(R.id.imvi_picturemosaicitemlayout_pic);
                     // 显示图片
-                    mImageView.setImageBitmap(BitmapFactory.decodeFile(val));
+                    mImageLoader.loadImage(this,
+                            ImageConfigImpl
+                                    .builder()
+                                    .placeholder(R.mipmap.mis_default_error)
+                                    .errorPic(R.mipmap.mis_default_error)
+                                    .url(val)
+                                    .imageView(mImageView)
+                                    .build());
 
                     LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(ArmsUtils.dip2px(this, 160), ArmsUtils.dip2px(this, 160));
                     if (i == 0) {
