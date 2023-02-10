@@ -197,6 +197,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_text_chinesetopinyin,                                             // 中文转拼音
             R.id.btn_fragmenthome_text_bulletchat,                                                  // 手持弹幕
 
+            R.id.btn_fragmenthome_image_picturemosaic,                                              // 图片拼接
+
             R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备信息
             R.id.btn_fragmenthome_equipment_metaldetector,                                          // 金属探测仪
             R.id.btn_fragmenthome_equipment_noisemeasurement,                                       // 噪音测量
@@ -204,7 +206,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
             R.id.btn_fragmenthome_other_magnifier,                                                  // 放大镜
-            R.id.btn_fragmenthome_other_picturemosaic,                                              // 图片拼接
     })
     @Override
     public void onClick(View v) {
@@ -272,6 +273,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
                 break;
 
+            case R.id.btn_fragmenthome_image_picturemosaic:                                         // 图片拼接
+                ActivityUtils.startActivity(PictureMosaicActivity.class);
+                break;
+
             case R.id.btn_fragmenthome_equipment_info:                                              // 查看设备信息
                 ActivityUtils.startActivity(EquipmentInfoActivity.class);
                 break;
@@ -290,9 +295,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_other_magnifier:                                             // 放大镜
                 ActivityUtils.startActivity(MagnifierActivity.class);
-                break;
-            case R.id.btn_fragmenthome_other_picturemosaic:                                         // 图片拼接
-                ActivityUtils.startActivity(PictureMosaicActivity.class);
                 break;
 
         }

@@ -384,6 +384,54 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- 图片应用 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cola_fragmenthome_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_bg_shape">
+
+                <TextView
+                    android:id="@+id/txvi_fragmenthome_image_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="图片"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view_fragmenthome_image_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/line_frame_color"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_image_title" />
+
+                <TextView
+                    android:id="@+id/btn_fragmenthome_image_picturemosaic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="图片拼接"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_image_line" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <!-- 设备 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cola_fragmenthome_equipment"
@@ -521,17 +569,6 @@
                     android:text="放大镜"
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_other_decision"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_other_decision" />
-
-                <TextView
-                    android:id="@+id/btn_fragmenthome_other_picturemosaic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="图片拼接"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_other_magnifier"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_other_magnifier" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

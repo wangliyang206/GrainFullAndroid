@@ -1,35 +1,41 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.Manifest;
 import android.app.Activity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-import com.jess.arms.di.component.AppComponent;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.base.BaseActivity;
+import com.jess.arms.base.DefaultAdapter;
+import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
-import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
-
 import com.lcw.library.imagepicker.ImagePicker;
-import com.umeng.analytics.MobclickAgent;
+import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.di.component.DaggerPictureMosaicComponent;
 import com.zqw.mobile.grainfull.mvp.contract.PictureMosaicContract;
 import com.zqw.mobile.grainfull.mvp.presenter.PictureMosaicPresenter;
-import com.zqw.mobile.grainfull.R;
-import com.zqw.mobile.grainfull.mvp.ui.widget.LoupeView;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.PictureMosaicAdapter;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -52,21 +58,42 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
     @BindView(R.id.activity_picture_mosaic)
     LinearLayout contentLayout;                                                                     // 主布局
 
-//    @BindView(R.id.view_magnifieractivity_content)
-//    LoupeView viewLoupeView;
+    @BindView(R.id.radio_picturemosaic_group)
+    RadioGroup radioGroup;
+    @BindView(R.id.radio_picturemosaic_vertical)
+    RadioButton radioVertical;
+    @BindView(R.id.radio_picturemosaic_horizontal)
+    RadioButton radioHorizontal;
+    @BindView(R.id.radio_picturemosaic_two)
+    RadioButton radioTwo;
+    @BindView(R.id.radio_picturemosaic_three)
+    RadioButton radioThree;
 
+    @BindView(R.id.revi_picturemosaic_content)
+    RecyclerView mRecyclerView;
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 最大张图
-    private int mMaxCount;
+    private int mMaxCount = 9;
 
     // 加载图片对象
     @Inject
     ImageLoader mImageLoader;
 
+
+    // 适配器
+    @Inject
+    PictureMosaicAdapter mAdapter;
+    // 选中的图片
+    @Inject
+    List<String> mList;
+
     @Override
     protected void onDestroy() {
+        // super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
+        DefaultAdapter.releaseAllHolder(mRecyclerView);
         super.onDestroy();
 
+        this.mAdapter = null;
         this.mImageLoader = null;
     }
 
@@ -91,16 +118,91 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
 
         // 友盟统计 - 自定义事件
 //        MobclickAgent.onEvent(getApplicationContext(), "picture_mosaic");
+
+        // 初始控件
+        ArmsUtils.configRecyclerView(mRecyclerView, new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mAdapter);
+        // 排列监听
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            // 根据选项控制视图展现方式
+            if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_vertical) {
+                // 纵图
+                ArmsUtils.configRecyclerView(mRecyclerView, new LinearLayoutManager(PictureMosaicActivity.this) {
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                });
+                mAdapter.setType(1);
+            } else if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_horizontal) {
+                // 横图
+                ArmsUtils.configRecyclerView(mRecyclerView, new LinearLayoutManager(PictureMosaicActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                mAdapter.setType(2);
+            } else if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_two) {
+                // 2列纵向
+                ArmsUtils.configRecyclerView(mRecyclerView, new GridLayoutManager(PictureMosaicActivity.this, 2) {
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                });
+                mAdapter.setType(3);
+            } else if (group.getCheckedRadioButtonId() == R.id.radio_picturemosaic_three) {
+                // 3列纵向
+                ArmsUtils.configRecyclerView(mRecyclerView, new GridLayoutManager(PictureMosaicActivity.this, 3) {
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                });
+                mAdapter.setType(4);
+            }
+
+            mAdapter.notifyDataSetChanged();
+        });
     }
 
     @OnClick({
+            R.id.imvi_picturemosaic_one,
+            R.id.imvi_picturemosaic_two,
+            R.id.imvi_picturemosaic_three,
+            R.id.imvi_picturemosaic_four,
             R.id.view_picturemosaic_open,                                                           // 选择图片
+            R.id.btn_picturemosaic_create,                                                          // 生成图片
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imvi_picturemosaic_one:
+                radioVertical.setChecked(true);
+                break;
+            case R.id.imvi_picturemosaic_two:
+                radioHorizontal.setChecked(true);
+                break;
+            case R.id.imvi_picturemosaic_three:
+                radioTwo.setChecked(true);
+                break;
+            case R.id.imvi_picturemosaic_four:
+                radioThree.setChecked(true);
+                break;
             case R.id.view_picturemosaic_open:                                                      // 选择图片
                 PictureMosaicActivityPermissionsDispatcher.addAvatarWithPermissionCheck(this);
+                break;
+            case R.id.btn_picturemosaic_create:                                                     // 生成图片
+                // 将View转换成BitMap格式。
+                Bitmap mBitmap = ImageUtils.view2Bitmap(mRecyclerView);
+                // 生成文件路径及名称
+                String path = Constant.IMAGE_PATH + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".png";
+
+                new Thread(() -> {
+                    // 保存图片
+                    ImageUtils.save(mBitmap, path, Bitmap.CompressFormat.PNG);
+
+                    runOnUiThread(() -> {
+                        // 弹出成功提示
+                        showMessage("图片保存成功！路径：" + path);
+                    });
+                }).start();
                 break;
         }
     }
@@ -117,7 +219,7 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
                 .showImage(true)//设置是否展示图片
                 .showVideo(false)//设置是否展示视频
                 .filterGif(true)//设置是否过滤gif图片
-                .setMaxCount(9)//设置最大选择图片数目(默认为1，单选)
+                .setMaxCount(mMaxCount)//设置最大选择图片数目(默认为1，单选)
                 .setSingleType(true)//设置图片视频不能同时选择
                 .setImageLoader(new GlideLoader(this))//设置自定义图片加载器
                 .start(this, Constant.REQUEST_SELECT_IMAGES_CODE);
@@ -129,17 +231,12 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == Constant.REQUEST_SELECT_IMAGES_CODE) {
+                // 清除缓存
+                mList.clear();
                 // 返回的参数
-                ArrayList<String> mImg = data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES);
-                // 显示图片(方式一)
-//                mImageLoader.loadImage(this,
-//                        ImageConfigImpl.builder().url(mImg.get(0))
-//                                .placeholder(R.mipmap.mis_default_error)
-//                                .errorPic(R.mipmap.mis_default_error)
-//                                .imageView(viewLoupeView).build());
+                mList.addAll(data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES));
 
-                // 显示图片(方式二)
-//                viewLoupeView.setImageBitmap(BitmapFactory.decodeFile(mImg.get(0)));
+                mAdapter.notifyDataSetChanged();
             }
         }
     }
@@ -147,7 +244,7 @@ public class PictureMosaicActivity extends BaseActivity<PictureMosaicPresenter> 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        MagnifierActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        PictureMosaicActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     public Activity getActivity() {

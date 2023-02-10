@@ -154,12 +154,7 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         // 原始代码
 //        Mp3Converter.init(44100, 1, 0, 44100, 96, 7);
         fileSize = new File(mAudioPath).length();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Mp3Converter.convertMp3(mAudioPath, mSavePath);
-            }
-        }).start();
+        new Thread(() -> Mp3Converter.convertMp3(mAudioPath, mSavePath)).start();
 
         handler.postDelayed(runnable, 500);
     }

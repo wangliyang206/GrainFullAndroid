@@ -29,6 +29,11 @@ public interface Constant {
      */
     String AUDIO_PATH = PathUtils.getExternalDownloadsPath() + "/GrainFull/";
 
+    /**
+     * 保存图片路径
+     */
+    String IMAGE_PATH = PathUtils.getExternalPicturesPath() + "/GrainFull/";
+
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**
      * 金莱特-服务协议

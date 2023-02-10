@@ -191,7 +191,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements S
                 DataCleanManager.cleanApplicationData(context,
                         Constant.APP_UPDATE_PATH,
                         Constant.LOG_PATH,
-                        Constant.AUDIO_PATH);
+                        Constant.AUDIO_PATH,
+                        Constant.IMAGE_PATH);
 
                 msg.what = 1;
             } catch (Exception e) {

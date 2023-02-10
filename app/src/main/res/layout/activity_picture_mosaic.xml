@@ -12,83 +12,143 @@
         android:id="@+id/view_picturemosaic_top"
         layout="@layout/comm_top_layout" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RadioGroup
+        android:id="@+id/radio_picturemosaic_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
 
-        <RadioGroup
-            android:id="@+id/radio_picturemosaic_group"
+        <RadioButton
+            android:id="@+id/radio_picturemosaic_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="纵图" />
+
+        <RadioButton
+            android:id="@+id/radio_picturemosaic_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="横图" />
+
+        <RadioButton
+            android:id="@+id/radio_picturemosaic_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2列纵向" />
+
+        <RadioButton
+            android:id="@+id/radio_picturemosaic_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3列纵向" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <ImageView
+            android:id="@+id/imvi_picturemosaic_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_longitudinal_pic" />
+
+        <ImageView
+            android:id="@+id/imvi_picturemosaic_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_horizontal_pic" />
+
+        <ImageView
+            android:id="@+id/imvi_picturemosaic_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_two_column" />
+
+        <ImageView
+            android:id="@+id/imvi_picturemosaic_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_three_column" />
+    </LinearLayout>
+
+    <!-- 添加图片 -->
+    <LinearLayout
+        android:id="@+id/view_picturemosaic_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_turntable_shape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_add_picture" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="添加图片"
+            android:textColor="@color/rmb_dark_green_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:padding="16dp">
 
-            <RadioButton
-                android:id="@+id/radio_picturemosaic_vertical"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/revi_picturemosaic_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@mipmap/icon_longitudinal_pic"
-                android:drawablePadding="16dp"
-                android:text="纵图" />
-
-            <RadioButton
-                android:id="@+id/radio_picturemosaic_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:drawableEnd="@mipmap/icon_horizontal_pic"
-                android:drawablePadding="16dp"
-                android:text="横图" />
-
-            <RadioButton
-                android:id="@+id/radio_picturemosaic_two"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:drawableEnd="@mipmap/icon_two_column"
-                android:drawablePadding="16dp"
-                android:text="2列纵向" />
-
-            <RadioButton
-                android:id="@+id/radio_picturemosaic_three"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:drawableEnd="@mipmap/icon_three_column"
-                android:drawablePadding="16dp"
-                android:text="3列纵向" />
-        </RadioGroup>
-
-        <!-- 添加图片 -->
-        <LinearLayout
-            android:id="@+id/view_picturemosaic_open"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_turntable_shape"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/radio_picturemosaic_group"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                android:background="@drawable/layout_bg_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/btn_picturemosaic_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_add_picture" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="添加图片"
-                android:textColor="@color/rmb_dark_green_color"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/list_item_background"
+                android:padding="5dp"
+                android:src="@mipmap/icon_download"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

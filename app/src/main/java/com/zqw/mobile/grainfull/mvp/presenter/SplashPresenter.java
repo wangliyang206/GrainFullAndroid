@@ -190,6 +190,7 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
         FileUtils.createOrExistsDir(Constant.LOG_PATH);                                             // 创建日志目录
         FileUtils.createOrExistsDir(Constant.APP_UPDATE_PATH);                                      // 创建升级目录
         FileUtils.createOrExistsDir(Constant.AUDIO_PATH);                                           // 设置音频缓存路径
+        FileUtils.createOrExistsDir(Constant.IMAGE_PATH);                                           // 设置图片路径
 
     }
 
