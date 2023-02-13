@@ -34,8 +34,6 @@ import timber.log.Timber;
  * 展示 {@link Application.ActivityLifecycleCallbacks} 的用法
  * <p>
  * Created by JessYan on 04/09/2017 17:14
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
 public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifecycleCallbacks {

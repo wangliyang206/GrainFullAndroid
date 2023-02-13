@@ -19,11 +19,6 @@ import com.zqw.mobile.grainfull.mvp.model.LoginModel;
  * Description:
  * <p>
  * Created by MVPArmsTemplate on 09/16/2019 10:32
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
- * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
 @Module

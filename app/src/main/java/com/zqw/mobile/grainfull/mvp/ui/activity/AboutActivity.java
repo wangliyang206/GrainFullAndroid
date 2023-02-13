@@ -27,11 +27,6 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * Description:关于我们
  * <p>
  * Created by MVPArmsTemplate on 03/28/2020 11:19
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
- * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
 public class AboutActivity extends BaseActivity<AboutPresenter> implements AboutContract.View {

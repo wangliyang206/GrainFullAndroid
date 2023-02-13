@@ -32,8 +32,6 @@ import okhttp3.Response;
  * 展示 {@link GlobalHttpHandler} 的用法
  * <p>
  * Created by JessYan on 04/09/2017 17:06
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
 public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
