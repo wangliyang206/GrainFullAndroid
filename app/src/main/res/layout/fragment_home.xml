@@ -430,6 +430,18 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_image_line" />
 
+                <TextView
+                    android:id="@+id/btn_fragmenthome_text_ninepalaces"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="九宫格切图"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_image_picturemosaic"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_image_picturemosaic" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 设备 -->
