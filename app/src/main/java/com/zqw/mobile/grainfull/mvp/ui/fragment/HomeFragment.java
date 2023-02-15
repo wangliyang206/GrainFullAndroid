@@ -46,6 +46,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.NinePalacesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.NoiseMeasurementActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.PictureCompressionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PictureMosaicActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
@@ -199,7 +200,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_text_bulletchat,                                                  // 手持弹幕
 
             R.id.btn_fragmenthome_image_picturemosaic,                                              // 图片拼接
-            R.id.btn_fragmenthome_text_ninepalaces,                                                 // 九宫格切图
+            R.id.btn_fragmenthome_image_ninepalaces,                                                // 九宫格切图
+            R.id.btn_fragmenthome_image_compression,                                                // 图片压缩
 
             R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备信息
             R.id.btn_fragmenthome_equipment_metaldetector,                                          // 金属探测仪
@@ -278,9 +280,13 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_image_picturemosaic:                                         // 图片拼接
                 ActivityUtils.startActivity(PictureMosaicActivity.class);
                 break;
-            case R.id.btn_fragmenthome_text_ninepalaces:                                            // 九宫格切图
+            case R.id.btn_fragmenthome_image_ninepalaces:                                           // 九宫格切图
                 ActivityUtils.startActivity(NinePalacesActivity.class);
                 break;
+            case R.id.btn_fragmenthome_image_compression:                                           // 图片压缩
+                ActivityUtils.startActivity(PictureCompressionActivity.class);
+                break;
+
 
             case R.id.btn_fragmenthome_equipment_info:                                              // 查看设备信息
                 ActivityUtils.startActivity(EquipmentInfoActivity.class);

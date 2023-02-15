@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.PictureCompressionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.NinePalacesActivity"
             android:screenOrientation="portrait" />
         <activity

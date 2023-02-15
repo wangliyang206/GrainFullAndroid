@@ -47,7 +47,8 @@
 * [小满APP 升级日志](https://github.com/wangliyang206/GrainFullAndroid/wiki/UpdateLog)
 
 ## Donate
-    如果它对你帮助很大，在实际开发中切实的提升了您的工作效率和开发能力，并且你很想支持库的后续开发和维护,请您点击右上角 Star 支持一下谢谢!
+    如果它对你帮助很大，在实际开发中切实的提升了您的工作效率和开发能力，并且你很想支持库的后续开发和维护,
+    请您点击右上角 Star 支持一下谢谢!
 
 ## License
 ``` 
