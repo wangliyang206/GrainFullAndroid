@@ -245,6 +245,9 @@
         </activity>
 
         <service android:name=".app.service.FloatingWindowService" />
+        <service android:name=".app.service.OneLineToEndMusicService"
+            android:enabled="true"
+            android:exported="true"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

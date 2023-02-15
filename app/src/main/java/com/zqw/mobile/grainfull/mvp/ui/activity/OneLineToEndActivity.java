@@ -21,6 +21,7 @@ import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.CommTipsDialog;
 import com.zqw.mobile.grainfull.app.dialog.PopupOneLineToEnd;
+import com.zqw.mobile.grainfull.app.service.OneLineToEndMusicService;
 import com.zqw.mobile.grainfull.app.utils.EventBusTags;
 import com.zqw.mobile.grainfull.app.utils.ThreadUtil;
 import com.zqw.mobile.grainfull.di.component.DaggerOneLineToEndComponent;
@@ -62,6 +63,9 @@ public class OneLineToEndActivity extends BaseActivity<OneLineToEndPresenter> im
     ImageButton btnHelp;
 
     /*------------------------------------------------业务区域------------------------------------------------*/
+    public final static String key_toPlayMusic = "key_toPlayMusic";
+    // 播放音乐
+    public boolean toPlayMusic = true;
     // 是否正在帮助
     private boolean mIsHelping = false;
     // 首次通过
@@ -74,7 +78,24 @@ public class OneLineToEndActivity extends BaseActivity<OneLineToEndPresenter> im
     private final int initDifficulties = 4;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent(this, OneLineToEndMusicService.class);
+        intent.putExtra(key_toPlayMusic, toPlayMusic ? 0 : 2);
+        startService(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Intent intent = new Intent(this, OneLineToEndMusicService.class);
+        intent.putExtra(key_toPlayMusic, 1);
+        startService(intent);
+    }
+
+    @Override
     protected void onDestroy() {
+        stopService(new Intent(this, OneLineToEndMusicService.class));
         ThreadUtil.getInstance().removeRunable("initGirdRoad");
         super.onDestroy();
     }
