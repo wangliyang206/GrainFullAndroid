@@ -42,3 +42,26 @@
 
 ## 首页侧滑
     友盟数据统计、设置、关于；
+
+## Wiki
+* [小满APP 升级日志](https://github.com/wangliyang206/GrainFullAndroid/wiki/UpdateLog)
+
+## Donate
+    如果它对你帮助很大，在实际开发中切实的提升了您的工作效率和开发能力，并且你很想支持库的后续开发和维护,请您点击右上角 Star 支持一下谢谢!
+
+## License
+``` 
+ Copyright 2022, 赤槿       
+  
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at 
+ 
+       http://www.apache.org/licenses/LICENSE-2.0 
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+```
