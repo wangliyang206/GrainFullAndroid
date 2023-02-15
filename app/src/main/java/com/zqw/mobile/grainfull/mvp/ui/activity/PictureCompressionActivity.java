@@ -238,6 +238,10 @@ public class PictureCompressionActivity extends BaseActivity<PictureCompressionP
 
                 txviBeforeSize.setText(imageSize[0] + "*" + imageSize[1]);
                 txviBeforeHowBig.setText(fileSize);
+
+                txviAfterSize.setText("");
+                txviAfterHowBig.setText("");
+                txviPath.setText("压缩后保存路径：");
             }
         }
     }
