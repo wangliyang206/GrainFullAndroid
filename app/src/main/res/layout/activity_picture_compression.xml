@@ -11,11 +11,39 @@
         android:id="@+id/view_picturecompression_top"
         layout="@layout/comm_top_layout" />
 
+    <RadioGroup
+        android:id="@+id/radio_picturecompression_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <RadioButton
+            android:id="@+id/radio_picturecompression_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="按大小压缩" />
+
+        <RadioButton
+            android:id="@+id/radio_picturecompression_proportion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="按比例压缩" />
+
+    </RadioGroup>
+
     <TextView
+        android:id="@+id/txvi_picturecompression_tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
         android:text="说明：低于500kB的照片不支持压缩。"
         android:textColor="@color/common_text_color"
         android:textSize="12sp" />
@@ -23,7 +51,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
