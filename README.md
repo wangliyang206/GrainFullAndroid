@@ -11,7 +11,11 @@
 ### 华为平台：
     识别银行卡、识别身份证、图片提取文字、动态手势识别、活体检测、人脸对比；
 
-#### 效果演示
+![](image/Overview.jpg)
+![](image/Overview.jpg)
+![](image/Overview.jpg)
+![](image/Overview.jpg)
+![](image/Overview.jpg)
 ![](image/Overview.jpg)
 
 ### 百度平台：
