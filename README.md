@@ -11,19 +11,19 @@
 ### 华为平台：
     识别银行卡、识别身份证、图片提取文字、动态手势识别、活体检测、人脸对比；
 
-![](image/识别银行卡.jpg)
-![](image/识别身份证.jpg)
-![](image/图片提取文字.jpg)
-![](image/动态手势识别.jpg)
-![](image/活体检测.jpg)
-![](image/人脸对比.jpg)
+![](image/IdentifyBankCards.jpg)
+![](image/IdentifyIdCard.jpg)
+![](image/ImageExtractionText.jpg)
+![](image/DynamicGestures.jpg)
+![](image/LivenessDetection.jpg)
+![](image/FaceComparison.jpg)
 
 ### 百度平台：
     人脸采集、语音识别、语音合成；
 
-![](image/人脸采集.jpg)
-![](image/语音识别.jpg)
-![](image/语音合成.jpg)
+![](image/FaceRecognition.jpg)
+![](image/VoiceRecog.jpg)
+![](image/SpeechSynthesis.jpg)
 
 ### 颜色：
     取色板、吸管工具、颜色码转换；
