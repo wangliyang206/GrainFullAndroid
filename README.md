@@ -28,31 +28,66 @@
 ### 颜色：
     取色板、吸管工具、颜色码转换；
 
+![](image/ColorPicker.jpg)
+![](image/PicturePipette.jpg)
+![](image/ColorCodeConversion.jpg)
+
 ### 文字：
     数字转中文、中文转拼音、手持弹幕；
+
+![](image/DigitalToChinese.jpg)
+![](image/ChineseToPinyin.jpg)
+![](image/HandheldBulletScreen.jpg)
 
 ### 图片：
     图片拼接、九宫格切图、图片压缩；
 
+![](image/PictureMosaic.jpg)
+![](image/NinePalaces.jpg)
+![](image/PictureCompression.jpg)
+
 ### 设备：
     查看设备信息、金属探测仪、噪音测量；
 
+![](image/EquipmentInfo.jpg)
+![](image/MetalDetector.jpg)
+![](image/NoiseMeasurement.jpg)
+
 ### 其它：
     音频转换、做个决定、放大镜等；
+
+![](image/AudioConversion.jpg)
+![](image/Decision.jpg)
+![](image/Magnifier.jpg)
 
 ## 游戏
 ### 普通游戏：
     华容道、飞机大战、打地鼠、一笔画完；
 
+![](image/klotskiGame.jpg)
+![](image/AircraftWar.jpg)
+![](image/WhacAMole.jpg)
+![](image/OneLineToEnd.jpg)
+
 ## 特效介绍
 ### 文本：
     仿序列号；
 
+![](image/SerialNumber.jpg)
+
 ### 其它：
-    音频波形、抽奖转盘、蛛网等级、悬浮窗口/按钮；
+    音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮；
+
+![](image/AudioWaveform.jpg)
+![](image/LotteryTurntable.jpg)
+![](image/SpiderWebGrade.jpg)
+![](image/ProgressView.jpg)
+![](image/LevitationButton.jpg)
 
 ## 首页侧滑
     友盟数据统计、设置、关于；
+
+![](image/DataStatistics.jpg)
 
 ## Wiki
 * [小满APP 升级日志](https://github.com/wangliyang206/GrainFullAndroid/wiki/UpdateLog)

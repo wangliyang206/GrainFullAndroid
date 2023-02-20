@@ -126,7 +126,11 @@ public class MoleHitMainFragment extends BaseFragment<MoleHitPresenter> implemen
 
                 case GameMsg.MSG_WHAT_REFRESH:
 
-                    onGameRefresh(msg);
+                    try {
+                        onGameRefresh(msg);
+                    } catch (Exception ignored) {
+
+                    }
                     break;
 
                 case GameMsg.MSG_WHAT_GAP:
@@ -138,7 +142,10 @@ public class MoleHitMainFragment extends BaseFragment<MoleHitPresenter> implemen
 
                 case GameMsg.MSG_WHAT_END:
 
-                    onGameOver();
+                    try {
+                        onGameOver();
+                    } catch (Exception ignored) {
+                    }
                     break;
 
                 case GameMsg.MSG_ANIM_STOP:
@@ -158,12 +165,11 @@ public class MoleHitMainFragment extends BaseFragment<MoleHitPresenter> implemen
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
-
         if (null != randomThread) {
             randomThread.release();
         }
         mainHandler.removeCallbacksAndMessages(null);
+        super.onDestroy();
 
         if (mMoleList != null) {
             mMoleList.clear();
@@ -416,11 +422,14 @@ public class MoleHitMainFragment extends BaseFragment<MoleHitPresenter> implemen
 
         startGuideCountDown();
 
-        mShadowView.postDelayed(() -> mShadowView.animate()
-                .alpha(0)
-                .setInterpolator(new LinearInterpolator())
-                .setDuration(1000)
-                .start(), 3300);
+        mShadowView.postDelayed(() -> {
+            if (mShadowView != null)
+                mShadowView.animate()
+                        .alpha(0)
+                        .setInterpolator(new LinearInterpolator())
+                        .setDuration(1000)
+                        .start();
+        }, 3300);
     }
 
     /**
@@ -607,18 +616,20 @@ public class MoleHitMainFragment extends BaseFragment<MoleHitPresenter> implemen
         final CountDownTimer timer = new CountDownTimer(3300, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-
-                //Log.d(TAG,"onTick " + millisUntilFinished);
-                float remain = millisUntilFinished / 1000f;
-                int round = Math.round(remain);
-                showGuideCountDownAnim(round);
+                if (mCountDown != null) {
+                    //Log.d(TAG,"onTick " + millisUntilFinished);
+                    float remain = millisUntilFinished / 1000f;
+                    int round = Math.round(remain);
+                    showGuideCountDownAnim(round);
+                }
             }
 
             @Override
             public void onFinish() {
-
-                mCountDown.setVisibility(View.GONE);
-                mainHandler.sendEmptyMessage(GameMsg.MSG_WHAT_START);
+                if (mCountDown != null)
+                    mCountDown.setVisibility(View.GONE);
+                if (mainHandler != null)
+                    mainHandler.sendEmptyMessage(GameMsg.MSG_WHAT_START);
             }
         };
 

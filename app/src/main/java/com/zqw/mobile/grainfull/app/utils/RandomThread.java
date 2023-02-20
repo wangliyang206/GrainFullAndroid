@@ -160,10 +160,14 @@ public class RandomThread extends Thread {
      * 检查洞是否符合条件
      */
     private boolean checkPlayingHole(int turnUp) {
-
-        AnimationDrawable animationDrawable1 = mRatAnimList.get(turnUp);
-        AnimationDrawable animationDrawable2 = mMushRoomAnimList.get(turnUp);
-        return animationDrawable1.isRunning() || animationDrawable2.isRunning();
+        // 防止运行过种中随时点击退出，然而产生的闪退
+        try {
+            AnimationDrawable animationDrawable1 = mRatAnimList.get(turnUp);
+            AnimationDrawable animationDrawable2 = mMushRoomAnimList.get(turnUp);
+            return animationDrawable1.isRunning() || animationDrawable2.isRunning();
+        } catch (Exception ex) {
+            return false;
+        }
     }
 
     public void startGame() {
@@ -192,7 +196,7 @@ public class RandomThread extends Thread {
     }
 
     public void release() {
-
+        threadControl = false;
         if (null != mBgMusicManager) {
             mBgMusicManager.stopBackgroundMusic();
             mBgMusicManager.end();
