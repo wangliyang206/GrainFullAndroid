@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.DashboardActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.PictureCompressionActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -245,9 +248,10 @@
         </activity>
 
         <service android:name=".app.service.FloatingWindowService" />
-        <service android:name=".app.service.OneLineToEndMusicService"
+        <service
+            android:name=".app.service.OneLineToEndMusicService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
