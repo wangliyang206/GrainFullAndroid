@@ -75,6 +75,11 @@
 
 ![](image/SerialNumber.jpg)
 
+### 时钟：
+    翻转时钟；
+
+![](image/FlipClock.jpg)
+
 ### 其它：
     音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮、仪表盘；
 

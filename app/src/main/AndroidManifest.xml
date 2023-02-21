@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.FlipClockActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.DashboardActivity"
             android:screenOrientation="portrait" />
         <activity

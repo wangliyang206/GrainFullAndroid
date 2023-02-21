@@ -159,4 +159,11 @@
         <!--是否可拖曳-->
         <attr name="customIsDrag" format="boolean" />
     </declare-styleable>
+
+    <!-- 翻页时钟 -->
+    <declare-styleable name="FlipLayout">
+        <attr name="flipTextBackground" format="reference|color" />
+        <attr name="flipTextSize" format="dimension" />
+        <attr name="flipTextColor" format="color" />
+    </declare-styleable>
 </resources>
