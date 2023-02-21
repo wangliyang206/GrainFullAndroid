@@ -289,7 +289,7 @@ public class DashboardView extends View {
     // 36个刻度，180数值；
     // 40个刻度，200数值；
     // 44个刻度，220数值；
-    int clockPointNum = 40;
+    int clockPointNum = 36;
 
     /**
      * 获取仪表盘中最大数值
