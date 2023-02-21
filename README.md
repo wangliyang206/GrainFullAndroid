@@ -76,13 +76,14 @@
 ![](image/SerialNumber.jpg)
 
 ### 其它：
-    音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮；
+    音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮、仪表盘；
 
 ![](image/AudioWaveform.jpg)
 ![](image/LotteryTurntable.jpg)
 ![](image/SpiderWebGrade.jpg)
 ![](image/ProgressView.jpg)
 ![](image/LevitationButton.jpg)
+![](image/Dashboard.jpg)
 
 ## 首页侧滑
     友盟数据统计、设置、关于；
