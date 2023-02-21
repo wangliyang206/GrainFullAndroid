@@ -20,6 +20,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerSpecialEffectsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.SpecialEffectsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.SpecialEffectsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DashboardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FlipClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
@@ -70,6 +71,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
     @OnClick({
             R.id.btn_fragmentspecialeffects_text_serialnumber,                                      // 仿序列号
 
+            R.id.btn_fragmentspecialeffects_clock_clock,                                            // 时钟
             R.id.btn_fragmentspecialeffects_clock_flipclock,                                        // 翻转时钟
 
             R.id.btn_fragmentspecialeffects_other_audiowaveform,                                    // 音频波形
@@ -86,6 +88,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 ActivityUtils.startActivity(SerialNumberActivity.class);
                 break;
 
+            case R.id.btn_fragmentspecialeffects_clock_clock:                                       // 时钟
+                ActivityUtils.startActivity(ClockActivity.class);
+                break;
             case R.id.btn_fragmentspecialeffects_clock_flipclock:                                   // 翻转时钟
                 ActivityUtils.startActivity(FlipClockActivity.class);
                 break;

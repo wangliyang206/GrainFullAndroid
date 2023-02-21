@@ -129,16 +129,27 @@
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentspecialeffects_clock_title" />
 
                 <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_clock_flipclock"
+                    android:id="@+id/btn_fragmentspecialeffects_clock_clock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/edit_bg_selector"
                     android:padding="10dp"
-                    android:text="翻转时钟"
+                    android:text="时钟"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_clock_line" />
+
+                <TextView
+                    android:id="@+id/btn_fragmentspecialeffects_clock_flipclock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="翻转时钟"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_clock_clock"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_clock_clock" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
