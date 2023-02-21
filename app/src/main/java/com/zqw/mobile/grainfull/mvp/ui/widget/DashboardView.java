@@ -285,7 +285,21 @@ public class DashboardView extends View {
         //canvas.drawArc();
     }
 
-    int clockPointNum = 36;
+    // 整数刻度间隔为4；
+    // 36个刻度，180数值；
+    // 40个刻度，200数值；
+    // 44个刻度，220数值；
+    int clockPointNum = 40;
+
+    /**
+     * 获取仪表盘中最大数值
+     * 刻度 * 间隔 = 总数
+     */
+    public int getDashboardMax() {
+        // 间隔 = 每4格间隔一次 + 1(最后一格)；
+        // 最大数值 = 刻度 * 间隔；
+        return clockPointNum * 5;
+    }
 
     private void drawDegree(Canvas canvas) {
         pointerPaint.setColor(Color.parseColor("#26396F"));

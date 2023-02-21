@@ -93,7 +93,7 @@ public class DashboardActivity extends BaseActivity<DashboardPresenter> implemen
                                 if(!isStart){
                                     break;
                                 }
-                                mRndom = getRandom(180);
+                                mRndom = getRandom(mDashboardView.getDashboardMax());
                                 runOnUiThread(() -> {
                                     // 外部更新
                                     mDashboardView.udDataSpeed(mRndom);
