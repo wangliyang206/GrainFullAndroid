@@ -76,8 +76,9 @@
 ![](image/SerialNumber.jpg)
 
 ### 时钟：
-    翻转时钟；
+    时钟、翻转时钟；
 
+![](image/Clock.jpg)
 ![](image/FlipClock.jpg)
 
 ### 其它：
