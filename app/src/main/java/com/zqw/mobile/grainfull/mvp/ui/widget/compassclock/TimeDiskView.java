@@ -79,15 +79,14 @@ public class TimeDiskView extends ViewGroup {
             switch (msg.what) {
                 case MSG_UPDATE_TV_TIME:
                     Timber.i(TAG + " minute==>" + timeDiskView.minute);
-                    if (timeDiskView.isNoon == true) {
-                        timeDiskView.hour24 = timeDiskView.hour + 12;
-                        if (timeDiskView.hour24 == 24) {
-                            timeDiskView.hour24 = 0;
-                        }
-                    } else {
-                        timeDiskView.hour24 = timeDiskView.hour;
-                    }
-
+//                    if (timeDiskView.isNoon) {
+//                        timeDiskView.hour24 = timeDiskView.hour + 12;
+//                        if (timeDiskView.hour24 == 24) {
+//                            timeDiskView.hour24 = 0;
+//                        }
+//                    } else {
+//                        timeDiskView.hour24 = timeDiskView.hour;
+//                    }
                     timeDiskView.txviTime.setText(CommonUtils.format0Right(String.valueOf(timeDiskView.hour24)) + ":" +
                             CommonUtils.format0Right(String.valueOf(timeDiskView.minute)) + ":" +
                             CommonUtils.format0Right(String.valueOf(timeDiskView.second)));
@@ -249,7 +248,7 @@ public class TimeDiskView extends ViewGroup {
         minuteDiskView.isNeedReturn = true;
         secondDiskView.isNeedReturn = true;
         secondDiskView.setVisibility(VISIBLE);
-        if (isStop == true) {
+        if (isStop) {
             handler.sendEmptyMessageDelayed(MSG_GET_CUR_TIME, 100);
         }
         isStop = false;
@@ -261,7 +260,7 @@ public class TimeDiskView extends ViewGroup {
     public void showCurTime() {
         calendar = Calendar.getInstance();
 
-        isNoon = calendar.get(Calendar.AM_PM) == 1 ? true : false;
+        isNoon = calendar.get(Calendar.AM_PM) == Calendar.PM;
 
         hour24 = calendar.get(Calendar.HOUR_OF_DAY);
         hour = calendar.get(Calendar.HOUR);
@@ -284,9 +283,9 @@ public class TimeDiskView extends ViewGroup {
     /**
      * 显示对应的时间
      *
-     * @param hour24
-     * @param minute
-     * @param second
+     * @param hour24 小时
+     * @param minute 分钟
+     * @param second 秒
      */
     public void showTime(int hour24, int minute, int second) {
         this.hour24 = hour24;
@@ -297,7 +296,7 @@ public class TimeDiskView extends ViewGroup {
         } else {
             this.hour = hour24;
         }
-        isNoon = this.hour24 > 12 ? true : false;
+        isNoon = this.hour24 > 12;
         amPmDiskView.setStr(isNoon ? "PM" : "AM");
         hourDiskView.setCurTime(hour);
         minuteDiskView.setCurTime(minute);
