@@ -1,26 +1,22 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.LinearLayout;
-
-import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.base.BaseActivity;
+import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
-
+import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerCompassClockComponent;
 import com.zqw.mobile.grainfull.mvp.contract.CompassClockContract;
 import com.zqw.mobile.grainfull.mvp.presenter.CompassClockPresenter;
-import com.zqw.mobile.grainfull.R;
-import com.zqw.mobile.grainfull.mvp.ui.widget.FlipLayout;
 import com.zqw.mobile.grainfull.mvp.ui.widget.compassclock.TimeDiskView;
 
 import butterknife.BindView;
@@ -41,8 +37,13 @@ public class CompassClockActivity extends BaseActivity<CompassClockPresenter> im
     @BindView(R.id.view_compassclock_clock)
     TimeDiskView viewClock;
 
-
     /*------------------------------------------------业务区域------------------------------------------------*/
+
+    @Override
+    protected void onDestroy() {
+        viewClock.onDestroy();
+        super.onDestroy();
+    }
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {

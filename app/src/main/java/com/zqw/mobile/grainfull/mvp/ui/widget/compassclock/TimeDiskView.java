@@ -343,4 +343,13 @@ public class TimeDiskView extends ViewGroup {
     public void setNoon(boolean noon) {
         isNoon = noon;
     }
+
+    /**
+     * 关闭
+     */
+    public void onDestroy() {
+        // 关闭时间走时
+        isStop = true;
+        handler.removeCallbacksAndMessages(null);
+    }
 }
