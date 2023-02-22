@@ -78,7 +78,8 @@
 ### 时钟：
     时钟、翻转时钟；
 
-![](image/Clock.jpg)
+![](image/ClockGreen.jpg)
+![](image/ClockWhite.jpg)
 ![](image/FlipClock.jpg)
 
 ### 其它：
