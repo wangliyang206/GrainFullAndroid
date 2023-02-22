@@ -76,11 +76,12 @@
 ![](image/SerialNumber.jpg)
 
 ### 时钟：
-    时钟、翻转时钟；
+    时钟、翻转时钟、罗盘时钟；
 
 ![](image/ClockGreen.jpg)
 ![](image/ClockWhite.jpg)
 ![](image/FlipClock.jpg)
+![](image/CompassClock.jpg)
 
 ### 其它：
     音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮、仪表盘；

@@ -22,7 +22,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerClockComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ClockContract;
 import com.zqw.mobile.grainfull.mvp.presenter.ClockPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.ClockView;
-import com.zqw.mobile.grainfull.mvp.ui.widget.DialView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.NormalClockView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -54,7 +54,7 @@ public class ClockActivity extends BaseActivity<ClockPresenter> implements Clock
     @BindView(R.id.txvi_clockactivity_dial_text)
     TextView txviDialTips;                                                                          // 时间提示
     @BindView(R.id.view_clockactivity_dial)
-    DialView viewDialView;
+    NormalClockView viewNormalClockView;
 
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 当前是否切换到“全”时钟，true显示白底，false显示绿底
@@ -62,8 +62,8 @@ public class ClockActivity extends BaseActivity<ClockPresenter> implements Clock
 
     @Override
     protected void onDestroy() {
-        if (viewDialView != null) {
-            viewDialView.stopDrawing();
+        if (viewNormalClockView != null) {
+            viewNormalClockView.stopDrawing();
         }
         super.onDestroy();
     }
@@ -89,16 +89,18 @@ public class ClockActivity extends BaseActivity<ClockPresenter> implements Clock
 
         // 增加监听
         viewClock.setOnClockMonitorListener((hour, minute, second) -> {
-            txviClockTips.setText(CommonUtils.format0Right(String.valueOf(hour)) + ":" + CommonUtils.format0Right(String.valueOf(minute)) + ":" + CommonUtils.format0Right(String.valueOf(second)));
+            if (txviClockTips != null)
+                txviClockTips.setText(CommonUtils.format0Right(String.valueOf(hour)) + ":" + CommonUtils.format0Right(String.valueOf(minute)) + ":" + CommonUtils.format0Right(String.valueOf(second)));
         });
 
-        viewDialView.setOnClockMonitorListener((hour, minute, second) -> {
-            txviDialTips.setText(CommonUtils.format0Right(String.valueOf(hour)) + ":" + CommonUtils.format0Right(String.valueOf(minute)) + ":" + CommonUtils.format0Right(String.valueOf(second)));
+        viewNormalClockView.setOnClockMonitorListener((hour, minute, second) -> {
+            if (txviDialTips != null)
+                txviDialTips.setText(CommonUtils.format0Right(String.valueOf(hour)) + ":" + CommonUtils.format0Right(String.valueOf(minute)) + ":" + CommonUtils.format0Right(String.valueOf(second)));
         });
 
         // 开始绘制
         contentLayout.post(() -> {
-            viewDialView.startRun();
+            viewNormalClockView.startRun();
         });
 
     }

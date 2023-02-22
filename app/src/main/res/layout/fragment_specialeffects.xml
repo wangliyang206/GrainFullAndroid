@@ -151,6 +151,17 @@
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_clock_clock"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_clock_clock" />
 
+                <TextView
+                    android:id="@+id/btn_fragmentspecialeffects_clock_compassclock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="罗盘时钟"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_clock_flipclock"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_clock_flipclock" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 其它 -->

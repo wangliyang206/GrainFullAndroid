@@ -14,39 +14,55 @@ import java.util.Calendar;
  * @ProjectName: GrainFullAndroid
  * @Package: com.zqw.mobile.grainfull.mvp.ui.widget
  * @ClassName: DialView
- * @Description:
+ * @Description: 普通时钟
  * @Author: WLY
  * @CreateDate: 2023/2/21 17:18
  */
-public class DialView extends View {
-    private boolean drawable = true; //是否可以绘制
-    private int halfMinLength; //最小宽/高的一半长度
-    private Paint paintKd30; //时针刻度线画笔
-    private Paint paintKd30Text; // 时针数字画笔
-    private Paint paintKdSecond; //秒针刻度线画笔
-    private Paint paintHour;  //时针画笔
-    private Paint paintCircleBar;//指针圆心画笔
-    private Paint paintMinute; //分针画笔
-    private Paint paintSecond; //秒针画笔
-    private float angleHour; //时针旋转角度
-    private float angleMinute; //分针旋转角度
-    private float angleSecond; //秒针旋转角度
-    private int cuurSecond; //当前秒
-    private int cuurMinute; //当前分
-    private int cuurHour; //当前时
+public class NormalClockView extends View {
+    // 是否可以绘制
+    private boolean drawable = true;
+    // 最小宽/高的一半长度
+    private int halfMinLength;
+    // 时针刻度线画笔
+    private Paint paintKd30;
+    // 时针数字画笔
+    private Paint paintKd30Text;
+    // 秒针刻度线画笔
+    private Paint paintKdSecond;
+    // 时针画笔
+    private Paint paintHour;
+    // 指针圆心画笔
+    private Paint paintCircleBar;
+    // 分针画笔
+    private Paint paintMinute;
+    // 秒针画笔
+    private Paint paintSecond;
+    // 时针旋转角度
+    private float angleHour;
+    // 分针旋转角度
+    private float angleMinute;
+    // 秒针旋转角度
+    private float angleSecond;
+    // 当前秒
+    private int cuurSecond;
+    // 当前分
+    private int cuurMinute;
+    // 当前时
+    private int cuurHour;
     private Calendar mCalendar;
-    private boolean isMorning = true; //上午/下午
+    // 上午/下午
+    private boolean isMorning = true;
     private String[] strKedu = {"3", "2", "1", "12", "11", "10", "9", "8", "7", "6", "5", "4"};
 
-    public DialView(Context context) {
+    public NormalClockView(Context context) {
         this(context, null);
     }
 
-    public DialView(Context context, AttributeSet attrs) {
+    public NormalClockView(Context context, AttributeSet attrs) {
         this(context, attrs, -1);
     }
 
-    public DialView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NormalClockView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         // 初始化画笔
         initPaint();
@@ -69,7 +85,7 @@ public class DialView extends View {
         // 表盘刻度绘制
         for (int i = 0; i < 60; i++) {
             if (i % 5 == 0) {
-                //获取刻度路径
+                // 获取刻度路径
                 float[] dialKdPaths = getDialPaths(halfMinLength, halfMinLength, halfMinLength - 8, halfMinLength * 5 / 6, -i * 6);
                 canvas.drawLines(dialKdPaths, paintKd30);
                 float[] dialPathsStr = getDialPaths(halfMinLength, halfMinLength, halfMinLength - 8, halfMinLength * 3 / 4, -i * 6);
@@ -82,25 +98,25 @@ public class DialView extends View {
         // 指针绘制
         // 时针绘制
         canvas.save();
-        //保存之前内容
+        // 保存之前内容
         canvas.rotate(angleHour, halfMinLength, halfMinLength);
-        //旋转的是画布,从而得到指针旋转的效果
+        // 旋转的是画布,从而得到指针旋转的效果
         canvas.drawLine(halfMinLength, halfMinLength, halfMinLength, halfMinLength * 3 / 4, paintHour);
         canvas.restore();
-        //恢复
+        // 恢复
         // 绘制分针
         canvas.save();
         canvas.rotate(angleMinute, halfMinLength, halfMinLength);
-        //旋转的是画布,从而得到指针旋转的效果
+        // 旋转的是画布,从而得到指针旋转的效果
         canvas.drawLine(halfMinLength, halfMinLength, halfMinLength, halfMinLength / 2, paintMinute);
         paintCircleBar.setColor(Color.rgb(75, 75, 75));
         paintCircleBar.setShadowLayer(4, 4, 8, Color.argb(70, 40, 40, 40));
         canvas.drawCircle(halfMinLength, halfMinLength, 24, paintCircleBar);
         canvas.restore();
-        //绘制秒针
+        // 绘制秒针
         canvas.save();
         canvas.rotate(angleSecond, halfMinLength, halfMinLength);
-        //旋转的是画布,从而得到指针旋转的效果
+        // 旋转的是画布,从而得到指针旋转的效果
         canvas.drawLine(halfMinLength, halfMinLength + 40, halfMinLength, halfMinLength / 4 - 20, paintSecond);
         paintCircleBar.setColor(Color.rgb(178, 34, 34));
         paintCircleBar.setShadowLayer(4, 4, 8, Color.argb(50, 80, 0, 0));
@@ -134,14 +150,19 @@ public class DialView extends View {
         new Thread(() -> {
             while (drawable) {
                 try {
-                    Thread.sleep(1000); // 睡1s
-                    updataAngleSecond(); //更新秒针角度
-                    updataAngleMinute(); //更新分针角度
-                    updataAngleHour(); //更新时针角度
+                    // 睡1s
+                    Thread.sleep(1000);
+                    // 更新秒针角度
+                    updataAngleSecond();
+                    // 更新分针角度
+                    updataAngleMinute();
+                    // 更新时针角度
+                    updataAngleHour();
                     if (mListener != null) {
                         mListener.onClockMonitor(cuurHour, cuurMinute, cuurSecond);
                     }
-                    postInvalidate(); //重新绘制
+                    // 重新绘制
+                    postInvalidate();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -149,8 +170,9 @@ public class DialView extends View {
         }).start();
     }
 
+    /** 更新时针角度 */
     private void updataAngleHour() {
-        //更新时针角度
+        // 更新时针角度
         angleHour = angleHour + (30f / 3600);
         if (angleHour >= 360) {
             angleHour = 0;
@@ -158,8 +180,9 @@ public class DialView extends View {
         }
     }
 
+    /** 更新分针角度 */
     private void updataAngleMinute() {
-        //更新分针角度
+        // 更新分针角度
         angleMinute = angleMinute + 0.1f;
         if (angleMinute >= 360) {
             angleMinute = 0;
@@ -168,15 +191,16 @@ public class DialView extends View {
         }
     }
 
+    /** 更新秒针角度 */
     private void updataAngleSecond() {
-        //更新秒针角度
+        // 更新秒针角度
         angleSecond = angleSecond + 6;
         cuurSecond += 1;
         if (angleSecond >= 360) {
             angleSecond = 0;
             cuurSecond = 0;
             cuurMinute += 1;
-            //一分钟同步一次本地时间
+            // 一分钟同步一次本地时间
             mCalendar = Calendar.getInstance();
             cuurHour = mCalendar.get(Calendar.HOUR_OF_DAY);
             cuurMinute = mCalendar.get(Calendar.MINUTE);
@@ -231,15 +255,24 @@ public class DialView extends View {
         paintKd30.setDither(true);
         paintKd30.setStrokeCap(Paint.Cap.ROUND);
         paintKd30Text = new Paint();
-        paintKd30Text.setTextAlign(Paint.Align.LEFT); //左对齐
-        paintKd30Text.setStrokeWidth(6); //设置宽度
-        paintKd30Text.setTextSize(40); //文字大小
-        paintKd30Text.setTypeface(Typeface.DEFAULT_BOLD); //加粗
-        paintKd30Text.setColor(Color.rgb(75, 75, 75)); //画笔颜色
-        paintKd30Text.setAntiAlias(true); //抗锯齿
-        paintKd30Text.setDither(true); //抖动
-        paintKd30Text.setStrokeCap(Paint.Cap.ROUND); //笔尖圆角
-        paintKd30Text.setShadowLayer(4, 2, 4, Color.argb(60, 90, 90, 90)); //阴影
+        // 左对齐
+        paintKd30Text.setTextAlign(Paint.Align.LEFT);
+        // 设置宽度
+        paintKd30Text.setStrokeWidth(6);
+        // 文字大小
+        paintKd30Text.setTextSize(40);
+        // 加粗
+        paintKd30Text.setTypeface(Typeface.DEFAULT_BOLD);
+        // 画笔颜色
+        paintKd30Text.setColor(Color.rgb(75, 75, 75));
+        // 抗锯齿
+        paintKd30Text.setAntiAlias(true);
+        // 抖动
+        paintKd30Text.setDither(true);
+        // 笔尖圆角
+        paintKd30Text.setStrokeCap(Paint.Cap.ROUND);
+        // 阴影
+        paintKd30Text.setShadowLayer(4, 2, 4, Color.argb(60, 90, 90, 90));
         paintKdSecond = new Paint();
         paintKdSecond.setStrokeWidth(6);
         paintKdSecond.setColor(Color.rgb(75, 75, 75));

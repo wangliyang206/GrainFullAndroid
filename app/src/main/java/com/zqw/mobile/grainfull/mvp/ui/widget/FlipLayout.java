@@ -26,7 +26,7 @@ import java.util.Calendar;
  * @ProjectName: GrainFullAndroid
  * @Package: com.zqw.mobile.grainfull.mvp.ui.widget
  * @ClassName: FlipLayout
- * @Description: 翻转时钟(效果)
+ * @Description: 翻转布局(时钟效果)
  * @Author: WLY
  * @CreateDate: 2023/2/21 11:06
  */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myFlip="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_compass_clock"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_compassclock_top"
+        layout="@layout/comm_top_layout" />
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.compassclock.TimeDiskView
+        android:id="@+id/view_compassclock_clock"
+        android:layout_width="match_parent"
+        android:background="@color/common_text_color"
+        android:layout_height="match_parent"/>
+</LinearLayout>
