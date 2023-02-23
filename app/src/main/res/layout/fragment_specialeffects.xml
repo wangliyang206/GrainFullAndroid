@@ -281,6 +281,17 @@
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_dashboard"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_dashboard" />
 
+                <TextView
+                    android:id="@+id/btn_fragmentspecialeffects_other_evolution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="进化图"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_scaleruler"
+                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_scaleruler" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

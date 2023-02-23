@@ -24,6 +24,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CompassClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DashboardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FlipClockActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.LevelSelectActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ProgressViewActivity;
@@ -84,6 +85,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_levitationbutton,                                 // 悬浮窗口/按钮
             R.id.btn_fragmentspecialeffects_other_dashboard,                                        // 仪表盘
             R.id.btn_fragmentspecialeffects_other_scaleruler,                                       // 刻度尺
+            R.id.btn_fragmentspecialeffects_other_evolution,                                        // 进化图
     })
     @Override
     public void onClick(View v) {
@@ -122,6 +124,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_scaleruler:                                  // 刻度尺
                 ActivityUtils.startActivity(ScaleRulerActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_evolution:                                   // 进化图
+                ActivityUtils.startActivity(LevelSelectActivity.class);
                 break;
         }
     }

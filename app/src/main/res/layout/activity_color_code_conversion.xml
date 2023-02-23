@@ -52,7 +52,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:digits="#0123456789"
+                    android:digits="#0123456789qwertyuiopasdfghjklzxcvbnm"
                     android:gravity="center_vertical"
                     android:hint="十六进制颜色值"
                     android:inputType="number"
@@ -207,6 +207,52 @@
                 <!-- 复制 -->
                 <ImageView
                     android:id="@+id/btn_colorcodeconversion_copyhsv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@mipmap/icon_copy" />
+            </LinearLayout>
+
+            <!-- 颜色代码 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="颜色代码"
+                android:textColor="@color/rmb_dark_green_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/edit_bg_selector"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edit_colorcodeconversion_computer"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="颜色代码值"
+                    android:digits="0123456789qwertyuiopasdfghjklzxcvbnm"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="@color/common_text_color"
+                    android:textColorHint="@color/common_text_hint_color"
+                    android:textSize="14sp" />
+
+                <!-- 复制 -->
+                <ImageView
+                    android:id="@+id/btn_colorcodeconversion_copycomputer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"

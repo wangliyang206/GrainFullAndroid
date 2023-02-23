@@ -58,6 +58,8 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
     EditText editCmyk;                                                                              // 显示的CMYK颜色
     @BindView(R.id.edit_colorcodeconversion_hsv)
     EditText editHsv;                                                                               // 显示的HSV颜色
+    @BindView(R.id.edit_colorcodeconversion_computer)
+    EditText editComputer;                                                                          // 显示的计算机颜色
 
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 格式化对像
@@ -93,28 +95,38 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "color_code_conversion");
 
-        setCurrentColor(0, mDefaultColor);
+        setCurrentColor(0, isAlpha(mDefaultColor), mDefaultColor);
+    }
+
+    /**
+     * 是否透明
+     */
+    private boolean isAlpha(int mColor) {
+        // 00是完全透明， ff是完全不透明(255)
+        return Color.alpha(mColor) != 255;
     }
 
     /**
      * 设置当前颜色
      *
-     * @param type   0代表第一次进来时加载默认颜色；1代表除了HEX不动其余需要重新赋值；2代表除了RGB不动其余需要重新赋值；3代表除了CMYK不动其余需要重新赋值；4代表除了HSV不动其余需要重新赋值；
-     * @param mColor
+     * @param type    0代表第一次进来时加载默认颜色；1代表除了HEX不动其余需要重新赋值；2代表除了RGB不动其余需要重新赋值；3代表除了CMYK不动其余需要重新赋值；4代表除了HSV不动其余需要重新赋值；5代表除了计算机代码其余需要重新赋值；
+     * @param isAlpha 是否有透明度
+     * @param mColor  颜色值
      */
-    private void setCurrentColor(int type, int mColor) {
+    private void setCurrentColor(int type, boolean isAlpha, int mColor) {
         // 去除监听
         editHex.removeTextChangedListener(mHex);
         editRgb.removeTextChangedListener(mRgb);
         editCmyk.removeTextChangedListener(mCmyk);
         editHsv.removeTextChangedListener(mHsv);
+        editComputer.removeTextChangedListener(mComputer);
 
         // 显示背景颜色
         viewCard.setCardBackgroundColor(mColor);
 
         if (type != 1) {
             // 显示十六进制的颜色
-            editHex.setText(ColorsUtil.getHexString(mColor, false));
+            editHex.setText(ColorsUtil.getHexString(mColor, isAlpha));
         }
 
         // 显示 RGB 颜色
@@ -148,6 +160,11 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
                             mDecimalFormat.format(hsv[2]));
         }
 
+        // 显示 计算机颜色代码
+        if (type != 5) {
+            editComputer.setText("0x" + Integer.toHexString(mColor));
+        }
+
         // 增加监听
         // HEX 监听
         editHex.addTextChangedListener(mHex);
@@ -157,6 +174,8 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
         editCmyk.addTextChangedListener(mCmyk);
         // HSV 监听
         editHsv.addTextChangedListener(mHsv);
+        // 计算机颜色代码 监听
+        editComputer.addTextChangedListener(mComputer);
     }
 
     /**
@@ -175,6 +194,7 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
             R.id.btn_colorcodeconversion_copyrgb,                                                   // 复制RGB
             R.id.btn_colorcodeconversion_copycmyk,                                                  // 复制CMYK
             R.id.btn_colorcodeconversion_copyhsv,                                                   // 复制HSV
+            R.id.btn_colorcodeconversion_copycomputer,                                              // 复制计算机颜色代码
     })
     @Override
     public void onClick(View v) {
@@ -204,6 +224,13 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
                 String mHsvColor = editHsv.getText().toString();
                 if (!TextUtils.isEmpty(mHsvColor)) {
                     ClipboardUtils.copyText(mHsvColor);
+                    showMessage("复制成功！");
+                }
+                break;
+            case R.id.btn_colorcodeconversion_copycomputer:                                         // 复制计算机颜色代码
+                String mComputerColor = editComputer.getText().toString();
+                if (!TextUtils.isEmpty(mComputerColor)) {
+                    ClipboardUtils.copyText(mComputerColor);
                     showMessage("复制成功！");
                 }
                 break;
@@ -253,7 +280,8 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             try {
-                setCurrentColor(1, Color.parseColor(s.toString()));
+                int mColor = Color.parseColor(s.toString());
+                setCurrentColor(1, isAlpha(mColor), mColor);
             } catch (Exception ex) {
                 // 位数不足时会闪退，这时不用管
                 Timber.e("####mHex-onTextChanged-ex=%s", ex.getMessage());
@@ -280,7 +308,7 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
             try {
                 String val = s.toString();
                 if (TextUtils.isEmpty(val)) {
-                    setCurrentColor(2, Color.parseColor("#FFFFFF"));
+                    setCurrentColor(2, false, Color.parseColor("#FFFFFF"));
                 } else {
                     String[] mSplit = val.split(",");
                     String[] rgb = new String[3];
@@ -300,7 +328,7 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
                     }
 
 
-                    setCurrentColor(2, Color.rgb(
+                    setCurrentColor(2, false, Color.rgb(
                             Integer.parseInt(rgb[0]),
                             Integer.parseInt(rgb[1]),
                             Integer.parseInt(rgb[2])
@@ -341,7 +369,7 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
                         // 将cmyk转化成rgb
                         int[] mRgb = ColorsUtil.getRGB(Float.parseFloat(mSplit[0]), Float.parseFloat(mSplit[1]), Float.parseFloat(mSplit[2]), Float.parseFloat(mSplit[3]));
                         // 显示
-                        setCurrentColor(3, Color.rgb(mRgb[0], mRgb[1], mRgb[2]));
+                        setCurrentColor(3, false, Color.rgb(mRgb[0], mRgb[1], mRgb[2]));
                     }
                 }
 
@@ -382,7 +410,7 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
                     // 不够三份，则不做处理
                     if (mSplit.length == 3) {
                         // 显示
-                        setCurrentColor(4, Color.HSVToColor(mHsv));
+                        setCurrentColor(4, false, Color.HSVToColor(mHsv));
                     }
                 }
 
@@ -398,4 +426,43 @@ public class ColorCodeConversionActivity extends BaseActivity<ColorCodeConversio
         }
     };
 
+    /**
+     * 计算机颜色代码 监听
+     */
+    private final TextWatcher mComputer = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            try {
+//                0x330000FF
+                // 转大写，然后截取字符串，0X
+                String str = s.toString().toUpperCase().replace("0X", "");
+                // 截取字符串，33
+                String val = str.substring(0, 2);
+                // 获取透明度
+                int mAlpha = Integer.parseInt(val, 16);
+                // 截取字符串，0000FF
+                val = str.substring(2);
+
+                // 颜色值#，转成 int;
+                int mColor = Color.parseColor("#" + val);
+                int r = Color.red(mColor);
+                int g = Color.green(mColor);
+                int b = Color.blue(mColor);
+                setCurrentColor(5, mAlpha != 255, Color.argb(mAlpha, r, g, b));
+            } catch (Exception ex) {
+                // 位数不足时会闪退，这时不用管
+                Timber.e("####mComputer-onTextChanged-ex=%s", ex.getMessage());
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 }
