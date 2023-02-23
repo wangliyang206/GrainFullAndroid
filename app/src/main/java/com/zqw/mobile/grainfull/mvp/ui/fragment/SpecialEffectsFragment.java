@@ -23,6 +23,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CompassClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DashboardActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ElectronicClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FlipClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevelSelectActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
@@ -77,6 +78,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_clock_clock,                                            // 时钟
             R.id.btn_fragmentspecialeffects_clock_flipclock,                                        // 翻转时钟
             R.id.btn_fragmentspecialeffects_clock_compassclock,                                     // 罗盘时钟
+            R.id.btn_fragmentspecialeffects_clock_electronicclock,                                  // 电子时钟
 
             R.id.btn_fragmentspecialeffects_other_audiowaveform,                                    // 音频波形
             R.id.btn_fragmentspecialeffects_other_lottery,                                          // 抽奖转盘
@@ -102,6 +104,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_clock_compassclock:                                // 罗盘时钟
                 ActivityUtils.startActivity(CompassClockActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_clock_electronicclock:                             // 电子时钟
+                ActivityUtils.startActivity(ElectronicClockActivity.class);
                 break;
 
             case R.id.btn_fragmentspecialeffects_other_audiowaveform:                               // 音频波形

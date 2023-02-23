@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.electimeview.ElecTimeNumView
+            android:id="@+id/view_electime_num1"
+            android:layout_width="60dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.electimeview.ElecTimeNumView
+            android:id="@+id/view_electime_num2"
+            android:layout_width="60dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="22dp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.electimeview.ElecTimeNumView
+            android:id="@+id/view_electime_num3"
+            android:layout_width="60dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.electimeview.ElecTimeNumView
+            android:id="@+id/view_electime_num4"
+            android:layout_width="60dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.electimeview.ElecTimeNumView
+            android:id="@+id/view_electime_num5"
+            android:layout_width="30dp"
+            android:layout_height="52dp"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="4dp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.electimeview.ElecTimeNumView
+            android:id="@+id/view_electime_num6"
+            android:layout_width="30dp"
+            android:layout_height="52dp"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+</RelativeLayout>

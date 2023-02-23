@@ -91,4 +91,20 @@
         <item>@color/btn_press_color</item>
         <item>@color/colorPrimary</item>
     </integer-array>
+
+    <!-- 电子时钟 -->
+    <declare-styleable name="ElecTimeNumView">
+        <attr name="num" format="enum">
+            <enum name="num0" value="0" />
+            <enum name="num1" value="1" />
+            <enum name="num2" value="2" />
+            <enum name="num3" value="3" />
+            <enum name="num4" value="4" />
+            <enum name="num5" value="5" />
+            <enum name="num6" value="6" />
+            <enum name="num7" value="7" />
+            <enum name="num8" value="8" />
+            <enum name="num9" value="9" />
+        </attr>
+    </declare-styleable>
 </resources>
