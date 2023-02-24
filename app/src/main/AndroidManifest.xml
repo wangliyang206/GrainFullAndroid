@@ -68,6 +68,10 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.ScoreboardActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/SplashTheme" />
+        <activity
             android:name=".mvp.ui.activity.ElectronicClockActivity"
             android:screenOrientation="portrait" />
         <activity

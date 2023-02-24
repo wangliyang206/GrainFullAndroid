@@ -49,6 +49,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.NoiseMeasurementActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PictureCompressionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PictureMosaicActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ScoreboardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
 import org.simple.eventbus.EventBus;
@@ -210,6 +211,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_audioconversion,                                                  // 音频转换
             R.id.btn_fragmenthome_other_decision,                                                   // 做个决定
             R.id.btn_fragmenthome_other_magnifier,                                                  // 放大镜
+            R.id.btn_fragmenthome_other_scoreboard,                                                 // 记分牌
     })
     @Override
     public void onClick(View v) {
@@ -307,7 +309,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_other_magnifier:                                             // 放大镜
                 ActivityUtils.startActivity(MagnifierActivity.class);
                 break;
-
+            case R.id.btn_fragmenthome_other_scoreboard:                                            // 记分牌
+                ActivityUtils.startActivity(ScoreboardActivity.class);
+                break;
         }
     }
 
