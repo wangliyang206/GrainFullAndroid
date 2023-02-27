@@ -349,7 +349,7 @@ public class UmDataStatisticsPresenter extends BasePresenter<UmDataStatisticsCon
                 param.setStartDate(mYesterday);
                 param.setEndDate(mYesterday);
                 // 当前界面未做分页，如果想要全部显示，此值必须大于友盟统计后台中事件总数。
-                param.setPerPage(100);
+                param.setPerPage(500);
                 param.setPage(1);
 //                param.setVersion("");
 
