@@ -159,7 +159,7 @@ public class NormalClockView extends View {
                     // 更新时针角度
                     updataAngleHour();
                     if (mListener != null) {
-                        mListener.onClockMonitor(cuurHour, cuurMinute, cuurSecond);
+                        mListener.onClockMonitor(mCalendar.get(Calendar.AM_PM) == Calendar.PM, cuurHour, cuurMinute, cuurSecond);
                     }
                     // 重新绘制
                     postInvalidate();
@@ -170,7 +170,9 @@ public class NormalClockView extends View {
         }).start();
     }
 
-    /** 更新时针角度 */
+    /**
+     * 更新时针角度
+     */
     private void updataAngleHour() {
         // 更新时针角度
         angleHour = angleHour + (30f / 3600);
@@ -180,7 +182,9 @@ public class NormalClockView extends View {
         }
     }
 
-    /** 更新分针角度 */
+    /**
+     * 更新分针角度
+     */
     private void updataAngleMinute() {
         // 更新分针角度
         angleMinute = angleMinute + 0.1f;
@@ -191,7 +195,9 @@ public class NormalClockView extends View {
         }
     }
 
-    /** 更新秒针角度 */
+    /**
+     * 更新秒针角度
+     */
     private void updataAngleSecond() {
         // 更新秒针角度
         angleSecond = angleSecond + 6;
@@ -313,7 +319,7 @@ public class NormalClockView extends View {
     private onClockMonitorListener mListener;
 
     public interface onClockMonitorListener {
-        void onClockMonitor(int hour, int minute, int second);
+        void onClockMonitor(boolean isNoon, int hour, int minute, int second);
     }
 
     public void setOnClockMonitorListener(onClockMonitorListener listener) {

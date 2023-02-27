@@ -215,7 +215,7 @@ public class ClockView extends View {
         mHourDegree = hour / 12 * 360;
 
         if (mListener != null) {
-            mListener.onClockMonitor(Math.round(hour), Math.round(minute), Math.round(second));
+            mListener.onClockMonitor(calendar.get(Calendar.AM_PM) == Calendar.PM, Math.round(hour), Math.round(minute), Math.round(second));
         }
     }
 
@@ -341,7 +341,7 @@ public class ClockView extends View {
     private onClockMonitorListener mListener;
 
     public interface onClockMonitorListener {
-        void onClockMonitor(int hour, int minute, int second);
+        void onClockMonitor(boolean isNoon, int hour, int minute, int second);
     }
 
     public void setOnClockMonitorListener(onClockMonitorListener listener) {

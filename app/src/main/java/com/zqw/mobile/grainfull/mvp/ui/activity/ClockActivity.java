@@ -91,12 +91,23 @@ public class ClockActivity extends BaseActivity<ClockPresenter> implements Clock
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "clock");
         // 增加监听
-        viewClock.setOnClockMonitorListener((hour, minute, second) -> {
+        viewClock.setOnClockMonitorListener((isNoon, hour, minute, second) -> {
+            if (isNoon && hour == 0) {
+                // PM是下午时间 12点到23点
+                hour = 12;
+            }
+            // AM是上午时间 24点到11点
+
             if (txviClockTips != null)
                 txviClockTips.setText(CommonUtils.format0Right(String.valueOf(hour)) + ":" + CommonUtils.format0Right(String.valueOf(minute)) + ":" + CommonUtils.format0Right(String.valueOf(second)));
         });
 
-        viewNormalClockView.setOnClockMonitorListener((hour, minute, second) -> {
+        viewNormalClockView.setOnClockMonitorListener((isNoon, hour, minute, second) -> {
+            if (isNoon && hour == 0) {
+                // PM是下午时间 12点到23点
+                hour = 12;
+            }
+            // AM是上午时间 24点到11点
             if (txviDialTips != null)
                 txviDialTips.setText(CommonUtils.format0Right(String.valueOf(hour)) + ":" + CommonUtils.format0Right(String.valueOf(minute)) + ":" + CommonUtils.format0Right(String.valueOf(second)));
         });
