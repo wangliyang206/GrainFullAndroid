@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerScoreboardComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ScoreboardContract;
@@ -101,6 +102,8 @@ public class ScoreboardActivity extends BaseActivity<ScoreboardPresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("记分牌");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "scoreboard");
     }
 
     public Activity getActivity() {
