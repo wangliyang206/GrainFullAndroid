@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerSpiderWebGradeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.SpiderWebGradeContract;
@@ -79,6 +80,8 @@ public class SpiderWebGradeActivity extends BaseActivity<SpiderWebGradePresenter
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("蜘蛛网等级");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "spider_web_grade");
         seekbarLevel.setOnSeekBarChangeListener(this);
         seekbarSpiderNumber.setOnSeekBarChangeListener(this);
     }

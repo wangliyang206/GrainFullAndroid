@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.service.FloatingWindowService;
 import com.zqw.mobile.grainfull.di.component.DaggerLevitationButtonComponent;
@@ -89,6 +90,8 @@ public class LevitationButtonActivity extends BaseActivity<LevitationButtonPrese
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("悬浮窗口");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "levitation_button");
         // 设置一个空事件，为了防止拖动时出现无效
         viewFb.setOnClickListener(v -> {
         });

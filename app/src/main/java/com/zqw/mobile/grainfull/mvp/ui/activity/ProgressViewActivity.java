@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.white.progressview.CircleProgressView;
 import com.white.progressview.HorizontalProgressView;
 import com.zqw.mobile.grainfull.R;
@@ -76,6 +77,8 @@ public class ProgressViewActivity extends BaseActivity<ProgressViewPresenter> im
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("进度条");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "progress_view");
         mProgressView20.setProgressPosition(HorizontalProgressView.BOTTOM);
         mProgressView80.setProgressPosition(HorizontalProgressView.TOP);
         mProgressView100.setProgressPosition(HorizontalProgressView.CENTRE);

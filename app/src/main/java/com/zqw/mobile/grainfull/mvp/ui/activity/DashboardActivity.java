@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerDashboardComponent;
 import com.zqw.mobile.grainfull.mvp.contract.DashboardContract;
@@ -74,6 +75,8 @@ public class DashboardActivity extends BaseActivity<DashboardPresenter> implemen
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("仪表盘");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "dashboard");
     }
 
     @OnClick({

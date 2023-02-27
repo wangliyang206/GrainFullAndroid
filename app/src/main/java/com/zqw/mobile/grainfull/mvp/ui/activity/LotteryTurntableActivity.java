@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerLotteryTurntableComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LotteryTurntableContract;
@@ -71,6 +72,8 @@ public class LotteryTurntableActivity extends BaseActivity<LotteryTurntablePrese
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("抽奖转盘");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "lottery_turntable");
         // 初始化数据
         images.add(R.mipmap.role);
         images.add(R.mipmap.sports);

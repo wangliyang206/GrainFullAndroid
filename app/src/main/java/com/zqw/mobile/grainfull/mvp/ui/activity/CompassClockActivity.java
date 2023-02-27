@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerCompassClockComponent;
 import com.zqw.mobile.grainfull.mvp.contract.CompassClockContract;
@@ -64,6 +65,8 @@ public class CompassClockActivity extends BaseActivity<CompassClockPresenter> im
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("罗盘时钟");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "compass_clock");
         // 开始计时
         contentLayout.post(() -> viewClock.start());
 

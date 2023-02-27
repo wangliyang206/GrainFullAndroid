@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerLevelSelectComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LevelSelectContract;
@@ -62,6 +63,8 @@ public class LevelSelectActivity extends BaseActivity<LevelSelectPresenter> impl
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("进化图");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "level_select");
         viewLevel.setOnChangeListener(index -> {
             switch (index){
                 case 0:

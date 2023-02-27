@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerScaleRulerComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ScaleRulerContract;
@@ -61,6 +62,8 @@ public class ScaleRulerActivity extends BaseActivity<ScaleRulerPresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("刻度尺");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "scale_ruler");
         viewScaleRuler.setOnNumSelectListener(selectedNum -> {
             txviNum.setText(selectedNum + " cm");
             txviNum.setTextColor(viewScaleRuler.getIndicatorColor());
