@@ -32,6 +32,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ProgressViewActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ScaleRulerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.TemperatureActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -88,6 +89,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_dashboard,                                        // 仪表盘
             R.id.btn_fragmentspecialeffects_other_scaleruler,                                       // 刻度尺
             R.id.btn_fragmentspecialeffects_other_evolution,                                        // 进化图
+            R.id.btn_fragmentspecialeffects_other_temperature,                                      // 升温效果
     })
     @Override
     public void onClick(View v) {
@@ -132,6 +134,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_evolution:                                   // 进化图
                 ActivityUtils.startActivity(LevelSelectActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_temperature:                                 // 升温效果
+                ActivityUtils.startActivity(TemperatureActivity.class);
                 break;
         }
     }

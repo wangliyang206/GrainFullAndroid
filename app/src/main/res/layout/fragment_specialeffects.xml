@@ -303,6 +303,17 @@
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_scaleruler"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_scaleruler" />
 
+                <TextView
+                    android:id="@+id/btn_fragmentspecialeffects_other_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="升温效果"
+                    app:layout_constraintLeft_toLeftOf="@+id/btn_fragmentspecialeffects_other_levitationbutton"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmentspecialeffects_other_levitationbutton" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

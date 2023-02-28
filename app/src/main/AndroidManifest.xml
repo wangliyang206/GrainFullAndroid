@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.TemperatureActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.StopwatchActivity"
             android:screenOrientation="portrait" />
         <activity

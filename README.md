@@ -87,7 +87,7 @@
 ![](image/ElectronicClock.jpg)
 
 ### 其它：
-    音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮、仪表盘、刻度尺、进化图；
+    音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮、仪表盘、刻度尺、进化图、升温效果；
 
 ![](image/AudioWaveform.jpg)
 ![](image/LotteryTurntable.jpg)
@@ -97,6 +97,7 @@
 ![](image/Dashboard.jpg)
 ![](image/ScaleRuler.jpg)
 ![](image/LevelSelect.jpg)
+![](image/Temperature.jpg)
 
 ## 首页侧滑
     友盟数据统计、设置、关于；
