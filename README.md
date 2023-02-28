@@ -54,12 +54,13 @@
 ![](image/NoiseMeasurement.jpg)
 
 ### 其它：
-    音频转换、做个决定、放大镜、记分牌等；
+    音频转换、做个决定、放大镜、记分牌、计时器等；
 
 ![](image/AudioConversion.jpg)
 ![](image/Decision.jpg)
 ![](image/Magnifier.jpg)
 ![](image/Scoreboard.jpg)
+![](image/Stopwatch.jpg)
 
 ## 游戏
 ### 普通游戏：
