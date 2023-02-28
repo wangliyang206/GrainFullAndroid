@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:id="@+id/mTempNumberContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="23dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="8dp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mHundredNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mTenNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mSingleNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/temperature_symbol" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mClockContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mHour1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mHour2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mColon1"
+            style="@style/progress_text_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textColor="@android:color/white"
+            android:textSize="60sp"
+            android:visibility="gone" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mMinute1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mMinute2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/mColon2"
+            style="@style/progress_text_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textColor="@android:color/white"
+            android:textSize="60sp"
+            android:visibility="visible" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mSecond1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.particle.NumberView
+            android:id="@+id/mSecond2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+    </LinearLayout>
+</FrameLayout>

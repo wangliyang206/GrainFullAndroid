@@ -107,4 +107,21 @@
             <enum name="num9" value="9" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="ProgressLayout">
+        <!-- 控件宽-->
+        <attr name="progressLayout_width" format="dimension" />
+        <!-- 控件高-->
+        <attr name="progressLayout_height" format="dimension" />
+        <!-- 外阴影宽度-->
+        <attr name="progressLayout_outer_shader_width" format="dimension" />
+        <!-- 圆环宽度-->
+        <attr name="progressLayout_circle_stroke_width" format="dimension" />
+        <!-- 是否是清洁模式-->
+        <attr name="progressLayout_clean_mode" format="boolean" />
+        <!-- 是否执行指针上浮的初始化动画 -->
+        <attr name="progressLayout_init_anim" format="boolean" />
+        <!-- 是否是保温模式-->
+        <attr name="progressLayout_keep_ware_mode" format="boolean" />
+    </declare-styleable>
 </resources>

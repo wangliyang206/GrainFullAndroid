@@ -174,4 +174,9 @@
         <attr name="clock_darkColor" format="color" />
         <attr name="clock_textSize" format="dimension" />
     </declare-styleable>
+
+    <!-- 温度控件字体样式-->
+    <style name="progress_text_font">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+    </style>
 </resources>
