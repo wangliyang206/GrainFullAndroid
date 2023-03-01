@@ -1,14 +1,15 @@
 package com.zqw.mobile.grainfull.di.component;
 
-import dagger.BindsInstance;
-import dagger.Component;
-
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.di.scope.ActivityScope;
 import com.zqw.mobile.grainfull.di.module.PictureCompressionModule;
 import com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract;
-
-import com.jess.arms.di.scope.ActivityScope;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PictureCompressionActivity;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.CompressPicScaleFragment;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.CompressPicSizeFragment;
+
+import dagger.BindsInstance;
+import dagger.Component;
 
 /**
  * ================================================
@@ -22,6 +23,8 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.PictureCompressionActivity;
 public interface PictureCompressionComponent {
 
     void inject(PictureCompressionActivity activity);
+    void inject(CompressPicSizeFragment fragment);
+    void inject(CompressPicScaleFragment fragment);
 
     @Component.Builder
     interface Builder {

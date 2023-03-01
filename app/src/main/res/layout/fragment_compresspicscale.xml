@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_compresspicscale"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 显示图片 -->
+    <ImageView
+        android:id="@+id/imvi_compresspicscale_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/layout_bg_shape"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/lila_compresspicscale_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/layout_bg_shape"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="图片信息"
+            android:textColor="@color/common_text_color"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/line_frame_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="图片尺寸"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txvi_compresspicscale_before_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text=""
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="图片大小"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txvi_compresspicscale_before_howbig"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text=""
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:text="调整压缩指数"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="16sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp">
+
+            <TextView
+                android:id="@+id/txvi_compresspicscale_width"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="宽度"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edit_compresspicscale_width"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/edit_compresspicscale_width" />
+
+            <EditText
+                android:id="@+id/edit_compresspicscale_width"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_bg_selector"
+                android:inputType="number"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                app:layout_constraintLeft_toRightOf="@+id/txvi_compresspicscale_width"
+                app:layout_constraintRight_toLeftOf="@+id/imvi_compresspicscale_chain"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txvi_compresspicscale_height"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="高度"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edit_compresspicscale_height"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/edit_compresspicscale_height" />
+
+            <EditText
+                android:id="@+id/edit_compresspicscale_height"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_bg_selector"
+                android:inputType="number"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                app:layout_constraintLeft_toRightOf="@+id/txvi_compresspicscale_height"
+                app:layout_constraintRight_toLeftOf="@+id/imvi_compresspicscale_chain"
+                app:layout_constraintTop_toBottomOf="@+id/edit_compresspicscale_width" />
+
+            <ImageView
+                android:id="@+id/imvi_compresspicscale_chain"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:src="@mipmap/icon_chain"
+                app:layout_constraintBottom_toBottomOf="@+id/edit_compresspicscale_height"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/edit_compresspicscale_width" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txvi_compresspicscale_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="压缩后保存路径："
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <!-- 添加图片 -->
+        <LinearLayout
+            android:id="@+id/view_compresspicscale_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_turntable_shape"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_add_picture" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="选择图片"
+                android:textColor="@color/rmb_dark_green_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 压缩 -->
+        <LinearLayout
+            android:id="@+id/view_compresspicscale_compression"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/btn_turntable_shape"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_compress" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="压缩图片"
+                android:textColor="@color/rmb_dark_green_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
