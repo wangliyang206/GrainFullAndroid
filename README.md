@@ -44,7 +44,8 @@
 
 ![](image/PictureMosaic.jpg)
 ![](image/NinePalaces.jpg)
-![](image/PictureCompression.jpg)
+![](image/PictureCompression1.jpg)
+![](image/PictureCompression2.jpg)
 
 ### 设备：
     查看设备信息、金属探测仪、噪音测量；
