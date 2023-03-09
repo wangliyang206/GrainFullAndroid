@@ -19,7 +19,7 @@ public class AppUpdate implements Parcelable {
         this.name = name;
         this.fileName = fileName;
         this.filePath = filePath;
-        this.force = force;
+        this.appForce = force;
         this.newAppSize = newAppSize;
         this.newAppUpdateDesc = newAppUpdateDesc;
     }
@@ -51,7 +51,7 @@ public class AppUpdate implements Parcelable {
     /**
      * 是否强制升级（1强制；0可选）
      */
-    private int force = 0;
+    private int appForce = 0;
     /**
      * 新APP文件大小
      */
@@ -110,11 +110,11 @@ public class AppUpdate implements Parcelable {
     }
 
     public int getForce() {
-        return force;
+        return appForce;
     }
 
     public void setForce(int force) {
-        this.force = force;
+        this.appForce = force;
     }
 
     public float getNewAppSize() {
@@ -150,7 +150,7 @@ public class AppUpdate implements Parcelable {
         dest.writeString(this.name);
         dest.writeString(this.fileName);
         dest.writeString(this.filePath);
-        dest.writeInt(this.force);
+        dest.writeInt(this.appForce);
         dest.writeFloat(this.newAppSize);
         dest.writeString(this.newAppUpdateDesc);
     }
@@ -162,7 +162,7 @@ public class AppUpdate implements Parcelable {
         this.name = in.readString();
         this.fileName = in.readString();
         this.filePath = in.readString();
-        this.force = in.readInt();
+        this.appForce = in.readInt();
         this.newAppSize = in.readFloat();
         this.newAppUpdateDesc = in.readString();
     }
