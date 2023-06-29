@@ -51,6 +51,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.PictureMosaicActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ScoreboardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.StopwatchActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.TranslateActivity;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VerticalScrollTextView;
 
 import org.simple.eventbus.EventBus;
@@ -200,6 +201,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_text_digital,                                                     // 数字转中文
             R.id.btn_fragmenthome_text_chinesetopinyin,                                             // 中文转拼音
             R.id.btn_fragmenthome_text_bulletchat,                                                  // 手持弹幕
+            R.id.btn_fragmenthome_text_translate,                                                   // 翻译
 
             R.id.btn_fragmenthome_image_picturemosaic,                                              // 图片拼接
             R.id.btn_fragmenthome_image_ninepalaces,                                                // 九宫格切图
@@ -279,6 +281,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_text_bulletchat:                                             // 手持弹幕
                 ActivityUtils.startActivity(HandheldBulletScreenActivity.class);
+                break;
+            case R.id.btn_fragmenthome_text_translate:                                              // 翻译
+                ActivityUtils.startActivity(TranslateActivity.class);
                 break;
 
             case R.id.btn_fragmenthome_image_picturemosaic:                                         // 图片拼接

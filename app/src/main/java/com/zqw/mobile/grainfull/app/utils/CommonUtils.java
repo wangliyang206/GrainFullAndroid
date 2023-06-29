@@ -47,6 +47,14 @@ import java.util.regex.Pattern;
  */
 
 public class CommonUtils {
+    /**
+     * 生成随机数
+     *
+     * @param n 0~n之间的整数
+     */
+    public static int getRandomNum(int n) {
+        return (int) ((Math.random() * n));
+    }
 
     /**
      * 通过秒换算成时分秒

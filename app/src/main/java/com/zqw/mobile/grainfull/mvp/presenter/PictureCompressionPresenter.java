@@ -1,17 +1,12 @@
 package com.zqw.mobile.grainfull.mvp.presenter;
 
-import android.app.Application;
-
-import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.jess.arms.http.imageloader.ImageLoader;
-
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract;
 
 import javax.inject.Inject;
 
-import com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 /**
  * ================================================
@@ -24,12 +19,6 @@ import com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract;
 public class PictureCompressionPresenter extends BasePresenter<PictureCompressionContract.Model, PictureCompressionContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
-    @Inject
-    Application mApplication;
-    @Inject
-    ImageLoader mImageLoader;
-    @Inject
-    AppManager mAppManager;
 
     @Inject
     public PictureCompressionPresenter(PictureCompressionContract.Model model, PictureCompressionContract.View rootView) {
@@ -40,8 +29,5 @@ public class PictureCompressionPresenter extends BasePresenter<PictureCompressio
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
-        this.mAppManager = null;
-        this.mImageLoader = null;
-        this.mApplication = null;
     }
 }

@@ -382,6 +382,18 @@
                     app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_text_chinesetopinyin"
                     app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_text_chinesetopinyin" />
 
+                <TextView
+                    android:id="@+id/btn_fragmenthome_text_translate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_bg_selector"
+                    android:padding="10dp"
+                    android:text="翻译"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmenthome_text_digital" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 图片应用 -->

@@ -36,6 +36,20 @@ public interface Constant {
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**
+     * 百度翻译 - 服务地址
+     */
+    String BAIDU_TRANSLATE_URL = "http://api.fanyi.baidu.com/api/trans/vip/translate";
+    /**
+     * 百度翻译 - APP ID
+     */
+    String BAIDU_TRANSLATE_APPID = "20221128001474660";
+
+    /**
+     * 百度翻译 - 密钥
+     */
+    String BAIDU_TRANSLATE_SECRETKEY = "MIeDZYeJsGadJRg6n8sE";
+
+    /**
      * 金莱特-服务协议
      */
     String serviceAgreementUrl = "http://www.buypb.cn/useragreement/zqwservicegreement_jlt.html";

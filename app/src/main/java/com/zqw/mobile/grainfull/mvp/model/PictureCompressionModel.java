@@ -3,13 +3,12 @@ package com.zqw.mobile.grainfull.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
-import com.jess.arms.di.scope.ActivityScope;
+import com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract;
 
 import javax.inject.Inject;
-
-import com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract;
 
 /**
  * ================================================

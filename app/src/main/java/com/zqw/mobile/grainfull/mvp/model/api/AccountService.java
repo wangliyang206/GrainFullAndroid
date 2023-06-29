@@ -5,12 +5,17 @@ import com.jess.arms.cj.GsonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.AppUpdate;
 import com.zqw.mobile.grainfull.mvp.model.entity.CommonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.LoginResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.TranslateResponse;
 
 import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 
 /**
  * 包名： PACKAGE_NAME
@@ -46,4 +51,16 @@ public interface AccountService {
     @POST("system/getVersion")
     Observable<GsonResponse<AppUpdate>> getVersion(@Body GsonRequest<Map<String, Object>> request);
 
+    // 下载
+    @Streaming
+    @GET()
+    Observable<ResponseBody> download(@Url String Url);
+
+    // 翻译
+    @GET()
+    Observable<TranslateResponse> translate(@Url String Url);
+
+    // 翻译，post的请求不成功，废弃
+//    @POST()
+//    Observable<TranslateResponse> translate(@Url String Url, @Body Map<String, Object> request);
 }

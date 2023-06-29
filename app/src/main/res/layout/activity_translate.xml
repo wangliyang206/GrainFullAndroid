@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_translate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_translate_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txvi_translate_before"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg_shape"
+            android:gravity="center"
+            android:text="智能检测"
+            android:tag="auto"
+            android:textColor="@color/rmb_dark_green_color"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/txvi_translate_interchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            android:src="@mipmap/icon_interchange" />
+
+        <TextView
+            android:id="@+id/txvi_translate_after"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg_shape"
+            android:gravity="center"
+            android:text="中文(简体)"
+            android:tag="zh"
+            android:textColor="@color/rmb_dark_green_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/layout_bg_shape">
+        <!-- 输入框 -->
+        <EditText
+            android:id="@+id/edit_translate_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请输入文字"
+            android:maxLines="10"
+            android:minLines="4"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="30dp"
+            android:text=""
+            android:textColor="@color/common_edit_color"
+            android:textColorHint="@color/common_edit_hint_color"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 结果 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cola_translate_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_bg_selector"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_translate_input">
+
+            <TextView
+                android:id="@+id/txvi_translate_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:gravity="top"
+                android:maxLines="10"
+                android:minLines="4"
+                android:paddingStart="10dp"
+                android:paddingTop="25dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="40dp"
+                android:text=""
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 播放 -->
+            <ImageView
+                android:id="@+id/imvi_translate_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:padding="10dp"
+                android:src="@mipmap/icon_speaker"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/imvi_translate_copy" />
+
+            <!-- 复制 -->
+            <ImageView
+                android:id="@+id/imvi_translate_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:src="@mipmap/icon_copy"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 翻译 -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imvi_translate_ok"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@mipmap/icon_translate"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="2dp"
+            app:civ_circle_background_color="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_translate_input"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_translate_input" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
