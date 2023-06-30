@@ -124,4 +124,43 @@
         <!-- 是否是保温模式-->
         <attr name="progressLayout_keep_ware_mode" format="boolean" />
     </declare-styleable>
+
+    <!-- 自定义TextView，可圆角 -->
+    <declare-styleable name="DrawableTextView">
+        <attr name="radius" format="dimension" />
+        <attr name="enableCenterDrawables" format="boolean" />
+        <attr name="enableTextInCenter" format="boolean" />
+        <attr name="drawableStartWidth" format="dimension" />
+        <attr name="drawableStartHeight" format="dimension" />
+        <attr name="drawableTopWidth" format="dimension" />
+        <attr name="drawableTopHeight" format="dimension" />
+        <attr name="drawableEndWidth" format="dimension" />
+        <attr name="drawableEndHeight" format="dimension" />
+        <attr name="drawableBottomWidth" format="dimension" />
+        <attr name="drawableBottomHeight" format="dimension" />
+    </declare-styleable>
+
+    <!-- 带效果的按钮 -->
+    <declare-styleable name="LoadingButton">
+        <attr name="enableShrink" format="boolean" />
+        <attr name="enableRestore" format="boolean" />
+        <attr name="disableClickOnLoading" format="boolean" />
+        <attr name="shrinkDuration" format="integer" />
+        <attr name="shrinkShape" format="enum">
+            <enum name="Default" value="0" />
+            <enum name="Oval" value="1" />
+        </attr>
+        <attr name="loadingEndDrawableSize" format="dimension" />
+        <attr name="loadingDrawableColor" format="color" />
+        <attr name="loadingDrawablePosition" format="enum">
+            <enum name="Start" value="0" />
+            <enum name="Top" value="1" />
+            <enum name="End" value="2" />
+            <enum name="Bottom" value="3" />
+        </attr>
+        <attr name="endSuccessDrawable" format="reference" />
+        <attr name="endFailDrawable" format="reference" />
+        <attr name="endDrawableAppearTime" format="integer" />
+        <attr name="endDrawableDuration" format="integer" />
+    </declare-styleable>
 </resources>

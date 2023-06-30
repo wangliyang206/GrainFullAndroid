@@ -28,8 +28,8 @@
             android:layout_weight="1"
             android:background="@drawable/layout_bg_shape"
             android:gravity="center"
-            android:text="智能检测"
             android:tag="auto"
+            android:text="智能检测"
             android:textColor="@color/rmb_dark_green_color"
             android:textSize="14sp" />
 
@@ -49,8 +49,8 @@
             android:layout_weight="1"
             android:background="@drawable/layout_bg_shape"
             android:gravity="center"
-            android:text="中文(简体)"
             android:tag="zh"
+            android:text="中文(简体)"
             android:textColor="@color/rmb_dark_green_color"
             android:textSize="14sp" />
     </LinearLayout>
@@ -140,17 +140,28 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- 翻译 -->
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imvi_translate_ok"
-            android:layout_width="55dp"
+        <com.zqw.mobile.grainfull.mvp.ui.widget.loadingbutton.LoadingButton
+            android:id="@+id/btn_translate_submit"
+            android:layout_width="wrap_content"
             android:layout_height="55dp"
-            android:src="@mipmap/icon_translate"
-            app:civ_border_color="@android:color/white"
-            app:civ_border_width="2dp"
-            app:civ_circle_background_color="@color/colorPrimary"
+            android:background="@color/colorPrimary"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:minHeight="45dp"
+            android:padding="8dp"
+            android:text="翻译"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:enableShrink="true"
+            app:endFailDrawable="@drawable/ic_fail"
+            app:endSuccessDrawable="@drawable/ic_successful"
             app:layout_constraintBottom_toBottomOf="@+id/edit_translate_input"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_translate_input" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_translate_input"
+            app:loadingDrawablePosition="Start"
+            app:radius="10dp"
+            app:shrinkShape="Oval" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

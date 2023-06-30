@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_load_button"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_loadbutton_top"
+        layout="@layout/comm_top_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.loadingbutton.LoadingButton
+                android:id="@+id/btn_loadbutton_ok"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/holo_red_light"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:minHeight="45dp"
+                android:padding="8dp"
+                android:text="Submit"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:enableShrink="true"
+                app:endFailDrawable="@drawable/ic_fail"
+                app:endSuccessDrawable="@drawable/ic_successful"
+                app:loadingDrawablePosition="Start"
+                app:radius="10dp"
+                app:shrinkShape="Oval" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_loadbutton_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/layout_bg_shape"
+                    android:text="cancel" />
+
+                <Button
+                    android:id="@+id/btn_loadbutton_fail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/layout_bg_shape"
+                    android:text="fail" />
+
+                <Button
+                    android:id="@+id/btn_loadbutton_complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/layout_bg_shape"
+                    android:text="complete" />
+
+            </RelativeLayout>
+
+            <Switch
+                android:id="@+id/view_loadbutton_EnableShrink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:checked="true"
+                android:text="Enable Shrink" />
+
+            <Switch
+                android:id="@+id/view_loadbutton_EnableRestore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="true"
+                android:text="Enable Restore" />
+
+
+            <Switch
+                android:id="@+id/view_loadbutton_DisableOnLoading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="true"
+                android:text="Disable Click OnLoading" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Radius" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="(Require SDK_INT > 21)"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_RadiusValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="0"
+                    android:textColor="@color/colorAccent" />
+
+
+                <SeekBar
+                    android:id="@+id/view_loadbutton_Radius"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layoutDirection="rtl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="10dp"
+                    android:text="ShrinkShape" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="(Require SDK_INT > 21)"
+                    android:textSize="10sp" />
+
+                <RadioGroup
+                    android:id="@+id/rdio_loadbutton_ShrinkShape"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end|center_vertical"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_loadbutton_Default"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Default" />
+
+                    <RadioButton
+                        android:id="@+id/radio_loadbutton_Oval"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Oval" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shrink Duration: " />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_ShrinkDurationValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="500"
+                    android:textColor="@color/colorAccent" />
+
+                <SeekBar
+                    android:id="@+id/view_loadbutton_ShrinkDuration"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layoutDirection="rtl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LoadingDrawableColor: " />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_LoadingDrawableColorValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:text="#ffffff"
+                    android:textColor="@android:color/black" />
+
+                <SeekBar
+                    android:id="@+id/view_loadbutton_LoadingDrawableColor"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layoutDirection="rtl" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="LoadingPosition" />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_LoadingPosition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/layout_bg_shape"
+                    android:padding="6dp"
+                    android:text="START" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LoadingStrokeWidth: " />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_LoadingStrokeWidthValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="13"
+                    android:textColor="@color/colorAccent" />
+
+
+                <SeekBar
+                    android:id="@+id/view_loadbutton_LoadingStrokeWidth"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layoutDirection="rtl" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loading&#038;EndDrawableSize: " />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_LoadingEndDrawableSizeValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="98"
+                    android:textColor="@color/colorAccent" />
+
+
+                <SeekBar
+                    android:id="@+id/view_loadbutton_LoadingEndDrawableSizeValue"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layoutDirection="rtl" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rela_loadbutton_EndCompleteDrawableIcon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="EndCompleteDrawableIcon" />
+
+                <ImageView
+                    android:id="@+id/imvi_loadbutton_EndCompleteDrawableIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/holo_red_light"
+                    android:src="@drawable/ic_successful" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rela_loadbutton_EndFailDrawableIcon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="EndFailDrawableIcon" />
+
+                <ImageView
+                    android:id="@+id/imvi_loadbutton_EndFailDrawableIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/holo_red_light"
+                    android:src="@drawable/ic_fail" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EndDrawableDuration: " />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_EndDrawableDurationValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="1500"
+                    android:textColor="@color/colorAccent" />
+
+                <SeekBar
+                    android:id="@+id/view_loadbutton_EndDrawableDuration"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layoutDirection="rtl" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="OnLoadingText" />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_LoadingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/layout_bg_shape"
+                    android:padding="6dp"
+                    android:text="Loading" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="OnSuccessText" />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_CompleteText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/layout_bg_shape"
+                    android:padding="6dp"
+                    android:text="Success" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="onFailText" />
+
+                <TextView
+                    android:id="@+id/txvi_loadbutton_FailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/layout_bg_shape"
+                    android:padding="6dp"
+                    android:text="Fail" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

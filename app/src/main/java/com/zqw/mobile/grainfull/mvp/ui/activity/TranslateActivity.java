@@ -25,16 +25,20 @@ import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
+import com.zqw.mobile.grainfull.app.utils.RxUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerTranslateComponent;
 import com.zqw.mobile.grainfull.mvp.contract.TranslateContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.Translate;
 import com.zqw.mobile.grainfull.mvp.presenter.TranslatePresenter;
+import com.zqw.mobile.grainfull.mvp.ui.widget.loadingbutton.LoadingButton;
+import com.zqw.mobile.grainfull.mvp.ui.widget.textview.DrawableTextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 /**
  * Description: 翻译
@@ -60,6 +64,9 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
 
     @BindView(R.id.txvi_translate_value)
     TextView txviValue;                                                                             // 结果
+
+    @BindView(R.id.btn_translate_submit)
+    LoadingButton btnSubmit;                                                                        // 翻译按钮
 
     /*------------------------------------------------业务区域------------------------------------------------*/
     private SynthActivity synthActivity;
@@ -104,6 +111,68 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
 
         // 初始化数据源
         Translate.onInit();
+
+        initButton();
+    }
+
+    /**
+     * 初始化按钮
+     */
+    private void initButton() {
+        btnSubmit.setEnableShrink(true)
+                .setDisableClickOnLoading(true)
+                .setShrinkDuration(450)
+                .setLoadingPosition(DrawableTextView.POSITION.START)
+                .setSuccessDrawable(R.drawable.ic_successful)
+                .setFailDrawable(R.drawable.ic_fail)
+                .setEndDrawableKeepDuration(900)
+                .setEnableRestore(true)
+                .setLoadingEndDrawableSize((int) (btnSubmit.getTextSize() * 2))
+                .setOnStatusChangedListener(new LoadingButton.OnStatusChangedListener() {
+
+                    @Override
+                    public void onShrinking() {
+                        Timber.d("LoadingButton - onShrinking");
+                    }
+
+                    @Override
+                    public void onLoadingStart() {
+                        Timber.d("LoadingButton - onLoadingStart");
+                        btnSubmit.setText("Loading");
+                    }
+
+                    @Override
+                    public void onLoadingStop() {
+                        Timber.d("LoadingButton - onLoadingStop");
+                    }
+
+                    @Override
+                    public void onEndDrawableAppear(boolean isSuccess, LoadingButton.EndDrawable endDrawable) {
+                        Timber.d("LoadingButton - onEndDrawableAppear");
+                        if (isSuccess) {
+                            btnSubmit.setText("Success");
+                        } else {
+                            btnSubmit.setText("Fail");
+                        }
+                    }
+
+                    @Override
+                    public void onCompleted(boolean isSuccess) {
+                        Timber.d("LoadingButton - onCompleted isSuccess: %s", isSuccess);
+//                        showMessage(isSuccess ? "Success" : "Fail");
+                    }
+
+                    @Override
+                    public void onRestored() {
+                        Timber.d("LoadingButton - onRestored");
+                    }
+
+                    @Override
+                    public void onCanceled() {
+                        Timber.d("LoadingButton - onCanceled");
+//                        showMessage("onCanceled");
+                    }
+                });
     }
 
     /**
@@ -128,14 +197,17 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
      */
     @Override
     public void loadContent(String value) {
+        // 翻译成功，加载结果
         txviValue.setText(value);
+        // 告诉按钮成功了。
+        btnSubmit.complete(true);
     }
 
     @OnClick({
             R.id.txvi_translate_before,                                                             // 输入的内容是什么样的？
             R.id.txvi_translate_after,                                                              // 想翻译成什么样的？
             R.id.txvi_translate_interchange,                                                        // 互换
-            R.id.imvi_translate_ok,                                                                 // 翻译
+            R.id.btn_translate_submit,                                                              // 翻译
             R.id.imvi_translate_play,                                                               // 播放
             R.id.imvi_translate_copy,                                                               // 复制
     })
@@ -161,17 +233,24 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
                 txviAfter.setText(mBefore);
                 txviAfter.setTag(mBeforeTag);
                 break;
-            case R.id.imvi_translate_ok:                                                            // 翻译
+            case R.id.btn_translate_submit:                                                         // 翻译
                 String str = editInput.getText().toString();
                 if (TextUtils.isEmpty(str)) {
                     showMessage("请输入要翻译的文字！");
                     return;
                 }
 
-                // 执行翻译
-                if (mPresenter != null) {
-                    mPresenter.translate(str, txviBefore.getTag().toString(), txviAfter.getTag().toString());
-                }
+                // 开启效果
+                if (btnSubmit != null)
+                    btnSubmit.start();
+
+                // 延迟一秒后执行
+                RxUtils.startDelayed(1, this, () -> {
+                    // 执行翻译
+                    if (mPresenter != null) {
+                        mPresenter.translate(str, txviBefore.getTag().toString(), txviAfter.getTag().toString());
+                    }
+                });
                 break;
             case R.id.imvi_translate_play:                                                          // 播放
                 if (!TextUtils.isEmpty(mValue)) {

@@ -27,6 +27,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ElectronicClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FlipClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevelSelectActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ProgressViewActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ScaleRulerActivity;
@@ -76,6 +77,8 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
     @OnClick({
             R.id.btn_fragmentspecialeffects_text_serialnumber,                                      // 仿序列号
 
+            R.id.btn_fragmentspecialeffects_button_loadbutton,                                      // 加载按钮
+
             R.id.btn_fragmentspecialeffects_clock_clock,                                            // 时钟
             R.id.btn_fragmentspecialeffects_clock_flipclock,                                        // 翻转时钟
             R.id.btn_fragmentspecialeffects_clock_compassclock,                                     // 罗盘时钟
@@ -96,6 +99,10 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
         switch (v.getId()) {
             case R.id.btn_fragmentspecialeffects_text_serialnumber:                                 // 仿序列号
                 ActivityUtils.startActivity(SerialNumberActivity.class);
+                break;
+
+            case R.id.btn_fragmentspecialeffects_button_loadbutton:                                 // 加载按钮
+                ActivityUtils.startActivity(LoadButtonActivity.class);
                 break;
 
             case R.id.btn_fragmentspecialeffects_clock_clock:                                       // 时钟
