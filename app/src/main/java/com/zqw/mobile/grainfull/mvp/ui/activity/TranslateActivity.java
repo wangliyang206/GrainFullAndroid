@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ClipboardUtils;
+import com.blankj.utilcode.util.KeyboardUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -66,10 +68,13 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
 
     @Override
     protected void onDestroy() {
+        KeyboardUtils.unregisterSoftInputChangedListener(getWindow());
+
         if (synthActivity != null) {
             synthActivity.onDestroy();
             synthActivity = null;
         }
+
         Translate.onDestroy();
         super.onDestroy();
     }
@@ -136,6 +141,7 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
     })
     @Override
     public void onClick(View v) {
+        hideInput();
         String mValue = txviValue.getText().toString();
         switch (v.getId()) {
             case R.id.txvi_translate_before:                                                        // 输入的内容是什么样的？
@@ -184,6 +190,19 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
                 }
                 break;
         }
+    }
+
+    /**
+     * 隐藏软键盘
+     */
+    private void hideInput() {
+        KeyboardUtils.hideSoftInput(this);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        hideInput();
+        return super.onTouchEvent(event);
     }
 
     public Activity getActivity() {
