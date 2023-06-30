@@ -70,7 +70,7 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
             synthActivity.onDestroy();
             synthActivity = null;
         }
-
+        Translate.onDestroy();
         super.onDestroy();
     }
 
@@ -98,7 +98,7 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
         synthActivity.initTTS(getApplicationContext(), true);
 
         // 初始化数据源
-        Translate.init();
+        Translate.onInit();
     }
 
     /**
