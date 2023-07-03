@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_calculate_distance"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_calculatedistance_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_bg_shape"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="结果单位"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RadioGroup
+                android:id="@+id/ragr_calculatedistance_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_calculatedistance_qm"
+                    android:layout_width="70dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/radio_left_bg_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:tag="1"
+                    android:text="千米"
+                    android:textColor="@color/radio_button_selector"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_calculatedistance_details_mm"
+                    android:layout_width="70dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="-2dp"
+                    android:background="@drawable/radio_right_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:tag="2"
+                    android:text="米"
+                    android:textColor="@color/radio_button_selector"
+                    android:textSize="13sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保留位数"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edit_calculatedistance_num"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_bg_selector"
+                android:gravity="center_vertical|right"
+                android:hint="请输入小位数"
+                android:inputType="number"
+                android:padding="5dp"
+                android:text="2"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="输入坐标"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_calculatedistance_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/edit_bg_selector"
+                android:digits="0123456789.,"
+                android:gravity="top"
+                android:hint="请输入浮点数经纬度坐标，格式为经度1,纬度1,经度2,纬度2。使用英文逗号分隔。"
+                android:inputType="number"
+                android:maxLines="10"
+                android:minLines="2"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="30dp"
+                android:text=""
+                android:textColor="@color/common_edit_color"
+                android:textColorHint="@color/common_edit_hint_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imvi_cleanup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@mipmap/icon_cleanup"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/edit_calculatedistance_input"
+                app:layout_constraintRight_toRightOf="@+id/edit_calculatedistance_input" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_calculatedistance_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_bg_selector"
+        android:padding="13dp"
+        android:text="计算"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_bg_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="结果"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txvi_calculatedistance_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/edit_bg_selector"
+            android:gravity="top"
+            android:maxLines="10"
+            android:minLines="4"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="30dp"
+            android:text=""
+            android:textColor="@color/common_edit_color"
+            android:textColorHint="@color/common_edit_hint_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

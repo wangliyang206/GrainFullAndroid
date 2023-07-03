@@ -29,6 +29,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.CalculateDistanceActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity;
@@ -216,6 +217,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_other_magnifier,                                                  // 放大镜
             R.id.btn_fragmenthome_other_scoreboard,                                                 // 记分牌
             R.id.btn_fragmenthome_stopwatch,                                                        // 计时器
+            R.id.btn_fragmenthome_calculatedistance,                                                // 在线计算经纬度距离
     })
     @Override
     public void onClick(View v) {
@@ -321,6 +323,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_stopwatch:                                                   // 计时器
                 ActivityUtils.startActivity(StopwatchActivity.class);
+                break;
+            case R.id.btn_fragmenthome_calculatedistance:                                           // 在线计算经纬度距离
+                ActivityUtils.startActivity(CalculateDistanceActivity.class);
                 break;
         }
     }

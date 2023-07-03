@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.CalculateDistanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.LoadButtonActivity"
             android:screenOrientation="portrait" />
         <activity
