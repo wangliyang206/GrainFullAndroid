@@ -8,7 +8,7 @@ import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.app.config.CommonRetryWithDelay;
 import com.zqw.mobile.grainfull.app.utils.RxUtils;
-import com.zqw.mobile.grainfull.mvp.contract.AnimatedPortraitContract;
+import com.zqw.mobile.grainfull.mvp.contract.RemoveWatermarkinContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.BaiduAiResponse;
 
 import javax.inject.Inject;
@@ -20,20 +20,21 @@ import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 
 /**
  * ================================================
- * Description:人像动漫化
+ * Description:
  * <p>
- * Created by MVPArmsTemplate on 2023/07/04 10:14
+ * Created by MVPArmsTemplate on 2023/07/05 11:06
  * ================================================
  */
 @ActivityScope
-public class AnimatedPortraitPresenter extends BasePresenter<AnimatedPortraitContract.Model, AnimatedPortraitContract.View> {
+public class RemoveWatermarkinPresenter extends BasePresenter<RemoveWatermarkinContract.Model, RemoveWatermarkinContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
+
     // 百度Token
     private String mAccessToken;
 
     @Inject
-    public AnimatedPortraitPresenter(AnimatedPortraitContract.Model model, AnimatedPortraitContract.View rootView) {
+    public RemoveWatermarkinPresenter(RemoveWatermarkinContract.Model model, RemoveWatermarkinContract.View rootView) {
         super(model, rootView);
     }
 
@@ -57,10 +58,10 @@ public class AnimatedPortraitPresenter extends BasePresenter<AnimatedPortraitCon
     }
 
     /**
-     * 人像图片转成动漫图片
+     * 去掉水印
      */
-    public void onStartOptimization(String path, boolean isMask) {
-        mModel.selfieAnime(mAccessToken, path, isMask)
+    public void removeWatermarkin(String path) {
+        mModel.removeWatermarkin(mAccessToken, path)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new CommonRetryWithDelay(2, 2))                 // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .doOnSubscribe(disposable -> {
@@ -75,8 +76,8 @@ public class AnimatedPortraitPresenter extends BasePresenter<AnimatedPortraitCon
 
                     @Override
                     public void onNext(BaiduAiResponse info) {
-                        if (!TextUtils.isEmpty(info.getImage())) {
-                            mRootView.loadImage(info.getImage());
+                        if (!TextUtils.isEmpty(info.getResult())) {
+                            mRootView.loadImage(info.getResult());
                         } else {
                             mRootView.showMessage(info.getError_msg());
                         }

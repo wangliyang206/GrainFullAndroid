@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.RemoveWatermarkinActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.AnimatedPortraitActivity"
             android:screenOrientation="portrait" />
         <activity

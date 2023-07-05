@@ -22,7 +22,7 @@ public class BaiduAiResponse {
     // 错误结构
     private String error;
     private String error_description;
-    /*-------------------------------------------图片增强-------------------------------------------*/
+    /*-------------------------------------------图像特效-------------------------------------------*/
     // 唯一的log id，用于问题定位(64位)
     private long log_id;
     // 处理后图片的Base64编码
@@ -31,6 +31,18 @@ public class BaiduAiResponse {
     // 错误结构
     private int error_code;
     private String error_msg;
+
+    /*-------------------------------------------图像增强-------------------------------------------*/
+    // 处理后图片的Base64编码
+    private String result;
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
 
     public int getError_code() {
         return error_code;

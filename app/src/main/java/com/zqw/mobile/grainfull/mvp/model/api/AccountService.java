@@ -74,4 +74,8 @@ public interface AccountService {
     // 人像动漫化 - 收费接口
     @POST()
     Observable<BaiduAiResponse> selfieAnime(@Url String Url, @Body RequestBody params);
+
+    // 文档图片去底纹 - 收费接口
+    @POST()
+    Observable<BaiduAiResponse> removeWatermarkin(@Url String Url, @Body RequestBody params);
 }

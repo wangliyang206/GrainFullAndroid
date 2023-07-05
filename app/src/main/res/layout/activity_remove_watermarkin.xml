@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_animated_portrait"
+    android:id="@+id/activity_remove_watermarkin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragment_bg_color"
@@ -9,25 +9,16 @@
 
     <!-- 头部 -->
     <include
-        android:id="@+id/view_animatedportrait_top"
+        android:id="@+id/view_removewatermarkin_top"
         layout="@layout/comm_top_layout" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="说明：结合人脸检测、头发分割、人像分割等技术，为用户量身定制千人千面的二次元动漫形象，并且可通过参数设置，生成戴口罩的二次元动漫人像。"
+        android:text="说明：自动识别并去除文档图片中的底纹，使图片更加清晰，便于阅读。"
         android:textColor="@color/common_text_color"
         android:textSize="11sp" />
-
-    <CheckBox
-        android:id="@+id/chbo_animatedportrait_mask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="是否需要自动佩戴上口罩"
-        android:textColor="@color/common_text_color"
-        android:textSize="14sp" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -40,7 +31,7 @@
 
             <!-- 优化前 -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cola_animatedportrait_original"
+                android:id="@+id/cola_removewatermarkin_original"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -48,32 +39,32 @@
                 android:background="@drawable/layout_bg_shape">
 
                 <ImageView
-                    android:id="@+id/imvi_animatedportrait_original"
+                    android:id="@+id/imvi_removewatermarkin_original"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:src="@mipmap/ic_evaluation_camera"
-                    app:layout_constraintBottom_toTopOf="@+id/txvi_animatedportrait_original"
+                    app:layout_constraintBottom_toTopOf="@+id/txvi_removewatermarkin_original"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
-                    android:id="@+id/txvi_animatedportrait_original"
+                    android:id="@+id/txvi_removewatermarkin_original"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="添加人像图片"
+                    android:text="添加水印图片"
                     android:textColor="@color/common_text_tips_color"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imvi_animatedportrait_original" />
+                    app:layout_constraintTop_toBottomOf="@+id/imvi_removewatermarkin_original" />
 
                 <ImageView
-                    android:id="@+id/imvi_animatedportrait_originalcontent"
+                    android:id="@+id/imvi_removewatermarkin_originalcontent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
@@ -95,7 +86,7 @@
 
             <!-- 优化后 -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cola_animatedportrait_effect"
+                android:id="@+id/cola_removewatermarkin_effect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -103,7 +94,7 @@
                 android:background="@drawable/layout_bg_shape">
 
                 <ImageView
-                    android:id="@+id/imvi_animatedportrait_effectcontent"
+                    android:id="@+id/imvi_removewatermarkin_effectcontent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
@@ -115,7 +106,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imvi_animatedportrait_save"
+                    android:id="@+id/imvi_removewatermarkin_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -123,6 +114,7 @@
                     android:background="@drawable/edit_bg_selector"
                     android:padding="8dp"
                     android:src="@mipmap/icon_save"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,11 +5,14 @@ import android.app.Application;
 import com.blankj.utilcode.util.ImageUtils;
 import com.google.gson.Gson;
 import com.huawei.hms.common.util.Base64Utils;
-import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
+import com.jess.arms.di.scope.ActivityScope;
+
+import javax.inject.Inject;
+
 import com.zqw.mobile.grainfull.app.global.Constant;
-import com.zqw.mobile.grainfull.mvp.contract.AnimatedPortraitContract;
+import com.zqw.mobile.grainfull.mvp.contract.RemoveWatermarkinContract;
 import com.zqw.mobile.grainfull.mvp.model.api.AccountService;
 import com.zqw.mobile.grainfull.mvp.model.entity.BaiduAiResponse;
 
@@ -17,8 +20,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import okhttp3.MediaType;
@@ -28,26 +29,19 @@ import okhttp3.RequestBody;
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 2023/07/04 10:14
+ * Created by MVPArmsTemplate on 2023/07/05 11:06
  * ================================================
  */
 @ActivityScope
-public class AnimatedPortraitModel extends BaseModel implements AnimatedPortraitContract.Model {
+public class RemoveWatermarkinModel extends BaseModel implements RemoveWatermarkinContract.Model {
     @Inject
     Gson mGson;
     @Inject
     Application mApplication;
 
     @Inject
-    public AnimatedPortraitModel(IRepositoryManager repositoryManager) {
+    public RemoveWatermarkinModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.mGson = null;
-        this.mApplication = null;
     }
 
     @Override
@@ -61,7 +55,7 @@ public class AnimatedPortraitModel extends BaseModel implements AnimatedPortrait
     }
 
     @Override
-    public Observable<BaiduAiResponse> selfieAnime(String accessToken, String filePath, boolean isMask) {
+    public Observable<BaiduAiResponse> removeWatermarkin(String accessToken, String filePath) {
         byte[] imgData = ImageUtils.bitmap2Bytes(ImageUtils.getBitmap(filePath));
         String imgStr = Base64Utils.encode(imgData);
         String imgParam = null;
@@ -72,17 +66,16 @@ public class AnimatedPortraitModel extends BaseModel implements AnimatedPortrait
         }
 
         StringBuilder param = new StringBuilder();
-
-        if (isMask) {
-            param.append("type=anime_mask");
-        } else {
-            param.append("type=anime");
-        }
-
-        param.append("&");
         param.append("image=" + imgParam);
 
         RequestBody mVal = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"), param.toString());
-        return mRepositoryManager.obtainRetrofitService(AccountService.class).selfieAnime(Constant.BAIDU_AI_URL + "rest/2.0/image-process/v1/selfie_anime?access_token=" + accessToken, mVal);
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).removeWatermarkin(Constant.BAIDU_AI_URL + "rest/2.0/image-process/v1/doc_repair?access_token=" + accessToken, mVal);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.mGson = null;
+        this.mApplication = null;
     }
 }

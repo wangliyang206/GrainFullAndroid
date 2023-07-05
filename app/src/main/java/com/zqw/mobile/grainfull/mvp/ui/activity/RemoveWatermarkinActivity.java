@@ -10,7 +10,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -19,8 +18,6 @@ import androidx.annotation.Nullable;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.blankj.utilcode.util.EncodeUtils;
-import com.blankj.utilcode.util.ImageUtils;
-import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -32,12 +29,11 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.app.utils.RxUtils;
-import com.zqw.mobile.grainfull.di.component.DaggerAnimatedPortraitComponent;
-import com.zqw.mobile.grainfull.mvp.contract.AnimatedPortraitContract;
-import com.zqw.mobile.grainfull.mvp.presenter.AnimatedPortraitPresenter;
+import com.zqw.mobile.grainfull.di.component.DaggerRemoveWatermarkinComponent;
+import com.zqw.mobile.grainfull.mvp.contract.RemoveWatermarkinContract;
+import com.zqw.mobile.grainfull.mvp.presenter.RemoveWatermarkinPresenter;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -50,27 +46,24 @@ import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
 /**
- * Description:人像动漫化
+ * Description:去水印
  * <p>
- * Created on 2023/07/04 10:14
+ * Created on 2023/07/05 11:06
  *
  * @author 赤槿
- * module name is AnimatedPortraitActivity
+ * module name is RemoveWatermarkinActivity
  */
 @RuntimePermissions
-public class AnimatedPortraitActivity extends BaseActivity<AnimatedPortraitPresenter> implements AnimatedPortraitContract.View {
+public class RemoveWatermarkinActivity extends BaseActivity<RemoveWatermarkinPresenter> implements RemoveWatermarkinContract.View {
     /*------------------------------------------------控件信息------------------------------------------------*/
-    @BindView(R.id.activity_animated_portrait)
+    @BindView(R.id.activity_remove_watermarkin)
     LinearLayout contentLayout;                                                                     // 主布局
 
-    @BindView(R.id.chbo_animatedportrait_mask)
-    CheckBox checkBox;                                                                              // 是否佩戴口罩
-    @BindView(R.id.imvi_animatedportrait_originalcontent)
+    @BindView(R.id.imvi_removewatermarkin_originalcontent)
     ImageView imviiOriginal;                                                                        // 优化前
-
-    @BindView(R.id.imvi_animatedportrait_effectcontent)
+    @BindView(R.id.imvi_removewatermarkin_effectcontent)
     ImageView imviEffect;                                                                           // 优化后
-    @BindView(R.id.imvi_animatedportrait_save)
+    @BindView(R.id.imvi_removewatermarkin_save)
     ImageView imviSave;                                                                             // 保存图片
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 加载图片对象
@@ -95,7 +88,7 @@ public class AnimatedPortraitActivity extends BaseActivity<AnimatedPortraitPrese
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerAnimatedPortraitComponent
+        DaggerRemoveWatermarkinComponent
                 .builder()
                 .appComponent(appComponent)
                 .view(this)
@@ -105,15 +98,15 @@ public class AnimatedPortraitActivity extends BaseActivity<AnimatedPortraitPrese
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_animated_portrait;
+        return R.layout.activity_remove_watermarkin;
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("人像动漫化");
+        setTitle("文档图片去水印");
 
         // 友盟统计 - 自定义事件
-        MobclickAgent.onEvent(getApplicationContext(), "animated_portrait_open");
+        MobclickAgent.onEvent(getApplicationContext(), "remove_watermarkin_open");
 
         // 初始化Loading对话框
         mDialog = new MaterialDialog.Builder(this).content(R.string.common_execute).progress(true, 0).cancelable(false).build();
@@ -124,39 +117,19 @@ public class AnimatedPortraitActivity extends BaseActivity<AnimatedPortraitPrese
     }
 
     @OnClick({
-            R.id.cola_animatedportrait_original,                                                    // 添加人像图片
-            R.id.imvi_animatedportrait_save,                                                        // 保存图片
+            R.id.cola_removewatermarkin_original,                                                    // 添加有水印的图片
+            R.id.imvi_removewatermarkin_save,                                                        // 保存图片
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.cola_animatedportrait_original:                                               // 添加人像图片
-                AnimatedPortraitActivityPermissionsDispatcher.getPortraitImageWithPermissionCheck(this);
+            case R.id.cola_removewatermarkin_original:                                               // 添加有水印的图片
+                RemoveWatermarkinActivityPermissionsDispatcher.getPortraitImageWithPermissionCheck(this);
                 break;
-            case R.id.imvi_animatedportrait_save:                                                   // 保存图片
-                onSaveImage();
+            case R.id.imvi_removewatermarkin_save:                                                   // 保存图片
+//                onSaveImage();
                 break;
         }
-    }
-
-    /**
-     * 将图片进行保存
-     */
-    private void onSaveImage() {
-        // 保存图片
-        Runnable runnable = () -> {
-            // 生成文件路径及名称
-            String path = Constant.IMAGE_PATH + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".png";
-            // 保存图片
-            ImageUtils.save(mBitmap, path, Bitmap.CompressFormat.PNG);
-
-            runOnUiThread(() -> {
-                // 弹出成功提示
-                showMessage("图片保存成功！路径：" + path);
-            });
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
     }
 
     /**
@@ -255,9 +228,22 @@ public class AnimatedPortraitActivity extends BaseActivity<AnimatedPortraitPrese
         RxUtils.startDelayed(1, this, () -> {
             // 开始优化
             if (mPresenter != null) {
-                mPresenter.onStartOptimization(path, checkBox.isChecked());
+                mPresenter.removeWatermarkin(path);
             }
         });
+    }
+
+    /**
+     * 加载优化后的效果
+     */
+    @Override
+    public void loadImage(String image) {
+        // 第一步，先转成图片格式
+        byte[] mByte = EncodeUtils.base64Decode(image);
+        mBitmap = BitmapFactory.decodeByteArray(mByte, 0, mByte.length);
+        // 第二步，显示
+        imviEffect.setImageBitmap(mBitmap);
+        imviSave.setVisibility(View.VISIBLE);
     }
 
     public Activity getActivity() {
@@ -280,19 +266,6 @@ public class AnimatedPortraitActivity extends BaseActivity<AnimatedPortraitPrese
     public void hideLoadingSubmit() {
         if (mDialog != null)
             mDialog.dismiss();
-    }
-
-    /**
-     * 加载优化后的效果
-     */
-    @Override
-    public void loadImage(String image) {
-        // 第一步，先转成图片格式
-        byte[] mByte = EncodeUtils.base64Decode(image);
-        mBitmap = BitmapFactory.decodeByteArray(mByte, 0, mByte.length);
-        // 第二步，显示
-        imviEffect.setImageBitmap(mBitmap);
-        imviSave.setVisibility(View.VISIBLE);
     }
 
     @Override

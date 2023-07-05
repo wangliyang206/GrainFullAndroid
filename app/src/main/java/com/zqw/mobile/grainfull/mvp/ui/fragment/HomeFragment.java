@@ -51,6 +51,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.NoiseMeasurementActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PictureCompressionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PictureMosaicActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.RemoveWatermarkinActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ScoreboardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.StopwatchActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TranslateActivity;
@@ -209,6 +210,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_image_ninepalaces,                                                // 九宫格切图
             R.id.btn_fragmenthome_image_compression,                                                // 图片压缩
             R.id.btn_fragmenthome_image_animatedportrait,                                           // 人像动漫化
+            R.id.btn_fragmenthome_image_removewatermark,                                            // 文档图片去水印
 
             R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备信息
             R.id.btn_fragmenthome_equipment_metaldetector,                                          // 金属探测仪
@@ -301,6 +303,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_image_animatedportrait:                                      // 人像动漫化
                 ActivityUtils.startActivity(AnimatedPortraitActivity.class);
+                break;
+            case R.id.btn_fragmenthome_image_removewatermark:
+                ActivityUtils.startActivity(RemoveWatermarkinActivity.class);                       // 文档图片去水印
                 break;
 
 
