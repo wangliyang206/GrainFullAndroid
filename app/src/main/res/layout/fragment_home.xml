@@ -106,75 +106,78 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_hw_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_bankcards"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="识别银行卡"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_hw_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_hw_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_idcard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="识别身份证"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_bankcards"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_bankcards"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_bankcards" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_bankcards"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="识别银行卡" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_imagetotext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="图片提取文字"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_fragmenthome_idcard"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_idcard"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_idcard" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_idcard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="识别身份证" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_gesture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="动态手势识别"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmenthome_bankcards" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_imagetotext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="图片提取文字" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_livenessdetection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="活体检测"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_gesture"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_gesture" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_gesture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="动态手势识别" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_facecomparison"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="人脸对比"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_livenessdetection"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_gesture" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_livenessdetection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="活体检测" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_facecomparison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="人脸对比" />
+                </com.google.android.flexbox.FlexboxLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 百度平台 -->
@@ -210,39 +213,48 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_bd_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_facerecognition"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="人脸采集"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_bd_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_bd_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_voicerecog"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="语音识别"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_facerecognition"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_facerecognition" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_facerecognition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="人脸采集" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_speechsynthesis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="语音合成"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_voicerecog"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_facerecognition" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_voicerecog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="语音识别" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_speechsynthesis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="语音合成" />
+                </com.google.android.flexbox.FlexboxLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 颜色 -->
@@ -279,39 +291,48 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_color_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_color_colorpicker"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="取色板"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_color_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_color_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_color_picturepipette"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="吸管工具"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_color_colorpicker"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_color_colorpicker" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_color_colorpicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="取色板" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_color_codeconversion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="颜色码转换"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_color_picturepipette"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_color_picturepipette" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_color_picturepipette"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="吸管工具" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_color_codeconversion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="颜色码转换" />
+                </com.google.android.flexbox.FlexboxLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 文字应用 -->
@@ -348,51 +369,59 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_text_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_text_digital"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="数字转中文"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_text_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_text_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_text_chinesetopinyin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="中文转拼音"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_text_digital"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_text_digital" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_text_digital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="数字转中文" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_text_bulletchat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="手持弹幕"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_text_chinesetopinyin"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_text_chinesetopinyin" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_text_chinesetopinyin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="中文转拼音" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_text_translate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="翻译"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmenthome_text_digital" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_text_bulletchat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="手持弹幕" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_text_translate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="翻译" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -430,40 +459,59 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_image_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_image_picturemosaic"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="图片拼接"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_image_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_image_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_image_ninepalaces"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="九宫格切图"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_image_picturemosaic"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_image_picturemosaic" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_image_picturemosaic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="图片拼接" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_image_compression"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="图片压缩"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_image_ninepalaces"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_image_ninepalaces" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_image_ninepalaces"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="九宫格切图" />
 
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_image_compression"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="图片压缩" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_image_animatedportrait"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="人像动漫化" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -501,39 +549,49 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_equipment_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_equipment_info"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="查看设备信息"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_equipment_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_equipment_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_equipment_metaldetector"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="金属探测仪"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_equipment_info"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_equipment_info" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_equipment_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="查看设备信息" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_equipment_noisemeasurement"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="噪音测量"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_equipment_metaldetector"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_equipment_metaldetector" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_equipment_metaldetector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="金属探测仪" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_equipment_noisemeasurement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="噪音测量" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -572,73 +630,79 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmenthome_other_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_audioconversion"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="音频转换"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_other_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_other_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_other_decision"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="做个决定"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_audioconversion"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_audioconversion" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_audioconversion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="音频转换" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_other_magnifier"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="放大镜"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_other_decision"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_other_decision" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_other_decision"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="做个决定" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_other_scoreboard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="记分牌"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_other_magnifier"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_other_magnifier" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_other_magnifier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="放大镜" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_stopwatch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="计时器"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmenthome_audioconversion" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_other_scoreboard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="记分牌" />
 
-                <TextView
-                    android:id="@+id/btn_fragmenthome_calculatedistance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="计算经纬度距离"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmenthome_stopwatch"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmenthome_stopwatch" />
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_stopwatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="计时器" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_calculatedistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="计算经纬度距离" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

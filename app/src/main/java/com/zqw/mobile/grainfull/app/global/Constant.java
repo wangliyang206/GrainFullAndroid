@@ -40,6 +40,10 @@ public interface Constant {
      */
     String BAIDU_TRANSLATE_URL = "http://api.fanyi.baidu.com/api/trans/vip/translate";
     /**
+     * 百度AI
+     */
+    String BAIDU_AI_URL = "https://aip.baidubce.com/";
+    /**
      * 百度翻译 - APP ID
      */
     String BAIDU_TRANSLATE_APPID = "20221128001474660";

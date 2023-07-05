@@ -23,6 +23,7 @@ import com.baidu.mapapi.utils.DistanceUtil;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.ChineseNumUtils;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
@@ -88,6 +89,9 @@ public class CalculateDistanceActivity extends BaseActivity<CalculateDistancePre
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("计算经纬度距离");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "calculate_distance_open");
 
         editInput.addTextChangedListener(new TextWatcher() {
             @Override

@@ -3,6 +3,7 @@ package com.zqw.mobile.grainfull.mvp.model.api;
 import com.jess.arms.cj.GsonRequest;
 import com.jess.arms.cj.GsonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.AppUpdate;
+import com.zqw.mobile.grainfull.mvp.model.entity.BaiduAiResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.CommonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.LoginResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.TranslateResponse;
@@ -10,10 +11,12 @@ import com.zqw.mobile.grainfull.mvp.model.entity.TranslateResponse;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
@@ -63,4 +66,12 @@ public interface AccountService {
     // 翻译，post的请求不成功，废弃
 //    @POST()
 //    Observable<TranslateResponse> translate(@Url String Url, @Body Map<String, Object> request);
+
+    // 获取百度AI - Token
+    @POST()
+    Observable<BaiduAiResponse> getBaiduToken(@Url String Url, @QueryMap Map<String, Object> request);
+
+    // 人像动漫化 - 收费接口
+    @POST()
+    Observable<BaiduAiResponse> selfieAnime(@Url String Url, @Body RequestBody params);
 }

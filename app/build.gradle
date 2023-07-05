@@ -124,6 +124,9 @@ android {
 
             // 腾讯Bugly AppId
             buildConfigField "String", "BUGLY_APP_ID", "\"09b10840f5\""
+            // 百度AI智能云 Secret
+            buildConfigField "String", "BAIDU_API_KEY", "\"e70AjDGexxDHKS3gA650zDp3\""
+            buildConfigField "String", "BAIDU_SECRET_KEY", "\"jnzrGzxGWKQg4nALfpGAMMgGjfUeczVy\""
 
             // SP文件名称
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedGrainFullTest\""
@@ -165,6 +168,9 @@ android {
 
             // 腾讯Bugly AppId
             buildConfigField "String", "BUGLY_APP_ID", "\"ffa3afe589\""
+            // 百度AI智能云 Secret
+            buildConfigField "String", "BAIDU_API_KEY", "\"e70AjDGexxDHKS3gA650zDp3\""
+            buildConfigField "String", "BAIDU_SECRET_KEY", "\"jnzrGzxGWKQg4nALfpGAMMgGjfUeczVy\""
 
             // SP文件名称
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedGrainFull\""
@@ -313,7 +319,7 @@ dependencies {
     // Loading
     implementation project(':loading-drawable')
     // 可伸缩布局
-    implementation 'com.google.android:flexbox:1.0.0'
+    implementation 'com.google.android:flexbox:2.0.1'
     // 高仿微信图片选择器(https://github.com/Lichenwei-Dev/ImagePicker)
     implementation('com.lcw.library:imagepicker:2.2.8') {
         exclude module: 'appcompat'

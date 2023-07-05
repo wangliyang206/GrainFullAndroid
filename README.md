@@ -33,11 +33,12 @@
 ![](image/ColorCodeConversion.jpg)
 
 ### 文字：
-    数字转中文、中文转拼音、手持弹幕；
+    数字转中文、中文转拼音、手持弹幕、翻译；
 
 ![](image/DigitalToChinese.jpg)
 ![](image/ChineseToPinyin.jpg)
 ![](image/HandheldBulletScreen.jpg)
+![](image/Translate.jpg)
 
 ### 图片：
     图片拼接、九宫格切图、图片压缩；
@@ -55,13 +56,14 @@
 ![](image/NoiseMeasurement.jpg)
 
 ### 其它：
-    音频转换、做个决定、放大镜、记分牌、计时器等；
+    音频转换、做个决定、放大镜、记分牌、计时器、计算经纬度距离等；
 
 ![](image/AudioConversion.jpg)
 ![](image/Decision.jpg)
 ![](image/Magnifier.jpg)
 ![](image/Scoreboard.jpg)
 ![](image/Stopwatch.jpg)
+![](image/CalculateDistance.jpg)
 
 ## 游戏
 ### 普通游戏：

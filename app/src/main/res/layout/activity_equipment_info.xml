@@ -118,7 +118,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/layout_bg_shape"
                 android:orientation="vertical">
 
@@ -272,6 +271,67 @@
                     android:textColor="@color/common_text_color"
                     android:textSize="14sp" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/layout_bg_shape"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txvi_equipmentinfo_packagename"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_background"
+                    android:padding="10dp"
+                    android:text="获取 App 包名："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txvi_equipmentinfo_signatures"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_background"
+                    android:padding="10dp"
+                    android:text="获取 App 签名："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txvi_equipmentinfo_sha1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_background"
+                    android:padding="10dp"
+                    android:text="获取应用签名的的 SHA1 值："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txvi_equipmentinfo_sha256"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_background"
+                    android:padding="10dp"
+                    android:text="获取应用签名的的 SHA256 值："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txvi_equipmentinfo_md5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item_background"
+                    android:padding="10dp"
+                    android:text="获取应用签名的的 MD5 值："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>

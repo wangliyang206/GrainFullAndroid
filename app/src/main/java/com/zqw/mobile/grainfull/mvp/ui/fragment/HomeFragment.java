@@ -25,6 +25,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.HomeContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
 import com.zqw.mobile.grainfull.mvp.presenter.HomePresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.AnimatedPortraitActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AudioConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
@@ -207,6 +208,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_image_picturemosaic,                                              // 图片拼接
             R.id.btn_fragmenthome_image_ninepalaces,                                                // 九宫格切图
             R.id.btn_fragmenthome_image_compression,                                                // 图片压缩
+            R.id.btn_fragmenthome_image_animatedportrait,                                           // 人像动漫化
 
             R.id.btn_fragmenthome_equipment_info,                                                   // 查看设备信息
             R.id.btn_fragmenthome_equipment_metaldetector,                                          // 金属探测仪
@@ -296,6 +298,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_image_compression:                                           // 图片压缩
                 ActivityUtils.startActivity(PictureCompressionActivity.class);
+                break;
+            case R.id.btn_fragmenthome_image_animatedportrait:                                      // 人像动漫化
+                ActivityUtils.startActivity(AnimatedPortraitActivity.class);
                 break;
 
 

@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ClipboardUtils;
 import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.PhoneUtils;
@@ -92,6 +93,17 @@ public class EquipmentInfoActivity extends BaseActivity<EquipmentInfoPresenter> 
     TextView txviType;                                                                              // TYPE
     @BindView(R.id.txvi_equipmentinfo_codename)
     TextView txviCodeName;                                                                          // 版本代号
+
+    @BindView(R.id.txvi_equipmentinfo_packagename)
+    TextView txviPackageName;                                                                       // 包名
+    @BindView(R.id.txvi_equipmentinfo_signatures)
+    TextView txviSignatures;                                                                        // 签名
+    @BindView(R.id.txvi_equipmentinfo_sha1)
+    TextView txviSha1;                                                                              // SHA1
+    @BindView(R.id.txvi_equipmentinfo_sha256)
+    TextView txviSha256;                                                                            // SHA256
+    @BindView(R.id.txvi_equipmentinfo_md5)
+    TextView txviMd5;                                                                               // MD5
 
     /*------------------------------------------------业务区域------------------------------------------------*/
 
@@ -184,6 +196,17 @@ public class EquipmentInfoActivity extends BaseActivity<EquipmentInfoPresenter> 
         txviType.append(Build.TYPE);
         // 版本代号
         txviCodeName.append(Build.VERSION.CODENAME);
+
+        // 包名
+        txviPackageName.append(AppUtils.getAppPackageName());
+        // 签名
+        txviSignatures.append(AppUtils.getAppSignatures().toString());
+        // SHA1
+        txviSha1.append(AppUtils.getAppSignaturesSHA1().toString());
+        // SHA256
+        txviSha256.append(AppUtils.getAppSignaturesSHA256().toString());
+        // MD5
+        txviMd5.append(AppUtils.getAppSignaturesMD5().toString());
     }
 
     @OnClick({
@@ -210,6 +233,12 @@ public class EquipmentInfoActivity extends BaseActivity<EquipmentInfoPresenter> 
             R.id.txvi_equipmentinfo_build,                                                          // Build
             R.id.txvi_equipmentinfo_type,                                                           // TYPE
             R.id.txvi_equipmentinfo_codename,                                                       // 版本代号
+
+            R.id.txvi_equipmentinfo_packagename,                                                    // 包名
+            R.id.txvi_equipmentinfo_signatures,                                                     // 签名
+            R.id.txvi_equipmentinfo_sha1,                                                           // SHA1值
+            R.id.txvi_equipmentinfo_sha256,                                                         // SHA256值
+            R.id.txvi_equipmentinfo_md5,                                                            // MD5值
     })
     @Override
     public void onClick(View v) {
@@ -280,7 +309,21 @@ public class EquipmentInfoActivity extends BaseActivity<EquipmentInfoPresenter> 
             case R.id.txvi_equipmentinfo_codename:                                                  // 版本代号
                 onCopy(txviCodeName.getText().toString());
                 break;
-
+            case R.id.txvi_equipmentinfo_packagename:                                               // 包名
+                onCopy(txviPackageName.getText().toString());
+                break;
+            case R.id.txvi_equipmentinfo_signatures:                                                // 签名
+                onCopy(txviSignatures.getText().toString());
+                break;
+            case R.id.txvi_equipmentinfo_sha1:                                                      // SHA1值
+                onCopy(txviSha1.getText().toString());
+                break;
+            case R.id.txvi_equipmentinfo_sha256:                                                    // SHA256值
+                onCopy(txviSha256.getText().toString());
+                break;
+            case R.id.txvi_equipmentinfo_md5:                                                       // MD5
+                onCopy(txviMd5.getText().toString());
+                break;
         }
     }
 
