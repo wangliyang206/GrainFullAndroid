@@ -46,6 +46,75 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
+            <!-- 界面 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cola_fragmentspecialeffects_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_bg_shape">
+
+                <TextView
+                    android:id="@+id/txvi_fragmentspecialeffects_layout_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="界面"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view_fragmentspecialeffects_layout_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/line_frame_color"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentspecialeffects_layout_title" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_layout_line">
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_layout_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="首页" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_layout_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="我的" />
+                </com.google.android.flexbox.FlexboxLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <!-- 文本 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cola_fragmentspecialeffects_text"
@@ -176,50 +245,59 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentspecialeffects_clock_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_clock_clock"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="时钟"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_clock_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_clock_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_clock_flipclock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="翻转时钟"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_clock_clock"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_clock_clock" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_clock_clock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="时钟" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_clock_compassclock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="罗盘时钟"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_clock_flipclock"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_clock_flipclock" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_clock_flipclock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="翻转时钟" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_clock_electronicclock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="电子时钟"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_clock_compassclock"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_clock_compassclock" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_clock_compassclock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="罗盘时钟" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_clock_electronicclock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="电子时钟" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -257,110 +335,109 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentspecialeffects_other_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_audiowaveform"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="音频波形"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/btn_fragmentspecialeffects_other_lottery"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_other_line" />
-
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_lottery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="抽奖转盘"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_audiowaveform"
-                    app:layout_constraintRight_toLeftOf="@+id/btn_fragmentspecialeffects_other_spiderwebgrade"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_audiowaveform" />
-
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_spiderwebgrade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="蛛网等级"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_lottery"
-                    app:layout_constraintRight_toLeftOf="@+id/btn_fragmentspecialeffects_other_progress"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_lottery" />
-
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="进度条"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_spiderwebgrade"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_spiderwebgrade" />
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_other_line">
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_levitationbutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="悬浮窗口/按钮"
-                    app:layout_constraintLeft_toLeftOf="@+id/btn_fragmentspecialeffects_other_audiowaveform"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmentspecialeffects_other_audiowaveform" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_audiowaveform"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="音频波形" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_dashboard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="仪表盘"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_levitationbutton"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_levitationbutton" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_lottery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="抽奖转盘" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_scaleruler"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="刻度尺"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_dashboard"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_dashboard" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_spiderwebgrade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="蛛网等级" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_evolution"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="进化图"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_fragmentspecialeffects_other_scaleruler"
-                    app:layout_constraintTop_toTopOf="@+id/btn_fragmentspecialeffects_other_scaleruler" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="进度条" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_other_temperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="升温效果"
-                    app:layout_constraintLeft_toLeftOf="@+id/btn_fragmentspecialeffects_other_levitationbutton"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_fragmentspecialeffects_other_levitationbutton" />
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_levitationbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="悬浮窗口/按钮" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_dashboard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="仪表盘" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_scaleruler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="刻度尺" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_evolution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="进化图" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="升温效果" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

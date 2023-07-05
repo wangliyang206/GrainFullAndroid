@@ -25,6 +25,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.CompassClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DashboardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ElectronicClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FlipClockActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.LayoutHomeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevelSelectActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity;
@@ -75,6 +76,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
     }
 
     @OnClick({
+            R.id.btn_fragmentspecialeffects_layout_home,                                            // 界面 - 首页
+            R.id.btn_fragmentspecialeffects_layout_me,                                              // 界面 - 我的
+
             R.id.btn_fragmentspecialeffects_text_serialnumber,                                      // 仿序列号
 
             R.id.btn_fragmentspecialeffects_button_loadbutton,                                      // 加载按钮
@@ -97,6 +101,13 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_fragmentspecialeffects_layout_home:                                       // 界面 - 首页
+                ActivityUtils.startActivity(LayoutHomeActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_layout_me:                                         // 界面 - 我的
+//                ActivityUtils.startActivity(SerialNumberActivity.class);
+                break;
+
             case R.id.btn_fragmentspecialeffects_text_serialnumber:                                 // 仿序列号
                 ActivityUtils.startActivity(SerialNumberActivity.class);
                 break;
