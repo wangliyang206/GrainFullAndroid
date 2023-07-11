@@ -20,6 +20,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerGameComponent;
 import com.zqw.mobile.grainfull.mvp.contract.GameContract;
 import com.zqw.mobile.grainfull.mvp.presenter.GamePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AircraftWarActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.CardFlippingActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.OneLineToEndActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.WhacAMoleActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.klotskiGameActivity;
@@ -64,6 +65,7 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
             R.id.btn_fragmentgame_common_aircraftwar,                                               // 飞机大战
             R.id.btn_fragmentgame_common_whacamole,                                                 // 打地鼠
             R.id.btn_fragmentgame_common_onepen,                                                    // 一笔画完
+            R.id.btn_fragmentgame_common_cardflipping,                                              // 卡牌消消乐
     })
     @Override
     public void onClick(View v) {
@@ -79,6 +81,9 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
                 break;
             case R.id.btn_fragmentgame_common_onepen:                                               // 一笔画完
                 ActivityUtils.startActivity(OneLineToEndActivity.class);
+                break;
+            case R.id.btn_fragmentgame_common_cardflipping:                                         // 卡牌消消乐
+                ActivityUtils.startActivity(CardFlippingActivity.class);
                 break;
         }
     }

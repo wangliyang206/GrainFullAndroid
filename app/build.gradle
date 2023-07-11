@@ -396,4 +396,6 @@ dependencies {
 
     // 动画库，https://github.com/airbnb/lottie-android
     implementation 'com.airbnb.android:lottie:3.6.0'
+    // 爆炸散落动画，https://github.com/tyrantgit/ExplosionField
+    implementation 'tyrantgit:explosionfield:1.0.1'
 }
