@@ -7,6 +7,7 @@ import com.zqw.mobile.grainfull.mvp.contract.CardFlippingContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.CardFlipping;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.CardFlippingAdapter;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -64,7 +65,8 @@ public class CardFlippingPresenter extends BasePresenter<CardFlippingContract.Mo
         mList.add(new CardFlipping(16, 8, R.mipmap.hongtao, R.mipmap.red_8, false, false));
 
         // 打乱数据
-
+        Collections.shuffle(mList);
+        // 重新显示步数
         mRootView.loadSteps(steps);
         mAdapter.notifyDataSetChanged();
     }

@@ -21,6 +21,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.CardFlippingClearanceDialog;
 import com.zqw.mobile.grainfull.di.component.DaggerCardFlippingComponent;
@@ -33,7 +34,6 @@ import com.zqw.mobile.grainfull.mvp.ui.widget.anim.FlipCardAnimation;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import tyrantgit.explosionfield.ExplosionField;
 
 /**
@@ -77,7 +77,6 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
             this.mExplosionField.clear();
             this.mExplosionField = null;
         }
-
     }
 
     @Override
@@ -99,6 +98,8 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("卡牌消消乐");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "card_flipping_open");
         // 先初始化载入ExplosionField
         mExplosionField = ExplosionField.attach2Window(this);
         initRecyclerView();
@@ -123,18 +124,6 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
         ArmsUtils.configRecyclerView(mRecyclerView, mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
-    }
-
-    @OnClick({
-            R.id.lila_cardflipping_steps,                                                           // 步数
-    })
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.lila_cardflipping_steps:                                                      // 步数
-                onSucc();
-                break;
-        }
     }
 
     /**
