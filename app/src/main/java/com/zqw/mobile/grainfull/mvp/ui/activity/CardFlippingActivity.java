@@ -22,6 +22,7 @@ import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.CardFlippingClearanceDialog;
 import com.zqw.mobile.grainfull.di.component.DaggerCardFlippingComponent;
 import com.zqw.mobile.grainfull.mvp.contract.CardFlippingContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.CardFlipping;
@@ -59,8 +60,6 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
     CardFlippingAdapter mAdapter;                                                                   // 内容适配器
     // 翻转中
     private boolean isFlipping;
-    // 当前操作步数
-    private int steps = 0;
     // 上一次数据
     private CardFlipping lastInfo;
     private View lastView;
@@ -146,9 +145,11 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
             @Override
             public void onAnimationStart(Animation animation) {
                 isFlipping = true;
-                steps++;
-                // 显示当前步数
-                txviSteps.setText(String.valueOf(steps));
+                if (mPresenter != null) {
+                    mPresenter.addSteps();
+                    // 显示当前步数
+                    txviSteps.setText(String.valueOf(mPresenter.getSteps()));
+                }
             }
 
             @Override
@@ -167,9 +168,18 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
                         lastInfo = null;
                         lastView = null;
                         // 检查是否完成，完成后弹出成绩
-                        if(mAdapter.isSucc()){
-                            // 已完成
-                            showMessage("恭喜您，已完成！");
+                        if (mAdapter.isSucc()) {
+                            CardFlippingClearanceDialog mDialog = new CardFlippingClearanceDialog(CardFlippingActivity.this, mPresenter.getSteps(), isVal -> {
+                                if (isVal) {
+                                    if (mPresenter != null) {
+                                        mPresenter.init();
+                                    }
+                                } else {
+                                    // 退出游戏
+                                    killMyself();
+                                }
+                            });
+                            mDialog.show();
                         }
                     } else {
                         // 两次标志不一样，将两张卡牌翻转

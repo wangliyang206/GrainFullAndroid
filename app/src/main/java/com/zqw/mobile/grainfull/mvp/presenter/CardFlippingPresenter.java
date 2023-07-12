@@ -29,6 +29,8 @@ public class CardFlippingPresenter extends BasePresenter<CardFlippingContract.Mo
     List<CardFlipping> mList;
     @Inject
     CardFlippingAdapter mAdapter;                                                                   // 内容适配器
+    // 当前操作步数
+    private int steps = 0;
 
     @Inject
     public CardFlippingPresenter(CardFlippingContract.Model model, CardFlippingContract.View rootView) {
@@ -39,25 +41,43 @@ public class CardFlippingPresenter extends BasePresenter<CardFlippingContract.Mo
      * 初始化游戏
      */
     public void init() {
-        mList.add(new CardFlipping(1, 1, R.mipmap.heitao, R.mipmap.black_1));
-        mList.add(new CardFlipping(2, 2, R.mipmap.heitao, R.mipmap.black_2));
-        mList.add(new CardFlipping(3, 3, R.mipmap.heitao, R.mipmap.black_3));
-        mList.add(new CardFlipping(4, 4, R.mipmap.heitao, R.mipmap.black_4));
-        mList.add(new CardFlipping(5, 5, R.mipmap.heitao, R.mipmap.black_5));
-        mList.add(new CardFlipping(6, 6, R.mipmap.heitao, R.mipmap.black_6));
-        mList.add(new CardFlipping(7, 7, R.mipmap.heitao, R.mipmap.black_7));
-        mList.add(new CardFlipping(8, 8, R.mipmap.heitao, R.mipmap.black_8));
+        mList.clear();
+        steps = 0;
 
-        mList.add(new CardFlipping(9, 1, R.mipmap.hongtao, R.mipmap.red_1));
-        mList.add(new CardFlipping(10, 2, R.mipmap.hongtao, R.mipmap.red_2));
-        mList.add(new CardFlipping(11, 3, R.mipmap.hongtao, R.mipmap.red_3));
-        mList.add(new CardFlipping(12, 4, R.mipmap.hongtao, R.mipmap.red_4));
-        mList.add(new CardFlipping(13, 5, R.mipmap.hongtao, R.mipmap.red_5));
-        mList.add(new CardFlipping(14, 6, R.mipmap.hongtao, R.mipmap.red_6));
-        mList.add(new CardFlipping(15, 7, R.mipmap.hongtao, R.mipmap.red_7));
-        mList.add(new CardFlipping(16, 8, R.mipmap.hongtao, R.mipmap.red_8));
+        // 生成数据
+        mList.add(new CardFlipping(1, 1, R.mipmap.heitao, R.mipmap.black_1, false, false));
+        mList.add(new CardFlipping(2, 2, R.mipmap.heitao, R.mipmap.black_2, false, false));
+        mList.add(new CardFlipping(3, 3, R.mipmap.heitao, R.mipmap.black_3, false, false));
+        mList.add(new CardFlipping(4, 4, R.mipmap.heitao, R.mipmap.black_4, false, false));
+        mList.add(new CardFlipping(5, 5, R.mipmap.heitao, R.mipmap.black_5, false, false));
+        mList.add(new CardFlipping(6, 6, R.mipmap.heitao, R.mipmap.black_6, false, false));
+        mList.add(new CardFlipping(7, 7, R.mipmap.heitao, R.mipmap.black_7, false, false));
+        mList.add(new CardFlipping(8, 8, R.mipmap.heitao, R.mipmap.black_8, false, false));
+
+        mList.add(new CardFlipping(9, 1, R.mipmap.hongtao, R.mipmap.red_1, false, false));
+        mList.add(new CardFlipping(10, 2, R.mipmap.hongtao, R.mipmap.red_2, false, false));
+        mList.add(new CardFlipping(11, 3, R.mipmap.hongtao, R.mipmap.red_3, false, false));
+        mList.add(new CardFlipping(12, 4, R.mipmap.hongtao, R.mipmap.red_4, false, false));
+        mList.add(new CardFlipping(13, 5, R.mipmap.hongtao, R.mipmap.red_5, false, false));
+        mList.add(new CardFlipping(14, 6, R.mipmap.hongtao, R.mipmap.red_6, false, false));
+        mList.add(new CardFlipping(15, 7, R.mipmap.hongtao, R.mipmap.red_7, false, false));
+        mList.add(new CardFlipping(16, 8, R.mipmap.hongtao, R.mipmap.red_8, false, false));
+
+        // 打乱数据
+
 
         mAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 步数加1
+     */
+    public void addSteps() {
+        steps++;
+    }
+
+    public int getSteps() {
+        return steps;
     }
 
     @Override

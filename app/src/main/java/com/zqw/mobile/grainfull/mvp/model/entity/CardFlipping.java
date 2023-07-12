@@ -12,11 +12,13 @@ public class CardFlipping {
     public CardFlipping() {
     }
 
-    public CardFlipping(int id, int sign, int imageBg, int image) {
+    public CardFlipping(int id, int sign, int imageBg, int imageContent, boolean isDisplayFront, boolean isDisappear) {
         this.id = id;
         this.sign = sign;
         this.imageBg = imageBg;
-        this.imageContent = image;
+        this.imageContent = imageContent;
+        this.isDisplayFront = isDisplayFront;
+        this.isDisappear = isDisappear;
     }
 
     // id

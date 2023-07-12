@@ -14,6 +14,38 @@ import timber.log.Timber;
  * @Description: 翻转卡片动画
  * @Author: WLY
  * @CreateDate: 2023/7/11 11:48
+ *
+ * 使用方法：
+ * int width = view.getWidth() / 2;
+ *         int height = view.getHeight() / 2;
+ *         FlipCardAnimation animationToFront = new FlipCardAnimation(0, 180, width, height);
+ *         animationToFront.setInterpolator(new AnticipateOvershootInterpolator());
+ *         animationToFront.setDuration(1500);
+ *         animationToFront.setFillAfter(false);
+ *         animationToFront.setRepeatCount(0);
+ *         animationToFront.FlipDirection(false);
+ *         animationToFront.setAnimationListener(new Animation.AnimationListener() {
+ *             @Override
+ *             public void onAnimationStart(Animation animation) {
+ *             }
+ *
+ *             @Override
+ *             public void onAnimationEnd(Animation animation) {
+ *             }
+ *
+ *             @Override
+ *             public void onAnimationRepeat(Animation animation) {
+ *                 ((FlipCardAnimation) animation).setCanContentChange();
+ *             }
+ *         });
+ *         animationToFront.setOnContentChangeListener(() -> {
+ *             ImageView imviBg = view.findViewById(R.id.imvi_cardflippingitem_bg);
+ *             ImageView imviContent = view.findViewById(R.id.imvi_cardflippingitem_content);
+ *             imviBg.setImageResource(info.getImageBg());
+ *             imviContent.setVisibility(View.VISIBLE);
+ *             imviContent.setImageResource(info.getImageContent());
+ *         });
+ *         view.startAnimation(animationToFront);
  */
 public class FlipCardAnimation extends Animation {
     private final float mFromDegrees;
