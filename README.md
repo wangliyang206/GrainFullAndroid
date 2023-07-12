@@ -67,12 +67,13 @@
 
 ## 游戏
 ### 普通游戏：
-    华容道、飞机大战、打地鼠、一笔画完；
+    华容道、飞机大战、打地鼠、一笔画完、卡牌消消乐；
 
 ![](image/klotskiGame.jpg)
 ![](image/AircraftWar.jpg)
 ![](image/WhacAMole.jpg)
 ![](image/OneLineToEnd.jpg)
+![](image/CardFlipping.jpg)
 
 ## 特效介绍
 ### 文本：
