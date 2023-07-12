@@ -33,6 +33,7 @@ import com.zqw.mobile.grainfull.mvp.ui.widget.anim.FlipCardAnimation;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import tyrantgit.explosionfield.ExplosionField;
 
 /**
@@ -108,12 +109,32 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
     }
 
     /**
+     * 加载步数
+     */
+    @Override
+    public void loadSteps(int steps) {
+        txviSteps.setText(String.valueOf(steps));
+    }
+
+    /**
      * 初始化RecyclerView
      */
     private void initRecyclerView() {
         ArmsUtils.configRecyclerView(mRecyclerView, mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
+    }
+
+    @OnClick({
+            R.id.lila_cardflipping_steps,                                                           // 步数
+    })
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.lila_cardflipping_steps:                                                      // 步数
+                onSucc();
+                break;
+        }
     }
 
     /**
@@ -124,9 +145,29 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
         // 拿到点击item数据
         CardFlipping info = (CardFlipping) data;
         // 非翻转中 并且 是反面时才允许翻牌
-        if (!isFlipping && !info.isDisplayFront()) {
+        if (!isFlipping && !info.isDisplayFront() && !info.isDisappear()) {
             startAnimationFront(view, info);
         }
+    }
+
+    /**
+     * 关卡通过
+     */
+    private void onSucc() {
+        CardFlippingClearanceDialog mDialog = new CardFlippingClearanceDialog(this, mPresenter.getSteps(), isVal -> {
+            if (isVal) {
+                lastInfo = null;
+                lastView = null;
+                mExplosionField.clear();
+                if (mPresenter != null) {
+                    mPresenter.init();
+                }
+            } else {
+                // 退出游戏
+                killMyself();
+            }
+        });
+        mDialog.show();
     }
 
     /**
@@ -146,15 +187,15 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
             public void onAnimationStart(Animation animation) {
                 isFlipping = true;
                 if (mPresenter != null) {
+                    // 增加步数
                     mPresenter.addSteps();
                     // 显示当前步数
-                    txviSteps.setText(String.valueOf(mPresenter.getSteps()));
+                    loadSteps(mPresenter.getSteps());
                 }
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                isFlipping = false;
                 // 判断掀开的卡片是否满足两张(不满足时还可以继续掀牌)
                 if (lastView != null) {
                     // 判断是否一样
@@ -169,17 +210,7 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
                         lastView = null;
                         // 检查是否完成，完成后弹出成绩
                         if (mAdapter.isSucc()) {
-                            CardFlippingClearanceDialog mDialog = new CardFlippingClearanceDialog(CardFlippingActivity.this, mPresenter.getSteps(), isVal -> {
-                                if (isVal) {
-                                    if (mPresenter != null) {
-                                        mPresenter.init();
-                                    }
-                                } else {
-                                    // 退出游戏
-                                    killMyself();
-                                }
-                            });
-                            mDialog.show();
+                            onSucc();
                         }
                     } else {
                         // 两次标志不一样，将两张卡牌翻转
@@ -201,6 +232,7 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
             }
         });
         animationToFront.setOnContentChangeListener(() -> {
+            isFlipping = false;
             ImageView imviBg = view.findViewById(R.id.imvi_cardflippingitem_bg);
             ImageView imviContent = view.findViewById(R.id.imvi_cardflippingitem_content);
             imviBg.setImageResource(info.getImageBg());
@@ -230,7 +262,6 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                isFlipping = false;
                 info.setDisplayFront(false);
                 info.setDisappear(false);
                 lastInfo = null;
@@ -243,6 +274,7 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
             }
         });
         animationToBack.setOnContentChangeListener(() -> {
+            isFlipping = false;
             ImageView imviBg = view.findViewById(R.id.imvi_cardflippingitem_bg);
             ImageView imviContent = view.findViewById(R.id.imvi_cardflippingitem_content);
             imviBg.setImageResource(R.mipmap.tw_card);
@@ -281,4 +313,5 @@ public class CardFlippingActivity extends BaseActivity<CardFlippingPresenter> im
     public void killMyself() {
         finish();
     }
+
 }

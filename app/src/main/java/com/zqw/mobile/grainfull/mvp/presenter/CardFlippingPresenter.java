@@ -65,7 +65,7 @@ public class CardFlippingPresenter extends BasePresenter<CardFlippingContract.Mo
 
         // 打乱数据
 
-
+        mRootView.loadSteps(steps);
         mAdapter.notifyDataSetChanged();
     }
 

@@ -33,6 +33,7 @@ import com.zqw.mobile.grainfull.mvp.model.entity.CardFlipping;
 import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 /**
  * ================================================
@@ -74,6 +75,8 @@ public class CardFlippingItemHolder extends BaseHolder<CardFlipping> implements 
     @Override
     public void setData(@NotNull CardFlipping info, int position) {
 //        setLayoutMargin();
+        mLayout.setVisibility(View.VISIBLE);
+        imviBg.setVisibility(View.VISIBLE);
 
         // 判断当前是否显示
         if (info.isDisplayFront()) {
@@ -81,12 +84,13 @@ public class CardFlippingItemHolder extends BaseHolder<CardFlipping> implements 
             imviBg.setImageResource(info.getImageBg());
             imviContent.setVisibility(View.VISIBLE);
             imviContent.setImageResource(info.getImageContent());
+            Timber.i("#####正面="+position+"##="+info.getId());
         } else {
             // 当前状态为：显示反面
             imviBg.setImageResource(R.mipmap.tw_card);
             imviContent.setVisibility(View.GONE);
+            Timber.i("#####反面="+position+"##="+info.getId());
         }
-
     }
 
     /**
