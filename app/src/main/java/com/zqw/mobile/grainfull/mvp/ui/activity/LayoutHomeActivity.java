@@ -6,22 +6,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
-import com.baidu.idl.face.platform.utils.DensityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -29,9 +23,25 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerLayoutHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LayoutHomeContract;
 import com.zqw.mobile.grainfull.mvp.presenter.LayoutHomePresenter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.FragmentPagerAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutMianFragment;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutOtherFragment;
+import com.zqw.mobile.grainfull.mvp.ui.widget.anim.AnimationRadioView;
+
+import net.lucode.hackware.magicindicator.MagicIndicator;
+import net.lucode.hackware.magicindicator.ViewPagerHelper;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.CommonPagerTitleView;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Description: 界面 - 首页
@@ -43,21 +53,59 @@ import butterknife.OnClick;
  */
 public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implements LayoutHomeContract.View {
     /*------------------------------------------控件信息------------------------------------------*/
-    @BindView(R.id.rela_layouthome_search)
-    RelativeLayout relaSearch;
+    @BindView(R.id.view_layouthome_pager)
+    ViewPager mViewPager;
 
-    @BindView(R.id.imvi_layouthome_search)
-    ImageView imviSearch;
-
-    @BindView(R.id.edit_layouthome_search)
-    EditText editSearch;
-
-    @BindView(R.id.imvi_layouthome_close)
-    ImageView imviClose;
+    @BindView(R.id.magic_layouthome_indicator)
+    MagicIndicator mMagicIndicator;
 
     /*------------------------------------------业务信息------------------------------------------*/
-    // 自动转换
-    private AutoTransition autoTransition;
+    private List<String> iconList = new ArrayList<>();
+
+    /**
+     * 管理器
+     */
+    private FragmentPagerAdapter mAdapter;
+    /**
+     * 当前Fragment
+     */
+    private Fragment mCurFragment;
+
+    /**
+     * 禁止侧滑关闭
+     */
+    @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
+    /**
+     * 是否Fragment使用StatusBar
+     */
+    public boolean isStatusBarFragment() {
+        return true;
+    }
+
+    /**
+     * 状态栏目透明
+     */
+    @Override
+    public int useStatusBarColor() {
+        return -1;
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (iconList != null) {
+            iconList.clear();
+            iconList = null;
+        }
+
+        super.onDestroy();
+
+        this.mAdapter = null;
+        this.mCurFragment = null;
+    }
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -78,85 +126,130 @@ public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("首页");
 
-        /* 输入法键盘的搜索监听 */
-        editSearch.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                String str = editSearch.getText().toString();
-                if (!TextUtils.isEmpty(str)) {
-                    showMessage(str);
+        initData();
+        initViewPager();
+        initMagicIndicator();
+        ViewPagerHelper.bind(mMagicIndicator, mViewPager);
+        mViewPager.setOffscreenPageLimit(0);
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        iconList.add("tab_article.json");
+        iconList.add("tab_club.json");
+        iconList.add("tab_car.json");
+        iconList.add("tab_used_car.json");
+        iconList.add("tab_me.json");
+    }
+
+    /**
+     * 初始化分页
+     */
+    private void initViewPager() {
+        mViewPager.setAdapter(mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @NonNull
+            @Override
+            public Fragment getItem(int position) {
+                if (position == 0) {
+                    return LayoutMianFragment.instantiate();
                 } else {
-                    showMessage("请输入内容");
+                    return LayoutOtherFragment.instantiate(position);
+                }
+
+            }
+
+            @Override
+            public int getCount() {
+                return iconList.size();
+            }
+
+            @Override
+            public void setPrimaryItem(ViewGroup container, int position, Object object) {
+                super.setPrimaryItem(container, position, object);
+                if (mCurFragment == null) {
+                    commitUpdate();
+                }
+                mCurFragment = (Fragment) object;
+            }
+
+            //this is called when notifyDataSetChanged() is called
+            @Override
+            public int getItemPosition(@NotNull Object object) {
+                return PagerAdapter.POSITION_NONE;
+            }
+        });
+
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+                if (state == ViewPager.SCROLL_STATE_IDLE) {
+                    mAdapter.commitUpdate();
                 }
             }
-            return false;
+
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+
+            }
         });
     }
 
-    @OnClick({
-            R.id.imvi_layouthome_search,                                                            // 搜索按钮
-            R.id.imvi_layouthome_close,                                                             // 关闭
-    })
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.imvi_layouthome_search:                                                       // 搜索按钮
-                initExpand();
-                break;
-            case R.id.imvi_layouthome_close:                                                        // 关闭
-                initClose();
-                break;
-        }
-    }
-
     /**
-     * 展开
+     * 初始化指示器
      */
-    public void initExpand() {
-        editSearch.setVisibility(View.VISIBLE);
-        imviClose.setVisibility(View.VISIBLE);
-        LinearLayout.LayoutParams LayoutParams = (LinearLayout.LayoutParams) relaSearch.getLayoutParams();
-        LayoutParams.width = DensityUtils.dip2px(this, DensityUtils.px2dip(this, DensityUtils.getDisplayWidth(this)) - 40);
-        LayoutParams.setMargins(0, 0, 0, 0);
-        relaSearch.setPadding(14, 0, 14, 0);
-        relaSearch.setLayoutParams(LayoutParams);
-        editSearch.setOnTouchListener((v, event) -> {
-            editSearch.setFocusable(true);
-            editSearch.setFocusableInTouchMode(true);
-            return false;
+    private void initMagicIndicator() {
+        CommonNavigator commonNavigator = new CommonNavigator(this);
+        commonNavigator.setAdjustMode(true);
+        commonNavigator.setAdapter(new CommonNavigatorAdapter() {
+
+            @Override
+            public int getCount() {
+                return iconList == null ? 0 : iconList.size();
+            }
+
+            @Override
+            public IPagerTitleView getTitleView(Context context, final int index) {
+                CommonPagerTitleView commonPagerTitleView = new CommonPagerTitleView(context);
+                View customLayout = LayoutInflater.from(context).inflate(R.layout.item_tab_layouthome, null, false);
+                AnimationRadioView tabImage = customLayout.findViewById(R.id.item_tab_image);
+                tabImage.setAnimation(iconList.get(index));
+                commonPagerTitleView.setContentView(customLayout);
+                commonPagerTitleView.setOnPagerTitleChangeListener(new CommonPagerTitleView.OnPagerTitleChangeListener() {
+                    @Override
+                    public void onSelected(int index, int totalCount) {
+                        tabImage.setChecked(true);
+                    }
+
+                    @Override
+                    public void onDeselected(int index, int totalCount) {
+                        tabImage.setChecked(false);
+                    }
+
+                    @Override
+                    public void onLeave(int index, int totalCount, float leavePercent, boolean leftToRight) {
+
+                    }
+
+                    @Override
+                    public void onEnter(int index, int totalCount, float enterPercent, boolean leftToRight) {
+
+                    }
+                });
+                commonPagerTitleView.setOnClickListener(view -> mViewPager.setCurrentItem(index));
+                return commonPagerTitleView;
+            }
+
+            @Override
+            public IPagerIndicator getIndicator(Context context) {
+                // 没有指示器，因为title的指示作用已经很明显了
+                return null;
+            }
         });
-        //开始动画
-        beginDelayedTransition(relaSearch);
-    }
-
-    /**
-     * 设置收缩状态时的布局
-     */
-    private void initClose() {
-        editSearch.setVisibility(View.GONE);
-        editSearch.setText("");
-        imviClose.setVisibility(View.GONE);
-        LinearLayout.LayoutParams LayoutParams = (LinearLayout.LayoutParams) relaSearch.getLayoutParams();
-        LayoutParams.width = DensityUtils.dip2px(this, 48);
-        LayoutParams.height = DensityUtils.dip2px(this, 48);
-        LayoutParams.setMargins(0, 0, 0, 0);
-        relaSearch.setLayoutParams(LayoutParams);
-        //隐藏键盘
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getWindowToken(), 0);
-        editSearch.setOnClickListener(v -> editSearch.setCursorVisible(true));
-        //开始动画
-        beginDelayedTransition(relaSearch);
-    }
-
-    /**
-     * 开始延迟转换
-     */
-    private void beginDelayedTransition(ViewGroup view) {
-        if (autoTransition == null) {
-            autoTransition = new AutoTransition();
-            autoTransition.setDuration(500);
-        }
-        TransitionManager.beginDelayedTransition(view, autoTransition);
+        mMagicIndicator.setNavigator(commonNavigator);
     }
 
     public Activity getActivity() {

@@ -398,4 +398,6 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.6.0'
     // 爆炸散落动画，https://github.com/tyrantgit/ExplosionField
     implementation 'tyrantgit:explosionfield:1.0.1'
+    // 万能指示器，https://github.com/hackware1993/MagicIndicator
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
 }

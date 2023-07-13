@@ -1,14 +1,15 @@
 package com.zqw.mobile.grainfull.di.component;
 
-import dagger.BindsInstance;
-import dagger.Component;
-
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.di.scope.ActivityScope;
 import com.zqw.mobile.grainfull.di.module.LayoutHomeModule;
 import com.zqw.mobile.grainfull.mvp.contract.LayoutHomeContract;
-
-import com.jess.arms.di.scope.ActivityScope;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LayoutHomeActivity;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutMianFragment;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutOtherFragment;
+
+import dagger.BindsInstance;
+import dagger.Component;
 
 /**
  * ================================================
@@ -22,6 +23,10 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.LayoutHomeActivity;
 public interface LayoutHomeComponent {
 
     void inject(LayoutHomeActivity activity);
+
+    void inject(LayoutMianFragment fragment);
+
+    void inject(LayoutOtherFragment fragment);
 
     @Component.Builder
     interface Builder {

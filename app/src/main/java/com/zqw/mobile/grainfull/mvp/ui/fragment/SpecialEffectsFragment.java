@@ -77,7 +77,6 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
 
     @OnClick({
             R.id.btn_fragmentspecialeffects_layout_home,                                            // 界面 - 首页
-            R.id.btn_fragmentspecialeffects_layout_me,                                              // 界面 - 我的
 
             R.id.btn_fragmentspecialeffects_text_serialnumber,                                      // 仿序列号
 
@@ -103,9 +102,6 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
         switch (v.getId()) {
             case R.id.btn_fragmentspecialeffects_layout_home:                                       // 界面 - 首页
                 ActivityUtils.startActivity(LayoutHomeActivity.class);
-                break;
-            case R.id.btn_fragmentspecialeffects_layout_me:                                         // 界面 - 我的
-//                ActivityUtils.startActivity(SerialNumberActivity.class);
                 break;
 
             case R.id.btn_fragmentspecialeffects_text_serialnumber:                                 // 仿序列号
