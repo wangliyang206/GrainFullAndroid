@@ -46,4 +46,8 @@ public interface EventBusTags {
     int RETURN_LIVENESS_DETECTION = 4;
     // 一笔画完游戏 中 清空数据库操作
     int ONE_LINE_TO_END_CLEAR = 5;
+    // 新首页下拉刷新数据
+    int NEW_HOME_REFRESH_TAG = 6;
+    int NEW_HOME_MORE_TAG = 7;
+    int NEW_HOME_SUCC_TAG = 8;
 }

@@ -15,6 +15,11 @@ public class MainEvent {
     public MainEvent() {
     }
 
+    public MainEvent(int code, HomeContentResponse infoResponse) {
+        this.code = code;
+        this.infoResponse = infoResponse;
+    }
+
     public MainEvent(int code) {
         this.code = code;
     }
@@ -60,8 +65,16 @@ public class MainEvent {
     private String msg = "";
     private int position = 0;
     private int type = 0;
-
+    private HomeContentResponse infoResponse;
     private MLLivenessCaptureResult result;
+
+    public HomeContentResponse getInfoResponse() {
+        return infoResponse;
+    }
+
+    public void setInfoResponse(HomeContentResponse infoResponse) {
+        this.infoResponse = infoResponse;
+    }
 
     public MLLivenessCaptureResult getResult() {
         return result;

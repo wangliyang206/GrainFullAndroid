@@ -21,15 +21,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.baidu.idl.face.platform.utils.DensityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
-import com.zqw.mobile.grainfull.di.component.DaggerLayoutHomeComponent;
-import com.zqw.mobile.grainfull.mvp.contract.LayoutHomeContract;
-import com.zqw.mobile.grainfull.mvp.presenter.LayoutHomePresenter;
+import com.zqw.mobile.grainfull.app.utils.EventBusTags;
+import com.zqw.mobile.grainfull.di.component.DaggerLayoutMianComponent;
+import com.zqw.mobile.grainfull.mvp.contract.LayoutMianContract;
+import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
+import com.zqw.mobile.grainfull.mvp.presenter.LayoutMianPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.NewHomeAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.widget.nestedrecyclerview.ParentRecyclerView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.nestedrecyclerview.StoreSwipeRefreshLayout;
+
+import org.simple.eventbus.Subscriber;
+import org.simple.eventbus.ThreadMode;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,8 +53,8 @@ import butterknife.OnClick;
  * @Author: WLY
  * @CreateDate: 2023/7/14 16:46
  */
-public class LayoutMianFragment extends BaseFragment<LayoutHomePresenter> implements LayoutHomeContract.View, View.OnClickListener {
-    /*------------------------------------------------控件信息------------------------------------------------*/
+public class LayoutMianFragment extends BaseFragment<LayoutMianPresenter> implements LayoutMianContract.View, View.OnClickListener {
+    /*-------------------------------------------控件信息-------------------------------------------*/
     @BindView(R.id.fragment_layouthome_main)
     ConstraintLayout contentLayout;                                                                 // 主布局
 
@@ -59,17 +70,38 @@ public class LayoutMianFragment extends BaseFragment<LayoutHomePresenter> implem
     @BindView(R.id.imvi_layouthomemain_close)
     ImageView imviClose;
 
-    /*------------------------------------------业务信息------------------------------------------*/
+    @BindView(R.id.srla_layouthomemain_refresh)
+    StoreSwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.revi_layouthomemain_content)
+    ParentRecyclerView mRecyclerView;
+
+    /*-------------------------------------------业务信息-------------------------------------------*/
+    @Inject
+    NewHomeAdapter mAdapter;                                                                        // 适配器
+
     // 自动转换
     private AutoTransition autoTransition;
+    // 列表下拉刷新事件
+    private SwipeRefreshLayout.OnRefreshListener mRefreshListener;
 
+    /**
+     * 实例化 - 入口
+     */
     public static LayoutMianFragment instantiate() {
         return new LayoutMianFragment();
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.autoTransition = null;
+        this.mAdapter = null;
+        this.mRefreshListener = null;
+    }
+
+    @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-        DaggerLayoutHomeComponent
+        DaggerLayoutMianComponent
                 .builder()
                 .appComponent(appComponent)
                 .view(this)
@@ -84,7 +116,57 @@ public class LayoutMianFragment extends BaseFragment<LayoutHomePresenter> implem
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        /* 输入法键盘的搜索监听 */
+
+        // 初始化搜索
+        initSearch();
+        // 初始化下拉刷新
+        initSwipeRefresh();
+        // 第一次拿数据
+        onRefresh();
+    }
+
+    @Subscriber(tag = EventBusTags.HOME_TAG, mode = ThreadMode.POST)
+    private void eventBusEvent(MainEvent mainEvent) {
+        if (mainEvent.getCode() == EventBusTags.NEW_HOME_REFRESH_TAG) {
+            if (mPresenter != null) {
+                mPresenter.getHomeContentData(false);
+            }
+        }
+        if (mainEvent.getCode() == EventBusTags.NEW_HOME_MORE_TAG) {
+            if (mPresenter != null) {
+                mPresenter.getHomeContentData(true);
+            }
+        }
+    }
+
+    /**
+     * 下拉刷新
+     */
+    private void onRefresh() {
+        if (mPresenter != null) {
+            mPresenter.getHomeList();
+        }
+    }
+
+    /**
+     * 初始化下拉刷新
+     */
+    private void initSwipeRefresh() {
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.initLayoutManager(getContext());
+        // 绑定刷新事件
+        mRefreshListener = (SwipeRefreshLayout.OnRefreshListener) () -> {
+            // 刷新数据
+            onRefresh();
+        };
+        mSwipeRefreshLayout.setOnRefreshListener(mRefreshListener);
+    }
+
+    /**
+     * 初始化搜索
+     */
+    private void initSearch() {
+        // 输入法键盘的搜索监听
         editSearch.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 String str = editSearch.getText().toString();
