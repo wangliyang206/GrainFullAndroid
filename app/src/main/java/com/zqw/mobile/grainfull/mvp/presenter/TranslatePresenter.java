@@ -37,20 +37,26 @@ public class TranslatePresenter extends BasePresenter<TranslateContract.Model, T
         mModel.translate(text, from, to)
                 .compose(RxUtils.applySchedulers(mRootView))                                        // 使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
                 .subscribe(new ErrorHandleSubscriber<TranslateResponse>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        super.onError(t);
+
+                        mRootView.loadContent(false, t.getMessage());
+                    }
 
                     @Override
                     public void onNext(TranslateResponse info) {
                         if (info.getError_code() == -1) {
                             // 没有错误
                             if (CommonUtils.isNotEmpty(info.getTrans_result())) {
-                                mRootView.loadContent(info.getTrans_result().get(0).getDst());
+                                mRootView.loadContent(true, info.getTrans_result().get(0).getDst());
                             } else {
-                                mRootView.showMessage("暂无内容！");
+                                mRootView.loadContent(false, "暂未收到翻译结果！");
                             }
 
                         } else {
                             // 当前翻译有错误
-                            mRootView.showMessage(info.getError_msg());
+                            mRootView.loadContent(false, info.getError_msg());
                         }
                     }
                 });

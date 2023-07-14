@@ -79,19 +79,9 @@ public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implem
         return false;
     }
 
-    /**
-     * 是否Fragment使用StatusBar
-     */
+    @Override
     public boolean isStatusBarFragment() {
         return true;
-    }
-
-    /**
-     * 状态栏目透明
-     */
-    @Override
-    public int useStatusBarColor() {
-        return -1;
     }
 
     @Override

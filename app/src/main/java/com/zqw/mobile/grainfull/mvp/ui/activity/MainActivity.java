@@ -120,14 +120,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         this.mAccountManager = null;
     }
 
-    /**
-     * 状态栏目透明
-     */
-    @Override
-    public int useStatusBarColor() {
-        return -1;
-    }
-
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerMainComponent

@@ -5,12 +5,15 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -56,16 +59,16 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
 
     @BindView(R.id.txvi_translate_before)
     TextView txviBefore;                                                                            // 原文
-
     @BindView(R.id.txvi_translate_after)
     TextView txviAfter;                                                                             // 译文
 
     @BindView(R.id.edit_translate_input)
     EditText editInput;                                                                             // 输入的中文
+    @BindView(R.id.imvi_translate_cleanup)
+    ImageView imviCleanUp;                                                                          // 清扫
 
     @BindView(R.id.txvi_translate_value)
     TextView txviValue;                                                                             // 结果
-
     @BindView(R.id.btn_translate_submit)
     LoadingButton btnSubmit;                                                                        // 翻译按钮
 
@@ -112,6 +115,22 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
         // 初始化语音播报
         synthActivity = new SynthActivity();
         synthActivity.initTTS(getApplicationContext(), true);
+        editInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                imviCleanUp.setVisibility(TextUtils.isEmpty(editInput.getText().toString()) ? View.GONE : View.VISIBLE);
+            }
+        });
 
         // 初始化数据源
         Translate.onInit();
@@ -200,11 +219,18 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
      * 翻译结果
      */
     @Override
-    public void loadContent(String value) {
-        // 翻译成功，加载结果
-        txviValue.setText(value);
-        // 告诉按钮成功了。
-        btnSubmit.complete(true);
+    public void loadContent(boolean isSucc, String value) {
+        // 判断是否翻译成功
+        if (isSucc) {
+            // 翻译成功，加载结果
+            txviValue.setText(value);
+            // 告诉按钮成功了。
+            btnSubmit.complete(true);
+        } else {
+            // 告诉按钮失败了。
+            btnSubmit.complete(false);
+            showMessage(value);
+        }
     }
 
     @OnClick({
@@ -214,6 +240,7 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
             R.id.btn_translate_submit,                                                              // 翻译
             R.id.imvi_translate_play,                                                               // 播放
             R.id.imvi_translate_copy,                                                               // 复制
+            R.id.imvi_translate_cleanup,                                                            // 清除
     })
     @Override
     public void onClick(View v) {
@@ -271,6 +298,9 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
                     ClipboardUtils.copyText(mValue);
                     showMessage("复制成功！");
                 }
+                break;
+            case R.id.imvi_translate_cleanup:                                                       // 清除
+                editInput.setText("");
                 break;
         }
     }

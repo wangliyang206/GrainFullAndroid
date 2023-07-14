@@ -15,11 +15,11 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.baidu.idl.face.platform.utils.DensityUtils;
 import com.jess.arms.base.BaseFragment;
@@ -44,7 +44,7 @@ import butterknife.OnClick;
 public class LayoutMianFragment extends BaseFragment<LayoutHomePresenter> implements LayoutHomeContract.View, View.OnClickListener {
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.fragment_layouthome_main)
-    LinearLayout contentLayout;                                                                     // 主布局
+    ConstraintLayout contentLayout;                                                                   // 主布局
 
     @BindView(R.id.rela_layouthome_search)
     RelativeLayout relaSearch;                                                                      // 搜索
@@ -116,9 +116,9 @@ public class LayoutMianFragment extends BaseFragment<LayoutHomePresenter> implem
     public void initExpand() {
         editSearch.setVisibility(View.VISIBLE);
         imviClose.setVisibility(View.VISIBLE);
-        LinearLayout.LayoutParams LayoutParams = (LinearLayout.LayoutParams) relaSearch.getLayoutParams();
+        ConstraintLayout.LayoutParams LayoutParams = (ConstraintLayout.LayoutParams) relaSearch.getLayoutParams();
         LayoutParams.width = DensityUtils.dip2px(getContext(), DensityUtils.px2dip(getContext(), DensityUtils.getDisplayWidth(getContext())) - 40);
-        LayoutParams.setMargins(0, 0, 0, 0);
+        LayoutParams.setMargins(0, DensityUtils.dip2px(getContext(), 30), DensityUtils.dip2px(getContext(), 20), 0);
         relaSearch.setPadding(14, 0, 14, 0);
         relaSearch.setLayoutParams(LayoutParams);
         editSearch.setOnTouchListener((v, event) -> {
@@ -137,10 +137,10 @@ public class LayoutMianFragment extends BaseFragment<LayoutHomePresenter> implem
         editSearch.setVisibility(View.GONE);
         editSearch.setText("");
         imviClose.setVisibility(View.GONE);
-        LinearLayout.LayoutParams LayoutParams = (LinearLayout.LayoutParams) relaSearch.getLayoutParams();
+        ConstraintLayout.LayoutParams LayoutParams = (ConstraintLayout.LayoutParams) relaSearch.getLayoutParams();
         LayoutParams.width = DensityUtils.dip2px(getContext(), 48);
         LayoutParams.height = DensityUtils.dip2px(getContext(), 48);
-        LayoutParams.setMargins(0, 0, 0, 0);
+        LayoutParams.setMargins(0, DensityUtils.dip2px(getContext(), 30), DensityUtils.dip2px(getContext(), 20), 0);
         relaSearch.setLayoutParams(LayoutParams);
         //隐藏键盘
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

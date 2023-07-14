@@ -180,13 +180,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     }
 
     /**
-     * 状态栏是否设置成透明
-     */
-    public boolean isStatusBarTransparent() {
-        return true;
-    }
-
-    /**
      * 是否使用状态栏为透明功能,默认为使用(true)
      */
     public boolean useStatusBar() {
@@ -222,7 +215,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         if (useStatusBar()) {
             if (isStatusBarFragment()) {
                 // Fragment
-                StatusBarUtil.setTranslucentForImageViewInFragment(this, null);
+                StatusBarUtil.setTransparentForImageViewInFragment(this, null);
             } else {
                 // Activity
                 // 判断是否启用了  侧滑功能
@@ -230,19 +223,19 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
                     // 已启用侧滑功能
 
                     // 是否设置状态栏为透明
-                    if (isStatusBarTransparent()) {
-                        setStatusBarColor(useStatusBarColor(), 0);
+                    if (useStatusBarColor() == -1) {
+                        StatusBarUtil.setTransparent(this);
                     } else {
-                        setStatusBarColor(useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+                        setStatusBarColor(useStatusBarColor(), 0);
                     }
                 } else {
                     // 关闭侧滑功能
 
                     // 是否设置状态栏为透明
-                    if (isStatusBarTransparent()) {
-                        StatusBarUtil.setColor(this, useStatusBarColor(), 0);
+                    if (useStatusBarColor() == -1) {
+                        StatusBarUtil.setTransparent(this);
                     } else {
-                        StatusBarUtil.setColor(this, useStatusBarColor(), StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+                        StatusBarUtil.setColor(this, useStatusBarColor(), 0);
                     }
                 }
             }
