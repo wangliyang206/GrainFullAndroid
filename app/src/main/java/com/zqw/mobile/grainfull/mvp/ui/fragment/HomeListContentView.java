@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,8 +19,6 @@ import com.zqw.mobile.grainfull.mvp.ui.widget.nestedrecyclerview.ChildRecyclerVi
 import com.zqw.mobile.grainfull.mvp.ui.widget.nestedrecyclerview.OnUserVisibleChange;
 
 import org.simple.eventbus.EventBus;
-import org.simple.eventbus.Subscriber;
-import org.simple.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +31,10 @@ import timber.log.Timber;
 public class HomeListContentView extends ChildRecyclerView implements OnUserVisibleChange {
     // 是否加载数据
     boolean hasLoadData = false;
-    // 类型：0 = 已派单；1 = 已收货；2 = 已入库；
+    // 类型：0 = 新发现；1 = 手机；2 = 电脑办公；3 = 电子配件；
     private int mType = 0;
     // 页数
     private int pageNumber = 1;
-    // 排序：1路程最近，2时间倒序
-    private int sort = 1;
 
     // 数据源
     private List<HomeContentInfo> mList = new ArrayList<>();
@@ -83,7 +80,7 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
      * 初始化列表
      */
     private void initRecyclerView() {
-        setLayoutManager(new LinearLayoutManager(getContext()));
+        setLayoutManager(new GridLayoutManager(getContext(), 2));
         mAdapter = new HomeContentAdapter(mList);
         setAdapter(mAdapter);
     }
@@ -141,13 +138,6 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
         notifyDataSetChanged();
         // 请求数据
         EventBus.getDefault().post(new MainEvent(EventBusTags.NEW_HOME_REFRESH_TAG, mType, pageNumber), EventBusTags.HOME_TAG);
-    }
-
-    @Subscriber(tag = EventBusTags.HOME_TAG, mode = ThreadMode.POST)
-    private void eventBusEvent(MainEvent mainEvent) {
-        if (mainEvent.getCode() == EventBusTags.NEW_HOME_SUCC_TAG) {
-            onSuccessHomeOrder(mainEvent.getInfoResponse());
-        }
     }
 
     /**

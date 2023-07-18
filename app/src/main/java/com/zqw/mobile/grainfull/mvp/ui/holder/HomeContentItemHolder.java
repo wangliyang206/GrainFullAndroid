@@ -17,13 +17,16 @@ package com.zqw.mobile.grainfull.mvp.ui.holder;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.jess.arms.base.BaseHolder;
+import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
+import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentInfo;
@@ -48,20 +51,31 @@ public class HomeContentItemHolder extends BaseHolder<HomeContentInfo> implement
     @BindView(R.id.txvi_homecontentitemlayout_name)
     TextView txviName;
 
+    private AppComponent mAppComponent;
+    /**
+     * 用于加载图片的管理类, 默认使用 Glide, 使用策略模式, 可替换框架
+     */
+    private ImageLoader mImageLoader;
 
     public HomeContentItemHolder(View itemView) {
         super(itemView);
+        //可以在任何可以拿到 Context 的地方, 拿到 AppComponent, 从而得到用 Dagger 管理的单例对象
+        mAppComponent = ArmsUtils.obtainAppComponentFromContext(itemView.getContext());
+        mImageLoader = mAppComponent.imageLoader();
     }
 
     @Override
     public void setData(@NotNull HomeContentInfo info, int position) {
-//        if (position == 0) {
-//            setLayoutMargin(false);
-//        } else {
-//            setLayoutMargin(true);
-//        }
+        setLayoutMargin(position % 2 != 0);
 
         txviName.setText(CommonUtils.isEmptyReturnStr(info.getName()));
+
+        // 显示图片
+        mImageLoader.loadImage(mLayout.getContext(), ImageConfigImpl.builder().url(info.getImage())
+                .errorPic(R.mipmap.mis_default_error)
+                .placeholder(R.mipmap.mis_default_error)
+                .imageView(imviLogo).build());
+
     }
 
     /**
@@ -70,7 +84,7 @@ public class HomeContentItemHolder extends BaseHolder<HomeContentInfo> implement
     private void setLayoutMargin(boolean isSet) {
         ConstraintLayout.LayoutParams layoutParam = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
         if (isSet)
-            layoutParam.setMargins(0, ConvertUtils.dp2px(10), 0, 0);
+            layoutParam.setMargins(ConvertUtils.dp2px(10), 0, 0, 0);
         else
             layoutParam.setMargins(0, 0, 0, 0);
 
@@ -80,5 +94,10 @@ public class HomeContentItemHolder extends BaseHolder<HomeContentInfo> implement
     @Override
     protected void onRelease() {
         this.mLayout = null;
+        this.imviLogo = null;
+        this.txviName = null;
+
+        this.mAppComponent = null;
+        this.mImageLoader = null;
     }
 }

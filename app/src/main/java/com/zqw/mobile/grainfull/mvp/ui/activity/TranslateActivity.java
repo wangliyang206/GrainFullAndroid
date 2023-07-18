@@ -279,7 +279,7 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
                 RxUtils.startDelayed(1, this, () -> {
                     // 执行翻译
                     if (mPresenter != null) {
-                        mPresenter.translate(str, txviBefore.getTag().toString(), txviAfter.getTag().toString());
+                        mPresenter.translate(str.trim(), txviBefore.getTag().toString(), txviAfter.getTag().toString());
                     }
                 });
                 break;

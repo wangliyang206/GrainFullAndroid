@@ -31,11 +31,11 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
 
     @Override
     public void setData(@NotNull NewHomeInfo data, int position) {
-//        if (position == 0) {
-//            setLayoutMargin(false);
-//        } else {
-//            setLayoutMargin(true);
-//        }
+        if (position == 0) {
+            setLayoutMargin(false);
+        } else {
+            setLayoutMargin(true);
+        }
     }
 
     /**

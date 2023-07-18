@@ -5,6 +5,7 @@ import android.view.View;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.NewHomeInfo;
 import com.zqw.mobile.grainfull.mvp.ui.holder.HomeActionBarHolder;
 import com.zqw.mobile.grainfull.mvp.ui.holder.HomeNavigationHolder;
@@ -63,9 +64,6 @@ public class NewHomeAdapter extends DefaultAdapter<NewHomeInfo> {
 
     @Override
     public void onBindViewHolder(BaseHolder<NewHomeInfo> holder, int position) {
-//        ((PictureMosaicItemHolder) holder).initView(type);
-//        holder.setData(mInfos.get(position), position);
-
         // 判断不同的ViewHolder做不同的处理
         if (holder instanceof HomeTopHolder) {
             holder.setData(mInfos.get(position), position);
@@ -92,5 +90,12 @@ public class NewHomeAdapter extends DefaultAdapter<NewHomeInfo> {
             return mHomeNavigationHolder.getCurrentChildRecyclerView();
         }
         return null;
+    }
+
+    /**
+     * 刷新数据
+     */
+    public void onRefreshChildData(int position, HomeContentResponse info) {
+        mHomeNavigationHolder.loadData(position, info);
     }
 }

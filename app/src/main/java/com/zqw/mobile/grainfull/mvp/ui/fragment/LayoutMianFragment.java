@@ -129,12 +129,12 @@ public class LayoutMianFragment extends BaseFragment<LayoutMianPresenter> implem
     private void eventBusEvent(MainEvent mainEvent) {
         if (mainEvent.getCode() == EventBusTags.NEW_HOME_REFRESH_TAG) {
             if (mPresenter != null) {
-                mPresenter.getHomeContentData(false);
+                mPresenter.getHomeContentData(mainEvent.getType(), true);
             }
         }
         if (mainEvent.getCode() == EventBusTags.NEW_HOME_MORE_TAG) {
             if (mPresenter != null) {
-                mPresenter.getHomeContentData(true);
+                mPresenter.getHomeContentData(mainEvent.getType(), false);
             }
         }
     }
@@ -155,7 +155,7 @@ public class LayoutMianFragment extends BaseFragment<LayoutMianPresenter> implem
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.initLayoutManager(getContext());
         // 绑定刷新事件
-        mRefreshListener = (SwipeRefreshLayout.OnRefreshListener) () -> {
+        mRefreshListener = () -> {
             // 刷新数据
             onRefresh();
         };

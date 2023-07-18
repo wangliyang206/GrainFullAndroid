@@ -10,6 +10,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.jess.arms.base.BaseHolder;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
+import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeTab;
 import com.zqw.mobile.grainfull.mvp.model.entity.NewHomeInfo;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.HomeTabPagerAdapter;
@@ -91,6 +93,15 @@ public class HomeNavigationHolder extends BaseHolder<NewHomeInfo> implements Vie
         }
         // 绑定事件
         mViewPager.addOnPageChangeListener(this);
+    }
+
+    /**
+     * 加载或刷新数据
+     */
+    public void loadData(int position, HomeContentResponse info) {
+        if (CommonUtils.isNotEmpty(viewList)) {
+            viewList.get(position).onSuccessHomeOrder(info);
+        }
     }
 
     /**

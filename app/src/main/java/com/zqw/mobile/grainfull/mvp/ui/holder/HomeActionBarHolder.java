@@ -31,11 +31,11 @@ public class HomeActionBarHolder extends BaseHolder<NewHomeInfo> implements View
 
     @Override
     public void setData(@NotNull NewHomeInfo data, int position) {
-//        if (position == 0) {
-//            setLayoutMargin(false);
-//        } else {
-//            setLayoutMargin(true);
-//        }
+        if (position == 0) {
+            setLayoutMargin(false);
+        } else {
+            setLayoutMargin(true);
+        }
     }
 
     /**
