@@ -2,6 +2,7 @@ package com.zqw.mobile.grainfull.mvp.ui.holder;
 
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -50,8 +51,8 @@ public class HomeNavigationHolder extends BaseHolder<NewHomeInfo> implements Vie
         super(itemView);
 
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-        mTabLayout.setTabTextColors(ContextCompat.getColor(itemView.getContext(), R.color.common_text_color), ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary));
-        mTabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary));
+        mTabLayout.setTabTextColors(ContextCompat.getColor(itemView.getContext(), R.color.common_text_hint_color), ContextCompat.getColor(itemView.getContext(), android.R.color.black));
+        mTabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(itemView.getContext(), R.color.progress_outsize_color4));
         ViewCompat.setElevation(mTabLayout, 10);
     }
 

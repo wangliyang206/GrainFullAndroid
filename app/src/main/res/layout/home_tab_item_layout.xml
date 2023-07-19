@@ -13,9 +13,9 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/view_hometabitemlayout_tabs"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/layout_bg_shape"
+        android:layout_height="40dp"
         app:tabGravity="fill"
+        app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorColor="@color/common_text_color"
         app:tabIndicatorFullWidth="false"
         app:tabMaxWidth="0dp"
@@ -25,7 +25,8 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_hometabitemlayout_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp" />
 </LinearLayout>
 
 

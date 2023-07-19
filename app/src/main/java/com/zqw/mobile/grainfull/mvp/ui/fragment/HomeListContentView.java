@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -96,19 +97,14 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
 
         // 2.添加ItemDecoration
         // 每个item之间的间距
-        int divider = ConvertUtils.dp2px(8);
+        int divider = ConvertUtils.dp2px(10);
         RecyclerView.ItemDecoration gridItemDecoration = new RecyclerView.ItemDecoration() {
             @Override
-            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, RecyclerView parent, @NonNull RecyclerView.State state) {
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
                 StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
                 int spanIndex = layoutParams.getSpanIndex();
-                int position = parent.getChildAdapterPosition(view);
                 outRect.bottom = divider;
-                if (position == 0 || position == 1) {
-                    outRect.top = divider * 2;
-                } else {
-                    outRect.top = 0;
-                }
+                outRect.top = 0;
                 if (spanIndex % 2 == 0) {
                     // 偶数项
                     outRect.left = divider;
@@ -130,7 +126,7 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-//                tryLoadMoreIfNeed();
+                tryLoadMoreIfNeed();
             }
 
             @Override
@@ -149,12 +145,39 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
         if (getAdapter() == null) return;
         RecyclerView.LayoutManager layoutManager = getLayoutManager();
 
-        // 最后一项的下标 == 列表长度时加载更多接口
-        if (((LinearLayoutManager) layoutManager).findLastVisibleItemPosition() == (layoutManager.getItemCount() - 1) && isLoadMore) {
-            Timber.i("#####执行了 加载更多");
-            // 请求数据
-            EventBus.getDefault().post(new MainEvent(EventBusTags.NEW_HOME_MORE_TAG, mType, pageNumber), EventBusTags.HOME_TAG);
+        if (layoutManager instanceof LinearLayoutManager || layoutManager instanceof GridLayoutManager) {
+            // 得到已显示的最后一个位置
+            int lastPosition = ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
+            // 最后一项的下标 == 列表长度时加载更多接口
+            if (lastPosition == (layoutManager.getItemCount() - 1) && isLoadMore) {
+                Timber.i("#####执行了 加载更多");
+                // 请求数据
+                EventBus.getDefault().post(new MainEvent(EventBusTags.NEW_HOME_MORE_TAG, mType, pageNumber), EventBusTags.HOME_TAG);
+            }
+        } else {
+            int spanCount = ((StaggeredGridLayoutManager) layoutManager).getSpanCount();
+            int[] position = new int[spanCount];
+            int[] lastPositions = ((StaggeredGridLayoutManager) layoutManager).findLastCompletelyVisibleItemPositions(position);
+            int lastPosition = findMaxPosition(lastPositions);
+            if (lastPosition == (layoutManager.getItemCount() - 1) && isLoadMore) {
+                Timber.i("#####执行了 加载更多");
+                // 请求数据
+                EventBus.getDefault().post(new MainEvent(EventBusTags.NEW_HOME_MORE_TAG, mType, pageNumber), EventBusTags.HOME_TAG);
+            }
         }
+    }
+
+    /**
+     * 取最大值
+     */
+    private int findMaxPosition(int[] positions) {
+        int max = positions[0];
+        for (int position : positions) {
+            if (position > max) {
+                max = position;
+            }
+        }
+        return max;
     }
 
     @Override
@@ -173,7 +196,7 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
         // 清空数据
         mList.clear();
         // 添加一个loading效果
-        mList.add(new HomeContentInfo());
+//        mList.add(new HomeContentInfo());
         notifyDataSetChanged();
         // 请求数据
         EventBus.getDefault().post(new MainEvent(EventBusTags.NEW_HOME_REFRESH_TAG, mType, pageNumber), EventBusTags.HOME_TAG);
