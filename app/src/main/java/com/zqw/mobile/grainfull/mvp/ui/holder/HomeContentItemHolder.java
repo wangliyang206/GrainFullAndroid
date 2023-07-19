@@ -17,6 +17,7 @@ package com.zqw.mobile.grainfull.mvp.ui.holder;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -44,7 +45,7 @@ import butterknife.BindView;
  */
 public class HomeContentItemHolder extends BaseHolder<HomeContentInfo> implements View.OnClickListener {
     @BindView(R.id.homecontent_item_layout)
-    ConstraintLayout mLayout;
+    LinearLayout mLayout;
 
     @BindView(R.id.imvi_homecontentitemlayout_logo)
     ImageView imviLogo;
@@ -66,16 +67,15 @@ public class HomeContentItemHolder extends BaseHolder<HomeContentInfo> implement
 
     @Override
     public void setData(@NotNull HomeContentInfo info, int position) {
-        setLayoutMargin(position % 2 != 0);
-
         txviName.setText(CommonUtils.isEmptyReturnStr(info.getName()));
 
         // 显示图片
         mImageLoader.loadImage(mLayout.getContext(), ImageConfigImpl.builder().url(info.getImage())
                 .errorPic(R.mipmap.mis_default_error)
                 .placeholder(R.mipmap.mis_default_error)
+                .imageRadius(ConvertUtils.dp2px(10))
+                .isUpRadius(true)
                 .imageView(imviLogo).build());
-
     }
 
     /**
@@ -84,9 +84,9 @@ public class HomeContentItemHolder extends BaseHolder<HomeContentInfo> implement
     private void setLayoutMargin(boolean isSet) {
         ConstraintLayout.LayoutParams layoutParam = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
         if (isSet)
-            layoutParam.setMargins(ConvertUtils.dp2px(10), 0, 0, 0);
+            layoutParam.setMargins(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), 0, 0);
         else
-            layoutParam.setMargins(0, 0, 0, 0);
+            layoutParam.setMargins(0, ConvertUtils.dp2px(10), 0, 0);
 
         mLayout.setLayoutParams(layoutParam);
     }

@@ -114,6 +114,8 @@ public class HomeNavigationHolder extends BaseHolder<NewHomeInfo> implements Vie
     @Override
     protected void onRelease() {
         this.mLayout = null;
+        this.mTabLayout = null;
+        this.mViewPager = null;
     }
 
     @Override

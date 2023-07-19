@@ -95,8 +95,15 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
             glideRequest.circleCrop();
         }
 
-        if (config.isImageRadius()) {
-            glideRequest.transform(new RoundedCorners(config.getImageRadius()));
+        if (config.isUpRadius()) {
+            // 只显示上圆角
+            if (config.isImageRadius()) {
+                glideRequest.transform(new GlideRoundTransform(config.getImageRadius()));
+            }
+        } else {
+            if (config.isImageRadius()) {
+                glideRequest.transform(new RoundedCorners(config.getImageRadius()));
+            }
         }
 
         if (config.isBlurImage()) {

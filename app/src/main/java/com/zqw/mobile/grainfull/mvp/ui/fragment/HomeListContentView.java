@@ -1,14 +1,17 @@
 package com.zqw.mobile.grainfull.mvp.ui.fragment;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.blankj.utilcode.util.ConvertUtils;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.EventBusTags;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentInfo;
@@ -42,6 +45,7 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
     private HomeContentAdapter mAdapter;
     // 是否是支持加载更多
     private boolean isLoadMore;
+    private StaggeredGridLayoutManager layoutManager;
 
     /**
      * 设置类型
@@ -80,9 +84,42 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
      * 初始化列表
      */
     private void initRecyclerView() {
-        setLayoutManager(new GridLayoutManager(getContext(), 2));
+        // 设置固定大小
+        setHasFixedSize(true);
+        // 错列网格布局
+        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        // 防止item 交换位置
+        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        setLayoutManager(layoutManager);
         mAdapter = new HomeContentAdapter(mList);
         setAdapter(mAdapter);
+
+        // 2.添加ItemDecoration
+        // 每个item之间的间距
+        int divider = ConvertUtils.dp2px(8);
+        RecyclerView.ItemDecoration gridItemDecoration = new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, RecyclerView parent, @NonNull RecyclerView.State state) {
+                StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
+                int spanIndex = layoutParams.getSpanIndex();
+                int position = parent.getChildAdapterPosition(view);
+                outRect.bottom = divider;
+                if (position == 0 || position == 1) {
+                    outRect.top = divider * 2;
+                } else {
+                    outRect.top = 0;
+                }
+                if (spanIndex % 2 == 0) {
+                    // 偶数项
+                    outRect.left = divider;
+                    outRect.right = divider / 2;
+                } else {
+                    outRect.left = divider / 2;
+                    outRect.right = divider;
+                }
+            }
+        };
+        addItemDecoration(gridItemDecoration);
     }
 
     /**
@@ -93,13 +130,14 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                tryLoadMoreIfNeed();
+//                tryLoadMoreIfNeed();
             }
-
 
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                // 防止第一行到顶部有空白
+                layoutManager.invalidateSpanAssignments();
             }
         });
     }
@@ -131,6 +169,7 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
      */
     public void onRefreshNavi() {
         Timber.i("#####onRefreshNavi type=%s", mType);
+        pageNumber = 1;
         // 清空数据
         mList.clear();
         // 添加一个loading效果

@@ -38,6 +38,7 @@ public class ImageConfigImpl extends ImageConfig {
     int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
     private int fallback; //请求 url 为空,则使用此图片作为占位符
     private int imageRadius;//图片每个圆角的大小
+    private boolean isUpRadius;//图片上圆角
     private int blurValue;//高斯模糊值, 值越大模糊效果越大
     /**
      * @see {@link Builder#transformation(BitmapTransformation)}
@@ -59,6 +60,7 @@ public class ImageConfigImpl extends ImageConfig {
         this.fallback = builder.fallback;
         this.cacheStrategy = builder.cacheStrategy;
         this.imageRadius = builder.imageRadius;
+        this.isUpRadius = builder.isUpRadius;
         this.blurValue = builder.blurValue;
         this.transformation = builder.transformation;
         this.imageViews = builder.imageViews;
@@ -114,6 +116,14 @@ public class ImageConfigImpl extends ImageConfig {
         return imageRadius > 0;
     }
 
+    public boolean isUpRadius() {
+        return isUpRadius;
+    }
+
+    public void setUpRadius(boolean upRadius) {
+        isUpRadius = upRadius;
+    }
+
     public boolean isCrossFade() {
         return isCrossFade;
     }
@@ -135,6 +145,7 @@ public class ImageConfigImpl extends ImageConfig {
         private @CacheStrategy.Strategy
         int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
         private int imageRadius;//图片每个圆角的大小
+        private boolean isUpRadius;//图片上圆角
         private int blurValue;//高斯模糊值, 值越大模糊效果越大
         /**
          * @see {@link Builder#transformation(BitmapTransformation)}
@@ -147,6 +158,10 @@ public class ImageConfigImpl extends ImageConfig {
         private boolean isCircle;//是否将图片剪切为圆形
         private boolean isClearMemory;//清理内存缓存
         private boolean isClearDiskCache;//清理本地缓存
+
+        public void setUpRadius(boolean upRadius) {
+            isUpRadius = upRadius;
+        }
 
         private Builder() {
         }
@@ -183,6 +198,11 @@ public class ImageConfigImpl extends ImageConfig {
 
         public Builder imageRadius(int imageRadius) {
             this.imageRadius = imageRadius;
+            return this;
+        }
+
+        public Builder isUpRadius(boolean isUpRadius) {
+            this.isUpRadius = isUpRadius;
             return this;
         }
 
