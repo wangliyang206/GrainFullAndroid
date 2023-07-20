@@ -2,7 +2,6 @@ package com.zqw.mobile.grainfull.mvp.ui.holder;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;

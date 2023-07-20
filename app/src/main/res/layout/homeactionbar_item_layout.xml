@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/homeactionbar_item_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- 图片 -->
+    <ImageView
+        android:id="@+id/imvi_homeactionbaritemlayout_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:src="@mipmap/mis_default_error" />
+
+    <!-- 名称 -->
+    <TextView
+        android:id="@+id/txvi_homeactionbaritemlayout_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="店铺名称"
+        android:textColor="@color/home_location_text_color"
+        android:textSize="12sp" />
+</LinearLayout>

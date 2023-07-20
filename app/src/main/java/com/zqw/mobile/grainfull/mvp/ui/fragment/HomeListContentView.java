@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.blankj.utilcode.util.ConvertUtils;
+import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.EventBusTags;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentInfo;
@@ -94,6 +95,10 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
         setLayoutManager(layoutManager);
         mAdapter = new HomeContentAdapter(mList);
         setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
+            HomeContentInfo info = (HomeContentInfo) data;
+            ArmsUtils.makeText(getContext(), info.getName());
+        });
 
         // 2.添加ItemDecoration
         // 每个item之间的间距

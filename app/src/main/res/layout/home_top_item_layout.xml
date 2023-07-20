@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/home_top_item_layout"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="180dp"
     android:fitsSystemWindows="false"
     android:orientation="vertical">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/revi_hometopitemlayout_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/revi_hometopitemlayout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
 
 

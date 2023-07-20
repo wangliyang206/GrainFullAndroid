@@ -12,6 +12,12 @@ public class HomeContentInfo {
     public HomeContentInfo() {
     }
 
+    public HomeContentInfo(String image, String name, String intr) {
+        this.image = image;
+        this.name = name;
+        this.intr = intr;
+    }
+
     public HomeContentInfo(String image, String name) {
         this.image = image;
         this.name = name;
@@ -21,9 +27,19 @@ public class HomeContentInfo {
     private String image;
     // 商品名称
     private String name;
+    // 介绍
+    private String intr;
 
     // 是否加载中
     private boolean loading;
+
+    public String getIntr() {
+        return intr;
+    }
+
+    public void setIntr(String intr) {
+        this.intr = intr;
+    }
 
     public boolean isLoading() {
         return loading;

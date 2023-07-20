@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/home_actionbar_item_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/layout_bg_shape"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_homeactionbaritemlayout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:scrollbars="vertical" />
+
+    <RelativeLayout
+        android:id="@+id/rela_homeactionbaritemlayout_indicator"
+        android:layout_width="66dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_rect_home_topic_6dp_bg">
+
+        <View
+            android:id="@+id/view_homeactionbaritemlayout_line"
+            android:layout_width="33dp"
+            android:layout_height="3dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_rect_home_topic_6dp_fg" />
+    </RelativeLayout>
+</LinearLayout>
