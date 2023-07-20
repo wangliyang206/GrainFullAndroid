@@ -64,6 +64,7 @@ public class LayoutMianPresenter extends BasePresenter<LayoutMianContract.Model,
         getActionBarData();
         getListData();
         mAdapter.notifyDataSetChanged();
+        mRootView.loadSucc();
     }
 
     /**

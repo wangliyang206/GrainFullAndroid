@@ -125,6 +125,15 @@ public class LayoutMianFragment extends BaseFragment<LayoutMianPresenter> implem
         onRefresh();
     }
 
+    /**
+     * 下拉刷新
+     */
+    private void onRefresh() {
+        if (mPresenter != null) {
+            mPresenter.getHomeList();
+        }
+    }
+
     @Subscriber(tag = EventBusTags.HOME_TAG, mode = ThreadMode.POST)
     private void eventBusEvent(MainEvent mainEvent) {
         if (mainEvent.getCode() == EventBusTags.NEW_HOME_REFRESH_TAG) {
@@ -140,15 +149,6 @@ public class LayoutMianFragment extends BaseFragment<LayoutMianPresenter> implem
     }
 
     /**
-     * 下拉刷新
-     */
-    private void onRefresh() {
-        if (mPresenter != null) {
-            mPresenter.getHomeList();
-        }
-    }
-
-    /**
      * 初始化下拉刷新
      */
     private void initSwipeRefresh() {
@@ -160,6 +160,16 @@ public class LayoutMianFragment extends BaseFragment<LayoutMianPresenter> implem
             onRefresh();
         };
         mSwipeRefreshLayout.setOnRefreshListener(mRefreshListener);
+    }
+
+    /**
+     * 数据加载完成
+     */
+    @Override
+    public void loadSucc() {
+        if (mSwipeRefreshLayout != null) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     /**
