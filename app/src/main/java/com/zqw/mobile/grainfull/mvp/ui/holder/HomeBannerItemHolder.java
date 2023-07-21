@@ -47,6 +47,8 @@ public class HomeBannerItemHolder extends BaseHolder<HomeContentInfo> implements
     @BindView(R.id.homebanner_item_layout)
     LinearLayout mLayout;
 
+    @BindView(R.id.txvi_homebanneritemlayout_title)
+    TextView txviTitle;
     @BindView(R.id.imvi_homebanneritemlayout_logo)
     ImageView imviLogo;
     @BindView(R.id.txvi_homebanneritemlayout_name)
@@ -67,9 +69,10 @@ public class HomeBannerItemHolder extends BaseHolder<HomeContentInfo> implements
 
     @Override
     public void setData(@NotNull HomeContentInfo info, int position) {
-        setLayoutMargin(position != 0);
-        txviName.setText(CommonUtils.isEmptyReturnStr(info.getName()));
+//        setLayoutMargin(position != 0);
 
+        txviTitle.setText(CommonUtils.isEmptyReturnStr(info.getName()));
+        txviName.setText(CommonUtils.isEmptyReturnStr(info.getName()));
         // 显示图片
         mImageLoader.loadImage(mLayout.getContext(), ImageConfigImpl.builder().url(info.getImage())
                 .errorPic(R.mipmap.mis_default_error)

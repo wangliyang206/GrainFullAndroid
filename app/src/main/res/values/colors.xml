@@ -111,7 +111,7 @@
 
     <!-- 友盟统计 -->
     <color name="nm_text_color">#188EFF</color>
-    <color name="um_bg_color">#F7F7F7</color>
+    <color name="um_bg_color">#F9F9F9</color>
     <color name="gray_bg">#E9E9E9</color>
     <!-- #######################################一笔画完####################################### -->
     <color name="onepen_item_bg">#61b499</color>
