@@ -2,6 +2,8 @@ package com.zqw.mobile.grainfull.mvp.ui.holder;
 
 import android.graphics.Rect;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -9,11 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.baidu.idl.face.platform.utils.DensityUtils;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
+import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentInfo;
@@ -40,21 +47,113 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
     @BindView(R.id.home_top_item_layout)
     RelativeLayout mLayout;
 
-    @BindView(R.id.revi_hometopitemlayout_bg)
-    RecyclerView mRecyclerViewBg;
+    @BindView(R.id.view_hometopitemlayout_pager)
+    ViewPager mViewPager;
     @BindView(R.id.revi_hometopitemlayout_content)
     RecyclerView mRecyclerView;
 
+    private AppComponent mAppComponent;
+    /**
+     * 用于加载图片的管理类, 默认使用 Glide, 使用策略模式, 可替换框架
+     */
+    private ImageLoader mImageLoader;
+
+    private List<View> mViewList;
+    private PagerAdapter mPagerAdapter;
+    private List<HomeContentInfo> mContentList;
     private LinearLayoutManager mLayoutManager;
     private HomeBannerAdapter mAdapter;
-    private List<HomeContentInfo> mList;
 
     public HomeTopHolder(View itemView) {
         super(itemView);
 
+        //可以在任何可以拿到 Context 的地方, 拿到 AppComponent, 从而得到用 Dagger 管理的单例对象
+        mAppComponent = ArmsUtils.obtainAppComponentFromContext(itemView.getContext());
+        mImageLoader = mAppComponent.imageLoader();
+
         // 初始化
-        mList = new ArrayList<>();
-        mAdapter = new HomeBannerAdapter(mList);
+        initViewPager();
+        initRecyclerView();
+    }
+
+    /**
+     * 初始化 ViewPager
+     */
+    private void initViewPager() {
+        mViewList = new ArrayList<>();
+        mViewPager.setAdapter(mPagerAdapter = new PagerAdapter() {
+            @Override
+            public int getCount() {
+                //将page总数返回整型最大，使之ViewPager可以无限向右滑动
+                return mViewList.size() != 0 ? Integer.MAX_VALUE : 0;
+            }
+
+            @Override
+            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+                return view == object;
+            }
+
+            // 添加界面，一般会添加当前页和左右两边的页面
+            @NonNull
+            @Override
+            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+                //将ViewPager的index转化为实际中Page的index
+                View view = mViewList.get(position % mViewList.size());
+                container.addView(view);
+                return view;
+            }
+
+            // 去除页面
+            @Override
+            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+//                container.removeView(mViewList.get(position % mViewList.size()));
+                container.removeView((View)object);
+            }
+        });
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Timber.i("###### onPageSelected######1position=" + position);
+                Timber.i("###### onPageSelected######2position=" + position % mViewList.size());
+
+                int firstVisibleItemCount = mLayoutManager.findFirstVisibleItemPosition();
+                if (position % mContentList.size() != firstVisibleItemCount) {
+                    Timber.i("###### onPageSelected######1firstVisibleItemCount=" + firstVisibleItemCount);
+                    double w = (ArmsUtils.getScreenWidth(itemView.getContext()) - DensityUtils.dip2px(itemView.getContext(), 16)) / 4;
+                    View findViewByPosition = mLayoutManager.findViewByPosition(position);
+                    if (findViewByPosition != null) {
+                        int left = findViewByPosition.getLeft();
+                        if (left == 0) {
+                            return;
+                        }
+                        if ((float) left / w > -0.5f) {
+                            mRecyclerView.smoothScrollBy(left, 0);
+                        } else {
+                            mRecyclerView.smoothScrollBy((int) (w + left), 0);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    /**
+     * 初始化 RecyclerView
+     */
+    private void initRecyclerView() {
+        mContentList = new ArrayList<>();
+        mAdapter = new HomeBannerAdapter(mContentList);
         mLayoutManager = new LinearLayoutManager(itemView.getContext(), RecyclerView.HORIZONTAL, false);
         ArmsUtils.configRecyclerView(mRecyclerView, mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -99,6 +198,14 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
                             recyclerView.smoothScrollBy((int) (w + left), 0);
                         }
                     }
+
+                    Timber.i("###### onScrollStateChanged######1position=" + firstVisibleItemCount);
+                    Timber.i("###### onScrollStateChanged######2position=" + firstVisibleItemCount % mContentList.size());
+
+                    if (firstVisibleItemCount % mContentList.size() != mViewPager.getCurrentItem()) {
+                        Timber.i("###### onScrollStateChanged######2 ----------");
+                        mViewPager.setCurrentItem(firstVisibleItemCount % mContentList.size());
+                    }
                 }
             }
         });
@@ -123,7 +230,6 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
     private void setMargin(int lastVisibleItemCount, double left) {
         View viewItem = mLayoutManager.findViewByPosition(lastVisibleItemCount);
         if (viewItem != null) {
-            Timber.i("###### item 1######Start");
             LinearLayout layoutBottom = viewItem.findViewById(R.id.lila_homebanneritemlayout_bottom);
             if (layoutBottom != null) {
                 layoutBottom.setVisibility(View.GONE);
@@ -142,7 +248,6 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
             layoupar.height = DensityUtils.dip2px(itemView.getContext(), 90);
             layoupar.topMargin = 50;
             viewItem.setLayoutParams(layoupar);
-            Timber.i("###### item 1######End");
         }
     }
 
@@ -152,7 +257,6 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
     private void setMargin1(int lastVisibleItemCount) {
         View viewItem = mLayoutManager.findViewByPosition(lastVisibleItemCount);
         if (viewItem != null) {
-            Timber.i("###### item 2######Start");
             LinearLayout layoutBottom = viewItem.findViewById(R.id.lila_homebanneritemlayout_bottom);
             if (layoutBottom != null) {
                 layoutBottom.setVisibility(View.VISIBLE);
@@ -167,7 +271,6 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
             layoupar.height = DensityUtils.dip2px(itemView.getContext(), 90);
             layoupar.topMargin = 50;
             viewItem.setLayoutParams(layoupar);
-            Timber.i("###### item 2######End");
         }
     }
 
@@ -177,7 +280,6 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
     private void setMargin2(int lastVisibleItemCount) {
         View viewItem = mLayoutManager.findViewByPosition(lastVisibleItemCount);
         if (viewItem != null) {
-            Timber.i("###### item 3######Start");
             LinearLayout layoutBottom = viewItem.findViewById(R.id.lila_homebanneritemlayout_bottom);
             if (layoutBottom != null) {
                 layoutBottom.setVisibility(View.VISIBLE);
@@ -192,15 +294,28 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
             layoupar.height = DensityUtils.dip2px(itemView.getContext(), 90);
             layoupar.topMargin = 50;
             viewItem.setLayoutParams(layoupar);
-            Timber.i("###### item 3######End");
         }
     }
 
     @Override
     public void setData(@NotNull NewHomeInfo info, int position) {
-        mList.clear();
-        mList.addAll(info.getTopList());
+        mContentList.clear();
+        mViewList.clear();
+        mContentList.addAll(info.getTopList());
+
+        for (HomeContentInfo item : mContentList) {
+            ImageView view = (ImageView) View.inflate(itemView.getContext(), R.layout.view_pager_image, null);
+            // 显示图片
+            mImageLoader.loadImage(mLayout.getContext(), ImageConfigImpl.builder().url(item.getImage())
+                    .errorPic(R.mipmap.mis_default_error)
+                    .placeholder(R.mipmap.mis_default_error)
+                    .imageRadius(ConvertUtils.dp2px(10))
+                    .imageView(view).build());
+            mViewList.add(view);
+        }
+
         mAdapter.notifyDataSetChanged();
+        mPagerAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -222,7 +337,12 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
         DefaultAdapter.releaseAllHolder(mRecyclerView);
         this.mLayout = null;
 
+        this.mLayoutManager = null;
         this.mAdapter = null;
-        this.mList = null;
+        this.mContentList = null;
+        this.mPagerAdapter = null;
+        this.mViewList = null;
+        this.mAppComponent = null;
+        this.mImageLoader = null;
     }
 }

@@ -46,7 +46,6 @@
         android:id="@+id/imvi_homebanneritemlayout_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:background="@color/colorPrimary"
         android:src="@mipmap/mis_default_error"
         app:layout_constraintBottom_toTopOf="@+id/lila_homebanneritemlayout_bottom"
