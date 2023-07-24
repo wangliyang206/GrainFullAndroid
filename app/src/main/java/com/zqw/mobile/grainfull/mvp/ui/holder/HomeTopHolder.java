@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 /**
  * @ProjectName: GrainFullAndroid
@@ -92,7 +93,7 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
                         if (left == 0) {
                             return;
                         }
-                        if ((float) findViewByPosition.getLeft() * 1.0f / w > -0.5f) {
+                        if ((float) left / w > -0.5f) {
                             recyclerView.smoothScrollBy(left, 0);
                         } else {
                             recyclerView.smoothScrollBy((int) (w + left), 0);
@@ -107,87 +108,91 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
      * 设置滚动
      */
     private void setScroll(int firstVisibleItemCount, double left) {
-        int mar = DensityUtils.dip2px(itemView.getContext(), 55);
-        int mar1 = DensityUtils.dip2px(itemView.getContext(), 15);
         // 动态改变View的Margin
-        setMargin(firstVisibleItemCount, mar);
-        setMargin(firstVisibleItemCount + 1, mar);
-        setMargin(firstVisibleItemCount + 2, mar);
-        setMargin1(firstVisibleItemCount + 3, mar1, mar, left);
-        setMargin2(firstVisibleItemCount + 4, mar1);
+        setMargin(firstVisibleItemCount, left);
+        setMargin1(firstVisibleItemCount + 1);
+        setMargin1(firstVisibleItemCount + 2);
+        setMargin1(firstVisibleItemCount + 3);
+        setMargin2(firstVisibleItemCount + 4);
+        setMargin2(firstVisibleItemCount + 5);
     }
 
     /**
      * Item 1 设置 Margin
      */
-    private void setMargin(int lastVisibleItemCount, double mar) {
+    private void setMargin(int lastVisibleItemCount, double left) {
         View viewItem = mLayoutManager.findViewByPosition(lastVisibleItemCount);
         if (viewItem != null) {
+            Timber.i("###### item 1######Start");
             LinearLayout layoutBottom = viewItem.findViewById(R.id.lila_homebanneritemlayout_bottom);
             if (layoutBottom != null) {
-                layoutBottom.setAlpha(0.0f);
+                layoutBottom.setVisibility(View.GONE);
             }
             LinearLayout layoutTop = viewItem.findViewById(R.id.lila_homebanneritemlayout_top);
             if (layoutTop != null) {
-                layoutTop.setAlpha(1.0f);
+                layoutTop.setVisibility(View.VISIBLE);
             }
             RecyclerView.LayoutParams layoupar = (RecyclerView.LayoutParams) viewItem.getLayoutParams();
             double w = (ArmsUtils.getScreenWidth(itemView.getContext()) - DensityUtils.dip2px(itemView.getContext(), 65)) / 4;
-            layoupar.width = (int) (w - DensityUtils.dip2px(itemView.getContext(), 5));
-            layoupar.height = (int) (w * 113 / 70 - DensityUtils.dip2px(itemView.getContext(), 10));
-            layoupar.topMargin = (int) mar;
-            viewItem.setLayoutParams(layoupar);
 
+            layoupar.width = (int) (w - DensityUtils.dip2px(itemView.getContext(), 10));
+            int w1 = layoupar.width;
+            int w2 = (int) (w + DensityUtils.dip2px(itemView.getContext(), 30));
+            layoupar.width = (int) (w2 - (w2 - w1) * Math.abs(left));
+            layoupar.height = DensityUtils.dip2px(itemView.getContext(), 90);
+            layoupar.topMargin = 50;
+            viewItem.setLayoutParams(layoupar);
+            Timber.i("###### item 1######End");
         }
     }
 
     /**
      * Item 2 ~ 4 设置 Margin
      */
-    private void setMargin1(int lastVisibleItemCount, int mar2, int mar1, double left) {
+    private void setMargin1(int lastVisibleItemCount) {
         View viewItem = mLayoutManager.findViewByPosition(lastVisibleItemCount);
         if (viewItem != null) {
+            Timber.i("###### item 2######Start");
             LinearLayout layoutBottom = viewItem.findViewById(R.id.lila_homebanneritemlayout_bottom);
             if (layoutBottom != null) {
-                layoutBottom.setAlpha(1.0f);
+                layoutBottom.setVisibility(View.VISIBLE);
             }
             LinearLayout layoutTop = viewItem.findViewById(R.id.lila_homebanneritemlayout_top);
             if (layoutTop != null) {
-                layoutTop.setAlpha(0.0f);
+                layoutTop.setVisibility(View.GONE);
             }
             RecyclerView.LayoutParams layoupar = (RecyclerView.LayoutParams) viewItem.getLayoutParams();
             double w = (ArmsUtils.getScreenWidth(itemView.getContext()) - DensityUtils.dip2px(itemView.getContext(), 65)) / 4;
-            layoupar.topMargin = (int) (mar2 - (mar2 - mar1) * Math.abs(left));
-            int w1 = (int) (w - DensityUtils.dip2px(itemView.getContext(), 5));
-            double w2 = w + DensityUtils.dip2px(itemView.getContext(), 15);
-            layoupar.width = (int) (w2 - (w2 - w1) * Math.abs(left));
-            double h1 = w * 113 / 70 - DensityUtils.dip2px(itemView.getContext(), 10);
-            double h2 = w * 113 / 70 + DensityUtils.dip2px(itemView.getContext(), 30);
-            layoupar.height = (int) (h2 - (h2 - h1) * Math.abs(left));
+            layoupar.width = (int) (w - DensityUtils.dip2px(itemView.getContext(), 10));
+            layoupar.height = DensityUtils.dip2px(itemView.getContext(), 90);
+            layoupar.topMargin = 50;
             viewItem.setLayoutParams(layoupar);
+            Timber.i("###### item 2######End");
         }
     }
 
     /**
      * Item 5+ 设置 Margin
      */
-    private void setMargin2(int lastVisibleItemCount, int mar) {
+    private void setMargin2(int lastVisibleItemCount) {
         View viewItem = mLayoutManager.findViewByPosition(lastVisibleItemCount);
         if (viewItem != null) {
+            Timber.i("###### item 3######Start");
             LinearLayout layoutBottom = viewItem.findViewById(R.id.lila_homebanneritemlayout_bottom);
             if (layoutBottom != null) {
-                layoutBottom.setAlpha(1.0f);
+                layoutBottom.setVisibility(View.VISIBLE);
             }
             LinearLayout layoutTop = viewItem.findViewById(R.id.lila_homebanneritemlayout_top);
             if (layoutTop != null) {
-                layoutTop.setAlpha(0.0f);
+                layoutTop.setVisibility(View.GONE);
             }
             RecyclerView.LayoutParams layoupar = (RecyclerView.LayoutParams) viewItem.getLayoutParams();
             double w = (ArmsUtils.getScreenWidth(itemView.getContext()) - DensityUtils.dip2px(itemView.getContext(), 65)) / 4;
-            layoupar.width = (int) (w - DensityUtils.dip2px(itemView.getContext(), 15));
-            layoupar.height = (int) (w * 113 / 70 + DensityUtils.dip2px(itemView.getContext(), 30));
-            layoupar.topMargin = mar;
+            layoupar.width = (int) (w - DensityUtils.dip2px(itemView.getContext(), 10));
+            layoupar.height = DensityUtils.dip2px(itemView.getContext(), 90);
+            layoupar.topMargin = 50;
             viewItem.setLayoutParams(layoupar);
+            Timber.i("###### item 3######End");
         }
     }
 

@@ -17,7 +17,6 @@ package com.zqw.mobile.grainfull.mvp.ui.holder;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -45,7 +44,7 @@ import butterknife.BindView;
  */
 public class HomeBannerItemHolder extends BaseHolder<HomeContentInfo> implements View.OnClickListener {
     @BindView(R.id.homebanner_item_layout)
-    LinearLayout mLayout;
+    ConstraintLayout mLayout;
 
     @BindView(R.id.txvi_homebanneritemlayout_title)
     TextView txviTitle;
