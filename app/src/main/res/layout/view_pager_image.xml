@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_pager_image"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scaleType="fitXY">
+    android:layout_height="match_parent">
 
-</ImageView>
+    <ImageView
+        android:id="@+id/imvi_viewpagerimage_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+</androidx.cardview.widget.CardView>

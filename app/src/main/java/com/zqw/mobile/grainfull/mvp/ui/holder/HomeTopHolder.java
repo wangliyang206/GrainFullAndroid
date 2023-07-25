@@ -2,17 +2,15 @@ package com.zqw.mobile.grainfull.mvp.ui.holder;
 
 import android.graphics.Rect;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.baidu.idl.face.platform.utils.DensityUtils;
 import com.blankj.utilcode.util.ConvertUtils;
@@ -20,12 +18,12 @@ import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
-import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentInfo;
 import com.zqw.mobile.grainfull.mvp.model.entity.NewHomeInfo;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.HomeBannerAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.HomeBannerBgAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -48,7 +46,7 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
     RelativeLayout mLayout;
 
     @BindView(R.id.view_hometopitemlayout_pager)
-    ViewPager mViewPager;
+    RecyclerView mViewPager;
     @BindView(R.id.revi_hometopitemlayout_content)
     RecyclerView mRecyclerView;
 
@@ -58,10 +56,12 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
      */
     private ImageLoader mImageLoader;
 
-    private List<View> mViewList;
-    private PagerAdapter mPagerAdapter;
-    private List<HomeContentInfo> mContentList;
+    private List<HomeContentInfo> mViewList;
+    private GridLayoutManager mGridLayoutManager;
+    private HomeBannerBgAdapter mPagerAdapter;
+
     private LinearLayoutManager mLayoutManager;
+    private List<HomeContentInfo> mContentList;
     private HomeBannerAdapter mAdapter;
 
     public HomeTopHolder(View itemView) {
@@ -81,69 +81,29 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
      */
     private void initViewPager() {
         mViewList = new ArrayList<>();
-        mViewPager.setAdapter(mPagerAdapter = new PagerAdapter() {
+        mPagerAdapter = new HomeBannerBgAdapter(mViewList);
+        mGridLayoutManager = new GridLayoutManager(itemView.getContext(), 1, RecyclerView.HORIZONTAL, false);
+        ArmsUtils.configRecyclerView(mViewPager, mGridLayoutManager);
+        mViewPager.setAdapter(mPagerAdapter);
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(mViewPager);
+
+        mViewPager.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public int getCount() {
-                //将page总数返回整型最大，使之ViewPager可以无限向右滑动
-                return mViewList.size() != 0 ? Integer.MAX_VALUE : 0;
-            }
-
-            @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-                return view == object;
-            }
-
-            // 添加界面，一般会添加当前页和左右两边的页面
-            @NonNull
-            @Override
-            public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                //将ViewPager的index转化为实际中Page的index
-                View view = mViewList.get(position % mViewList.size());
-                container.addView(view);
-                return view;
-            }
-
-            // 去除页面
-            @Override
-            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-//                container.removeView(mViewList.get(position % mViewList.size()));
-                container.removeView((View)object);
-            }
-        });
-
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                Timber.i("###### onPageSelected######1position=" + position);
-                Timber.i("###### onPageSelected######2position=" + position % mViewList.size());
-
-                int firstVisibleItemCount = mLayoutManager.findFirstVisibleItemPosition();
-                if (position % mContentList.size() != firstVisibleItemCount) {
-                    Timber.i("###### onPageSelected######1firstVisibleItemCount=" + firstVisibleItemCount);
-                    double w = (ArmsUtils.getScreenWidth(itemView.getContext()) - DensityUtils.dip2px(itemView.getContext(), 16)) / 4;
-                    View findViewByPosition = mLayoutManager.findViewByPosition(position);
-                    if (findViewByPosition != null) {
-                        int left = findViewByPosition.getLeft();
-                        if (left == 0) {
-                            return;
-                        }
-                        if ((float) left / w > -0.5f) {
-                            mRecyclerView.smoothScrollBy(left, 0);
-                        } else {
-                            mRecyclerView.smoothScrollBy((int) (w + left), 0);
-                        }
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == 0) {
+                    int firstVisibleItemCount = mLayoutManager.findFirstVisibleItemPosition();
+                    Timber.i("###### 当前为ViewPager ######firstVisibleItemCount=" + firstVisibleItemCount);
+                    Timber.i("###### 当前为ViewPager ######position=" + mGridLayoutManager.findFirstVisibleItemPosition());
+                    Timber.i("###### 当前为ViewPager ######A=" + mGridLayoutManager.findFirstVisibleItemPosition() % mViewList.size());
+                    if (mGridLayoutManager.findFirstVisibleItemPosition() != firstVisibleItemCount) {
+                        Timber.i("###### 当前为ViewPager ######控制RecyclerView流转");
+                        slideRecyclerView(mGridLayoutManager.findFirstVisibleItemPosition());
+                    } else {
+                        Timber.i("###### 当前为ViewPager ######RecyclerView不需要流转");
                     }
                 }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
             }
         });
     }
@@ -184,31 +144,42 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
                 super.onScrollStateChanged(recyclerView, newState);
                 // 静止的时候 牵引效果
                 if (newState == 0) {
-                    double w = (ArmsUtils.getScreenWidth(itemView.getContext()) - DensityUtils.dip2px(itemView.getContext(), 16)) / 4;
                     int firstVisibleItemCount = mLayoutManager.findFirstVisibleItemPosition();
-                    View findViewByPosition = mLayoutManager.findViewByPosition(firstVisibleItemCount);
-                    if (findViewByPosition != null) {
-                        int left = findViewByPosition.getLeft();
-                        if (left == 0) {
-                            return;
-                        }
-                        if ((float) left / w > -0.5f) {
-                            recyclerView.smoothScrollBy(left, 0);
+                    if (slideRecyclerView(firstVisibleItemCount)) {
+                        Timber.i("###### 当前为RecyclerView ######getCurrentItem=" + mGridLayoutManager.findFirstVisibleItemPosition());
+                        Timber.i("###### 当前为RecyclerView ######firstVisibleItemCount=" + firstVisibleItemCount);
+                        Timber.i("###### 当前为RecyclerView ######A=" + firstVisibleItemCount % mContentList.size());
+                        if (firstVisibleItemCount != mGridLayoutManager.findFirstVisibleItemPosition()) {
+                            Timber.i("###### 当前为RecyclerView ######控制ViewPager 流转");
+                            mViewPager.scrollToPosition(firstVisibleItemCount % mContentList.size());
                         } else {
-                            recyclerView.smoothScrollBy((int) (w + left), 0);
+                            Timber.i("###### 当前为RecyclerView ######ViewPager不需要流转");
                         }
-                    }
-
-                    Timber.i("###### onScrollStateChanged######1position=" + firstVisibleItemCount);
-                    Timber.i("###### onScrollStateChanged######2position=" + firstVisibleItemCount % mContentList.size());
-
-                    if (firstVisibleItemCount % mContentList.size() != mViewPager.getCurrentItem()) {
-                        Timber.i("###### onScrollStateChanged######2 ----------");
-                        mViewPager.setCurrentItem(firstVisibleItemCount % mContentList.size());
                     }
                 }
             }
         });
+    }
+
+    /**
+     * 控制 RecyclerView 滑动
+     */
+    private boolean slideRecyclerView(int position) {
+        double w = (ArmsUtils.getScreenWidth(itemView.getContext()) - DensityUtils.dip2px(itemView.getContext(), 16)) / 4;
+        View findViewByPosition = mLayoutManager.findViewByPosition(position);
+        if (findViewByPosition != null) {
+            int left = findViewByPosition.getLeft();
+            if (left == 0) {
+                return false;
+            }
+            if ((float) left / w > -0.5f) {
+                mRecyclerView.smoothScrollBy(left, 0);
+            } else {
+                mRecyclerView.smoothScrollBy((int) (w + left), 0);
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -302,19 +273,20 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
         mContentList.clear();
         mViewList.clear();
         mContentList.addAll(info.getTopList());
-
-        for (HomeContentInfo item : mContentList) {
-            ImageView view = (ImageView) View.inflate(itemView.getContext(), R.layout.view_pager_image, null);
-            // 显示图片
-            mImageLoader.loadImage(mLayout.getContext(), ImageConfigImpl.builder().url(item.getImage())
-                    .errorPic(R.mipmap.mis_default_error)
-                    .placeholder(R.mipmap.mis_default_error)
-                    .imageRadius(ConvertUtils.dp2px(10))
-                    .imageView(view).build());
-            mViewList.add(view);
-        }
-
         mAdapter.notifyDataSetChanged();
+
+//        for (HomeContentInfo item : mContentList) {
+//            ImageView view = (ImageView) View.inflate(itemView.getContext(), R.layout.view_pager_image, null);
+//            // 显示图片
+//            mImageLoader.loadImage(mLayout.getContext(), ImageConfigImpl.builder().url(item.getImage())
+//                    .errorPic(R.mipmap.mis_default_error)
+//                    .placeholder(R.mipmap.mis_default_error)
+//                    .imageRadius(ConvertUtils.dp2px(10))
+//                    .imageView(view).build());
+//            mViewList.add(view);
+//        }
+//        mPagerAdapter.setData(mViewList);
+        mViewList.addAll(info.getTopList());
         mPagerAdapter.notifyDataSetChanged();
     }
 
@@ -338,10 +310,12 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
         this.mLayout = null;
 
         this.mLayoutManager = null;
-        this.mAdapter = null;
         this.mContentList = null;
-        this.mPagerAdapter = null;
+        this.mAdapter = null;
+
+        this.mGridLayoutManager = null;
         this.mViewList = null;
+        this.mPagerAdapter = null;
         this.mAppComponent = null;
         this.mImageLoader = null;
     }
