@@ -169,6 +169,7 @@ public class HomeTopHolder extends BaseHolder<NewHomeInfo> implements View.OnCli
         View findViewByPosition = mLayoutManager.findViewByPosition(position);
         if (findViewByPosition != null) {
             int left = findViewByPosition.getLeft();
+            Timber.i("###### slideRecyclerView ######left="+left);
             if (left == 0) {
                 return false;
             }
