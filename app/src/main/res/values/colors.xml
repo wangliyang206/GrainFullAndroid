@@ -73,6 +73,7 @@
     <color name="tab_bg_color">#FFFFFF</color>
     <color name="tab_text_normal">#BFBFBF</color>
     <color name="tab_text_press">@color/colorPrimary</color>
+    <color name="tab_text_unselected">#444444</color>
 
     <!-- #######################################选择城市####################################### -->
     <color name="cp_alpha_gray">#CC646464</color>

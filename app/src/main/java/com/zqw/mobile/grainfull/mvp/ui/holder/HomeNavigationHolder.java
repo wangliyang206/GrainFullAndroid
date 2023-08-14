@@ -155,7 +155,7 @@ public class HomeNavigationHolder extends BaseHolder<NewHomeInfo> implements Vie
             TextView tabUnSelect = (TextView) tab.getCustomView().findViewById(R.id.tab_item_textview);
             tabUnSelect.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
             tabUnSelect.setText(tab.getText());
-            tabUnSelect.setTextColor(ActivityCompat.getColor(itemView.getContext(), R.color.common_text_hint_color));
+            tabUnSelect.setTextColor(ActivityCompat.getColor(itemView.getContext(), R.color.tab_text_unselected));
             tabUnSelect.setTextSize(13);
         }
     }

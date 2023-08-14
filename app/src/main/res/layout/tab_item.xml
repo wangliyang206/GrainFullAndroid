@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/common_text_tips_color"
+        android:textColor="@color/tab_text_unselected"
         android:textSize="13sp" />
 
 </LinearLayout>
