@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="#fff"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80">
+
+            <ImageView
+                android:id="@+id/picIv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="45"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txvi_productdisplayitemlayout_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:singleLine="true"
+                android:textColor="#ff9b00"
+                android:textSize="12sp"
+                tools:text="¥1999.99" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txvi_productdisplayitemlayout_oldPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txvi_productdisplayitemlayout_price"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:singleLine="true"
+                android:textColor="#999999"
+                android:textSize="10sp"
+                tools:text="¥ 6299" />
+
+            <LinearLayout
+                android:id="@+id/lila_productdisplayitemlayout_quickbuy"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/txvi_productdisplayitemlayout_price"
+                android:layout_marginLeft="13sp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="13sp"
+                android:alpha="0"
+                android:background="@drawable/shape_c_bg_ff6600_f39920"
+                android:gravity="center|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:text="立即抢购"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

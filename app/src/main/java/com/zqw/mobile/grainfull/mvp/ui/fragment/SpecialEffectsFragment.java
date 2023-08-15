@@ -30,6 +30,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.LevelSelectActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ProductDisplayActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ProgressViewActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ScaleRulerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
@@ -96,6 +97,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_scaleruler,                                       // 刻度尺
             R.id.btn_fragmentspecialeffects_other_evolution,                                        // 进化图
             R.id.btn_fragmentspecialeffects_other_temperature,                                      // 升温效果
+            R.id.btn_fragmentspecialeffects_other_productdisplay,                                   // 商品 - 横滑动
     })
     @Override
     public void onClick(View v) {
@@ -151,6 +153,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_temperature:                                 // 升温效果
                 ActivityUtils.startActivity(TemperatureActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_productdisplay:                              // 商品 - 横滑动
+                ActivityUtils.startActivity(ProductDisplayActivity.class);
                 break;
         }
     }
