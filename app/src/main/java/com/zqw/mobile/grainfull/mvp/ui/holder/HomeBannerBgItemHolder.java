@@ -69,7 +69,7 @@ public class HomeBannerBgItemHolder extends BaseHolder<HomeContentInfo> implemen
         mImageLoader.loadImage(mLayout.getContext(), ImageConfigImpl.builder().url(info.getImage())
                 .errorPic(R.mipmap.mis_default_error)
                 .placeholder(R.mipmap.mis_default_error)
-                .imageRadius(ConvertUtils.dp2px(10))
+                .imageRadius(ConvertUtils.dp2px(6))
                 .imageView(mImage).build());
     }
 
