@@ -179,4 +179,10 @@
     <style name="progress_text_font">
         <item name="android:fontFamily">@font/rubik_regular</item>
     </style>
+
+    <!-- Tab文字大小 -->
+    <style name="HomeTabLayoutTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 </resources>

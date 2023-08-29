@@ -5,6 +5,7 @@ import com.jess.arms.cj.GsonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.AppUpdate;
 import com.zqw.mobile.grainfull.mvp.model.entity.BaiduAiResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.CommonResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.HomeInfoResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.LoginResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.TranslateResponse;
 
@@ -78,4 +79,8 @@ public interface AccountService {
     // 文档图片去底纹 - 收费接口
     @POST()
     Observable<BaiduAiResponse> removeWatermarkin(@Url String Url, @Body RequestBody params);
+
+    // 获取首页数据
+    @POST()
+    Observable<HomeInfoResponse> queryHomePageInfo(@Url String Url);
 }

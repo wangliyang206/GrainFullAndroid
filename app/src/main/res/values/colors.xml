@@ -161,4 +161,10 @@
     <color name="progress_indicator_color_clear">#FFB4FFF0</color>
     <color name="progress_linearGradient_color1">#FFFF5500</color>
     <color name="progress_linearGradient_color2">#FFFFAE22</color>
+
+    <color name="color_FFD3D8">#FFD3D8</color>
+    <color name="color_FDFDFD">#FDFDFD</color>
+    <color name="color_FAFAFA">#FAFAFA</color>
+    <color name="color_E33A3C">#E33A3C</color>
+    <color name="color_404040">#404040</color>
 </resources>

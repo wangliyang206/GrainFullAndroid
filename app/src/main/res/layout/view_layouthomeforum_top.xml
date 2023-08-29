@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_layouthomeforumtopview_search"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_pet" />
+
+        <ImageView
+            android:id="@+id/imvi_layouthomeforumtopview_message"
+            android:layout_width="24dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/ic_message_white" />
+
+        <ImageView
+            android:id="@+id/imvi_layouthomeforumtopview_scan"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/imvi_layouthomeforumtopview_message"
+            android:src="@mipmap/ic_scan" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rela_layouthomeforumtopview_searchlayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/layout_bg_shape">
+
+        <ImageView
+            android:id="@+id/imvi_layouthomeforumtopview_search"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/icon_home_search" />
+
+        <TextView
+            android:id="@+id/txvi_layouthomeforumtopview_searchtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dp"
+            android:text="跑步鞋"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/imvi_layouthomeforumtopview_camera"
+            android:layout_width="21dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/ic_evaluation_camera" />
+
+    </RelativeLayout>
+</RelativeLayout>

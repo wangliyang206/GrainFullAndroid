@@ -24,6 +24,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerLayoutHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LayoutHomeContract;
 import com.zqw.mobile.grainfull.mvp.presenter.LayoutHomePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.FragmentPagerAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutForumFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutMianFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutOtherFragment;
 import com.zqw.mobile.grainfull.mvp.ui.widget.anim.AnimationRadioView;
@@ -44,7 +45,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Description: 模仿 - 首页
+ * Description: 模仿 - 首页2.0
  * <p>
  * Created on 2023/07/05 14:16
  *
@@ -143,8 +144,13 @@ public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implem
             @Override
             public Fragment getItem(int position) {
                 if (position == 0) {
+                    // 首页
                     return LayoutMianFragment.instantiate();
+                } else if (position == 1) {
+                    // 商城
+                    return LayoutForumFragment.instantiate();
                 } else {
+                    // 其它
                     return LayoutOtherFragment.instantiate(position);
                 }
 

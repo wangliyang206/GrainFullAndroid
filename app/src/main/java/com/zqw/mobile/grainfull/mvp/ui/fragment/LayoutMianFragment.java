@@ -49,7 +49,7 @@ import butterknife.OnClick;
  * @ProjectName: GrainFullAndroid
  * @Package: com.zqw.mobile.grainfull.mvp.ui.fragment
  * @ClassName: LayoutMianFragment
- * @Description: 其它 - 首页 - 首页
+ * @Description: 模仿 - 首页2.0 - 首页
  * @Author: WLY
  * @CreateDate: 2023/7/14 16:46
  */

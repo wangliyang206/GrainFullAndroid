@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_layouthome_forum"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color">
+
+    <!-- 智能下拉刷新布局 -->
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/srla_layouthomeforum_refreshView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 可持续滑动布局 -->
+        <com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout
+            android:id="@+id/csla_layouthomeforum_consecutiveScrollerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isPermanent="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/lila_layouthomeforum_searchLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:layout_isSticky="true">
+
+                <include
+                    android:id="@+id/include_home_top_view"
+                    layout="@layout/view_layouthomeforum_top" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collapsable_bg"
+                    android:orientation="vertical">
+
+                    <!-- 轮播图 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_margin="10dp">
+
+                        <com.youth.banner.Banner
+                            android:id="@+id/view_layouthomeforum_banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- 广告栏 -->
+                    <ImageView
+                        android:id="@+id/imvi_layouthomeforum_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <!-- 操作栏 -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="@android:color/white">
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/view_layouthomeforum_nineViewPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:id="@+id/view_layouthomeforum_pointsLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/view_layouthomeforum_nineViewPager"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal" />
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/view_layouthomeforum_tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_FAFAFA"
+                app:layout_isSticky="true"
+                app:tabIndicator="@drawable/tab_indicator_shape"
+                app:tabIndicatorColor="@color/color_E33A3C"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@color/color_E33A3C"
+                app:tabTextAppearance="@style/HomeTabLayoutTextStyle"
+                app:tabTextColor="@color/color_404040" />
+
+            <com.donkingliang.consecutivescroller.ConsecutiveViewPager2
+                android:id="@+id/view_layouthomeforum_viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout>
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/view_layouthomeforum_backTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/back_top"
+        android:visibility="gone"
+        app:backgroundTint="@android:color/white"
+        app:borderWidth="0dp"
+        app:elevation="10dp"
+        app:fabSize="mini"
+        app:rippleColor="@color/common_text_hint_color" />
+</RelativeLayout>
