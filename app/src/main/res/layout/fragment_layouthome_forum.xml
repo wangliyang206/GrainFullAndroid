@@ -43,16 +43,12 @@
                     android:orientation="vertical">
 
                     <!-- 轮播图 -->
-                    <androidx.cardview.widget.CardView
+                    <com.youth.banner.Banner
+                        android:id="@+id/view_layouthomeforum_banner"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
-                        android:layout_margin="10dp">
-
-                        <com.youth.banner.Banner
-                            android:id="@+id/view_layouthomeforum_banner"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </androidx.cardview.widget.CardView>
+                        android:layout_margin="10dp"
+                        app:banner_radius="5dp" />
 
                     <!-- 广告栏 -->
                     <ImageView

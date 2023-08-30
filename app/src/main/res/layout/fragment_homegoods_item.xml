@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_homegoods_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imvi_homegoodsitem_icon"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_white_10_bg"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txvi_homegoodsitem_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/txvi_homegoodsitem_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txvi_homegoodsitem_content"
+            android:layout_marginTop="5dp"
+            android:textColor="#f00"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txvi_homegoodsitem_lookSimilar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txvi_homegoodsitem_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/similar_bg"
+            android:paddingStart="6dp"
+            android:paddingTop="1dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="1dp"
+            android:text="看相似"
+            android:textColor="#9c9c9c"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/imvi_homegoodsitem__shopcart"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/txvi_homegoodsitem_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/gray_circular_bg"
+            android:padding="5dp"
+            android:src="@mipmap/ic_shop_cart"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>

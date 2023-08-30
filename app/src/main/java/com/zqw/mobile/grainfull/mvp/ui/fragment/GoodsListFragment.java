@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout;
 import com.jess.arms.base.BaseFragment;
@@ -20,6 +21,10 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerGoodsListComponent;
 import com.zqw.mobile.grainfull.mvp.contract.GoodsListContract;
 import com.zqw.mobile.grainfull.mvp.presenter.GoodsListPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.adapter.GoodsListAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.widget.SpacesItemDecoration;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -40,6 +45,19 @@ public class GoodsListFragment extends BaseFragment<GoodsListPresenter> implemen
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 类型：1精选，2新品，3直播，4实惠，5进口
     private String type;
+
+    @Inject
+    StaggeredGridLayoutManager staggeredGridLayoutManager;
+    @Inject
+    GoodsListAdapter mAdapter;
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        this.staggeredGridLayoutManager = null;
+        this.mAdapter = null;
+    }
 
     public static GoodsListFragment instantiate(String type) {
         GoodsListFragment fragment = new GoodsListFragment();
@@ -64,7 +82,22 @@ public class GoodsListFragment extends BaseFragment<GoodsListPresenter> implemen
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        initRecyclerView();
 
+        if (mPresenter != null) {
+            mPresenter.initGoodsList(type);
+        }
+    }
+
+    /**
+     * 初始化RecyclerView
+     */
+    private void initRecyclerView() {
+        // 解决加载下一页后重新排列的问题
+        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        ArmsUtils.configRecyclerView(mRecyclerView, staggeredGridLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new SpacesItemDecoration(10));
     }
 
     @Override

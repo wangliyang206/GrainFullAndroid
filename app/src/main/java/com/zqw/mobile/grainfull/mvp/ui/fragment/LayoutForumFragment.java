@@ -20,6 +20,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.baidu.idl.face.platform.utils.DensityUtils;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout;
 import com.donkingliang.consecutivescroller.ConsecutiveViewPager2;
@@ -31,7 +32,6 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
-import com.mikepenz.materialize.util.UIUtils;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -45,6 +45,7 @@ import com.zqw.mobile.grainfull.mvp.model.entity.BannerBean;
 import com.zqw.mobile.grainfull.mvp.model.entity.MenuBean;
 import com.zqw.mobile.grainfull.mvp.model.entity.TabBean;
 import com.zqw.mobile.grainfull.mvp.presenter.LayoutForumPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.NewWindowX5Activity;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.BannerExampleAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.NineViewPagerAdapter;
 
@@ -239,7 +240,7 @@ public class LayoutForumFragment extends BaseFragment<LayoutForumPresenter> impl
      */
     @Override
     public void loadNineMenu(List<MenuBean> nineMenuList) {
-        int totalPage = (int) Math.ceil(CommonUtils.div(nineMenuList.size(),pageSize));
+        int totalPage = (int) Math.ceil(CommonUtils.div(nineMenuList.size(), pageSize));
 
         menuList.clear();
         menuList.addAll(nineMenuList);
@@ -379,7 +380,8 @@ public class LayoutForumFragment extends BaseFragment<LayoutForumPresenter> impl
             R.id.imvi_layouthomeforumtopview_message,                                               // 消息
             R.id.imvi_layouthomeforumtopview_scan,                                                  // 扫码
             R.id.imvi_layouthomeforumtopview_camera,                                                // 搜索拍照
-            R.id.view_layouthomeforum_backTop                                                                            // 回收顶部
+            R.id.imvi_layouthomeforum_bar,                                                          // 广告栏
+            R.id.view_layouthomeforum_backTop                                                       // 回收顶部
     })
     @Override
     public void onClick(View v) {
@@ -393,7 +395,15 @@ public class LayoutForumFragment extends BaseFragment<LayoutForumPresenter> impl
             case R.id.imvi_layouthomeforumtopview_camera:                                           // 搜索拍照
                 showMessage("您点击了搜索中的拍照！");
                 break;
-            case R.id.view_layouthomeforum_backTop:                                                                      // 回收顶部
+            case R.id.imvi_layouthomeforum_bar:                                                     // 广告栏
+                Bundle mBundle = new Bundle();
+                mBundle.putString("TITLE", "品质购物节");
+                mBundle.putString("URL", "https://pro.m.jd.com/mall/active/2WrXYwmYpiy7EpWjDETSVyhXfLCb/index.html");
+                mBundle.putBoolean("isShowTop", true);
+
+                ActivityUtils.startActivity(mBundle, NewWindowX5Activity.class);
+                break;
+            case R.id.view_layouthomeforum_backTop:                                                 // 回收顶部
                 consecutiveScrollerLayout.scrollToChild(consecutiveScrollerLayout.getChildAt(0));
                 break;
         }
