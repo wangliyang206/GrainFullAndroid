@@ -30,7 +30,7 @@ import java.util.List;
  * @CreateDate: 2023/8/29 18:03
  */
 public class NineGridAdapter extends BaseAdapter {
-    private Context context;
+    private final Context context;
     private List<MenuBean> data;
     private int index;
     private int pageSize;
@@ -38,7 +38,7 @@ public class NineGridAdapter extends BaseAdapter {
     /**
      * 用于加载图片的管理类, 默认使用 Glide, 使用策略模式, 可替换框架
      */
-    private ImageLoader mImageLoader;
+    private final ImageLoader mImageLoader;
 
     public NineGridAdapter(Context context, List<MenuBean> data, int index, int pageSize) {
         this.context = context;

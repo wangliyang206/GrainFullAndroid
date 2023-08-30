@@ -9,6 +9,7 @@ import android.widget.GridView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.zqw.mobile.grainfull.R;
@@ -18,6 +19,7 @@ import com.zqw.mobile.grainfull.mvp.model.entity.BannerBean;
 import com.zqw.mobile.grainfull.mvp.model.entity.MenuBean;
 import com.zqw.mobile.grainfull.mvp.model.entity.TabBean;
 import com.zqw.mobile.grainfull.mvp.presenter.LayoutForumPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.NewWindowX5Activity;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.NineGridAdapter;
 
 import java.util.List;
@@ -69,7 +71,12 @@ public class GridFragment extends BaseFragment<LayoutForumPresenter> implements 
         nineGridAdapter = new NineGridAdapter(getContext(), list, position, pageSize);
         gridView.setAdapter(nineGridAdapter);
         nineGridAdapter.setOnGridItemClickListener(item -> {
+            Bundle mBundle = new Bundle();
+            mBundle.putString("TITLE", item.getMenuName());
+            mBundle.putString("URL", item.getH5url());
+            mBundle.putBoolean("isShowTop", true);
 
+            ActivityUtils.startActivity(mBundle, NewWindowX5Activity.class);
         });
     }
 
