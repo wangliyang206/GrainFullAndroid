@@ -52,7 +52,7 @@ public class LayoutForumPresenter extends BasePresenter<LayoutForumContract.Mode
             mBannerList.add(new BannerBean("https://m15.360buyimg.com/mobilecms/jfs/t1/218369/27/14203/132191/6226a702E5a0b9236/a11294e884bc7635.jpg!cr_1053x420_4_0!q70.jpg","1"));
             mBannerList.add(new BannerBean("https://m15.360buyimg.com/mobilecms/jfs/t1/158791/25/27003/106834/620c4bc2Efb15fc57/7c89841a597ce41b.jpg!cr_1053x420_4_0!q70.jpg","2"));
             mBannerList.add(new BannerBean("https://m15.360buyimg.com/mobilecms/jfs/t1/121592/2/24818/138081/622ccc8fEdf840f95/cd229433d699c70c.jpg!cr_1053x420_4_0!q70.jpg.dpg.webp","4"));
-            mBannerList.add(new BannerBean("https://imgcps.jd.com/ling-cubic/danpin/lab/amZzL3QxLzE2Mjc4Mi8zNi85MTM4LzQ0NjQ1MS82MDQwN2Q4MUVkMDlmMWM5OC9jZWVmOWU0OWVkNzlkNjZkLnBuZw/6Zi_6L-q6L6-5pav6LeR5q2l6Z6L/5qmh6IO25aSW5bqV/60586f6fa1b18f3314204f2d/cr_1125x449_0_166/s/q70.jpg","5"));
+            mBannerList.add(new BannerBean("https://img01.yohoboys.com/contentimg/2017/09/21/18/01153d76e13f27594dcadd9be3eefb5c2c.jpg","5"));
             mRootView.loadBanner(mBannerList);
 
             // 加载广告数据

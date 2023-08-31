@@ -1,6 +1,9 @@
 package com.zqw.mobile.grainfull.mvp.ui.fragment;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerLayoutForumComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LayoutForumContract;
@@ -71,6 +75,11 @@ public class GridFragment extends BaseFragment<LayoutForumPresenter> implements 
         nineGridAdapter = new NineGridAdapter(getContext(), list, position, pageSize);
         gridView.setAdapter(nineGridAdapter);
         nineGridAdapter.setOnGridItemClickListener(item -> {
+            if(TextUtils.isEmpty(item.getH5url())){
+                showMessage("未发现跳转地址！");
+                return;
+            }
+            
             Bundle mBundle = new Bundle();
             mBundle.putString("TITLE", item.getMenuName());
             mBundle.putString("URL", item.getH5url());
@@ -107,6 +116,7 @@ public class GridFragment extends BaseFragment<LayoutForumPresenter> implements 
 
     @Override
     public void showMessage(@NonNull String message) {
-
+        checkNotNull(message);
+        ArmsUtils.snackbarText(message);
     }
 }

@@ -72,7 +72,7 @@ public class LayoutMianPresenter extends BasePresenter<LayoutMianContract.Model,
      */
     private void getTopModuleData() {
         List<HomeContentInfo> list = new ArrayList<>();
-        list.add(new HomeContentInfo("https://lmg.jj20.com/up/allimg/tp09/2106110T4305357-0-lp.jpg", "新科技", "IQOO Pad新品上市"));
+        list.add(new HomeContentInfo("https://img.mp.itc.cn/upload/20170614/1c2945d2157443eabaf7cb3b19d0920e_th.jpg", "新科技", "IQOO Pad新品上市"));
         list.add(new HomeContentInfo("https://img0.baidu.com/it/u=2947025036,2907775544&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=889", "新上架", "禹田作物起源"));
         list.add(new HomeContentInfo("https://img2.baidu.com/it/u=1106624645,1258886294&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=889", "新包装", "小天材Z9航天款首发"));
         list.add(new HomeContentInfo("https://img0.baidu.com/it/u=3638921546,2426816085&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=888", "新款式", "石头 A10 上新"));
