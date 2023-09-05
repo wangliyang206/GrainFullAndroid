@@ -86,13 +86,13 @@ public class CategoryRightView extends FrameLayout {
         AppComponent mAppComponent = ArmsUtils.obtainAppComponentFromContext(context);
         mImageLoader = mAppComponent.imageLoader();
 
-        View view = LayoutInflater.from(context).inflate(R.layout.main_right, null);
-        topImg = view.findViewById(R.id.topImg);
-        tabLayout = view.findViewById(R.id.tabLayout);
-        categoryRecyclerView = view.findViewById(R.id.categoryRecyclerView);
+        View view = LayoutInflater.from(context).inflate(R.layout.category_right, null);
+        topImg = view.findViewById(R.id.imvi_categoryright_top);
+        tabLayout = view.findViewById(R.id.view_categoryright_tablayout);
+        categoryRecyclerView = view.findViewById(R.id.revi_categoryright_list);
 
         this.gridLayoutManager = new GridLayoutManager(context, 3);
-        this.sectionQuickAdapter = new SectionQuickAdapter(new ArrayList());
+        this.sectionQuickAdapter = new SectionQuickAdapter(getContext(), R.layout.category_right_grid_header, R.layout.category_right_grid, new ArrayList());
 
         categoryRecyclerView.setLayoutManager(gridLayoutManager);
         categoryRecyclerView.setAdapter(sectionQuickAdapter);
@@ -180,7 +180,7 @@ public class CategoryRightView extends FrameLayout {
             }
         }
 
-        sectionQuickAdapter.setData(list);
+        sectionQuickAdapter.setList(list);
         sectionQuickAdapter.notifyDataSetChanged();
     }
 
@@ -188,8 +188,9 @@ public class CategoryRightView extends FrameLayout {
      * 按选项卡查找页眉位置
      */
     private int findHeaderPositionByTab(int position) {
-        CategoryModal currentItem = sectionQuickAdapter.getData(position);
+        CategoryModal currentItem = sectionQuickAdapter.getItem(position);
 
+        // 标题中寻找索引
         int index = -1;
         for (int i = 0; i < cateList.size(); i++) {
             CateBean group = cateList.get(i);
@@ -202,11 +203,12 @@ public class CategoryRightView extends FrameLayout {
         if (index != -1) {
             return index;
         } else {
+            // 详情中寻找索引
             int innerIndex = -1;
             for (int i = 0; i < cateList.size(); i++) {
                 CateBean group = cateList.get(i);
                 for (int j = 0; j < group.getCateList().size(); j++) {
-                    CateBean interGroup = group.getCateList().get(i);
+                    CateBean interGroup = group.getCateList().get(j);
                     if (interGroup.getCategoryCode().equalsIgnoreCase(currentItem.getCategoryCode())) {
                         innerIndex = i;
                         break;

@@ -1,5 +1,7 @@
 package com.zqw.mobile.grainfull.mvp.model.entity;
 
+import com.chad.library.adapter.base.entity.SectionEntity;
+
 /**
  * @ProjectName: GrainFullAndroid
  * @Package: com.zqw.mobile.grainfull.mvp.model.entity
@@ -8,7 +10,7 @@ package com.zqw.mobile.grainfull.mvp.model.entity;
  * @Author: WLY
  * @CreateDate: 2023/9/4 15:08
  */
-public class CategoryModal {
+public class CategoryModal implements SectionEntity {
     public CategoryModal() {
     }
 
@@ -54,5 +56,15 @@ public class CategoryModal {
 
     public void setTitle(boolean title) {
         isTitle = title;
+    }
+
+    @Override
+    public boolean isHeader() {
+        return isTitle;
+    }
+
+    @Override
+    public int getItemType() {
+        return DefaultImpls.getItemType(this);
     }
 }

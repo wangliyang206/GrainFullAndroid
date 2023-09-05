@@ -40,12 +40,12 @@ import butterknife.BindView;
  * ================================================
  */
 public class CategoryLeftItemHolder extends BaseHolder<CategoryBean> {
-    @BindView(R.id.categoryItemView)
+    @BindView(R.id.category_left_item)
     LinearLayout categoryItemView;
 
-    @BindView(R.id.selectedIcon)
+    @BindView(R.id.imvi_categoryleftitem_icon)
     ImageView imviIcon;
-    @BindView(R.id.categoryName)
+    @BindView(R.id.txvi_categoryleftitem_name)
     TextView txviName;
 
     /**

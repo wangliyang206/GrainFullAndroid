@@ -34,6 +34,6 @@ public class CategoryListAdapter extends DefaultAdapter<CategoryBean> {
 
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.main_left_item;
+        return R.layout.category_left_item;
     }
 }

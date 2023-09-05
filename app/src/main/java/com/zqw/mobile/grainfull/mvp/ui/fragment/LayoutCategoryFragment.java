@@ -43,12 +43,12 @@ public class LayoutCategoryFragment extends BaseFragment<LayoutCategoryPresenter
     @BindView(R.id.fragment_layouthome_category)
     ConstraintLayout contentLayout;                                                                 // 主布局
 
-    @BindView(R.id.categoryList)
+    @BindView(R.id.revi_layouthome_leftlist)
     RecyclerView categoryList;                                                                      // 左边
 
-    @BindView(R.id.rightContainer)
+    @BindView(R.id.srla_layouthome_rightlist)
     SmartRefreshLayout rightContainer;
-    @BindView(R.id.categoryRightView)
+    @BindView(R.id.crvi_layouthome_rightlist)
     CategoryRightView categoryRightView;                                                            // 右边
 
     /*------------------------------------------------业务区域------------------------------------------------*/

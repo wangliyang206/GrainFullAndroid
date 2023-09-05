@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rightCategoryLayout"
+    android:id="@+id/category_right"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="5dp"
@@ -11,7 +11,7 @@
     android:background="@android:color/white">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/abla_categoryright_barlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stateListAnimator="@drawable/appbar_elevation">
@@ -23,7 +23,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:id="@+id/topImg"
+                android:id="@+id/imvi_categoryright_top"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:scaleType="fitXY"
@@ -42,7 +42,7 @@
         android:orientation="vertical">
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+            android:id="@+id/view_categoryright_tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabMode="scrollable"
@@ -56,7 +56,7 @@
             app:tabBackground="@drawable/selector_tab_indicator2"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categoryRecyclerView"
+            android:id="@+id/revi_categoryright_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

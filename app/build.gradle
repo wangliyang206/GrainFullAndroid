@@ -313,6 +313,7 @@ dependencies {
     implementation rootProject.ext.dependencies["photoview"]
 
     // 一个强大灵活的RecyclerView Adapter。支持单布局，多布局，分组布局，空布局，添加头部，添加尾部，支持拖拽、滑动、删除，此外还有加载动画效果等。
+    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7'
     // 验证码输入框
     implementation 'com.jyn.verificationcodeview:verificationcodeview:1.0.1'
