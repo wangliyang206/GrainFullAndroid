@@ -185,4 +185,8 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
     </style>
+
+    <style name="tab_title">
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

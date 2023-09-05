@@ -24,6 +24,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerLayoutHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LayoutHomeContract;
 import com.zqw.mobile.grainfull.mvp.presenter.LayoutHomePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.FragmentPagerAdapter;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutCategoryFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutForumFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutMianFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutOtherFragment;
@@ -149,6 +150,9 @@ public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implem
                 } else if (position == 1) {
                     // 商城
                     return LayoutForumFragment.instantiate();
+                } else if (position == 2) {
+                    // 分类
+                    return LayoutCategoryFragment.instantiate();
                 } else {
                     // 其它
                     return LayoutOtherFragment.instantiate(position);
