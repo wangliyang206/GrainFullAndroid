@@ -86,7 +86,7 @@ public abstract class ActivityCommon extends AppCompatActivity {
         txtResult = findViewById(R.id.txtResult);
         txtLog = findViewById(R.id.txtLog);
         btn = findViewById(R.id.btn);
-        setting = findViewById(R.id.setting);
+        setting = findViewById(R.id.imvi_layouthomemine_mine_setting);
 
         try {
             InputStream is = getResources().openRawResource(textId);

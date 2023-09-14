@@ -30,7 +30,7 @@
 
 
     <Button
-        android:id="@+id/setting"
+        android:id="@+id/imvi_layouthomemine_mine_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/setting" />

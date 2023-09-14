@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_layouthome_mine"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/frame_bg_color"
+    tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/lila_layouthomemine_banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/mine_top_bg"
+                android:orientation="horizontal" />
+
+            <com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout
+                android:id="@+id/view_layouthomemine_consecutive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:isPermanent="true">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/view_layouthomemine_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_isSticky="true">
+
+                    <include
+                        android:id="@+id/include_floating_header"
+                        layout="@layout/floating_header" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/order_card" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/view_layouthomemine_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_isSticky="true"
+                    app:tabBackground="@drawable/selector_tab_indicator"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMode="scrollable"
+                    app:tabRippleColor="@android:color/transparent"
+                    app:tabSelectedTextColor="@color/color_E33A3C"
+                    app:tabTextColor="@color/color_404040" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/revi_layouthomemine_recommend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+
+            </com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout>
+        </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/view_layouthomemine_backTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/back_top"
+            android:visibility="gone"
+            app:backgroundTint="@android:color/white"
+            app:borderWidth="0dp"
+            app:elevation="@dimen/dp_10"
+            app:fabSize="mini"
+            app:rippleColor="@color/common_text_hint_color" />
+
+    </RelativeLayout>
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>

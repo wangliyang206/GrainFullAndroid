@@ -28,6 +28,7 @@ import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutCategoryFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutForumFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutMianFragment;
 import com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutOtherFragment;
+import com.zqw.mobile.grainfull.mvp.ui.fragment.MineFragment;
 import com.zqw.mobile.grainfull.mvp.ui.widget.anim.AnimationRadioView;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
@@ -153,6 +154,9 @@ public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implem
                 } else if (position == 2) {
                     // 分类
                     return LayoutCategoryFragment.instantiate();
+                } else if (position == 4) {
+                    // 我的
+                    return MineFragment.instantiate();
                 } else {
                     // 其它
                     return LayoutOtherFragment.instantiate(position);
