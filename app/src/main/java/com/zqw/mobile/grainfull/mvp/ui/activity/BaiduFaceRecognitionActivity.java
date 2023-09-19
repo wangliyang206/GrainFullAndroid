@@ -43,6 +43,8 @@ import timber.log.Timber;
 /**
  * Description:百度AI - 人脸采集
  * <p>
+ * 说明：此功能需要百度人脸采集授权，目前试用阶段已过期。
+ * https://console.bce.baidu.com/ai/#/ai/face/client/index
  * Created on 2022/07/12 17:35
  *
  * @author 赤槿

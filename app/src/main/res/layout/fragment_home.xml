@@ -225,25 +225,45 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_bd_line">
 
-                    <TextView
+                    <RelativeLayout
                         android:id="@+id/btn_fragmenthome_facerecognition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/edit_bg_selector"
-                        android:padding="10dp"
-                        android:text="人脸采集" />
+                        android:layout_marginTop="10dp">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_bg_selector"
+                            android:padding="10dp"
+                            android:text="人脸采集" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_charge" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:id="@+id/btn_fragmenthome_voicerecog"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/edit_bg_selector"
-                        android:padding="10dp"
-                        android:text="语音识别" />
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_bg_selector"
+                            android:padding="10dp"
+                            android:text="语音识别" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_charge" />
+                    </RelativeLayout>
 
                     <TextView
                         android:id="@+id/btn_fragmenthome_speechsynthesis"
