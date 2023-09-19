@@ -189,4 +189,9 @@
     <style name="tab_title">
         <item name="android:textSize">12sp</item>
     </style>
+
+    <!-- 圆形图片 -->
+    <declare-styleable name="RoundImageView">
+        <attr name="roundRadius" format="reference|dimension" />
+    </declare-styleable>
 </resources>

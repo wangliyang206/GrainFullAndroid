@@ -41,12 +41,13 @@
 ![](image/Translate.jpg)
 
 ### 图片：
-    图片拼接、九宫格切图、图片压缩；
+    图片拼接、九宫格切图、图片压缩、人像动漫化、文档图片去水印；
 
 ![](image/PictureMosaic.jpg)
 ![](image/NinePalaces.jpg)
 ![](image/PictureCompression1.jpg)
 ![](image/PictureCompression2.jpg)
+![](image/AnimatedPortrait.jpg)
 
 ### 设备：
     查看设备信息、金属探测仪、噪音测量；
@@ -76,6 +77,11 @@
 ![](image/CardFlipping.jpg)
 
 ## 特效介绍
+### 模仿：
+    首页2.0、卡片重叠滑动；
+
+![](image/CardOverlap.jpg)
+
 ### 文本：
     仿序列号；
 
@@ -91,7 +97,7 @@
 ![](image/ElectronicClock.jpg)
 
 ### 其它：
-    音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮、仪表盘、刻度尺、进化图、升温效果；
+    音频波形、抽奖转盘、蛛网等级、进度条、悬浮窗口/按钮、仪表盘、刻度尺、进化图、升温效果、商品-横滑动；
 
 ![](image/AudioWaveform.jpg)
 ![](image/LotteryTurntable.jpg)
@@ -102,6 +108,7 @@
 ![](image/ScaleRuler.jpg)
 ![](image/LevelSelect.jpg)
 ![](image/Temperature.jpg)
+![](image/ProductDisplay.jpg)
 
 ## 首页侧滑
     友盟数据统计、设置、关于；

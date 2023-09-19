@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="336dp"
+    android:layout_height="426dp"
+    android:background="@drawable/img_card_background"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.RoundImageView
+            android:id="@+id/view_cardoverlapitemcard_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_avatar_01"
+            app:roundRadius="7.5dp" />
+
+        <ImageView
+            android:id="@+id/imvi_cardoverlapitemcard_dislike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:alpha="0"
+            android:src="@drawable/img_dislike" />
+
+        <ImageView
+            android:id="@+id/imvi_cardoverlapitemcard_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:alpha="0"
+            android:src="@drawable/img_like" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingStart="14dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/txvi_cardoverlapitemcard_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="小姐姐"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txvi_cardoverlapitemcard_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txvi_cardoverlapitemcard_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_age"
+            android:gravity="center"
+            android:text="♀ 23"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txvi_cardoverlapitemcard_constellation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txvi_cardoverlapitemcard_name"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/txvi_cardoverlapitemcard_age"
+            android:background="@drawable/shape_constellation"
+            android:gravity="center"
+            android:text="狮子座"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txvi_cardoverlapitemcard_age"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="IT/互联网"
+            android:textColor="#cbcbcb" />
+    </RelativeLayout>
+
+</LinearLayout>

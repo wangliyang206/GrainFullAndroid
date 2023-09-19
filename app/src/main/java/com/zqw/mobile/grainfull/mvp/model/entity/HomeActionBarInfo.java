@@ -21,6 +21,15 @@ public class HomeActionBarInfo {
     private int image;
     // 商品名称
     private String name;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public int getImage() {
         return image;

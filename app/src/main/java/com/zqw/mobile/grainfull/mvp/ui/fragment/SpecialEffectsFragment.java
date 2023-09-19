@@ -20,6 +20,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerSpecialEffectsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.SpecialEffectsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.SpecialEffectsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.CardOverlapActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CompassClockActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DashboardActivity;
@@ -78,6 +79,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
 
     @OnClick({
             R.id.btn_fragmentspecialeffects_layout_home,                                            // 模仿 - 首页
+            R.id.btn_fragmentspecialeffects_layout_cardoverlap,                                     // 卡片重叠滑动 - 探探效果
 
             R.id.btn_fragmentspecialeffects_text_serialnumber,                                      // 仿序列号
 
@@ -104,6 +106,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
         switch (v.getId()) {
             case R.id.btn_fragmentspecialeffects_layout_home:                                       // 模仿 - 首页
                 ActivityUtils.startActivity(LayoutHomeActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_layout_cardoverlap:                                // 卡片重叠滑动 - 探探效果
+                ActivityUtils.startActivity(CardOverlapActivity.class);
                 break;
 
             case R.id.btn_fragmentspecialeffects_text_serialnumber:                                 // 仿序列号
