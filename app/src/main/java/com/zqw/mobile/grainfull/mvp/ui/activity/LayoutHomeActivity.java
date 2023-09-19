@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerLayoutHomeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LayoutHomeContract;
@@ -118,6 +119,9 @@ public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implem
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("首页");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "layout_home_open");
 
         initData();
         initViewPager();

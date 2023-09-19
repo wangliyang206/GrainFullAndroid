@@ -16,6 +16,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerCardOverlapComponent;
 import com.zqw.mobile.grainfull.mvp.contract.CardOverlapContract;
@@ -86,6 +87,9 @@ public class CardOverlapActivity extends BaseActivity<CardOverlapPresenter> impl
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("卡片重叠滑动");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "card_overlap_open");
 
         initRecyclerView();
         loadData();
