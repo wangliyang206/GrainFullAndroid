@@ -413,4 +413,7 @@ dependencies {
 
     // Android广告图片轮播控件(https://github.com/youth5201314/banner)
     implementation 'io.github.youth5201314:banner:2.2.2'
+
+    // 见缝插针 Unity3D游戏
+    implementation project(path: ':unityLibrary')
 }
