@@ -138,9 +138,9 @@ android {
             buildConfigField "String", "SERVER_URL_VALUE", "\"http://buypb.e2.luyouxia.net:30302/\""
 
             // AndroidManifest中用到的配置
-            manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key_debug"
-                                    , UM_APP_KEY  : "@string/um_app_key_manifest_debug"]
+            manifestPlaceholders = [APP_NAME       : "@string/app_name_debug"
+                                    , BAIDU_API_KEY: "@string/baidu_map_api_key_debug"
+                                    , UM_APP_KEY   : "@string/um_app_key_manifest_debug"]
         }
 
         // 正式发布版
@@ -179,9 +179,9 @@ android {
             buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
 
             // AndroidManifest中用到的配置
-            manifestPlaceholders = [APP_NAME         : "@string/app_name"
-                                    , BAIDU_API_KEY  : "@string/baidu_map_api_key"
-                                    , UM_APP_KEY  : "@string/um_app_key_manifest"]
+            manifestPlaceholders = [APP_NAME       : "@string/app_name"
+                                    , BAIDU_API_KEY: "@string/baidu_map_api_key"
+                                    , UM_APP_KEY   : "@string/um_app_key_manifest"]
         }
     }
 

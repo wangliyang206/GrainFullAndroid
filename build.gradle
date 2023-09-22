@@ -34,6 +34,10 @@ allprojects {
         maven { url "https://developer.huawei.com/repo/" }                                          // 配置HMS Core SDK的Maven仓地址。(华为)
         maven { url = uri("https://maven.pkg.github.com/GCX-HCI/tray") }                            // Tray - SharedPreferences
         maven { url 'https://repo1.maven.org/maven2/' }                                             // 友盟统计
+
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
     }
 }
 
