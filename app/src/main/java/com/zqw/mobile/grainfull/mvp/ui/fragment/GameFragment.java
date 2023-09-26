@@ -15,7 +15,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.unity3d.player.UnityPlayerActivity;
+import com.unity3d.player.StickPinPlayerActivity;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerGameComponent;
 import com.zqw.mobile.grainfull.mvp.contract.GameContract;
@@ -90,7 +90,7 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
                 break;
 
             case R.id.btn_fragmentgame_unity_stickpin:                                              // 见缝插针
-                ActivityUtils.startActivity(UnityPlayerActivity.class);
+                ActivityUtils.startActivity(StickPinPlayerActivity.class);
                 break;
         }
     }

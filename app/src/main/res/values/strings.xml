@@ -113,4 +113,7 @@
     <string name="privacy_policy_tips_x">点击同意即表示您已阅读并同意《服务协议》和《隐私政策》</string>
 
     <string name="not_privacy_policy_tips">不同意将无法使用我们的产品和服务，并会退出App。</string>
+
+    <!-- unity 3D -->
+    <string name="game_view_content_description">Game view</string>
 </resources>
