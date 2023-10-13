@@ -9,9 +9,9 @@ import android.view.MotionEvent;
 import android.view.Window;
 
 /**
- * 见缝插针游戏 - 入口
+ * Unity3D 游戏加载入口
  */
-public class StickPinPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents {
+public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents {
     protected UnityPlayer mUnityPlayer; // don't change the name of this variable; referenced from native code
 
     // Override this in your custom UnityPlayerActivity to tweak the command line arguments passed to the Unity Android Player
@@ -37,6 +37,13 @@ public class StickPinPlayerActivity extends Activity implements IUnityPlayerLife
         mUnityPlayer = new UnityPlayer(this, this);
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();
+
+        // 检查是否有指定界面
+        Bundle mBundle = getIntent().getExtras();
+        if (mBundle != null) {
+            // 向Unity发送消息(控制打开指定界面)
+            UnityPlayer.UnitySendMessage("GameObject", "toJump", String.valueOf(mBundle.getInt("layout")));
+        }
     }
 
     // When Unity player unloaded move task to background
