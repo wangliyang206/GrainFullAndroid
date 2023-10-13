@@ -15,13 +15,14 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.unity3d.player.StickPinPlayerActivity;
+import com.unity3d.player.UnityPlayerActivity;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerGameComponent;
 import com.zqw.mobile.grainfull.mvp.contract.GameContract;
 import com.zqw.mobile.grainfull.mvp.presenter.GamePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AircraftWarActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CardFlippingActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ElfinPlayerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.OneLineToEndActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.WhacAMoleActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.klotskiGameActivity;
@@ -69,6 +70,7 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
             R.id.btn_fragmentgame_common_cardflipping,                                              // 卡牌消消乐
 
             R.id.btn_fragmentgame_unity_stickpin,                                                   // 见缝插针
+            R.id.btn_fragmentgame_unity_elfin,                                                      // 小精灵3D模型
     })
     @Override
     public void onClick(View v) {
@@ -90,7 +92,12 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
                 break;
 
             case R.id.btn_fragmentgame_unity_stickpin:                                              // 见缝插针
-                ActivityUtils.startActivity(StickPinPlayerActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putInt("layout", 2);
+                ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
+                break;
+            case R.id.btn_fragmentgame_unity_elfin:                                                 // 小精灵3D模型
+                ActivityUtils.startActivity(ElfinPlayerActivity.class);
                 break;
         }
     }

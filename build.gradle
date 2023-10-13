@@ -36,7 +36,7 @@ allprojects {
         maven { url 'https://repo1.maven.org/maven2/' }                                             // 友盟统计
 
         flatDir {
-            dirs "${project(':stickpin-library').projectDir}/libs"
+            dirs "${project(':unity-library').projectDir}/libs"
         }
     }
 }

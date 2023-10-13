@@ -115,6 +115,9 @@ dependencies {
 
     //test
     api rootProject.ext.dependencies["timber"]
+
+    // 新增Unity功能
+    api project(path: ':unity-library')
 }
 
 apply from: '../bintray.gradle'

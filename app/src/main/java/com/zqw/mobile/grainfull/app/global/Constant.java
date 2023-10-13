@@ -32,7 +32,12 @@ public interface Constant {
     /**
      * 保存图片路径
      */
-    String IMAGE_PATH = PathUtils.getExternalPicturesPath() + "/GrainFull/";
+    String IMAGE_PATH = PathUtils.getExternalPicturesPath() + "/GrainFull/Image/";
+
+    /**
+     * 模板路径
+     */
+    String TEMPLATE_PATH = PathUtils.getExternalPicturesPath() + "/GrainFull/Template/";
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**
