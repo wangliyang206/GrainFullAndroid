@@ -2,9 +2,12 @@ package com.zqw.mobile.grainfull.mvp.ui.activity;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.ResourceUtils;
+import com.blankj.utilcode.util.Utils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -24,14 +28,19 @@ import com.jess.arms.utils.ArmsUtils;
 import com.unity3d.player.UnityPlayerActivity;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
+import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerElfinPlayerComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ElfinPlayerContract;
 import com.zqw.mobile.grainfull.mvp.presenter.ElfinPlayerPresenter;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * Description: 小精灵 - unity - 入口
@@ -41,6 +50,7 @@ import butterknife.OnClick;
  * @author 赤槿
  * module name is ElfinPlayerActivity
  */
+@RuntimePermissions
 public class ElfinPlayerActivity extends BaseActivity<ElfinPlayerPresenter> implements ElfinPlayerContract.View {
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.activity_elfin_player)
@@ -80,18 +90,51 @@ public class ElfinPlayerActivity extends BaseActivity<ElfinPlayerPresenter> impl
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("小精灵模块库");
 
-        // 流程步骤：
-        // 第一步，清空模板，重新保存模板到本地。
-        FileUtils.delete(Constant.TEMPLATE_PATH);
-        // 第二步，显示模板路径。
-        ResourceUtils.copyFileFromAssets("template/template.bmp", Constant.TEMPLATE_PATH + "template.bmp");
-        // 第三步，显示：路径和图片
-        txviPath.setText("路径：" + Constant.TEMPLATE_PATH + "template.bmp");
-        // 显示图片
-        mImageLoader.loadImage(getApplicationContext(), ImageConfigImpl.builder().url(Constant.TEMPLATE_PATH + "template.bmp")
-                .errorPic(R.mipmap.mis_default_error)
-                .placeholder(R.mipmap.mis_default_error)
-                .imageView(imviPic).build());
+        ElfinPlayerActivityPermissionsDispatcher.loadDataWithPermissionCheck(this);
+    }
+
+    /**
+     * 申请权限成功后的逻辑
+     */
+    @NeedsPermission({
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    })
+    public void loadData() {
+        // 统一流程：先删除模板目录中的所有文件，然后将Assets中的模板拷贝到SDCARD/Pictures/GrainFull/Template中
+
+        // 判断当前android为10时采用分区模式
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            // 分区模式
+
+            // 清空模板
+            MediaStoreUtils.deleteFilesInDir(this, "image", Constant.TEMPLATE_PATH);
+            // 将Assets中的模板保存到SDCARD中
+            MediaStoreUtils.copyImageFromAssets(this, "template/", Environment.DIRECTORY_PICTURES + "/GrainFull/Template");
+
+        } else {
+            // 旧式外部存储
+            // 清空模板
+            FileUtils.deleteFilesInDir(Constant.TEMPLATE_PATH);
+            // 将Assets中的模板保存到SDCARD中
+            ResourceUtils.copyFileFromAssets("template", Constant.TEMPLATE_PATH);
+        }
+
+        try {
+            String[] assets = Utils.getApp().getAssets().list("template");
+            if (assets != null && assets.length > 0) {
+                // 第三步，显示：路径和图片
+                txviPath.setText("路径：" + Constant.TEMPLATE_PATH + assets[0]);
+                // 显示图片
+                mImageLoader.loadImage(getApplicationContext(), ImageConfigImpl.builder().url(Constant.TEMPLATE_PATH + assets[0])
+                        .errorPic(R.mipmap.mis_default_error)
+                        .placeholder(R.mipmap.mis_default_error)
+                        .imageView(imviPic).build());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @OnClick({
@@ -106,6 +149,13 @@ public class ElfinPlayerActivity extends BaseActivity<ElfinPlayerPresenter> impl
                 ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
                 break;
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        ElfinPlayerActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     public Activity getActivity() {

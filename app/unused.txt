@@ -176,7 +176,6 @@ com.zqw.mobile.grainfull.app.utils.CommonUtils:
     public static java.util.List deepCopy(java.util.List)
     public static void animChangeColor(android.content.Context,com.jess.arms.cj.colorful.Colorful,int)
     public static boolean customRegular(java.lang.String,java.lang.String)
-    public static java.lang.String formatMoney(double)
     public static java.lang.String format0Right(java.lang.String)
     public static void rotationTriangle(android.widget.ImageView,boolean)
     public static java.lang.String getFirstLetter(java.lang.String)
@@ -390,6 +389,16 @@ com.bumptech.glide.load.engine.cache.MemorySizeCalculator:
     static final int BYTES_PER_ARGB_8888_PIXEL
     private static final int LOW_MEMORY_BYTE_ARRAY_POOL_DIVISOR
 kotlin.collections.UCollectionsKt
+lecho.lib.hellocharts.formatter.SimpleAxisValueFormatter:
+    public void <init>(int)
+    public int getDecimalDigitsNumber()
+    public lecho.lib.hellocharts.formatter.SimpleAxisValueFormatter setDecimalDigitsNumber(int)
+    public char[] getAppendedText()
+    public lecho.lib.hellocharts.formatter.SimpleAxisValueFormatter setAppendedText(char[])
+    public char[] getPrependedText()
+    public lecho.lib.hellocharts.formatter.SimpleAxisValueFormatter setPrependedText(char[])
+    public char getDecimalSeparator()
+    public lecho.lib.hellocharts.formatter.SimpleAxisValueFormatter setDecimalSeparator(char)
 androidx.core.view.NestedScrollingChild2:
     public abstract boolean startNestedScroll(int,int)
     public abstract void stopNestedScroll(int)
@@ -420,6 +429,13 @@ kotlin.jvm.internal.DefaultConstructorMarker:
 androidx.constraintlayout.core.motion.utils.LinearCurveFit:
     private double getLength2D(double)
     private static final java.lang.String TAG
+com.zqw.mobile.grainfull.mvp.model.HandheldBulletScreenModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.HandheldBulletScreenModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.ViewfinderView:
     public void drawResultBitmap(android.graphics.Bitmap)
     private static final long ANIMATION_DELAY
@@ -611,6 +627,15 @@ androidx.viewpager.widget.PagerTabStrip:
     private static final int FULL_UNDERLINE_HEIGHT
     private static final int MIN_STRIP_HEIGHT
 androidx.constraintlayout.core.state.Reference
+com.zqw.mobile.grainfull.mvp.presenter.ColorCodeConversionPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ColorCodeConversionPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.zqw.mobile.grainfull.di.module.AboutModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.AboutContract$Model bindAboutModel(com.zqw.mobile.grainfull.mvp.model.AboutModel)
@@ -680,7 +705,10 @@ com.bumptech.glide.load.engine.Engine:
     public void shutdown()
     private static final java.lang.String TAG
     private static final int JOB_POOL_SIZE
+lecho.lib.hellocharts.R
 kotlin.text.StringsKt___StringsJvmKt
+lecho.lib.hellocharts.view.ComboLineColumnChartView:
+    private static final java.lang.String TAG
 com.blankj.utilcode.util.Utils:
     private void <init>()
 androidx.constraintlayout.core.state.helpers.BarrierReference
@@ -710,6 +738,15 @@ androidx.core.app.NotificationCompat$WearableExtender
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$5
 androidx.core.content.res.ResourcesCompat$ThemeCompat$ImplApi23:
     private void <init>()
+lecho.lib.hellocharts.model.BubbleValue:
+    public void <init>(float,float,float,int)
+    public void <init>(lecho.lib.hellocharts.model.BubbleValue)
+    public lecho.lib.hellocharts.model.BubbleValue setTarget(float,float,float)
+    public lecho.lib.hellocharts.model.BubbleValue setColor(int)
+    public lecho.lib.hellocharts.model.BubbleValue setShape(lecho.lib.hellocharts.model.ValueShape)
+    public char[] getLabel()
+    public lecho.lib.hellocharts.model.BubbleValue setLabel(java.lang.String)
+    public lecho.lib.hellocharts.model.BubbleValue setLabel(char[])
 androidx.loader.app.LoaderManagerImpl$LoaderViewModel:
     void startCreatingLoader()
     boolean isCreatingLoader()
@@ -761,6 +798,9 @@ com.jess.arms.utils.LogUtils:
     public static void debugLongInfo(java.lang.String,java.lang.String)
     public static void debugLongInfo(java.lang.String)
     private static final java.lang.String DEFAULT_TAG
+lecho.lib.hellocharts.view.BubbleChartView:
+    public void removeMargins()
+    private static final java.lang.String TAG
 kotlin.UByteArrayKt
 com.jess.arms.http.imageloader.ImageLoader:
     public void clear(android.content.Context,com.jess.arms.http.imageloader.ImageConfig)
@@ -771,6 +811,9 @@ kotlin.time.TestTimeSource
 androidx.recyclerview.widget.AsyncListUtil$ViewCallback
 kotlin.InitializedLazyImpl
 kotlin.time.MonotonicTimeSource
+com.zqw.mobile.grainfull.di.module.ChineseToPinyinModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.ChineseToPinyinContract$Model bindChineseToPinyinModel(com.zqw.mobile.grainfull.mvp.model.ChineseToPinyinModel)
 androidx.transition.PatternPathMotion:
     public android.graphics.Path getPatternPath()
 com.mikepenz.materialize.color.Material$DeepPurple
@@ -796,6 +839,11 @@ androidx.core.view.NestedScrollingChild3:
 com.blankj.utilcode.util.CollectionUtils$Transformer
 androidx.core.app.JobIntentService$JobWorkEnqueuer:
     void enqueueWork(android.content.Intent)
+lecho.lib.hellocharts.gesture.ChartTouchHandler:
+    public boolean isZoomEnabled()
+    public boolean isScrollEnabled()
+    public boolean isValueTouchEnabled()
+    public boolean isValueSelectionEnabled()
 androidx.lifecycle.LifecycleRegistry:
     public int getObserverCount()
 androidx.constraintlayout.motion.widget.MotionPaths:
@@ -958,6 +1006,10 @@ kotlin.coroutines.CoroutineContext:
 kotlin.collections.unsigned.UArraysKt___UArraysJvmKt
 com.blankj.utilcode.util.ThreadUtils$SimpleTask
 com.jakewharton.rxbinding3.widget.SeekBarChangeEventObservable
+lecho.lib.hellocharts.model.LineChartData:
+    public void <init>(lecho.lib.hellocharts.model.LineChartData)
+    public lecho.lib.hellocharts.model.LineChartData setBaseValue(float)
+    public static final float DEFAULT_BASE_VALUE
 io.rx_cache2.internal.ProcessorProviders
 com.bumptech.glide.load.engine.DecodePath:
     private static final java.lang.String TAG
@@ -977,13 +1029,20 @@ androidx.transition.TransitionManager:
     private androidx.collection.ArrayMap mSceneTransitions
     private androidx.collection.ArrayMap mScenePairTransitions
     private static final java.lang.String LOG_TAG
+lecho.lib.hellocharts.provider.LineChartDataProvider:
+    public abstract void setLineChartData(lecho.lib.hellocharts.model.LineChartData)
 com.mikepenz.materialdrawer.model.SecondaryToggleDrawerItem
 kotlin.sequences.USequencesKt
+lecho.lib.hellocharts.animation.PieChartRotationAnimatorV14:
+    public boolean isAnimationStarted()
+    public void setChartAnimationListener(lecho.lib.hellocharts.animation.ChartAnimationListener)
 com.zqw.mobile.grainfull.app.utils.overlayutil.MassTransitRouteOverlay$1
 org.reactivestreams.FlowAdapters$FlowToReactiveSubscription
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$4
 kotlin.reflect.KProperty1$Getter
 androidx.core.view.WindowInsetsControllerCompat$Impl
+lecho.lib.hellocharts.view.ComboLineColumnChartView$ComboLineChartDataProvider:
+    public void setLineChartData(lecho.lib.hellocharts.model.LineChartData)
 com.bumptech.glide.request.transition.BitmapTransitionFactory:
     public void <init>(com.bumptech.glide.request.transition.TransitionFactory)
 kotlin.coroutines.experimental.SequenceBuilderIterator
@@ -1000,7 +1059,6 @@ com.jess.arms.http.imageloader.glide.ImageConfigImpl:
     public boolean isClearMemory()
     public boolean isClearDiskCache()
 androidx.media.AudioAttributesCompat$AudioManagerHidden
-qiu.niorgai.R
 androidx.recyclerview.widget.RecyclerView$ItemAnimator$ItemHolderInfo:
     public int changeFlags
 kotlin.jvm.internal.TypeReference$WhenMappings
@@ -1012,10 +1070,69 @@ uk.co.senab.photoview.Compat:
     private static final int SIXTY_FPS_INTERVAL
 com.lcw.library.imagepicker.R
 okio.DeflaterSink
+lecho.lib.hellocharts.model.Axis:
+    public void <init>(java.util.List)
+    public void <init>(lecho.lib.hellocharts.model.Axis)
+    public static lecho.lib.hellocharts.model.Axis generateAxisFromRange(float,float,float)
+    public static lecho.lib.hellocharts.model.Axis generateAxisFromCollection(java.util.List)
+    public static lecho.lib.hellocharts.model.Axis generateAxisFromCollection(java.util.List,java.util.List)
+    public lecho.lib.hellocharts.model.Axis setValues(java.util.List)
+    public lecho.lib.hellocharts.model.Axis setName(java.lang.String)
+    public lecho.lib.hellocharts.model.Axis setAutoGenerated(boolean)
+    public lecho.lib.hellocharts.model.Axis setHasLines(boolean)
+    public lecho.lib.hellocharts.model.Axis setTextColor(int)
+    public lecho.lib.hellocharts.model.Axis setInside(boolean)
+    public lecho.lib.hellocharts.model.Axis setLineColor(int)
+    public lecho.lib.hellocharts.model.Axis setTextSize(int)
+    public lecho.lib.hellocharts.model.Axis setMaxLabelChars(int)
+    public lecho.lib.hellocharts.model.Axis setTypeface(android.graphics.Typeface)
+    public lecho.lib.hellocharts.model.Axis setFormatter(lecho.lib.hellocharts.formatter.AxisValueFormatter)
+    public lecho.lib.hellocharts.model.Axis setHasSeparationLine(boolean)
+    public lecho.lib.hellocharts.model.Axis setHasTiltedLabels(boolean)
+    public static final int DEFAULT_TEXT_SIZE_SP
+    public static final int DEFAULT_MAX_AXIS_LABEL_CHARS
 com.bigkoo.pickerview.view.WheelTime
 kotlin.ULongArrayKt
 androidx.core.app.NotificationCompat$BigPictureStyle$Api23Impl
+com.white.progressview.CircleProgressView:
+    public void runProgressAnim(long)
+    private static final int PROGRESS_STYLE_NORMAL
+    private static final int PROGRESS_STYLE_FILL_IN
+    private static final int PROGRESS_STYLE_FILL_IN_ARC
+    private static final java.lang.String STATE
+    private static final java.lang.String PROGRESS_STYLE
+    private static final java.lang.String TEXT_COLOR
+    private static final java.lang.String TEXT_SIZE
+    private static final java.lang.String TEXT_SKEW_X
+    private static final java.lang.String TEXT_VISIBLE
+    private static final java.lang.String TEXT_SUFFIX
+    private static final java.lang.String TEXT_PREFIX
+    private static final java.lang.String REACH_BAR_COLOR
+    private static final java.lang.String REACH_BAR_SIZE
+    private static final java.lang.String NORMAL_BAR_COLOR
+    private static final java.lang.String NORMAL_BAR_SIZE
+    private static final java.lang.String IS_REACH_CAP_ROUND
+    private static final java.lang.String RADIUS
+    private static final java.lang.String START_ARC
+    private static final java.lang.String INNER_BG_COLOR
+    private static final java.lang.String INNER_PADDING
+    private static final java.lang.String OUTER_COLOR
+    private static final java.lang.String OUTER_SIZE
 kotlin.collections.MapsKt___MapsKt
+lecho.lib.hellocharts.model.SelectedValue:
+    public void <init>(int,int,lecho.lib.hellocharts.model.SelectedValue$SelectedValueType)
+    public void setFirstIndex(int)
+    public void setSecondIndex(int)
+    public void setType(lecho.lib.hellocharts.model.SelectedValue$SelectedValueType)
+com.zqw.mobile.grainfull.mvp.presenter.MagnifierPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.MagnifierPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.sequences.IndexingSequence$iterator$1
 com.jess.arms.http.imageloader.glide.GlideImageLoaderStrategy:
     public void clear(android.content.Context,com.jess.arms.http.imageloader.glide.ImageConfigImpl)
@@ -1048,6 +1165,29 @@ androidx.constraintlayout.motion.widget.MotionScene$Transition:
     public static final int AUTO_ANIMATE_TO_END
     static final int TRANSITION_FLAG_FIRST_DRAW
     static final int TRANSITION_FLAG_INTRA_AUTO
+lecho.lib.hellocharts.model.PieChartData:
+    public void <init>(java.util.List)
+    public void <init>(lecho.lib.hellocharts.model.PieChartData)
+    public lecho.lib.hellocharts.model.PieChartData setHasLabels(boolean)
+    public lecho.lib.hellocharts.model.PieChartData setHasLabelsOnlyForSelected(boolean)
+    public lecho.lib.hellocharts.model.PieChartData setHasLabelsOutside(boolean)
+    public lecho.lib.hellocharts.model.PieChartData setHasCenterCircle(boolean)
+    public lecho.lib.hellocharts.model.PieChartData setCenterCircleColor(int)
+    public lecho.lib.hellocharts.model.PieChartData setCenterCircleScale(float)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText1Color(int)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText1FontSize(int)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText1Typeface(android.graphics.Typeface)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText1(java.lang.String)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText2(java.lang.String)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText2Color(int)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText2FontSize(int)
+    public lecho.lib.hellocharts.model.PieChartData setCenterText2Typeface(android.graphics.Typeface)
+    public lecho.lib.hellocharts.model.PieChartData setSlicesSpacing(int)
+    public lecho.lib.hellocharts.model.PieChartData setFormatter(lecho.lib.hellocharts.formatter.PieChartValueFormatter)
+    public static final int DEFAULT_CENTER_TEXT1_SIZE_SP
+    public static final int DEFAULT_CENTER_TEXT2_SIZE_SP
+    public static final float DEFAULT_CENTER_CIRCLE_SCALE
+    private static final int DEFAULT_SLICE_SPACING_DP
 com.zqw.mobile.grainfull.mvp.model.BaiduSpeechSynthesisModel_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
@@ -1068,6 +1208,7 @@ androidx.constraintlayout.widget.Barrier:
     public static final int END
 com.zqw.mobile.grainfull.app.utils.overlayutil.PoiOverlay
 io.rx_cache2.ActionsList$7
+com.zqw.mobile.grainfull.mvp.contract.ColorPickerContract
 com.zqw.mobile.grainfull.mvp.ui.widget.behavior.AppBarLayoutBehavior:
     private static final java.lang.String TAG
     private static final int TYPE_FLING
@@ -1079,6 +1220,15 @@ com.mikepenz.materialdrawer.model.AbstractToggleableDrawerItem$ViewHolder
 com.zqw.mobile.grainfull.app.utils.overlayutil.WalkingRouteOverlay
 androidx.core.os.ParcelCompat
 com.mikepenz.iconics.utils.GenericsUtil
+com.zqw.mobile.grainfull.mvp.presenter.LevitationButtonPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.LevitationButtonPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 permissions.dispatcher.GrantableRequest
 kotlin.jvm.internal.Reflection:
     public void <init>()
@@ -1105,6 +1255,8 @@ kotlin.jvm.internal.Reflection:
     public static kotlin.reflect.KType nullableTypeOf(java.lang.Class,kotlin.reflect.KTypeProjection,kotlin.reflect.KTypeProjection)
     public static varargs kotlin.reflect.KType nullableTypeOf(java.lang.Class,kotlin.reflect.KTypeProjection[])
     static final java.lang.String REFLECTION_NOT_AVAILABLE
+lecho.lib.hellocharts.view.PreviewColumnChartView:
+    private static final java.lang.String TAG
 com.paginate.abslistview.LoadingListItemCreator
 androidx.appcompat.app.ActionBar$OnNavigationListener
 io.rx_cache2.ProviderHelper
@@ -1123,9 +1275,10 @@ com.blankj.utilcode.util.FileUtils$2
 io.rx_cache2.internal.cache.memory.apache.IterableGet
 androidx.core.app.JobIntentService$CompatWorkEnqueuer:
     void enqueueWork(android.content.Intent)
-qiu.niorgai.BuildConfig
 androidx.core.net.ParseException
 kotlin.collections.CollectionsKt__IterablesKt
+lecho.lib.hellocharts.view.ComboLineColumnChartView$ComboColumnChartDataProvider:
+    public void setColumnChartData(lecho.lib.hellocharts.model.ColumnChartData)
 com.jess.arms.http.imageloader.glide.GlideConfiguration:
     public static final int IMAGE_DISK_CACHE_MAX_SIZE
 com.jakewharton.rxbinding3.InitialValueObservable$Skipped
@@ -1140,6 +1293,7 @@ com.jess.arms.utils.FastBlur:
     public static void blur(android.content.Context,android.graphics.Bitmap,android.view.View)
     public static android.graphics.Bitmap blurBitmap(android.graphics.Bitmap,int,int)
 com.jakewharton.rxbinding3.widget.RxTextView__TextViewTextChangeEventObservableKt
+com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity_MembersInjector
 androidx.fragment.app.FragmentTabHost:
     public void addTab(android.widget.TabHost$TabSpec,java.lang.Class,android.os.Bundle)
 androidx.constraintlayout.core.motion.utils.SpringStopEngine:
@@ -1438,6 +1592,9 @@ androidx.constraintlayout.motion.widget.MotionController:
     private static final int INTERPOLATOR_REFERENCE_ID
     private static final int INTERPOLATOR_UNDEFINED
 kotlin.Pair
+com.zqw.mobile.grainfull.mvp.ui.widget.spider.RxCobwebView:
+    public boolean isSpiderLevelStroke()
+    private float distance
 com.blankj.utilcode.util.ClickUtils$OnUtilsTouchListener$LazyHolder
 kotlin.sequences.FlatteningSequence$iterator$1
 androidx.viewpager.widget.ViewPager$SimpleOnPageChangeListener
@@ -1509,6 +1666,7 @@ androidx.constraintlayout.core.state.WidgetFrame:
     void printCustomAttributes()
     void logv(java.lang.String)
     private static final boolean OLD_SYSTEM
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_MembersInjector
 kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1
 com.jakewharton.rxbinding3.widget.TextViewEditorActionEvent
 com.zqw.mobile.grainfull.mvp.contract.AudioWaveformContract
@@ -1709,6 +1867,7 @@ androidx.core.view.DragAndDropPermissionsCompat
 androidx.transition.Styleable$PatternPathMotion
 com.cjt2325.cameralibrary.R
 androidx.vectordrawable.R
+com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity_MembersInjector
 com.jakewharton.rxbinding3.view.ViewTreeObserverGlobalLayoutObservable$Listener
 com.zqw.mobile.grainfull.mvp.ui.activity.AboutActivity_MembersInjector
 androidx.core.view.DisplayCompat
@@ -1726,6 +1885,14 @@ com.bigkoo.pickerview.lib.WheelView:
 com.jakewharton.rxbinding3.widget.TextViewTextChangeEventObservable$Listener
 io.rx_cache2.internal.Persistence
 kotlin.sequences.DropTakeSequence
+lecho.lib.hellocharts.model.SubcolumnValue:
+    public void <init>(float,int)
+    public void <init>(lecho.lib.hellocharts.model.SubcolumnValue)
+    public lecho.lib.hellocharts.model.SubcolumnValue setTarget(float)
+    public lecho.lib.hellocharts.model.SubcolumnValue setColor(int)
+    public char[] getLabel()
+    public lecho.lib.hellocharts.model.SubcolumnValue setLabel(java.lang.String)
+    public lecho.lib.hellocharts.model.SubcolumnValue setLabel(char[])
 androidx.constraintlayout.core.motion.utils.TypedValues$Attributes
 androidx.asynclayoutinflater.view.AsyncLayoutInflater$1
 kotlin.io.TextStreamsKt
@@ -2157,6 +2324,14 @@ androidx.constraintlayout.widget.ConstraintLayoutStates:
 androidx.recyclerview.widget.AsyncDifferConfig$Builder
 io.rx_cache2.internal.cache.TwoLayersCache
 com.blankj.utilcode.util.UtilsBridge$FileHead
+com.github.stuxuhai.jpinyin.ChineseHelper:
+    private void <init>()
+    public static char convertToTraditionalChinese(char)
+    public static java.lang.String convertToTraditionalChinese(java.lang.String)
+    public static boolean isTraditionalChinese(char)
+    public static boolean containsChinese(java.lang.String)
+    public static void addChineseDict(java.lang.String)
+    private static final java.lang.String CHINESE_REGEX
 com.zqw.mobile.grainfull.mvp.contract.HomeContract
 com.bumptech.glide.ListPreloader$PreloadTargetQueue:
     void <init>(int)
@@ -2232,6 +2407,15 @@ androidx.core.view.WindowInsetsCompat$Impl:
     androidx.core.graphics.Insets getInsets(int)
     androidx.core.graphics.Insets getInsetsIgnoringVisibility(int)
     boolean isVisible(int)
+lecho.lib.hellocharts.renderer.PieChartRenderer:
+    public lecho.lib.hellocharts.model.SliceValue getValueForAngle(int,lecho.lib.hellocharts.model.SelectedValue)
+    private static final float MAX_WIDTH_HEIGHT
+    private static final int DEFAULT_START_ROTATION
+    private static final float DEFAULT_LABEL_INSIDE_RADIUS_FACTOR
+    private static final float DEFAULT_LABEL_OUTSIDE_RADIUS_FACTOR
+    private static final int DEFAULT_TOUCH_ADDITIONAL_DP
+    private static final int MODE_DRAW
+    private static final int MODE_HIGHLIGHT
 androidx.versionedparcelable.CustomVersionedParcelable:
     public void onPreParceling(boolean)
     public void onPostParceling()
@@ -2242,6 +2426,7 @@ com.afollestad.materialdialogs.internal.MDTintHelper:
 com.mikepenz.fastadapter.commons.R
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$HashIterator
 com.mikepenz.fastadapter.items.AbstractItem
+com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton$1
 kotlin.NumbersKt__NumbersJVMKt
 com.jess.arms.integration.cache.CacheType$4:
     private static final int MAX_SIZE
@@ -2398,7 +2583,28 @@ com.zqw.mobile.grainfull.app.service.LocationService:
     public static final int SPAN_NORMAL
 com.bumptech.glide.load.engine.ResourceRecycler$ResourceRecyclerCallback:
     static final int RECYCLE_RESOURCE
+com.zqw.mobile.grainfull.mvp.presenter.BulletChatPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.BulletChatPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.mikepenz.fastadapter.expandable.items.ModelAbstractExpandableItem
+lecho.lib.hellocharts.model.SliceValue:
+    public void <init>(float,int)
+    public void <init>(float,int,int)
+    public void <init>(lecho.lib.hellocharts.model.SliceValue)
+    public lecho.lib.hellocharts.model.SliceValue setTarget(float)
+    public lecho.lib.hellocharts.model.SliceValue setColor(int)
+    public int getSliceSpacing()
+    public lecho.lib.hellocharts.model.SliceValue setSliceSpacing(int)
+    public char[] getLabel()
+    public lecho.lib.hellocharts.model.SliceValue setLabel(char[])
+    public lecho.lib.hellocharts.model.SliceValue setLabel(java.lang.String)
+    private static final int DEFAULT_SLICE_SPACING_DP
 kotlin.collections.CollectionsKt___CollectionsKt
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$WeakRef
 kotlin.jvm.internal.MutablePropertyReference0Impl
@@ -2481,7 +2687,6 @@ com.jess.arms.utils.DeviceUtils:
     public static boolean isScreenOn(android.content.Context)
     public static void installAPK(android.content.Context,java.io.File)
     public static android.content.Intent getInstallApkIntent(java.io.File)
-    public static void openDial(android.content.Context,java.lang.String)
     public static void openSMS(android.content.Context,java.lang.String,java.lang.String)
     public static void openDail(android.content.Context)
     public static void openSendMsg(android.content.Context)
@@ -2570,6 +2775,8 @@ com.blankj.utilcode.util.StringUtils:
 com.bumptech.glide.provider.ResourceEncoderRegistry:
     public synchronized void prepend(java.lang.Class,com.bumptech.glide.load.ResourceEncoder)
 androidx.appcompat.widget.ShareActionProvider$ShareMenuItemOnMenuItemClickListener
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.renderer.ColorWheelRenderer:
+    public static final float GAP_PERCENTAGE
 com.mikepenz.itemanimators.SlideInOutLeftAnimator
 kotlinx.android.parcel.Parceler
 com.zqw.mobile.grainfull.di.module.ImageExtractionTextModule:
@@ -2599,6 +2806,9 @@ com.zqw.mobile.grainfull.di.module.FaceComparisonModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.FaceComparisonContract$Model bindFaceComparisonModel(com.zqw.mobile.grainfull.mvp.model.FaceComparisonModel)
 kotlin.collections.AbstractList$Companion
+lecho.lib.hellocharts.renderer.ChartRenderer:
+    public abstract boolean isViewportCalculationEnabled()
+    public abstract void selectValue(lecho.lib.hellocharts.model.SelectedValue)
 kotlin.Function
 io.rx_cache2.internal.cache.memory.apache.ReferenceMap
 com.jakewharton.rxbinding3.view.ViewAttachEventObservable
@@ -2623,13 +2833,6 @@ com.bumptech.glide.load.engine.executor.GlideExecutor:
     private static final java.lang.String DEFAULT_SOURCE_UNLIMITED_EXECUTOR_NAME
     private static final java.lang.String DEFAULT_ANIMATION_EXECUTOR_NAME
     private static final int MAXIMUM_AUTOMATIC_THREAD_COUNT
-qiu.niorgai.StatusBarCompat:
-    public void <init>()
-    static int calculateStatusBarColor(int,int)
-    public static void setStatusBarColor(android.app.Activity,int,int)
-    public static void setStatusBarColorForCollapsingToolbar(android.app.Activity,com.google.android.material.appbar.AppBarLayout,com.google.android.material.appbar.CollapsingToolbarLayout,androidx.appcompat.widget.Toolbar,int)
-    public static void changeToLightStatusBar(android.app.Activity)
-    public static void cancelLightStatusBar(android.app.Activity)
 com.paginate.Paginate$Callbacks
 io.rx_cache2.internal.cache.EvictExpirableRecordsPersistence
 com.bumptech.glide.request.target.ViewTarget:
@@ -2638,6 +2841,15 @@ com.bumptech.glide.request.target.ViewTarget:
     public final com.bumptech.glide.request.target.ViewTarget clearOnDetach()
     public final com.bumptech.glide.request.target.ViewTarget waitForLayout()
     private static final java.lang.String TAG
+com.zqw.mobile.grainfull.mvp.presenter.SpiderWebGradePresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.SpiderWebGradePresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 androidx.core.widget.ListViewCompat:
     private void <init>()
 androidx.viewpager2.adapter.FragmentStateAdapter$FragmentMaxLifecycleEnforcer:
@@ -2664,6 +2876,8 @@ com.mikepenz.materialize.view.IScrimInsetsLayout:
     public abstract void setFitsSystemWindows(boolean)
 com.zqw.mobile.grainfull.mvp.contract.BaiduFaceSettingContract
 com.jakewharton.rxbinding3.widget.RxTextView__TextViewAfterTextChangeEventObservableKt
+com.zqw.mobile.grainfull.app.utils.ColorsUtil:
+    private void <init>()
 com.mikepenz.fastadapter.adapters.ModelAdapter$1
 com.mikepenz.materialize.MaterializeBuilder:
     public void <init>(android.app.Activity)
@@ -2787,6 +3001,9 @@ uk.co.senab.photoview.log.Logger:
 com.zqw.mobile.grainfull.mvp.ui.widget.RotateView:
     private static final long ONE_WHEEL_TIME
 com.jakewharton.rxbinding3.view.ViewGroupHierarchyChangeEvent
+com.zqw.mobile.grainfull.di.module.LevitationButtonModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.LevitationButtonContract$Model bindLevitationButtonModel(com.zqw.mobile.grainfull.mvp.model.LevitationButtonModel)
 androidx.constraintlayout.core.motion.MotionConstrainedPoint
 com.jakewharton.rxbinding3.view.MenuItemActionViewEventObservable$Listener
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$KeySetIterator
@@ -2833,6 +3050,9 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraConfigurationUtils:
     private static final int MAX_FPS
     private static final int AREA_PER_1000
 kotlin.text.CharsetsKt
+lecho.lib.hellocharts.gesture.PieChartTouchHandler:
+    public boolean isRotationEnabled()
+    public static final int FLING_VELOCITY_DOWNSCALE
 androidx.core.view.MenuItemCompat:
     public static void setShowAsAction(android.view.MenuItem,int)
     public static android.view.MenuItem setActionView(android.view.MenuItem,android.view.View)
@@ -2975,13 +3195,6 @@ androidx.core.view.animation.PathInterpolatorApi14:
     void <init>(float,float)
     private static android.graphics.Path createQuad(float,float)
     private static final float PRECISION
-qiu.niorgai.StatusBarCompatLollipop:
-    void <init>()
-    private static int getStatusBarHeight(android.content.Context)
-    static void setStatusBarColorForCollapsingToolbar(android.app.Activity,com.google.android.material.appbar.AppBarLayout,com.google.android.material.appbar.CollapsingToolbarLayout,androidx.appcompat.widget.Toolbar,int)
-    private static void startColorAnimation(int,int,long,java.lang.ref.WeakReference)
-    static synthetic void access$000(int,int,long,java.lang.ref.WeakReference)
-    private static android.animation.ValueAnimator sAnimator
 androidx.exifinterface.media.ExifInterface$ExifAttribute:
     public static androidx.exifinterface.media.ExifInterface$ExifAttribute createSLong(int[],java.nio.ByteOrder)
     public static androidx.exifinterface.media.ExifInterface$ExifAttribute createSLong(int,java.nio.ByteOrder)
@@ -3018,6 +3231,12 @@ com.zqw.mobile.grainfull.di.module.HomeModule:
 kotlin.jvm.internal.ShortCompanionObject
 com.zqw.mobile.grainfull.app.global.StringNullAdapter
 androidx.core.content.pm.PackageInfoCompat
+lecho.lib.hellocharts.renderer.ColumnChartRenderer:
+    public static final int DEFAULT_SUBCOLUMN_SPACING_DP
+    public static final int DEFAULT_COLUMN_TOUCH_ADDITIONAL_WIDTH_DP
+    private static final int MODE_DRAW
+    private static final int MODE_CHECK_TOUCH
+    private static final int MODE_HIGHLIGHT
 io.rx_cache2.internal.migration.GetPendingMigrations
 kotlin.coroutines.experimental.CoroutineContext$Element
 androidx.constraintlayout.core.widgets.analyzer.HelperReferences:
@@ -3227,6 +3446,7 @@ androidx.recyclerview.widget.ViewInfoStore$InfoRecord:
     static final int FLAG_APPEAR_AND_DISAPPEAR
     static final int FLAG_PRE_AND_POST
     static final int FLAG_APPEAR_PRE_AND_POST
+com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_MembersInjector
 com.blankj.utilcode.util.LogUtils$2
 androidx.recyclerview.widget.DiffUtil$Snake
 com.bumptech.glide.load.engine.GlideException$IndentedAppendable:
@@ -3386,6 +3606,10 @@ com.bumptech.glide.Glide:
 com.jyn.vcview.R
 androidx.constraintlayout.core.motion.utils.DifferentialInterpolator
 com.mikepenz.iconics.context.IconicsLayoutInflater
+lecho.lib.hellocharts.animation.ChartDataAnimator:
+    public abstract void cancelAnimation()
+    public abstract boolean isAnimationStarted()
+    public static final long DEFAULT_ANIMATION_DURATION
 kotlin.ranges.ULongRange
 com.mikepenz.fastadapter.adapters.ItemAdapter:
     public void <init>(com.mikepenz.fastadapter.IItemList)
@@ -3413,6 +3637,8 @@ com.bumptech.glide.request.target.NotificationTarget:
 kotlin.jvm.internal.TypeReference$asString$args$1
 com.blankj.utilcode.util.KeyboardUtils$3
 androidx.recyclerview.widget.MessageThreadUtil$1
+com.github.stuxuhai.jpinyin.PinyinResource:
+    protected static java.io.Reader newFileReader(java.lang.String)
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_MembersInjector
 kotlin.concurrent.ThreadsKt
 io.rx_cache2.internal.RxCacheModule_ProvideMigrationsFactory
@@ -3462,6 +3688,22 @@ androidx.savedstate.Recreator:
     static final java.lang.String COMPONENT_KEY
 androidx.core.view.accessibility.AccessibilityManagerCompat
 kotlin.random.FallbackThreadLocalRandom
+com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mPresenterProvider
+    private final javax.inject.Provider mAccountManagerProvider
+com.zqw.mobile.grainfull.mvp.presenter.ChineseToPinyinPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ChineseToPinyinPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.UShortArrayKt
 com.zqw.mobile.grainfull.app.tts.util.FileUtil:
     public void <init>()
@@ -3510,6 +3752,9 @@ com.mikepenz.fastadapter.select.SelectExtension$4
 com.bumptech.glide.load.resource.bitmap.BitmapEncoder:
     private static final java.lang.String TAG
 kotlin.jvm.internal.unsafe.MonitorKt
+com.zqw.mobile.grainfull.di.module.PicturePipetteModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.PicturePipetteContract$Model bindPicturePipetteModel(com.zqw.mobile.grainfull.mvp.model.PicturePipetteModel)
 androidx.core.app.NotificationCompat$Style:
     public void <init>()
     public static androidx.core.app.NotificationCompat$Style extractStyleFromNotification(android.app.Notification)
@@ -3590,6 +3835,9 @@ androidx.core.provider.RequestExecutor$HandlerExecutor
 androidx.appcompat.view.menu.MenuAdapter:
     public boolean getForceShowIcon()
 kotlin.collections.DoubleIterator
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.PaintBuilder$PaintHolder:
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.PaintBuilder$PaintHolder antiAlias(boolean)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.PaintBuilder$PaintHolder mode(android.graphics.PorterDuff$Mode)
 androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$VectorDrawableCompatState:
     int[] mCachedThemeAttrs
 kotlin.jvm.internal.FloatSpreadBuilder
@@ -3597,6 +3845,12 @@ kotlin.TypeAliasesKt
 io.rx_cache2.internal.migration.DoMigrations$3
 com.jakewharton.rxbinding3.view.ViewAttachEvent
 kotlin.ranges.CharRange$Companion
+lecho.lib.hellocharts.renderer.AxesRenderer:
+    private static final int DEFAULT_AXIS_MARGIN_DP
+    private static final int TOP
+    private static final int LEFT
+    private static final int RIGHT
+    private static final int BOTTOM
 com.bumptech.glide.TransitionOptions:
     public final com.bumptech.glide.TransitionOptions dontTransition()
     public final com.bumptech.glide.TransitionOptions transition(int)
@@ -3613,6 +3867,7 @@ androidx.appcompat.app.TwilightCalculator:
     private static final float OBLIQUITY
     private static final long UTC_2000
 com.blankj.utilcode.util.SpanUtils$ShadowSpan
+com.zqw.mobile.grainfull.mvp.contract.MetalDetectorContract
 com.bumptech.glide.disklrucache.StrictLineReader:
     private static final byte CR
     private static final byte LF
@@ -3625,6 +3880,8 @@ com.zqw.mobile.grainfull.di.module.LotteryTurntableModule:
 androidx.core.app.NotificationCompat$BigTextStyle
 androidx.core.widget.ImageViewCompat:
     private void <init>()
+lecho.lib.hellocharts.provider.BubbleChartDataProvider:
+    public abstract void setBubbleChartData(lecho.lib.hellocharts.model.BubbleChartData)
 androidx.core.widget.ContentLoadingProgressBar:
     public synchronized void hide()
     public synchronized void show()
@@ -3692,9 +3949,22 @@ com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool:
     public abstract long getMaxSize()
     public abstract void setSizeMultiplier(float)
 kotlin.coroutines.experimental.migration.ExperimentalSuspendFunction1Migration
+com.zqw.mobile.grainfull.mvp.model.ChineseToPinyinModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ChineseToPinyinModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 kotlin.collections.UByteIterator
 kotlin.jvm.internal.TypeReference
 kotlin.sequences.SequencesKt__SequencesKt$flatten$3
+lecho.lib.hellocharts.util.FloatUtils:
+    public void <init>()
+    public static float nextUpF(float)
+    public static float nextDownF(float)
+    public static double nextDown(double)
+    public static boolean almostEqual(float,float,float,float)
 androidx.core.app.RemoteActionCompat:
     public void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,java.lang.CharSequence,android.app.PendingIntent)
     public void <init>(androidx.core.app.RemoteActionCompat)
@@ -3855,6 +4125,20 @@ okio.RealBufferedSource:
     public long indexOfElement(okio.ByteString,long)
     public boolean rangeEquals(long,okio.ByteString)
     public boolean rangeEquals(long,okio.ByteString,int,int)
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder:
+    public static com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder with(android.content.Context,int)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder setTitle(int)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder initialColors(int[])
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder setOnColorChangedListener(com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.OnColorChangedListener)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder setOnColorSelectedListener(com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.OnColorSelectedListener)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder setPositiveButton(int,com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerClickListener)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder setNegativeButton(int,android.content.DialogInterface$OnClickListener)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder showAlphaSlider(boolean)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder showLightnessSlider(boolean)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder showColorEdit(boolean)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder setColorEditTextColor(int)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder showColorPreview(boolean)
+    public com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder setPickerCount(int)
 androidx.core.app.NotificationBuilderWithBuilderAccessor:
     public abstract android.app.Notification$Builder getBuilder()
 io.rx_cache2.internal.migration.DoMigrations$4
@@ -3870,6 +4154,11 @@ androidx.constraintlayout.core.widgets.Flow:
     public static final int WRAP_CHAIN
     public static final int WRAP_ALIGNED
 androidx.core.app.AppLaunchChecker
+lecho.lib.hellocharts.model.Column:
+    public void <init>(lecho.lib.hellocharts.model.Column)
+    public lecho.lib.hellocharts.model.Column setHasLabels(boolean)
+    public lecho.lib.hellocharts.model.Column setHasLabelsOnlyForSelected(boolean)
+    public lecho.lib.hellocharts.model.Column setFormatter(lecho.lib.hellocharts.formatter.ColumnChartValueFormatter)
 androidx.loader.content.ModernAsyncTask$3
 kotlin.jvm.functions.Function7
 com.mikepenz.fastadapter.adapters.ModelAdapter:
@@ -4036,6 +4325,9 @@ androidx.drawerlayout.widget.DrawerLayout:
     private static final boolean ALLOW_EDGE_LOCK
     private static final boolean CHILDREN_DISALLOW_INTERCEPT
     private static final float TOUCH_SLOP_SENSITIVITY
+lecho.lib.hellocharts.renderer.AbstractChartRenderer:
+    public boolean isViewportCalculationEnabled()
+    public void selectValue(lecho.lib.hellocharts.model.SelectedValue)
 com.blankj.utilcode.util.NetworkUtils$8$1
 androidx.core.text.ICUCompat:
     private void <init>()
@@ -4065,6 +4357,16 @@ androidx.fragment.app.FragmentManager:
     public static final int POP_BACK_STACK_INCLUSIVE
 dagger.internal.MapFactory$Builder
 com.zqw.mobile.grainfull.mvp.contract.BaiduVoiceOnlineSettingContract
+lecho.lib.hellocharts.model.BubbleChartData:
+    public void <init>(java.util.List)
+    public void <init>(lecho.lib.hellocharts.model.BubbleChartData)
+    public lecho.lib.hellocharts.model.BubbleChartData setHasLabels(boolean)
+    public lecho.lib.hellocharts.model.BubbleChartData setHasLabelsOnlyForSelected(boolean)
+    public void setMinBubbleRadius(int)
+    public void setBubbleScale(float)
+    public lecho.lib.hellocharts.model.BubbleChartData setFormatter(lecho.lib.hellocharts.formatter.BubbleChartValueFormatter)
+    public static final int DEFAULT_MIN_BUBBLE_RADIUS_DP
+    public static final float DEFAULT_BUBBLE_SCALE
 com.jakewharton.rxbinding3.view.RxViewGroup
 androidx.fragment.app.FragmentTransition:
     static boolean supportsTransition()
@@ -4138,9 +4440,22 @@ androidx.appcompat.widget.ActivityChooserModel:
 com.zqw.mobile.grainfull.app.utils.RxUtils:
     private void <init>()
     public static com.trello.rxlifecycle2.LifecycleTransformer bindToLifecycle(com.jess.arms.mvp.IView)
+com.zqw.mobile.grainfull.mvp.ui.widget.spider.ModelSpider:
+    public void setSpiderName(java.lang.String)
+    public void setSpiderLevel(float)
 androidx.constraintlayout.core.state.State$1
 com.mikepenz.fastadapter.select.SelectExtension$6
 androidx.constraintlayout.core.motion.MotionWidget$Motion
+com.github.stuxuhai.jpinyin.PinyinHelper:
+    private void <init>()
+    public static java.lang.String[] convertToPinyinArray(char)
+    public static boolean hasMultiPinyin(char)
+    public static void addPinyinDict(java.lang.String)
+    public static void addMutilPinyinDict(java.lang.String)
+    private static final java.lang.String PINYIN_SEPARATOR
+    private static final char CHINESE_LING
+    private static final java.lang.String ALL_UNMARKED_VOWEL
+    private static final java.lang.String ALL_MARKED_VOWEL
 com.bumptech.glide.load.resource.gif.GifFrameLoader:
     com.bumptech.glide.load.Transformation getFrameTransformation()
     void setNextStartFromFirstFrame()
@@ -4154,6 +4469,9 @@ com.jakewharton.rxbinding3.widget.AbsListViewScrollEventObservable
 kotlin.coroutines.experimental.SafeContinuation$Fail
 com.paginate.abslistview.EndScrollListener$Callback
 com.blankj.utilcode.util.ThreadUtils$Task$2
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivityPermissionsDispatcher:
+    private void <init>()
+    private static final int REQUEST_ADDAVATAR
 com.jakewharton.rxbinding3.widget.AdapterViewItemClickEvent
 com.blankj.utilcode.util.ReflectUtils$3
 kotlin.sequences.FlatteningSequence
@@ -4328,6 +4646,8 @@ androidx.constraintlayout.motion.widget.KeyPosition:
     public static final java.lang.String PERCENT_X
     public static final java.lang.String PERCENT_Y
     static final int KEY_TYPE
+lecho.lib.hellocharts.gesture.ChartZoomer:
+    public static final float ZOOM_AMOUNT
 com.blankj.utilcode.util.KeyboardUtils$OnSoftInputChangedListener
 androidx.core.view.accessibility.AccessibilityRecordCompat:
     public void <init>(java.lang.Object)
@@ -4386,6 +4706,14 @@ androidx.core.view.accessibility.AccessibilityRecordCompat:
 androidx.versionedparcelable.VersionedParcelStream$FieldBuffer
 kotlin.sequences.SequencesKt___SequencesKt$scanReduceIndexed$1
 kotlin.text.StringsKt___StringsKt$windowed$1
+lecho.lib.hellocharts.provider.PieChartDataProvider:
+    public abstract void setPieChartData(lecho.lib.hellocharts.model.PieChartData)
+lecho.lib.hellocharts.renderer.LineChartRenderer:
+    private static final float LINE_SMOOTHNESS
+    private static final int DEFAULT_LINE_STROKE_WIDTH_DP
+    private static final int DEFAULT_TOUCH_TOLERANCE_MARGIN_DP
+    private static final int MODE_DRAW
+    private static final int MODE_HIGHLIGHT
 kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnchecked$$inlined$buildContinuationByInvokeCall$IntrinsicsKt__IntrinsicsJvmKt$1
 androidx.core.content.res.ComplexColorCompat:
     private static final java.lang.String LOG_TAG
@@ -4400,6 +4728,9 @@ com.cjt2325.cameralibrary.util.CheckPermission:
     public static final int STATE_NO_PERMISSION
     public static final int STATE_SUCCESS
 com.zqw.mobile.grainfull.mvp.ui.activity.LivenessCustomDetectionActivity_MembersInjector
+lecho.lib.hellocharts.gesture.ZoomerCompat:
+    public void abortAnimation()
+    private static final int DEFAULT_SHORT_ANIMATION_DURATION
 androidx.core.graphics.drawable.WrappedDrawableApi21:
     private static final java.lang.String TAG
 androidx.core.app.NotificationCompat$Action:
@@ -4588,6 +4919,8 @@ androidx.legacy.v4.R
 kotlin.collections.ArraysKt___ArraysKt$withIndex$5
 kotlin.jvm.functions.Function17
 com.zqw.mobile.grainfull.app.utils.overlayutil.OverlayManager
+com.zqw.mobile.grainfull.mvp.ui.activity.BulletChatActivity_MembersInjector
+com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity_MembersInjector
 androidx.media.VolumeProviderCompat:
     public void <init>(int,int,int)
     public final void setCurrentVolume(int)
@@ -4624,6 +4957,7 @@ androidx.vectordrawable.graphics.drawable.VectorDrawableCompat:
     private static final int MAX_CACHED_BITMAP_SIZE
     private static final boolean DBG_VECTOR_DRAWABLE
 kotlin.io.FilesKt__UtilsKt
+com.zqw.mobile.grainfull.mvp.contract.MagnifierContract
 kotlin.reflect.KProperty0
 androidx.media.MediaBrowserServiceCompat:
     public void attachToBaseContext(android.content.Context)
@@ -4677,6 +5011,9 @@ androidx.core.graphics.TypefaceCompatApi28Impl:
     private static final int RESOLVE_BY_FONT_TABLE
     private static final java.lang.String DEFAULT_FAMILY
 kotlin.coroutines.CombinedContext$toString$1
+lecho.lib.hellocharts.animation.ChartDataAnimatorV14:
+    public void cancelAnimation()
+    public boolean isAnimationStarted()
 com.bumptech.glide.load.data.mediastore.ThumbFetcher:
     private static final java.lang.String TAG
 com.bumptech.glide.load.model.GlideUrl:
@@ -4684,6 +5021,17 @@ com.bumptech.glide.load.model.GlideUrl:
 cn.bingoogolapple.swipebacklayout.UIUtil:
     private void <init>()
 com.mikepenz.materialdrawer.model.SwitchDrawerItem
+lecho.lib.hellocharts.model.ChartData:
+    public abstract void setAxisXBottom(lecho.lib.hellocharts.model.Axis)
+    public abstract void setAxisYLeft(lecho.lib.hellocharts.model.Axis)
+    public abstract void setAxisXTop(lecho.lib.hellocharts.model.Axis)
+    public abstract void setAxisYRight(lecho.lib.hellocharts.model.Axis)
+    public abstract void setValueLabelsTextColor(int)
+    public abstract void setValueLabelTextSize(int)
+    public abstract void setValueLabelTypeface(android.graphics.Typeface)
+    public abstract void setValueLabelBackgroundEnabled(boolean)
+    public abstract void setValueLabelBackgroundAuto(boolean)
+    public abstract void setValueLabelBackgroundColor(int)
 androidx.localbroadcastmanager.R
 io.rx_cache2.internal.migration.DoMigrations$2
 androidx.legacy.app.ActionBarDrawerToggle$DelegateProvider
@@ -4699,6 +5047,9 @@ androidx.core.provider.SelfDestructiveThread$2
 androidx.recyclerview.widget.OrientationHelper$1:
     public void offsetChild(android.view.View,int)
 com.blankj.utilcode.util.ThreadUtils$Task$4
+com.zqw.mobile.grainfull.mvp.ui.widget.spider.RxRotateTool:
+    public void <init>()
+    public static final double CIRCLE_ANGLE
 androidx.core.view.accessibility.AccessibilityViewCommand$MoveAtGranularityArguments:
     public int getGranularity()
     public boolean getExtendSelection()
@@ -4849,7 +5200,6 @@ com.blankj.utilcode.util.UtilsBridge:
     static byte[] drawable2Bytes(android.graphics.drawable.Drawable,android.graphics.Bitmap$CompressFormat,int)
     static android.graphics.drawable.Drawable bytes2Drawable(byte[])
     static android.graphics.Bitmap view2Bitmap(android.view.View)
-    static android.graphics.Bitmap drawable2Bitmap(android.graphics.drawable.Drawable)
     static android.graphics.drawable.Drawable bitmap2Drawable(android.graphics.Bitmap)
     static boolean isIntentAvailable(android.content.Intent)
     static android.content.Intent getLaunchAppIntent(java.lang.String)
@@ -4969,6 +5319,13 @@ androidx.core.view.MotionEventCompat:
     public static final int BUTTON_PRIMARY
 androidx.dynamicanimation.animation.FloatValueHolder
 androidx.constraintlayout.core.motion.CustomAttribute$1
+com.zqw.mobile.grainfull.mvp.model.LevitationButtonModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.LevitationButtonModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.jude.easyrecyclerview.BuildConfig
 androidx.appcompat.app.AppCompatDelegateImpl:
     void <init>(android.content.Context,android.view.Window,androidx.appcompat.app.AppCompatCallback)
@@ -4984,6 +5341,7 @@ androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter
 com.bumptech.glide.request.transition.DrawableCrossFadeFactory$Builder:
     public com.bumptech.glide.request.transition.DrawableCrossFadeFactory$Builder setCrossFadeEnabled(boolean)
     private static final int DEFAULT_DURATION_MS
+com.jaeger.library.R
 com.zqw.mobile.grainfull.di.module.BaiduFaceRecognitionModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.BaiduFaceRecognitionContract$Model bindBaiduFaceRecognitionModel(com.zqw.mobile.grainfull.mvp.model.BaiduFaceRecognitionModel)
@@ -5074,8 +5432,6 @@ com.jakewharton.rxbinding3.view.ViewSystemUiVisibilityChangeObservable$Listener
 kotlin.jvm.functions.Function16
 kotlin.Lazy
 androidx.core.app.NotificationChannelCompat$Builder
-com.zqw.mobile.grainfull.app.dialog.CommTipsDialog:
-    public void <init>(android.content.Context,java.lang.String,java.lang.String,boolean,com.zqw.mobile.grainfull.app.dialog.CommTipsDialog$ItemClick)
 androidx.core.widget.PopupMenuCompat
 kotlin.reflect.KTypeProjection$Companion
 androidx.fragment.app.FragmentController:
@@ -5126,6 +5482,14 @@ com.cjt2325.cameralibrary.state.PreviewState:
     public void stop()
     public void restart()
     public static final java.lang.String TAG
+com.zqw.mobile.grainfull.mvp.model.BulletChatModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.BulletChatModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
+com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity_MembersInjector
 androidx.constraintlayout.core.widgets.analyzer.WidgetRun:
     abstract void reset()
     public boolean isDimensionResolved()
@@ -5198,6 +5562,9 @@ com.bumptech.glide.manager.RequestManagerFragment:
     private static final java.lang.String TAG
 kotlin.jvm.internal.Ref$LongRef
 com.jakewharton.rxbinding3.widget.TextViewEditorActionEventObservable
+com.zqw.mobile.grainfull.di.module.ColorPickerModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.ColorPickerContract$Model bindColorPickerModel(com.zqw.mobile.grainfull.mvp.model.ColorPickerModel)
 kotlin.reflect.KMutableProperty2
 uk.co.senab.photoview.gestures.VersionedGestureDetector:
     public void <init>()
@@ -5244,7 +5611,6 @@ androidx.appcompat.content.res.AppCompatResources:
 com.blankj.utilcode.constant.CacheConstants
 androidx.constraintlayout.widget.ConstraintsChangedListener:
     public void <init>()
-qiu.niorgai.StatusBarCompatLollipop$1
 com.blankj.utilcode.util.SpanUtils$ShaderSpan
 androidx.appcompat.view.menu.MenuView$ItemView:
     public abstract void setTitle(java.lang.CharSequence)
@@ -5260,6 +5626,8 @@ io.rx_cache2.internal.migration.GetClassesToEvictFromMigrations
 com.blankj.utilcode.util.ArrayUtils$Closure
 kotlin.sequences.SequencesKt__SequencesKt$generateSequence$2
 com.jakewharton.rxbinding3.widget.SeekBarChangeEvent
+lecho.lib.hellocharts.computator.PreviewChartComputator:
+    public void setVisibleViewport(lecho.lib.hellocharts.model.Viewport)
 com.lcw.library.imagepicker.utils.PermissionUtil:
     public void <init>()
 com.blankj.utilcode.util.UiMessageUtils
@@ -5306,11 +5674,16 @@ kotlin.collections.ArraysUtilJVM
 com.bumptech.glide.load.resource.bitmap.BitmapDrawableResource:
     public void <init>(android.graphics.drawable.BitmapDrawable,com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool)
 com.jakewharton.rxbinding3.widget.AdapterViewItemSelectionEvent
+lecho.lib.hellocharts.animation.PieChartRotationAnimator:
+    public abstract boolean isAnimationStarted()
+    public abstract void setChartAnimationListener(lecho.lib.hellocharts.animation.ChartAnimationListener)
+    public static final int FAST_ANIMATION_DURATION
 io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$KeySet
 kotlin.text.Regex$Serialized
 com.bigkoo.pickerview.view.WheelOptions$2
 kotlin.jvm.internal.markers.KMutableMap$Entry
 io.rx_cache2.internal.RxCacheModule_ProvideEncryptorFactory
+com.zqw.mobile.grainfull.mvp.contract.ChineseToPinyinContract
 kotlin.text.CharDirectionality
 com.mikepenz.fastadapter.select.SelectExtension$7
 androidx.savedstate.R
@@ -5360,6 +5733,17 @@ com.bumptech.glide.load.ImageHeaderParser:
     public static final int UNKNOWN_ORIENTATION
 androidx.localbroadcastmanager.content.LocalBroadcastManager$BroadcastRecord
 kotlin.collections.ArraysKt___ArraysKt$withIndex$7
+lecho.lib.hellocharts.model.AbstractChartData:
+    public void <init>(lecho.lib.hellocharts.model.AbstractChartData)
+    public void setAxisXTop(lecho.lib.hellocharts.model.Axis)
+    public void setAxisYRight(lecho.lib.hellocharts.model.Axis)
+    public void setValueLabelsTextColor(int)
+    public void setValueLabelTextSize(int)
+    public void setValueLabelTypeface(android.graphics.Typeface)
+    public void setValueLabelBackgroundEnabled(boolean)
+    public void setValueLabelBackgroundAuto(boolean)
+    public void setValueLabelBackgroundColor(int)
+    public static final int DEFAULT_TEXT_SIZE_SP
 okio.GzipSink
 com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity_MembersInjector
 androidx.viewpager.widget.PagerTitleStrip:
@@ -5420,11 +5804,6 @@ com.mikepenz.fastadapter.IAdapterExtension:
     public abstract void notifyAdapterItemMoved(int,int)
 kotlin.jvm.internal.MutablePropertyReference1
 com.jakewharton.rxbinding3.widget.AdapterViewItemSelectionObservable$Listener
-qiu.niorgai.StatusBarCompatKitKat:
-    void <init>()
-    static void setStatusBarColorForCollapsingToolbar(android.app.Activity,com.google.android.material.appbar.AppBarLayout,com.google.android.material.appbar.CollapsingToolbarLayout,androidx.appcompat.widget.Toolbar,int)
-    private static final java.lang.String TAG_FAKE_STATUS_BAR_VIEW
-    private static final java.lang.String TAG_MARGIN_ADDED
 androidx.core.os.OperationCanceledException
 androidx.savedstate.SavedStateRegistry:
     public void registerSavedStateProvider(java.lang.String,androidx.savedstate.SavedStateRegistry$SavedStateProvider)
@@ -5490,7 +5869,6 @@ kotlin.jvm.functions.Function3
 androidx.core.location.GnssStatusCompat$Callback
 androidx.core.content.pm.ShortcutManagerCompat
 androidx.core.widget.ScrollerCompat:
-    public int getCurrX()
     public int getFinalX()
     public int getFinalY()
     public float getCurrVelocity()
@@ -5506,6 +5884,10 @@ com.bumptech.glide.request.transition.ViewAnimationFactory$ResourceViewTransitio
     void <init>(int)
 com.paginate.abslistview.AbsListViewPaginate
 kotlin.properties.Delegates$vetoable$1
+lecho.lib.hellocharts.view.PieChartView:
+    public boolean isChartRotationEnabled()
+    public lecho.lib.hellocharts.model.SliceValue getValueForAngle(int,lecho.lib.hellocharts.model.SelectedValue)
+    private static final java.lang.String TAG
 androidx.viewpager2.widget.ViewPager2:
     public void <init>(android.content.Context,android.util.AttributeSet,int,int)
     public boolean beginFakeDrag()
@@ -5723,6 +6105,13 @@ com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper:
     private static final int VALUE_COUNT
     private static com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper wrapper
 kotlin.PreconditionsKt__AssertionsJVMKt
+com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mPresenterProvider
+    private final javax.inject.Provider mImageLoaderProvider
 com.blankj.utilcode.util.SpanUtils$CustomQuoteSpan
 com.bumptech.glide.load.model.ModelLoaderRegistry:
     public synchronized void prepend(java.lang.Class,java.lang.Class,com.bumptech.glide.load.model.ModelLoaderFactory)
@@ -5733,6 +6122,13 @@ androidx.constraintlayout.utils.widget.MotionTelltales:
     private static final java.lang.String TAG
 com.bumptech.glide.load.engine.DecodeJob:
     private static final java.lang.String TAG
+com.zqw.mobile.grainfull.mvp.model.PicturePipetteModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.PicturePipetteModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.blankj.utilcode.util.RegexUtils
 kotlin.jvm.internal.Ref$IntRef
 androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1
@@ -5923,6 +6319,22 @@ com.bumptech.glide.request.target.AppWidgetTarget:
     public varargs void <init>(android.content.Context,int,android.widget.RemoteViews,int[])
     public void <init>(android.content.Context,int,int,int,android.widget.RemoteViews,android.content.ComponentName)
     public void <init>(android.content.Context,int,android.widget.RemoteViews,android.content.ComponentName)
+lecho.lib.hellocharts.model.Line:
+    public void <init>(lecho.lib.hellocharts.model.Line)
+    public lecho.lib.hellocharts.model.Line setPointColor(int)
+    public lecho.lib.hellocharts.model.Line setAreaTransparency(int)
+    public lecho.lib.hellocharts.model.Line setStrokeWidth(int)
+    public lecho.lib.hellocharts.model.Line setHasLines(boolean)
+    public lecho.lib.hellocharts.model.Line setHasLabels(boolean)
+    public lecho.lib.hellocharts.model.Line setHasLabelsOnlyForSelected(boolean)
+    public lecho.lib.hellocharts.model.Line setPointRadius(int)
+    public lecho.lib.hellocharts.model.Line setFilled(boolean)
+    public void setPathEffect(android.graphics.PathEffect)
+    public lecho.lib.hellocharts.model.Line setFormatter(lecho.lib.hellocharts.formatter.LineChartValueFormatter)
+    private static final int DEFAULT_LINE_STROKE_WIDTH_DP
+    private static final int DEFAULT_POINT_RADIUS_DP
+    private static final int DEFAULT_AREA_TRANSPARENCY
+    public static final int UNINITIALIZED
 com.bumptech.glide.request.RequestFutureTarget:
     public void <init>(int,int)
     void <init>(int,int,boolean,com.bumptech.glide.request.RequestFutureTarget$Waiter)
@@ -6039,6 +6451,48 @@ androidx.core.widget.CompoundButtonCompat:
 okio.Base64:
     private void <init>()
     public static java.lang.String encodeUrl(byte[])
+lecho.lib.hellocharts.view.Chart:
+    public abstract void setChartRenderer(lecho.lib.hellocharts.renderer.ChartRenderer)
+    public abstract lecho.lib.hellocharts.renderer.AxesRenderer getAxesRenderer()
+    public abstract lecho.lib.hellocharts.gesture.ChartTouchHandler getTouchHandler()
+    public abstract void startDataAnimation()
+    public abstract void startDataAnimation(long)
+    public abstract void cancelDataAnimation()
+    public abstract boolean isViewportCalculationEnabled()
+    public abstract void setViewportCalculationEnabled(boolean)
+    public abstract void setDataAnimationListener(lecho.lib.hellocharts.animation.ChartAnimationListener)
+    public abstract void setViewportAnimationListener(lecho.lib.hellocharts.animation.ChartAnimationListener)
+    public abstract void setViewportChangeListener(lecho.lib.hellocharts.listener.ViewportChangeListener)
+    public abstract boolean isInteractive()
+    public abstract void setInteractive(boolean)
+    public abstract boolean isZoomEnabled()
+    public abstract void setZoomEnabled(boolean)
+    public abstract boolean isScrollEnabled()
+    public abstract void setScrollEnabled(boolean)
+    public abstract void moveTo(float,float)
+    public abstract void moveToWithAnimation(float,float)
+    public abstract lecho.lib.hellocharts.gesture.ZoomType getZoomType()
+    public abstract void setZoomType(lecho.lib.hellocharts.gesture.ZoomType)
+    public abstract float getMaxZoom()
+    public abstract void setMaxZoom(float)
+    public abstract float getZoomLevel()
+    public abstract void setZoomLevel(float,float,float)
+    public abstract void setZoomLevelWithAnimation(float,float,float)
+    public abstract boolean isValueTouchEnabled()
+    public abstract void setValueTouchEnabled(boolean)
+    public abstract lecho.lib.hellocharts.model.Viewport getMaximumViewport()
+    public abstract void setMaximumViewport(lecho.lib.hellocharts.model.Viewport)
+    public abstract lecho.lib.hellocharts.model.Viewport getCurrentViewport()
+    public abstract void setCurrentViewportWithAnimation(lecho.lib.hellocharts.model.Viewport)
+    public abstract void setCurrentViewportWithAnimation(lecho.lib.hellocharts.model.Viewport,long)
+    public abstract void resetViewports()
+    public abstract boolean isValueSelectionEnabled()
+    public abstract void setValueSelectionEnabled(boolean)
+    public abstract void selectValue(lecho.lib.hellocharts.model.SelectedValue)
+    public abstract lecho.lib.hellocharts.model.SelectedValue getSelectedValue()
+    public abstract boolean isContainerScrollEnabled()
+    public abstract void setContainerScrollEnabled(boolean,lecho.lib.hellocharts.gesture.ContainerScrollType)
+com.zqw.mobile.grainfull.mvp.contract.SpiderWebGradeContract
 com.mikepenz.materialize.color.Material$Grey
 com.cjt2325.cameralibrary.CaptureButton:
     public boolean isIdle()
@@ -6056,6 +6510,8 @@ androidx.constraintlayout.core.widgets.WidgetContainer:
     public androidx.constraintlayout.core.widgets.ConstraintWidgetContainer getRootConstraintContainer()
     public void setOffset(int,int)
 androidx.fragment.app.ListFragment$1
+lecho.lib.hellocharts.provider.ColumnChartDataProvider:
+    public abstract void setColumnChartData(lecho.lib.hellocharts.model.ColumnChartData)
 com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool:
     public void put(java.lang.Object,java.lang.Class)
     int getCurrentSize()
@@ -6063,7 +6519,6 @@ com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool:
     static final int MAX_OVER_SIZE_MULTIPLE
     private static final int SINGLE_ARRAY_MAX_SIZE_DIVISOR
 androidx.core.view.MenuItemCompat$1
-qiu.niorgai.StatusBarCompatLollipop$3
 androidx.constraintlayout.core.state.Transition
 com.blankj.utilcode.util.SPStaticUtils
 androidx.constraintlayout.widget.SharedValues:
@@ -6115,6 +6570,9 @@ androidx.core.app.NotificationManagerCompat$NotifyTask
 com.blankj.utilcode.util.ToastUtils$ActivityToast
 io.rx_cache2.internal.DaggerRxCacheComponent$Builder
 com.jakewharton.rxbinding3.view.ViewClickObservable
+lecho.lib.hellocharts.animation.PieChartRotationAnimatorV8:
+    public boolean isAnimationStarted()
+    public void setChartAnimationListener(lecho.lib.hellocharts.animation.ChartAnimationListener)
 androidx.constraintlayout.core.motion.utils.SplineSet$CustomSet
 androidx.appcompat.view.menu.MenuPopup:
     public androidx.appcompat.view.menu.MenuView getMenuView(android.view.ViewGroup)
@@ -6312,6 +6770,16 @@ dagger.internal.DaggerCollections
 androidx.transition.VisibilityPropagation:
     private static final java.lang.String PROPNAME_VISIBILITY
     private static final java.lang.String PROPNAME_VIEW_CENTER
+lecho.lib.hellocharts.formatter.SimplePieChartValueFormatter:
+    public void <init>(int)
+    public int getDecimalDigitsNumber()
+    public lecho.lib.hellocharts.formatter.SimplePieChartValueFormatter setDecimalDigitsNumber(int)
+    public char[] getAppendedText()
+    public lecho.lib.hellocharts.formatter.SimplePieChartValueFormatter setAppendedText(char[])
+    public char[] getPrependedText()
+    public lecho.lib.hellocharts.formatter.SimplePieChartValueFormatter setPrependedText(char[])
+    public char getDecimalSeparator()
+    public lecho.lib.hellocharts.formatter.SimplePieChartValueFormatter setDecimalSeparator(char)
 com.blankj.utilcode.util.CrashUtils
 com.blankj.utilcode.util.ObjectUtils
 androidx.appcompat.widget.AppCompatSpinner$DialogPopup:
@@ -6587,7 +7055,6 @@ kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUninte
 com.blankj.utilcode.util.ToastUtils$IToast
 com.blankj.utilcode.util.UiMessageUtils$UiMessageCallback
 kotlin.text.StringsKt__StringBuilderKt
-qiu.niorgai.StatusBarCompatLollipop$2
 com.mikepenz.itemanimators.SlideInOutRightAnimator
 androidx.loader.content.CursorLoader
 com.zqw.mobile.grainfull.mvp.model.SplashModel_MembersInjector:
@@ -6689,6 +7156,13 @@ com.mikepenz.itemanimators.SlideInOutBottomAnimator
 kotlin.contracts.ContractBuilderKt
 kotlin.coroutines.jvm.internal.Boxing
 com.jakewharton.rxbinding3.widget.RxAdapterView__AdapterViewItemLongClickObservableKt
+com.zqw.mobile.grainfull.mvp.model.SpiderWebGradeModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.SpiderWebGradeModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.blankj.utilcode.util.RomUtils
 kotlin.collections.ArraysKt___ArraysJvmKt
 kotlin.coroutines.experimental.SequenceBuilder
@@ -6773,6 +7247,7 @@ com.zqw.mobile.grainfull.app.tts.util.AutoCheck:
     public java.lang.String obtainErrorMessage()
     public java.lang.String obtainAllMessage()
     public void clear()
+lecho.lib.hellocharts.provider.ComboLineColumnChartDataProvider
 com.mikepenz.fastadapter.listeners.package-info
 kotlin.collections.ArraysKt___ArraysJvmKt$asList$5
 kotlin.ULongArray$Iterator
@@ -6781,6 +7256,7 @@ com.bumptech.glide.load.resource.bitmap.BitmapDrawableTransformation:
 com.bumptech.glide.signature.AndroidResourceSignature:
     public static com.bumptech.glide.load.Key obtain(android.content.Context)
     private void <init>(int,com.bumptech.glide.load.Key)
+lecho.lib.hellocharts.BuildConfig
 com.mikepenz.materialize.holder.StringHolder:
     public void <init>(java.lang.String)
     public java.lang.CharSequence getText()
@@ -7082,10 +7558,19 @@ uk.co.senab.photoview.IPhotoView:
     public static final float DEFAULT_MID_SCALE
     public static final float DEFAULT_MIN_SCALE
     public static final int DEFAULT_ZOOM_DURATION
+lecho.lib.hellocharts.animation.ChartViewportAnimatorV8:
+    public boolean isAnimationStarted()
 kotlin.collections.AbstractMutableCollection
 kotlin.reflect.KClasses
 com.mikepenz.iconics.utils.IconicsTypefaceSpan:
     public void <init>(java.lang.String,android.graphics.Typeface)
+com.zqw.mobile.grainfull.mvp.model.ColorPickerModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ColorPickerModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.blankj.utilcode.util.UtilsActivityLifecycleImpl$1
 kotlin.sequences.SequencesKt
 com.blankj.utilcode.util.SpanUtils$CustomTypefaceSpan:
@@ -7131,7 +7616,6 @@ com.blankj.utilcode.util.ActivityUtils:
     public static void startActivity(android.app.Activity,java.lang.Class,android.os.Bundle)
     public static varargs void startActivity(android.app.Activity,java.lang.Class,android.view.View[])
     public static void startActivity(android.app.Activity,java.lang.Class,int,int)
-    public static void startActivity(android.os.Bundle,java.lang.Class)
     public static void startActivity(android.os.Bundle,java.lang.Class,android.os.Bundle)
     public static void startActivity(android.os.Bundle,java.lang.Class,int,int)
     public static void startActivity(android.os.Bundle,android.app.Activity,java.lang.Class)
@@ -7377,6 +7861,7 @@ com.jakewharton.rxbinding3.view.ViewTouchObservable$Listener
 io.rx_cache2.ActionsList$12
 com.jakewharton.rxbinding3.view.MenuItemClickObservable$Listener
 androidx.constraintlayout.motion.widget.TransitionAdapter
+com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity_MembersInjector
 androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable
 io.rx_cache2.ActionsList$Evict
 androidx.recyclerview.widget.SimpleItemAnimator:
@@ -7389,6 +7874,13 @@ kotlinx.android.extensions.CacheImplementation$Companion:
 androidx.transition.Styleable$TransitionTarget
 androidx.constraintlayout.core.motion.parse.KeyParser$DataType
 androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl
+com.zqw.mobile.grainfull.mvp.model.MetalDetectorModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.MetalDetectorModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.blankj.utilcode.util.NotificationUtils:
     public void <init>()
     public static boolean areNotificationsEnabled()
@@ -7416,6 +7908,16 @@ com.zqw.mobile.grainfull.mvp.model.AboutModel_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mGsonProvider
     private final javax.inject.Provider mApplicationProvider
+lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter:
+    public void <init>(int)
+    public int getDecimalDigitsNumber()
+    public lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter setDecimalDigitsNumber(int)
+    public char[] getAppendedText()
+    public lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter setAppendedText(char[])
+    public char[] getPrependedText()
+    public lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter setPrependedText(char[])
+    public char getDecimalSeparator()
+    public lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter setDecimalSeparator(char)
 androidx.core.view.MenuItemCompat$OnActionExpandListener
 com.bumptech.glide.request.transition.ViewPropertyAnimationFactory:
     public void <init>(com.bumptech.glide.request.transition.ViewPropertyTransition$Animator)
@@ -7428,9 +7930,30 @@ androidx.loader.app.LoaderManagerImpl$LoaderObserver:
     private boolean mDeliveredData
 com.jakewharton.rxbinding3.widget.AdapterViewItemSelectionObservable
 com.jess.arms.utils.DrawableProvider
+com.zqw.mobile.grainfull.di.module.HandheldBulletScreenModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.HandheldBulletScreenContract$Model bindHandheldBulletScreenModel(com.zqw.mobile.grainfull.mvp.model.HandheldBulletScreenModel)
 com.jakewharton.rxbinding3.widget.SeekBarChangeEventObservable$Listener
 kotlin.sequences.SubSequence
 kotlin.collections.ArraysKt___ArraysKt
+com.white.progressview.HorizontalProgressView:
+    public void runProgressAnim(long)
+    public static final int TOP
+    public static final int CENTRE
+    public static final int BOTTOM
+    private static final java.lang.String STATE
+    private static final java.lang.String NORMAL_BAR_SIZE
+    private static final java.lang.String NORMAL_BAR_COLOR
+    private static final java.lang.String REACH_BAR_SIZE
+    private static final java.lang.String REACH_BAR_COLOR
+    private static final java.lang.String TEXT_COLOR
+    private static final java.lang.String TEXT_SIZE
+    private static final java.lang.String TEXT_SUFFIX
+    private static final java.lang.String TEXT_PREFIX
+    private static final java.lang.String TEXT_OFFSET
+    private static final java.lang.String TEXT_POSITION
+    private static final java.lang.String TEXT_VISIBLE
+    private static final java.lang.String TEXT_SKEW_X
 kotlin.coroutines.experimental.migration.ExperimentalSuspendFunction0Migration
 com.zqw.mobile.grainfull.app.utils.overlayutil.TransitRouteOverlay$1
 androidx.core.app.NotificationCompatExtras
@@ -7495,6 +8018,13 @@ androidx.constraintlayout.core.motion.utils.Utils
 kotlin.io.CloseableKt
 com.mikepenz.materialize.util.SystemUtils
 kotlin.jvm.functions.Function10
+com.zqw.mobile.grainfull.mvp.model.DigitalToChineseModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.DigitalToChineseModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 androidx.constraintlayout.core.widgets.analyzer.WidgetGroup:
     private int measureWrap(int,androidx.constraintlayout.core.widgets.ConstraintWidget)
     private boolean contains(androidx.constraintlayout.core.widgets.ConstraintWidget)
@@ -7601,6 +8131,21 @@ com.zqw.mobile.grainfull.di.module.AudioWaveformModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.AudioWaveformContract$Model bindAudioWaveformModel(com.zqw.mobile.grainfull.mvp.model.AudioWaveformModel)
 io.rx_cache2.internal.cache.memory.ReferenceMapMemory
+lecho.lib.hellocharts.view.AbstractChartView:
+    private lecho.lib.hellocharts.model.Viewport computeScrollViewport(float,float)
+    public void startDataAnimation(long)
+    public void cancelDataAnimation()
+    public boolean isInteractive()
+    public boolean isZoomEnabled()
+    public boolean isScrollEnabled()
+    public void moveTo(float,float)
+    public void moveToWithAnimation(float,float)
+    public boolean isValueTouchEnabled()
+    public void resetViewports()
+    public boolean isViewportCalculationEnabled()
+    public boolean isValueSelectionEnabled()
+    public void selectValue(lecho.lib.hellocharts.model.SelectedValue)
+    public boolean isContainerScrollEnabled()
 org.intellij.lang.annotations.PrintFormatPattern
 io.rx_cache2.internal.encrypt.FileEncryptor_Factory
 com.mikepenz.materialdrawer.model.ProfileDrawerItem:
@@ -7635,6 +8180,9 @@ androidx.core.os.ProcessCompat$Api16Impl
 kotlin.collections.AbstractMap$values$1
 androidx.transition.CanvasUtils:
     private void <init>()
+lecho.lib.hellocharts.animation.ChartDataAnimatorV8:
+    public void cancelAnimation()
+    public boolean isAnimationStarted()
 androidx.constraintlayout.motion.widget.KeyPosition$Loader:
     private void <init>()
     private static final int TARGET_ID
@@ -7652,6 +8200,11 @@ androidx.constraintlayout.motion.widget.KeyPosition$Loader:
 com.mikepenz.materialdrawer.util.DrawerItemViewHelper$1
 kotlin.reflect.KMutableProperty0
 com.mikepenz.materialdrawer.model.AbstractToggleableDrawerItem
+lecho.lib.hellocharts.computator.ChartComputator:
+    public void setVisibleViewport(lecho.lib.hellocharts.model.Viewport)
+    public float getMinimumViewportWidth()
+    public float getMinimumViewportHeight()
+    protected static final float DEFAULT_MAXIMUM_ZOOM
 kotlin.ranges.UIntProgressionIterator
 com.zqw.mobile.grainfull.mvp.presenter.BaiduSpeechSynthesisPresenter_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
@@ -7666,6 +8219,9 @@ com.bumptech.glide.util.pool.StateVerifier:
     private static final boolean DEBUG
 kotlin.TypeCastException
 io.rx_cache2.ActionsList$23
+com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivityPermissionsDispatcher:
+    private void <init>()
+    private static final int REQUEST_ADDAVATAR
 kotlin.io.LinesSequence
 androidx.constraintlayout.core.widgets.analyzer.DependencyGraph:
     private void displayGraph()
@@ -7682,6 +8238,14 @@ androidx.appcompat.widget.AbsActionBarView$1
 kotlin.coroutines.CoroutineContext$Element$DefaultImpls
 kotlin.reflect.KParameter
 kotlin.collections.SlidingWindowKt$windowedSequence$$inlined$Sequence$1
+lecho.lib.hellocharts.model.ColumnChartData:
+    public void <init>(java.util.List)
+    public void <init>(lecho.lib.hellocharts.model.ColumnChartData)
+    public lecho.lib.hellocharts.model.ColumnChartData setStacked(boolean)
+    public lecho.lib.hellocharts.model.ColumnChartData setFillRatio(float)
+    public lecho.lib.hellocharts.model.ColumnChartData setBaseValue(float)
+    public static final float DEFAULT_FILL_RATIO
+    public static final float DEFAULT_BASE_VALUE
 kotlin.time.TimeSourcesKt
 com.jakewharton.rxbinding3.view.RxView__ViewScrollChangeEventObservableKt
 com.zqw.mobile.grainfull.mvp.ui.activity.MainActivity_MembersInjector:
@@ -7735,6 +8299,7 @@ com.cjt2325.cameralibrary.JCameraView:
 androidx.core.view.OnReceiveContentViewBehavior:
     public abstract androidx.core.view.ContentInfoCompat onReceiveContent(androidx.core.view.ContentInfoCompat)
 com.zqw.mobile.grainfull.mvp.ui.adapter.BaseRecyclerAdapter$OnLoadingHeaderCallBack
+com.zqw.mobile.grainfull.di.module.MetalDetectorModule_ProviderRequestMapperFactory
 androidx.core.util.Supplier
 androidx.core.view.WindowCompat
 androidx.constraintlayout.core.motion.utils.Easing$CubicEasing:
@@ -7755,6 +8320,7 @@ com.bumptech.glide.load.data.mediastore.ThumbFetcher$VideoThumbnailQuery:
     private static final java.lang.String PATH_SELECTION
 com.lcw.library.imagepicker.BuildConfig
 com.mikepenz.iconics.context.IconicsLayoutInflater2
+com.zqw.mobile.grainfull.mvp.contract.BulletChatContract
 kotlin.text.TypeAliasesKt
 androidx.constraintlayout.core.parser.CLKey
 kotlin.sequences.SequencesKt__SequencesJVMKt
@@ -7965,6 +8531,8 @@ androidx.vectordrawable.graphics.drawable.Animatable2Compat:
     public abstract void registerAnimationCallback(androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback)
     public abstract boolean unregisterAnimationCallback(androidx.vectordrawable.graphics.drawable.Animatable2Compat$AnimationCallback)
     public abstract void clearAnimationCallbacks()
+lecho.lib.hellocharts.view.LineChartView:
+    private static final java.lang.String TAG
 androidx.viewpager2.R
 kotlin.Result$Companion:
     private final java.lang.Object success(java.lang.Object)
@@ -8068,6 +8636,11 @@ androidx.core.provider.FontsContractCompat:
     public static final java.lang.String PARCEL_FONT_RESULTS
     static final int RESULT_CODE_PROVIDER_NOT_FOUND
     static final int RESULT_CODE_WRONG_CERTIFICATES
+lecho.lib.hellocharts.renderer.BubbleChartRenderer:
+    public void removeMargins()
+    private static final int DEFAULT_TOUCH_ADDITIONAL_DP
+    private static final int MODE_DRAW
+    private static final int MODE_HIGHLIGHT
 kotlin.collections.MapAccessorsKt
 androidx.core.app.Person$Builder
 com.jakewharton.rxbinding3.widget.RxAbsListView
@@ -8362,6 +8935,9 @@ androidx.core.content.pm.PackageInfoCompat$Api28Impl
 kotlin.text.StringsKt__IndentKt
 androidx.fragment.app.FragmentActivity$HostCallbacks:
     public void onStartActivityFromFragment(androidx.fragment.app.Fragment,android.content.Intent,int)
+com.zqw.mobile.grainfull.di.module.MagnifierModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.MagnifierContract$Model bindMagnifierModel(com.zqw.mobile.grainfull.mvp.model.MagnifierModel)
 androidx.core.hardware.display.DisplayManagerCompat
 com.jess.arms.utils.RxLifecycleUtils:
     private void <init>()
@@ -8400,7 +8976,6 @@ androidx.core.graphics.PathParser:
     public static boolean interpolatePathDataNodes(androidx.core.graphics.PathParser$PathDataNode[],androidx.core.graphics.PathParser$PathDataNode[],androidx.core.graphics.PathParser$PathDataNode[],float)
     private void <init>()
     private static final java.lang.String LOGTAG
-qiu.niorgai.StatusBarCompatKitKat$1
 com.jakewharton.rxbinding3.view.RxView__ViewLayoutChangeObservableKt
 kotlin.coroutines.experimental.AbstractCoroutineContextElement
 androidx.core.view.DragStartHelper$OnDragStartListener
@@ -8473,6 +9048,13 @@ androidx.core.app.ShareCompat$IntentReader
 com.blankj.utilcode.util.EncryptUtils
 com.bumptech.glide.load.engine.Jobs:
     java.util.Map getAll()
+com.zqw.mobile.grainfull.mvp.model.ColorCodeConversionModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ColorCodeConversionModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.bumptech.glide.request.target.BitmapImageViewTarget:
     public void <init>(android.widget.ImageView,boolean)
 com.bumptech.glide.util.MultiClassKey:
@@ -8484,6 +9066,8 @@ androidx.core.telephony.mbms.MbmsHelper
 kotlin.properties.Delegates$observable$1
 androidx.documentfile.provider.DocumentFile
 androidx.savedstate.Recreator$SavedStateProvider
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.ColorPickerPreference:
+    public void <init>(android.content.Context)
 com.bigkoo.pickerview.view.BasePickerView$5
 kotlin.coroutines.CombinedContext$writeReplace$1
 androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat:
@@ -8543,6 +9127,7 @@ androidx.constraintlayout.motion.widget.KeyCycle$Loader:
 kotlin.LazyKt__LazyJVMKt
 kotlin.collections.ArraysKt___ArraysKt$groupingBy$1
 com.blankj.utilcode.util.ShadowUtils
+com.zqw.mobile.grainfull.mvp.contract.HandheldBulletScreenContract
 com.mikepenz.fastadapter.utils.DefaultItemListImpl:
     public void remove(int,int)
     public void move(int,int,int)
@@ -8625,6 +9210,7 @@ com.mikepenz.materialdrawer.util.DrawerItemViewHelper
 com.zqw.mobile.grainfull.di.module.DecisionModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.DecisionContract$Model bindDecisionModel(com.zqw.mobile.grainfull.mvp.model.DecisionModel)
+com.zqw.mobile.grainfull.mvp.contract.DigitalToChineseContract
 androidx.constraintlayout.motion.utils.ViewOscillator:
     private static final java.lang.String TAG
 kotlin.time.FormatToDecimalsKt
@@ -8633,6 +9219,8 @@ com.mikepenz.materialdrawer.model.AbstractToggleableDrawerItem$1
 kotlin.jvm.internal.FunctionImpl
 androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject
 com.blankj.utilcode.util.LanguageUtils$1
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.CircleColorDrawable:
+    public void <init>()
 com.zqw.mobile.grainfull.di.module.SettingModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.SettingContract$Model bindSettingModel(com.zqw.mobile.grainfull.mvp.model.SettingModel)
@@ -9154,6 +9742,7 @@ kotlin.ExceptionsKt__ExceptionsKt
 kotlin.ranges.RangesKt___RangesKt
 androidx.core.view.WindowInsetsCompat$BuilderImpl29:
     void setDisplayCutout(androidx.core.view.DisplayCutoutCompat)
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorPickerDialogBuilder$2
 com.blankj.utilcode.util.NotificationUtils$ChannelConfig:
     public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setBypassDnd(boolean)
     public com.blankj.utilcode.util.NotificationUtils$ChannelConfig setDescription(java.lang.String)
@@ -9173,6 +9762,15 @@ com.mikepenz.materialdrawer.util.DrawerUIUtils:
     public void <init>()
     public static android.graphics.drawable.StateListDrawable getIconStateList(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)
     public static android.graphics.drawable.StateListDrawable getDrawerItemBackground(int)
+lecho.lib.hellocharts.util.ChartUtils:
+    public void <init>()
+    public static final int pickColor()
+    public static final int nextColor()
+    public static int px2dp(float,int)
+    public static int px2sp(float,int)
+    public static int mm2px(android.content.Context,int)
+    private static final float DARKEN_SATURATION
+    private static final float DARKEN_INTENSITY
 androidx.viewpager2.widget.CompositePageTransformer
 androidx.core.app.ServiceCompat
 androidx.loader.content.ModernAsyncTask$2
@@ -9239,10 +9837,15 @@ cn.bingoogolapple.swipebacklayout.R
 com.zqw.mobile.grainfull.di.module.BaiduQualityParamsModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.BaiduQualityParamsContract$Model bindBaiduQualityParamsModel(com.zqw.mobile.grainfull.mvp.model.BaiduQualityParamsModel)
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorWheelRendererBuilder:
+    public void <init>()
 androidx.legacy.app.ActionBarDrawerToggle$SlideDrawable
 com.bigkoo.pickerview.view.BasePickerView$3
 com.mikepenz.materialdrawer.util.KeyboardUtil
-com.blankj.utilcode.util.VibrateUtils
+com.blankj.utilcode.util.VibrateUtils:
+    private void <init>()
+    public static void vibrate(long[],int)
+    public static void cancel()
 androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1:
     public void onSharedElementsReady()
 com.bumptech.glide.load.resource.gif.ByteBufferGifDecoder:
@@ -9317,6 +9920,9 @@ com.cjt2325.cameralibrary.CameraInterface:
     private static final java.lang.String TAG
     public static final int TYPE_RECORDER
     public static final int TYPE_CAPTURE
+com.zqw.mobile.grainfull.di.module.BulletChatModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.BulletChatContract$Model bindBulletChatModel(com.zqw.mobile.grainfull.mvp.model.BulletChatModel)
 com.zqw.mobile.grainfull.mvp.model.BaiduFaceAgreementModel_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
@@ -9473,7 +10079,19 @@ com.bumptech.glide.disklrucache.DiskLruCache:
     private static final java.lang.String DIRTY
     private static final java.lang.String REMOVE
     private static final java.lang.String READ
+lecho.lib.hellocharts.formatter.SimpleBubbleChartValueFormatter:
+    public void <init>(int)
+    public int getDecimalDigitsNumber()
+    public lecho.lib.hellocharts.formatter.SimpleBubbleChartValueFormatter setDecimalDigitsNumber(int)
+    public char[] getAppendedText()
+    public lecho.lib.hellocharts.formatter.SimpleBubbleChartValueFormatter setAppendedText(char[])
+    public char[] getPrependedText()
+    public lecho.lib.hellocharts.formatter.SimpleBubbleChartValueFormatter setPrependedText(char[])
+    public char getDecimalSeparator()
+    public lecho.lib.hellocharts.formatter.SimpleBubbleChartValueFormatter setDecimalSeparator(char)
 com.blankj.utilcode.util.LogUtils
+lecho.lib.hellocharts.animation.ChartViewportAnimatorV14:
+    public boolean isAnimationStarted()
 com.blankj.utilcode.util.ThreadUtils$Task$OnTimeoutListener
 com.blankj.utilcode.util.UriUtils:
     private void <init>()
@@ -9500,6 +10118,8 @@ com.blankj.utilcode.util.CloseUtils
 androidx.core.view.DisplayCompat$Api17Impl
 com.jakewharton.rxbinding3.view.ViewLayoutChangeObservable$Listener
 com.jakewharton.rxbinding3.widget.SearchViewQueryTextChangeEventsObservable
+com.zqw.mobile.grainfull.app.utils.ChineseNumUtils:
+    public void <init>()
 androidx.loader.content.ModernAsyncTask$1
 androidx.core.view.accessibility.AccessibilityNodeInfoCompat:
     static androidx.core.view.accessibility.AccessibilityNodeInfoCompat wrapNonNullInstance(java.lang.Object)
@@ -9641,7 +10261,12 @@ com.zqw.mobile.grainfull.di.module.MainModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.MainContract$Model bindMainModel(com.zqw.mobile.grainfull.mvp.model.MainModel)
 com.jakewharton.rxbinding3.widget.SearchViewQueryTextChangesObservable$Listener
-com.blankj.utilcode.util.ClipboardUtils
+com.blankj.utilcode.util.ClipboardUtils:
+    private void <init>()
+    public static void copyText(java.lang.CharSequence,java.lang.CharSequence)
+    public static void clear()
+    public static java.lang.CharSequence getLabel()
+    public static java.lang.CharSequence getText()
 com.afollestad.materialdialogs.util.RippleHelper:
     public void <init>()
 kotlin.time.DurationUnitKt$WhenMappings
@@ -9843,7 +10468,6 @@ com.blankj.utilcode.util.ConvertUtils:
     public static java.io.OutputStream string2OutputStream(java.lang.String,java.lang.String)
     public static java.util.List inputStream2Lines(java.io.InputStream)
     public static java.util.List inputStream2Lines(java.io.InputStream,java.lang.String)
-    public static android.graphics.Bitmap drawable2Bitmap(android.graphics.drawable.Drawable)
     public static android.graphics.drawable.Drawable bitmap2Drawable(android.graphics.Bitmap)
     public static android.graphics.Bitmap view2Bitmap(android.view.View)
     public static int px2dp(float)
@@ -9976,6 +10600,11 @@ androidx.core.content.res.ResourcesCompat:
     public static final int ID_NULL
 com.jakewharton.rxbinding3.view.RxView__ViewHoverObservableKt
 com.jakewharton.rxbinding3.widget.AdapterViewItemLongClickEvent
+com.zqw.mobile.grainfull.di.module.MetalDetectorModule:
+    public void <init>()
+    static com.jess.arms.cj.IRequestMapper providerRequestMapper(com.zqw.mobile.grainfull.mvp.contract.MetalDetectorContract$View,com.zqw.mobile.grainfull.app.global.AccountManager)
+    static com.jess.arms.cj.ApiOperator providerOperator(com.jess.arms.cj.IRequestMapper)
+    abstract com.zqw.mobile.grainfull.mvp.contract.MetalDetectorContract$Model bindMetalDetectorModel(com.zqw.mobile.grainfull.mvp.model.MetalDetectorModel)
 androidx.core.view.WindowInsetsCompat$Impl29:
     androidx.core.graphics.Insets getSystemGestureInsets()
     androidx.core.graphics.Insets getTappableElementInsets()
@@ -10040,6 +10669,8 @@ androidx.transition.ChangeScroll:
     private static final java.lang.String PROPNAME_SCROLL_X
     private static final java.lang.String PROPNAME_SCROLL_Y
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.Intents$Encode
+lecho.lib.hellocharts.view.ColumnChartView:
+    private static final java.lang.String TAG
 com.jakewharton.rxbinding3.view.RxView__ViewTreeObserverPreDrawObservableKt
 androidx.appcompat.widget.ActionMenuView$LayoutParams:
     void <init>(int,int,boolean)
@@ -10180,6 +10811,16 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity$AllCapTrans
 com.jakewharton.rxbinding3.view.ViewFocusChangeObservable
 androidx.legacy.app.ActionBarDrawerToggle$SetIndicatorInfo
 com.zqw.mobile.grainfull.app.tts.listener.SwitchSpeakerListener
+lecho.lib.hellocharts.formatter.SimpleColumnChartValueFormatter:
+    public void <init>(int)
+    public int getDecimalDigitsNumber()
+    public lecho.lib.hellocharts.formatter.SimpleColumnChartValueFormatter setDecimalDigitsNumber(int)
+    public char[] getAppendedText()
+    public lecho.lib.hellocharts.formatter.SimpleColumnChartValueFormatter setAppendedText(char[])
+    public char[] getPrependedText()
+    public lecho.lib.hellocharts.formatter.SimpleColumnChartValueFormatter setPrependedText(char[])
+    public char getDecimalSeparator()
+    public lecho.lib.hellocharts.formatter.SimpleColumnChartValueFormatter setDecimalSeparator(char)
 kotlin.sequences.SequencesKt___SequencesKt$asIterable$$inlined$Iterable$1
 androidx.constraintlayout.core.parser.CLParser$1
 androidx.recyclerview.widget.AdapterListUpdateCallback
@@ -10222,6 +10863,14 @@ com.zqw.mobile.grainfull.mvp.presenter.BaiduFaceAgreementPresenter_MembersInject
     private final javax.inject.Provider mApplicationProvider
     private final javax.inject.Provider mImageLoaderProvider
     private final javax.inject.Provider mAppManagerProvider
+lecho.lib.hellocharts.model.AxisValue:
+    public void <init>(float)
+    public void <init>(float,char[])
+    public void <init>(lecho.lib.hellocharts.model.AxisValue)
+    public lecho.lib.hellocharts.model.AxisValue setValue(float)
+    public char[] getLabel()
+    public lecho.lib.hellocharts.model.AxisValue setLabel(java.lang.String)
+    public lecho.lib.hellocharts.model.AxisValue setLabel(char[])
 androidx.constraintlayout.core.state.helpers.AlignHorizontallyReference
 kotlin.coroutines.experimental.CoroutineContext$Key
 androidx.loader.content.Loader$ForceLoadContentObserver
@@ -10437,6 +11086,15 @@ androidx.collection.ContainerHelpers:
 io.rx_cache2.internal.migration.DoMigrations
 kotlin.reflect.KCallable
 androidx.core.graphics.BitmapCompat
+com.zqw.mobile.grainfull.mvp.presenter.PicturePipettePresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.PicturePipettePresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 androidx.constraintlayout.motion.widget.MotionScene$Transition$TransitionOnClick:
     public void <init>(androidx.constraintlayout.motion.widget.MotionScene$Transition,int,int)
     public static final int ANIM_TO_END
@@ -10463,13 +11121,32 @@ androidx.asynclayoutinflater.view.AsyncLayoutInflater$BasicInflater
 com.lcw.library.imagepicker.view.ImageFolderPopupWindow:
     private static final int DEFAULT_IMAGE_FOLDER_SELECT
 kotlin.concurrent.LocksKt
-com.blankj.utilcode.util.ColorUtils
+com.blankj.utilcode.util.ColorUtils:
+    private void <init>()
+    public static int getColor(int)
+    public static int setAlphaComponent(int,float)
+    public static int setRedComponent(int,int)
+    public static int setRedComponent(int,float)
+    public static int setGreenComponent(int,int)
+    public static int setGreenComponent(int,float)
+    public static int setBlueComponent(int,int)
+    public static int setBlueComponent(int,float)
+    public static int string2Int(java.lang.String)
+    public static java.lang.String int2RgbString(int)
+    public static java.lang.String int2ArgbString(int)
+    public static int getRandomColor()
+    public static int getRandomColor(boolean)
 com.mikepenz.iconics.context.InternalLayoutInflater$WrapperFactory
 kotlin.jvm.internal.ClassReference
 com.jess.arms.utils.UrlEncoderUtils:
     private void <init>()
 com.blankj.utilcode.util.FragmentUtils
 androidx.core.content.pm.ActivityInfoCompat
+com.zqw.mobile.grainfull.di.module.ColorCodeConversionModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.ColorCodeConversionContract$Model bindColorCodeConversionModel(com.zqw.mobile.grainfull.mvp.model.ColorCodeConversionModel)
+com.white.progressview.Utils:
+    public void <init>()
 kotlin.coroutines.experimental.migration.ContinuationInterceptorMigration
 com.zqw.mobile.grainfull.mvp.ui.adapter.BaseRecyclerAdapter$3
 com.bumptech.glide.request.target.CustomViewTarget$SizeDeterminer:
@@ -10585,6 +11262,18 @@ androidx.constraintlayout.core.motion.utils.Oscillator:
     public static final int CUSTOM
 androidx.transition.R
 io.rx_cache2.internal.cache.EvictExpiredRecordsPersistence
+lecho.lib.hellocharts.model.Viewport:
+    public void <init>(float,float,float,float)
+    public final boolean isEmpty()
+    public void setEmpty()
+    public final float centerX()
+    public final float centerY()
+    public void offset(float,float)
+    public void offsetTo(float,float)
+    public boolean contains(float,float,float,float)
+    public boolean contains(lecho.lib.hellocharts.model.Viewport)
+    public boolean intersect(float,float,float,float)
+    public boolean intersect(lecho.lib.hellocharts.model.Viewport)
 kotlin.coroutines.experimental.SequenceBuilderKt__SequenceBuilderKt
 kotlin.UnsafeLazyImpl
 com.jude.easyrecyclerview.swipe.MaterialProgressDrawable$Ring:
@@ -10595,6 +11284,10 @@ com.paginate.abslistview.AbsListViewPaginate$Builder
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceKeySet
 androidx.viewpager2.adapter.FragmentStateAdapter$DataSetChangeObserver
 kotlin.coroutines.experimental.migration.ExperimentalContinuationInterceptorMigration
+com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton:
+    private void checkAttach()
+    static synthetic int access$000(com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton)
+    static synthetic int access$100(com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton)
 androidx.core.text.util.LinkifyCompat$1
 com.blankj.utilcode.util.GsonUtils
 androidx.constraintlayout.core.motion.utils.KeyFrameArray$CustomVar
@@ -10670,10 +11363,12 @@ androidx.constraintlayout.core.widgets.Optimizer:
     static final int FLAG_CHAIN_DANGLING
     static final int FLAG_RECOMPUTE_BOUNDS
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$CoreSpline
+com.zqw.mobile.grainfull.di.module.MetalDetectorModule_ProviderOperatorFactory
 com.jess.arms.mvp.IView:
     public abstract void showMessage(java.lang.String)
     public void launchActivity(android.content.Intent)
     public void killMyself()
+com.zqw.mobile.grainfull.mvp.contract.PicturePipetteContract
 com.bumptech.glide.request.target.ThumbnailImageViewTarget:
     public void <init>(android.widget.ImageView)
     public void <init>(android.widget.ImageView,boolean)
@@ -10698,6 +11393,15 @@ kotlin.collections.AbstractCollection
 androidx.viewpager.R
 androidx.appcompat.app.ActionBarDrawerToggleHoneycomb:
     private void <init>()
+    private static final java.lang.String TAG
+lecho.lib.hellocharts.formatter.ValueFormatterHelper:
+    public int getDecimalDigitsNumber()
+    public lecho.lib.hellocharts.formatter.ValueFormatterHelper setDecimalDigitsNumber(int)
+    public lecho.lib.hellocharts.formatter.ValueFormatterHelper setAppendedText(char[])
+    public lecho.lib.hellocharts.formatter.ValueFormatterHelper setPrependedText(char[])
+    public char getDecimalSeparator()
+    public lecho.lib.hellocharts.formatter.ValueFormatterHelper setDecimalSeparator(char)
+    public static final int DEFAULT_DIGITS_NUMBER
     private static final java.lang.String TAG
 com.blankj.utilcode.util.ReflectUtils$ReflectException
 com.paginate.abslistview.LoadingListItemCreator$1
@@ -10735,6 +11439,9 @@ com.zqw.mobile.grainfull.mvp.model.DecisionModel_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mGsonProvider
     private final javax.inject.Provider mApplicationProvider
+lecho.lib.hellocharts.animation.ChartViewportAnimator:
+    public abstract boolean isAnimationStarted()
+    public static final int FAST_ANIMATION_DURATION
 androidx.appcompat.widget.PopupMenu$OnMenuItemClickListener
 androidx.core.math.MathUtils:
     private void <init>()
@@ -10860,6 +11567,9 @@ com.blankj.utilcode.util.ThreadUtils$1
 androidx.constraintlayout.motion.widget.ProxyInterface
 kotlin.random.KotlinRandom
 androidx.core.view.WindowInsetsCompat$TypeImpl30
+lecho.lib.hellocharts.view.PreviewLineChartView:
+    private static final java.lang.String TAG
+com.jaeger.library.BuildConfig
 kotlin.coroutines.AbstractCoroutineContextKey
 com.bumptech.glide.load.engine.cache.DiskCache$Factory:
     public static final int DEFAULT_DISK_CACHE_SIZE
@@ -11070,6 +11780,8 @@ androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoC
     public boolean isHeading()
     public boolean isSelected()
 kotlin.reflect.KClass$DefaultImpls
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.PaintBuilder:
+    public void <init>()
 androidx.constraintlayout.widget.R
 androidx.transition.PropertyValuesHolderUtils:
     private void <init>()
@@ -11101,6 +11813,7 @@ com.blankj.utilcode.util.UtilsActivityLifecycleImpl:
 com.bigkoo.pickerview.BuildConfig
 com.mikepenz.itemanimators.BuildConfig
 com.blankj.utilcode.util.CacheDiskUtils$DiskCacheManager$2
+com.white.progressview.R
 androidx.constraintlayout.core.motion.utils.KeyFrameArray
 com.jakewharton.rxbinding3.view.ViewTreeObserverGlobalLayoutObservable
 io.rx_cache2.internal.ProcessorProvidersBehaviour$7
@@ -11219,7 +11932,9 @@ kotlin.sequences.TakeSequence$iterator$1
 androidx.print.R
 kotlin.io.FilesKt__FileTreeWalkKt
 kotlin.sequences.DropSequence$iterator$1
+com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity_MembersInjector
 androidx.cursoradapter.widget.SimpleCursorAdapter
+com.zqw.mobile.grainfull.mvp.contract.LevitationButtonContract
 com.mikepenz.itemanimators.ScaleXAnimator
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.DecodeHintManager:
     private static java.util.Map splitQuery(java.lang.String)
@@ -11356,6 +12071,15 @@ androidx.constraintlayout.core.LinearSystem$Row:
     public abstract void updateFromSystem(androidx.constraintlayout.core.LinearSystem)
     public abstract void updateFromRow(androidx.constraintlayout.core.LinearSystem,androidx.constraintlayout.core.ArrayRow,boolean)
     public abstract void updateFromFinalVariable(androidx.constraintlayout.core.LinearSystem,androidx.constraintlayout.core.SolverVariable,boolean)
+com.zqw.mobile.grainfull.mvp.presenter.DigitalToChinesePresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.DigitalToChinesePresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 uk.co.senab.photoview.PhotoViewAttacher:
     public boolean canZoom()
     public boolean setDisplayMatrix(android.graphics.Matrix)
@@ -11474,6 +12198,9 @@ com.mikepenz.materialdrawer.Drawer:
 androidx.recyclerview.widget.MessageThreadUtil$MessageQueue
 uk.co.senab.photoview.gestures.EclairGestureDetector:
     private static final int INVALID_POINTER_ID
+com.zqw.mobile.grainfull.di.module.DigitalToChineseModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.DigitalToChineseContract$Model bindDigitalToChineseModel(com.zqw.mobile.grainfull.mvp.model.DigitalToChineseModel)
 com.blankj.utilcode.util.LogUtils$Config
 androidx.core.view.WindowInsetsAnimationCompat
 kotlin.ranges.ClosedFloatRange
@@ -11578,8 +12305,21 @@ com.blankj.utilcode.util.LanguageUtils:
     static synthetic void access$000(boolean)
     private static final java.lang.String KEY_LOCALE
     private static final java.lang.String VALUE_FOLLOW_SYSTEM
+lecho.lib.hellocharts.renderer.PreviewLineChartRenderer:
+    private static final int DEFAULT_PREVIEW_TRANSPARENCY
+    private static final int FULL_ALPHA
+    private static final int DEFAULT_PREVIEW_STROKE_WIDTH_DP
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi26$1:
     public void detach()
+com.zqw.mobile.grainfull.mvp.presenter.ColorPickerPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ColorPickerPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.mikepenz.materialdrawer.model.interfaces.Typefaceable
 androidx.media.AudioAttributesImpl:
     public abstract java.lang.Object getAudioAttributes()
@@ -11664,6 +12404,8 @@ androidx.collection.LruCache:
     public final synchronized int putCount()
     public final synchronized int evictionCount()
     public final synchronized java.util.Map snapshot()
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.ColorPickerView:
+    private static final float STROKE_RATIO
 androidx.constraintlayout.core.motion.key.MotionKeyTrigger
 com.mikepenz.materialdrawer.BuildConfig
 androidx.media.MediaSessionManager$RemoteUserInfoImpl:
@@ -11745,7 +12487,48 @@ com.zqw.mobile.grainfull.app.tts.control.InitConfig:
     public java.lang.String getSn()
 kotlin.UIntArrayKt
 com.blankj.utilcode.util.Utils$Task
+com.jaeger.library.StatusBarUtil:
+    public void <init>()
+    public static void setColor(android.app.Activity,int)
+    public static void setColorForSwipeBack(android.app.Activity,int)
+    public static void setColorNoTranslucent(android.app.Activity,int)
+    public static void setColorDiff(android.app.Activity,int)
+    public static void setTranslucent(android.app.Activity)
+    public static void setTranslucent(android.app.Activity,int)
+    public static void setTranslucentForCoordinatorLayout(android.app.Activity,int)
+    public static void setTransparent(android.app.Activity)
+    public static void setTranslucentDiff(android.app.Activity)
+    public static void setColorForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
+    public static void setColorNoTranslucentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
+    public static void setColorForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int,int)
+    private static void setDrawerLayoutProperty(androidx.drawerlayout.widget.DrawerLayout,android.view.ViewGroup)
+    public static void setColorForDrawerLayoutDiff(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
+    public static void setTranslucentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout)
+    public static void setTranslucentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
+    public static void setTransparentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout)
+    public static void setTranslucentForDrawerLayoutDiff(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout)
+    public static void setTransparentForImageView(android.app.Activity,android.view.View)
+    public static void setTranslucentForImageView(android.app.Activity,android.view.View)
+    public static void setTransparentForImageViewInFragment(android.app.Activity,android.view.View)
+    public static void hideFakeStatusBarView(android.app.Activity)
+    public static void setLightMode(android.app.Activity)
+    public static void setDarkMode(android.app.Activity)
+    private static void setMIUIStatusBarDarkIcon(android.app.Activity,boolean)
+    private static void setMeizuStatusBarDarkIcon(android.app.Activity,boolean)
+    private static android.view.View createStatusBarView(android.app.Activity,int)
+    private static void transparentStatusBar(android.app.Activity)
+    public static final int DEFAULT_STATUS_BAR_ALPHA
+    private static final int TAG_KEY_HAVE_SET_OFFSET
 kotlin.native.concurrent.SharedImmutable
+com.zqw.mobile.grainfull.mvp.presenter.HandheldBulletScreenPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.HandheldBulletScreenPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.io.FileTreeWalk$WalkState
 kotlin.coroutines.experimental.migration.ExperimentalContextMigration$Key
 androidx.constraintlayout.core.motion.key.MotionKeyAttributes
@@ -11779,7 +12562,15 @@ androidx.recyclerview.widget.AsyncListUtil
 kotlin.ranges.CharRange
 kotlin.sequences.ConstrainedOnceSequence
 kotlin.text.MatchGroup
+lecho.lib.hellocharts.renderer.PreviewColumnChartRenderer:
+    private static final int DEFAULT_PREVIEW_TRANSPARENCY
+    private static final int FULL_ALPHA
+    private static final int DEFAULT_PREVIEW_STROKE_WIDTH_DP
+com.zqw.mobile.grainfull.app.utils.LineCharts:
+    private java.util.List values
+    private java.util.List lines
 io.rx_cache2.EvictDynamicKeyGroup
+com.zqw.mobile.grainfull.mvp.contract.ColorCodeConversionContract
 com.mikepenz.fastadapter.ISubItem:
     public abstract java.lang.Object withParent(com.mikepenz.fastadapter.IItem)
 com.zqw.mobile.grainfull.mvp.contract.SerialNumberContract
@@ -12360,6 +13151,8 @@ com.zqw.mobile.grainfull.di.module.EditTurntableModule:
     static com.jess.arms.cj.ApiOperator providerOperator(com.jess.arms.cj.IRequestMapper)
     abstract com.zqw.mobile.grainfull.mvp.contract.EditTurntableContract$Model bindEditTurntableModel(com.zqw.mobile.grainfull.mvp.model.EditTurntableModel)
 kotlin.time.Duration$Companion
+com.zqw.mobile.grainfull.mvp.ui.widget.MarqueeText:
+    public void startScroll(int)
 kotlin.PreconditionsKt
 kotlin.coroutines.CombinedContext
 androidx.constraintlayout.motion.widget.MotionLayout$MyTracker:
@@ -12477,6 +13270,13 @@ kotlin.LazyKt$WhenMappings
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.open.OpenCameraInterface:
     public static final int NO_REQUESTED_CAMERA
 androidx.core.view.WindowCompat$Impl16
+com.zqw.mobile.grainfull.mvp.model.MagnifierModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.MagnifierModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 kotlin.collections.AbstractMap$keys$1
 kotlin.jvm.internal.MutablePropertyReference2Impl
 androidx.constraintlayout.core.motion.utils.TimeCycleSplineSet$CustomVarSet
@@ -12539,7 +13339,6 @@ com.blankj.utilcode.util.ImageUtils:
     public static byte[] bitmap2Bytes(android.graphics.Bitmap)
     public static byte[] bitmap2Bytes(android.graphics.Bitmap,android.graphics.Bitmap$CompressFormat,int)
     public static android.graphics.Bitmap bytes2Bitmap(byte[])
-    public static android.graphics.Bitmap drawable2Bitmap(android.graphics.drawable.Drawable)
     public static android.graphics.drawable.Drawable bitmap2Drawable(android.graphics.Bitmap)
     public static byte[] drawable2Bytes(android.graphics.drawable.Drawable)
     public static byte[] drawable2Bytes(android.graphics.drawable.Drawable,android.graphics.Bitmap$CompressFormat,int)
@@ -12910,6 +13709,9 @@ androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult
 androidx.fragment.app.Fragment$SavedState:
     void <init>(android.os.Bundle)
 androidx.transition.Styleable$Slide
+lecho.lib.hellocharts.model.ComboLineColumnChartData:
+    public void <init>(lecho.lib.hellocharts.model.ColumnChartData,lecho.lib.hellocharts.model.LineChartData)
+    public void <init>(lecho.lib.hellocharts.model.ComboLineColumnChartData)
 kotlin.io.FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState
 com.blankj.utilcode.util.FileUtils$OnReplaceListener
 com.jude.easyrecyclerview.EasyRecyclerView:
@@ -12973,6 +13775,15 @@ androidx.fragment.app.FragmentManagerViewModel:
     void restoreFromSnapshot(androidx.fragment.app.FragmentManagerNonConfig)
     androidx.fragment.app.FragmentManagerNonConfig getSnapshot()
 androidx.core.app.ActivityManagerCompat
+com.zqw.mobile.grainfull.mvp.presenter.MetalDetectorPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.MetalDetectorPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 kotlin.collections.GroupingKt__GroupingJVMKt
 kotlin.coroutines.experimental.CombinedContext$toString$1
 kotlin.coroutines.experimental.SafeContinuation
@@ -13048,6 +13859,19 @@ androidx.transition.ChangeTransform:
 com.jess.arms.di.module.AppModule_ProvideFragmentLifecyclesFactory$InstanceHolder:
     private void <init>()
 androidx.core.view.WindowInsetsControllerCompat$Impl30$1
+com.github.stuxuhai.jpinyin.DoubleArrayTrie:
+    void clear()
+    public int getUnitSize()
+    public int getSize()
+    public int getTotalSize()
+    public int getNonzeroSize()
+    public void open(java.lang.String)
+    public void save(java.lang.String)
+    public int exactMatchSearch(java.lang.String)
+    public int exactMatchSearch(java.lang.String,int,int,int)
+    public void dump()
+    private static final int BUF_SIZE
+    private static final int UNIT_SIZE
 androidx.fragment.app.ListFragment
 com.jakewharton.rxbinding3.view.ViewGroupHierarchyChildViewAddEvent
 okio.RealBufferedSink$1
@@ -13184,6 +14008,7 @@ androidx.constraintlayout.motion.widget.MotionScene:
     static final int BOUNCE
     static final int OVERSHOOT
     static final int ANTICIPATE
+com.white.progressview.BuildConfig
 com.zqw.mobile.grainfull.mvp.contract.BaiduFaceRecognitionContract
 androidx.core.view.WindowInsetsCompat:
     public boolean hasInsets()
@@ -13332,6 +14157,11 @@ androidx.core.app.JobIntentService$JobServiceEngineImpl:
 com.jakewharton.rxbinding3.view.RxView
 com.jude.easyrecyclerview.decoration.StickyHeaderDecoration$IStickyHeaderAdapter
 com.zqw.mobile.grainfull.mvp.contract.AboutContract
+lecho.lib.hellocharts.model.PointValue:
+    public void <init>(lecho.lib.hellocharts.model.PointValue)
+    public lecho.lib.hellocharts.model.PointValue setTarget(float,float)
+    public char[] getLabel()
+    public lecho.lib.hellocharts.model.PointValue setLabel(char[])
 androidx.constraintlayout.core.motion.utils.KeyFrameArray$CustomArray
 io.rx_cache2.EvictDynamicKey
 com.zqw.mobile.grainfull.mvp.ui.adapter.BaseRecyclerAdapter$OnClickListener
@@ -13344,6 +14174,9 @@ androidx.media.MediaBrowserServiceCompatApi21:
     public static void notifyChildrenChanged(java.lang.Object,java.lang.String)
     private void <init>()
 kotlin.collections.ReversedList
+com.zqw.mobile.grainfull.di.module.SpiderWebGradeModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.SpiderWebGradeContract$Model bindSpiderWebGradeModel(com.zqw.mobile.grainfull.mvp.model.SpiderWebGradeModel)
 com.jakewharton.rxbinding3.view.RxMenuItem
 com.mikepenz.materialdrawer.AccountHeader:
     private int getPositionByIdentifier(long)
@@ -13483,10 +14316,16 @@ androidx.appcompat.view.StandaloneActionMode:
     public boolean onSubMenuSelected(androidx.appcompat.view.menu.SubMenuBuilder)
     public void onCloseSubMenu(androidx.appcompat.view.menu.SubMenuBuilder)
     public boolean isUiFocusable()
+com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity_ViewBinding this$0
 androidx.media.MediaBrowserServiceCompat$2:
     public final synthetic androidx.media.MediaBrowserServiceCompat this$0
 androidx.constraintlayout.widget.ConstraintSet$Layout:
     public boolean mOverride
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$25:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$24:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$9:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$11:
@@ -13529,6 +14368,8 @@ com.bumptech.glide.disklrucache.DiskLruCache$Value:
     public final java.lang.String key
     public final long sequenceNumber
     public final long[] lengths
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$23:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$10:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.transition.PatternPathMotion:
@@ -13574,6 +14415,8 @@ com.jess.arms.base.BaseFragment:
     public android.content.Context mContext
 io.rx_cache2.internal.RxCache:
     public final io.rx_cache2.internal.RxCache$Builder builder
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$22:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 kotlin.jvm.internal.Reflection:
     public static final kotlin.reflect.KClass[] EMPTY_K_CLASS_ARRAY
 androidx.core.app.JobIntentService$CompatWorkEnqueuer:
@@ -13629,6 +14472,8 @@ androidx.constraintlayout.core.state.WidgetFrame:
     public static float phone_orientation
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding$3:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$21:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.bumptech.glide.load.model.ModelCache$1:
     public final synthetic com.bumptech.glide.load.model.ModelCache this$0
 com.blankj.utilcode.util.PathUtils:
@@ -13726,6 +14571,8 @@ com.lcw.library.imagepicker.adapter.ImagePickerAdapter$BaseHolder:
     public final synthetic com.lcw.library.imagepicker.adapter.ImagePickerAdapter this$0
 androidx.transition.FragmentTransitionSupport$1:
     public final synthetic androidx.transition.FragmentTransitionSupport this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$13:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$12:
@@ -13745,6 +14592,8 @@ com.bumptech.glide.load.model.Headers:
     public static final com.bumptech.glide.load.model.Headers NONE
 androidx.constraintlayout.helper.widget.Carousel:
     public int mLastStartId
+com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$4:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceAgreementActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceAgreementActivity_ViewBinding this$0
 com.tencent.bugly.proguard.at$2:
@@ -13764,6 +14613,8 @@ com.lcw.library.imagepicker.adapter.ImagePickerAdapter$VideoHolder:
     public final synthetic com.lcw.library.imagepicker.adapter.ImagePickerAdapter this$0
 com.mikepenz.fastadapter.FastAdapter$3:
     public final synthetic com.mikepenz.fastadapter.FastAdapter this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity_ViewBinding this$0
 androidx.appcompat.app.ActionBarDrawerToggle:
     public android.graphics.drawable.Drawable mHomeAsUpIndicator
 com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$3:
@@ -13842,6 +14693,8 @@ androidx.vectordrawable.graphics.drawable.VectorDrawableCompat:
     public android.graphics.drawable.Drawable$ConstantState mCachedConstantStateDelegate
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceActivationActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity_ViewBinding this$0
 com.mikepenz.fastadapter.expandable.ExpandableExtension:
     public android.util.SparseIntArray mExpanded
 com.zqw.mobile.grainfull.mvp.ui.activity.SettingActivity_ViewBinding$1:
@@ -13859,6 +14712,8 @@ androidx.arch.core.executor.DefaultTaskExecutor$1:
     public final synthetic androidx.arch.core.executor.DefaultTaskExecutor this$0
 com.afollestad.materialdialogs.MaterialDialog:
     public final android.os.Handler handler
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$20:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.transition.ChangeBounds$7:
     public final synthetic androidx.transition.ChangeBounds this$0
 com.zqw.mobile.grainfull.app.tts.util.AutoCheck$PrintConfig:
@@ -13887,6 +14742,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBindin
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding this$0
 androidx.transition.ChangeBounds$8:
     public final synthetic androidx.transition.ChangeBounds this$0
+lecho.lib.hellocharts.gesture.PreviewChartTouchHandler$PreviewChartGestureListener:
+    public final synthetic lecho.lib.hellocharts.gesture.PreviewChartTouchHandler this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.DecisionActivity_ViewBinding this$0
 androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat:
@@ -13919,6 +14776,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity_ViewBinding$1
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity_ViewBinding this$0
 com.blankj.utilcode.util.NetworkUtils:
     public static final java.util.Set SCAN_RESULT_CONSUMERS
+com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$5:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding this$0
 androidx.viewpager2.widget.AnimateLayoutChangeDetector$1:
     public final synthetic androidx.viewpager2.widget.AnimateLayoutChangeDetector this$0
 androidx.core.view.ViewCompat:
@@ -13949,6 +14808,8 @@ androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi28:
     public final synthetic androidx.media.MediaBrowserServiceCompat this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding$4:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding this$0
 com.jess.arms.integration.cache.LruCache:
     public final int initialMaxSize
 androidx.core.app.RemoteInput:
@@ -13964,6 +14825,8 @@ androidx.core.app.NotificationCompatJellybean:
     public static final java.lang.Object sActionsLock
 androidx.transition.Slide:
     public int mSlideEdge
+com.white.progressview.HorizontalProgressView:
+    public static final java.lang.String TAG
 androidx.constraintlayout.core.widgets.analyzer.WidgetGroup:
     public boolean authoritative
 androidx.core.app.NotificationCompat$BubbleMetadata:
@@ -13975,8 +14838,12 @@ androidx.core.app.NotificationCompat$BubbleMetadata:
     public boolean isNotificationSuppressed()
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.renderer.FlowerColorWheelRenderer:
+    public final float sizeJitter
 androidx.constraintlayout.core.widgets.analyzer.DependencyGraph:
     public java.util.ArrayList runGroups
+com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding this$0
 com.tencent.bugly.proguard.ak$1:
     public final synthetic com.tencent.bugly.proguard.ak a
 androidx.fragment.app.FragmentTransitionCompat21$2:
@@ -13989,8 +14856,12 @@ com.cjt2325.cameralibrary.JCameraView:
 androidx.core.view.OnReceiveContentViewBehavior
 androidx.transition.ChangeBounds$9:
     public final synthetic androidx.transition.ChangeBounds this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding this$0
 androidx.media.AudioAttributesCompat:
     public static final int[] SDK_USAGES
+com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity_ViewBinding this$0
 com.bumptech.glide.load.engine.GlideException:
     public java.lang.Exception exception
 com.mikepenz.materialize.Materialize:
@@ -14000,10 +14871,14 @@ androidx.viewpager2.adapter.FragmentStateAdapter:
     public abstract void placeFragmentInViewHolder(androidx.viewpager2.adapter.FragmentViewHolder)
 androidx.core.graphics.TypefaceCompatBaseImpl$1:
     public final synthetic androidx.core.graphics.TypefaceCompatBaseImpl this$0
+lecho.lib.hellocharts.gesture.PieChartTouchHandler$ChartScaleGestureListener:
+    public final synthetic lecho.lib.hellocharts.gesture.PieChartTouchHandler this$0
 androidx.constraintlayout.core.LinearSystem:
     public static boolean USE_SYNONYMS
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding this$0
 androidx.fragment.app.FragmentTransitionCompat21$4:
     public final synthetic androidx.fragment.app.FragmentTransitionCompat21 this$0
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.BeepManager:
@@ -14023,6 +14898,10 @@ com.lcw.library.imagepicker.utils.MediaFileUtil$MediaFileType:
     public java.lang.String mimeType
 androidx.core.provider.CallbackWithHandler$2:
     public final synthetic androidx.core.provider.CallbackWithHandler this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.presenter.AudioWaveformPresenter:
     public final int mPlayTime
 control.NavHttpCenter$4:
@@ -14077,10 +14956,14 @@ androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityAction
     public static final androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_HIDE_TOOLTIP
     public static final androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_PRESS_AND_HOLD
     public static final androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat ACTION_IME_ENTER
+com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity_ViewBinding this$0
 androidx.fragment.app.FragmentTransitionImpl$1:
     public final synthetic androidx.fragment.app.FragmentTransitionImpl this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding this$0
 androidx.recyclerview.widget.SnapHelper:
     public android.widget.Scroller mGravityScroller
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$9:
@@ -14092,8 +14975,12 @@ kotlin.DeprecationLevel:
 com.mikepenz.materialdrawer.DrawerBuilder:
     public com.mikepenz.materialize.Materialize mMaterialize
     public boolean mFooterClickable
+com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding this$0
 androidx.appcompat.view.menu.ActionMenuItem:
     public android.view.MenuItem$OnMenuItemClickListener mClickListener
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding$4:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.ConstraintWidget:
     public androidx.constraintlayout.core.widgets.analyzer.WidgetRun[] run
     public boolean mResolvedHasRatio
@@ -14125,6 +15012,9 @@ androidx.constraintlayout.motion.widget.MotionLayout$DevModeDraw:
     public final int DIAMOND_SIZE
 androidx.recyclerview.widget.ItemTouchHelper$RecoverAnimation:
     public final int mAnimationType
+lecho.lib.hellocharts.util.ChartUtils:
+    public static final int[] COLORS
+    public static int COLOR_INDEX
 com.lcw.library.imagepicker.adapter.ImagePickerAdapter$ImageHolder:
     public final synthetic com.lcw.library.imagepicker.adapter.ImagePickerAdapter this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity_ViewBinding$2:
@@ -14135,11 +15025,15 @@ androidx.constraintlayout.core.widgets.Guideline:
     public int mMinimumPosition
 com.mikepenz.fastadapter.select.SelectExtension$1:
     public final synthetic com.mikepenz.fastadapter.select.SelectExtension this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity_ViewBinding this$0
 kotlinx.android.extensions.CacheImplementation:
     public static final enum kotlinx.android.extensions.CacheImplementation SPARSE_ARRAY
     public static final enum kotlinx.android.extensions.CacheImplementation NO_CACHE
     public static final kotlinx.android.extensions.CacheImplementation DEFAULT
     public static final kotlinx.android.extensions.CacheImplementation$Companion Companion
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding$5:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding this$0
 androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1:
     public final synthetic android.app.SharedElementCallback$OnSharedElementsReadyListener val$listener
     public final synthetic androidx.core.app.ActivityCompat$SharedElementCallback21Impl this$0
@@ -14168,6 +15062,8 @@ com.bumptech.glide.load.model.LazyHeaders$Builder:
 com.blankj.utilcode.util.ConvertUtils:
     public static final char[] HEX_DIGITS_UPPER
     public static final char[] HEX_DIGITS_LOWER
+com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding$6:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PicturePipetteActivity_ViewBinding this$0
 androidx.core.view.WindowInsetsCompat$Impl29:
     public androidx.core.graphics.Insets mSystemGestureInsets
     public androidx.core.graphics.Insets mTappableElementInsets
@@ -14175,6 +15071,8 @@ androidx.appcompat.view.menu.BaseMenuPresenter:
     public android.view.LayoutInflater mInflater
 com.bumptech.glide.load.HttpException:
     public final int statusCode
+com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$2:
@@ -14192,6 +15090,8 @@ com.blankj.utilcode.util.TimeUtils:
     public static final java.lang.String[] CHINESE_ZODIAC
     public static final int[] ZODIAC_FLAGS
     public static final java.lang.String[] ZODIAC
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$19:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.cardview.widget.CardViewApi17Impl$1:
     public final synthetic androidx.cardview.widget.CardViewApi17Impl this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$15:
@@ -14209,6 +15109,8 @@ com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool:
 androidx.constraintlayout.core.motion.utils.Oscillator:
     public boolean mNormalized
     public static java.lang.String TAG
+com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton:
+    public final java.lang.String TAG
 com.jyn.vcview.AsteriskPasswordTransformationMethod$PasswordCharSequence:
     public final synthetic com.jyn.vcview.AsteriskPasswordTransformationMethod this$0
 com.bumptech.glide.load.engine.executor.GlideExecutor$UncaughtThrowableStrategy:
@@ -14224,7 +15126,11 @@ androidx.constraintlayout.core.widgets.analyzer.WidgetGroup$MeasureResult:
     public int baseline
     public int orientation
     public final synthetic androidx.constraintlayout.core.widgets.analyzer.WidgetGroup this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity_ViewBinding this$0
 kotlin.reflect.KClass
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$18:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.core.os.TraceCompat:
     public static long sTraceTagApp
     public static java.lang.reflect.Method sIsTagEnabledMethod
@@ -14255,6 +15161,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$7:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$17:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.transition.Styleable:
     public static final int[] TRANSITION_TARGET
     public static final int[] TRANSITION_MANAGER
@@ -14291,6 +15199,8 @@ com.jess.arms.integration.cache.CacheType:
     public static final com.jess.arms.integration.cache.CacheType CACHE_SERVICE_CACHE
 com.lcw.library.imagepicker.executors.CommonExecutor$1:
     public final synthetic com.lcw.library.imagepicker.executors.CommonExecutor this$0
+com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.ColorPickerView:
+    public final int backgroundColor
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$5:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding$3:
@@ -14299,6 +15209,8 @@ androidx.constraintlayout.widget.StateSet$Variant:
     public boolean mIsLayout
 com.zqw.mobile.grainfull.app.tts.control.InitConfig:
     public java.lang.String sn
+com.zqw.mobile.grainfull.app.utils.LineCharts:
+    public java.util.List points
 com.cjt2325.cameralibrary.util.CameraParamUtil$CameraSizeComparator:
     public final synthetic com.cjt2325.cameralibrary.util.CameraParamUtil this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$3:
@@ -14317,6 +15229,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity_ViewBinding this$0
 com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory$2:
     public final synthetic com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity_ViewBinding this$0
 androidx.appcompat.widget.ThemeUtils:
     public static final int[] ACTIVATED_STATE_SET
     public static final int[] SELECTED_STATE_SET

@@ -14,6 +14,7 @@ import com.blankj.utilcode.util.PathUtils;
 public interface Constant {
     /*----------------------------------------------APP SdCard目录地址-------------------------------------------------*/
 
+    /* 创建目录与文件需要做详细配置，10以下正常使用File，10+需要走分区存储 */
     /**
      * APP升级路径
      */
