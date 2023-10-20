@@ -287,10 +287,11 @@ public class MediaStoreUtils {
             return Bitmap.CompressFormat.PNG;
         } else if (val.equals("jpg") || val.equals("jpeg")) {
             return Bitmap.CompressFormat.JPEG;
-        } else {
+        } else if (val.equals("webp")) {
             return Bitmap.CompressFormat.WEBP;
+        } else {
+            return Bitmap.CompressFormat.JPEG;
         }
-
     }
 
     /**
@@ -314,6 +315,8 @@ public class MediaStoreUtils {
                         // 读取Assets中的图片
                         InputStream inputStream = context.getAssets().open(assetsFilePath + fileName);
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+                        // 保存图片到本地
                         OutputStream outputStream = context.getContentResolver().openOutputStream(imgUri);
                         bitmap.compress(getBitmapTypeByExtension(getExtension(fileName)), 100, outputStream);
                         outputStream.close();
