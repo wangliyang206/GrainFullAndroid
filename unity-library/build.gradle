@@ -32,4 +32,6 @@ dependencies {
     api(name: 'UnityAds', ext:'aar')
     api(name: 'common', ext:'aar')
     api files('libs/unity-classes.jar')
+    api(name: 'VuforiaEngine', ext:'aar')
+    api(name: 'unityandroidpermissions', ext:'aar')
 }
