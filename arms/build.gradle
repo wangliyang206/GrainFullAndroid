@@ -116,6 +116,8 @@ dependencies {
     //test
     api rootProject.ext.dependencies["timber"]
 
+    api rootProject.ext.dependencies["multidex"]
+
     // 新增Unity功能
     api project(path: ':unity-library')
 }

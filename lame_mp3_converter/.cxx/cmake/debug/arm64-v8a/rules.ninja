@@ -17,7 +17,7 @@
 rule C_COMPILER__lame-mp3-utils
   depfile = $DEP_FILE
   deps = gcc
-  command = D:\Android\AndroidSDK\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\bin\clang.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
+  command = D:\Android\SDK\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\bin\clang.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/SDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/SDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
   description = Building C object $out
 
 
@@ -27,7 +27,7 @@ rule C_COMPILER__lame-mp3-utils
 rule CXX_COMPILER__lame-mp3-utils
   depfile = $DEP_FILE
   deps = gcc
-  command = D:\Android\AndroidSDK\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = D:\Android\SDK\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/SDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/SDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -35,7 +35,7 @@ rule CXX_COMPILER__lame-mp3-utils
 # Rule for linking CXX shared library.
 
 rule CXX_SHARED_LIBRARY_LINKER__lame-mp3-utils
-  command = cmd.exe /C "$PRE_LINK && D:\Android\AndroidSDK\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = cmd.exe /C "$PRE_LINK && D:\Android\SDK\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/SDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/SDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX shared library $TARGET_FILE
   restat = $RESTAT
 
@@ -52,7 +52,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe -HE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter -BE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\debug\arm64-v8a
+  command = D:\Android\SDK\cmake\3.10.2.4988404\bin\cmake.exe -HE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter -BE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\debug\arm64-v8a
   description = Re-running CMake...
   generator = 1
 
@@ -61,7 +61,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\ninja.exe -t clean
+  command = D:\Android\SDK\cmake\3.10.2.4988404\bin\ninja.exe -t clean
   description = Cleaning all built files...
 
 
@@ -69,6 +69,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\ninja.exe -t targets
+  command = D:\Android\SDK\cmake\3.10.2.4988404\bin\ninja.exe -t targets
   description = All primary targets available:
 

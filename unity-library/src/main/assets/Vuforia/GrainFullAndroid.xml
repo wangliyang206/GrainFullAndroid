@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="emo" size="5.000000 3.333333" />
+    <ImageTarget name="l4" size="5.000000 6.637931" />
+    <ImageTarget name="l3" size="5.000000 6.637931" />
+    <ImageTarget name="l1" size="5.000000 6.637931" />
     <ImageTarget name="bbbb" size="5.000000 8.888889" />
-    <ImageTarget name="aaaa" size="5.000000 2.804688" />
   </Tracking>
 </QCARConfig>
