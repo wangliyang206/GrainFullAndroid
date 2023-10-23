@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
-    <ImageTarget name="emo" size="5.000000 3.333333" />
+    <ImageTarget name="FH" size="5.000000 6.637931" />
+    <ImageTarget name="YY" size="5.000000 7.500000" />
+    <ImageTarget name="YL" size="5.000000 8.921296" />
     <ImageTarget name="l4" size="5.000000 6.637931" />
     <ImageTarget name="l3" size="5.000000 6.637931" />
     <ImageTarget name="l1" size="5.000000 6.637931" />
