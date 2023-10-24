@@ -1,7 +1,118 @@
 ninja: Entering directory `E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\debug\armeabi-v7a'
 [1/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/mpglib_interface.c.o
 [2/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/fft.c.o
-[3/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o
+[3/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o
+[4/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o
+[5/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o
+[6/22] Building CXX object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o
+../../../../src/main/cpp/lame-mp3-utils.cpp:121:17: warning: implicit conversion of NULL constant to 'unsigned char' [-Wnull-conversion]
+    *c_mp3buf = NULL;
+              ~ ^~~~
+                '\0'
+../../../../src/main/cpp/lame-mp3-utils.cpp:135:17: warning: implicit conversion of NULL constant to 'unsigned char' [-Wnull-conversion]
+    *c_mp3buf = NULL;
+              ~ ^~~~
+                '\0'
+../../../../src/main/cpp/lame-mp3-utils.cpp:144:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+3 warnings generated.
+[7/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o
+../../../../src/main/cpp/lamemp3/VbrTag.c:267:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[0], 8u, 0xffu);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:269:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[1], 3u, 7);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:270:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[1], 1u, (cfg->samplerate_out < 16000) ? 0 : 1);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:271:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[1], 1u, cfg->version);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:272:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[1], 2u, 4 - 3);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:273:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[1], 1u, (!cfg->error_protection) ? 1 : 0);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:275:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[2], 4u, eov->bitrate_index);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:276:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[2], 2u, cfg->samplerate_index);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:277:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[2], 1u, 0);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:278:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[2], 1u, cfg->extension);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:280:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[3], 2u, cfg->mode);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:281:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[3], 2u, eov->mode_ext);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:282:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[3], 1u, cfg->copyright);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:283:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[3], 1u, cfg->original);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:284:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+    SHIFT_IN_BITS_VALUE(buffer[3], 2u, cfg->emphasis);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+                                                                ~~ ^
+../../../../src/main/cpp/lamemp3/VbrTag.c:434:23: warning: comparison of array 'pTagData->toc' not equal to a null pointer is always true [-Wtautological-pointer-compare]
+        if (pTagData->toc != NULL) {
+            ~~~~~~~~~~^~~    ~~~~
+16 warnings generated.
+[8/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o
 ../../../../src/main/cpp/lamemp3/presets.c:176:5: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
     SET_OPTION(short_threshold_lrm, set->st_lrm, -1);
     ^
@@ -190,158 +301,125 @@ ninja: Entering directory `E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_convert
     else if (!(abs(lame_get_##opt(gfp) - def) > 0)) \
                ^
 19 warnings generated.
-[4/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o
-[5/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o
-[6/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o
-[7/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o
-../../../../src/main/cpp/lamemp3/VbrTag.c:267:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[0], 8u, 0xffu);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:269:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[1], 3u, 7);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:270:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[1], 1u, (cfg->samplerate_out < 16000) ? 0 : 1);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:271:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[1], 1u, cfg->version);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:272:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[1], 2u, 4 - 3);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:273:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[1], 1u, (!cfg->error_protection) ? 1 : 0);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:275:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[2], 4u, eov->bitrate_index);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:276:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[2], 2u, cfg->samplerate_index);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:277:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[2], 1u, 0);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:278:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[2], 1u, cfg->extension);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:280:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[3], 2u, cfg->mode);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:281:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[3], 2u, eov->mode_ext);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:282:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[3], 1u, cfg->copyright);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:283:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[3], 1u, cfg->original);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:284:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
-    SHIFT_IN_BITS_VALUE(buffer[3], 2u, cfg->emphasis);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../../../../src/main/cpp/lamemp3/VbrTag.c:258:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
-#define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
-                                                                ~~ ^
-../../../../src/main/cpp/lamemp3/VbrTag.c:434:23: warning: comparison of array 'pTagData->toc' not equal to a null pointer is always true [-Wtautological-pointer-compare]
-        if (pTagData->toc != NULL) {
-            ~~~~~~~~~~^~~    ~~~~
-16 warnings generated.
-[8/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o
-[9/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o
-[10/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o
-[11/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o
+[9/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o
+[10/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o
+[11/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o
+[12/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o
+[13/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o
 ../../../../src/main/cpp/lamemp3/quantize_pvt.c:1059:13: warning: implicitly declaring library function 'memcpy' with type 'void *(void *, const void *, unsigned int)' [-Wimplicit-function-declaration]
             memcpy(scalefac_sav, cod_info->scalefac, sizeof(scalefac_sav));
             ^
 ../../../../src/main/cpp/lamemp3/quantize_pvt.c:1059:13: note: include the header <string.h> or explicitly provide a declaration for 'memcpy'
 1 warning generated.
-[12/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o
-[13/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
-                                                                       ^
+[14/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o
+[15/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o
+../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (EQ(gfp->compression_ratio, 0))
+            ^
 ../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
 (abs(a) > abs(b)) \
  ^
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
 (abs(a) > abs(b)) \
  ^
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
-                                                                       ^
+../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (EQ(gfp->compression_ratio, 0))
+            ^
 ../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
     ^
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
     ^
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
-                                                                       ^
+../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (EQ(gfp->compression_ratio, 0))
+            ^
 ../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
                      ^
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
                      ^
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
-                                                                       ^
+../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (EQ(gfp->compression_ratio, 0))
+            ^
 ../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
  : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
     ^
-../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
  : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
     ^
-4 warnings generated.
-[14/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o
-[15/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
+            ^
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
+(abs(a) > abs(b)) \
+ ^
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
+(abs(a) > abs(b)) \
+ ^
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
+            ^
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
+ ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
+    ^
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
+ ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
+    ^
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
+            ^
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
+ ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
+                     ^
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
+ ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
+                     ^
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
+            ^
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
+ : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
+    ^
+../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
+#define NEQ(a,b) (!EQ(a,b))
+                   ^
+../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
+ : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
+    ^
+8 warnings generated.
+[16/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o
+[17/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o
 ../../../../src/main/cpp/lamemp3/quantize.c:490:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
         if (EQ(work[j - 1], 0.0))
             ^
@@ -799,127 +877,49 @@ ninja: Entering directory `E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_convert
  : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
                      ^
 42 warnings generated.
-[16/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o
-[17/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o
-../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (EQ(gfp->compression_ratio, 0))
-            ^
+[18/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o
+[19/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
+                                                                       ^
 ../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
 (abs(a) > abs(b)) \
  ^
-../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
 (abs(a) > abs(b)) \
  ^
-../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (EQ(gfp->compression_ratio, 0))
-            ^
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
+                                                                       ^
 ../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
     ^
-../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
     ^
-../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (EQ(gfp->compression_ratio, 0))
-            ^
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
+                                                                       ^
 ../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
                      ^
-../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
  ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
                      ^
-../../../../src/main/cpp/lamemp3/lame.c:644:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (EQ(gfp->compression_ratio, 0))
-            ^
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+        assert((0 <= gfp->interChRatio && gfp->interChRatio <= 1.0) || EQ(gfp->interChRatio, -1));
+                                                                       ^
 ../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
  : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
     ^
-../../../../src/main/cpp/lamemp3/lame.c:644:13: note: use function 'fabsf' instead
+../../../../src/main/cpp/lamemp3/set_get.c:1727:72: note: use function 'fabsf' instead
 ../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
  : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
     ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
-            ^
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
-(abs(a) > abs(b)) \
- ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:170:2: note: expanded from macro 'EQ'
-(abs(a) > abs(b)) \
- ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
-            ^
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
- ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
-    ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:171:5: note: expanded from macro 'EQ'
- ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
-    ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
-            ^
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
- ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
-                     ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:171:22: note: expanded from macro 'EQ'
- ? (abs((a)-(b)) <= (abs(a) * 1e-6f)) \
-                     ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
-        if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
-            ^
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
- : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
-    ^
-../../../../src/main/cpp/lamemp3/lame.c:1609:13: note: use function 'fabsf' instead
-../../../../src/main/cpp/lamemp3/machine.h:177:20: note: expanded from macro 'NEQ'
-#define NEQ(a,b) (!EQ(a,b))
-                   ^
-../../../../src/main/cpp/lamemp3/machine.h:172:5: note: expanded from macro 'EQ'
- : (abs((a)-(b)) <= (abs(b) * 1e-6f)))
-    ^
-8 warnings generated.
-[18/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o
-[19/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o
-[20/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o
-[21/22] Building CXX object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o
-../../../../src/main/cpp/lame-mp3-utils.cpp:121:17: warning: implicit conversion of NULL constant to 'unsigned char' [-Wnull-conversion]
-    *c_mp3buf = NULL;
-              ~ ^~~~
-                '\0'
-../../../../src/main/cpp/lame-mp3-utils.cpp:135:17: warning: implicit conversion of NULL constant to 'unsigned char' [-Wnull-conversion]
-    *c_mp3buf = NULL;
-              ~ ^~~~
-                '\0'
-../../../../src/main/cpp/lame-mp3-utils.cpp:144:1: warning: control reaches end of non-void function [-Wreturn-type]
-}
-^
-3 warnings generated.
+4 warnings generated.
+[20/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o
+[21/22] Building C object CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o
 [22/22] Linking CXX shared library ..\..\..\..\src\main\jniLibs\armeabi-v7a\liblame-mp3-utils.so

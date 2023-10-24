@@ -145,7 +145,11 @@ public class ElfinPlayerActivity extends BaseActivity<ElfinPlayerPresenter> impl
         switch (v.getId()) {
             case R.id.btn_elfinplayer_select:                                                       // 查看
                 Bundle mBundle = new Bundle();
-                mBundle.putInt("layout", 1);
+                // layout用来控制切换的界面
+                // 0代表使用模板一(AR识别，3D精灵库，多精灵模板)
+                // 1代表使用模板二(AR识别，3D精灵库，只有一个精灵“小鬼”，使用安卓本地模板)
+                // 2代表使用模板三(见缝插针游戏)
+                mBundle.putInt("layout", 0);
                 ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
                 break;
         }
