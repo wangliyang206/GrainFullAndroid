@@ -138,17 +138,48 @@ public class ElfinPlayerActivity extends BaseActivity<ElfinPlayerPresenter> impl
     }
 
     @OnClick({
-            R.id.btn_elfinplayer_select,                                                            // 查看
+            R.id.imvi_elfinplayer_download,                                                         // 下载模版
+            R.id.btn_elfinplayer_localselect,                                                       // 查看-本地模版
+            R.id.btn_elfinplayer_unityselect,                                                       // 查看-unity模板
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_elfinplayer_select:                                                       // 查看
-                Bundle mBundle = new Bundle();
-                mBundle.putInt("layout", 1);
-                ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
+            case R.id.imvi_elfinplayer_download:                                                    // 下载模版
+                onSaveImage();
+                break;
+            case R.id.btn_elfinplayer_localselect:                                                  // 查看-本地模版
+                OnSpirit(2);
+                break;
+            case R.id.btn_elfinplayer_unityselect:                                                  // 查看-unity模板
+                OnSpirit(1);
                 break;
         }
+    }
+
+    /**
+     * 查看精灵
+     *
+     * @param type 1代表精灵库(多种精灵)；2代表小鬼精灵(安卓本地模板)；
+     */
+    private void OnSpirit(int type) {
+        Bundle mBundle = new Bundle();
+        mBundle.putInt("layout", type);
+        ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
+    }
+
+    /**
+     * 将精灵模板保存到本地
+     */
+    private void onSaveImage() {
+        MediaStoreUtils.saveImage(this, Environment.DIRECTORY_PICTURES + "/GrainFull/Template", "L1.jpg", R.mipmap.l1);
+        MediaStoreUtils.saveImage(this, Environment.DIRECTORY_PICTURES + "/GrainFull/Template", "L3.jpg", R.mipmap.l3);
+        MediaStoreUtils.saveImage(this, Environment.DIRECTORY_PICTURES + "/GrainFull/Template", "L4.jpg", R.mipmap.l4);
+        MediaStoreUtils.saveImage(this, Environment.DIRECTORY_PICTURES + "/GrainFull/Template", "FH.jpg", R.mipmap.fh);
+        MediaStoreUtils.saveImage(this, Environment.DIRECTORY_PICTURES + "/GrainFull/Template", "yy.jpg", R.mipmap.yy);
+        MediaStoreUtils.saveImage(this, Environment.DIRECTORY_PICTURES + "/GrainFull/Template", "YL.jpg", R.mipmap.yl);
+
+        showMessage("模版图片保存成功！");
     }
 
     @Override

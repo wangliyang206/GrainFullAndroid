@@ -7,14 +7,15 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
 import com.blankj.utilcode.util.Utils;
-import com.zqw.mobile.grainfull.R;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -198,22 +199,38 @@ public class MediaStoreUtils {
     }
 
     /**
-     * 创建一个图片
+     * 将项目中的图片保存到本地
      */
-    public static void createImage(Context context) {
+    public static void saveImage(Context context, String destFilePath, String fileName, int id) {
         // 插入一个图片
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(MediaStore.Images.ImageColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/GrainFull/Template");
-        contentValues.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, "Zee.png");
-        contentValues.put(MediaStore.Images.ImageColumns.MIME_TYPE, "image/png");
-        Uri imgUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-        try {
-            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.role);
-            OutputStream outputStream = context.getContentResolver().openOutputStream(imgUri);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-            outputStream.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            // 分区模式
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.Images.ImageColumns.RELATIVE_PATH, destFilePath);
+            contentValues.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, fileName);
+            contentValues.put(MediaStore.Images.ImageColumns.MIME_TYPE, "image/jpg");
+            Uri imgUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            try {
+                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
+                OutputStream outputStream = context.getContentResolver().openOutputStream(imgUri);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                outputStream.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            // 旧式外部存储
+            try {
+                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
+                String jpegName = destFilePath + fileName;
+                FileOutputStream fout = new FileOutputStream(jpegName);
+                BufferedOutputStream bos = new BufferedOutputStream(fout);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                bos.flush();
+                bos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
