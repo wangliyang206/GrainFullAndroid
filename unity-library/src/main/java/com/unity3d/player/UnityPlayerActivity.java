@@ -10,6 +10,12 @@ import android.view.Window;
 
 /**
  * Unity3D 游戏加载入口
+ * layout用来控制切换的界面
+ * 0代表：启动页，负责分配跳转场景；
+ * 1代表：AR识别，3D精灵库，多精灵模板；
+ * 2代表：AR识别，3D精灵库，只有一个精灵“小鬼”，使用安卓本地模板；
+ * 3代表：凤凰飞行轨迹；
+ * 4代表：见缝插针游戏；
  */
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents {
     protected UnityPlayer mUnityPlayer; // don't change the name of this variable; referenced from native code

@@ -93,7 +93,7 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
 
             case R.id.btn_fragmentgame_unity_stickpin:                                              // 见缝插针
                 Bundle mBundle = new Bundle();
-                mBundle.putInt("layout", 2);
+                mBundle.putInt("layout", 4);
                 ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
                 break;
             case R.id.btn_fragmentgame_unity_elfin:                                                 // 小精灵3D模型

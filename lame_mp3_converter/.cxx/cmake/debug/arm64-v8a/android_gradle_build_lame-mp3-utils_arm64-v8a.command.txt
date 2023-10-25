@@ -1,4 +1,4 @@
-Executable : D:\Android\SDK\cmake\3.10.2.4988404\bin\ninja.exe
+Executable : D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\ninja.exe
 arguments : 
 -C
 E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\debug\arm64-v8a

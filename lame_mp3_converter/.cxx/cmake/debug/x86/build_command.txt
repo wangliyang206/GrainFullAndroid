@@ -1,16 +1,16 @@
-Executable : D:\Android\SDK\cmake\3.10.2.4988404\bin\cmake.exe
+Executable : D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\cmake.exe
 arguments : 
 -HE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter
 -DCMAKE_BUILD_TYPE=Debug
--DCMAKE_TOOLCHAIN_FILE=D:\Android\SDK\ndk\20.0.5594570\build\cmake\android.toolchain.cmake
+-DCMAKE_TOOLCHAIN_FILE=D:\Android\AndroidSDK\ndk\20.0.5594570\build\cmake\android.toolchain.cmake
 -DANDROID_ABI=x86
--DANDROID_NDK=D:\Android\SDK\ndk\20.0.5594570
+-DANDROID_NDK=D:\Android\AndroidSDK\ndk\20.0.5594570
 -DANDROID_PLATFORM=android-23
 -DCMAKE_ANDROID_ARCH_ABI=x86
--DCMAKE_ANDROID_NDK=D:\Android\SDK\ndk\20.0.5594570
+-DCMAKE_ANDROID_NDK=D:\Android\AndroidSDK\ndk\20.0.5594570
 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=E:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\build\intermediates\cmake\debug\obj\x86
--DCMAKE_MAKE_PROGRAM=D:\Android\SDK\cmake\3.10.2.4988404\bin\ninja.exe
+-DCMAKE_MAKE_PROGRAM=D:\Android\AndroidSDK\cmake\3.10.2.4988404\bin\ninja.exe
 -DCMAKE_SYSTEM_NAME=Android
 -DCMAKE_SYSTEM_VERSION=23
 -BE:\AndroidStudioGit\GrainFullAndroid\lame_mp3_converter\.cxx\cmake\debug\x86

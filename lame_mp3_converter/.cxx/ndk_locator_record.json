@@ -1,5 +1,5 @@
 {
-  "ndkFolder": "D:\\Android\\SDK\\ndk\\20.0.5594570",
+  "ndkFolder": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570",
   "messages": [
     {
       "level": "INFO",
@@ -7,7 +7,7 @@
     },
     {
       "level": "INFO",
-      "message": "ndk.dir in local.properties is D:\\Android\\SDK\\ndk\\20.0.5594570"
+      "message": "ndk.dir in local.properties is D:\\Android\\AndroidSDK\\ndk\\20.0.5594570"
     },
     {
       "level": "INFO",
@@ -15,55 +15,35 @@
     },
     {
       "level": "INFO",
-      "message": "sdkFolder is D:\\Android\\SDK"
+      "message": "sdkFolder is D:\\Android\\AndroidSDK"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\20.0.5594570 by ndk.dir"
+      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\20.0.5594570 by ndk.dir"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk-bundle in SDK ndk-bundle folder"
+      "message": "Considering D:\\Android\\AndroidSDK\\ndk-bundle in SDK ndk-bundle folder"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\16.1.4479499 in SDK ndk folder"
+      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\17.2.4988734 in SDK ndk folder"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\17.2.4988734 in SDK ndk folder"
+      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\20.0.5594570 in SDK ndk folder"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\20.0.5594570 in SDK ndk folder"
+      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\23.1.7779620 in SDK ndk folder"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\21.0.6113669 in SDK ndk folder"
+      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\25.1.8937393 in SDK ndk folder"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\21.2.6472646 in SDK ndk folder"
-    },
-    {
-      "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\21.3.6528147 in SDK ndk folder"
-    },
-    {
-      "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\21.4.7075529 in SDK ndk folder"
-    },
-    {
-      "level": "INFO",
-      "message": "Considering D:\\Android\\SDK\\ndk\\25.0.8775105 in SDK ndk folder"
-    },
-    {
-      "level": "INFO",
-      "message": "Rejected D:\\Android\\SDK\\ndk\\21.2.6472646 in SDK ndk folder because that location has no source.properties"
-    },
-    {
-      "level": "INFO",
-      "message": "Found requested ndk.dir (D:\\Android\\SDK\\ndk\\20.0.5594570) which has version 20.0.5594570"
+      "message": "Found requested ndk.dir (D:\\Android\\AndroidSDK\\ndk\\20.0.5594570) which has version 20.0.5594570"
     }
   ]
 }
