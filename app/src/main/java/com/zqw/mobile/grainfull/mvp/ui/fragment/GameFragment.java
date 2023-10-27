@@ -71,9 +71,11 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
 
             R.id.btn_fragmentgame_unity_stickpin,                                                   // 见缝插针
             R.id.btn_fragmentgame_unity_elfin,                                                      // 小精灵3D模型
+            R.id.btn_fragmentgame_unity_facecapture,                                                // 人脸捕捉
     })
     @Override
     public void onClick(View v) {
+        Bundle mBundle = new Bundle();
         switch (v.getId()) {
             case R.id.btn_fragmentgame_common_klotski:                                              // 华容道
                 ActivityUtils.startActivity(klotskiGameActivity.class);
@@ -92,12 +94,15 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
                 break;
 
             case R.id.btn_fragmentgame_unity_stickpin:                                              // 见缝插针
-                Bundle mBundle = new Bundle();
                 mBundle.putInt("layout", 4);
                 ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
                 break;
             case R.id.btn_fragmentgame_unity_elfin:                                                 // 小精灵3D模型
                 ActivityUtils.startActivity(ElfinPlayerActivity.class);
+                break;
+            case R.id.btn_fragmentgame_unity_facecapture:                                           // 人脸捕捉
+                mBundle.putInt("layout", 5);
+                ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
                 break;
         }
     }
