@@ -219,7 +219,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/edit_bg_selector"
                         android:padding="10dp"
-                        android:text="人脸捕捉" />
+                        android:text="脸谱变脸" />
                 </com.google.android.flexbox.FlexboxLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

@@ -56,7 +56,6 @@
         android:resizeable="true"
         android:smallScreens="true" />
 
-    <!-- requestLegacyExternalStorage：true代表使用旧式外部存储，false代表使用分区存储 -->
     <application
         android:name="com.jess.arms.base.BaseApplication"
         android:allowBackup="true"
@@ -68,6 +67,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="label">
+        <activity
+            android:name=".mvp.ui.activity.ARFaceChangingActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".mvp.ui.activity.ElfinPlayerActivity"
             android:screenOrientation="portrait" />
