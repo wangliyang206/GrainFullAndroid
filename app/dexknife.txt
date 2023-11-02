@@ -1,0 +1,58 @@
+#为注释符
+
+#-----------主Dex中必要依赖的脚本配置-----------(支持依赖检测)
+#默认保留四大组件中Service,ContentProvider,BroadcastReceiver三大组件,Activity组件选择性保留,若为空不保留任何Activity
+-just activity com.zqw.mobile.grainfull.activity.SplashActivity
+-just activity com.zqw.mobile.grainfull.activity.LoginActivity
+-just activity com.zqw.mobile.grainfull.activity.MainActivity
+
+#-----------附加类-----------(不支持依赖检测)
+# 如果你想要某个包路径在maindex中，则使用 -keep 选项，即使他已经在分包的路径中.若为空，不保留任意类
+-keep com.tencent.bugly.**
+-keep cn.jpush.**
+-keep cn.jiguang.**
+-keep com.baidu.**
+-keep com.cj.mobile.common.db.**
+-keep timber.log.**
+-keep net.grandcentrix.tray.**
+-keep android.support.multidex.**
+-keep com.zqw.mobile.grainfull.greendao.**
+-keep org.greenrobot.greendao.**
+-keep com.tencent.smtt.**
+-keep com.taobao.sophix.**
+-keep class android.support.**
+-keep com.qiangxi.checkupdatelibrary.**
+
+# 保留单个类.
+#-keep android.support.v7.app.AppCompatDialogFragment.class
+#-keep com.zqw.mobile.grainfull.RecoveryEndApplication.class
+-keep com.jess.arms.base.BaseApplication.class
+#-keep com.zqw.mobile.grainfull.SophixStubApplication.class
+-keep com.zqw.mobile.grainfull.app.service.LocationService.class
+-keep com.zqw.mobile.grainfull.app.service.MyLocationListener.class
+-keep com.zqw.mobile.grainfull.app.global.AccountManager.class
+
+-keep com.zqw.mobile.grainfull.app.utils.FileLoggingTree.class
+#-keep com.zqw.mobile.grainfull.util.AppCrashHandler.class
+#-keep android.support.multidex.MultiDex.class
+-keep androidx.multidex.MultiDex.class
+#-keep com.zqw.mobile.grainfull.util.GreenDaoHelper.class
+
+# 这条配置可以指定这个包下类在第二及其他dex中.
+#-split android.support.v?.**
+#将全部类移出主Dex
+-split **.**
+
+# 不包含Android gradle 插件自动生成的miandex列表.(不使用建议的依赖树，注释掉表示使用,否则-just activity无效)
+#-donot-use-suggest
+
+# (分割每个dex的方法数上限) 扩展参数:例如 --set-max-idx-number=50000
+# 如果出现 DexException: Too many classes in --main-dex-mList, main dex capacity exceeded：
+# 表明限制的方法数小于main dex的必要方法数，调大到合适数值即可
+-dex-param --set-max-idx-number=65536
+
+# 注释掉将执行自定义dex分包，否则执行默认分包.
+#-auto-maindex
+
+# 显示miandex的日志.
+#-log-mainlist

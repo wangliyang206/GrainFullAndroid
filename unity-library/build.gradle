@@ -28,9 +28,13 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api(name: 'billing-5.1.0', ext:'aar')
+
+    api(name: 'arcore_client', ext:'aar')
     api(name: 'UnityAds', ext:'aar')
+    api(name: 'UnityARCore', ext:'aar')
     api(name: 'common', ext:'aar')
-    api files('libs/unity-classes.jar')
+    api(name: 'ARPresto', ext:'aar')
+    api(name: 'billing-5.1.0', ext:'aar')
     api(name: 'VuforiaEngine', ext:'aar')
+    api(name: 'unityandroidpermissions', ext:'aar')
 }
