@@ -16,6 +16,8 @@ import android.view.Window;
  * 2代表：AR识别，3D精灵库，只有一个精灵“小鬼”，使用安卓本地模板；
  * 3代表：凤凰飞行轨迹；
  * 4代表：见缝插针游戏；
+ * 5代表：AR脸谱变脸(人脸捕捉)；
+ * 6代表：AR地面识别+传送门；
  */
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents {
     protected UnityPlayer mUnityPlayer; // don't change the name of this variable; referenced from native code

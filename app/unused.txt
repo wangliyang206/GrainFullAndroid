@@ -1652,6 +1652,7 @@ lecho.lib.hellocharts.gesture.PieChartTouchHandler:
     public static final int FLING_VELOCITY_DOWNSCALE
 com.paginate.recycler.RecyclerPaginate$Builder
 com.unity3d.player.o$4
+com.unity.xr.arpresto.R
 androidx.databinding.library.baseAdapters.R
 com.blankj.utilcode.util.SpanUtils$CustomBulletSpan
 com.mikepenz.materialize.color.Material$Blue
@@ -2349,6 +2350,7 @@ com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem$1
 lecho.lib.hellocharts.renderer.AbstractChartRenderer:
     public boolean isViewportCalculationEnabled()
     public void selectValue(lecho.lib.hellocharts.model.SelectedValue)
+com.example.unityandroidpermissions.BuildConfig
 com.mikepenz.iconics.context.IconicsContextWrapper
 kotlin.collections.TypeAliasesKt
 dagger.internal.MapFactory$Builder
@@ -5489,6 +5491,7 @@ com.zqw.mobile.grainfull.mvp.presenter.ElfinPlayerPresenter_MembersInjector:
     private final javax.inject.Provider mImageLoaderProvider
     private final javax.inject.Provider mAppManagerProvider
 com.zqw.mobile.grainfull.mvp.contract.BaiduQualityControlContract
+com.unity.xr.arcore.R
 androidx.core.app.ServiceCompat
 androidx.loader.content.ModernAsyncTask$2
 com.scwang.smart.drawable.paint.R
@@ -6386,7 +6389,6 @@ com.zqw.mobile.grainfull.di.module.LoginModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.LoginContract$Model bindLoginModel(com.zqw.mobile.grainfull.mvp.model.LoginModel)
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity_MembersInjector
-com.unity3d.player.i$4
 kotlin.jvm.internal.ArrayIteratorKt
 kotlin.text.StringsKt___StringsKt$groupingBy$1
 com.bigkoo.pickerview.view.BasePickerView$1
@@ -7640,6 +7642,13 @@ androidx.appcompat.R
 io.rx_cache2.internal.cache.EvictRecord_Factory
 com.jess.arms.integration.ManifestParser:
     private static final java.lang.String MODULE_VALUE
+com.zqw.mobile.grainfull.mvp.model.ARFaceChangingModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ARFaceChangingModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 androidx.core.os.CancellationSignal$OnCancelListener
 androidx.documentfile.provider.SingleDocumentFile
 androidx.transition.TransitionInflater
@@ -8822,7 +8831,6 @@ com.zqw.mobile.grainfull.app.utils.MediaStoreUtils:
     public static java.lang.String getMimeType(java.lang.String)
     public static java.lang.String getDisplayName(java.lang.String)
     public static void deleteMedieFile(android.content.Context,java.io.File)
-    public static void createImage(android.content.Context)
     public static void deleteIndividualFiles(android.content.Context,java.lang.String)
     public void onCreateFile(android.content.Context,int,java.lang.String,java.lang.String)
     public void onCreateImage(android.content.Context,java.lang.String)
@@ -9420,6 +9428,7 @@ com.jess.arms.base.delegate.AppDelegate_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mActivityLifecycleProvider
     private final javax.inject.Provider mActivityLifecycleForRxLifecycleProvider
+com.unity.xr.arcore.BuildConfig
 androidx.core.text.TextDirectionHeuristicCompat:
     public abstract boolean isRtl(char[],int,int)
 androidx.core.app.SharedElementCallback:
@@ -11992,6 +12001,9 @@ kotlin.ranges.ClosedDoubleRange
 kotlin.sequences.USequencesKt___USequencesKt
 dagger.internal.SetBuilder
 kotlin.sequences.TakeWhileSequence
+com.zqw.mobile.grainfull.di.module.ARFaceChangingModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.ARFaceChangingContract$Model bindARFaceChangingModel(com.zqw.mobile.grainfull.mvp.model.ARFaceChangingModel)
 com.zqw.mobile.grainfull.mvp.model.BulletChatModel_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
@@ -12450,6 +12462,10 @@ com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity_MembersInjector
 kotlin.text.StringsKt__StringsKt$splitToSequence$1
 com.jakewharton.rxbinding3.widget.SeekBarStopChangeEvent
 androidx.constraintlayout.core.motion.utils.ViewState
+com.unity3d.plugin.PermissionFragment:
+    public void <init>(com.unity3d.plugin.UnityAndroidPermissions$IPermissionRequestResult)
+    public static final java.lang.String PERMISSION_NAMES
+    private static final int PERMISSIONS_REQUEST_CODE
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$5
 com.zqw.mobile.grainfull.di.module.TemperatureModule:
     public void <init>()
@@ -12935,6 +12951,7 @@ com.blankj.utilcode.util.ObjectUtils
 androidx.appcompat.widget.AppCompatSpinner$DialogPopup:
     public int getHorizontalOriginalOffset()
 androidx.fragment.app.FragmentTabHost$DummyTabFactory
+com.zqw.mobile.grainfull.mvp.contract.ARFaceChangingContract
 kotlin.collections.ArraysKt___ArraysKt$withIndex$9
 kotlin.system.TimingKt
 androidx.recyclerview.widget.ItemTouchHelper:
@@ -13759,6 +13776,15 @@ lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter:
     public lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter setPrependedText(char[])
     public char getDecimalSeparator()
     public lecho.lib.hellocharts.formatter.SimpleLineChartValueFormatter setDecimalSeparator(char)
+com.zqw.mobile.grainfull.mvp.presenter.ARFaceChangingPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ARFaceChangingPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.jakewharton.rxbinding3.widget.AdapterViewItemSelectionObservable
 com.jess.arms.utils.DrawableProvider
 com.zqw.mobile.grainfull.di.module.AnimatedPortraitModule:
@@ -13832,6 +13858,7 @@ com.zqw.mobile.grainfull.mvp.presenter.SpecialEffectsPresenter_MembersInjector:
 com.unity3d.scar.adapter.v2000.BuildConfig
 androidx.databinding.adapters.SearchViewBindingAdapter
 androidx.lifecycle.ViewModelProvider$AndroidViewModelFactory
+com.zqw.mobile.grainfull.mvp.ui.activity.ARFaceChangingActivity_MembersInjector
 io.rx_cache2.internal.RxCacheComponent
 androidx.core.net.ConnectivityManagerCompat
 androidx.core.view.DisplayCompat$ModeCompat
@@ -15612,6 +15639,7 @@ com.jess.arms.integration.cache.CacheType$5:
     private static final int MAX_SIZE
     private static final float MAX_SIZE_MULTIPLIER
 androidx.appcompat.widget.ShareActionProvider$ShareActivityChooserModelPolicy
+com.unity.xr.arpresto.BuildConfig
 kotlin.collections.AbstractCollection
 androidx.viewpager.R
 com.unity3d.scar.adapter.common.IScarAdListenerWrapper
@@ -15791,6 +15819,7 @@ com.bumptech.glide.load.data.mediastore.ThumbFetcher$ImageThumbnailQuery:
     private static final java.lang.String PATH_SELECTION
 com.unity.purchasing.common.DelayedHandler
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_MembersInjector
+com.unity3d.plugin.UnityAndroidPermissions
 androidx.core.view.WindowInsetsAnimationCompat$Impl
 com.alibaba.ocean.rawsdk.client.exception.OceanClientException:
     public void <init>()
@@ -17642,6 +17671,8 @@ com.unity3d.scar.adapter.v1920.scarads.ScarInterstitialAdListener:
     public com.google.android.gms.ads.InterstitialAd _interstitialAd
     public com.unity3d.scar.adapter.common.IScarInterstitialAdListenerWrapper _adListenerWrapper
     public com.unity3d.scar.adapter.common.scarads.IScarLoadListener _loadListener
+com.zqw.mobile.grainfull.mvp.ui.fragment.GameFragment_ViewBinding$8:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.GameFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.SettingActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.SettingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.UmDataStatisticsActivity_ViewBinding$4:
@@ -17818,6 +17849,8 @@ com.airbnb.lottie.value.LottieFrameInfo:
     public float linearKeyframeProgress
     public float interpolatedKeyframeProgress
     public float overallProgress
+com.zqw.mobile.grainfull.mvp.ui.activity.ElfinPlayerActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ElfinPlayerActivity_ViewBinding this$0
 com.unity3d.scar.adapter.v1920.ScarAdapter$1$1:
     public final synthetic com.unity3d.scar.adapter.v1920.ScarAdapter$1 this$1
 com.unity3d.scar.adapter.v2000.scarads.ScarRewardedAdListener$3:
@@ -18043,6 +18076,8 @@ androidx.constraintlayout.core.motion.utils.KeyCycleOscillator:
     public androidx.constraintlayout.core.motion.utils.CurveFit mCurveFit
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding$4:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceOnlineSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ElfinPlayerActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ElfinPlayerActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity_ViewBinding this$0
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi26$1:
@@ -18457,6 +18492,8 @@ com.mikepenz.fastadapter.expandable.ExpandableExtension:
     public android.util.SparseIntArray mExpanded
 com.mikepenz.fastadapter.FastAdapter$4:
     public final synthetic com.mikepenz.fastadapter.FastAdapter this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ARFaceChangingActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ARFaceChangingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.CompressPicSizeFragment_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.CompressPicSizeFragment_ViewBinding this$0
 androidx.core.provider.CallbackWithHandler$1:
@@ -18482,6 +18519,8 @@ androidx.databinding.ViewDataBinding:
     public static final androidx.databinding.CallbackRegistry$NotifierCallback REBIND_NOTIFIER
     public static final java.lang.ref.ReferenceQueue sReferenceQueue
     public static final android.view.View$OnAttachStateChangeListener ROOT_REATTACHED_LISTENER
+com.zqw.mobile.grainfull.mvp.ui.activity.ARFaceChangingActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ARFaceChangingActivity_ViewBinding this$0
 com.unity3d.scar.adapter.v1950.scarads.ScarInterstitialAdListener$1:
     public final synthetic com.unity3d.scar.adapter.v1950.scarads.ScarInterstitialAdListener this$0
 androidx.transition.ChangeBounds$10:

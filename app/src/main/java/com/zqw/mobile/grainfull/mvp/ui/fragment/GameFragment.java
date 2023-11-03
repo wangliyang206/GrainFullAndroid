@@ -21,6 +21,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerGameComponent;
 import com.zqw.mobile.grainfull.mvp.contract.GameContract;
 import com.zqw.mobile.grainfull.mvp.presenter.GamePresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ARFaceChangingActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ARPortalActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AircraftWarActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CardFlippingActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ElfinPlayerActivity;
@@ -73,6 +74,7 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
             R.id.btn_fragmentgame_unity_stickpin,                                                   // 见缝插针
             R.id.btn_fragmentgame_unity_elfin,                                                      // 小精灵3D模型
             R.id.btn_fragmentgame_unity_facecapture,                                                // 脸谱变脸
+            R.id.btn_fragmentgame_unity_portal,                                                     // 传送门
     })
     @Override
     public void onClick(View v) {
@@ -104,6 +106,10 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
             case R.id.btn_fragmentgame_unity_facecapture:                                           // 脸谱变脸
                 ActivityUtils.startActivity(ARFaceChangingActivity.class);
                 break;
+            case R.id.btn_fragmentgame_unity_portal:                                                // 传送门
+                ActivityUtils.startActivity(ARPortalActivity.class);
+                break;
+
         }
     }
 

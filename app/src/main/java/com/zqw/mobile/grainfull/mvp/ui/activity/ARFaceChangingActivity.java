@@ -1,28 +1,25 @@
 package com.zqw.mobile.grainfull.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.blankj.utilcode.util.ActivityUtils;
-import com.jess.arms.di.component.AppComponent;
-import com.jess.arms.base.BaseActivity;
-import com.jess.arms.utils.ArmsUtils;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.ActivityUtils;
+import com.jess.arms.base.BaseActivity;
+import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 import com.unity3d.player.UnityPlayerActivity;
+import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerARFaceChangingComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ARFaceChangingContract;
 import com.zqw.mobile.grainfull.mvp.presenter.ARFaceChangingPresenter;
-import com.zqw.mobile.grainfull.R;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,7 +67,7 @@ public class ARFaceChangingActivity extends BaseActivity<ARFaceChangingPresenter
     @Override
     public void onClick(View v) {
         Bundle mBundle = new Bundle();
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_arfacechanging_model:                                                     // 查看机型
                 mBundle.putString("TITLE", "支持的设备");
                 mBundle.putString("URL", "https://developers.google.cn/ar/devices?hl=fi");
