@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_chat_gptweb"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg_color"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_chatgptweb_top"
+        layout="@layout/comm_top_theme_layout" />
+
+    <!--WebView-->
+    <com.zqw.mobile.grainfull.mvp.ui.widget.ProgressWebView
+        android:id="@+id/view_chatgptweb_webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" />
+</LinearLayout>

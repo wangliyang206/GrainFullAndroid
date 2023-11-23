@@ -42,6 +42,10 @@ public interface Constant {
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**
+     * ChatGPT 服务地址
+     */
+    String CHATGPT_URL = "https://api.openai.com/v1/chat/completions";
+    /**
      * 百度翻译 - 服务地址
      */
     String BAIDU_TRANSLATE_URL = "http://api.fanyi.baidu.com/api/trans/vip/translate";

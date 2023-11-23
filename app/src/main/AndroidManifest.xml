@@ -68,6 +68,14 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.ChatGPTActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".mvp.ui.activity.ChatGPTWebActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.ARPortalActivity"
             android:screenOrientation="portrait" />
         <activity

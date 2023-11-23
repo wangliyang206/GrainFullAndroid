@@ -83,4 +83,8 @@ public interface AccountService {
     // 获取首页数据
     @POST()
     Observable<HomeInfoResponse> queryHomePageInfo(@Url String Url);
+
+    // chatGPT 文字 会话
+    @POST()
+    Observable<ResponseBody> chatCreate(@Url String Url, @Body RequestBody params);
 }

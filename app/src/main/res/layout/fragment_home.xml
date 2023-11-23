@@ -731,6 +731,26 @@
                         android:padding="10dp"
                         android:text="计算经纬度距离" />
 
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_chatgptweb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="ChatGPTWeb" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmenthome_chatgpt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="ChatGPT" />
+
                 </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
