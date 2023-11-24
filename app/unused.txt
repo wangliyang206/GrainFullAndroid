@@ -505,6 +505,9 @@ com.zqw.mobile.grainfull.mvp.model.ScoreboardModel_MembersInjector:
     private final javax.inject.Provider mApplicationProvider
 com.jakewharton.rxbinding3.widget.AbsListViewScrollEvent
 androidx.collection.CircularIntArray
+com.zqw.mobile.grainfull.di.module.ARPortalModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.ARPortalContract$Model bindARPortalModel(com.zqw.mobile.grainfull.mvp.model.ARPortalModel)
 com.zqw.mobile.grainfull.app.tts.control.MySyntherizer:
     public int speak(java.lang.String)
     public int speak(java.lang.String,java.lang.String)
@@ -1175,6 +1178,13 @@ androidx.constraintlayout.core.SolverVariableValues:
     public int sizeInBytes()
     private static final boolean DEBUG
     private static final boolean HASH
+com.zqw.mobile.grainfull.mvp.model.ChatGPTModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ChatGPTModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 dagger.internal.MapFactory
 kotlin.io.ConsoleKt
 androidx.core.content.LocusIdCompat$Api29Impl
@@ -1650,6 +1660,9 @@ kotlin.text.CharsetsKt
 lecho.lib.hellocharts.gesture.PieChartTouchHandler:
     public boolean isRotationEnabled()
     public static final int FLING_VELOCITY_DOWNSCALE
+com.zqw.mobile.grainfull.di.module.ChatGPTWebModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.ChatGPTWebContract$Model bindChatGPTWebModel(com.zqw.mobile.grainfull.mvp.model.ChatGPTWebModel)
 com.paginate.recycler.RecyclerPaginate$Builder
 com.unity3d.player.o$4
 com.unity.xr.arpresto.R
@@ -1816,6 +1829,7 @@ com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutForumFragment_MembersInjector:
 com.jakewharton.rxbinding3.view.MenuItemClickObservable
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$PathRotateSet
 io.rx_cache2.internal.migration.UpgradeCacheVersion
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_MembersInjector
 com.jakewharton.rxbinding3.widget.AdapterDataChangeObservable
 androidx.constraintlayout.core.widgets.Chain:
     public void <init>()
@@ -3109,6 +3123,12 @@ androidx.constraintlayout.motion.widget.KeyTimeCycle$Loader:
     private static final int WAVE_OFFSET
 kotlin.contracts.ContractBuilder$DefaultImpls
 kotlin.jvm.functions.Function4
+com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
 com.unity3d.scar.adapter.v1920.ScarAdapter:
     static synthetic java.util.Map access$000(com.unity3d.scar.adapter.v1920.ScarAdapter)
     static synthetic java.util.Map access$100(com.unity3d.scar.adapter.v1920.ScarAdapter)
@@ -3269,6 +3289,15 @@ androidx.appcompat.widget.ScrollingTabContainerView:
     private static final int FADE_DURATION
 com.jakewharton.rxbinding3.widget.AdapterViewItemLongClickObservable
 kotlin.io.LineReader
+com.zqw.mobile.grainfull.mvp.presenter.ARPortalPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ARPortalPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 androidx.databinding.ViewDataBinding$ObservableReference
 com.jakewharton.rxbinding3.view.RxView__ViewKeyObservableKt
 androidx.databinding.adapters.CompoundButtonBindingAdapter$1
@@ -4021,6 +4050,9 @@ kotlin.text.StringsKt___StringsKt$chunkedSequence$1
 com.blankj.utilcode.util.CacheMemoryUtils$CacheValue
 com.zqw.mobile.grainfull.R
 androidx.databinding.adapters.ExpandableListViewBindingAdapter
+com.zqw.mobile.grainfull.di.module.ChatGPTModule:
+    public void <init>()
+    abstract com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract$Model bindChatGPTModel(com.zqw.mobile.grainfull.mvp.model.ChatGPTModel)
 com.blankj.utilcode.util.KeyboardUtils:
     private void <init>()
     public static void showSoftInput()
@@ -4828,6 +4860,7 @@ androidx.media.MediaBrowserServiceCompat$BrowserRoot:
     public static final java.lang.String EXTRA_SUGGESTED
     public static final java.lang.String EXTRA_SUGGESTION_KEYWORDS
 androidx.recyclerview.widget.SortedListAdapterCallback
+com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract
 com.jess.arms.http.imageloader.glide.GildeUtils
 androidx.transition.Styleable$ChangeTransform
 com.airbnb.lottie.parser.AnimatableValueParser:
@@ -5188,6 +5221,7 @@ com.jakewharton.rxbinding3.view.RxView__ViewVisibilityConsumerKt
 com.airbnb.lottie.value.LottieValueCallback:
     public void <init>()
     public final void setValue(java.lang.Object)
+com.zqw.mobile.grainfull.mvp.ui.activity.ARPortalActivity_MembersInjector
 androidx.appcompat.view.menu.ActionMenuItem:
     public androidx.appcompat.view.menu.ActionMenuItem setExclusiveCheckable(boolean)
     public boolean invoke()
@@ -8892,6 +8926,13 @@ com.jakewharton.rxbinding3.view.ViewLongClickObservable$Listener
 com.zqw.mobile.grainfull.mvp.contract.SplashContract$Model:
     public abstract io.reactivex.Observable validToken()
 kotlin.concurrent.ThreadsKt$thread$thread$1
+com.zqw.mobile.grainfull.mvp.model.ChatGPTWebModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ChatGPTWebModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 androidx.core.text.util.LinkifyCompat$LinkSpec
 androidx.loader.app.LoaderManagerImpl$LoaderViewModel:
     void startCreatingLoader()
@@ -9220,6 +9261,13 @@ com.zqw.mobile.grainfull.di.module.GoodsListModule_ProviderOperatorFactory
 androidx.core.os.ParcelCompat
 com.zqw.mobile.grainfull.mvp.ui.holder.GoodsOneItemHolder:
     private void setLayoutMargin(boolean)
+com.zqw.mobile.grainfull.mvp.model.ARPortalModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ARPortalModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 permissions.dispatcher.GrantableRequest
 com.paginate.abslistview.LoadingListItemCreator
 androidx.appcompat.app.ActionBar$OnNavigationListener
@@ -12093,6 +12141,7 @@ androidx.appcompat.content.res.AppCompatResources:
     private void <init>()
     private static final java.lang.String LOG_TAG
 com.blankj.utilcode.util.SpanUtils$ShaderSpan
+com.zqw.mobile.grainfull.mvp.contract.ARPortalContract
 kotlin.collections.AbstractMap$keys$1$iterator$1
 io.rx_cache2.internal.migration.GetClassesToEvictFromMigrations
 com.unity3d.player.o$a
@@ -15523,6 +15572,7 @@ com.zqw.mobile.grainfull.mvp.presenter.PicturePipettePresenter_MembersInjector:
     private final javax.inject.Provider mApplicationProvider
     private final javax.inject.Provider mImageLoaderProvider
     private final javax.inject.Provider mAppManagerProvider
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTWebActivity_MembersInjector
 io.rx_cache2.internal.Disk_Factory
 androidx.databinding.ObservableShort:
     public varargs void <init>(androidx.databinding.Observable[])
@@ -15633,6 +15683,15 @@ kotlin.coroutines.intrinsics.IntrinsicsKt:
     private void <init>()
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$4
 com.jakewharton.rxbinding3.widget.RxToolbar__ToolbarItemClickObservableKt
+com.zqw.mobile.grainfull.mvp.presenter.ChatGPTWebPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ChatGPTWebPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mImageLoaderProvider
+    private final javax.inject.Provider mAppManagerProvider
 com.unity3d.player.o$1
 com.unity.purchasing.common.IStoreCallback
 com.jess.arms.integration.cache.CacheType$5:
@@ -16213,6 +16272,7 @@ androidx.constraintlayout.core.motion.key.MotionKeyAttributes
 com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity_MembersInjector
 com.zqw.mobile.grainfull.di.module.CardOverlapModule_ProvideAccountManagerFactory
 com.mikepenz.fastadapter.commons.utils.FastAdapterDiffUtil
+com.zqw.mobile.grainfull.mvp.contract.ChatGPTWebContract
 androidx.constraintlayout.core.motion.utils.StopEngine:
     public abstract java.lang.String debug(java.lang.String,float)
     public abstract float getVelocity(float)
@@ -16339,6 +16399,8 @@ com.bumptech.glide.RequestManager:
     public synthetic bridge java.lang.Object load(android.graphics.Bitmap)
 com.blankj.utilcode.util.NumberUtils$1
 androidx.coordinatorlayout.R
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTWebActivity:
+    private static final java.lang.String APP_CACAHE_DIRNAME
 com.airbnb.lottie.manager.package-info
 com.airbnb.lottie.parser.ShapeFillParser:
     private void <init>()
@@ -17405,6 +17467,8 @@ com.bumptech.glide.disklrucache.DiskLruCache$Value:
     public final long[] lengths
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$23:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding this$0
 androidx.transition.PatternPathMotion:
     public android.graphics.Path mOriginalPatternPath
 com.zqw.mobile.grainfull.mvp.ui.fragment.GameFragment_ViewBinding$2:
@@ -17604,6 +17668,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.UmDataStatisticsActivity_ViewBinding$5:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.UmDataStatisticsActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.widget.card.NumCardView:
     public float downX
+com.zqw.mobile.grainfull.mvp.ui.fragment.GameFragment_ViewBinding$9:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.GameFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.PictureMosaicActivity_ViewBinding$6:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PictureMosaicActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$3:
@@ -18265,6 +18331,8 @@ com.unity3d.scar.adapter.v1920.signals.QueryInfoCallback:
 androidx.core.text.TextDirectionHeuristicsCompat:
     public static final androidx.core.text.TextDirectionHeuristicCompat ANYRTL_LTR
     public static final androidx.core.text.TextDirectionHeuristicCompat LOCALE
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$37:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 androidx.loader.app.LoaderManagerImpl$LoaderViewModel:
     public boolean mCreatingLoader
 com.zqw.mobile.grainfull.mvp.ui.activity.TemperatureActivity_ViewBinding$1:
@@ -18285,6 +18353,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity_ViewBinding$1:
 androidx.recyclerview.widget.RecyclerView$ItemAnimator$ItemHolderInfo:
     public int right
     public int bottom
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$36:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.jess.arms.base.BaseFragment:
     public final java.lang.String TAG
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$35:
@@ -18895,6 +18965,8 @@ com.blankj.utilcode.util.ThreadUtils$UtilsThreadFactory$2:
 com.bumptech.glide.RequestManager:
     public static final com.bumptech.glide.request.RequestOptions DECODE_TYPE_GIF
     public static final com.bumptech.glide.request.RequestOptions DOWNLOAD_ONLY_OPTIONS
+com.zqw.mobile.grainfull.mvp.ui.activity.ARPortalActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ARPortalActivity_ViewBinding this$0
 androidx.exifinterface.media.ExifInterface:
     public boolean mHasThumbnail
     public int mThumbnailOffset
@@ -18926,6 +18998,8 @@ com.unity3d.scar.adapter.v1920.ScarAdapter$1:
     public final synthetic com.unity3d.scar.adapter.v1920.ScarAdapter this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$14:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ARPortalActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ARPortalActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
 com.cjt2325.cameralibrary.state.BorrowPictureState:
