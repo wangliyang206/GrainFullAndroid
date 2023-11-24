@@ -71,7 +71,7 @@
             android:name=".mvp.ui.activity.ChatGPTActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".mvp.ui.activity.ChatGPTWebActivity"
             android:screenOrientation="portrait" />

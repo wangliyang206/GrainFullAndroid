@@ -19,6 +19,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
 
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.jess.arms.base.BaseActivity;
@@ -43,7 +44,7 @@ import butterknife.OnClick;
 public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements ChatGPTContract.View {
     /*--------------------------------控件信息--------------------------------*/
     @BindView(R.id.view_chatgpt_scrollView)
-    ScrollView mScrollView;                                                                         // 外层 - 滑动布局
+    NestedScrollView mScrollView;                                                                   // 外层 - 滑动布局
     @BindView(R.id.lila_chatgpt_chatlayout)
     LinearLayout lilaChatLayout;                                                                    // 消息总布局
     @BindView(R.id.edit_chatgpt_input)
@@ -130,9 +131,13 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
      * 添加右侧消息(显示我的消息)
      */
     private void addRightMsg(String text) {
+        // 控制布局
         editInput.getText().clear();
-        LinearLayout mLinearLayoutAdd = LayoutInflater.from(this).inflate(R.layout.chat_right_textview, null).findViewById(R.id.chat_right_layout);
+        btnSend.setEnabled(false);
+        btnSend.setText("别急");
 
+        // 添加聊天布局
+        LinearLayout mLinearLayoutAdd = LayoutInflater.from(this).inflate(R.layout.chat_right_textview, null).findViewById(R.id.chat_right_layout);
         mLinearLayoutAdd.setBackground(ContextCompat.getDrawable(this, R.color.c_f7f8fa));
         TextView textView = mLinearLayoutAdd.findViewById(R.id.txvi_chatrightlayout_chat);
         textView.setText(text);
@@ -164,10 +169,12 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
      */
     @Override
     public void onLoadMessage(StringBuffer info) {
-        // response返回拼接
-        txviReceiveMsg.setText(info.toString());
+        runOnUiThread(() -> {
+            // response返回拼接
+            txviReceiveMsg.setText(info.toString());
 
-        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+        });
     }
 
     /**
@@ -175,7 +182,11 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
      */
     @Override
     public void onSucc() {
-        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+        runOnUiThread(() -> {
+            mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            btnSend.setEnabled(true);
+            btnSend.setText("发送");
+        });
     }
 
     /**

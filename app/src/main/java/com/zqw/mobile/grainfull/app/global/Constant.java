@@ -44,7 +44,10 @@ public interface Constant {
     /**
      * ChatGPT 服务地址
      */
-    String CHATGPT_URL = "https://api.openai.com/v1/chat/completions";
+//    String CHATGPT_URL = "https://api.openai.com/v1/chat/completions";
+    String CHATGPT_URL = "https://openkey.cloud/v1/chat/completions";
+    // /api/openai
+    String CHATGPT_KEY = "sk-UpxszeOO0Bjag203991240BbCa6b48Dc89C90f1b451b9c39";
     /**
      * 百度翻译 - 服务地址
      */

@@ -17,13 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/view_chatgpt_scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6">
+            android:layout_weight="1"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:id="@+id/lila_chatgpt_chatlayout"
@@ -31,11 +33,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_margin="10dp"
             android:background="@drawable/edittext_rounded_background">
 

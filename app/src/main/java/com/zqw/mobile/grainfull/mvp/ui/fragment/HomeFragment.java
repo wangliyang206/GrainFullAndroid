@@ -199,6 +199,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_voicerecog,                                                       // 语音识别
             R.id.btn_fragmenthome_speechsynthesis,                                                  // 语音合成
 
+            R.id.btn_fragmenthome_intelligent_chatgptweb,                                           // ChatGPT Web版
+            R.id.btn_fragmenthome_intelligent_chatgpt,                                              // ChatGPT
+
             R.id.btn_fragmenthome_color_colorpicker,                                                // 取色板
             R.id.btn_fragmenthome_color_picturepipette,                                             // 吸管工具
             R.id.btn_fragmenthome_color_codeconversion,                                             // 颜色码转换
@@ -224,8 +227,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_other_scoreboard,                                                 // 记分牌
             R.id.btn_fragmenthome_stopwatch,                                                        // 计时器
             R.id.btn_fragmenthome_calculatedistance,                                                // 在线计算经纬度距离
-            R.id.btn_fragmenthome_chatgptweb,                                                       // ChatGPT Web版
-            R.id.btn_fragmenthome_chatgpt,                                                          // ChatGPT
     })
     @Override
     public void onClick(View v) {
@@ -271,6 +272,13 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_speechsynthesis:                                             // 语音合成
                 ActivityUtils.startActivity(BaiduSpeechSynthesisActivity.class);
+                break;
+
+            case R.id.btn_fragmenthome_intelligent_chatgptweb:                                      // ChatGPT Web版
+                ActivityUtils.startActivity(ChatGPTWebActivity.class);
+                break;
+            case R.id.btn_fragmenthome_intelligent_chatgpt:                                         // ChatGPT
+                ActivityUtils.startActivity(ChatGPTActivity.class);
                 break;
 
             case R.id.btn_fragmenthome_color_colorpicker:                                           // 取色板
@@ -340,12 +348,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_calculatedistance:                                           // 在线计算经纬度距离
                 ActivityUtils.startActivity(CalculateDistanceActivity.class);
-                break;
-            case R.id.btn_fragmenthome_chatgptweb:                                                  // ChatGPT Web版
-                ActivityUtils.startActivity(ChatGPTWebActivity.class);
-                break;
-            case R.id.btn_fragmenthome_chatgpt:                                                     // ChatGPT
-                ActivityUtils.startActivity(ChatGPTActivity.class);
                 break;
         }
     }
