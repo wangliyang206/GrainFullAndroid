@@ -12,7 +12,6 @@
     android:paddingBottom="6dp">
 
     <ImageView
-        android:id="@+id/imvi_chatleftlayout_chat"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:scaleType="fitCenter"
@@ -25,5 +24,12 @@
         android:layout_marginTop="5dp"
         android:textColor="@android:color/black"
         android:textIsSelectable="true" />
+
+    <ImageView
+        android:id="@+id/imvi_chatleftlayout_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:visibility="gone" />
 
 </LinearLayout>

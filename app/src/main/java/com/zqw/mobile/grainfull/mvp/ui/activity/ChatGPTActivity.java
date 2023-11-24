@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 
 import com.blankj.utilcode.util.KeyboardUtils;
+import com.bumptech.glide.Glide;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -54,6 +56,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
     // 接收的消息
     private TextView txviReceiveMsg;
+    private ImageView imviReceiveMsg;
     /*--------------------------------业务信息--------------------------------*/
 
     /**
@@ -122,7 +125,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
             addLeftMsg("正在输入中...", R.color.c_f2f3f5);
 
             if (mPresenter != null) {
-                mPresenter.chatCreate(message);
+                mPresenter.chatCreate(1, message);
             }
         }
     }
@@ -155,6 +158,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         LinearLayout mLinearLayoutAdd = LayoutInflater.from(this).inflate(R.layout.chat_left_textview, null).findViewById(R.id.chat_left_layout);
 
         mLinearLayoutAdd.setBackground(ContextCompat.getDrawable(this, color));
+        imviReceiveMsg = mLinearLayoutAdd.findViewById(R.id.imvi_chatleftlayout_chat);
         txviReceiveMsg = mLinearLayoutAdd.findViewById(R.id.txvi_chatleftlayout_chat);
         txviReceiveMsg.setText(text);
         if (mLinearLayoutAdd.getParent() != null) {
@@ -165,16 +169,31 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     }
 
     /**
-     * 加载消息
+     * 加载聊天消息
      */
     @Override
     public void onLoadMessage(StringBuffer info) {
         runOnUiThread(() -> {
+            imviReceiveMsg.setVisibility(View.GONE);
+            txviReceiveMsg.setVisibility(View.VISIBLE);
+
             // response返回拼接
             txviReceiveMsg.setText(info.toString());
 
             mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
         });
+    }
+
+    /**
+     * 加载图片消息
+     */
+    @Override
+    public void onLoadImages(String url) {
+        imviReceiveMsg.setVisibility(View.VISIBLE);
+        txviReceiveMsg.setVisibility(View.GONE);
+        Glide.with(imviReceiveMsg).load(url).into(imviReceiveMsg);
+
+        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
     }
 
     /**

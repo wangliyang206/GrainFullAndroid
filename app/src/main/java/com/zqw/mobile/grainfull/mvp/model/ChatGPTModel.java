@@ -50,6 +50,14 @@ public class ChatGPTModel extends BaseModel implements ChatGPTContract.Model {
                 "\"messages\": [{\"role\": \"user\", \"content\":  \"" + message + "\"}] , " +
                 "\"stream\" : true}";
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);
-        return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.CHATGPT_URL, requestBodyJson);
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.CHATGPT_CHAT_URL, requestBodyJson);
+    }
+
+    @Override
+    public Observable<ResponseBody> chatImg(String message) {
+        // 转换成Json
+        message = "{\"prompt\": \"" + message + "\", \"n\": 1, \"size\" : \"512x512\"}";
+        RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.CHATGPT_IMAGE_URL, requestBodyJson);
     }
 }

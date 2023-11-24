@@ -100,7 +100,10 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
         } else if (request.url().toString().contains("image-process/v1/doc_repair")) {
             // 百度接口做特殊处理
             return chain.request().newBuilder().addHeader("Content-Type", "application/x-www-form-urlencoded").build();
-        } else if (request.url().toString().contains(Constant.CHATGPT_URL)) {
+        } else if (request.url().toString().contains(Constant.CHATGPT_CHAT_URL)) {
+            // ChatGPT 接口做特殊处理
+            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.CHATGPT_KEY).build();
+        } else if (request.url().toString().contains(Constant.CHATGPT_IMAGE_URL)) {
             // ChatGPT 接口做特殊处理
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.CHATGPT_KEY).build();
         } else {

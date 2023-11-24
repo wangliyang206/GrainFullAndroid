@@ -42,11 +42,20 @@ public interface Constant {
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**
-     * ChatGPT 服务地址
+     * ChatGPT “官方”服务地址
      */
 //    String CHATGPT_URL = "https://api.openai.com/v1/chat/completions";
-    String CHATGPT_URL = "https://openkey.cloud/v1/chat/completions";
-    // /api/openai
+    /**
+     * ChatGPT “OpenKEY”服务“闲聊”地址(Chat3.5)
+     */
+    String CHATGPT_CHAT_URL = "https://openkey.cloud/v1/chat/completions";
+    /**
+     * ChatGPT “OpenKEY”服务“图片”地址(Chat3.5)
+     */
+    String CHATGPT_IMAGE_URL = "https://openkey.cloud/v1/images/generations";
+    /**
+     * ChatGPT key，有额度(1元 500000 tokens)
+     */
     String CHATGPT_KEY = "sk-UpxszeOO0Bjag203991240BbCa6b48Dc89C90f1b451b9c39";
     /**
      * 百度翻译 - 服务地址
