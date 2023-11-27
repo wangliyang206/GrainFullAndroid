@@ -125,7 +125,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
             addLeftMsg("正在输入中...", R.color.c_f2f3f5);
 
             if (mPresenter != null) {
-                mPresenter.chatCreate(1, message);
+                mPresenter.chatCreate(message);
             }
         }
     }

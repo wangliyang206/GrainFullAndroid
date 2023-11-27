@@ -1,7 +1,5 @@
 package com.zqw.mobile.grainfull.mvp.presenter;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
@@ -48,12 +46,29 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     }
 
     /**
-     * 创建 聊天/图片 会话
+     * 创建会话，类型：聊天、图片
      *
-     * @param type    1 聊天，2 图片
      * @param message 需要内容
      */
-    public void chatCreate(int type, String message) {
+    public void chatCreate(String message) {
+        // 判断是文字还是图片，这里使用“模糊匹配”
+        String condition = ".*[制作|生成].*[图|照][片|像].*";
+        if (message.matches(condition)) {
+            // 类型：图片会话
+            onSmartMessaging(2, message);
+        } else {
+            // 类型：文字会话
+            onSmartMessaging(1, message);
+        }
+    }
+
+    /**
+     * 创建会话
+     *
+     * @param type    类型：1聊天，2图片
+     * @param message 需要内容
+     */
+    public void onSmartMessaging(int type, String message) {
         if (type == 1) {
             // 创建 聊天 会话
             mModel.chatCreate(message)
@@ -111,7 +126,7 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                                 String respStr = info.string();
                                 Timber.d("##### onResponse: %s", respStr);
                                 Gson gson = new Gson();
-                                chatImg = gson.fromJson(respStr , ChatImg.class);
+                                chatImg = gson.fromJson(respStr, ChatImg.class);
                                 mRootView.onLoadImages(chatImg.getData().get(0).getUrl());
                                 mRootView.onSucc();
                             } catch (IOException e) {
