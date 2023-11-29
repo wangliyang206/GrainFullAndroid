@@ -199,8 +199,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_voicerecog,                                                       // 语音识别
             R.id.btn_fragmenthome_speechsynthesis,                                                  // 语音合成
 
-            R.id.btn_fragmenthome_intelligent_chatgptweb,                                           // ChatGPT Web版
             R.id.btn_fragmenthome_intelligent_chatgpt,                                              // ChatGPT
+            R.id.btn_fragmenthome_intelligent_chatgptweb,                                           // ChatGPT Web版
 
             R.id.btn_fragmenthome_color_colorpicker,                                                // 取色板
             R.id.btn_fragmenthome_color_picturepipette,                                             // 吸管工具
@@ -274,11 +274,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 ActivityUtils.startActivity(BaiduSpeechSynthesisActivity.class);
                 break;
 
-            case R.id.btn_fragmenthome_intelligent_chatgptweb:                                      // ChatGPT Web版
-                ActivityUtils.startActivity(ChatGPTWebActivity.class);
-                break;
             case R.id.btn_fragmenthome_intelligent_chatgpt:                                         // ChatGPT
                 ActivityUtils.startActivity(ChatGPTActivity.class);
+                break;
+            case R.id.btn_fragmenthome_intelligent_chatgptweb:                                      // ChatGPT Web版
+                ActivityUtils.startActivity(ChatGPTWebActivity.class);
                 break;
 
             case R.id.btn_fragmenthome_color_colorpicker:                                           // 取色板

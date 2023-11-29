@@ -39,6 +39,7 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     private StringBuffer buffer;
     private ChatCompletionChunk chatCompletionChunk;
     private ChatImg chatImg;
+    private Gson gson = new Gson();
 
     @Inject
     public ChatGPTPresenter(ChatGPTContract.Model model, ChatGPTContract.View rootView) {
@@ -115,7 +116,8 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                         public void onError(Throwable t) {
                             Timber.i("##### t=%s", t.getMessage());
                             buffer = new StringBuffer();
-                            buffer.append("请求超时，请检查网络并重试");
+//                            buffer.append("请求超时，请检查网络并重试");
+                            buffer.append("openkey暂不支持图片输入");
                             mRootView.onLoadMessage(buffer);
                             mRootView.onSucc();
                         }
@@ -125,7 +127,6 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                             try {
                                 String respStr = info.string();
                                 Timber.d("##### onResponse: %s", respStr);
-                                Gson gson = new Gson();
                                 chatImg = gson.fromJson(respStr, ChatImg.class);
                                 mRootView.onLoadImages(chatImg.getData().get(0).getUrl());
                                 mRootView.onSucc();
@@ -143,7 +144,6 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     private void onAnalysis(ResponseBody info) {
         // 流式输出
         buffer = new StringBuffer();
-        Gson gson = new Gson();
 
         // 开启线程处理
         new Thread(() -> {
@@ -224,5 +224,6 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
+        this.gson = null;
     }
 }

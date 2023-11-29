@@ -72,6 +72,8 @@ public final class AccountManager {
      * 是否同意隐私政策
      */
     private static final String PRIVACY_POLICY = "privacyPolicy";
+
+    private static final String CHATGPT_VERSION = "ChatGPTVersion";
     /*----------------------------------------------操作对象-------------------------------------------------*/
 
     private AppPreferencesHelper spHelper;
@@ -423,6 +425,24 @@ public final class AccountManager {
      */
     public void setPrivacyPolicy(boolean isValue) {
         spHelper.put(PRIVACY_POLICY, isValue);
+    }
+
+    /**
+     * 获取ChatGPT版本
+     */
+    public String getChatGptVersion() {
+        return spHelper.getPref(CHATGPT_VERSION, "gpt-3.5-turbo");
+    }
+
+    /**
+     * 设置ChatGPT版本
+     */
+    public void setChatGptVersion(boolean isLargeVersion) {
+        if (isLargeVersion) {
+            spHelper.put(CHATGPT_VERSION, "gpt-4");
+        } else {
+            spHelper.put(CHATGPT_VERSION, "gpt-3.5-turbo");
+        }
     }
 
 }

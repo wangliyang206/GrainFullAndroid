@@ -8,9 +8,50 @@
     android:orientation="vertical">
 
     <!--头部-->
-    <include
-        android:id="@+id/view_chatgpt_top"
-        layout="@layout/comm_top_theme_layout" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+
+        <RadioGroup
+            android:id="@+id/radio_chatgpt_group"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/financial_bg_frame"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <RadioButton
+                android:id="@+id/radio_chatgpt_x"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/financial_order_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="1"
+                android:text="GPT-3.5"
+                android:textColor="@color/radio_btn_selector"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/radio_chatgpt_d"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:button="@null"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="2"
+                android:text="GPT-4"
+                android:textColor="@color/radio_btn_selector"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
 
     <!--内容-->
     <LinearLayout
@@ -40,15 +81,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="10dp"
-            android:background="@drawable/edittext_rounded_background">
+            android:background="@drawable/edittext_rounded_background"
+            android:padding="5dp">
 
             <EditText
                 android:id="@+id/edit_chatgpt_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:background="@null"
                 android:hint="请输入消息..."
+                android:maxLength="1000"
                 android:maxLines="3"
                 android:padding="10dp"
                 android:textColor="@android:color/black"
@@ -60,8 +102,8 @@
             <Button
                 android:id="@+id/btn_chatgpt_send"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/btn_bg_selector"
                 android:text="发送"
                 android:textColor="@android:color/white"

@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
+import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.api.AccountService;
@@ -30,6 +31,8 @@ public class ChatGPTModel extends BaseModel implements ChatGPTContract.Model {
     Gson mGson;
     @Inject
     Application mApplication;
+    @Inject
+    AccountManager mAccountManager;
 
     @Inject
     public ChatGPTModel(IRepositoryManager repositoryManager) {
@@ -41,12 +44,13 @@ public class ChatGPTModel extends BaseModel implements ChatGPTContract.Model {
         super.onDestroy();
         this.mGson = null;
         this.mApplication = null;
+        this.mAccountManager = null;
     }
 
     @Override
     public Observable<ResponseBody> chatCreate(String message) {
         // 转换成Json
-        message = "{\"model\": \"gpt-3.5-turbo\", " +
+        message = "{\"model\": \"" + mAccountManager.getChatGptVersion() + "\", " +
                 "\"messages\": [{\"role\": \"user\", \"content\":  \"" + message + "\"}] , " +
                 "\"stream\" : true}";
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);

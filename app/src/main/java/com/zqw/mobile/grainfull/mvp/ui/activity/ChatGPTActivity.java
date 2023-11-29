@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -28,9 +30,12 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.di.component.DaggerChatGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
 import com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,6 +50,14 @@ import butterknife.OnClick;
  */
 public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements ChatGPTContract.View {
     /*--------------------------------控件信息--------------------------------*/
+    @BindView(R.id.radio_chatgpt_group)
+    RadioGroup mRadioGroup;                                                                         // 切换版本
+    @BindView(R.id.radio_chatgpt_x)
+    RadioButton radioMinVersion;                                                                    // 小版本
+    @BindView(R.id.radio_chatgpt_d)
+    RadioButton radioMaxVersion;                                                                    // 大版本
+
+
     @BindView(R.id.view_chatgpt_scrollView)
     NestedScrollView mScrollView;                                                                   // 外层 - 滑动布局
     @BindView(R.id.lila_chatgpt_chatlayout)
@@ -58,6 +71,14 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     private TextView txviReceiveMsg;
     private ImageView imviReceiveMsg;
     /*--------------------------------业务信息--------------------------------*/
+    @Inject
+    AccountManager mAccountManager;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.mAccountManager = null;
+    }
 
     /**
      * 将状态栏改为浅色、深色模式(状态栏 icon 和字体，false = 浅色，true = 深色)
@@ -91,8 +112,25 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("ChatGPT");
-
+        mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.radio_chatgpt_x) {
+                mAccountManager.setChatGptVersion(false);
+                radioMinVersion.setBackgroundResource(R.drawable.financial_order_selector);
+//                radioMinVersion.setTextSize(14);
+//                radioMinVersion.setTextAppearance(R.style.txt_bold);
+                radioMaxVersion.setBackground(null);
+//                radioMaxVersion.setTextSize(12);
+//                radioMaxVersion.setTextAppearance(R.style.txt_nomal);
+            } else {
+                mAccountManager.setChatGptVersion(true);
+                radioMinVersion.setBackground(null);
+//                radioMinVersion.setTextSize(12);
+//                radioMinVersion.setTextAppearance(R.style.txt_nomal);
+                radioMaxVersion.setBackgroundResource(R.drawable.financial_order_selector);
+//                radioMaxVersion.setTextSize(14);
+//                radioMaxVersion.setTextAppearance(R.style.txt_bold);
+            }
+        });
         // 添加一条消息
         addLeftMsg("你好，我是Ai小助手，需要帮助吗？", R.color.c_f2f3f5);
     }

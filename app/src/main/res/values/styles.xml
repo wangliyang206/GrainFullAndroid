@@ -194,4 +194,12 @@
     <declare-styleable name="RoundImageView">
         <attr name="roundRadius" format="reference|dimension" />
     </declare-styleable>
+
+    <style name="txt_nomal" parent="Theme.AppCompat.Light">
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="txt_bold" parent="Theme.AppCompat.Light">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
