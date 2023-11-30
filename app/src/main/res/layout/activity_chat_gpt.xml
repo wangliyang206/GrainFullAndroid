@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_chat_gpt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/layout_bg_color"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <!--头部-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize">
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/imvi_commtop_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_bg_translucent_selector"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:focusable="true"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_comm_back" />
 
         <RadioGroup
             android:id="@+id/radio_chatgpt_group"
@@ -58,7 +73,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <androidx.core.widget.NestedScrollView
@@ -76,42 +90,65 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="10dp"
             android:background="@drawable/edittext_rounded_background"
+            android:elevation="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:padding="5dp">
 
-            <EditText
-                android:id="@+id/edit_chatgpt_input"
+            <RelativeLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入消息..."
-                android:maxLength="1000"
-                android:maxLines="3"
-                android:padding="10dp"
-                android:textColor="@android:color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/btn_chatgpt_send"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="35dp"
+                android:layout_weight="1">
 
-            <Button
-                android:id="@+id/btn_chatgpt_send"
-                android:layout_width="50dp"
+                <TextView
+                    android:id="@+id/view_chatgpt_voice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:text="按住说话"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/edit_chatgpt_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="发消息..."
+                    android:maxLength="1000"
+                    android:maxLines="3"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text=""
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/imvi_chatgpt_switch"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/btn_bg_selector"
-                android:text="发送"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/edit_chatgpt_input"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@mipmap/icon_chat_voice" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imvi_chatgpt_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:src="@mipmap/icon_send_msg"
+                android:visibility="gone" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

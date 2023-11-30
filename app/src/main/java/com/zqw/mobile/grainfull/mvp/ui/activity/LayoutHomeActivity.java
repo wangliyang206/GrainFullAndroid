@@ -84,11 +84,6 @@ public class LayoutHomeActivity extends BaseActivity<LayoutHomePresenter> implem
     }
 
     @Override
-    public boolean isStatusBarFragment() {
-        return true;
-    }
-
-    @Override
     protected void onDestroy() {
         if (iconList != null) {
             iconList.clear();

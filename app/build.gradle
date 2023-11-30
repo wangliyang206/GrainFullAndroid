@@ -287,8 +287,6 @@ dependencies {
     //################################第三方工具################################
     // 添加腾讯bug崩溃日志跟踪(其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9)
     implementation rootProject.ext.dependencies["bugly-crashreport"]
-    // 工具类(https://github.com/Blankj/AndroidUtilCode)
-    implementation rootProject.ext.dependencies["utilcodex"]
     // 支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
     implementation rootProject.ext.dependencies["tray"]
     // 对话框(https://github.com/afollestad/material-dialogs)

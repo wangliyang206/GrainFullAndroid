@@ -18,8 +18,10 @@ public interface ChatGPTContract {
     interface View extends IView {
         // 加载消息
         void onLoadMessage(StringBuffer info);
+
         // 加载图片
         void onLoadImages(String url);
+
         // 完成一次会话
         void onSucc();
     }
@@ -28,6 +30,7 @@ public interface ChatGPTContract {
     interface Model extends IModel {
         // 创建“聊天”会话
         Observable<ResponseBody> chatCreate(String message);
+
         // 创建“图片”会话
         Observable<ResponseBody> chatImg(String message);
     }

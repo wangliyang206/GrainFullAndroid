@@ -50,8 +50,8 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
      * @return 不使用
      */
     @Override
-    public boolean useStatusBar() {
-        return false;
+    public int useStatusBarColor() {
+        return -1;
     }
 
     @Override

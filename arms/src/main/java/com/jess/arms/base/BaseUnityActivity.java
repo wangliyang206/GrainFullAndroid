@@ -31,7 +31,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.jaeger.library.StatusBarUtil;
+import com.blankj.utilcode.util.BarUtils;
 import com.jess.arms.R;
 import com.jess.arms.base.delegate.IActivity;
 import com.jess.arms.integration.cache.Cache;
@@ -180,17 +180,12 @@ public abstract class BaseUnityActivity<P extends IPresenter> extends UnityPlaye
     }
 
     /**
-     * 是否使用状态栏为透明功能,默认为使用(true)
+     * 是否设置状态栏为透明,默认为透明
+     * 透明：true，会隐藏顶部颜色条，做头部布局时需要“加高”顶部。
+     * 非透明：false，显示顶部状态栏，颜色跟随系统设置。忌与滑动返回一起使用。
      */
     public boolean useStatusBar() {
         return true;
-    }
-
-    /**
-     * 是否Fragment使用StatusBar
-     */
-    public boolean isStatusBarFragment() {
-        return false;
     }
 
     /**
@@ -212,33 +207,15 @@ public abstract class BaseUnityActivity<P extends IPresenter> extends UnityPlaye
      * 设置状态栏
      */
     public void setStatusBar() {
+        // 是否使用“透明”
         if (useStatusBar()) {
-            if (isStatusBarFragment()) {
-                // Fragment
-                StatusBarUtil.setTransparentForImageViewInFragment(this, null);
-            } else {
-                // Activity
-                // 判断是否启用了  侧滑功能
-                if (isSupportSwipeBack()) {
-                    // 已启用侧滑功能
+            // 纯透明
+            BarUtils.transparentStatusBar(this);
+        }
 
-                    // 是否设置状态栏为透明
-                    if (useStatusBarColor() == -1) {
-                        StatusBarUtil.setTransparent(this);
-                    } else {
-                        setStatusBarColor(useStatusBarColor(), 0);
-                    }
-                } else {
-                    // 关闭侧滑功能
-
-                    // 是否设置状态栏为透明
-                    if (useStatusBarColor() == -1) {
-                        StatusBarUtil.setTransparent(this);
-                    } else {
-                        StatusBarUtil.setColor(this, useStatusBarColor(), 0);
-                    }
-                }
-            }
+        // 改变状态栏的颜色
+        if (useStatusBarColor() != -1) {
+            BarUtils.setStatusBarColor(this, useStatusBarColor());
         }
 
         if (useLightStatusBar()) {
@@ -255,7 +232,7 @@ public abstract class BaseUnityActivity<P extends IPresenter> extends UnityPlaye
      * @param statusBarAlpha 透明度 0 ~ 255，可以改变状态栏的透明度值，默认值是112(StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA)。
      */
     public void setStatusBarColor(@ColorInt int color, @IntRange(from = 0, to = 255) int statusBarAlpha) {
-        StatusBarUtil.setColorForSwipeBack(this, color, statusBarAlpha);
+//        StatusBarUtil.setColorForSwipeBack(this, color, statusBarAlpha);
     }
 
     protected BGASwipeBackHelper mSwipeBackHelper;

@@ -19,9 +19,12 @@
 
     <TextView
         android:id="@+id/txvi_chatleftlayout_chat"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:background="@drawable/edit_bg_selector"
+        android:padding="10dp"
+        android:text=""
         android:textColor="@android:color/black"
         android:textIsSelectable="true" />
 
@@ -30,6 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:background="@drawable/edit_bg_selector"
+        android:padding="10dp"
         android:visibility="gone" />
 
 </LinearLayout>

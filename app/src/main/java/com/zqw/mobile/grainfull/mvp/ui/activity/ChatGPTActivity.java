@@ -5,12 +5,13 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,7 +22,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 
 import com.blankj.utilcode.util.KeyboardUtils;
@@ -57,15 +57,19 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @BindView(R.id.radio_chatgpt_d)
     RadioButton radioMaxVersion;                                                                    // 大版本
 
-
     @BindView(R.id.view_chatgpt_scrollView)
     NestedScrollView mScrollView;                                                                   // 外层 - 滑动布局
     @BindView(R.id.lila_chatgpt_chatlayout)
     LinearLayout lilaChatLayout;                                                                    // 消息总布局
     @BindView(R.id.edit_chatgpt_input)
-    EditText editInput;                                                                             // 消息输入框
-    @BindView(R.id.btn_chatgpt_send)
-    Button btnSend;                                                                                 // 发送消息按钮
+    EditText editInput;                                                                             // 文字-输入框
+    @BindView(R.id.view_chatgpt_voice)
+    TextView viewVoice;                                                                             // 语音-按住说话
+    @BindView(R.id.imvi_chatgpt_switch)
+    ImageView imviVoiceOrText;                                                                      // 文字与语音-切换按钮
+    @BindView(R.id.imvi_chatgpt_send)
+    ImageView imviSend;                                                                             // 发送文字按钮
+
 
     // 接收的消息
     private TextView txviReceiveMsg;
@@ -78,21 +82,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     protected void onDestroy() {
         super.onDestroy();
         this.mAccountManager = null;
-    }
-
-    /**
-     * 将状态栏改为浅色、深色模式(状态栏 icon 和字体，false = 浅色，true = 深色)
-     */
-    public boolean useLightStatusBar() {
-        return false;
-    }
-
-    /**
-     * 根据主题使用不同的颜色。
-     * 如果想要纯透明，则需要重写此方法，返回值为 -1 即可。
-     */
-    public int useStatusBarColor() {
-        return getResources().getColor(R.color.colorPrimary);
     }
 
     @Override
@@ -112,36 +101,69 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+
+        lilaChatLayout.setOnTouchListener((v, event) -> {
+            hideInput();
+            return false;
+        });
+
+        editInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(s)) {
+                    imviSend.setVisibility(View.VISIBLE);
+                    imviVoiceOrText.setVisibility(View.GONE);
+                } else {
+                    imviSend.setVisibility(View.GONE);
+                    imviVoiceOrText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.radio_chatgpt_x) {
                 mAccountManager.setChatGptVersion(false);
                 radioMinVersion.setBackgroundResource(R.drawable.financial_order_selector);
-//                radioMinVersion.setTextSize(14);
-//                radioMinVersion.setTextAppearance(R.style.txt_bold);
                 radioMaxVersion.setBackground(null);
-//                radioMaxVersion.setTextSize(12);
-//                radioMaxVersion.setTextAppearance(R.style.txt_nomal);
             } else {
                 mAccountManager.setChatGptVersion(true);
                 radioMinVersion.setBackground(null);
-//                radioMinVersion.setTextSize(12);
-//                radioMinVersion.setTextAppearance(R.style.txt_nomal);
                 radioMaxVersion.setBackgroundResource(R.drawable.financial_order_selector);
-//                radioMaxVersion.setTextSize(14);
-//                radioMaxVersion.setTextAppearance(R.style.txt_bold);
             }
         });
+
         // 添加一条消息
-        addLeftMsg("你好，我是Ai小助手，需要帮助吗？", R.color.c_f2f3f5);
+        addLeftMsg("你好，我是Ai小助手，需要帮助吗？");
     }
 
     @OnClick({
-            R.id.btn_chatgpt_send,                                                                  // 发送消息按钮
+            R.id.imvi_chatgpt_switch,                                                               // 文字与语音-切换按钮
+            R.id.imvi_chatgpt_send,                                                                 // 发送文字按钮
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_chatgpt_send:                                                             // 发送消息按钮
+            case R.id.imvi_chatgpt_switch:                                                          // 文字与语音-切换按钮
+                if (editInput.isShown()) {
+                    // 当前显示的是键盘，如果输入框中有文字，则执行发送事情，如果无内容，则执行切换事件
+                    imviVoiceOrText.setImageResource(R.mipmap.icon_chat_softkeyboard);
+                    editInput.setVisibility(View.GONE);
+                    viewVoice.setVisibility(View.VISIBLE);
+                } else {
+                    editInput.setVisibility(View.VISIBLE);
+                    viewVoice.setVisibility(View.GONE);
+                    imviVoiceOrText.setImageResource(R.mipmap.icon_chat_voice);
+                }
+                break;
+            case R.id.imvi_chatgpt_send:                                                            // 发送文字按钮
                 onSend();
                 break;
         }
@@ -160,7 +182,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
             // 在界面上显示“我”发出的消息
             addRightMsg(message);
             // 在界面上显示一条提示“对方，正在输入中……”
-            addLeftMsg("正在输入中...", R.color.c_f2f3f5);
+            addLeftMsg("正在输入中...");
 
             if (mPresenter != null) {
                 mPresenter.chatCreate(message);
@@ -174,36 +196,32 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     private void addRightMsg(String text) {
         // 控制布局
         editInput.getText().clear();
-        btnSend.setEnabled(false);
-        btnSend.setText("别急");
 
         // 添加聊天布局
-        LinearLayout mLinearLayoutAdd = LayoutInflater.from(this).inflate(R.layout.chat_right_textview, null).findViewById(R.id.chat_right_layout);
-        mLinearLayoutAdd.setBackground(ContextCompat.getDrawable(this, R.color.c_f7f8fa));
-        TextView textView = mLinearLayoutAdd.findViewById(R.id.txvi_chatrightlayout_chat);
+        LinearLayout viewRightMsg = LayoutInflater.from(this).inflate(R.layout.chat_right_textview, null).findViewById(R.id.chat_right_layout);
+        TextView textView = viewRightMsg.findViewById(R.id.txvi_chatrightlayout_chat);
         textView.setText(text);
-        if (mLinearLayoutAdd.getParent() != null) {
-            ((ViewGroup) mLinearLayoutAdd.getParent()).removeView(mLinearLayoutAdd);
+        if (viewRightMsg.getParent() != null) {
+            ((ViewGroup) viewRightMsg.getParent()).removeView(viewRightMsg);
         }
 
-        lilaChatLayout.addView(mLinearLayoutAdd);
+        lilaChatLayout.addView(viewRightMsg);
     }
 
     /**
      * 添加左侧消息(显示对方消息)
      */
-    private void addLeftMsg(String text, int color) {
-        LinearLayout mLinearLayoutAdd = LayoutInflater.from(this).inflate(R.layout.chat_left_textview, null).findViewById(R.id.chat_left_layout);
+    public void addLeftMsg(String text) {
+        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.chat_left_textview, null).findViewById(R.id.chat_left_layout);
 
-        mLinearLayoutAdd.setBackground(ContextCompat.getDrawable(this, color));
-        imviReceiveMsg = mLinearLayoutAdd.findViewById(R.id.imvi_chatleftlayout_chat);
-        txviReceiveMsg = mLinearLayoutAdd.findViewById(R.id.txvi_chatleftlayout_chat);
+        imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_chatleftlayout_chat);
+        txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_chatleftlayout_chat);
         txviReceiveMsg.setText(text);
-        if (mLinearLayoutAdd.getParent() != null) {
-            ((ViewGroup) mLinearLayoutAdd.getParent()).removeView(mLinearLayoutAdd);
+        if (viewLeftMsg.getParent() != null) {
+            ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
         }
 
-        lilaChatLayout.addView(mLinearLayoutAdd);
+        lilaChatLayout.addView(viewLeftMsg);
     }
 
     /**
@@ -241,8 +259,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     public void onSucc() {
         runOnUiThread(() -> {
             mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
-            btnSend.setEnabled(true);
-            btnSend.setText("发送");
         });
     }
 

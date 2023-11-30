@@ -51,7 +51,6 @@ dependencies {
         exclude module: 'appcompat'
     }
     api rootProject.ext.dependencies["swipeback"]
-    api rootProject.ext.dependencies["statusbarutil"]
 
     //rx
     api rootProject.ext.dependencies["rxjava2"]
@@ -117,6 +116,8 @@ dependencies {
     api rootProject.ext.dependencies["timber"]
 
     api rootProject.ext.dependencies["multidex"]
+    // 工具类(https://github.com/Blankj/AndroidUtilCode)
+    api rootProject.ext.dependencies["utilcodex"]
 
     // 新增Unity功能
     api project(path: ':unity-library')

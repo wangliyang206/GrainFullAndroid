@@ -66,8 +66,6 @@ ext {
             "autosize"                 : "me.jessyan:autosize:1.2.1",
             // 侧滑关闭，注意：必须和support-v4一起使用；(https://github.com/bingoogolapple/BGASwipeBackLayout-Android)
             "swipeback"                : "com.github.bingoogolapple:BGASwipeBackLayout-Android:2.0.2",
-            // 状态栏透明(https://github.com/laobie/StatusBarUtil)
-            "statusbarutil"            : "com.jaeger.statusbarutil:library:1.5.1",
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",
