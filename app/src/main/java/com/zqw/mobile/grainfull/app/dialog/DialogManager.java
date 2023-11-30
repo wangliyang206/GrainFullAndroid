@@ -46,7 +46,7 @@ public class DialogManager {
             mVoice.setVisibility(View.VISIBLE);
             mLabel.setVisibility(View.VISIBLE);
 
-            mIcon.setImageResource(R.drawable.recorder);
+            mIcon.setImageResource(R.mipmap.recorder);
             mLabel.setText("手指上滑，取消发送");
         }
     }
@@ -57,7 +57,7 @@ public class DialogManager {
             mVoice.setVisibility(View.GONE);
             mLabel.setVisibility(View.VISIBLE);
 
-            mIcon.setImageResource(R.drawable.cancel);
+            mIcon.setImageResource(R.mipmap.cancel);
             mLabel.setText("松开手指，取消发送");
         }
 
@@ -69,7 +69,7 @@ public class DialogManager {
             mVoice.setVisibility(View.GONE);
             mLabel.setVisibility(View.VISIBLE);
 
-            mIcon.setImageResource(R.drawable.voice_to_short);
+            mIcon.setImageResource(R.mipmap.voice_to_short);
             mLabel.setText("录音时间过短");
         }
 
@@ -88,7 +88,7 @@ public class DialogManager {
      * @param level
      */
     public void updateVoiceLevel(int level) {
-        int resId = mContext.getResources().getIdentifier("v" + level,"drawable", mContext.getPackageName());
+        int resId = mContext.getResources().getIdentifier("v" + level,"mipmap", mContext.getPackageName());
         mVoice.setImageResource(resId);
     }
 }

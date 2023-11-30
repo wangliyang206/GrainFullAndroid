@@ -16,14 +16,14 @@
             android:id="@+id/id_recorder_dialog_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/recorder"
+            android:src="@mipmap/recorder"
             android:visibility="visible" />
 
         <ImageView
             android:id="@+id/id_recorder_dialog_voice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/v1"
+            android:src="@mipmap/v1"
             android:visibility="visible" />
 
     </LinearLayout>
