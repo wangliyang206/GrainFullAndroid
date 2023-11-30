@@ -116,4 +116,8 @@
 
     <!-- unity 3D -->
     <string name="game_view_content_description">Game view</string>
+
+    <string name="str_recorder_noraml">按住说话</string>
+    <string name="str_recorder_recording">松开结束</string>
+    <string name="str_recorder_want_cancel">松开手指，取消发送</string>
 </resources>

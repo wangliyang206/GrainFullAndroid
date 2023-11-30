@@ -106,13 +106,13 @@
                 android:layout_height="35dp"
                 android:layout_weight="1">
 
-                <TextView
+                <com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton
                     android:id="@+id/view_chatgpt_voice"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:gravity="center"
-                    android:text="按住说话"
+                    android:text="@string/str_recorder_noraml"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold"

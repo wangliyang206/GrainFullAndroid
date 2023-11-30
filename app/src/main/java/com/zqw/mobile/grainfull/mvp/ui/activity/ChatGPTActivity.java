@@ -2,6 +2,7 @@ package com.zqw.mobile.grainfull.mvp.ui.activity;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,11 +35,15 @@ import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.di.component.DaggerChatGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
 import com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
+import timber.log.Timber;
 
 /**
  * Description:
@@ -48,6 +53,7 @@ import butterknife.OnClick;
  * @author 赤槿
  * module name is ChatGPTActivity
  */
+@RuntimePermissions
 public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements ChatGPTContract.View {
     /*--------------------------------控件信息--------------------------------*/
     @BindView(R.id.radio_chatgpt_group)
@@ -64,7 +70,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @BindView(R.id.edit_chatgpt_input)
     EditText editInput;                                                                             // 文字-输入框
     @BindView(R.id.view_chatgpt_voice)
-    TextView viewVoice;                                                                             // 语音-按住说话
+    AudioRecorderButton viewVoice;                                                                  // 语音-按住说话
     @BindView(R.id.imvi_chatgpt_switch)
     ImageView imviVoiceOrText;                                                                      // 文字与语音-切换按钮
     @BindView(R.id.imvi_chatgpt_send)
@@ -101,7 +107,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
         lilaChatLayout.setOnTouchListener((v, event) -> {
             hideInput();
             return false;
@@ -157,6 +162,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
                     imviVoiceOrText.setImageResource(R.mipmap.icon_chat_softkeyboard);
                     editInput.setVisibility(View.GONE);
                     viewVoice.setVisibility(View.VISIBLE);
+                    ChatGPTActivityPermissionsDispatcher.addVudioWithPermissionCheck(this);
                 } else {
                     editInput.setVisibility(View.VISIBLE);
                     viewVoice.setVisibility(View.GONE);
@@ -306,4 +312,26 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         finish();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        ChatGPTActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    /**
+     * 选择拍摄
+     */
+    @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
+    public void addVudio() {
+        // 长按事件
+        viewVoice.setOnLongClickListener(v -> {
+            viewVoice.onStart();
+            return false;
+        });
+
+        // 结束事件
+        viewVoice.setOnAudioFinishRecorderListener((seconds, filePath) -> {
+            Timber.i("##### filePath =%s", filePath);
+        });
+    }
 }

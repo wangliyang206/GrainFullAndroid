@@ -202,4 +202,13 @@
     <style name="txt_bold" parent="Theme.AppCompat.Light">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <!-- 语音 -->
+    <style name="Theme_AudioDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 </resources>
