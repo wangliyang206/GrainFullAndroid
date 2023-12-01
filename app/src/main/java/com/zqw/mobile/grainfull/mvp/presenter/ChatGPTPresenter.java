@@ -87,10 +87,7 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                         @Override
                         public void onError(Throwable t) {
                             Timber.i("##### t=%s", t.getMessage());
-                            buffer = new StringBuffer();
-                            buffer.append("请求超时，请检查网络并重试");
-                            mRootView.onLoadMessage(buffer);
-                            mRootView.onSucc();
+                            showError(1, t.getMessage());
                         }
 
                         @Override
@@ -115,11 +112,7 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                         @Override
                         public void onError(Throwable t) {
                             Timber.i("##### t=%s", t.getMessage());
-                            buffer = new StringBuffer();
-//                            buffer.append("请求超时，请检查网络并重试");
-                            buffer.append("openkey暂不支持图片输入");
-                            mRootView.onLoadMessage(buffer);
-                            mRootView.onSucc();
+                            showError(0, "openkey暂不支持图片输入");
                         }
 
                         @Override
@@ -218,6 +211,43 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
             return;
         }
         sb.toString();
+    }
+
+
+    /**
+     * 显示错误信息
+     *
+     * @param type 类型：0代表自定义错误
+     * @param str  错误内容
+     */
+    private void showError(int type, String str) {
+        buffer = new StringBuffer();
+
+        if (type == 0) {
+            // 自定义错误
+            buffer.append(str);
+        } else {
+            // 系统返回的错误
+            if (str.contains("307")) {
+                buffer.append("账户额度不足，请及时联系管理员充值！");
+            } else if (str.contains("401")) {
+                buffer.append("API密钥无效或未提供。你需要检查你的API密钥是否正确使用，拥有权限并且未过期或者提供。");
+            } else if (str.contains("403")) {
+                buffer.append("你是未授权访客。");
+            } else if (str.contains("413")) {
+                buffer.append("请求体太大。你可能需要压缩/减小你的请求数据量。");
+            } else if (str.contains("429")) {
+                buffer.append("由于发送的同类请求太多的话，你已经超过了你的连接限额。");
+            } else if (str.contains("500")) {
+                buffer.append("服务器内部错误。这可能是由于服务器发生的问题，不是你的问题。");
+            } else if (str.contains("503")) {
+                buffer.append("服务器暂时不可用。这可能是由于临时服务器维护/停机等服务器原因导致。");
+            } else {
+                buffer.append("请求超时，请检查网络并重试");
+            }
+        }
+        mRootView.onLoadMessage(buffer);
+        mRootView.onSucc();
     }
 
     @Override
