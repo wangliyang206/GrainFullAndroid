@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <!--阴影背景-->
+    <LinearLayout
+        android:id="@+id/lila_popchatgptmore_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#50000000"
+        android:orientation="horizontal" />
+
+    <!--居中布局-->
+    <LinearLayout
+        android:id="@+id/lila_popchatgptmore_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/layout_bg_shape"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!--提示-->
+        <TextView
+            android:id="@+id/txvi_popchatgptmore_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="ChatGPT KEY"
+            android:textColor="@color/common_text_color"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="API 令牌："
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edit_popchatgptmore_sk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/edit_bg_selector"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="请输入API令牌，sk-"
+                android:imeOptions="actionDone"
+                android:minLines="2"
+                android:padding="5dp"
+                android:selectAllOnFocus="true"
+                android:text=""
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="说明：令牌变更后会自动保存，且只会保存有效的API令牌。"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/frame_img_selector"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="总额度："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txvi_popchatgptmore_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="0"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="已用额度："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txvi_popchatgptmore_used"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="0"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="剩余额度："
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txvi_popchatgptmore_surplus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="0"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="额度等价公式：1元 = 50 万 Tokens 。"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="13sp" />
+
+
+        <Button
+            android:id="@+id/btn_popchatgptmore_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/btn_bg_selector"
+            android:paddingLeft="8dp"
+            android:paddingTop="5dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="5dp"
+            android:text="关闭"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
+

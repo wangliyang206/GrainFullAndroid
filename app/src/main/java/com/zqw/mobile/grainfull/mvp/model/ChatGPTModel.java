@@ -48,6 +48,14 @@ public class ChatGPTModel extends BaseModel implements ChatGPTContract.Model {
     }
 
     @Override
+    public Observable<ResponseBody> getTokenBalance(String sk) {
+        // 转换成Json
+        String json = "{\"api_key\": \"" + sk + "\"}";
+        RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.CHATGPT_TOKEN, requestBodyJson);
+    }
+
+    @Override
     public Observable<ResponseBody> chatCreate(String message) {
         // 转换成Json
         message = "{\"model\": \"" + mAccountManager.getChatGptVersion() + "\", " +

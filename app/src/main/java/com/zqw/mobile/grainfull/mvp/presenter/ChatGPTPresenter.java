@@ -5,9 +5,12 @@ import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.grainfull.app.config.CommonRetryWithDelay;
+import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.utils.RxUtils;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatCompletionChunk;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatImg;
+import com.zqw.mobile.grainfull.mvp.model.entity.ChatToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,16 +37,64 @@ import timber.log.Timber;
 public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatGPTContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
+    @Inject
+    AccountManager mAccountManager;
 
     // 用于接收消息，流式输出
     private StringBuffer buffer;
     private ChatCompletionChunk chatCompletionChunk;
     private ChatImg chatImg;
+    private ChatToken mChatToken;
     private Gson gson = new Gson();
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.mErrorHandler = null;
+        this.gson = null;
+        this.buffer = null;
+
+        this.chatCompletionChunk = null;
+        this.chatImg = null;
+        this.mChatToken = null;
+    }
 
     @Inject
     public ChatGPTPresenter(ChatGPTContract.Model model, ChatGPTContract.View rootView) {
         super(model, rootView);
+    }
+
+    /**
+     * 初始化
+     */
+    public void initPresenter(String sk) {
+        mModel.getTokenBalance(sk)
+                .compose(RxUtils.applySchedulers(mRootView))
+                .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        Timber.i("##### t=%s", t.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody info) {
+                        try {
+                            String respStr = info.string();
+                            Timber.d("##### onResponse: %s", respStr);
+                            mChatToken = gson.fromJson(respStr, ChatToken.class);
+                        } catch (IOException e) {
+                            Timber.i("##### error=%s", e.getMessage());
+                        }
+                        // 只保存有效的
+                        if (mChatToken.getStatus() == 1) {
+                            mAccountManager.setChatGptSk(sk);
+                            mRootView.loadTokenBalance(mChatToken);
+                        } else {
+                            mRootView.showMessage(mChatToken.getError());
+                            mRootView.loadSk();
+                        }
+                    }
+                });
     }
 
     /**
@@ -217,7 +268,7 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     /**
      * 显示错误信息
      *
-     * @param type 类型：0代表自定义错误
+     * @param type 类型：0代表自定义错误；1代表系统返回的错误；
      * @param str  错误内容
      */
     private void showError(int type, String str) {
@@ -250,10 +301,4 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
         mRootView.onSucc();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.mErrorHandler = null;
-        this.gson = null;
-    }
 }

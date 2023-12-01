@@ -54,6 +54,10 @@ public interface Constant {
      */
     String CHATGPT_IMAGE_URL = "https://openkey.cloud/v1/images/generations";
     /**
+     * ChatGPT 查询令牌余额
+     */
+    String CHATGPT_TOKEN = "https://billing.openkey.cloud/api/token";
+    /**
      * ChatGPT key，有额度(1元 500000 tokens)
      */
     String CHATGPT_KEY = "sk-UpxszeOO0Bjag203991240BbCa6b48Dc89C90f1b451b9c39";

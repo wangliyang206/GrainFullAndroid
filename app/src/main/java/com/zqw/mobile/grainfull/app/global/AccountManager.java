@@ -74,6 +74,7 @@ public final class AccountManager {
     private static final String PRIVACY_POLICY = "privacyPolicy";
 
     private static final String CHATGPT_VERSION = "ChatGPTVersion";
+    private static final String CHATGPT_SK = "ChatGPT_SK";
     /*----------------------------------------------操作对象-------------------------------------------------*/
 
     private AppPreferencesHelper spHelper;
@@ -445,4 +446,17 @@ public final class AccountManager {
         }
     }
 
+    /**
+     * 获取ChatGPT API令牌
+     */
+    public String getChatGptSk() {
+        return spHelper.getPref(CHATGPT_SK, Constant.CHATGPT_KEY);
+    }
+
+    /**
+     * 设置ChatGPT ChatGPT API令牌
+     */
+    public void setChatGptSk(String sk) {
+        spHelper.put(CHATGPT_SK, sk);
+    }
 }

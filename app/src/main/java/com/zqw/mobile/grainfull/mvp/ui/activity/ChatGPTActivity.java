@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,9 +32,11 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.PopupChatGptMore;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.di.component.DaggerChatGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
+import com.zqw.mobile.grainfull.mvp.model.entity.ChatToken;
 import com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton;
 
@@ -63,6 +66,9 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @BindView(R.id.radio_chatgpt_d)
     RadioButton radioMaxVersion;                                                                    // 大版本
 
+    @BindView(R.id.imvi_chatgpt_more)
+    ImageView imviMore;                                                                             // 更多
+
     @BindView(R.id.view_chatgpt_scrollView)
     NestedScrollView mScrollView;                                                                   // 外层 - 滑动布局
     @BindView(R.id.lila_chatgpt_chatlayout)
@@ -84,10 +90,14 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @Inject
     AccountManager mAccountManager;
 
+    // 额度
+    private PopupChatGptMore mPopup;
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         this.mAccountManager = null;
+        this.mPopup = null;
     }
 
     @Override
@@ -147,15 +157,26 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
         // 添加一条消息
         addLeftMsg("你好，我是Ai小助手，需要帮助吗？");
+
+        // 初始化业务部分
+        if (mPresenter != null) {
+            mPresenter.initPresenter(mAccountManager.getChatGptSk());
+        }
     }
 
     @OnClick({
+            R.id.imvi_chatgpt_more,                                                                 // 更多
             R.id.imvi_chatgpt_switch,                                                               // 文字与语音-切换按钮
             R.id.imvi_chatgpt_send,                                                                 // 发送文字按钮
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imvi_chatgpt_more:                                                            // 更多
+                if (mPopup != null) {
+                    mPopup.showAtLocation(v, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                }
+                break;
             case R.id.imvi_chatgpt_switch:                                                          // 文字与语音-切换按钮
                 if (editInput.isShown()) {
                     // 当前显示的是键盘，如果输入框中有文字，则执行发送事情，如果无内容，则执行切换事件
@@ -228,6 +249,36 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         }
 
         lilaChatLayout.addView(viewLeftMsg);
+    }
+
+    /**
+     * 获取API令牌额度
+     */
+    @Override
+    public void loadTokenBalance(ChatToken mChatToken) {
+        if (mPopup == null) {
+            // 第一次进来，需要初始化
+            mPopup = new PopupChatGptMore(getApplicationContext(), mChatToken.getTotal(), mChatToken.getUsed(), mChatToken.getRemaining(), mAccountManager.getChatGptSk(), sk -> {
+                if (mPresenter != null) {
+                    mPresenter.initPresenter(sk);
+                }
+            });
+
+            imviMore.setVisibility(View.VISIBLE);
+        } else {
+            // 如果“已弹出”，直接刷新数据
+            if (mPopup.isShowing()) {
+                mPopup.onUpdate(mChatToken.getTotal(), mChatToken.getUsed(), mChatToken.getRemaining());
+            }
+        }
+    }
+
+    @Override
+    public void loadSk() {
+        // 如果“已弹出”，直接刷新数据
+        if (mPopup.isShowing()) {
+            mPopup.onUpdate(mAccountManager.getChatGptSk());
+        }
     }
 
     /**

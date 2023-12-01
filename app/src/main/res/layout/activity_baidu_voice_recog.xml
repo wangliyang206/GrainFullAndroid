@@ -17,6 +17,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"
         android:src="@mipmap/icon_home__titlebar_setting"
         app:layout_constraintBottom_toBottomOf="@+id/view_voicerecog_top"
         app:layout_constraintRight_toRightOf="parent"
