@@ -1179,12 +1179,13 @@ androidx.constraintlayout.core.SolverVariableValues:
     private static final boolean DEBUG
     private static final boolean HASH
 com.zqw.mobile.grainfull.mvp.model.ChatGPTModel_MembersInjector:
-    public void <init>(javax.inject.Provider,javax.inject.Provider)
-    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
     public void injectMembers(com.zqw.mobile.grainfull.mvp.model.ChatGPTModel)
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mGsonProvider
     private final javax.inject.Provider mApplicationProvider
+    private final javax.inject.Provider mAccountManagerProvider
 dagger.internal.MapFactory
 kotlin.io.ConsoleKt
 androidx.core.content.LocusIdCompat$Api29Impl
@@ -1829,7 +1830,13 @@ com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutForumFragment_MembersInjector:
 com.jakewharton.rxbinding3.view.MenuItemClickObservable
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$PathRotateSet
 io.rx_cache2.internal.migration.UpgradeCacheVersion
-com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_MembersInjector
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mPresenterProvider
+    private final javax.inject.Provider mAccountManagerProvider
 com.jakewharton.rxbinding3.widget.AdapterDataChangeObservable
 androidx.constraintlayout.core.widgets.Chain:
     public void <init>()
@@ -1905,7 +1912,6 @@ com.bumptech.glide.Glide:
     public static com.bumptech.glide.RequestManager with(androidx.fragment.app.FragmentActivity)
     public static com.bumptech.glide.RequestManager with(androidx.fragment.app.Fragment)
     public static com.bumptech.glide.RequestManager with(android.app.Fragment)
-    public static com.bumptech.glide.RequestManager with(android.view.View)
     public synchronized varargs void preFillBitmapPool(com.bumptech.glide.load.engine.prefill.PreFillType$Builder[])
     public com.bumptech.glide.MemoryCategory setMemoryCategory(com.bumptech.glide.MemoryCategory)
     private com.bumptech.glide.load.engine.prefill.BitmapPreFiller bitmapPreFiller
@@ -2398,6 +2404,9 @@ kotlin.properties.NotNullVar
 androidx.constraintlayout.core.parser.CLToken$1
 com.zqw.mobile.grainfull.mvp.ui.widget.TurntableView:
     public void startRotate(int,com.zqw.mobile.grainfull.mvp.ui.widget.TurntableView$ITurntableListener)
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivityPermissionsDispatcher:
+    private void <init>()
+    private static final int REQUEST_ADDVUDIO
 com.unity3d.player.a$e$a
 androidx.appcompat.widget.ActivityChooserModel:
     public static androidx.appcompat.widget.ActivityChooserModel get(android.content.Context,java.lang.String)
@@ -2934,12 +2943,12 @@ com.zqw.mobile.grainfull.mvp.presenter.PictureMosaicPresenter_MembersInjector:
     private final javax.inject.Provider mApplicationProvider
     private final javax.inject.Provider mImageLoaderProvider
     private final javax.inject.Provider mAppManagerProvider
+com.blankj.utilcode.util.ZipUtils
 com.bumptech.glide.GenericTransitionOptions:
     public static com.bumptech.glide.GenericTransitionOptions withNoTransition()
     public static com.bumptech.glide.GenericTransitionOptions with(int)
     public static com.bumptech.glide.GenericTransitionOptions with(com.bumptech.glide.request.transition.ViewPropertyTransition$Animator)
     public static com.bumptech.glide.GenericTransitionOptions with(com.bumptech.glide.request.transition.TransitionFactory)
-com.blankj.utilcode.util.ZipUtils
 io.rx_cache2.internal.cache.memory.apache.Put
 kotlin.sequences.TransformingIndexedSequence
 com.cjt2325.cameralibrary.TypeButton:
@@ -2992,7 +3001,6 @@ androidx.appcompat.app.AppCompatDelegateImpl:
     static final java.lang.String EXCEPTION_HANDLER_MESSAGE_SUFFIX
 androidx.core.location.LocationManagerCompat$1
 androidx.cursoradapter.widget.SimpleCursorAdapter$CursorToStringConverter
-com.jaeger.library.R
 androidx.core.view.WindowInsetsAnimationControllerCompat$Impl30
 com.zqw.mobile.grainfull.mvp.ui.fragment.GameFragment_MembersInjector
 androidx.constraintlayout.core.Pools
@@ -3124,11 +3132,12 @@ androidx.constraintlayout.motion.widget.KeyTimeCycle$Loader:
 kotlin.contracts.ContractBuilder$DefaultImpls
 kotlin.jvm.functions.Function4
 com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter_MembersInjector:
-    public void <init>(javax.inject.Provider)
-    public static dagger.MembersInjector create(javax.inject.Provider)
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
     public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter)
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mAccountManagerProvider
 com.unity3d.scar.adapter.v1920.ScarAdapter:
     static synthetic java.util.Map access$000(com.unity3d.scar.adapter.v1920.ScarAdapter)
     static synthetic java.util.Map access$100(com.unity3d.scar.adapter.v1920.ScarAdapter)
@@ -4052,6 +4061,8 @@ com.zqw.mobile.grainfull.R
 androidx.databinding.adapters.ExpandableListViewBindingAdapter
 com.zqw.mobile.grainfull.di.module.ChatGPTModule:
     public void <init>()
+    static com.jess.arms.cj.IRequestMapper providerRequestMapper(com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract$View,com.zqw.mobile.grainfull.app.global.AccountManager)
+    static com.jess.arms.cj.ApiOperator providerOperator(com.jess.arms.cj.IRequestMapper)
     abstract com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract$Model bindChatGPTModel(com.zqw.mobile.grainfull.mvp.model.ChatGPTModel)
 com.blankj.utilcode.util.KeyboardUtils:
     private void <init>()
@@ -4849,6 +4860,7 @@ androidx.core.internal.view.SupportMenuItem:
 com.alibaba.ocean.rawsdk.client.ErrorHandler
 com.zqw.mobile.grainfull.mvp.ui.activity.WhacAMoleActivity_MembersInjector
 com.zqw.mobile.grainfull.di.module.LayoutForumModule_ProviderOperatorFactory
+com.zqw.mobile.grainfull.di.module.ChatGPTModule_ProviderOperatorFactory
 androidx.constraintlayout.widget.ConstraintProperties
 kotlin.sequences.SequencesKt___SequencesKt$runningFold$1
 androidx.media.MediaBrowserServiceCompat$BrowserRoot:
@@ -5348,14 +5360,6 @@ kotlin.collections.AbstractMutableSet
 androidx.print.PrintHelper$PrintBitmapAdapter
 com.mikepenz.materialdrawer.model.SectionDrawerItem
 com.bumptech.glide.manager.RequestManagerRetriever:
-    private static void findAllSupportFragmentsWithViews(java.util.Collection,java.util.Map)
-    private androidx.fragment.app.Fragment findSupportFragment(android.view.View,androidx.fragment.app.FragmentActivity)
-    private android.app.Fragment findFragment(android.view.View,android.app.Activity)
-    private void findAllFragmentsWithViews(android.app.FragmentManager,androidx.collection.ArrayMap)
-    private void findAllFragmentsWithViewsPreO(android.app.FragmentManager,androidx.collection.ArrayMap)
-    public com.bumptech.glide.RequestManager get(androidx.fragment.app.Fragment)
-    public com.bumptech.glide.RequestManager get(android.view.View)
-    public com.bumptech.glide.RequestManager get(android.app.Fragment)
     static final java.lang.String FRAGMENT_TAG
     private static final java.lang.String TAG
     private static final int ID_REMOVE_FRAGMENT_MANAGER
@@ -7325,6 +7329,10 @@ kotlin.reflect.TypeVariableImpl
 com.zqw.mobile.grainfull.di.module.ElfinPlayerModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.ElfinPlayerContract$Model bindElfinPlayerModel(com.zqw.mobile.grainfull.mvp.model.ElfinPlayerModel)
+lecho.lib.hellocharts.renderer.PreviewLineChartRenderer:
+    private static final int DEFAULT_PREVIEW_TRANSPARENCY
+    private static final int FULL_ALPHA
+    private static final int DEFAULT_PREVIEW_STROKE_WIDTH_DP
 com.blankj.utilcode.util.LanguageUtils:
     private void <init>()
     public static void applySystemLanguage()
@@ -7347,10 +7355,6 @@ com.blankj.utilcode.util.LanguageUtils:
     static synthetic void access$000(boolean)
     private static final java.lang.String KEY_LOCALE
     private static final java.lang.String VALUE_FOLLOW_SYSTEM
-lecho.lib.hellocharts.renderer.PreviewLineChartRenderer:
-    private static final int DEFAULT_PREVIEW_TRANSPARENCY
-    private static final int FULL_ALPHA
-    private static final int DEFAULT_PREVIEW_STROKE_WIDTH_DP
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi26$1:
     public void detach()
 com.mikepenz.materialdrawer.model.interfaces.Typefaceable
@@ -13181,6 +13185,7 @@ kotlin.text.RegexOption
 com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract
 com.airbnb.lottie.parser.ShapeTrimPathParser:
     private void <init>()
+com.zqw.mobile.grainfull.di.module.ChatGPTModule_ProviderRequestMapperFactory
 com.zqw.mobile.grainfull.mvp.model.MainModel:
     private synthetic io.reactivex.Observable lambda$getVersion$0(com.jess.arms.cj.GsonRequest)
     public io.reactivex.Observable getVersion(java.lang.String)
@@ -15110,7 +15115,51 @@ androidx.appcompat.widget.SuggestionsAdapter:
     static final int REFINE_ALL
     static final int INVALID_INDEX
 androidx.core.view.WindowInsetsAnimationCompat$Impl30$ProxyCallback
-com.blankj.utilcode.util.BarUtils
+com.blankj.utilcode.util.BarUtils:
+    private void <init>()
+    public static void setStatusBarVisibility(android.app.Activity,boolean)
+    public static void setStatusBarVisibility(android.view.Window,boolean)
+    public static boolean isStatusBarVisible(android.app.Activity)
+    public static void setStatusBarLightMode(android.app.Activity,boolean)
+    public static void setStatusBarLightMode(android.view.Window,boolean)
+    public static boolean isStatusBarLightMode(android.app.Activity)
+    public static boolean isStatusBarLightMode(android.view.Window)
+    public static void addMarginTopEqualStatusBarHeight(android.view.View)
+    public static void subtractMarginTopEqualStatusBarHeight(android.view.View)
+    private static void addMarginTopEqualStatusBarHeight(android.view.Window)
+    private static void subtractMarginTopEqualStatusBarHeight(android.view.Window)
+    public static android.view.View setStatusBarColor(android.view.Window,int)
+    public static android.view.View setStatusBarColor(android.view.Window,int,boolean)
+    public static void setStatusBarColor(android.view.View,int)
+    public static void setStatusBarCustom(android.view.View)
+    public static void setStatusBarColor4Drawer(androidx.drawerlayout.widget.DrawerLayout,android.view.View,int)
+    public static void setStatusBarColor4Drawer(androidx.drawerlayout.widget.DrawerLayout,android.view.View,int,boolean)
+    private static void hideStatusBarView(android.app.Activity)
+    private static void hideStatusBarView(android.view.Window)
+    private static void showStatusBarView(android.view.Window)
+    public static int getActionBarHeight()
+    public static void setNotificationBarVisibility(boolean)
+    private static void invokePanels(java.lang.String)
+    public static int getNavBarHeight()
+    public static void setNavBarVisibility(android.app.Activity,boolean)
+    public static void setNavBarVisibility(android.view.Window,boolean)
+    public static boolean isNavBarVisible(android.app.Activity)
+    public static boolean isNavBarVisible(android.view.Window)
+    private static java.lang.String getResNameById(int)
+    public static void setNavBarColor(android.app.Activity,int)
+    public static void setNavBarColor(android.view.Window,int)
+    public static int getNavBarColor(android.app.Activity)
+    public static int getNavBarColor(android.view.Window)
+    public static boolean isSupportNavBar()
+    public static void setNavBarLightMode(android.app.Activity,boolean)
+    public static void setNavBarLightMode(android.view.Window,boolean)
+    public static boolean isNavBarLightMode(android.app.Activity)
+    public static boolean isNavBarLightMode(android.view.Window)
+    public static void transparentNavBar(android.app.Activity)
+    public static void transparentNavBar(android.view.Window)
+    private static final java.lang.String TAG_STATUS_BAR
+    private static final java.lang.String TAG_OFFSET
+    private static final int KEY_OFFSET
 com.zqw.mobile.grainfull.di.module.MainModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.MainContract$Model bindMainModel(com.zqw.mobile.grainfull.mvp.model.MainModel)
@@ -15809,6 +15858,14 @@ com.zqw.mobile.grainfull.mvp.presenter.LoginPresenter_MembersInjector:
 com.chad.library.adapter.base.animation.AlphaInAnimation:
     public void <init>()
     private static final float DEFAULT_ALPHA_FROM
+com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton:
+    private static final int STATE_NORMAL
+    private static final int STATE_RECORDING
+    private static final int STATE_WANT_TO_CANCEL
+    private static final int DISANCE_Y_CANCEL
+    private static final int MSG_AUDIO_PREPARED
+    private static final int MSG_VOICE_CHANGED
+    private static final int MSG_DIALOG_DIMISS
 io.rx_cache2.internal.ProcessorProvidersBehaviour$6
 kotlin.jvm.internal.ArrayByteIterator
 com.zqw.mobile.grainfull.app.utils.AppSigning
@@ -15819,7 +15876,6 @@ io.rx_cache2.internal.cache.memory.apache.AbstractHashedMap$ValuesIterator
 androidx.core.view.MenuCompat
 androidx.recyclerview.widget.MessageThreadUtil
 com.blankj.utilcode.util.ThreadUtils$1
-com.jaeger.library.BuildConfig
 kotlin.coroutines.AbstractCoroutineContextKey
 com.zqw.mobile.grainfull.mvp.presenter.CompassClockPresenter_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
@@ -16227,36 +16283,6 @@ com.airbnb.lottie.manager.FontAssetManager:
     public void setDefaultFontFileExtension(java.lang.String)
 com.zqw.mobile.grainfull.app.tts.control.InitConfig:
     public java.lang.String getSn()
-com.jaeger.library.StatusBarUtil:
-    public void <init>()
-    public static void setColor(android.app.Activity,int)
-    public static void setColorForSwipeBack(android.app.Activity,int)
-    public static void setColorNoTranslucent(android.app.Activity,int)
-    public static void setColorDiff(android.app.Activity,int)
-    public static void setTranslucent(android.app.Activity)
-    public static void setTranslucent(android.app.Activity,int)
-    public static void setTranslucentForCoordinatorLayout(android.app.Activity,int)
-    public static void setTranslucentDiff(android.app.Activity)
-    public static void setColorForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
-    public static void setColorNoTranslucentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
-    public static void setColorForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int,int)
-    private static void setDrawerLayoutProperty(androidx.drawerlayout.widget.DrawerLayout,android.view.ViewGroup)
-    public static void setColorForDrawerLayoutDiff(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
-    public static void setTranslucentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout)
-    public static void setTranslucentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout,int)
-    public static void setTransparentForDrawerLayout(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout)
-    public static void setTranslucentForDrawerLayoutDiff(android.app.Activity,androidx.drawerlayout.widget.DrawerLayout)
-    public static void setTransparentForImageView(android.app.Activity,android.view.View)
-    public static void setTranslucentForImageView(android.app.Activity,android.view.View)
-    public static void setTranslucentForImageViewInFragment(android.app.Activity,android.view.View)
-    public static void hideFakeStatusBarView(android.app.Activity)
-    public static void setLightMode(android.app.Activity)
-    public static void setDarkMode(android.app.Activity)
-    private static void setMIUIStatusBarDarkIcon(android.app.Activity,boolean)
-    private static void setMeizuStatusBarDarkIcon(android.app.Activity,boolean)
-    private static android.view.View createStatusBarView(android.app.Activity,int)
-    public static final int DEFAULT_STATUS_BAR_ALPHA
-    private static final int TAG_KEY_HAVE_SET_OFFSET
 androidx.databinding.ObservableArrayList
 com.zqw.mobile.grainfull.mvp.presenter.HandheldBulletScreenPresenter_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
@@ -17443,6 +17469,8 @@ com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$25:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$24:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutForumFragment_ViewBinding$5:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutForumFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding$4:
@@ -17540,6 +17568,8 @@ androidx.constraintlayout.motion.widget.MotionController:
     public java.lang.String mConstraintTag
 com.zqw.mobile.grainfull.app.greendao.OnePenErrorDao$Properties:
     public static final org.greenrobot.greendao.Property _no
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding$3:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$21:
@@ -17991,10 +18021,6 @@ androidx.constraintlayout.core.widgets.ConstraintWidget:
     public boolean mResolvedHasRatio
     public androidx.constraintlayout.core.state.WidgetFrame frame
     public boolean mGroupsToSolver
-com.bumptech.glide.manager.RequestManagerRetriever:
-    public final androidx.collection.ArrayMap tempViewToSupportFragment
-    public final androidx.collection.ArrayMap tempViewToFragment
-    public final android.os.Bundle tempBundle
 androidx.constraintlayout.motion.widget.MotionLayout:
     public boolean mIndirectTransition
     public boolean firstDown
@@ -18474,6 +18500,8 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraConfigurationUtils:
     public static final java.util.regex.Pattern SEMICOLON
 com.unity3d.scar.adapter.v1920.scarads.ScarInterstitialAdListener$1:
     public final synthetic com.unity3d.scar.adapter.v1920.scarads.ScarInterstitialAdListener this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity:
+    public java.lang.String mVoicePath
 com.airbnb.lottie.LottieImageAsset:
     public final java.lang.String dirName
 com.zqw.mobile.grainfull.mvp.ui.activity.CalculateDistanceActivity_ViewBinding$2:

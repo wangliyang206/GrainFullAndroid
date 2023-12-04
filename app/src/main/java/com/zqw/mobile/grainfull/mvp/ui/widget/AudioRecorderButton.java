@@ -12,6 +12,8 @@ import com.zqw.mobile.grainfull.app.dialog.DialogManager;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.AudioManager;
 
+import java.util.Random;
+
 /**
  * 按住说话
  */
@@ -26,9 +28,14 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
     private boolean isRecording = false;
     private static final int DISANCE_Y_CANCEL = 50;
 
+    // 事件
+    private VoiceEvents mVoiceEvents;
     private DialogManager mDialogManager;
 
     private AudioManager mAudioManager;
+    // 是否使用外置
+    private boolean isUsedExternal;
+
 
     //记时
     private float mTime;
@@ -48,10 +55,25 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
         mAudioManager.setOnAduioStateListener(this);
     }
 
+    /**
+     * 初始化
+     */
+    public void initAudio(boolean isUsedExternal, VoiceEvents mVoiceEvents) {
+        this.isUsedExternal = isUsedExternal;
+        this.mVoiceEvents = mVoiceEvents;
+    }
+
     public void onStart() {
         //触发点击事件
         mReady = true;
-        mAudioManager.prepareAudio();
+        if (isUsedExternal) {
+            wellPrepared();
+            if (mVoiceEvents != null) {
+                mVoiceEvents.onVoiceStart();
+            }
+        } else {
+            mAudioManager.prepareAudio();
+        }
     }
 
     /**
@@ -102,7 +124,11 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
                     new Thread(mGetVoiceLevelRunnable).start();
                     break;
                 case MSG_VOICE_CHANGED:
-                    mDialogManager.updateVoiceLevel(mAudioManager.getVoiceLevel(7));
+                    if (isUsedExternal) {
+                        mDialogManager.updateVoiceLevel(new Random().nextInt(7) + 1);
+                    } else {
+                        mDialogManager.updateVoiceLevel(mAudioManager.getVoiceLevel(7));
+                    }
                     break;
                 case MSG_DIALOG_DIMISS:
                     mDialogManager.dimissDialog();
@@ -136,23 +162,45 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
 
                 if (!isRecording || mTime < 0.6f) {
                     mDialogManager.toShort();
-                    mAudioManager.cancel();
+                    if (isUsedExternal) {
+                        if (mVoiceEvents != null) {
+                            mVoiceEvents.onVoiceCancel();
+                        }
+                    } else {
+                        mAudioManager.cancel();
+                    }
+
                     //延时消失
                     mHandler.sendEmptyMessageDelayed(MSG_DIALOG_DIMISS, 1300);
                 } else if (mCurSate == STATE_RECORDING) {//正常录制结束
                     mDialogManager.dimissDialog();
-                    mAudioManager.release();
-
-                    //监听录音完成接口
-                    if (onAudioFinishRecorderListener != null) {
-                        onAudioFinishRecorderListener.onFinish(mTime, mAudioManager.getCurrentFilePath());
+                    if (isUsedExternal) {
+                        if (mVoiceEvents != null) {
+                            mVoiceEvents.onVoiceRelease();
+                        }
+                        //监听录音完成接口
+                        if (onAudioFinishRecorderListener != null) {
+                            onAudioFinishRecorderListener.onFinish(mTime, "");
+                        }
+                    } else {
+                        mAudioManager.release();
+                        //监听录音完成接口
+                        if (onAudioFinishRecorderListener != null) {
+                            onAudioFinishRecorderListener.onFinish(mTime, mAudioManager.getCurrentFilePath());
+                        }
                     }
 
                     //release
                     //callbackToAct
                 } else if (mCurSate == STATE_WANT_TO_CANCEL) {
                     mDialogManager.dimissDialog();
-                    mAudioManager.cancel();
+                    if (isUsedExternal) {
+                        if (mVoiceEvents != null) {
+                            mVoiceEvents.onVoiceCancel();
+                        }
+                    } else {
+                        mAudioManager.cancel();
+                    }
                     //cancel
                 }
 
@@ -220,4 +268,15 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
         }
     }
 
+    public boolean isRecording() {
+        return isRecording;
+    }
+
+    public interface VoiceEvents {
+        void onVoiceStart();
+
+        void onVoiceCancel();
+
+        void onVoiceRelease();
+    }
 }
