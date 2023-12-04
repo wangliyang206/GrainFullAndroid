@@ -28,6 +28,7 @@ import com.jess.arms.utils.ArmsUtils;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.di.component.DaggerChatGPTWebComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTWebContract;
 import com.zqw.mobile.grainfull.mvp.presenter.ChatGPTWebPresenter;
@@ -119,6 +120,9 @@ public class ChatGPTWebActivity extends BaseActivity<ChatGPTWebPresenter> implem
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("ChatGPT Web版");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "chatgptweb_open");
 
         initViewData();
     }

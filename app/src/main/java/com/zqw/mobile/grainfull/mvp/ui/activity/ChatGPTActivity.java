@@ -44,6 +44,7 @@ import com.bumptech.glide.Glide;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.PopupChatGptMore;
@@ -146,6 +147,9 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "chatgpt_open");
+
         viewVoice.initAudio(true, this);
         lilaChatLayout.setOnTouchListener((v, event) -> {
             hideInput();
