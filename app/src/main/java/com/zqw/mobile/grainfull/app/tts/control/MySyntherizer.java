@@ -91,7 +91,7 @@ public class MySyntherizer implements MainHandlerConstant {
     /**
      * 合成并播放
      *
-     * @param text 小于1024 GBK字节，即512个汉字或者字母数字
+     * @param text 小于120 GBK字节，即60个汉字或者字母数字
      * @return =0表示成功
      */
     public int speak(String text) {

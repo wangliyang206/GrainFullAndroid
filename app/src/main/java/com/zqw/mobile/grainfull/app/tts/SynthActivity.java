@@ -93,6 +93,7 @@ public class SynthActivity {
 
     /**
      * 初始化语音合成
+     *
      * @param context 句柄
      * @param isSave  是否保存音频文件
      */
@@ -161,7 +162,7 @@ public class SynthActivity {
      * 合成并播放
      * speak 实际上是调用 synthesize后，获取音频流，然后播放。
      * 获取音频流的方式见SaveFileActivity及FileSaveListener
-     * 需要合成的文本text的长度不能超过1024个GBK字节。
+     * 需要合成的文本text的长度不能超过120个GBK字节。
      */
     public void speak(String val) {
         // 合成前可以修改参数：
@@ -169,6 +170,7 @@ public class SynthActivity {
         // params.put(SpeechSynthesizer.PARAM_SPEAKER, "3"); // 设置为度逍遥
         // synthesizer.setParams(params);
         int result = synthesizer.speak(val);
+        Timber.i("##### speak=%s", result);
     }
 
     /**

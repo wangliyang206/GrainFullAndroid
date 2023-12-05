@@ -49,6 +49,7 @@ import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.PopupChatGptMore;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerChatGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
@@ -85,6 +86,8 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @BindView(R.id.radio_chatgpt_d)
     RadioButton radioMaxVersion;                                                                    // 大版本
 
+    @BindView(R.id.imvi_chatgpt_horn)
+    ImageView imviHorn;                                                                             // 喇叭
     @BindView(R.id.imvi_chatgpt_more)
     ImageView imviMore;                                                                             // 更多
 
@@ -112,11 +115,14 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     private CommonRecogParams apiParams;
     // 识别控制器，使用MyRecognizer控制识别的流程
     protected MyRecognizer myRecognizer;
-
+    // 语音合成(播报)
+    private SynthActivity synthActivity;
     // ChatGPT额度提示
     private PopupChatGptMore mPopup;
     // 语音路径
     private String mVoicePath;
+    // 是否自动播放语音(默认自动播放)
+    private boolean isHorn = true;
 
     @Override
     protected void onDestroy() {
@@ -124,6 +130,10 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         // 基于DEMO5.1 卸载离线资源(离线时使用) release()方法中封装了卸载离线资源的过程
         // 基于DEMO的5.2 退出事件管理器
         myRecognizer.release();
+        if (synthActivity != null) {
+            synthActivity.onDestroy();
+            synthActivity = null;
+        }
         super.onDestroy();
         this.mAccountManager = null;
         this.mPopup = null;
@@ -189,9 +199,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
             }
         });
 
-        // 添加一条消息
-        addLeftMsg("你好，我是Ai小助手，需要帮助吗？");
-
         // 初始化业务部分
         if (mPresenter != null) {
             mPresenter.initPresenter(mAccountManager.getChatGptSk());
@@ -205,9 +212,25 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         IRecogListener listener = new MessageStatusRecogListener(handler);
         // DEMO集成步骤 1.1 1.3 初始化：new一个IRecogListener示例 & new 一个 MyRecognizer 示例,并注册输出事件
         myRecognizer = new MyRecognizer(this, listener);
+
+        // 初始化语音播报
+        synthActivity = new SynthActivity();
+        synthActivity.initTTS(getApplicationContext(), true);
+        init();
+    }
+
+    /**
+     * 初始化
+     */
+    private void init() {
+        String tips = "你好，我是Ai小助手，需要帮助吗？";
+        // 添加一条消息
+        addLeftMsg(tips);
+        onVoiceAnnouncements(tips);
     }
 
     @OnClick({
+            R.id.imvi_chatgpt_horn,                                                                 // 喇叭
             R.id.imvi_chatgpt_more,                                                                 // 更多
             R.id.imvi_chatgpt_switch,                                                               // 文字与语音-切换按钮
             R.id.imvi_chatgpt_send,                                                                 // 发送文字按钮
@@ -215,6 +238,15 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imvi_chatgpt_horn:                                                            // 喇叭
+                if (isHorn) {
+                    isHorn = false;
+                    imviHorn.setImageResource(R.mipmap.icon_horn_nosound);
+                } else {
+                    isHorn = true;
+                    imviHorn.setImageResource(R.mipmap.icon_horn_voiced);
+                }
+                break;
             case R.id.imvi_chatgpt_more:                                                            // 更多
                 if (mPopup != null) {
                     mPopup.showAtLocation(v, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
@@ -332,19 +364,75 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     }
 
     /**
-     * 加载聊天消息
+     * 加载显示错误信息
      */
     @Override
-    public void onLoadMessage(StringBuffer info) {
+    public void onLoadError(StringBuffer info) {
         runOnUiThread(() -> {
             imviReceiveMsg.setVisibility(View.GONE);
             txviReceiveMsg.setVisibility(View.VISIBLE);
 
             // response返回拼接
             txviReceiveMsg.setText(info.toString());
-
+            // 列表滑动到底部
             mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
         });
+    }
+
+    /**
+     * 加载聊天消息
+     */
+    @Override
+    public void onLoadMessage(StringBuffer info) {
+        txviReceiveMsg.setText("");
+
+        // 开启线程处理(流式展示)
+        new Thread(() -> {
+            for (int i = 0; i < info.length(); i++) {
+                char mChar = info.charAt(i);
+                try {
+                    // 停顿0.12秒
+                    Thread.sleep(120);
+                } catch (Exception ignored) {
+                }
+
+                runOnUiThread(() -> {
+                    imviReceiveMsg.setVisibility(View.GONE);
+                    txviReceiveMsg.setVisibility(View.VISIBLE);
+
+                    // response返回拼接
+                    txviReceiveMsg.append(String.valueOf(mChar));
+                    // 列表滑动到底部
+                    mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                });
+            }
+        }).start();
+    }
+
+    /**
+     * 语音播报
+     */
+    @Override
+    public void onVoiceAnnouncements(String input) {
+        // 是否播放语音
+        if (isHorn) {
+            // 文字总长度不能超过60个文字。
+            int length = 50;
+            if (input.length() > length) {
+                for (int i = 0; i < input.length(); i += length) {
+                    String text = input.substring(i, Math.min(i + length, input.length()));
+                    Timber.i("##### onVoiceAnnouncements 分割=%s", text);
+                    if (synthActivity != null) {
+                        synthActivity.speak(text);
+                    }
+                }
+            } else {
+                Timber.i("##### onVoiceAnnouncements 没有分割=%s", input);
+                if (synthActivity != null) {
+                    synthActivity.speak(input);
+                }
+            }
+        }
     }
 
     /**

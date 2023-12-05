@@ -188,56 +188,49 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     private void onAnalysis(ResponseBody info) {
         // 流式输出
         buffer = new StringBuffer();
-
-        // 开启线程处理
-        new Thread(() -> {
-            // 获取response输入流
-            InputStream inputStream = info.byteStream();
-            // 读取响应数据
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    // 处理每一行数据：
-                    // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"中国"},"finish_reason":null}]}
-                    // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"文"},"finish_reason":null}]}
-                    // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"化"},"finish_reason":null}]}
-                    // 判断是否返回了数据，去除response前data关键字，不然解析不了
-                    if (line.length() > 6) {
-                        Timber.d("##### onResponse: %s", line.substring(6));
-                        try {
-                            chatCompletionChunk = gson.fromJson(line.substring(5), ChatCompletionChunk.class);
-                            Timber.d("onAnalysis: %s", chatCompletionChunk.getChoices().get(0).getDelta().getContent());
-                            if (chatCompletionChunk.getChoices().get(0).getDelta().getContent() != null) {
-                                addNewlineAfterPeriod(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
-                                buffer.append(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
-
-                                try {
-                                    // 停顿0.2秒
-                                    Thread.sleep(200);
-                                } catch (Exception ignored) {
-                                }
-                                mRootView.onLoadMessage(buffer);
-                            }
-                            if (chatCompletionChunk.getChoices().get(0).getFinishReason() != null) {
-                                break;
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            buffer.append("请求有误，请检查key或稍后重试，当然，如果你上下文足够长也会出现，请自行找寻原因，嗯，我懒得写 /doge");
-
-                            mRootView.onLoadMessage(buffer);
+        // 获取response输入流
+        InputStream inputStream = info.byteStream();
+        // 读取响应数据
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // 处理每一行数据：
+                // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"中国"},"finish_reason":null}]}
+                // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"文"},"finish_reason":null}]}
+                // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"化"},"finish_reason":null}]}
+                // 判断是否返回了数据，去除response前data关键字，不然解析不了
+                if (line.length() > 6) {
+                    Timber.d("##### onResponse: %s", line.substring(6));
+                    try {
+                        chatCompletionChunk = gson.fromJson(line.substring(5), ChatCompletionChunk.class);
+                        Timber.d("onAnalysis: %s", chatCompletionChunk.getChoices().get(0).getDelta().getContent());
+                        if (chatCompletionChunk.getChoices().get(0).getDelta().getContent() != null) {
+                            addNewlineAfterPeriod(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
+                            buffer.append(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
+                        }
+                        if (chatCompletionChunk.getChoices().get(0).getFinishReason() != null) {
                             break;
                         }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        buffer.append("请求有误，请检查key或稍后重试，当然，如果你上下文足够长也会出现，请自行找寻原因，嗯，我懒得写 /doge");
+
+                        mRootView.onLoadError(buffer);
+                        break;
                     }
                 }
-
-                mRootView.onSucc();
-
-                Timber.d("onResult: %s", buffer.toString());
-            } catch (Exception ignored) {
-
             }
-        }).start();
+
+            // 流式展示
+            mRootView.onLoadMessage(buffer);
+            // 语音播报
+            mRootView.onVoiceAnnouncements(buffer.toString());
+            mRootView.onSucc();
+
+            Timber.d("onResult: %s", buffer.toString());
+        } catch (Exception ignored) {
+
+        }
     }
 
     /**
@@ -297,7 +290,7 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                 buffer.append("请求超时，请检查网络并重试");
             }
         }
-        mRootView.onLoadMessage(buffer);
+        mRootView.onLoadError(buffer);
         mRootView.onSucc();
     }
 

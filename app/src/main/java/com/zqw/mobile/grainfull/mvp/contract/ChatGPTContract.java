@@ -22,7 +22,10 @@ public interface ChatGPTContract {
         void loadSk();
 
         // 加载消息
+        void onLoadError(StringBuffer info);
         void onLoadMessage(StringBuffer info);
+        // 语音播报
+        void onVoiceAnnouncements(String text);
 
         // 加载图片
         void onLoadImages(String url);
