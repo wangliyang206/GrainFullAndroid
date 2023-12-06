@@ -46,11 +46,11 @@ public interface Constant {
      */
 //    String CHATGPT_URL = "https://api.openai.com/v1/chat/completions";
     /**
-     * ChatGPT “OpenKEY”服务“闲聊”地址(Chat3.5)
+     * ChatGPT “OpenKEY”服务“闲聊”地址
      */
     String CHATGPT_CHAT_URL = "https://openkey.cloud/v1/chat/completions";
     /**
-     * ChatGPT “OpenKEY”服务“图片”地址(Chat3.5)
+     * ChatGPT “OpenKEY”服务“图片”地址
      */
     String CHATGPT_IMAGE_URL = "https://openkey.cloud/v1/images/generations";
     /**
@@ -61,6 +61,14 @@ public interface Constant {
      * ChatGPT key，有额度(1元 500000 tokens)
      */
     String CHATGPT_KEY = "sk-UpxszeOO0Bjag203991240BbCa6b48Dc89C90f1b451b9c39";
+
+    /**
+     * FastGPT API 地址
+     */
+    String FASTGPT_CHAT_URL = "https://ai.fastgpt.in/api/v1/chat/completions";
+    String FASTGPT_IMAGE_URL = "https://ai.fastgpt.in/api/v1/images/generations";
+    String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
+
     /**
      * 百度翻译 - 服务地址
      */

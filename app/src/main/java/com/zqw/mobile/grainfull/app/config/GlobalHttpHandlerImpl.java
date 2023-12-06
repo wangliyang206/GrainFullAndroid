@@ -109,6 +109,12 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
         } else if (request.url().toString().contains(Constant.CHATGPT_TOKEN)) {
             // ChatGPT 接口做特殊处理
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").build();
+        } else if (request.url().toString().contains(Constant.FASTGPT_CHAT_URL)) {
+            // FastGPT 接口做特殊处理
+            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
+        } else if (request.url().toString().contains(Constant.FASTGPT_IMAGE_URL)) {
+            // FastGPT 接口做特殊处理
+            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
         } else {
             /* 如果需要在请求服务器之前做一些操作, 则重新构建一个做过操作的 Request 并 return, 如增加 Header、Params 等请求信息, 不做操作则直接返回参数 request */
             return chain.request().newBuilder().header("token", CommonUtils.isEmptyReturnStr(mAccountManager.getToken())).header("Content-Type", "application/json;charset=UTF-8").build();

@@ -343,6 +343,26 @@
                             android:src="@mipmap/icon_charge" />
                     </RelativeLayout>
 
+                    <RelativeLayout
+                        android:id="@+id/btn_fragmenthome_intelligent_fastgpt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_bg_selector"
+                            android:padding="10dp"
+                            android:text="FastGPT" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_charge" />
+                    </RelativeLayout>
+
                     <TextView
                         android:id="@+id/btn_fragmenthome_intelligent_chatgptweb"
                         android:layout_width="wrap_content"

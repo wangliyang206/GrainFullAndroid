@@ -31,8 +31,8 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceRecognitionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduSpeechSynthesisActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BaiduVoiceRecogActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CalculateDistanceActivity;
-import com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTWebActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTWebActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ColorPickerActivity;
@@ -41,6 +41,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.DigitalToChineseActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.EquipmentInfoActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
@@ -200,6 +201,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_speechsynthesis,                                                  // 语音合成
 
             R.id.btn_fragmenthome_intelligent_chatgpt,                                              // ChatGPT
+            R.id.btn_fragmenthome_intelligent_fastgpt,                                              // FastGPT
             R.id.btn_fragmenthome_intelligent_chatgptweb,                                           // ChatGPT Web版
 
             R.id.btn_fragmenthome_color_colorpicker,                                                // 取色板
@@ -276,6 +278,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
             case R.id.btn_fragmenthome_intelligent_chatgpt:                                         // ChatGPT
                 ActivityUtils.startActivity(ChatGPTActivity.class);
+                break;
+            case R.id.btn_fragmenthome_intelligent_fastgpt:                                         // FastGPT
+                ActivityUtils.startActivity(FastGPTActivity.class);
                 break;
             case R.id.btn_fragmenthome_intelligent_chatgptweb:                                      // ChatGPT Web版
                 ActivityUtils.startActivity(ChatGPTWebActivity.class);

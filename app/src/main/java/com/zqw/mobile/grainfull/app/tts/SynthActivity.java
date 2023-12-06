@@ -170,7 +170,7 @@ public class SynthActivity {
         // params.put(SpeechSynthesizer.PARAM_SPEAKER, "3"); // 设置为度逍遥
         // synthesizer.setParams(params);
         int result = synthesizer.speak(val);
-        Timber.i("##### speak=%s", result);
+//        Timber.i("##### speak=%s", result);
     }
 
     /**

@@ -13,7 +13,6 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,8 +20,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -47,14 +44,12 @@ import com.jess.arms.utils.ArmsUtils;
 import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
-import com.zqw.mobile.grainfull.app.dialog.PopupChatGptMore;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
-import com.zqw.mobile.grainfull.di.component.DaggerChatGPTComponent;
-import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
-import com.zqw.mobile.grainfull.mvp.model.entity.ChatToken;
-import com.zqw.mobile.grainfull.mvp.presenter.ChatGPTPresenter;
+import com.zqw.mobile.grainfull.di.component.DaggerFastGPTComponent;
+import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
+import com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton;
 
 import java.io.File;
@@ -69,39 +64,27 @@ import permissions.dispatcher.RuntimePermissions;
 import timber.log.Timber;
 
 /**
- * Description:
+ * Description:ChatGPT + 知识库
  * <p>
- * Created on 2023/11/23 15:49
+ * Created on 2023/12/06 16:12
  *
  * @author 赤槿
- * module name is ChatGPTActivity
+ * module name is FastGPTActivity
  */
 @RuntimePermissions
-public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements ChatGPTContract.View, AudioRecorderButton.VoiceEvents {
+public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements FastGPTContract.View, AudioRecorderButton.VoiceEvents {
     /*--------------------------------控件信息--------------------------------*/
-    @BindView(R.id.radio_chatgpt_group)
-    RadioGroup mRadioGroup;                                                                         // 切换版本
-    @BindView(R.id.radio_chatgpt_x)
-    RadioButton radioMinVersion;                                                                    // 小版本
-    @BindView(R.id.radio_chatgpt_d)
-    RadioButton radioMaxVersion;                                                                    // 大版本
-
-    @BindView(R.id.imvi_chatgpt_horn)
-    ImageView imviHorn;                                                                             // 喇叭
-    @BindView(R.id.imvi_chatgpt_more)
-    ImageView imviMore;                                                                             // 更多
-
-    @BindView(R.id.view_chatgpt_scrollView)
+    @BindView(R.id.view_fastgpt_scrollView)
     NestedScrollView mScrollView;                                                                   // 外层 - 滑动布局
-    @BindView(R.id.lila_chatgpt_chatlayout)
+    @BindView(R.id.lila_fastgpt_chatlayout)
     LinearLayout lilaChatLayout;                                                                    // 消息总布局
-    @BindView(R.id.edit_chatgpt_input)
+    @BindView(R.id.edit_fastgpt_input)
     EditText editInput;                                                                             // 文字-输入框
-    @BindView(R.id.view_chatgpt_voice)
+    @BindView(R.id.view_fastgpt_voice)
     AudioRecorderButton viewVoice;                                                                  // 语音-按住说话
-    @BindView(R.id.imvi_chatgpt_switch)
+    @BindView(R.id.imvi_fastgpt_switch)
     ImageView imviVoiceOrText;                                                                      // 文字与语音-切换按钮
-    @BindView(R.id.imvi_chatgpt_send)
+    @BindView(R.id.imvi_fastgpt_send)
     ImageView imviSend;                                                                             // 发送文字按钮
 
 
@@ -117,8 +100,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     protected MyRecognizer myRecognizer;
     // 语音合成(播报)
     private SynthActivity synthActivity;
-    // ChatGPT额度提示
-    private PopupChatGptMore mPopup;
     // 语音路径
     private String mVoicePath;
     // 是否自动播放语音(默认自动播放)
@@ -136,13 +117,12 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         }
         super.onDestroy();
         this.mAccountManager = null;
-        this.mPopup = null;
         InFileStream.reset();
     }
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerChatGPTComponent
+        DaggerFastGPTComponent
                 .builder()
                 .appComponent(appComponent)
                 .view(this)
@@ -152,13 +132,15 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_chat_gpt;
+        return R.layout.activity_fast_gpt;
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        setTitle("GPT+知识库");
+
         // 友盟统计 - 自定义事件
-        MobclickAgent.onEvent(getApplicationContext(), "chatgpt_open");
+        MobclickAgent.onEvent(getApplicationContext(), "fastgpt_open");
 
         viewVoice.initAudio(true, this);
         lilaChatLayout.setOnTouchListener((v, event) -> {
@@ -187,23 +169,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
             }
         });
 
-        mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.radio_chatgpt_x) {
-                mAccountManager.setChatGptVersion(false);
-                radioMinVersion.setBackgroundResource(R.drawable.financial_order_selector);
-                radioMaxVersion.setBackground(null);
-            } else {
-                mAccountManager.setChatGptVersion(true);
-                radioMinVersion.setBackground(null);
-                radioMaxVersion.setBackgroundResource(R.drawable.financial_order_selector);
-            }
-        });
-
-        // 初始化业务部分
-        if (mPresenter != null) {
-            mPresenter.initPresenter(mAccountManager.getChatGptSk());
-        }
-
         // 初始化语音识别
         apiParams = new OnlineRecogParams();
         apiParams.initSamplePath(this);
@@ -223,49 +188,33 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
      * 初始化
      */
     private void init() {
-        String tips = "你好，我是Ai小助手，需要帮助吗？";
+        String tips = "您好，我是易收智能客服，请问有什么可以帮助您的吗？";
         // 添加一条消息
         addLeftMsg(tips);
         onVoiceAnnouncements(tips);
     }
 
     @OnClick({
-            R.id.imvi_chatgpt_horn,                                                                 // 喇叭
-            R.id.imvi_chatgpt_more,                                                                 // 更多
-            R.id.imvi_chatgpt_switch,                                                               // 文字与语音-切换按钮
-            R.id.imvi_chatgpt_send,                                                                 // 发送文字按钮
+            R.id.imvi_fastgpt_switch,                                                               // 文字与语音-切换按钮
+            R.id.imvi_fastgpt_send,                                                                 // 发送文字按钮
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.imvi_chatgpt_horn:                                                            // 喇叭
-                if (isHorn) {
-                    isHorn = false;
-                    imviHorn.setImageResource(R.mipmap.icon_horn_nosound);
-                } else {
-                    isHorn = true;
-                    imviHorn.setImageResource(R.mipmap.icon_horn_voiced);
-                }
-                break;
-            case R.id.imvi_chatgpt_more:                                                            // 更多
-                if (mPopup != null) {
-                    mPopup.showAtLocation(v, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-                }
-                break;
-            case R.id.imvi_chatgpt_switch:                                                          // 文字与语音-切换按钮
+            case R.id.imvi_fastgpt_switch:                                                          // 文字与语音-切换按钮
                 if (editInput.isShown()) {
                     // 当前显示的是键盘，如果输入框中有文字，则执行发送事情，如果无内容，则执行切换事件
                     imviVoiceOrText.setImageResource(R.mipmap.icon_chat_softkeyboard);
                     editInput.setVisibility(View.GONE);
                     viewVoice.setVisibility(View.VISIBLE);
-                    ChatGPTActivityPermissionsDispatcher.addVudioWithPermissionCheck(this);
+                    FastGPTActivityPermissionsDispatcher.addVudioWithPermissionCheck(this);
                 } else {
                     editInput.setVisibility(View.VISIBLE);
                     viewVoice.setVisibility(View.GONE);
                     imviVoiceOrText.setImageResource(R.mipmap.icon_chat_voice);
                 }
                 break;
-            case R.id.imvi_chatgpt_send:                                                            // 发送文字按钮
+            case R.id.imvi_fastgpt_send:                                                            // 发送文字按钮
                 onSend();
                 break;
         }
@@ -331,36 +280,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         }
 
         lilaChatLayout.addView(viewLeftMsg);
-    }
-
-    /**
-     * 获取API令牌额度
-     */
-    @Override
-    public void loadTokenBalance(ChatToken mChatToken) {
-        if (mPopup == null) {
-            // 第一次进来，需要初始化
-            mPopup = new PopupChatGptMore(getApplicationContext(), mChatToken.getTotal(), mChatToken.getUsed(), mChatToken.getRemaining(), mAccountManager.getChatGptSk(), sk -> {
-                if (mPresenter != null) {
-                    mPresenter.initPresenter(sk);
-                }
-            });
-
-            imviMore.setVisibility(View.VISIBLE);
-        } else {
-            // 如果“已弹出”，直接刷新数据
-            if (mPopup.isShowing()) {
-                mPopup.onUpdate(mChatToken.getTotal(), mChatToken.getUsed(), mChatToken.getRemaining());
-            }
-        }
-    }
-
-    @Override
-    public void loadSk() {
-        // 如果“已弹出”，直接刷新数据
-        if (mPopup.isShowing()) {
-            mPopup.onUpdate(mAccountManager.getChatGptSk());
-        }
     }
 
     /**
@@ -500,10 +419,11 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         finish();
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        ChatGPTActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        FastGPTActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     /**
@@ -589,7 +509,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
                 case IStatus.STATUS_FINISHED:
                     // 删除音频文件
                     if (!TextUtils.isEmpty(mVoicePath))
-                        MediaStoreUtils.deleteMedieFile(ChatGPTActivity.this, new File(mVoicePath));
+                        MediaStoreUtils.deleteMedieFile(FastGPTActivity.this, new File(mVoicePath));
                     if (msg.arg2 == 1) {
                         // 识别成功
                         // ###识别结束，结果是“经过了几次对读者问题解决之后，我打算添加这一环节，非常有必要。”；说话结束到识别结束耗时【312ms】
