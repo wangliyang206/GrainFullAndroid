@@ -4,6 +4,7 @@ import com.jess.arms.cj.GsonRequest;
 import com.jess.arms.cj.GsonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.AppUpdate;
 import com.zqw.mobile.grainfull.mvp.model.entity.BaiduAiResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.CommonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeInfoResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.LoginResponse;
@@ -85,6 +86,8 @@ public interface AccountService {
     Observable<HomeInfoResponse> queryHomePageInfo(@Url String Url);
 
     // chatGPT会话
+    @POST()
+    Observable<ChatHistoryResponse> getChatHistory(@Url String Url);
     @POST()
     Observable<ResponseBody> chatCreate(@Url String Url, @Body RequestBody params);
 }

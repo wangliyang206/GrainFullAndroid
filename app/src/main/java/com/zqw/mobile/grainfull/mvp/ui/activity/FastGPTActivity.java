@@ -49,10 +49,12 @@ import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerFastGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
+import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -181,17 +183,13 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         // 初始化语音播报
         synthActivity = new SynthActivity();
         synthActivity.initTTS(getApplicationContext(), true);
-        init();
-    }
 
-    /**
-     * 初始化
-     */
-    private void init() {
-        String tips = "您好，我是易收智能客服，请问有什么可以帮助您的吗？";
-        // 添加一条消息
-        addLeftMsg(tips);
-        onVoiceAnnouncements(tips);
+        mScrollView.post(() -> {
+            // 请求网络
+            if (mPresenter != null) {
+                mPresenter.getChatHistory();
+            }
+        });
     }
 
     @OnClick({
@@ -242,6 +240,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         addRightMsg(message);
         // 在界面上显示一条提示“对方，正在输入中……”
         addLeftMsg("正在输入中...");
+        onSucc();
 
         if (mPresenter != null) {
             mPresenter.chatCreate(message);
@@ -283,6 +282,34 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     }
 
     /**
+     * 加载开场白
+     */
+    @Override
+    public void onLoadOpeningRemarks(String tips) {
+        // 添加一条消息
+        addLeftMsg(tips);
+        // 播放语音
+        onVoiceAnnouncements(tips);
+    }
+
+    /**
+     * 加载历史记录
+     */
+    @Override
+    public void onLoadHistory(String tips, List<ChatHistoryInfo> list) {
+        // 添加一条提示语
+        addLeftMsg(tips);
+        for (int i = 0; i < list.size(); i++) {
+            ChatHistoryInfo item = list.get(i);
+            if (i % 2 == 0) {
+                addRightMsg(item.getValue());
+            } else {
+                addLeftMsg(item.getValue());
+            }
+        }
+    }
+
+    /**
      * 加载显示错误信息
      */
     @Override
@@ -293,8 +320,6 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
 
             // response返回拼接
             txviReceiveMsg.setText(info.toString());
-            // 列表滑动到底部
-            mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
         });
     }
 
@@ -321,8 +346,6 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
 
                     // response返回拼接
                     txviReceiveMsg.append(String.valueOf(mChar));
-                    // 列表滑动到底部
-                    mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
                 });
             }
         }).start();
@@ -361,8 +384,6 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         imviReceiveMsg.setVisibility(View.VISIBLE);
         txviReceiveMsg.setVisibility(View.GONE);
         Glide.with(imviReceiveMsg).load(url).into(imviReceiveMsg);
-
-        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
     }
 
     /**

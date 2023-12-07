@@ -1,19 +1,24 @@
 package com.zqw.mobile.grainfull.mvp.presenter;
 
+import android.text.TextUtils;
+
 import com.google.gson.Gson;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.grainfull.app.config.CommonRetryWithDelay;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatCompletionChunk;
-import com.zqw.mobile.grainfull.mvp.model.entity.ChatImg;
+import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.ChatInputs;
+import com.zqw.mobile.grainfull.mvp.model.entity.ChatUserGuideModule;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -41,8 +46,9 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     // 用于接收消息，流式输出
     private StringBuffer buffer;
     private ChatCompletionChunk chatCompletionChunk;
-    private ChatImg chatImg;
     private Gson gson = new Gson();
+    // 默认提示语
+    private String mDefaultTips = "您好，我是AI小助手，请问有什么可以帮助您的吗？";
 
     @Override
     public void onDestroy() {
@@ -52,7 +58,6 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
         this.buffer = null;
 
         this.chatCompletionChunk = null;
-        this.chatImg = null;
     }
 
     @Inject
@@ -61,88 +66,108 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     }
 
     /**
+     * 获取对话日志
+     */
+    public void getChatHistory() {
+        mModel.getChatHistory()
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe(disposable -> {
+//                    mRootView.showLoadingSubmit();                                                  // 显示进度条
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+//                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
+                }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<ChatHistoryResponse>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        Timber.i("##### t=%s", t.getMessage());
+                        mRootView.onLoadOpeningRemarks(mDefaultTips);
+                    }
+
+                    @Override
+                    public void onNext(ChatHistoryResponse info) {
+                        Timber.i("##### getChatHistory------------【Start】-------------");
+
+                        Timber.i("##### onNext Code=%s", info.getCode());
+                        Timber.i("##### onNext History=%s", info.getData().getHistory().size());
+                        try {
+                            if (info.getCode() == 200) {
+                                // 拿到开场白
+                                ChatUserGuideModule mChatUserGuideModule = info.getData().getApp().getUserGuideModule();
+
+                                // 判断是否有历史记录
+                                if (CommonUtils.isNotEmpty(info.getData().getHistory())) {
+                                    // 有历史记录
+                                    mRootView.onLoadHistory(getOpeningRemarks(mChatUserGuideModule), info.getData().getHistory());
+                                } else {
+                                    // 没有历史记录，单独加载 提示语
+                                    mRootView.onLoadOpeningRemarks(getOpeningRemarks(mChatUserGuideModule));
+                                }
+
+                            } else {
+                                mRootView.onLoadOpeningRemarks(mDefaultTips);
+                            }
+                        } catch (Exception ex) {
+                            Timber.i("##### ignored=%s", ex.getMessage());
+                            mRootView.onLoadOpeningRemarks(mDefaultTips);
+                        }
+
+                        Timber.i("##### getChatHistory------------【End】-------------");
+                        mRootView.onSucc();
+                    }
+                });
+    }
+
+    /**
+     * 获取开场白
+     */
+    private String getOpeningRemarks(ChatUserGuideModule mChatUserGuideModule) {
+        String tips = "";
+        if (mChatUserGuideModule != null) {
+            Timber.i("##### name=%s", mChatUserGuideModule.getName());
+            List<ChatInputs> mInputs = mChatUserGuideModule.getInputs();
+            if (CommonUtils.isNotEmpty(mInputs)) {
+                Timber.i("##### onNext Inputs=%s", mInputs.size());
+                tips = mInputs.get(0).getValue().toString();
+            }
+        }
+
+        return TextUtils.isEmpty(tips) ? mDefaultTips : tips;
+    }
+
+    /**
      * 创建会话，类型：聊天、图片
      *
      * @param message 需要内容
      */
     public void chatCreate(String message) {
-        // 判断是文字还是图片，这里使用“模糊匹配”
-        String condition = ".*[制作|生成].*[图|照][片|像].*";
-        if (message.matches(condition)) {
-            // 类型：图片会话
-            onSmartMessaging(2, message);
-        } else {
-            // 类型：文字会话
-            onSmartMessaging(1, message);
-        }
-    }
-
-    /**
-     * 创建会话
-     *
-     * @param type    类型：1聊天，2图片
-     * @param message 需要内容
-     */
-    public void onSmartMessaging(int type, String message) {
-        if (type == 1) {
-            // 创建 聊天 会话
-            mModel.chatCreate(message)
-                    .subscribeOn(Schedulers.io())
-                    .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
-                    .doOnSubscribe(disposable -> {
+        // 创建 聊天 会话
+        mModel.chatCreate(message)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe(disposable -> {
 //                    mRootView.showLoadingSubmit();                                                  // 显示进度条
-                    })
-                    .subscribeOn(AndroidSchedulers.mainThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doFinally(() -> {
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
 //                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
-                    }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                    .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
-                        @Override
-                        public void onError(Throwable t) {
-                            Timber.i("##### t=%s", t.getMessage());
-                            showError(1, t.getMessage());
-                        }
+                }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        Timber.i("##### t=%s", t.getMessage());
+                        showError(1, t.getMessage());
+                    }
 
-                        @Override
-                        public void onNext(ResponseBody info) {
-                            onAnalysis(info);
-                        }
-                    });
-        } else {
-            // 创建 图片 会话
-            mModel.chatImg(message)
-                    .subscribeOn(Schedulers.io())
-                    .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
-                    .doOnSubscribe(disposable -> {
-//                    mRootView.showLoadingSubmit();                                                  // 显示进度条
-                    })
-                    .subscribeOn(AndroidSchedulers.mainThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doFinally(() -> {
-//                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
-                    }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                    .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
-                        @Override
-                        public void onError(Throwable t) {
-                            Timber.i("##### t=%s", t.getMessage());
-                            showError(0, "openkey暂不支持图片输入");
-                        }
-
-                        @Override
-                        public void onNext(ResponseBody info) {
-                            try {
-                                String respStr = info.string();
-                                Timber.d("##### onResponse: %s", respStr);
-                                chatImg = gson.fromJson(respStr, ChatImg.class);
-                                mRootView.onLoadImages(chatImg.getData().get(0).getUrl());
-                                mRootView.onSucc();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-        }
+                    @Override
+                    public void onNext(ResponseBody info) {
+                        onAnalysis(info);
+                    }
+                });
     }
 
     /**
