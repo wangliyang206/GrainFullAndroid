@@ -196,6 +196,8 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
             }
         });
 
+        // 初始进来，默认使用3.5。
+        mAccountManager.setChatGptVersion(false);
         mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.radio_chatgpt_x) {
                 mAccountManager.setChatGptVersion(false);
