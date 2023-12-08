@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -307,6 +306,9 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
                 addLeftMsg(item.getValue());
             }
         }
+
+        // 滑动到底部
+        mScrollView.post(() -> mScrollView.fullScroll(View.FOCUS_DOWN));
     }
 
     /**
@@ -392,7 +394,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     @Override
     public void onSucc() {
         runOnUiThread(() -> {
-            mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            mScrollView.fullScroll(View.FOCUS_DOWN);
         });
     }
 
