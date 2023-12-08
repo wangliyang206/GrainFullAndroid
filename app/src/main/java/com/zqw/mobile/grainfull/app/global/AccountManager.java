@@ -440,7 +440,8 @@ public final class AccountManager {
      */
     public void setChatGptVersion(boolean isLargeVersion) {
         if (isLargeVersion) {
-            spHelper.put(CHATGPT_VERSION, "gpt-4");
+//            spHelper.put(CHATGPT_VERSION, "gpt-4");
+            spHelper.put(CHATGPT_VERSION, "gpt-4-1106-preview");
         } else {
             spHelper.put(CHATGPT_VERSION, "gpt-3.5-turbo");
         }

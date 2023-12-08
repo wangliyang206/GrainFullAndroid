@@ -68,7 +68,7 @@ public class ChatGPTModel extends BaseModel implements ChatGPTContract.Model {
     @Override
     public Observable<ResponseBody> chatImg(String message) {
         // 转换成Json
-        message = "{\"prompt\": \"" + message + "\", \"n\": 1, \"size\" : \"512x512\"}";
+        message = "{\"model\": \"dall-e-3\", \"prompt\": \"" + message + "\", \"n\": 1,\"quality\": \"hd\", \"size\" : \"1792x1024\"}";
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);
         return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.CHATGPT_IMAGE_URL, requestBodyJson);
     }

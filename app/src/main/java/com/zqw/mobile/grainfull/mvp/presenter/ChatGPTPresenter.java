@@ -163,7 +163,11 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                         @Override
                         public void onError(Throwable t) {
                             Timber.i("##### t=%s", t.getMessage());
-                            showError(0, "openkey暂不支持图片输入");
+                            if (t.getMessage().contains("timeout")) {
+                                showError(0, "请求超时了");
+                            } else {
+                                showError(0, "openkey暂不支持图片输入");
+                            }
                         }
 
                         @Override
@@ -173,7 +177,6 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                                 Timber.d("##### onResponse: %s", respStr);
                                 chatImg = gson.fromJson(respStr, ChatImg.class);
                                 mRootView.onLoadImages(chatImg.getData().get(0).getUrl());
-                                mRootView.onSucc();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

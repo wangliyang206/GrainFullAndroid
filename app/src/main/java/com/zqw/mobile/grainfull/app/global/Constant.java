@@ -60,7 +60,7 @@ public interface Constant {
     /**
      * ChatGPT key，有额度(1元 500000 tokens)
      */
-    String CHATGPT_KEY = "sk-UpxszeOO0Bjag203991240BbCa6b48Dc89C90f1b451b9c39";
+    String CHATGPT_KEY = "sk-GlgmPE0qiewPnNg6760703686fD4468683C655Ed1eA75e37";
 
     /**
      * FastGPT API 地址

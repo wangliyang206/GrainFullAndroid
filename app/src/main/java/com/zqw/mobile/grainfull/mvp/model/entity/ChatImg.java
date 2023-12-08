@@ -29,7 +29,18 @@ public class ChatImg {
     }
 
     public static class DataItem {
+        // 修改后的提示
+        private String revised_prompt;
+        // 图片链接地址
         private String url;
+
+        public String getRevised_prompt() {
+            return revised_prompt;
+        }
+
+        public void setRevised_prompt(String revised_prompt) {
+            this.revised_prompt = revised_prompt;
+        }
 
         public String getUrl() {
             return url;

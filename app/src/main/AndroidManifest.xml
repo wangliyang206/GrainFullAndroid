@@ -291,6 +291,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".mvp.ui.activity.IdentifyIdCardActivity" />
         <activity android:name=".mvp.ui.activity.IdentifyBankCardsActivity" />
+        <activity android:name=".mvp.ui.activity.PhotoViewActivity" />
         <activity android:name=".mvp.ui.activity.AboutActivity" />
         <activity android:name=".mvp.ui.activity.SettingActivity" /> <!-- 首页 -->
         <activity

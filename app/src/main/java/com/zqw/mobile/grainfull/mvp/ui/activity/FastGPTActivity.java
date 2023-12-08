@@ -65,7 +65,10 @@ import permissions.dispatcher.RuntimePermissions;
 import timber.log.Timber;
 
 /**
- * Description:ChatGPT + 知识库
+ * Description:ChatGPT
+ * <p>
+ * 1、利用第三方“FastGPT”实现： ChatGPT + 知识库。
+ * 2、语音识别与语音合成为第三方：百度-智能云。
  * <p>
  * Created on 2023/12/06 16:12
  *

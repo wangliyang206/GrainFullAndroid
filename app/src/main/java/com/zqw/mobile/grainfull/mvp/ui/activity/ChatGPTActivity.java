@@ -40,15 +40,17 @@ import com.baidu.aip.asrwakeup3.uiasr.params.CommonRecogParams;
 import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
 import com.baidu.speech.asr.SpeechConstant;
 import com.blankj.utilcode.util.KeyboardUtils;
-import com.bumptech.glide.Glide;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.PopupChatGptMore;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerChatGPTComponent;
@@ -69,7 +71,10 @@ import permissions.dispatcher.RuntimePermissions;
 import timber.log.Timber;
 
 /**
- * Description:
+ * Description:ChatGPT
+ * <p>
+ * 1、ChatGPT为第三方OpenKEY(https://openkey.cloud/)。
+ * 2、语音识别与语音合成为第三方：百度-智能云。
  * <p>
  * Created on 2023/11/23 15:49
  *
@@ -77,7 +82,7 @@ import timber.log.Timber;
  * module name is ChatGPTActivity
  */
 @RuntimePermissions
-public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements ChatGPTContract.View, AudioRecorderButton.VoiceEvents {
+public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements ChatGPTContract.View, AudioRecorderButton.VoiceEvents, View.OnClickListener {
     /*--------------------------------控件信息--------------------------------*/
     @BindView(R.id.radio_chatgpt_group)
     RadioGroup mRadioGroup;                                                                         // 切换版本
@@ -111,6 +116,9 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     /*--------------------------------业务信息--------------------------------*/
     @Inject
     AccountManager mAccountManager;
+    @Inject
+    ImageLoader mImageLoader;
+
     // Api的参数类，仅仅用于生成调用START的json字符串，本身与SDK的调用无关
     private CommonRecogParams apiParams;
     // 识别控制器，使用MyRecognizer控制识别的流程
@@ -136,6 +144,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         }
         super.onDestroy();
         this.mAccountManager = null;
+        this.mImageLoader = null;
         this.mPopup = null;
         InFileStream.reset();
     }
@@ -226,6 +235,10 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         String tips = "你好，我是Ai小助手，需要帮助吗？";
         // 添加一条消息
         addLeftMsg(tips);
+
+//        String url = "https://oaidalleapiprodscus.blob.core.windows.net/private/org-T97RC5fx0Oy4oBPrCS3W7Yz1/user-3TT738PAhNgKOU9XICWYPJum/img-HcdCMa0W874gEWREsGLTEHbV.png?st=2023-12-08T02%3A16%3A14Z&se=2023-12-08T04%3A16%3A14Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-07T16%3A41%3A04Z&ske=2023-12-08T16%3A41%3A04Z&sks=b&skv=2021-08-06&sig=UGoc8IKalwoIfBBMH/foFq7Q1w2C4S41fcwUsFRGUvI%3D";
+//        String url = "https://oaidalleapiprodscus.blob.core.windows.net/private/org-OrGSLWGbjQtQC3BJcWd1RqqQ/user-1O0iywZtRUtV3sqIeTUt1LrS/img-o97LukFTMfdBr3JEqJ15nO6Q.png?st=2023-12-08T01%3A47%3A51Z&se=2023-12-08T03%3A47%3A51Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-07T16%3A41%3A47Z&ske=2023-12-08T16%3A41%3A47Z&sks=b&skv=2021-08-06&sig=wvRLHqjl%2BLn/5Yiu2%2BUHiE8Bnmd54eAI4KkEfPUEdFA%3D";
+//        addLeftImage(url);
         onVoiceAnnouncements(tips);
     }
 
@@ -238,6 +251,9 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imvi_chatleftlayout_chat:                                                     // 点击图片
+                showImage((String) v.getTag());
+                break;
             case R.id.imvi_chatgpt_horn:                                                            // 喇叭
                 if (isHorn) {
                     isHorn = false;
@@ -321,6 +337,10 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
      * 添加左侧消息(显示对方消息)
      */
     public void addLeftMsg(String text) {
+        if (imviReceiveMsg != null) {
+            imviReceiveMsg.setOnClickListener(null);
+        }
+
         LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.chat_left_textview, null).findViewById(R.id.chat_left_layout);
 
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_chatleftlayout_chat);
@@ -329,6 +349,31 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         if (viewLeftMsg.getParent() != null) {
             ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
         }
+
+        lilaChatLayout.addView(viewLeftMsg);
+    }
+
+    /**
+     * 展示图片(用于测试布局)
+     */
+    public void addLeftImage(String url) {
+        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.chat_left_textview, null).findViewById(R.id.chat_left_layout);
+
+        imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_chatleftlayout_chat);
+        txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_chatleftlayout_chat);
+        if (viewLeftMsg.getParent() != null) {
+            ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
+        }
+        txviReceiveMsg.setVisibility(View.GONE);
+        imviReceiveMsg.setVisibility(View.VISIBLE);
+        mImageLoader.loadImage(getApplicationContext(),
+                ImageConfigImpl
+                        .builder()
+                        .url(url)
+                        .imageView(imviReceiveMsg)
+                        .errorPic(R.mipmap.mis_default_error)
+                        .imageRadius(10)
+                        .build());
 
         lilaChatLayout.addView(viewLeftMsg);
     }
@@ -441,9 +486,22 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     public void onLoadImages(String url) {
         imviReceiveMsg.setVisibility(View.VISIBLE);
         txviReceiveMsg.setVisibility(View.GONE);
-        Glide.with(imviReceiveMsg).load(url).into(imviReceiveMsg);
+        // 加载图片
+        mImageLoader.loadImage(getApplicationContext(),
+                ImageConfigImpl
+                        .builder()
+                        .url(url)
+                        .imageView(imviReceiveMsg)
+                        .errorPic(R.mipmap.mis_default_error)
+                        .imageRadius(10)
+                        .build());
 
-        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+        imviReceiveMsg.setTag(url);
+        if (imviReceiveMsg != null) {
+            imviReceiveMsg.setOnClickListener(this);
+        }
+        // 滑动到最底部
+        mScrollView.post(() -> mScrollView.fullScroll(ScrollView.FOCUS_DOWN));
     }
 
     /**
@@ -651,5 +709,16 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     @Override
     public void onVoiceRelease() {
         myRecognizer.stop();
+    }
+
+    /**
+     * 显示图片
+     */
+    public void showImage(String image) {
+        if (!TextUtils.isEmpty(image)) {
+            Intent intent = new Intent(getApplicationContext(), PhotoViewActivity.class);
+            intent.putExtra(Constant.IMAGE_URL, image);
+            startActivity(intent);
+        }
     }
 }
