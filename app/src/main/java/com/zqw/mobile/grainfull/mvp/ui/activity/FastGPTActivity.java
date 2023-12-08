@@ -308,7 +308,9 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         }
 
         // 滑动到底部
-        mScrollView.post(() -> mScrollView.fullScroll(View.FOCUS_DOWN));
+        mScrollView.post(() -> {
+            mScrollView.fullScroll(View.FOCUS_DOWN);
+        });
     }
 
     /**
