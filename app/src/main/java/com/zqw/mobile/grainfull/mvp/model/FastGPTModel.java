@@ -10,11 +10,17 @@ import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.api.AccountService;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 
@@ -49,6 +55,38 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
         boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
         String addItems = "?appId=" + getAppId(isDouYa) + "&chatId=" + getChatId(isDouYa);
         return mRepositoryManager.obtainRetrofitService(AccountService.class).getChatHistory(Constant.FASTGPT_HISTORY_URL + addItems);
+    }
+
+
+    /**
+     * 语音转文字
+     */
+    @Override
+    public Observable<WhisperResponse> voiceToText(File file) {
+        // 文件
+        RequestBody fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("file", file.getName(), fileBody);
+        // 自定义参数
+        Map<String, RequestBody> requestBodyMap = new HashMap<>();
+        requestBodyMap.put("language", RequestBody.create(MediaType.parse("multipart/form-data"), "zh"));
+        requestBodyMap.put("model", RequestBody.create(MediaType.parse("multipart/form-data"), "whisper-1"));
+        requestBodyMap.put("response_format", RequestBody.create(MediaType.parse("multipart/form-data"), "json"));
+
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).voiceToText(Constant.FASTGPT_TRANSCRIPTIONS_URL, multipartBody, requestBodyMap);
+    }
+
+    @Override
+    public Observable<ResponseBody> textToSpeech(String text) {
+        // 转换成Json
+        text = "{" +
+                "\"model\": \"tts-1-hd\"," +
+                "\"input\": \"" + text + "\"," +
+                "\"voice\": \"alloy\"," +
+                "\"response_format\": \"mp3\"," +
+                "\"speed\": 1" +
+                "}";
+        RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), text);
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.FASTGPT_SPEECH_URL, requestBodyJson);
     }
 
     @Override

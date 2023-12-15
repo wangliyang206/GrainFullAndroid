@@ -216,6 +216,9 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
                 break;
             case R.id.imvi_fastgpt_send:                                                            // 发送文字按钮
                 onSend();
+//                if (mPresenter != null) {
+//                    mPresenter.voiceToText("/storage/emulated/0/Download/GrainFull/8fc9c1d4-c78d-421b-8ca0-60ab079d1bff.mp4");
+//                }
                 break;
         }
     }
@@ -359,6 +362,14 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     }
 
     /**
+     * 语音转文字
+     */
+    @Override
+    public void onLoadVoiceToText(String text) {
+        onSend(text);
+    }
+
+    /**
      * 语音播报
      */
     @Override
@@ -469,6 +480,10 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         viewVoice.setOnAudioFinishRecorderListener((seconds, filePath) -> {
             Timber.i("##### filePath =%s", filePath);
             mVoicePath = filePath;
+
+//            if (mPresenter != null) {
+//                mPresenter.voiceToText(filePath);
+//            }
         });
     }
 

@@ -14,8 +14,10 @@ import com.zqw.mobile.grainfull.mvp.model.entity.ChatCompletionChunk;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatInputs;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatUserGuideModule;
+import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -48,7 +50,7 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     private ChatCompletionChunk chatCompletionChunk;
     private Gson gson = new Gson();
     // 默认提示语
-    private String mDefaultTips = "您好，我是AI小助手，请问有什么可以帮助您的吗？";
+    private final String mDefaultTips = "您好，我是AI小助手，请问有什么可以帮助您的吗？";
 
     @Override
     public void onDestroy() {
@@ -92,8 +94,8 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
                         Timber.i("##### getChatHistory------------【Start】-------------");
 
                         Timber.i("##### onNext Code=%s", info.getCode());
-                        Timber.i("##### onNext History=%s", info.getData().getHistory().size());
                         try {
+                            Timber.i("##### onNext History=%s", info.getData().getHistory().size());
                             if (info.getCode() == 200) {
                                 // 拿到开场白
                                 ChatUserGuideModule mChatUserGuideModule = info.getData().getApp().getUserGuideModule();
@@ -218,6 +220,36 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
         } catch (Exception ignored) {
 
         }
+    }
+
+    /**
+     * 语音转文字
+     * 目前文件上传限制为 25 MB，并支持以下输入文件类型：mp3、mp4、mpeg、mpga、m4a、wav 和 webm。
+     */
+    public void voiceToText(String path) {
+        mModel.voiceToText(new File(path))
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe(disposable -> {
+//                    mRootView.showLoadingSubmit();                                                  // 显示进度条
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+//                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
+                }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<WhisperResponse>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        Timber.i("##### t=%s", t.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(WhisperResponse info) {
+                        Timber.i("##### Whisper=%s", info.getText());
+                        mRootView.onLoadVoiceToText(info.getText());
+                    }
+                });
     }
 
     /**

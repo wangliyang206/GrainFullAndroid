@@ -4,7 +4,9 @@ import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
+import java.io.File;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -32,6 +34,8 @@ public interface FastGPTContract {
         // 加载 - 文字消息
         void onLoadMessage(StringBuffer info);
 
+        // 语音转文字
+        void onLoadVoiceToText(String text);
         // 语音播报
         void onVoiceAnnouncements(String text);
 
@@ -46,7 +50,10 @@ public interface FastGPTContract {
     interface Model extends IModel {
         // 获取对话日志
         Observable<ChatHistoryResponse> getChatHistory();
-
+        // 语音转文字
+        Observable<WhisperResponse> voiceToText(File file);
+        // 文本转语音
+        Observable<ResponseBody> textToSpeech(String text);
         // 创建“聊天”会话
         Observable<ResponseBody> chatCreate(String message);
     }

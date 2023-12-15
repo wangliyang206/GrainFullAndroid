@@ -51,7 +51,7 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
 
         mDialogManager = new DialogManager(getContext());
 
-        mAudioManager = AudioManager.getInstance(Constant.AUDIO_PATH);
+        mAudioManager = AudioManager.getInstance(Constant.AUDIO_PATH,".mp4");
         mAudioManager.setOnAduioStateListener(this);
     }
 
