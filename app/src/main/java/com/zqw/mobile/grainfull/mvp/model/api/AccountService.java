@@ -7,10 +7,12 @@ import com.zqw.mobile.grainfull.mvp.model.entity.BaiduAiResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.CommonResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeInfoResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.LoginResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.TranslateResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -60,6 +62,11 @@ public interface AccountService {
     // 获取APP版本信息
     @POST("system/getVersion")
     Observable<GsonResponse<AppUpdate>> getVersion(@Body GsonRequest<Map<String, Object>> request);
+
+    // 文件上传（图片）
+    @Multipart
+    @POST("fileUploadController/uploadFiles")
+    Observable<GsonResponse<ImageUploadResponse>> uploadChatFiles(@Part List<MultipartBody.Part> file);
 
     // 下载
     @Streaming

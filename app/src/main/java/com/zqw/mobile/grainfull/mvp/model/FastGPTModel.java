@@ -3,17 +3,22 @@ package com.zqw.mobile.grainfull.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
+import com.jess.arms.cj.ApiOperator;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 import com.zqw.mobile.grainfull.app.global.Constant;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.api.AccountService;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -100,6 +105,23 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
         return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.FASTGPT_CHAT_URL, requestBodyJson);
     }
 
+    @Override
+    public Observable<ResponseBody> chatMultipleModels(String imageUrl, String message) {
+        String json = "{\"model\": \"gpt-4-vision-preview\"," +
+                "\"messages\": [{" +
+                "\"role\": \"user\"," +
+                "\"content\": [{" +
+                "\"type\": \"image_url\"," +
+                "\"image_url\": \"" + imageUrl + "\"}, {" +
+                "\"type\": \"text\"," +
+                "\"text\": \"" + message + "\"}]" +
+                "}]" +
+                "}";
+
+        RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.FASTGPT_CHAT_URL, requestBodyJson);
+    }
+
     /**
      * 获取 AppId
      */
@@ -112,5 +134,23 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
      */
     private String getChatId(boolean isDouYa) {
         return isDouYa ? "GrainFullDouYa" : "GrainFullApp";
+    }
+
+    /**
+     * 上传图片
+     */
+    @Override
+    public Observable<ImageUploadResponse> uploadChatFiles(ArrayList<String> mPath) {
+
+        List<MultipartBody.Part> mImgs = new ArrayList<>();
+        if (CommonUtils.isNotEmpty(mPath)) {
+            for (String val : mPath) {
+                RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), new File(val));
+                MultipartBody.Part part = MultipartBody.Part.createFormData("signForOrdersImgs", "name.png", requestBody);
+                mImgs.add(part);
+            }
+        }
+
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).uploadChatFiles(mImgs).flatMap(ApiOperator.<ImageUploadResponse>transformResponse());
     }
 }

@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 
 import com.baidu.aip.asrwakeup3.core.inputstream.InFileStream;
@@ -39,12 +40,18 @@ import com.blankj.utilcode.util.KeyboardUtils;
 import com.bumptech.glide.Glide;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
+import com.lcw.library.imagepicker.ImagePicker;
 import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
+import com.zqw.mobile.grainfull.app.utils.CommonUtils;
+import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerFastGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
@@ -53,6 +60,7 @@ import com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -63,12 +71,16 @@ import butterknife.OnClick;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 import timber.log.Timber;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 /**
  * Description:ChatGPT
  * <p>
  * 1、利用第三方“FastGPT”实现： ChatGPT + 知识库。
  * 2、语音识别与语音合成为第三方：百度-智能云。
+ * 3、FastGPT语音转文字API 未启用。
+ * 4、FastGPT支持：文字对话、图文识别。
  * <p>
  * Created on 2023/12/06 16:12
  *
@@ -91,6 +103,10 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     @BindView(R.id.imvi_fastgpt_send)
     ImageView imviSend;                                                                             // 发送文字按钮
 
+    @BindView(R.id.coli_fastgpt_attachm)
+    ConstraintLayout layoutAttachment;                                                              // 附件
+    @BindView(R.id.imvi_fastgpt_attachm)
+    ImageView imviAttachment;
 
     // 接收的消息
     private TextView txviReceiveMsg;
@@ -98,6 +114,11 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     /*--------------------------------业务信息--------------------------------*/
     @Inject
     AccountManager mAccountManager;
+    @Inject
+    ImageLoader mImageLoader;
+    // 用于临时保存图片地址
+    private ArrayList<String> mImagePaths = new ArrayList<>();
+
     // Api的参数类，仅仅用于生成调用START的json字符串，本身与SDK的调用无关
     private CommonRecogParams apiParams;
     // 识别控制器，使用MyRecognizer控制识别的流程
@@ -120,6 +141,10 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
             synthActivity = null;
         }
         super.onDestroy();
+        if (CommonUtils.isNotEmpty(mImagePaths)) {
+            this.mImagePaths.clear();
+            this.mImagePaths = null;
+        }
         this.mAccountManager = null;
         InFileStream.reset();
     }
@@ -195,12 +220,21 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     }
 
     @OnClick({
+            R.id.btn_fastgpt_attachm,                                                               // 添加附件
+            R.id.btn_fastgpt_close,                                                                 // 删除附件
             R.id.imvi_fastgpt_switch,                                                               // 文字与语音-切换按钮
             R.id.imvi_fastgpt_send,                                                                 // 发送文字按钮
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_fastgpt_attachm:                                                          // 添加附件
+                FastGPTActivityPermissionsDispatcher.addAvatarWithPermissionCheck(this);
+                break;
+            case R.id.btn_fastgpt_close:                                                            // 删除附件
+                mImagePaths.clear();
+                showImage();
+                break;
             case R.id.imvi_fastgpt_switch:                                                          // 文字与语音-切换按钮
                 if (editInput.isShown()) {
                     // 当前显示的是键盘，如果输入框中有文字，则执行发送事情，如果无内容，则执行切换事件
@@ -247,8 +281,14 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         addLeftMsg("正在输入中...");
         onSucc();
 
-        if (mPresenter != null) {
-            mPresenter.chatCreate(message);
+        if (CommonUtils.isNotEmpty(mImagePaths)) {
+            if (mPresenter != null) {
+                mPresenter.chatMultipleModels(message, "", mImagePaths);
+            }
+        } else {
+            if (mPresenter != null) {
+                mPresenter.chatCreate(message);
+            }
         }
     }
 
@@ -614,5 +654,105 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     @Override
     public void onVoiceRelease() {
         myRecognizer.stop();
+    }
+
+    /**
+     * 添加 【附件】 照片
+     */
+    @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
+    public void addAvatar() {
+        ImagePicker.getInstance()
+                .setTitle("图片")//设置标题
+                .showCamera(true)//设置是否显示拍照按钮
+                .showImage(true)//设置是否展示图片
+                .showVideo(false)//设置是否展示视频
+                .filterGif(true)//设置是否过滤gif图片
+                .setMaxCount(1)//设置最大选择图片数目(默认为1，单选)
+                .setImagePaths(mImagePaths)
+                .setSingleType(true)//设置图片视频不能同时选择
+                .setImageLoader(new GlideLoader(this))//设置自定义图片加载器
+                .start(this, Constant.REQUEST_SELECT_IMAGES_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            // 照片
+            if (requestCode == Constant.REQUEST_SELECT_IMAGES_CODE) {
+                // 清空以前图片
+                mImagePaths.clear();
+                // 图片压缩
+                compressImage(data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES));
+            }
+        }
+    }
+
+    /**
+     * 压缩图片
+     *
+     * @param mImg 图片地址
+     */
+    private void compressImage(ArrayList<String> mImg) {
+        Luban.with(this)
+                .load(mImg)
+                .ignoreBy(500)
+                .setTargetDir(Constant.IMAGE_PATH)
+                .filter(path1 -> !(TextUtils.isEmpty(path1) || path1.toLowerCase().endsWith(".gif")))
+                .setCompressListener(new OnCompressListener() {
+                    @Override
+                    public void onStart() {
+                        // 压缩开始前调用，可以在方法内启动 loading UI
+                    }
+
+                    @Override
+                    public void onSuccess(File file) {
+                        // 压缩成功后调用，返回压缩后的图片文件
+                        // 显示图片
+                        uploadData(file.getAbsolutePath());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // 当压缩过程出现问题时调用
+                        // 显示图片
+                        uploadData(mImg);
+                    }
+                }).launch();
+    }
+
+    /**
+     * 压缩成功 》 加载图片 》 单张添加
+     */
+    private void uploadData(String path) {
+        // 接收当前选中的图
+        mImagePaths.add(path);
+        showImage();
+    }
+
+    /**
+     * 加载图片
+     */
+    private void uploadData(ArrayList<String> path) {
+        // 接收当前选中的图
+        mImagePaths.addAll(path);
+        showImage();
+    }
+
+    /**
+     * 显示图片
+     */
+    private void showImage() {
+        if (CommonUtils.isNotEmpty(mImagePaths)) {
+            // 显示图片
+            mImageLoader.loadImage(this,
+                    ImageConfigImpl.builder().url(mImagePaths.get(0))
+                            .placeholder(R.mipmap.mis_default_error)
+                            .errorPic(R.mipmap.mis_default_error)
+                            .imageView(imviAttachment).build());
+            layoutAttachment.setVisibility(View.VISIBLE);
+        } else {
+            layoutAttachment.setVisibility(View.GONE);
+        }
     }
 }

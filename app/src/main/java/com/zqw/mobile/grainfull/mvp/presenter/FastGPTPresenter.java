@@ -14,17 +14,21 @@ import com.zqw.mobile.grainfull.mvp.model.entity.ChatCompletionChunk;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatInputs;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatUserGuideModule;
+import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
@@ -172,6 +176,73 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     }
 
     /**
+     * 多模型会话
+     */
+    public void chatMultipleModels(String message, String imageUrl, ArrayList<String> mPath) {
+        if (TextUtils.isEmpty(imageUrl)) {
+            mModel.uploadChatFiles(mPath)
+                    .subscribeOn(Schedulers.io())
+                    .retryWhen(new CommonRetryWithDelay(0, 2))                 // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                    .doOnSubscribe(disposable -> {
+                    })
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doFinally(() -> {
+                    })
+                    .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                    .flatMap((Function<ImageUploadResponse, ObservableSource<ResponseBody>>) infoResponse -> {
+                        String url = null;
+                        if (infoResponse != null) {
+                            url = infoResponse.getImgList().get(0).getUrl();
+                        }
+
+                        return mModel.chatMultipleModels(url, message)
+                                .subscribeOn(Schedulers.io())
+                                .retryWhen(new CommonRetryWithDelay(0, 2))// 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                                .doOnSubscribe(disposable -> {
+
+                                })
+                                .subscribeOn(AndroidSchedulers.mainThread())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .doFinally(() -> {
+
+                                })
+                                .compose(RxLifecycleUtils.bindToLifecycle(mRootView));
+                    })
+                    .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
+                        @Override
+                        public void onNext(ResponseBody info) {
+                            onAnalysis(info);
+                        }
+                    });
+        } else {
+            mModel.chatMultipleModels(imageUrl, message)
+                    .subscribeOn(Schedulers.io())
+                    .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                    .doOnSubscribe(disposable -> {
+//                    mRootView.showLoadingSubmit();                                                  // 显示进度条
+                    })
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doFinally(() -> {
+//                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
+                    }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                    .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
+                        @Override
+                        public void onError(Throwable t) {
+                            Timber.i("##### t=%s", t.getMessage());
+                            showError(1, t.getMessage());
+                        }
+
+                        @Override
+                        public void onNext(ResponseBody info) {
+                            onAnalysis(info);
+                        }
+                    });
+        }
+    }
+
+    /**
      * 解析结果
      */
     private void onAnalysis(ResponseBody info) {
@@ -247,7 +318,8 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
                     @Override
                     public void onNext(WhisperResponse info) {
                         Timber.i("##### Whisper=%s", info.getText());
-                        mRootView.onLoadVoiceToText(info.getText());
+                        if (!TextUtils.isEmpty(info.getText()))
+                            mRootView.onLoadVoiceToText(info.getText());
                     }
                 });
     }

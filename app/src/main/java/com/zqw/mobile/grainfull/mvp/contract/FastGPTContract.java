@@ -4,9 +4,11 @@ import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -56,5 +58,10 @@ public interface FastGPTContract {
         Observable<ResponseBody> textToSpeech(String text);
         // 创建“聊天”会话
         Observable<ResponseBody> chatCreate(String message);
+        // 多模型会话
+        Observable<ResponseBody> chatMultipleModels(String imageUrl, String message);
+
+        // 上传图片
+        Observable<ImageUploadResponse> uploadChatFiles(ArrayList<String> mPath);
     }
 }
