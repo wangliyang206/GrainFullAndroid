@@ -281,15 +281,19 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         addLeftMsg("正在输入中...");
         onSucc();
 
-        if (CommonUtils.isNotEmpty(mImagePaths)) {
-            if (mPresenter != null) {
-                mPresenter.chatMultipleModels(message, "", mImagePaths);
-            }
-        } else {
-            if (mPresenter != null) {
-                mPresenter.chatCreate(message);
-            }
+        if (mPresenter != null) {
+            mPresenter.chatMultipleModels(message, "https://zhaoqianzqn.oss-cn-shenzhen.aliyuncs.com/imgs/inStockVoucherUrlPath/f300816c178d439481ee23aa0ce9f98de.png", null);
         }
+
+//        if (CommonUtils.isNotEmpty(mImagePaths)) {
+//            if (mPresenter != null) {
+//                mPresenter.chatMultipleModels(message, "", mImagePaths);
+//            }
+//        } else {
+//            if (mPresenter != null) {
+//                mPresenter.chatCreate(message);
+//            }
+//        }
     }
 
     /**

@@ -112,7 +112,7 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
                 "\"role\": \"user\"," +
                 "\"content\": [{" +
                 "\"type\": \"image_url\"," +
-                "\"image_url\": \"" + imageUrl + "\"}, {" +
+                "\"image_url\": {\"url\": \"" + imageUrl + "\"}}, {" +
                 "\"type\": \"text\"," +
                 "\"text\": \"" + message + "\"}]" +
                 "}]" +
