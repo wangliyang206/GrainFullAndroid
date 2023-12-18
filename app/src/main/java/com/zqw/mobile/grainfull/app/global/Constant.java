@@ -70,9 +70,9 @@ public interface Constant {
     String FASTGPT_TRANSCRIPTIONS_URL = "https://ai.fastgpt.in/api/v1/audio/transcriptions";
     String FASTGPT_SPEECH_URL = "https://ai.fastgpt.in/api/v1/audio/speech";
     // 企业智能客服：带有知识库，可以回答企业任何问题(appId=656fce2d993ca09b160e9ea7)
-    String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
+//    String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
     // 豆芽AI助手(appId=6571425b3edacb78a123cf0c)
-//    String FASTGPT_KEY = "fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ";
+    String FASTGPT_KEY = "fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ";
 
     /**
      * 百度翻译 - 服务地址

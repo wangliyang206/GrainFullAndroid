@@ -16,8 +16,8 @@
         "ndk"
       ],
       "buildRoot": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\arm64-v8a",
-      "cmakeToolchain": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
-      "cmakeExecutable": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\cmake.exe",
+      "cmakeToolchain": "D:\\Android\\SDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
+      "cmakeExecutable": "D:\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\cmake.exe",
       "variables": [
         {
           "name": "CMAKE_BUILD_TYPE",
@@ -25,7 +25,7 @@
         },
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake"
+          "value": "D:\\Android\\SDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake"
         },
         {
           "name": "ANDROID_ABI",
@@ -33,7 +33,7 @@
         },
         {
           "name": "ANDROID_NDK",
-          "value": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570"
+          "value": "D:\\Android\\SDK\\ndk\\20.0.5594570"
         },
         {
           "name": "ANDROID_PLATFORM",
@@ -45,7 +45,7 @@
         },
         {
           "name": "CMAKE_ANDROID_NDK",
-          "value": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570"
+          "value": "D:\\Android\\SDK\\ndk\\20.0.5594570"
         },
         {
           "name": "CMAKE_EXPORT_COMPILE_COMMANDS",
@@ -57,7 +57,7 @@
         },
         {
           "name": "CMAKE_MAKE_PROGRAM",
-          "value": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe"
+          "value": "D:\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe"
         },
         {
           "name": "CMAKE_SYSTEM_NAME",
@@ -90,11 +90,11 @@
     "module": {
       "buildSystem": "CMAKE",
       "cmake": {
-        "cmakeExe": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\cmake.exe",
+        "cmakeExe": "D:\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\cmake.exe",
         "minimumCmakeVersion": "3.10.2",
-        "ninjaExe": "D:\\Android\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe"
+        "ninjaExe": "D:\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe"
       },
-      "cmakeToolchainFile": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
+      "cmakeToolchainFile": "D:\\Android\\SDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
       "cxxFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx",
       "gradleModulePathName": ":lame_mp3_converter",
       "intermediatesFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\build\\intermediates",
@@ -107,7 +107,7 @@
         "X86",
         "X86_64"
       ],
-      "ndkFolder": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570",
+      "ndkFolder": "D:\\Android\\SDK\\ndk\\20.0.5594570",
       "ndkMetaAbiList": [
         {
           "abi": "ARMEABI_V7A",
@@ -165,19 +165,20 @@
       "project": {
         "compilerSettingsCacheFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\.cxx",
         "cxxFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\.cxx",
+        "ideBuildTargetAbi": "arm64-v8a,armeabi-v7a,armeabi",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
         "rootBuildGradleFolder": "E:\\AndroidStudioGit\\GrainFullAndroid",
-        "sdkFolder": "D:\\Android\\AndroidSDK"
+        "sdkFolder": "D:\\Android\\SDK"
       },
       "splitsAbiFilterSet": [],
       "stlSharedObjectMap": {
         "LIBCXX_SHARED": {
-          "ARMEABI_V7A": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\arm-linux-androideabi\\libc++_shared.so",
-          "ARM64_V8A": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\aarch64-linux-android\\libc++_shared.so",
-          "X86": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\i686-linux-android\\libc++_shared.so",
-          "X86_64": "D:\\Android\\AndroidSDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\x86_64-linux-android\\libc++_shared.so"
+          "ARMEABI_V7A": "D:\\Android\\SDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\arm-linux-androideabi\\libc++_shared.so",
+          "ARM64_V8A": "D:\\Android\\SDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\aarch64-linux-android\\libc++_shared.so",
+          "X86": "D:\\Android\\SDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\i686-linux-android\\libc++_shared.so",
+          "X86_64": "D:\\Android\\SDK\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\x86_64-linux-android\\libc++_shared.so"
         },
         "LIBCXX_STATIC": {},
         "NONE": {},
@@ -187,10 +188,8 @@
     "objFolder": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\build\\intermediates\\cmake\\debug\\obj",
     "variantName": "debug",
     "validAbiList": [
-      "ARMEABI_V7A",
       "ARM64_V8A",
-      "X86",
-      "X86_64"
+      "ARMEABI_V7A"
     ]
   }
 }

@@ -2,6 +2,7 @@ package com.zqw.mobile.grainfull.mvp.model;
 
 import android.app.Application;
 
+import com.blankj.utilcode.util.GsonUtils;
 import com.google.gson.Gson;
 import com.jess.arms.cj.ApiOperator;
 import com.jess.arms.di.scope.ActivityScope;
@@ -12,6 +13,7 @@ import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.api.AccountService;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
+import com.zqw.mobile.grainfull.mvp.model.entity.GptChat;
 import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
@@ -28,6 +30,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import timber.log.Timber;
 
 /**
  * ================================================
@@ -82,7 +85,7 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
     @Override
     public Observable<ResponseBody> textToSpeech(String text) {
-        // 转换成Json
+        // 转换成Json，要生成音频的文本。最大长度为4096个字符。
         text = "{" +
                 "\"model\": \"tts-1-hd\"," +
                 "\"input\": \"" + text + "\"," +
@@ -107,16 +110,22 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
     @Override
     public Observable<ResponseBody> chatMultipleModels(String imageUrl, String message) {
-        String json = "{\"model\": \"gpt-4-vision-preview\"," +
-                "\"messages\": [{" +
-                "\"role\": \"user\"," +
-                "\"content\": [{" +
-                "\"type\": \"image_url\"," +
-                "\"image_url\": {\"url\": \"" + imageUrl + "\"}}, {" +
-                "\"type\": \"text\"," +
-                "\"text\": \"" + message + "\"}]" +
-                "}]" +
-                "}";
+        boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
+
+        String val = "```img-block{\"src\":\"" + imageUrl + "\"}``` " + message;
+        // 组织数据
+        List<GptChat.ChatMessages> messages = new ArrayList<>();
+        messages.add(new GptChat.ChatMessages("user", val));
+
+        // 封装数据
+        GptChat mGptChat = new GptChat();
+        mGptChat.setChatId(getChatId(isDouYa));
+        mGptChat.setModel("gpt-4-vision-preview");
+        mGptChat.setMessages(messages);
+        mGptChat.setStream(true);
+
+        String json = GsonUtils.toJson(mGptChat);
+//        Timber.i("#####json=%s", json);
 
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.FASTGPT_CHAT_URL, requestBodyJson);
