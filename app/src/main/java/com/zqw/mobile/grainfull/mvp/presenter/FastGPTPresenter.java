@@ -61,7 +61,7 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     private ChatCompletionChunk chatCompletionChunk;
     private Gson gson = new Gson();
     // 默认提示语
-    private final String mDefaultTips = "您好，我是AI小助手，请问有什么可以帮助您的吗？";
+    private final String mDefaultTips = "您好，我是回收智能小助手，请问有什么可以帮助您的吗？";
 
     @Override
     public void onDestroy() {

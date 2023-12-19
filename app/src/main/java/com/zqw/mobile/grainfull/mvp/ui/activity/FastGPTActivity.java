@@ -36,8 +36,8 @@ import com.baidu.aip.asrwakeup3.core.recog.listener.MessageStatusRecogListener;
 import com.baidu.aip.asrwakeup3.uiasr.params.CommonRecogParams;
 import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
 import com.baidu.speech.asr.SpeechConstant;
+import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
-import com.bumptech.glide.Glide;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -166,7 +166,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("GPT+知识库");
+        setTitle("回收智能小助手");
 
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "fastgpt_open");
@@ -280,41 +280,62 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
      * 发送“语音”消息
      */
     private void onSend(String message) {
+        String imageUrl = CommonUtils.isNotEmpty(mImagePaths) ? mImagePaths.get(0) : "";
+        // 测试图文识别
+//        String imageUrl = "https://zhaoqianzqn.oss-cn-shenzhen.aliyuncs.com/imgs/inStockVoucherUrlPath/f300816c178d439481ee23aa0ce9f98de.png";
+//        String imageUrl = "https://ai.fastgpt.in/api/system/img/657ffc435eec06aa2a7d0759";
+
         // 在界面上显示“我”发出的消息
-        addRightMsg(message);
+        addRightMsg(message, imageUrl);
         // 在界面上显示一条提示“对方，正在输入中……”
         addLeftMsg("正在输入中...");
         onSucc();
 
-//        String imageUrl = "https://zhaoqianzqn.oss-cn-shenzhen.aliyuncs.com/imgs/inStockVoucherUrlPath/f300816c178d439481ee23aa0ce9f98de.png";
-        String imageUrl = "https://ai.fastgpt.in/api/system/img/657ffc435eec06aa2a7d0759";
-
-        if (mPresenter != null) {
-            mPresenter.chatMultipleModels(message, imageUrl, null);
+        // 正常访问接口
+        if (!TextUtils.isEmpty(imageUrl)) {
+            // 有图片链接地址
+            if (mPresenter != null) {
+                mPresenter.chatMultipleModels(message, imageUrl, null);
+            }
+        } else if (CommonUtils.isNotEmpty(mImagePaths)) {
+            // 本地图片
+            if (mPresenter != null) {
+                mPresenter.chatMultipleModels(message, "", mImagePaths);
+            }
+        } else {
+            // 没有附件，只有文字
+            if (mPresenter != null) {
+                mPresenter.chatCreate(message);
+            }
         }
-
-//        if (CommonUtils.isNotEmpty(mImagePaths)) {
-//            if (mPresenter != null) {
-//                mPresenter.chatMultipleModels(message, "", mImagePaths);
-//            }
-//        } else {
-//            if (mPresenter != null) {
-//                mPresenter.chatCreate(message);
-//            }
-//        }
     }
 
     /**
      * 添加右侧消息(显示我的消息)
      */
-    private void addRightMsg(String text) {
+    private void addRightMsg(String text, String path) {
         // 控制布局
         editInput.getText().clear();
 
         // 添加聊天布局
-        LinearLayout viewRightMsg = LayoutInflater.from(this).inflate(R.layout.chat_right_textview, null).findViewById(R.id.chat_right_layout);
-        TextView textView = viewRightMsg.findViewById(R.id.txvi_chatrightlayout_chat);
+        LinearLayout viewRightMsg = LayoutInflater.from(this).inflate(R.layout.fastgpt_right_textview, null).findViewById(R.id.fastgpt_right_layout);
+        TextView textView = viewRightMsg.findViewById(R.id.txvi_fastgptrightlayout_chat);
         textView.setText(text);
+
+        ImageView imageView = viewRightMsg.findViewById(R.id.imvi_fastgptrightlayout_chat);
+        if (TextUtils.isEmpty(path)) {
+            imageView.setVisibility(View.GONE);
+        } else {
+            imageView.setVisibility(View.VISIBLE);
+
+            mImageLoader.loadImage(this,
+                    ImageConfigImpl.builder().url(path)
+                            .placeholder(R.mipmap.mis_default_error)
+                            .errorPic(R.mipmap.mis_default_error)
+                            .imageRadius(ConvertUtils.dp2px(5))
+                            .isUpRadius(true)
+                            .imageView(imageView).build());
+        }
         if (viewRightMsg.getParent() != null) {
             ((ViewGroup) viewRightMsg.getParent()).removeView(viewRightMsg);
         }
@@ -326,11 +347,11 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
      * 添加左侧消息(显示对方消息)
      */
     public void addLeftMsg(String text) {
-        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.chat_left_textview, null).findViewById(R.id.chat_left_layout);
+        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.fastgpt_left_textview, null).findViewById(R.id.fastgpt_left_layout);
 
-        imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_chatleftlayout_chat);
-        txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_chatleftlayout_chat);
+        txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
         txviReceiveMsg.setText(text);
+        imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
         if (viewLeftMsg.getParent() != null) {
             ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
         }
@@ -359,7 +380,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         for (int i = 0; i < list.size(); i++) {
             ChatHistoryInfo item = list.get(i);
             if (i % 2 == 0) {
-                addRightMsg(item.getValue());
+                addRightMsg(item.getValue(), "");
             } else {
                 addLeftMsg(item.getValue());
             }
@@ -453,7 +474,13 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     public void onLoadImages(String url) {
         imviReceiveMsg.setVisibility(View.VISIBLE);
         txviReceiveMsg.setVisibility(View.GONE);
-        Glide.with(imviReceiveMsg).load(url).into(imviReceiveMsg);
+
+        mImageLoader.loadImage(this,
+                ImageConfigImpl.builder().url(url)
+                        .placeholder(R.mipmap.mis_default_error)
+                        .errorPic(R.mipmap.mis_default_error)
+                        .imageRadius(ConvertUtils.dp2px(5))
+                        .imageView(imviReceiveMsg).build());
     }
 
     /**
