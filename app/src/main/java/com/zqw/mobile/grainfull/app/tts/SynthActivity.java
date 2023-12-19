@@ -144,7 +144,7 @@ public class SynthActivity {
             // 保存录音文件
             // 设置初始化参数
             // 此处可以改为 含有您业务逻辑的SpeechSynthesizerListener的实现类
-            SpeechSynthesizerListener listener = new FileSaveListener(mainHandler, Constant.AUDIO_PATH);
+            SpeechSynthesizerListener listener = new FileSaveListener(mContext, mainHandler, Constant.AUDIO_PATH);
 
             // appId appKey secretKey 网站上您申请的应用获取。注意使用离线合成功能的话，需要应用中填写您app的包名。包名在build.gradle中获取。
             InitConfig initConfig = getInitConfig(listener);

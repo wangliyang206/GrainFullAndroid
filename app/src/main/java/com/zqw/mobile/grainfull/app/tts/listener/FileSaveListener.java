@@ -1,14 +1,17 @@
 package com.zqw.mobile.grainfull.app.tts.listener;
 
+import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
 import com.baidu.tts.client.SpeechError;
+import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 
 import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+
+import timber.log.Timber;
 
 /**
  * 保存回调音频流到文件。您也可以直接处理音频流
@@ -18,6 +21,7 @@ import java.io.IOException;
 
 public class FileSaveListener extends UiMessageListener {
 
+    private Context mContext;
     /**
      * 保存的文件名 baseName + utteranceId， 通常是 output-0.pcm
      */
@@ -29,15 +33,9 @@ public class FileSaveListener extends UiMessageListener {
     private String destDir;
 
     /**
-     * 文件
-     */
-    private File ttsFile;
-
-
-    /**
      * ttsFile 文件流
      */
-    private FileOutputStream ttsFileOutputStream;
+    private OutputStream mOutputStream;
 
     /**
      * ttsFile 文件buffer流
@@ -47,8 +45,9 @@ public class FileSaveListener extends UiMessageListener {
     private static final String TAG = "FileSaveListener";
 
 
-    public FileSaveListener(Handler mainHandler, String destDir) {
+    public FileSaveListener(Context mContext, Handler mainHandler, String destDir) {
         super(mainHandler);
+        this.mContext = mContext;
         this.destDir = destDir;
     }
 
@@ -56,17 +55,15 @@ public class FileSaveListener extends UiMessageListener {
     public void onSynthesizeStart(String utteranceId) {
 //        String filename = baseName + utteranceId + ".pcm";
         // 保存的语音文件是 16K采样率 16bits编码 单声道 pcm文件。
-        ttsFile = new File(destDir, fileName);
-        Log.i(TAG, "try to write audio file to " + ttsFile.getAbsolutePath());
+        Timber.i("##### destDir =%s", destDir);
+        Timber.i("##### fileName =%s", fileName);
         try {
-            if (ttsFile.exists()) {
-                ttsFile.delete();
-            }
-            ttsFile.createNewFile();
             // 创建FileOutputStream对象
-            FileOutputStream ttsFileOutputStream = new FileOutputStream(ttsFile);
-            // 创建BufferedOutputStream对象
-            ttsFileBufferedOutputStream = new BufferedOutputStream(ttsFileOutputStream);
+            mOutputStream = MediaStoreUtils.onCreateFileByDownload(mContext, destDir, fileName, "audio/adpcm");
+            if (mOutputStream != null) {
+                // 创建BufferedOutputStream对象
+                ttsFileBufferedOutputStream = new BufferedOutputStream(mOutputStream);
+            }
         } catch (IOException e) {
             // 请自行做错误处理
             e.printStackTrace();
@@ -90,7 +87,8 @@ public class FileSaveListener extends UiMessageListener {
         super.onSynthesizeDataArrived(utteranceId, data, progress, engineType);
         Log.i(TAG, "合成进度回调, progress：" + progress + ";序列号:" + utteranceId);
         try {
-            ttsFileBufferedOutputStream.write(data);
+            if (ttsFileBufferedOutputStream != null)
+                ttsFileBufferedOutputStream.write(data);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -127,10 +125,10 @@ public class FileSaveListener extends UiMessageListener {
                 e2.printStackTrace();
             }
         }
-        if (ttsFileOutputStream != null) {
+        if (mOutputStream != null) {
             try {
-                ttsFileOutputStream.close();
-                ttsFileOutputStream = null;
+                mOutputStream.close();
+                mOutputStream = null;
             } catch (IOException e) {
                 e.printStackTrace();
             }

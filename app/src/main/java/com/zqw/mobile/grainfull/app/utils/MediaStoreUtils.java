@@ -8,10 +8,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
 import com.blankj.utilcode.util.Utils;
+import com.zqw.mobile.grainfull.app.global.Constant;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -57,13 +59,17 @@ public class MediaStoreUtils {
      * @return Uri
      */
     public static Uri getContentUri(String mimeType) {
-        Uri contentUri;
+        Uri contentUri = null;
         if (mimeType.startsWith("image")) {
             contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
         } else if (mimeType.startsWith("video")) {
             contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
         } else if (mimeType.startsWith("audio")) {
             contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        } else if (mimeType.startsWith("download")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                contentUri = MediaStore.Downloads.EXTERNAL_CONTENT_URI;
+            }
         } else {
             contentUri = MediaStore.Files.getContentUri("external");
         }
@@ -122,25 +128,6 @@ public class MediaStoreUtils {
     }
 
     /**
-     * 创建文件
-     */
-    public void onCreateFile(Context context, int type, String path, String name) {
-        // 获取到一个路径
-        Uri uri = MediaStore.Files.getContentUri("external");
-        // 创建一个ContentValues对象，用来给存储文件数据的数据库进行插入操作
-        ContentValues contentValues = new ContentValues();
-        if (type == 1) {
-            // 设置存储路径致Downloads文件下
-            contentValues.put(MediaStore.Downloads.RELATIVE_PATH, path);
-        }
-        // 设置文件名字
-        contentValues.put(MediaStore.Downloads.DISPLAY_NAME, name);
-
-        // 操作数据库
-        context.getContentResolver().insert(uri, contentValues);
-    }
-
-    /**
      * 创建图片
      */
     public void onCreateImage(Context context, String path) {
@@ -160,6 +147,54 @@ public class MediaStoreUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 在Download中创建文件
+     *
+     * @param context 句柄
+     * @param path    路径
+     * @param name    文件名称(123.text)
+     * @param type    文件类型：text/plain、image/*、audio/adpcm
+     * @return
+     * @throws IOException
+     */
+    public static OutputStream onCreateFileByDownload(Context context, String path, String name, String type) throws IOException {
+        OutputStream outputStream = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            // 删除原有的文件
+            MediaStoreUtils.deleteFilesInDir(context, "download", path);
+
+
+            Timber.i("#####创建一个ContentValues对象!");
+            // 创建一个ContentValues对象，用来给存储文件数据的数据库进行插入操作
+            ContentValues contentValues = new ContentValues();
+            // 设置文件名字
+            contentValues.put(MediaStore.Downloads.DISPLAY_NAME, name);
+            contentValues.put(MediaStore.Downloads.MIME_TYPE, type);
+            // 设置存储路径致Downloads文件下
+            // 如果最后一位是"/"，则截取不要
+            char mChar = path.charAt(path.length() - 1);
+            if (String.valueOf(mChar).equalsIgnoreCase("/")) {
+                contentValues.put(MediaStore.Downloads.RELATIVE_PATH, path.substring(0, path.lastIndexOf("/")));
+            } else {
+                contentValues.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+            }
+            Timber.i("##### path=%s", contentValues.get(MediaStore.Downloads.RELATIVE_PATH));
+
+
+            try {
+                // 操作数据库
+                Uri uri = context.getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues);
+                Timber.i("##### file=%s", uri.getPath());
+
+                outputStream = context.getContentResolver().openOutputStream(uri);
+            } catch (Exception ex) {
+                Timber.i("##### ex=%s", ex.getMessage());
+            }
+        }
+
+        return outputStream;
     }
 
     /**
