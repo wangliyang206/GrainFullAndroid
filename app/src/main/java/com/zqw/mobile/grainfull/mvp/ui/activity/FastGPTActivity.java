@@ -250,8 +250,13 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
                 break;
             case R.id.imvi_fastgpt_send:                                                            // 发送文字按钮
                 onSend();
+                // 测试API 语音转文字
 //                if (mPresenter != null) {
 //                    mPresenter.voiceToText("/storage/emulated/0/Download/GrainFull/8fc9c1d4-c78d-421b-8ca0-60ab079d1bff.mp4");
+//                }
+                // 测试API 文字转语音
+//                if (mPresenter != null) {
+//                    mPresenter.textToSpeech("您好，我是AI小助手！");
 //                }
                 break;
         }

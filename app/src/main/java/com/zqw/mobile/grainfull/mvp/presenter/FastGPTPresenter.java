@@ -2,12 +2,14 @@ package com.zqw.mobile.grainfull.mvp.presenter;
 
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.TimeUtils;
 import com.google.gson.Gson;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.grainfull.app.config.CommonRetryWithDelay;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatCompletionChunk;
@@ -17,10 +19,15 @@ import com.zqw.mobile.grainfull.mvp.model.entity.ChatUserGuideModule;
 import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -320,6 +327,79 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
                         Timber.i("##### Whisper=%s", info.getText());
                         if (!TextUtils.isEmpty(info.getText()))
                             mRootView.onLoadVoiceToText(info.getText());
+                    }
+                });
+    }
+
+    /**
+     * 文字转语音
+     */
+    public void textToSpeech(String message) {
+        mModel.textToSpeech(message)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new CommonRetryWithDelay(0, 2))                 // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe(disposable -> {
+//                    mRootView.showLoadingSubmit();                                                // 显示进度条
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+//                    mRootView.hideLoadingSubmit();                                                // 隐藏进度条
+                }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        Timber.i("##### t=%s", t.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody info) {
+                        // 获取response输入流
+                        InputStream inputStream = info.byteStream();
+                        String path = Constant.AUDIO_PATH + "audio_" + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".mp3";
+                        File mFile = new File(path);
+
+                        // 创建文件
+                        if (!mFile.exists()) {
+                            if (!mFile.getParentFile().exists()) {
+                                mFile.getParentFile().mkdir();
+                                try {
+                                    mFile.createNewFile();
+                                } catch (Exception ex) {
+                                    Timber.i("##### tts create error");
+                                }
+                            }
+                        }
+
+                        // 保存流媒体
+                        OutputStream os = null;
+                        try {
+                            os = new BufferedOutputStream(new FileOutputStream(mFile));
+                            byte data[] = new byte[8192];
+                            int len;
+                            while ((len = inputStream.read(data, 0, 8192)) != -1) {
+                                os.write(data, 0, len);
+                            }
+                        } catch (IOException e) {
+                            Timber.i("##### tts save error");
+                            e.printStackTrace();
+                        } finally {
+                            try {
+                                inputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+                                if (os != null) {
+                                    os.close();
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        // 播放
+                        Timber.i("##### tts Succ path=%s", path);
                     }
                 });
     }
