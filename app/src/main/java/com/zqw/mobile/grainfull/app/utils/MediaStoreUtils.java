@@ -165,7 +165,6 @@ public class MediaStoreUtils {
             // 删除原有的文件
             MediaStoreUtils.deleteFilesInDir(context, "download", path);
 
-
             Timber.i("#####创建一个ContentValues对象!");
             // 创建一个ContentValues对象，用来给存储文件数据的数据库进行插入操作
             ContentValues contentValues = new ContentValues();
