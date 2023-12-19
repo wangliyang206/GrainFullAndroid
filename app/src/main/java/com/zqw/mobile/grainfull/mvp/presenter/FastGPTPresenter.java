@@ -124,7 +124,7 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
                                 mRootView.onLoadOpeningRemarks(mDefaultTips);
                             }
                         } catch (Exception ex) {
-                            Timber.i("##### ex=%s", ex.getMessage());
+                            Timber.i("##### getChatHistory error=%s", ex.getMessage());
                             mRootView.onLoadOpeningRemarks(mDefaultTips);
                         }
 

@@ -1,5 +1,6 @@
 package com.zqw.mobile.grainfull.app.utils;
 
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +14,6 @@ import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
 import com.blankj.utilcode.util.Utils;
-import com.zqw.mobile.grainfull.app.global.Constant;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -162,29 +162,50 @@ public class MediaStoreUtils {
     public static OutputStream onCreateFileByDownload(Context context, String path, String name, String type) throws IOException {
         OutputStream outputStream = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-            // 删除原有的文件
-            MediaStoreUtils.deleteFilesInDir(context, "download", path);
-
-            Timber.i("#####创建一个ContentValues对象!");
-            // 创建一个ContentValues对象，用来给存储文件数据的数据库进行插入操作
-            ContentValues contentValues = new ContentValues();
-            // 设置文件名字
-            contentValues.put(MediaStore.Downloads.DISPLAY_NAME, name);
-            contentValues.put(MediaStore.Downloads.MIME_TYPE, type);
-            // 设置存储路径致Downloads文件下
-            // 如果最后一位是"/"，则截取不要
-            char mChar = path.charAt(path.length() - 1);
-            if (String.valueOf(mChar).equalsIgnoreCase("/")) {
-                contentValues.put(MediaStore.Downloads.RELATIVE_PATH, path.substring(0, path.lastIndexOf("/")));
-            } else {
-                contentValues.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
-            }
-            Timber.i("##### path=%s", contentValues.get(MediaStore.Downloads.RELATIVE_PATH));
-
-
             try {
+                // 查询
+                ContentResolver contentResolver = context.getContentResolver();
+                Uri contentUri = MediaStore.Downloads.EXTERNAL_CONTENT_URI;
+                Timber.i("####contentUri=%s", contentUri);
+                String select = MediaStore.Downloads.RELATIVE_PATH + " =? " + Environment.DIRECTORY_DOWNLOADS + "/GrainFull";
+                Cursor cursor = contentResolver.query(
+                        contentUri,
+                        new String[]{
+                                MediaStore.Downloads._ID,
+                                MediaStore.Downloads.DISPLAY_NAME
+                        },
+                        select,
+                        null, null
+                );
+                Timber.i("####cursor=%s", cursor.getCount());
+                if (cursor != null && cursor.moveToFirst()) {
+                    long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Downloads._ID));
+                    Uri queryUri = ContentUris.withAppendedId(contentUri, id);
+                    Timber.i("####queryUri=%s", queryUri);
+
+                    // 删除文件
+                    int value = context.getContentResolver().delete(queryUri, null, null);
+                    if (value > 0) {
+                        Timber.i("#####删除成功!");
+                    } else {
+                        Timber.e("#####删除失败!");
+                    }
+                    cursor.close();
+                }
+
+
+                Timber.i("#####创建一个ContentValues对象!");
+                // 创建一个ContentValues对象，用来给存储文件数据的数据库进行插入操作
+                ContentValues contentValues = new ContentValues();
+                // 设置文件名字
+                contentValues.put(MediaStore.Downloads.DISPLAY_NAME, name);
+                contentValues.put(MediaStore.Downloads.MIME_TYPE, type);
+                // 设置存储路径致Downloads文件下
+                contentValues.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + "/GrainFull");
+                Timber.i("##### path=%s", contentValues.get(MediaStore.Downloads.RELATIVE_PATH));
                 // 操作数据库
                 Uri uri = context.getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues);
+
                 Timber.i("##### file=%s", uri.getPath());
 
                 outputStream = context.getContentResolver().openOutputStream(uri);
