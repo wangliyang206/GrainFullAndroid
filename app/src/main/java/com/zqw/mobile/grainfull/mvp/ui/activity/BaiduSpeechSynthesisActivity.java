@@ -27,9 +27,7 @@ import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.dialog.AudioDialog;
 import com.zqw.mobile.grainfull.app.dialog.PopupSelectList;
-import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
-import com.zqw.mobile.grainfull.app.tts.listener.FileSaveListener;
 import com.zqw.mobile.grainfull.di.component.DaggerBaiduSpeechSynthesisComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BaiduSpeechSynthesisContract;
 import com.zqw.mobile.grainfull.mvp.presenter.BaiduSpeechSynthesisPresenter;
@@ -115,10 +113,16 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("语音合成");
 
+        mAudioDialog = new AudioDialog(this);
+
         synthActivity = new SynthActivity();
         synthActivity.initTTS(getApplicationContext(), true);
-
-        mAudioDialog = new AudioDialog(this);
+        // 语音合成事件，只要触发则说明已经合成成功
+        synthActivity.onSetSuccEvent(fileName -> {
+            // 弹出Dialog，可以播放与保存。
+            mAudioDialog.setPlayPath(fileName);
+            mAudioDialog.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+        });
 
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "baidu_speech_synthesis_open");
@@ -281,15 +285,8 @@ public class BaiduSpeechSynthesisActivity extends BaseActivity<BaiduSpeechSynthe
                 // 友盟统计 - 自定义事件
                 MobclickAgent.onEvent(getApplicationContext(), "baidu_speech_synthesis");
 
-                // 开始合成(合成的文件格式为pcm，文件名称：output-0.pcm)
+                // 开始合成(合成的文件格式为pcm，文件名称："audio" + System.currentTimeMillis() +".pcm";)
                 synthActivity.synthesize(val);
-                // 弹出Dialog，可以播放与保存。
-                if (mAudioDialog != null) {
-                    mAudioDialog.setPlayPath(Constant.AUDIO_PATH + FileSaveListener.fileName);
-                    mAudioDialog.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-                } else {
-                    showMessage("暂无合成结果，请联系管理员！");
-                }
                 break;
         }
     }

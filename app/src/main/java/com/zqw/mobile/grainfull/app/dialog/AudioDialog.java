@@ -6,6 +6,7 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.audiofx.Visualizer;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -18,16 +19,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
+import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.mvp.ui.widget.VisualizeView;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 
 import jaygoo.library.converter.Mp3Converter;
@@ -43,8 +43,8 @@ import timber.log.Timber;
  */
 public class AudioDialog extends PopupWindow implements View.OnClickListener {
     // PCM文件路径
-    private String mAudioPath;
-    String mSavePath;
+    private String mPcmFileName;
+    private String mSavePath;
     // 播放按钮
     private final Button mPlay;
     // 保存按钮
@@ -56,7 +56,7 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
 
     // 用于播放pcm格式的音频
     private AudioTrack audioTrack;
-    private FileInputStream fis = null;
+    private InputStream fis = null;
     private Visualizer visualizer;
     // 声道个数
     private int AC = 1;
@@ -96,21 +96,21 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
     /**
      * 设置播放路径，默认使用单声道，采样率为16000Hz
      *
-     * @param path 播放文件的路径，格式为pcm
+     * @param fileName 播放文件的路径，格式为pcm
      */
-    public void setPlayPath(String path) {
-        setPlayPath(path, AC, AR);
+    public void setPlayPath(String fileName) {
+        setPlayPath(fileName, AC, AR);
     }
 
     /**
      * 设置播放路径
      *
-     * @param path 播放文件的路径，格式为pcm
-     * @param ac   声道个数(1代表单声道，2代表立体声道)
-     * @param ar   采样率(16000Hz、48000Hz)
+     * @param fileName 播放文件的路径，格式为pcm
+     * @param ac       声道个数(1代表单声道，2代表立体声道)
+     * @param ar       采样率(16000Hz、48000Hz)
      */
-    public void setPlayPath(String path, int ac, int ar) {
-        this.mAudioPath = path;
+    public void setPlayPath(String fileName, int ac, int ar) {
+        this.mPcmFileName = fileName;
         this.AC = ac;
         this.AR = ar;
 
@@ -153,8 +153,27 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
         Mp3Converter.init(AR, AC, 0, AR, 96, 7);
         // 原始代码
 //        Mp3Converter.init(44100, 1, 0, 44100, 96, 7);
-        fileSize = new File(mAudioPath).length();
-        new Thread(() -> Mp3Converter.convertMp3(mAudioPath, mSavePath)).start();
+
+        Timber.i("####onSave Mp3Converter");
+        Uri mResult = MediaStoreUtils.getDownloadFileUri(getContentView().getContext(), mPcmFileName);
+        if(mResult != null){
+            try {
+                fileSize = getContentView().getContext().getContentResolver().openInputStream(mResult).available();
+
+                Timber.i("####onSave fileSize=%s", fileSize);
+                new Thread(() -> {
+                    try {
+                        Mp3Converter.convertMp3(Constant.AUDIO_PATH + mPcmFileName, mSavePath);
+                    } catch (Exception ex) {
+                        Timber.e("####onSave Error=%s", ex.getMessage());
+                    }
+                }
+                ).start();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         handler.postDelayed(runnable, 500);
     }
@@ -174,7 +193,7 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
             if (handler != null && progress < 100) {
                 handler.postDelayed(this, 1000);
             } else {
-                txviPath.setText("文件保存路径："+mSavePath);
+                txviPath.setText("文件保存路径：" + mSavePath);
             }
         }
     };
@@ -256,19 +275,21 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
             visualizer.setEnabled(true);
 
             audioTrack.play();
-            fis = new FileInputStream(mAudioPath);
-            byte[] buffer = new byte[bufferSize];
-            int len = 0;
-            while ((len = fis.read(buffer)) != -1) {
-//                    Log.d(TAG, "playPCMRecord: len " + len);
-                audioTrack.write(buffer, 0, len);
+            Timber.i("##### audioFileName=%s", mPcmFileName);
+            fis = MediaStoreUtils.getDownloadFile(getContentView().getContext(), mPcmFileName);
+            if (fis != null) {
+                byte[] buffer = new byte[bufferSize];
+                int len = 0;
+                while ((len = fis.read(buffer)) != -1) {
+                    audioTrack.write(buffer, 0, len);
+                }
             }
         } catch (Exception e) {
+            Timber.e("##### Exception=%s", e.getMessage());
             mDispatcher.sendEmptyMessage(3);
         } finally {
             onClose();
-            if (mDispatcher != null)
-                mDispatcher.sendEmptyMessage(2);
+            mDispatcher.sendEmptyMessage(2);
         }
     };
 
@@ -291,10 +312,11 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
 
     @Override
     public void dismiss() {
+        Timber.i("##### AudioDialog dismiss");
+        // 删除 PCM 文件。
+        MediaStoreUtils.delDownloadFile(getContentView().getContext(), mPcmFileName);
         super.dismiss();
 
-        // 删除 PCM 文件。
-        FileUtils.delete(mAudioPath);
         if (mDispatcher != null) {
             mDispatcher.sendEmptyMessage(4);
         }

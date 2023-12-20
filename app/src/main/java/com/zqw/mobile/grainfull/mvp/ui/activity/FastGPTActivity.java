@@ -209,7 +209,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
 
         // 初始化语音播报
         synthActivity = new SynthActivity();
-        synthActivity.initTTS(getApplicationContext(), true);
+        synthActivity.initTTS(getApplicationContext());
 
         mScrollView.post(() -> {
             // 请求网络

@@ -23,9 +23,9 @@ public class FileSaveListener extends UiMessageListener {
 
     private Context mContext;
     /**
-     * 保存的文件名 baseName + utteranceId， 通常是 output-0.pcm
+     * 保存的文件名
      */
-    public static final String fileName = "audio.pcm";
+    public String fileName = "";
 
     /**
      * 保存文件的目录
@@ -56,10 +56,11 @@ public class FileSaveListener extends UiMessageListener {
 //        String filename = baseName + utteranceId + ".pcm";
         // 保存的语音文件是 16K采样率 16bits编码 单声道 pcm文件。
         Timber.i("##### destDir =%s", destDir);
-        Timber.i("##### fileName =%s", fileName);
         try {
+            fileName = "audio" + System.currentTimeMillis() + ".pcm";
+            Timber.i("##### fileName =%s", fileName);
             // 创建FileOutputStream对象
-            mOutputStream = MediaStoreUtils.onCreateFileByDownload(mContext, destDir, fileName, "audio/adpcm");
+            mOutputStream = MediaStoreUtils.createFile(mContext, fileName);
             if (mOutputStream != null) {
                 // 创建BufferedOutputStream对象
                 ttsFileBufferedOutputStream = new BufferedOutputStream(mOutputStream);
@@ -134,5 +135,6 @@ public class FileSaveListener extends UiMessageListener {
             }
         }
         sendMessage("关闭文件成功");
+        sendMessage(fileName, false, OUT_FILE_NAME);
     }
 }

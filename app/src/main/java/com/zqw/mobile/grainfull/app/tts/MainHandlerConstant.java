@@ -10,4 +10,5 @@ public interface MainHandlerConstant {
     static final int UI_CHANGE_SYNTHES_TEXT_SELECTION = 2;
 
     static final int INIT_SUCCESS = 2;
+    static final int OUT_FILE_NAME = 3;
 }

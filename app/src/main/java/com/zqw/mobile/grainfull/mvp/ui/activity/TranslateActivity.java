@@ -114,7 +114,7 @@ public class TranslateActivity extends BaseActivity<TranslatePresenter> implemen
 
         // 初始化语音播报
         synthActivity = new SynthActivity();
-        synthActivity.initTTS(getApplicationContext(), true);
+        synthActivity.initTTS(getApplicationContext());
         editInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

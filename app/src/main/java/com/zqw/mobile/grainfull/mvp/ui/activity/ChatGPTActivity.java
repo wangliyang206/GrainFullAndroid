@@ -226,7 +226,7 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
         // 初始化语音播报
         synthActivity = new SynthActivity();
-        synthActivity.initTTS(getApplicationContext(), true);
+        synthActivity.initTTS(getApplicationContext());
         init();
     }
 

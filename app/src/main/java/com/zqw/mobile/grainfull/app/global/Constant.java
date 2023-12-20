@@ -13,32 +13,35 @@ import com.blankj.utilcode.util.PathUtils;
 
 public interface Constant {
     /*----------------------------------------------APP SdCard目录地址-------------------------------------------------*/
-
+    /**
+     * 项目目录
+     */
+    String APP_CATALOGUE = "GrainFull";
     /* 创建目录与文件需要做详细配置，10以下正常使用File，10+需要走分区存储 */
     /**
      * APP升级路径
      */
-    String APP_UPDATE_PATH = PathUtils.getExternalDocumentsPath() + "/GrainFull/AppUpdate/";
+    String APP_UPDATE_PATH = PathUtils.getExternalDownloadsPath() + "/" + APP_CATALOGUE + "/AppUpdate/";
 
     /**
      * log路径
      */
-    String LOG_PATH = PathUtils.getExternalDocumentsPath() + "/GrainFull/Log/";
+    String LOG_PATH = PathUtils.getExternalDocumentsPath() + "/" + APP_CATALOGUE + "/Log/";
 
     /**
      * 音频缓存路径
      */
-    String AUDIO_PATH = PathUtils.getExternalDownloadsPath() + "/GrainFull/";
+    String AUDIO_PATH = PathUtils.getExternalDownloadsPath() + "/" + APP_CATALOGUE + "/";
 
     /**
      * 保存图片路径
      */
-    String IMAGE_PATH = PathUtils.getExternalPicturesPath() + "/GrainFull/Image/";
+    String IMAGE_PATH = PathUtils.getExternalPicturesPath() + "/" + APP_CATALOGUE + "/Image/";
 
     /**
      * 模板路径
      */
-    String TEMPLATE_PATH = PathUtils.getExternalPicturesPath() + "/GrainFull/Template/";
+    String TEMPLATE_PATH = PathUtils.getExternalPicturesPath() + "/" + APP_CATALOGUE + "/Template/";
 
     /*----------------------------------------------------业务变量-------------------------------------------------------*/
     /**

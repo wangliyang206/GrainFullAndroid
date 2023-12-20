@@ -1,5 +1,6 @@
 package com.zqw.mobile.grainfull.app.tts;
 
+import static com.zqw.mobile.grainfull.app.tts.MainHandlerConstant.OUT_FILE_NAME;
 import static com.zqw.mobile.grainfull.app.tts.MainHandlerConstant.PRINT;
 import static com.zqw.mobile.grainfull.app.tts.MainHandlerConstant.UI_CHANGE_INPUT_TEXT_SELECTION;
 import static com.zqw.mobile.grainfull.app.tts.MainHandlerConstant.UI_CHANGE_SYNTHES_TEXT_SELECTION;
@@ -368,9 +369,28 @@ public class SynthActivity {
 //                    mInput.setText(colorfulText);
 //                }
                 break;
+            case OUT_FILE_NAME:
+                // 输入 pcm 文件名称
+                if(mEvent != null){
+                    mEvent.onSucc((String) msg.obj);
+                }
+
+                break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 语音合成 成功事件
+     */
+    public void onSetSuccEvent(SpeechSynthesisEvent mEvent) {
+        this.mEvent = mEvent;
+    }
+
+    private SpeechSynthesisEvent mEvent;
+    public interface SpeechSynthesisEvent{
+        void onSucc(String fileName);
     }
 
     private void toPrint(String str) {

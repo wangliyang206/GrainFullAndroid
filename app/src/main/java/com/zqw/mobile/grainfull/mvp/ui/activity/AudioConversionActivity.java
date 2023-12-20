@@ -148,7 +148,7 @@ public class AudioConversionActivity extends BaseActivity<AudioConversionPresent
 
                 // 弹出Dialog，可以播放与保存。
                 if (mAudioDialog != null) {
-                    mAudioDialog.setPlayPath(UriUtils.uri2File(uri).getPath(), ac, ar);
+                    mAudioDialog.setPlayPath(UriUtils.uri2File(uri).getName(), ac, ar);
                     mAudioDialog.showAtLocation(contentLayout, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                 }
             }

@@ -9,8 +9,8 @@ import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.grainfull.app.config.CommonRetryWithDelay;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
-import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
+import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatCompletionChunk;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
@@ -19,11 +19,8 @@ import com.zqw.mobile.grainfull.mvp.model.entity.ChatUserGuideModule;
 import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -356,50 +353,16 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
                     public void onNext(ResponseBody info) {
                         // 获取response输入流
                         InputStream inputStream = info.byteStream();
-                        String path = Constant.AUDIO_PATH + "audio_" + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".mp3";
-                        File mFile = new File(path);
-
-                        // 创建文件
-                        if (!mFile.exists()) {
-                            if (!mFile.getParentFile().exists()) {
-                                mFile.getParentFile().mkdir();
-                                try {
-                                    mFile.createNewFile();
-                                } catch (Exception ex) {
-                                    Timber.i("##### tts create error");
-                                }
-                            }
-                        }
-
-                        // 保存流媒体
-                        OutputStream os = null;
+                        String fileName = "audio_" + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".mp3";
                         try {
-                            os = new BufferedOutputStream(new FileOutputStream(mFile));
-                            byte data[] = new byte[8192];
-                            int len;
-                            while ((len = inputStream.read(data, 0, 8192)) != -1) {
-                                os.write(data, 0, len);
-                            }
-                        } catch (IOException e) {
-                            Timber.i("##### tts save error");
-                            e.printStackTrace();
-                        } finally {
-                            try {
-                                inputStream.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            try {
-                                if (os != null) {
-                                    os.close();
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            // 保存流媒体
+                            OutputStream mOutputStream = MediaStoreUtils.createFile(mRootView.getActivity(), fileName);
+                            MediaStoreUtils.saveFile(mOutputStream, inputStream);
+                        } catch (Exception ex) {
                         }
 
                         // 播放
-                        Timber.i("##### tts Succ path=%s", path);
+                        Timber.i("##### tts Succ path=%s", fileName);
                     }
                 });
     }

@@ -1,6 +1,5 @@
 package com.zqw.mobile.grainfull.app.utils;
 
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,9 +13,11 @@ import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
 import com.blankj.utilcode.util.Utils;
+import com.zqw.mobile.grainfull.app.global.Constant;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -127,6 +128,22 @@ public class MediaStoreUtils {
         return data;
     }
 
+
+    /**
+     * 根据扩展名获取图片类型
+     */
+    private static Bitmap.CompressFormat getBitmapTypeByExtension(String val) {
+        if (val.equals("png")) {
+            return Bitmap.CompressFormat.PNG;
+        } else if (val.equals("jpg") || val.equals("jpeg")) {
+            return Bitmap.CompressFormat.JPEG;
+        } else if (val.equals("webp")) {
+            return Bitmap.CompressFormat.WEBP;
+        } else {
+            return Bitmap.CompressFormat.JPEG;
+        }
+    }
+
     /**
      * 创建图片
      */
@@ -150,70 +167,32 @@ public class MediaStoreUtils {
     }
 
     /**
-     * 在Download中创建文件
+     * 在Download目录下创建文件(缺点：文件名称如果使用同一个时，手动删除后，则无法创建)
      *
-     * @param context 句柄
-     * @param path    路径
-     * @param name    文件名称(123.text)
-     * @param type    文件类型：text/plain、image/*、audio/adpcm
-     * @return
-     * @throws IOException
+     * @param context  句柄
+     * @param fileName 文件名称(包含：123.text)
+     * @return 操作流对象
+     * @throws FileNotFoundException
      */
-    public static OutputStream onCreateFileByDownload(Context context, String path, String name, String type) throws IOException {
+    public static OutputStream createFile(Context context, String fileName) throws FileNotFoundException {
+        Uri contentUri = MediaStore.Downloads.EXTERNAL_CONTENT_URI;
+        String path = Environment.DIRECTORY_DOWNLOADS + File.separator + Constant.APP_CATALOGUE + "/";
+
         OutputStream outputStream = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-            try {
-                // 查询
-                ContentResolver contentResolver = context.getContentResolver();
-                Uri contentUri = MediaStore.Downloads.EXTERNAL_CONTENT_URI;
-                Timber.i("####contentUri=%s", contentUri);
-                String select = MediaStore.Downloads.RELATIVE_PATH + " =? " + Environment.DIRECTORY_DOWNLOADS + "/GrainFull";
-                Cursor cursor = contentResolver.query(
-                        contentUri,
-                        new String[]{
-                                MediaStore.Downloads._ID,
-                                MediaStore.Downloads.DISPLAY_NAME
-                        },
-                        select,
-                        null, null
-                );
-                Timber.i("####cursor=%s", cursor.getCount());
-                if (cursor != null && cursor.moveToFirst()) {
-                    long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Downloads._ID));
-                    Uri queryUri = ContentUris.withAppendedId(contentUri, id);
-                    Timber.i("####queryUri=%s", queryUri);
-
-                    // 删除文件
-                    int value = context.getContentResolver().delete(queryUri, null, null);
-                    if (value > 0) {
-                        Timber.i("#####删除成功!");
-                    } else {
-                        Timber.e("#####删除失败!");
-                    }
-                    cursor.close();
-                }
-
-
-                Timber.i("#####创建一个ContentValues对象!");
-                // 创建一个ContentValues对象，用来给存储文件数据的数据库进行插入操作
-                ContentValues contentValues = new ContentValues();
-                // 设置文件名字
-                contentValues.put(MediaStore.Downloads.DISPLAY_NAME, name);
-                contentValues.put(MediaStore.Downloads.MIME_TYPE, type);
-                // 设置存储路径致Downloads文件下
-                contentValues.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + "/GrainFull");
-                Timber.i("##### path=%s", contentValues.get(MediaStore.Downloads.RELATIVE_PATH));
-                // 操作数据库
-                Uri uri = context.getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues);
-
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
+        contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, path);
+        try {
+            Uri uri = context.getContentResolver().insert(contentUri, contentValues);
+            if (uri != null) {
                 Timber.i("##### file=%s", uri.getPath());
-
                 outputStream = context.getContentResolver().openOutputStream(uri);
-            } catch (Exception ex) {
-                Timber.i("##### ex=%s", ex.getMessage());
+            } else {
+                Timber.i("##### file=null");
             }
+        } catch (Exception ex) {
+            Timber.e("##### onCreateFileByAudio ERROR=%s", ex.getMessage());
         }
-
         return outputStream;
     }
 
@@ -254,7 +233,7 @@ public class MediaStoreUtils {
     }
 
     /**
-     * 将项目中的图片保存到本地
+     * 将项目中的图片(MipMap)保存到本地(SdCard/Pictures)
      */
     public static void saveImage(Context context, String destFilePath, String fileName, int id) {
         // 插入一个图片
@@ -324,7 +303,7 @@ public class MediaStoreUtils {
      *
      * @param context  句柄
      * @param fileType 要删除的文件类型：image、video、audio
-     * @param path     包含的目录路径(不包含文件，例：GrainFull/Template)
+     * @param path     包含的目录路径(不包含文件名称及后缀，例：GrainFull/Template)
      */
     public static void deleteFilesInDir(Context context, String fileType, String path) {
         Uri externalContentUri = getContentUri(fileType);
@@ -351,23 +330,9 @@ public class MediaStoreUtils {
         }
     }
 
-    /**
-     * 根据扩展名获取图片类型
-     */
-    private static Bitmap.CompressFormat getBitmapTypeByExtension(String val) {
-        if (val.equals("png")) {
-            return Bitmap.CompressFormat.PNG;
-        } else if (val.equals("jpg") || val.equals("jpeg")) {
-            return Bitmap.CompressFormat.JPEG;
-        } else if (val.equals("webp")) {
-            return Bitmap.CompressFormat.WEBP;
-        } else {
-            return Bitmap.CompressFormat.JPEG;
-        }
-    }
 
     /**
-     * 将Assets中的图片复制到本地SdCard中
+     * 将Assets中的图片复制到本地SdCard/Pictures中
      */
     public static void copyImageFromAssets(Context context, String assetsFilePath, String destFilePath) {
         try {
@@ -401,5 +366,155 @@ public class MediaStoreUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 以流形式保存文件
+     *
+     * @param outputStream 目标路径
+     * @param inputStream  往文件中输入的内容
+     */
+    public static void saveFile(OutputStream outputStream, InputStream inputStream) {
+        if (outputStream == null) {
+            return;
+        }
+
+        OutputStream os = null;
+        try {
+            os = new BufferedOutputStream(outputStream);
+            byte data[] = new byte[8192];
+            int len;
+            while ((len = inputStream.read(data, 0, 8192)) != -1) {
+                os.write(data, 0, len);
+            }
+        } catch (IOException e) {
+            Timber.i("##### tts save error");
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (os != null) {
+                    os.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                outputStream.close();
+                outputStream = null;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 读取文件
+     */
+    public static Uri getDownloadFileUri(Context context, String fileName) {
+        Uri mResult = null;
+        try {
+            Uri contentUri = MediaStore.Downloads.EXTERNAL_CONTENT_URI;
+
+            String select = MediaStore.MediaColumns.DISPLAY_NAME + "=?";
+            String[] arg = new String[]{fileName.trim()};
+            Cursor cursor = context.getContentResolver().query(contentUri, null, select, arg, null);
+
+            // 查询List结果
+            if (cursor != null) {
+                Timber.i("####cursor=%s", cursor.getCount());
+                while (cursor.moveToNext()) {
+                    long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID));
+                    String displayName = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DISPLAY_NAME));
+                    mResult = ContentUris.withAppendedId(contentUri, id);
+                    Timber.i("####id=%s", id);
+                    Timber.i("####displayName=%s", displayName);
+                    Timber.i("####uri=%s", mResult);
+                }
+            } else {
+                Timber.i("####cursor=null");
+            }
+        } catch (Exception ex) {
+            Timber.e("####getDownloadFile Error=%s", ex.getMessage());
+        }
+
+        if (mResult == null)
+            Timber.i("#### 未匹配");
+
+        return mResult;
+    }
+
+    /**
+     * 读取文件
+     */
+    public static InputStream getDownloadFile(Context context, String fileName) {
+        InputStream mInputStream = null;
+        try {
+            Uri uri = getDownloadFileUri(context, fileName);
+
+            // 查询List结果
+            if (uri != null) {
+                mInputStream = context.getContentResolver().openInputStream(uri);
+
+                if (mInputStream == null)
+                    Timber.i("#### 未匹配");
+            } else {
+                Timber.i("####cursor=null");
+            }
+        } catch (Exception ex) {
+            Timber.e("####getDownloadFile Error=%s", ex.getMessage());
+        }
+
+        return mInputStream;
+    }
+
+    /**
+     * 删除Download中文件
+     */
+    public static void delDownloadFile(Context context, String fileName) {
+        try {
+            Uri contentUri = MediaStore.Downloads.EXTERNAL_CONTENT_URI;
+
+            String select = MediaStore.MediaColumns.DISPLAY_NAME + "=?";
+            String[] arg = new String[]{fileName.trim()};
+            Cursor cursor = context.getContentResolver().query(contentUri, null, select, arg, null);
+
+            // 查询List结果
+            if (cursor != null) {
+                Timber.i("####cursor=%s", cursor.getCount());
+                while (cursor.moveToNext()) {
+                    long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID));
+                    String displayName = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DISPLAY_NAME));
+                    Uri uri = ContentUris.withAppendedId(contentUri, id);
+                    Timber.i("####id=%s", id);
+                    Timber.i("####displayName=%s", displayName);
+                    Timber.i("####uri=%s", uri);
+
+                    // 删除
+                    context.getContentResolver().delete(uri, null, null);
+                }
+            } else {
+                Timber.i("####cursor=null");
+            }
+        } catch (Exception ex) {
+            Timber.e("####delDownloadFile Error=%s", ex.getMessage());
+        }
+    }
+
+    /**
+     * 获取Download中文件大小
+     */
+    public static int getDownloadFileSize(Context context, String fileName) {
+        try {
+            return getDownloadFile(context, fileName).available();
+        } catch (Exception ex) {
+            Timber.e("####delDownloadFile Error=%s", ex.getMessage());
+        }
+
+        return 0;
     }
 }
