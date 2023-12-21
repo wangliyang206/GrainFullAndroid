@@ -300,6 +300,8 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     /**
      * 语音转文字
      * 目前文件上传限制为 25 MB，并支持以下输入文件类型：mp3、mp4、mpeg、mpga、m4a、wav 和 webm。
+     *
+     * <p>暂未开放</p>
      */
     public void voiceToText(String path) {
         mModel.voiceToText(new File(path))
@@ -330,6 +332,8 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
 
     /**
      * 文字转语音
+     *
+     * <p>暂未开放</p>
      */
     public void textToSpeech(String message) {
         mModel.textToSpeech(message)

@@ -61,16 +61,34 @@ public interface Constant {
      */
     String CHATGPT_TOKEN = "https://billing.openkey.cloud/api/token";
     /**
+     * 语音转文字
+     */
+    String CHATGPT_TRANSCRIPTIONS_URL = "https://openkey.cloud/v1/audio/transcriptions";
+    /**
+     * 文字转语音
+     */
+    String CHATGPT_SPEECH_URL = "https://openkey.cloud/v1/audio/speech";
+    /**
      * ChatGPT key，有额度(1元 500000 tokens)
      */
     String CHATGPT_KEY = "sk-GlgmPE0qiewPnNg6760703686fD4468683C655Ed1eA75e37";
+
 
     /**
      * FastGPT API 地址
      */
     String FASTGPT_CHAT_URL = "https://ai.fastgpt.in/api/v1/chat/completions";
+    /**
+     * 获取历史记录
+     */
     String FASTGPT_HISTORY_URL = "https://ai.fastgpt.in/api/core/chat/init";
+    /**
+     * 语音转文字
+     */
     String FASTGPT_TRANSCRIPTIONS_URL = "https://ai.fastgpt.in/api/v1/audio/transcriptions";
+    /**
+     * 文字转语音
+     */
     String FASTGPT_SPEECH_URL = "https://ai.fastgpt.in/api/v1/audio/speech";
     // 企业智能客服：带有知识库，可以回答企业任何问题(appId=656fce2d993ca09b160e9ea7)
 //    String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
@@ -96,12 +114,12 @@ public interface Constant {
     String BAIDU_TRANSLATE_SECRETKEY = "MIeDZYeJsGadJRg6n8sE";
 
     /**
-     * 金莱特-服务协议
+     * 服务协议
      */
     String serviceAgreementUrl = "http://www.buypb.cn/useragreement/zqwservicegreement_jlt.html";
 
     /**
-     * 金莱特-隐私政策
+     * 隐私政策
      */
     String privacyPolicyUrl = "http://www.buypb.cn/useragreement/ruserprivacy_jlt.html";
 

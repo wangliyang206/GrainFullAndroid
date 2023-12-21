@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
+import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.Utils;
 import com.zqw.mobile.grainfull.app.global.Constant;
 
@@ -442,9 +443,6 @@ public class MediaStoreUtils {
             Timber.e("####getDownloadFile Error=%s", ex.getMessage());
         }
 
-        if (mResult == null)
-            Timber.i("#### 未匹配");
-
         return mResult;
     }
 
@@ -494,12 +492,15 @@ public class MediaStoreUtils {
                     Timber.i("####displayName=%s", displayName);
                     Timber.i("####uri=%s", uri);
 
-                    // 删除
+                    // 用于删除MediaStore对象所创建的文件
                     context.getContentResolver().delete(uri, null, null);
                 }
             } else {
                 Timber.i("####cursor=null");
             }
+
+            // 如果存在，则删除(这句话用于删除媒体对象创建的文件)
+            FileUtils.delete(Constant.AUDIO_PATH + fileName);
         } catch (Exception ex) {
             Timber.e("####delDownloadFile Error=%s", ex.getMessage());
         }

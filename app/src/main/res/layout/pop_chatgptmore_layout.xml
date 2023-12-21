@@ -36,10 +36,18 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:gravity="center"
-            android:text="ChatGPT KEY"
+            android:text="ChatGPT"
             android:textColor="@color/common_text_color"
             android:textSize="16sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="      OpenKEY 是一个 OpenAI API 反代服务，它可以让用户直接调用 OpenAI 的人工智能 API，而无需自行申请 OpenAI API 的额度。在用户调用 API 时，OpenKEY 会将请求转发至自己的账号池中，然后再通过 OpenAI 的官方 API 接口将请求发送至 OpenAI 的服务器进行处理。"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="13sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,7 +92,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/frame_img_selector"
             android:orientation="vertical"
             android:padding="10dp">
@@ -193,7 +201,6 @@
             android:text="额度等价公式：1元 = 50 万 Tokens 。"
             android:textColor="@color/common_text_tips_color"
             android:textSize="13sp" />
-
 
         <Button
             android:id="@+id/btn_popchatgptmore_ok"

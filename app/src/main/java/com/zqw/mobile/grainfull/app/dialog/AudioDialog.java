@@ -128,8 +128,8 @@ public class AudioDialog extends PopupWindow implements View.OnClickListener {
                 onPlayPCM();
                 break;
             case R.id.btn_popaudiolayout_save:
-//                ArmsUtils.makeText(getContentView().getContext(), "由于兼容问题，暂不开放！");
-                onSave();
+                ArmsUtils.makeText(getContentView().getContext(), "由于兼容问题，暂不开放！");
+//                onSave();
                 break;
         }
     }

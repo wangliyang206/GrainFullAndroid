@@ -1,21 +1,30 @@
 package com.zqw.mobile.grainfull.mvp.presenter;
 
+import android.text.TextUtils;
+
+import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.google.gson.Gson;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.grainfull.app.config.CommonRetryWithDelay;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
+import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.app.utils.RxUtils;
 import com.zqw.mobile.grainfull.mvp.contract.ChatGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatCompletionChunk;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatImg;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatToken;
+import com.zqw.mobile.grainfull.mvp.model.entity.WhisperResponse;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 
 import javax.inject.Inject;
 
@@ -87,12 +96,14 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
                         }
                         // 只保存有效的
                         if (mChatToken.getStatus() == 1) {
+                            // 接口请求成功
                             mAccountManager.setChatGptSk(sk);
-                            mRootView.loadTokenBalance(mChatToken);
                         } else {
+                            // 请求响应中有错误
                             mRootView.showMessage(mChatToken.getError());
-                            mRootView.loadSk();
                         }
+
+                        mRootView.loadTokenBalance(mChatToken.getTotal(), mChatToken.getUsed(), mChatToken.getRemaining(), mAccountManager.getChatGptSk());
                     }
                 });
     }
@@ -234,6 +245,85 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
         } catch (Exception ignored) {
 
         }
+    }
+
+
+    /**
+     * 语音转文字
+     * 目前文件上传限制为 25 MB，并支持以下输入文件类型：mp3、mp4、mpeg、mpga、m4a、wav 和 webm。
+     */
+    public void voiceToText(String path) {
+        mModel.voiceToText(new File(path))
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe(disposable -> {
+//                    mRootView.showLoadingSubmit();                                                  // 显示进度条
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+//                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
+                }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<WhisperResponse>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        Timber.i("##### t=%s", t.getMessage());
+                        // 删除语音文件
+                        MediaStoreUtils.delDownloadFile(mRootView.getActivity(), FileUtils.getFileName(path));
+                    }
+
+                    @Override
+                    public void onNext(WhisperResponse info) {
+                        Timber.i("##### Whisper=%s", info.getText());
+                        if (!TextUtils.isEmpty(info.getText())) {
+                            // 显示识别出来的文字
+                            mRootView.onLoadVoiceToText(info.getText());
+                            String fileName = FileUtils.getFileName(path);
+                            Timber.i("##### delFileName=%s", fileName);
+                            // 删除语音文件
+                            MediaStoreUtils.delDownloadFile(mRootView.getActivity(), fileName);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 文字转语音
+     */
+    public void textToSpeech(String message) {
+        mModel.textToSpeech(message)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new CommonRetryWithDelay(0, 2))                 // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe(disposable -> {
+//                    mRootView.showLoadingSubmit();                                                // 显示进度条
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+//                    mRootView.hideLoadingSubmit();                                                // 隐藏进度条
+                }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        Timber.i("##### t=%s", t.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody info) {
+                        // 获取response输入流
+                        InputStream inputStream = info.byteStream();
+                        String fileName = "audio_" + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".mp3";
+                        try {
+                            // 保存流媒体
+                            OutputStream mOutputStream = MediaStoreUtils.createFile(mRootView.getActivity(), fileName);
+                            MediaStoreUtils.saveFile(mOutputStream, inputStream);
+                            // 播放
+                            Timber.i("##### tts Succ path=%s", fileName);
+                            mRootView.playVideo(fileName, MediaStoreUtils.getDownloadFileUri(mRootView.getActivity(), fileName));
+                        } catch (Exception ignored) {
+                        }
+                    }
+                });
     }
 
     /**

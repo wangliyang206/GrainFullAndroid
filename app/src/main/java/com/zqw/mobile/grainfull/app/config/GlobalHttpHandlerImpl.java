@@ -109,12 +109,18 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
         } else if (request.url().toString().contains(Constant.CHATGPT_TOKEN)) {
             // ChatGPT 接口做特殊处理
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").build();
-        } else if (request.url().toString().contains(Constant.FASTGPT_TRANSCRIPTIONS_URL)) {
-            // FastGPT 接口做特殊处理
-            return chain.request().newBuilder().addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
+        } else if (request.url().toString().contains(Constant.CHATGPT_TRANSCRIPTIONS_URL)) {
+            // ChatGPT 接口做特殊处理
+            return chain.request().newBuilder().addHeader("Authorization", "Bearer " + mAccountManager.getChatGptSk()).build();
+        } else if (request.url().toString().contains(Constant.CHATGPT_SPEECH_URL)) {
+            // ChatGPT 接口做特殊处理
+            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + mAccountManager.getChatGptSk()).build();
         } else if (request.url().toString().contains(Constant.FASTGPT_CHAT_URL)) {
             // FastGPT 接口做特殊处理
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
+        } else if (request.url().toString().contains(Constant.FASTGPT_TRANSCRIPTIONS_URL)) {
+            // FastGPT 接口做特殊处理
+            return chain.request().newBuilder().addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
         } else if (request.url().toString().contains(Constant.FASTGPT_SPEECH_URL)) {
             // FastGPT 接口做特殊处理
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
