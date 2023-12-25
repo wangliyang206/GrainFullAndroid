@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_fast_gpt"
     android:layout_width="match_parent"
@@ -13,12 +13,29 @@
         android:id="@+id/view_fastgpt_top"
         layout="@layout/comm_top_layout" />
 
+    <!-- 简单说明 -->
+    <ImageView
+        android:id="@+id/imvi_fastgpt_ask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:padding="5dp"
+        android:src="@mipmap/icon_ask"
+        app:layout_constraintBottom_toBottomOf="@+id/view_fastgpt_top"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_fastgpt_top" />
+
     <!--内容-->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_fastgpt_top">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/view_fastgpt_scrollView"
@@ -140,4 +157,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

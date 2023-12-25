@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -47,6 +48,7 @@ import com.lcw.library.imagepicker.ImagePicker;
 import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.BuildConfig;
 import com.zqw.mobile.grainfull.R;
+import com.zqw.mobile.grainfull.app.dialog.PopupFastGptIntro;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
@@ -90,6 +92,7 @@ import top.zibin.luban.OnCompressListener;
 @RuntimePermissions
 public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements FastGPTContract.View, AudioRecorderButton.VoiceEvents {
     /*--------------------------------控件信息--------------------------------*/
+
     @BindView(R.id.view_fastgpt_scrollView)
     NestedScrollView mScrollView;                                                                   // 外层 - 滑动布局
     @BindView(R.id.lila_fastgpt_chatlayout)
@@ -116,6 +119,8 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     AccountManager mAccountManager;
     @Inject
     ImageLoader mImageLoader;
+    // FastGPT应用介绍
+    private PopupFastGptIntro mPopup;
     // 用于临时保存图片地址
     private ArrayList<String> mImagePaths = new ArrayList<>();
 
@@ -146,6 +151,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
             this.mImagePaths = null;
         }
         this.mAccountManager = null;
+        this.mPopup = null;
         InFileStream.reset();
     }
 
@@ -198,6 +204,8 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
             }
         });
 
+        mPopup = new PopupFastGptIntro(getApplicationContext());
+
         // 初始化语音识别
         apiParams = new OnlineRecogParams();
         apiParams.initSamplePath(this);
@@ -220,6 +228,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     }
 
     @OnClick({
+            R.id.imvi_fastgpt_ask,                                                                  // 应用介绍
             R.id.btn_fastgpt_attachm,                                                               // 添加附件
             R.id.btn_fastgpt_close,                                                                 // 删除附件
             R.id.imvi_fastgpt_switch,                                                               // 文字与语音-切换按钮
@@ -228,6 +237,11 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imvi_fastgpt_ask:                                                             // 应用介绍
+                if (mPopup != null) {
+                    mPopup.showAtLocation(v, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                }
+                break;
             case R.id.btn_fastgpt_attachm:                                                          // 添加附件
                 FastGPTActivityPermissionsDispatcher.addAvatarWithPermissionCheck(this);
                 break;

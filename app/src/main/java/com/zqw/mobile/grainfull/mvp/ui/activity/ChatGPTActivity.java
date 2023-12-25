@@ -124,7 +124,6 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         this.mAccountManager = null;
         this.mImageLoader = null;
         this.mPopup = null;
-        InFileStream.reset();
     }
 
     @Override
