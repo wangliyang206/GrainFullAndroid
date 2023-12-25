@@ -166,7 +166,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("回收智能小助手");
+        setTitle("易收智能AI");
 
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "fastgpt_open");

@@ -58,7 +58,7 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     private ChatCompletionChunk chatCompletionChunk;
     private Gson gson = new Gson();
     // 默认提示语
-    private final String mDefaultTips = "您好，我是回收智能小助手，请问有什么可以帮助您的吗？";
+    private final String mDefaultTips = "您好，我是易收网智能小助手小铅，请问有什么可以帮助您的吗？";
 
     @Override
     public void onDestroy() {
@@ -263,24 +263,32 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
                 // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"文"},"finish_reason":null}]}
                 // data: {"id":"chatcmpl-8OLSS8urj19bZa2AnHhK5UnRdyVUa","object":"chat.completion.chunk","created":1700813048,"model":"gpt-3.5-turbo-0613","choices":[{"index":0,"delta":{"content":"化"},"finish_reason":null}]}
                 // 判断是否返回了数据，去除response前data关键字，不然解析不了
-                if (line.length() > 6) {
-                    Timber.d("##### onResponse: %s", line.substring(6));
-                    try {
-                        chatCompletionChunk = gson.fromJson(line.substring(5), ChatCompletionChunk.class);
-                        Timber.d("onAnalysis: %s", chatCompletionChunk.getChoices().get(0).getDelta().getContent());
-                        if (chatCompletionChunk.getChoices().get(0).getDelta().getContent() != null) {
-                            addNewlineAfterPeriod(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
-                            buffer.append(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
-                        }
-                        if (chatCompletionChunk.getChoices().get(0).getFinishReason() != null) {
+                Timber.d("##### onResponse:%s", line);
+                if (line.contains("event: error")) {
+                    // 出现错误
+                    buffer.append("请求有误，请检查key的余额。解决办法：调整API最大额度或充值。");
+                    mRootView.onLoadError(buffer);
+                    break;
+                } else {
+                    // 正常返回
+                    if (line.length() > 6) {
+                        Timber.d("##### onResponse: %s", line.substring(6));
+                        try {
+                            chatCompletionChunk = gson.fromJson(line.substring(5), ChatCompletionChunk.class);
+                            Timber.d("onAnalysis: %s", chatCompletionChunk.getChoices().get(0).getDelta().getContent());
+                            if (chatCompletionChunk.getChoices().get(0).getDelta().getContent() != null) {
+                                addNewlineAfterPeriod(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
+                                buffer.append(chatCompletionChunk.getChoices().get(0).getDelta().getContent());
+                            }
+                            if (chatCompletionChunk.getChoices().get(0).getFinishReason() != null) {
+                                break;
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            buffer.append("数据解析有误，请联系管理员进行排查。");
+                            mRootView.onLoadError(buffer);
                             break;
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        buffer.append("请求有误，请检查key或稍后重试，当然，如果你上下文足够长也会出现，请自行找寻原因，嗯，我懒得写 /doge");
-
-                        mRootView.onLoadError(buffer);
-                        break;
                     }
                 }
             }
