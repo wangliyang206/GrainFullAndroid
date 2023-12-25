@@ -202,6 +202,52 @@
             android:textColor="@color/common_text_tips_color"
             android:textSize="13sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="功能模型："
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="对话模型：gpt-3.5、gpt-4-turbo"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="图片模型：dall-e-3"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="音频模型：Whisper、TTS"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="OpenKEY缺点：不支持“知识库”。"
+            android:textColor="@color/common_text_red_color"
+            android:textSize="14sp" />
+
         <Button
             android:id="@+id/btn_popchatgptmore_ok"
             android:layout_width="wrap_content"

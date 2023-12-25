@@ -330,12 +330,26 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/edit_bg_selector"
-                            android:padding="10dp"
-                            android:text="ChatGPT" />
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Open KEY"
+                                android:textSize="14sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ChatGPT"
+                                android:textSize="10sp"/>
+                        </LinearLayout>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -350,12 +364,26 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/edit_bg_selector"
-                            android:padding="10dp"
-                            android:text="FastGPT" />
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FastGPT"
+                                android:textSize="14sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="易收网生活科普AI助手"
+                                android:textSize="10sp"/>
+                        </LinearLayout>
 
                         <ImageView
                             android:layout_width="wrap_content"
