@@ -136,9 +136,11 @@ public class AudioManager {
     }
 
     public void release() {
-        mMediaRecorder.stop();
-        mMediaRecorder.release();
-        mMediaRecorder = null;
+        if(mMediaRecorder != null){
+            mMediaRecorder.stop();
+            mMediaRecorder.release();
+            mMediaRecorder = null;
+        }
     }
 
     public void cancel() {

@@ -175,6 +175,9 @@ com.unity3d.player.UnityPlayer$17
 kotlin.collections.builders.MapBuilder$EntriesItr
 com.zqw.mobile.grainfull.mvp.ui.activity.NoiseMeasurementActivity:
     private static final int SAMPLE_RATE_IN_HZ
+com.zqw.mobile.grainfull.mvp.contract.FastGPTContract$Model:
+    public abstract io.reactivex.Observable voiceToText(java.io.File)
+    public abstract io.reactivex.Observable textToSpeech(java.lang.String)
 kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$6
 com.zqw.mobile.grainfull.mvp.model.GoodsListModel_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
@@ -246,6 +249,13 @@ com.zqw.mobile.grainfull.mvp.model.AudioConversionModel_MembersInjector:
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mGsonProvider
     private final javax.inject.Provider mApplicationProvider
+com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mAccountManagerProvider
 androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl
 io.rx_cache2.internal.RxCacheModule_ProvideJolyglotFactory
 androidx.transition.Styleable$TransitionManager
@@ -509,7 +519,6 @@ com.zqw.mobile.grainfull.di.module.ARPortalModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.ARPortalContract$Model bindARPortalModel(com.zqw.mobile.grainfull.mvp.model.ARPortalModel)
 com.zqw.mobile.grainfull.app.tts.control.MySyntherizer:
-    public int speak(java.lang.String)
     public int speak(java.lang.String,java.lang.String)
     public int synthesize(java.lang.String,java.lang.String)
     public int pause()
@@ -1831,12 +1840,13 @@ com.jakewharton.rxbinding3.view.MenuItemClickObservable
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$PathRotateSet
 io.rx_cache2.internal.migration.UpgradeCacheVersion
 com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_MembersInjector:
-    public void <init>(javax.inject.Provider,javax.inject.Provider)
-    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
     public void injectMembers(com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity)
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mPresenterProvider
     private final javax.inject.Provider mAccountManagerProvider
+    private final javax.inject.Provider mImageLoaderProvider
 com.jakewharton.rxbinding3.widget.AdapterDataChangeObservable
 androidx.constraintlayout.core.widgets.Chain:
     public void <init>()
@@ -1912,6 +1922,7 @@ com.bumptech.glide.Glide:
     public static com.bumptech.glide.RequestManager with(androidx.fragment.app.FragmentActivity)
     public static com.bumptech.glide.RequestManager with(androidx.fragment.app.Fragment)
     public static com.bumptech.glide.RequestManager with(android.app.Fragment)
+    public static com.bumptech.glide.RequestManager with(android.view.View)
     public synchronized varargs void preFillBitmapPool(com.bumptech.glide.load.engine.prefill.PreFillType$Builder[])
     public com.bumptech.glide.MemoryCategory setMemoryCategory(com.bumptech.glide.MemoryCategory)
     private com.bumptech.glide.load.engine.prefill.BitmapPreFiller bitmapPreFiller
@@ -2017,6 +2028,8 @@ kotlin.ranges.IntProgressionIterator
 androidx.savedstate.Recreator:
     static final java.lang.String CLASSES_KEY
     static final java.lang.String COMPONENT_KEY
+com.zqw.mobile.grainfull.app.utils.AudioManager:
+    public static com.zqw.mobile.grainfull.app.utils.AudioManager getInstance(java.lang.String)
 com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
@@ -2245,6 +2258,7 @@ com.blankj.utilcode.util.ArrayUtils
 kotlin.math.UMathKt
 androidx.core.view.accessibility.AccessibilityManagerCompat$AccessibilityStateChangeListenerCompat
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$SoftRef
+com.zqw.mobile.grainfull.mvp.contract.FastGPTContract
 kotlin.UShortArray
 com.bumptech.glide.provider.EncoderRegistry:
     public synchronized void prepend(java.lang.Class,com.bumptech.glide.load.Encoder)
@@ -3507,9 +3521,6 @@ lecho.lib.hellocharts.model.Line:
     private static final int DEFAULT_POINT_RADIUS_DP
     private static final int DEFAULT_AREA_TRANSPARENCY
     public static final int UNINITIALIZED
-com.bumptech.glide.request.RequestFutureTarget:
-    public void <init>(int,int)
-    void <init>(int,int,boolean,com.bumptech.glide.request.RequestFutureTarget$Waiter)
 kotlin.DeepRecursiveScopeImpl$crossFunctionCompletion$$inlined$Continuation$1
 com.mikepenz.materialize.holder.ColorHolder:
     public static com.mikepenz.materialize.holder.ColorHolder fromColorRes(int)
@@ -3532,6 +3543,7 @@ com.bumptech.glide.util.ContentLengthInputStream:
     private static final java.lang.String TAG
     private static final int UNKNOWN
 com.zqw.mobile.grainfull.app.global.GameMsg
+com.zqw.mobile.grainfull.di.module.FastGPTModule_ProviderRequestMapperFactory
 kotlin.sequences.SequencesKt___SequencesKt$minus$4$iterator$1
 com.zqw.mobile.grainfull.mvp.model.LayoutCategoryModel_MembersInjector:
     public void <init>(javax.inject.Provider,javax.inject.Provider)
@@ -3624,6 +3636,9 @@ com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool:
     private static final int DEFAULT_SIZE
     static final int MAX_OVER_SIZE_MULTIPLE
     private static final int SINGLE_ARRAY_MAX_SIZE_DIVISOR
+com.zqw.mobile.grainfull.mvp.model.FastGPTModel:
+    public io.reactivex.Observable voiceToText(java.io.File)
+    public io.reactivex.Observable textToSpeech(java.lang.String)
 com.chad.library.adapter.base.BaseNodeAdapter
 com.zqw.mobile.grainfull.mvp.contract.LayoutMianContract
 com.blankj.utilcode.util.SPStaticUtils
@@ -4644,6 +4659,8 @@ okio.InflaterSource:
 com.zqw.mobile.grainfull.di.module.LayoutMianModule_ProvideNewHomeInfoFactory$InstanceHolder:
     private void <init>()
 androidx.core.widget.TextViewOnReceiveContentListener$Api16Impl
+com.zqw.mobile.grainfull.app.dialog.PopupChatGptMore:
+    public void onUpdate(java.lang.String)
 com.blankj.utilcode.util.ApiUtils
 com.airbnb.lottie.value.LottieFrameInfo:
     public float getStartFrame()
@@ -4757,9 +4774,7 @@ com.bumptech.glide.RequestBuilder:
     public com.bumptech.glide.RequestBuilder load(java.lang.Integer)
     public com.bumptech.glide.RequestBuilder load(java.net.URL)
     public com.bumptech.glide.RequestBuilder load(byte[])
-    public com.bumptech.glide.request.FutureTarget into(int,int)
     public com.bumptech.glide.request.FutureTarget submit()
-    public com.bumptech.glide.request.FutureTarget submit(int,int)
     public com.bumptech.glide.request.target.Target preload(int,int)
     public com.bumptech.glide.request.target.Target preload()
     public com.bumptech.glide.request.target.Target downloadOnly(com.bumptech.glide.request.target.Target)
@@ -5360,6 +5375,14 @@ kotlin.collections.AbstractMutableSet
 androidx.print.PrintHelper$PrintBitmapAdapter
 com.mikepenz.materialdrawer.model.SectionDrawerItem
 com.bumptech.glide.manager.RequestManagerRetriever:
+    private static void findAllSupportFragmentsWithViews(java.util.Collection,java.util.Map)
+    private androidx.fragment.app.Fragment findSupportFragment(android.view.View,androidx.fragment.app.FragmentActivity)
+    private android.app.Fragment findFragment(android.view.View,android.app.Activity)
+    private void findAllFragmentsWithViews(android.app.FragmentManager,androidx.collection.ArrayMap)
+    private void findAllFragmentsWithViewsPreO(android.app.FragmentManager,androidx.collection.ArrayMap)
+    public com.bumptech.glide.RequestManager get(androidx.fragment.app.Fragment)
+    public com.bumptech.glide.RequestManager get(android.view.View)
+    public com.bumptech.glide.RequestManager get(android.app.Fragment)
     static final java.lang.String FRAGMENT_TAG
     private static final java.lang.String TAG
     private static final int ID_REMOVE_FRAGMENT_MANAGER
@@ -6507,7 +6530,6 @@ com.blankj.utilcode.util.FileUtils:
     public static java.lang.String getDirName(java.io.File)
     public static java.lang.String getDirName(java.lang.String)
     public static java.lang.String getFileName(java.io.File)
-    public static java.lang.String getFileName(java.lang.String)
     public static java.lang.String getFileNameNoExtension(java.io.File)
     public static java.lang.String getFileNameNoExtension(java.lang.String)
     public static java.lang.String getFileExtension(java.io.File)
@@ -6778,6 +6800,10 @@ androidx.appcompat.widget.ViewUtils:
     private static final java.lang.String TAG
 io.rx_cache2.internal.Locale
 kotlin.collections.UCollectionsKt___UCollectionsKt
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivityPermissionsDispatcher:
+    private void <init>()
+    private static final int REQUEST_ADDAVATAR
+    private static final int REQUEST_ADDVUDIO
 com.zqw.mobile.grainfull.mvp.model.SplashModel:
     private synthetic io.reactivex.Observable lambda$validToken$0(com.jess.arms.cj.GsonRequest)
     public io.reactivex.Observable validToken()
@@ -8868,9 +8894,8 @@ com.zqw.mobile.grainfull.app.utils.MediaStoreUtils:
     public void <init>()
     public static java.lang.String getMimeType(java.lang.String)
     public static java.lang.String getDisplayName(java.lang.String)
-    public static void deleteMedieFile(android.content.Context,java.io.File)
     public static void deleteIndividualFiles(android.content.Context,java.lang.String)
-    public void onCreateFile(android.content.Context,int,java.lang.String,java.lang.String)
+    public static int getDownloadFileSize(android.content.Context,java.lang.String)
     public void onCreateImage(android.content.Context,java.lang.String)
 io.rx_cache2.internal.RxCacheModule_ProvideProcessorProvidersFactory
 com.zqw.mobile.grainfull.mvp.ui.activity.ClockActivity_MembersInjector
@@ -9292,6 +9317,9 @@ com.chad.library.adapter.base.BaseProviderMultiAdapter
 kotlin.collections.CollectionsKt__IterablesKt
 lecho.lib.hellocharts.view.ComboLineColumnChartView$ComboColumnChartDataProvider:
     public void setColumnChartData(lecho.lib.hellocharts.model.ColumnChartData)
+com.zqw.mobile.grainfull.mvp.contract.FastGPTContract$View:
+    public abstract void onLoadVoiceToText(java.lang.String)
+    public abstract void onLoadImages(java.lang.String)
 com.jakewharton.rxbinding3.InitialValueObservable$Skipped
 androidx.databinding.library.baseAdapters.DataBinderMapperImpl:
     public androidx.databinding.ViewDataBinding getDataBinder(androidx.databinding.DataBindingComponent,android.view.View[],int)
@@ -9674,7 +9702,6 @@ com.unity3d.scar.adapter.common.IUnityAdsError:
     public abstract java.lang.String getDescription()
     public abstract int getCode()
 com.zqw.mobile.grainfull.app.tts.listener.FileSaveListener:
-    public static final java.lang.String fileName
     private static final java.lang.String TAG
 com.zqw.mobile.grainfull.mvp.ui.widget.DisableRecyclerViewSliding:
     public void <init>(android.content.Context)
@@ -10589,6 +10616,7 @@ com.zqw.mobile.grainfull.mvp.model.api.AccountService:
     public abstract io.reactivex.Observable getVersion(com.jess.arms.cj.GsonRequest)
     public abstract io.reactivex.Observable download(java.lang.String)
     public abstract io.reactivex.Observable queryHomePageInfo(java.lang.String)
+    public abstract io.reactivex.Observable textToSpeech(java.lang.String,okhttp3.RequestBody)
 com.zqw.mobile.grainfull.di.module.HomeModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.HomeContract$Model bindHomeModel(com.zqw.mobile.grainfull.mvp.model.HomeModel)
@@ -10797,6 +10825,14 @@ com.donkingliang.consecutivescroller.Util:
 com.jyn.vcview.R
 com.zqw.mobile.grainfull.mvp.contract.NewWindowX5Contract
 androidx.constraintlayout.core.motion.utils.DifferentialInterpolator
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mPresenterProvider
+    private final javax.inject.Provider mAccountManagerProvider
+    private final javax.inject.Provider mImageLoaderProvider
 com.mikepenz.iconics.context.IconicsLayoutInflater
 androidx.databinding.adapters.ViewGroupBindingAdapter$OnAnimationEnd
 com.airbnb.lottie.value.LottieInterpolatedPointValue
@@ -11298,8 +11334,6 @@ com.zqw.mobile.grainfull.app.tts.SynthActivity:
     private void switchOffTheOfflineResource()
     private void loadModel(java.lang.String)
     private synthetic void lambda$switchOffTheOfflineResource$0(java.util.Map,java.lang.String[],android.content.DialogInterface,int)
-    public void initTTS(android.content.Context)
-    public void speak(java.lang.String)
     public void pause()
     public void resume()
     public void stop()
@@ -12733,6 +12767,13 @@ com.jess.arms.integration.lifecycle.ActivityLifecycleForRxLifecycle_MembersInjec
     public synthetic bridge void injectMembers(java.lang.Object)
     private final javax.inject.Provider mFragmentLifecycleProvider
 androidx.core.location.GpsStatusWrapper
+com.zqw.mobile.grainfull.mvp.model.FastGPTModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.FastGPTModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.scwang.smart.refresh.layout.SmartRefreshLayout$8
 com.airbnb.lottie.parser.PathKeyframeParser:
     private void <init>()
@@ -14554,6 +14595,11 @@ androidx.constraintlayout.motion.utils.ViewOscillator:
 kotlin.time.FormatToDecimalsKt
 androidx.appcompat.widget.ShareActionProvider$OnShareTargetSelectedListener
 com.mikepenz.materialdrawer.model.AbstractToggleableDrawerItem$1
+com.zqw.mobile.grainfull.di.module.FastGPTModule:
+    public void <init>()
+    static com.jess.arms.cj.IRequestMapper providerRequestMapper(com.zqw.mobile.grainfull.mvp.contract.FastGPTContract$View,com.zqw.mobile.grainfull.app.global.AccountManager)
+    static com.jess.arms.cj.ApiOperator providerOperator(com.jess.arms.cj.IRequestMapper)
+    abstract com.zqw.mobile.grainfull.mvp.contract.FastGPTContract$Model bindFastGPTModel(com.zqw.mobile.grainfull.mvp.model.FastGPTModel)
 com.zqw.mobile.grainfull.di.module.CardFlippingModule:
     public void <init>()
     static com.zqw.mobile.grainfull.app.global.AccountManager provideAccountManager(com.zqw.mobile.grainfull.mvp.contract.CardFlippingContract$View)
@@ -14686,6 +14732,7 @@ com.mikepenz.fastadapter.IItemList:
 kotlin.collections.ReversedListReadOnly
 com.chad.library.adapter.base.entity.node.BaseNode
 com.chad.library.adapter.base.listener.LoadMoreListenerImp
+com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter$6
 kotlin.text.MatcherMatchResult$groups$1
 androidx.constraintlayout.core.state.helpers.BarrierReference$1
 com.bumptech.glide.load.resource.gif.GifDrawable:
@@ -14845,6 +14892,7 @@ com.unity3d.player.Camera2Wrapper:
     public final void a(java.lang.Object,java.lang.Object,java.lang.Object,int,int,int)
     public final void a(java.lang.Object)
 dagger.internal.MembersInjectors
+com.zqw.mobile.grainfull.di.module.FastGPTModule_ProviderOperatorFactory
 kotlin.collections.FloatIterator
 kotlin.comparisons.UComparisonsKt
 kotlin.collections.ArraysKt___ArraysKt$withIndex$2
@@ -15468,6 +15516,9 @@ com.zqw.mobile.grainfull.mvp.ui.holder.SevenStatisticsItemHolder:
 uk.co.senab.photoview.PhotoView:
     public boolean canZoom()
     public boolean setDisplayMatrix(android.graphics.Matrix)
+com.zqw.mobile.grainfull.app.dialog.AudioDialog:
+    private void onSave()
+    private synthetic void lambda$onSave$0()
 com.jakewharton.rxbinding3.view.ViewGroupHierarchyChangeEventObservable
 kotlin.coroutines.jvm.internal.CoroutineStackFrame:
     public abstract kotlin.coroutines.jvm.internal.CoroutineStackFrame getCallerFrame()
@@ -15690,7 +15741,30 @@ com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton:
     static synthetic int access$000(com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton)
     static synthetic int access$100(com.zqw.mobile.grainfull.mvp.ui.widget.DragFloatButton)
 androidx.core.text.util.LinkifyCompat$1
-com.blankj.utilcode.util.GsonUtils
+com.blankj.utilcode.util.GsonUtils:
+    private void <init>()
+    public static void setGsonDelegate(com.google.gson.Gson)
+    public static void setGson(java.lang.String,com.google.gson.Gson)
+    public static com.google.gson.Gson getGson(java.lang.String)
+    public static java.lang.String toJson(java.lang.Object,java.lang.reflect.Type)
+    public static java.lang.String toJson(com.google.gson.Gson,java.lang.Object,java.lang.reflect.Type)
+    public static java.lang.Object fromJson(java.lang.String,java.lang.Class)
+    public static java.lang.Object fromJson(java.lang.String,java.lang.reflect.Type)
+    public static java.lang.Object fromJson(java.io.Reader,java.lang.Class)
+    public static java.lang.Object fromJson(java.io.Reader,java.lang.reflect.Type)
+    public static java.lang.Object fromJson(com.google.gson.Gson,java.lang.String,java.lang.Class)
+    public static java.lang.Object fromJson(com.google.gson.Gson,java.lang.String,java.lang.reflect.Type)
+    public static java.lang.Object fromJson(com.google.gson.Gson,java.io.Reader,java.lang.Class)
+    public static java.lang.Object fromJson(com.google.gson.Gson,java.io.Reader,java.lang.reflect.Type)
+    public static java.lang.reflect.Type getListType(java.lang.reflect.Type)
+    public static java.lang.reflect.Type getSetType(java.lang.reflect.Type)
+    public static java.lang.reflect.Type getMapType(java.lang.reflect.Type,java.lang.reflect.Type)
+    public static java.lang.reflect.Type getArrayType(java.lang.reflect.Type)
+    public static varargs java.lang.reflect.Type getType(java.lang.reflect.Type,java.lang.reflect.Type[])
+    static com.google.gson.Gson getGson4LogUtils()
+    private static final java.lang.String KEY_DEFAULT
+    private static final java.lang.String KEY_DELEGATE
+    private static final java.lang.String KEY_LOG_UTILS
 com.blankj.utilcode.util.ThreadUtils$2
 com.bumptech.glide.load.engine.EngineJob:
     synchronized boolean isCancelled()
@@ -15841,6 +15915,7 @@ androidx.constraintlayout.widget.ConstraintAttribute:
     public boolean diff(androidx.constraintlayout.widget.ConstraintAttribute)
     private static final java.lang.String TAG
 kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareByDescending$2
+com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter$5
 com.mikepenz.fastadapter.utils.EventHookUtil:
     public void <init>()
     public static varargs java.util.List toList(android.view.View[])
@@ -16135,6 +16210,15 @@ com.zqw.mobile.grainfull.di.module.AircraftWarModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.AircraftWarContract$Model bindAircraftWarModel(com.zqw.mobile.grainfull.mvp.model.AircraftWarModel)
 kotlin.text.Regex$findAll$1
+com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter:
+    private static synthetic void lambda$textToSpeech$14()
+    private static synthetic void lambda$textToSpeech$13(io.reactivex.disposables.Disposable)
+    private static synthetic void lambda$voiceToText$12()
+    private static synthetic void lambda$voiceToText$11(io.reactivex.disposables.Disposable)
+    static synthetic com.jess.arms.mvp.IView access$800(com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter)
+    static synthetic com.jess.arms.mvp.IView access$900(com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter)
+    public void voiceToText(java.lang.String)
+    public void textToSpeech(java.lang.String)
 androidx.core.content.ContextCompat$LegacyServiceMapHolder:
     private void <init>()
 androidx.core.view.WindowInsetsAnimationCompat$Impl21$Impl21OnApplyWindowInsetsListener$2
@@ -17537,6 +17621,8 @@ com.zqw.mobile.grainfull.mvp.ui.adapter.GoodsListAdapter:
     public final int VIEW_TWO
 androidx.core.view.ViewPropertyAnimatorCompat$1:
     public final synthetic androidx.core.view.ViewPropertyAnimatorCompat this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding$4:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity_ViewBinding this$0
 com.airbnb.lottie.model.FontCharacter:
     public final double size
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$22:
@@ -17837,8 +17923,6 @@ com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$6:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.OneLineToEndActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.OneLineToEndActivity_ViewBinding this$0
-com.bumptech.glide.request.RequestFutureTarget:
-    public static final com.bumptech.glide.request.RequestFutureTarget$Waiter DEFAULT_WAITER
 com.zqw.mobile.grainfull.mvp.ui.activity.StopwatchActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.StopwatchActivity_ViewBinding this$0
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi23$1:
@@ -17939,6 +18023,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.EquipmentInfoActivity_ViewBinding$12:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.EquipmentInfoActivity_ViewBinding this$0
 androidx.core.graphics.TypefaceCompatBaseImpl$1:
     public final synthetic androidx.core.graphics.TypefaceCompatBaseImpl this$0
+com.zqw.mobile.grainfull.app.dialog.PopupChatGptMore:
+    public io.reactivex.disposables.Disposable mDisposable
 com.airbnb.lottie.value.LottieFrameInfo:
     public float startFrame
     public float endFrame
@@ -18021,6 +18107,10 @@ androidx.constraintlayout.core.widgets.ConstraintWidget:
     public boolean mResolvedHasRatio
     public androidx.constraintlayout.core.state.WidgetFrame frame
     public boolean mGroupsToSolver
+com.bumptech.glide.manager.RequestManagerRetriever:
+    public final androidx.collection.ArrayMap tempViewToSupportFragment
+    public final androidx.collection.ArrayMap tempViewToFragment
+    public final android.os.Bundle tempBundle
 androidx.constraintlayout.motion.widget.MotionLayout:
     public boolean mIndirectTransition
     public boolean firstDown
@@ -18101,6 +18191,8 @@ com.blankj.utilcode.util.TimeUtils:
     public static final java.lang.String[] ZODIAC
 com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity_ViewBinding$6:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.PhotoViewActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PhotoViewActivity_ViewBinding this$0
 com.chad.library.adapter.base.binder.QuickViewBindingItemBinder$BinderVBHolder:
     public final androidx.viewbinding.ViewBinding viewBinding
 androidx.cardview.widget.CardViewApi17Impl$1:
@@ -18120,6 +18212,8 @@ com.unity3d.scar.adapter.v1920.scarads.ScarRewardedAdListener$2:
     public final synthetic com.unity3d.scar.adapter.v1920.scarads.ScarRewardedAdListener this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.NinePalacesActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.NinePalacesActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.PhotoViewActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.PhotoViewActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.LayoutHomeActivity$3$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.LayoutHomeActivity$3 this$1
 com.bumptech.glide.load.engine.executor.GlideExecutor$UncaughtThrowableStrategy:
@@ -18310,6 +18404,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ChineseToPinyinActivity_ViewBinding this$0
 com.unity3d.scar.adapter.v1950.ScarAdapter$1$1:
     public final synthetic com.unity3d.scar.adapter.v1950.ScarAdapter$1 this$1
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$38:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.unity3d.scar.adapter.v1950.signals.QueryInfoCallback:
     public com.unity3d.scar.adapter.common.DispatchGroup _dispatchGroup
     public com.unity3d.scar.adapter.v1950.signals.QueryInfoMetadata _gmaQueryInfoMetadata
@@ -18500,8 +18596,6 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraConfigurationUtils:
     public static final java.util.regex.Pattern SEMICOLON
 com.unity3d.scar.adapter.v1920.scarads.ScarInterstitialAdListener$1:
     public final synthetic com.unity3d.scar.adapter.v1920.scarads.ScarInterstitialAdListener this$0
-com.zqw.mobile.grainfull.mvp.ui.activity.ChatGPTActivity:
-    public java.lang.String mVoicePath
 com.airbnb.lottie.LottieImageAsset:
     public final java.lang.String dirName
 com.zqw.mobile.grainfull.mvp.ui.activity.CalculateDistanceActivity_ViewBinding$2:
@@ -18889,6 +18983,8 @@ androidx.appcompat.view.menu.BaseMenuPresenter:
     public android.view.LayoutInflater mInflater
 com.bumptech.glide.load.HttpException:
     public final int statusCode
+com.zqw.mobile.grainfull.app.dialog.AudioDialog:
+    public java.lang.Runnable runnable
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$2:
@@ -18931,6 +19027,8 @@ androidx.core.os.TraceCompat:
     public static java.lang.reflect.Method sTraceCounterMethod
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$3:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$6:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
 com.chad.library.adapter.base.animation.AlphaInAnimation:
@@ -18949,6 +19047,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$7:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$17:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding$4:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding this$0
 com.unity3d.scar.adapter.v2000.scarads.ScarAdListener:
     public com.unity3d.scar.adapter.common.scarads.IScarLoadListener _loadListener
 control.NavHttpParams$FileWrapper:
@@ -18964,6 +19064,8 @@ com.unity3d.scar.adapter.v2000.signals.SignalsReader$GMAScarDispatchCompleted:
     public final synthetic com.unity3d.scar.adapter.v2000.signals.SignalsReader this$0
 com.unity3d.player.HFPStatus$a:
     public static final synthetic int[] c
+com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter:
+    public final java.lang.String mDefaultTips
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$12:
@@ -18976,6 +19078,8 @@ com.chad.library.adapter.base.binder.QuickDataBindingItemBinder$BinderDataBindin
     public final androidx.databinding.ViewDataBinding dataBinding
 com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.ColorPickerView:
     public final int backgroundColor
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding$5:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityParamsActivity_ViewBinding$3:
@@ -19010,6 +19114,8 @@ androidx.exifinterface.media.ExifInterface:
     public static final java.util.regex.Pattern sGpsTimestampPattern
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$10:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding this$0
 androidx.constraintlayout.core.widgets.analyzer.RunGroup:
     public int position
     public androidx.constraintlayout.core.widgets.analyzer.WidgetRun lastRun
