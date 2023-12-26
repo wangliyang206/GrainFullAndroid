@@ -75,6 +75,7 @@ public final class AccountManager {
 
     private static final String CHATGPT_VERSION = "ChatGPTVersion";
     private static final String CHATGPT_SK = "ChatGPT_SK";
+    private static final String FASTGPT_SK = "FastGPT_SK";
     /*----------------------------------------------操作对象-------------------------------------------------*/
 
     private AppPreferencesHelper spHelper;
@@ -459,5 +460,18 @@ public final class AccountManager {
      */
     public void setChatGptSk(String sk) {
         spHelper.put(CHATGPT_SK, sk);
+    }
+
+    /**
+     * 获取ChatGPT API令牌
+     */
+    public String getFastGptSk() {
+        return spHelper.getPref(FASTGPT_SK, Constant.CHATGPT_KEY);
+    }
+    /**
+     * 设置FastGPT API令牌
+     */
+    public void setFastGptSk(String sk) {
+        spHelper.put(FASTGPT_SK, sk);
     }
 }

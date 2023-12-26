@@ -11,6 +11,7 @@ import com.jess.arms.di.scope.ActivityScope;
 
 import javax.inject.Inject;
 
+import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract;
@@ -60,8 +61,7 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
     @Override
     public Observable<ChatHistoryResponse> getChatHistory() {
-        boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
-        String addItems = "?appId=" + getAppId(isDouYa) + "&chatId=" + getChatId(isDouYa);
+        String addItems = "?appId=" + Constant.FASTGPT_DOUYA_APPID + "&chatId=GrainFullDouYa";
         return mRepositoryManager.obtainRetrofitService(AccountService.class).getChatHistory(Constant.FASTGPT_HISTORY_URL + addItems);
     }
 
@@ -99,9 +99,8 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
     @Override
     public Observable<ResponseBody> chatCreate(String message) {
-        boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
         // 转换成Json
-        message = "{\"chatId\": \"" + getChatId(isDouYa) + "\", " +
+        message = "{\"chatId\": \"GrainFullDouYa\", " +
                 "\"messages\": [{\"role\": \"user\", \"content\":  \"" + message + "\"}] , " +
                 "\"stream\" : true," + "\"detail\" : false}";
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);
@@ -110,8 +109,6 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
     @Override
     public Observable<ResponseBody> chatMultipleModels(String imageUrl, String message) {
-        boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
-
         String val = "```img-block{\"src\":\"" + imageUrl + "\"}``` " + message;
         // 组织数据
         List<GptChat.ChatMessages> messages = new ArrayList<>();
@@ -119,7 +116,7 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
         // 封装数据
         GptChat mGptChat = new GptChat();
-        mGptChat.setChatId(getChatId(isDouYa));
+        mGptChat.setChatId("GrainFullDouYa");
         mGptChat.setModel("gpt-4-vision-preview");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
@@ -129,20 +126,6 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.FASTGPT_CHAT_URL, requestBodyJson);
-    }
-
-    /**
-     * 获取 AppId
-     */
-    private String getAppId(boolean isDouYa) {
-        return isDouYa ? "6571425b3edacb78a123cf0c" : "656fce2d993ca09b160e9ea7";
-    }
-
-    /**
-     * 获取 ChatId
-     */
-    private String getChatId(boolean isDouYa) {
-        return isDouYa ? "GrainFullDouYa" : "GrainFullApp";
     }
 
     /**

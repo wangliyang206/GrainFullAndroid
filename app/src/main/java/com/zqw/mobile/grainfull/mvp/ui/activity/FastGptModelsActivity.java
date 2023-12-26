@@ -81,8 +81,7 @@ import top.zibin.luban.OnCompressListener;
  * <p>
  * 1、利用第三方“FastGPT”实现： ChatGPT。
  * 2、语音识别与语音合成为第三方：百度-智能云。
- * 3、FastGPT语音转文字API 未启用。
- * 4、FastGPT支持：文字对话、图文识别。
+ * 3、FastGPT语音转文字/文字转语音API、图文识别 未调通。
  * <p>
  * Created on 2023/12/26 09:59
  *
@@ -177,6 +176,9 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
 
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "fastgptmodels_open");
+
+        // 设置API 令牌
+        mAccountManager.setFastGptSk(Constant.FASTGPT_DOUYA_KEY);
 
         viewVoice.initAudio(true, this);
         lilaChatLayout.setOnTouchListener((v, event) -> {

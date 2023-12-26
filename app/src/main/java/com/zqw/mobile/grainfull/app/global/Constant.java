@@ -94,8 +94,9 @@ public interface Constant {
     String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
     String FASTGPT_APPID = "656fce2d993ca09b160e9ea7";
 
-    // 豆芽AI助手(appId=6571425b3edacb78a123cf0c)
-//    String FASTGPT_KEY = "fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ";
+    // 豆芽AI助手
+    String FASTGPT_DOUYA_KEY = "fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ";
+    String FASTGPT_DOUYA_APPID = "6571425b3edacb78a123cf0c";
 
     /**
      * 百度翻译 - 服务地址

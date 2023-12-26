@@ -176,6 +176,9 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "fastgpt_open");
 
+        // 设置API 令牌
+        mAccountManager.setFastGptSk(Constant.FASTGPT_KEY);
+
         viewVoice.initAudio(true, this);
         lilaChatLayout.setOnTouchListener((v, event) -> {
             hideInput();

@@ -117,13 +117,13 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + mAccountManager.getChatGptSk()).build();
         } else if (request.url().toString().contains(Constant.FASTGPT_CHAT_URL)) {
             // FastGPT 接口做特殊处理
-            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
+            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + mAccountManager.getFastGptSk()).build();
         } else if (request.url().toString().contains(Constant.FASTGPT_TRANSCRIPTIONS_URL)) {
             // FastGPT 接口做特殊处理
-            return chain.request().newBuilder().addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
+            return chain.request().newBuilder().addHeader("Authorization", "Bearer " + mAccountManager.getFastGptSk()).build();
         } else if (request.url().toString().contains(Constant.FASTGPT_SPEECH_URL)) {
             // FastGPT 接口做特殊处理
-            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + Constant.FASTGPT_KEY).build();
+            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + mAccountManager.getFastGptSk()).build();
         } else if (request.url().toString().contains(Constant.FASTGPT_HISTORY_URL)) {
             // FastGPT 接口做特殊处理
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTZkOGQ1NTRhYzFhZjFmMzRhY2M1MjkiLCJ0ZWFtSWQiOiI2NTZkOGQ1NTRhYzFhZjFmMzRhY2M1MmMiLCJ0bWJJZCI6IjY1NmQ4ZDU1NGFjMWFmMWYzNGFjYzUyZSIsImV4cCI6MTcwMjI4MzIyMSwiaWF0IjoxNzAxNjc4NDIxfQ.DLm4z82ZxVicoIz7QAPH94gDYdYLe_CkYZqlam_IW20").build();

@@ -58,7 +58,7 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
     private ChatCompletionChunk chatCompletionChunk;
     private Gson gson = new Gson();
     // 默认提示语
-    private final String mDefaultTips = "您好，我是易收网智能小助手小铅，请问有什么可以帮助您的吗？";
+    private final String mDefaultTips = "您好，我是豆芽AI小助手，请问有什么可以帮助您的吗？";
 
     @Override
     public void onDestroy() {
