@@ -296,6 +296,11 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
      * 发送“语音”消息
      */
     private void onSend(String message) {
+        // 停止上一次语音播报
+        if (synthActivity != null) {
+            synthActivity.stop();
+        }
+
         String imageUrl = CommonUtils.isNotEmpty(mImagePaths) ? mImagePaths.get(0) : "";
         // 测试图文识别
 //        String imageUrl = "https://zhaoqianzqn.oss-cn-shenzhen.aliyuncs.com/imgs/inStockVoucherUrlPath/f300816c178d439481ee23aa0ce9f98de.png";
