@@ -87,7 +87,7 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
     public Observable<ResponseBody> textToSpeech(String text) {
         // 转换成Json，要生成音频的文本。最大长度为4096个字符。
         text = "{" +
-                "\"model\": \"tts-1-hd\"," +
+                "\"model\": \"tts-1\"," +
                 "\"input\": \"" + text + "\"," +
                 "\"voice\": \"alloy\"," +
                 "\"response_format\": \"mp3\"," +
