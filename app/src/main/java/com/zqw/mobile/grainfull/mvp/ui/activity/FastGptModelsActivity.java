@@ -55,10 +55,10 @@ import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
-import com.zqw.mobile.grainfull.di.component.DaggerFastGPTComponent;
-import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
+import com.zqw.mobile.grainfull.di.component.DaggerFastGptModelsComponent;
+import com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
-import com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter;
+import com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton;
 
 import java.io.File;
@@ -79,35 +79,37 @@ import top.zibin.luban.OnCompressListener;
 /**
  * Description:ChatGPT
  * <p>
- * 1、利用第三方“FastGPT”实现： ChatGPT + 知识库。
+ * 1、利用第三方“FastGPT”实现： ChatGPT。
  * 2、语音识别与语音合成为第三方：百度-智能云。
- * 3、FastGPT语音转文字/文字转语音API、图文识别API 未启用。
+ * 3、FastGPT语音转文字API 未启用。
+ * 4、FastGPT支持：文字对话、图文识别。
  * <p>
- * Created on 2023/12/06 16:12
+ * Created on 2023/12/26 09:59
  *
  * @author 赤槿
- * module name is FastGPTActivity
+ * module name is FastGptModelsActivity
  */
 @RuntimePermissions
-public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements FastGPTContract.View, AudioRecorderButton.VoiceEvents {
+public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> implements FastGptModelsContract.View, AudioRecorderButton.VoiceEvents  {
+
     /*--------------------------------控件信息--------------------------------*/
 
-    @BindView(R.id.view_fastgpt_scrollView)
+    @BindView(R.id.view_fastgptmodels_scrollView)
     NestedScrollView mScrollView;                                                                   // 外层 - 滑动布局
-    @BindView(R.id.lila_fastgpt_chatlayout)
+    @BindView(R.id.lila_fastgptmodels_chatlayout)
     LinearLayout lilaChatLayout;                                                                    // 消息总布局
-    @BindView(R.id.edit_fastgpt_input)
+    @BindView(R.id.edit_fastgptmodels_input)
     EditText editInput;                                                                             // 文字-输入框
-    @BindView(R.id.view_fastgpt_voice)
+    @BindView(R.id.view_fastgptmodels_voice)
     AudioRecorderButton viewVoice;                                                                  // 语音-按住说话
-    @BindView(R.id.imvi_fastgpt_switch)
+    @BindView(R.id.imvi_fastgptmodels_switch)
     ImageView imviVoiceOrText;                                                                      // 文字与语音-切换按钮
-    @BindView(R.id.imvi_fastgpt_send)
+    @BindView(R.id.imvi_fastgptmodels_send)
     ImageView imviSend;                                                                             // 发送文字按钮
 
-    @BindView(R.id.coli_fastgpt_attachm)
+    @BindView(R.id.coli_fastgptmodels_attachm)
     ConstraintLayout layoutAttachment;                                                              // 附件
-    @BindView(R.id.imvi_fastgpt_attachm)
+    @BindView(R.id.imvi_fastgptmodels_attachm)
     ImageView imviAttachment;
 
     // 接收的消息
@@ -156,7 +158,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerFastGPTComponent
+        DaggerFastGptModelsComponent
                 .builder()
                 .appComponent(appComponent)
                 .view(this)
@@ -166,15 +168,15 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_fast_gpt;
+        return R.layout.activity_fast_gpt_models;
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setTitle("易收智能AI");
+        setTitle("FastGPT 调试模型");
 
         // 友盟统计 - 自定义事件
-        MobclickAgent.onEvent(getApplicationContext(), "fastgpt_open");
+        MobclickAgent.onEvent(getApplicationContext(), "fastgptmodels_open");
 
         viewVoice.initAudio(true, this);
         lilaChatLayout.setOnTouchListener((v, event) -> {
@@ -227,41 +229,41 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     }
 
     @OnClick({
-            R.id.imvi_fastgpt_ask,                                                                  // 应用介绍
-            R.id.btn_fastgpt_attachm,                                                               // 添加附件
-            R.id.btn_fastgpt_close,                                                                 // 删除附件
-            R.id.imvi_fastgpt_switch,                                                               // 文字与语音-切换按钮
-            R.id.imvi_fastgpt_send,                                                                 // 发送文字按钮
+            R.id.imvi_fastgptmodels_ask,                                                                  // 应用介绍
+            R.id.btn_fastgptmodels_attachm,                                                               // 添加附件
+            R.id.btn_fastgptmodels_close,                                                                 // 删除附件
+            R.id.imvi_fastgptmodels_switch,                                                               // 文字与语音-切换按钮
+            R.id.imvi_fastgptmodels_send,                                                                 // 发送文字按钮
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.imvi_fastgpt_ask:                                                             // 应用介绍
+            case R.id.imvi_fastgptmodels_ask:                                                             // 应用介绍
                 if (mPopup != null) {
                     mPopup.showAtLocation(v, Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                 }
                 break;
-            case R.id.btn_fastgpt_attachm:                                                          // 添加附件
-                FastGPTActivityPermissionsDispatcher.addAvatarWithPermissionCheck(this);
+            case R.id.btn_fastgptmodels_attachm:                                                          // 添加附件
+                FastGptModelsActivityPermissionsDispatcher.addAvatarWithPermissionCheck(this);
                 break;
-            case R.id.btn_fastgpt_close:                                                            // 删除附件
+            case R.id.btn_fastgptmodels_close:                                                            // 删除附件
                 mImagePaths.clear();
                 showImage();
                 break;
-            case R.id.imvi_fastgpt_switch:                                                          // 文字与语音-切换按钮
+            case R.id.imvi_fastgptmodels_switch:                                                          // 文字与语音-切换按钮
                 if (editInput.isShown()) {
                     // 当前显示的是键盘，如果输入框中有文字，则执行发送事情，如果无内容，则执行切换事件
                     imviVoiceOrText.setImageResource(R.mipmap.icon_chat_softkeyboard);
                     editInput.setVisibility(View.GONE);
                     viewVoice.setVisibility(View.VISIBLE);
-                    FastGPTActivityPermissionsDispatcher.addVudioWithPermissionCheck(this);
+                    FastGptModelsActivityPermissionsDispatcher.addVudioWithPermissionCheck(this);
                 } else {
                     editInput.setVisibility(View.VISIBLE);
                     viewVoice.setVisibility(View.GONE);
                     imviVoiceOrText.setImageResource(R.mipmap.icon_chat_voice);
                 }
                 break;
-            case R.id.imvi_fastgpt_send:                                                            // 发送文字按钮
+            case R.id.imvi_fastgptmodels_send:                                                            // 发送文字按钮
                 onSend();
                 // 测试API 语音转文字
 //                if (mPresenter != null) {
@@ -506,55 +508,11 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         });
     }
 
-    /**
-     * 隐藏软键盘
-     */
-    private void hideInput() {
-        KeyboardUtils.hideSoftInput(this);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        hideInput();
-        return super.onTouchEvent(event);
-    }
-
-    public Activity getActivity() {
-        return this;
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-        checkNotNull(message);
-        ArmsUtils.snackbarText(message);
-    }
-
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
-
-    @Override
-    public void killMyself() {
-        finish();
-    }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        FastGPTActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        FastGptModelsActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     /**
@@ -644,7 +602,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
                 case IStatus.STATUS_FINISHED:
                     // 删除音频文件
                     if (!TextUtils.isEmpty(mVoicePath))
-                        MediaStoreUtils.deleteMedieFile(FastGPTActivity.this, new File(mVoicePath));
+                        MediaStoreUtils.deleteMedieFile(FastGptModelsActivity.this, new File(mVoicePath));
                     if (msg.arg2 == 1) {
                         // 识别成功
                         // ###识别结束，结果是“经过了几次对读者问题解决之后，我打算添加这一环节，非常有必要。”；说话结束到识别结束耗时【312ms】
@@ -806,5 +764,49 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         } else {
             layoutAttachment.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * 隐藏软键盘
+     */
+    private void hideInput() {
+        KeyboardUtils.hideSoftInput(this);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        hideInput();
+        return super.onTouchEvent(event);
+    }
+
+    public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+        checkNotNull(message);
+        ArmsUtils.snackbarText(message);
+    }
+
+    @Override
+    public void launchActivity(@NonNull Intent intent) {
+        checkNotNull(intent);
+        ArmsUtils.startActivity(intent);
+    }
+
+    @Override
+    public void killMyself() {
+        finish();
     }
 }

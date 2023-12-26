@@ -5,12 +5,15 @@ import android.app.Application;
 import com.blankj.utilcode.util.GsonUtils;
 import com.google.gson.Gson;
 import com.jess.arms.cj.ApiOperator;
-import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
+import com.jess.arms.di.scope.ActivityScope;
+
+import javax.inject.Inject;
+
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
-import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
+import com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract;
 import com.zqw.mobile.grainfull.mvp.model.api.AccountService;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.GptChat;
@@ -23,8 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -35,18 +36,18 @@ import okhttp3.ResponseBody;
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 2023/12/06 16:12
+ * Created by MVPArmsTemplate on 2023/12/26 09:59
  * ================================================
  */
 @ActivityScope
-public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
+public class FastGptModelsModel extends BaseModel implements FastGptModelsContract.Model {
     @Inject
     Gson mGson;
     @Inject
     Application mApplication;
 
     @Inject
-    public FastGPTModel(IRepositoryManager repositoryManager) {
+    public FastGptModelsModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }
 
@@ -59,7 +60,8 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
     @Override
     public Observable<ChatHistoryResponse> getChatHistory() {
-        String addItems = "?appId=" + Constant.FASTGPT_APPID + "&chatId=GrainFullApp";
+        boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
+        String addItems = "?appId=" + getAppId(isDouYa) + "&chatId=" + getChatId(isDouYa);
         return mRepositoryManager.obtainRetrofitService(AccountService.class).getChatHistory(Constant.FASTGPT_HISTORY_URL + addItems);
     }
 
@@ -97,8 +99,9 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
     @Override
     public Observable<ResponseBody> chatCreate(String message) {
+        boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
         // 转换成Json
-        message = "{\"chatId\": \"GrainFullApp\", " +
+        message = "{\"chatId\": \"" + getChatId(isDouYa) + "\", " +
                 "\"messages\": [{\"role\": \"user\", \"content\":  \"" + message + "\"}] , " +
                 "\"stream\" : true," + "\"detail\" : false}";
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);
@@ -107,6 +110,8 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
     @Override
     public Observable<ResponseBody> chatMultipleModels(String imageUrl, String message) {
+        boolean isDouYa = Constant.FASTGPT_KEY.equalsIgnoreCase("fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ");
+
         String val = "```img-block{\"src\":\"" + imageUrl + "\"}``` " + message;
         // 组织数据
         List<GptChat.ChatMessages> messages = new ArrayList<>();
@@ -114,7 +119,7 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
         // 封装数据
         GptChat mGptChat = new GptChat();
-        mGptChat.setChatId("GrainFullApp");
+        mGptChat.setChatId(getChatId(isDouYa));
         mGptChat.setModel("gpt-4-vision-preview");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
@@ -124,6 +129,20 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.FASTGPT_CHAT_URL, requestBodyJson);
+    }
+
+    /**
+     * 获取 AppId
+     */
+    private String getAppId(boolean isDouYa) {
+        return isDouYa ? "6571425b3edacb78a123cf0c" : "656fce2d993ca09b160e9ea7";
+    }
+
+    /**
+     * 获取 ChatId
+     */
+    private String getChatId(boolean isDouYa) {
+        return isDouYa ? "GrainFullDouYa" : "GrainFullApp";
     }
 
     /**

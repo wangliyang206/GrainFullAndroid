@@ -42,6 +42,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.DynamicGesturesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.EquipmentInfoActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
@@ -201,7 +202,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_speechsynthesis,                                                  // 语音合成
 
             R.id.btn_fragmenthome_intelligent_chatgpt,                                              // ChatGPT
-            R.id.btn_fragmenthome_intelligent_fastgpt,                                              // FastGPT
+            R.id.btn_fragmenthome_intelligent_fastgpt,                                              // FastGPT - 易收网
+            R.id.btn_fragmenthome_intelligent_gptmodels,                                            // FastGPT - 调试模型
             R.id.btn_fragmenthome_intelligent_chatgptweb,                                           // ChatGPT Web版
 
             R.id.btn_fragmenthome_color_colorpicker,                                                // 取色板
@@ -279,8 +281,11 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_intelligent_chatgpt:                                         // ChatGPT
                 ActivityUtils.startActivity(ChatGPTActivity.class);
                 break;
-            case R.id.btn_fragmenthome_intelligent_fastgpt:                                         // FastGPT
+            case R.id.btn_fragmenthome_intelligent_fastgpt:                                         // FastGPT - 易收网
                 ActivityUtils.startActivity(FastGPTActivity.class);
+                break;
+            case R.id.btn_fragmenthome_intelligent_gptmodels:                                       // FastGPT - 调试模型
+                ActivityUtils.startActivity(FastGptModelsActivity.class);
                 break;
             case R.id.btn_fragmenthome_intelligent_chatgptweb:                                      // ChatGPT Web版
                 ActivityUtils.startActivity(ChatGPTWebActivity.class);

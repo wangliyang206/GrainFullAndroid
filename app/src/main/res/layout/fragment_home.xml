@@ -323,6 +323,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_fragmenthome_intelligent_line">
 
+                    <!-- Open KEY - ChatGPT -->
                     <RelativeLayout
                         android:id="@+id/btn_fragmenthome_intelligent_chatgpt"
                         android:layout_width="wrap_content"
@@ -357,6 +358,7 @@
                             android:src="@mipmap/icon_charge" />
                     </RelativeLayout>
 
+                    <!-- FastGPT - 易收网 -->
                     <RelativeLayout
                         android:id="@+id/btn_fragmenthome_intelligent_fastgpt"
                         android:layout_width="wrap_content"
@@ -382,6 +384,41 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="易收网生活科普AI助手"
+                                android:textSize="10sp"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_charge" />
+                    </RelativeLayout>
+
+                    <!-- FastGPT - 调试模型 -->
+                    <RelativeLayout
+                        android:id="@+id/btn_fragmenthome_intelligent_gptmodels"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_bg_selector"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FastGPT"
+                                android:textSize="14sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="调试模型"
                                 android:textSize="10sp"/>
                         </LinearLayout>
 
