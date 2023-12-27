@@ -152,6 +152,7 @@ androidx.core.view.DisplayCompat$Api23Impl
 com.zqw.mobile.grainfull.di.module.CompassClockModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.CompassClockContract$Model bindCompassClockModel(com.zqw.mobile.grainfull.mvp.model.CompassClockModel)
+com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter$6
 com.mikepenz.materialize.color.Material$Brown
 androidx.core.os.ProcessCompat$Api24Impl
 com.bigkoo.pickerview.view.WheelOptions
@@ -523,7 +524,6 @@ com.zqw.mobile.grainfull.app.tts.control.MySyntherizer:
     public int synthesize(java.lang.String,java.lang.String)
     public int pause()
     public int resume()
-    public int stop()
     public int loadModel(java.lang.String,java.lang.String)
     public void setStereoVolume(float,float)
     private static final java.lang.String TAG
@@ -1860,6 +1860,7 @@ com.zqw.mobile.grainfull.mvp.ui.fragment.LayoutOtherFragment:
 com.jess.arms.di.component.AppComponent:
     public abstract java.util.concurrent.ExecutorService executorService()
 com.zqw.mobile.grainfull.mvp.contract.AudioConversionContract
+com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter$5
 io.rx_cache2.internal.migration.GetClassesToEvictFromMigrations_Factory
 com.blankj.utilcode.util.LogUtils$1
 com.airbnb.lottie.parser.LottieCompositionMoshiParser:
@@ -2764,6 +2765,15 @@ com.mikepenz.materialdrawer.MiniDrawer:
     private com.mikepenz.fastadapter.listeners.OnLongClickListener mOnMiniDrawerItemLongClickListener
     public static final int PROFILE
     public static final int ITEM
+com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter:
+    private static synthetic void lambda$textToSpeech$14()
+    private static synthetic void lambda$textToSpeech$13(io.reactivex.disposables.Disposable)
+    private static synthetic void lambda$voiceToText$12()
+    private static synthetic void lambda$voiceToText$11(io.reactivex.disposables.Disposable)
+    static synthetic com.jess.arms.mvp.IView access$800(com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter)
+    static synthetic com.jess.arms.mvp.IView access$900(com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter)
+    public void voiceToText(java.lang.String)
+    public void textToSpeech(java.lang.String)
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.DecodeThread:
     public static final java.lang.String BARCODE_BITMAP
     public static final java.lang.String BARCODE_SCALED_FACTOR
@@ -2931,6 +2941,10 @@ androidx.loader.app.LoaderManager:
 com.blankj.utilcode.util.ReflectUtils$2
 androidx.core.provider.SelfDestructiveThread$2
 androidx.databinding.adapters.AutoCompleteTextViewBindingAdapter$1
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivityPermissionsDispatcher:
+    private void <init>()
+    private static final int REQUEST_ADDAVATAR
+    private static final int REQUEST_ADDVUDIO
 com.zqw.mobile.grainfull.mvp.ui.widget.spider.RxRotateTool:
     public void <init>()
     public static final double CIRCLE_ANGLE
@@ -5597,6 +5611,7 @@ androidx.appcompat.widget.ListPopupWindow$1
 cn.bingoogolapple.swipebacklayout.R
 com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.builder.ColorWheelRendererBuilder:
     public void <init>()
+com.zqw.mobile.grainfull.di.module.FastGptModelsModule_ProviderOperatorFactory
 com.zqw.mobile.grainfull.di.module.PictureCompressionModule:
     public void <init>()
     abstract com.zqw.mobile.grainfull.mvp.contract.PictureCompressionContract$Model bindPictureCompressionModel(com.zqw.mobile.grainfull.mvp.model.PictureCompressionModel)
@@ -6605,6 +6620,13 @@ com.zqw.mobile.grainfull.di.module.UmDataStatisticsModule_ProvideEventFactory$In
     private void <init>()
 androidx.constraintlayout.core.motion.utils.KeyFrameArray$CustomVar
 com.blankj.utilcode.util.ToastUtils$ActivityToast$1
+com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mErrorHandlerProvider
+    private final javax.inject.Provider mAccountManagerProvider
 kotlin.coroutines.EmptyCoroutineContext
 com.zqw.mobile.grainfull.app.utils.BitmapUtils:
     public void <init>()
@@ -7494,6 +7516,7 @@ me.jessyan.progressmanager.ProgressManager:
     public static final java.lang.String IDENTIFICATION_NUMBER
     public static final java.lang.String IDENTIFICATION_HEADER
     public static final java.lang.String LOCATION_HEADER
+com.zqw.mobile.grainfull.di.module.FastGptModelsModule_ProviderRequestMapperFactory
 com.zqw.mobile.grainfull.app.utils.EventBusTags
 androidx.recyclerview.widget.ListAdapter
 androidx.databinding.adapters.ViewGroupBindingAdapter$OnChildViewAdded
@@ -9422,6 +9445,11 @@ kotlin.Pair
 com.chad.library.DataBinderMapperImpl$InnerBrLookup
 com.blankj.utilcode.util.ClickUtils$OnUtilsTouchListener$LazyHolder
 kotlin.sequences.FlatteningSequence$iterator$1
+com.zqw.mobile.grainfull.di.module.FastGptModelsModule:
+    public void <init>()
+    static com.jess.arms.cj.IRequestMapper providerRequestMapper(com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract$View,com.zqw.mobile.grainfull.app.global.AccountManager)
+    static com.jess.arms.cj.ApiOperator providerOperator(com.jess.arms.cj.IRequestMapper)
+    abstract com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract$Model bindFastGptModelsModel(com.zqw.mobile.grainfull.mvp.model.FastGptModelsModel)
 androidx.databinding.adapters.TextViewBindingAdapter$AfterTextChanged
 com.mikepenz.fastadapter.select.SelectExtension:
     public com.mikepenz.fastadapter.select.SelectExtension withSelectWithItemUpdate(boolean)
@@ -9733,6 +9761,13 @@ com.mikepenz.fastadapter.adapters.ItemFilter:
     public com.mikepenz.fastadapter.adapters.ModelAdapter removeRange(int,int)
     public com.mikepenz.fastadapter.adapters.ModelAdapter clear()
 androidx.loader.content.ModernAsyncTask$InternalHandler
+com.zqw.mobile.grainfull.mvp.model.FastGptModelsModel_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.model.FastGptModelsModel)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mGsonProvider
+    private final javax.inject.Provider mApplicationProvider
 com.zqw.mobile.grainfull.mvp.ui.widget.aircraftwar.CombatAircraft:
     public boolean isCollide()
     public void setNotCollide()
@@ -11336,7 +11371,6 @@ com.zqw.mobile.grainfull.app.tts.SynthActivity:
     private synthetic void lambda$switchOffTheOfflineResource$0(java.util.Map,java.lang.String[],android.content.DialogInterface,int)
     public void pause()
     public void resume()
-    public void stop()
 com.airbnb.lottie.parser.moshi.JsonUtf8Reader:
     private int findString(java.lang.String,com.airbnb.lottie.parser.moshi.JsonReader$Options)
     private static final long MIN_INCOMPLETE_INTEGER
@@ -12882,6 +12916,9 @@ androidx.fragment.app.ListFragment$1
 lecho.lib.hellocharts.provider.ColumnChartDataProvider:
     public abstract void setColumnChartData(lecho.lib.hellocharts.model.ColumnChartData)
 androidx.core.view.MenuItemCompat$1
+com.zqw.mobile.grainfull.mvp.model.FastGptModelsModel:
+    public io.reactivex.Observable voiceToText(java.io.File)
+    public io.reactivex.Observable textToSpeech(java.lang.String)
 androidx.constraintlayout.core.state.Transition
 com.zqw.mobile.grainfull.mvp.contract.FlipClockContract
 kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$4
@@ -12934,6 +12971,7 @@ com.zqw.mobile.grainfull.mvp.contract.CompassClockContract
 kotlin.UByte
 kotlin.text.StringsKt__AppendableKt
 androidx.databinding.ObservableMap
+com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract
 com.bumptech.glide.load.data.StreamLocalUriFetcher:
     private static final int ID_CONTACTS_LOOKUP
     private static final int ID_CONTACTS_THUMBNAIL
@@ -13349,6 +13387,9 @@ com.bumptech.glide.load.engine.cache.ExternalPreferredCacheDiskCacheFactory:
     public void <init>(android.content.Context)
     public void <init>(android.content.Context,long)
     public void <init>(android.content.Context,java.lang.String,long)
+com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract$View:
+    public abstract void onLoadVoiceToText(java.lang.String)
+    public abstract void onLoadImages(java.lang.String)
 com.bumptech.glide.signature.MediaStoreSignature:
     public void <init>(java.lang.String,long,int)
 com.donkingliang.consecutivescroller.R
@@ -14940,6 +14981,14 @@ androidx.constraintlayout.core.motion.utils.TimeCycleSplineSet$Sort:
     protected void <init>()
 kotlin.sequences.SequenceScope
 androidx.databinding.adapters.TimePickerBindingAdapter$1
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_MembersInjector:
+    public void <init>(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public static dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider)
+    public void injectMembers(com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity)
+    public synthetic bridge void injectMembers(java.lang.Object)
+    private final javax.inject.Provider mPresenterProvider
+    private final javax.inject.Provider mAccountManagerProvider
+    private final javax.inject.Provider mImageLoaderProvider
 com.jakewharton.rxbinding3.widget.CompoundButtonCheckedChangeObservable$Listener
 com.bumptech.glide.load.resource.bitmap.ExifInterfaceImageHeaderParser:
     public int getOrientation(java.nio.ByteBuffer,com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool)
@@ -16247,6 +16296,9 @@ kotlin.jvm.internal.markers.KMutableMap
 com.jess.arms.utils.StatusBarCompatUtils:
     public void <init>()
 com.jakewharton.rxbinding3.view.RxView__ViewDragObservableKt
+com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract$Model:
+    public abstract io.reactivex.Observable voiceToText(java.io.File)
+    public abstract io.reactivex.Observable textToSpeech(java.lang.String)
 com.bumptech.glide.load.engine.prefill.PreFillType$Builder:
     public void <init>(int)
     public void <init>(int,int)
@@ -17839,6 +17891,8 @@ com.mikepenz.materialdrawer.MiniDrawer:
     public com.mikepenz.materialdrawer.Drawer mDrawer
     public boolean mInnerShadow
     public boolean mInRTL
+com.zqw.mobile.grainfull.mvp.presenter.FastGptModelsPresenter:
+    public final java.lang.String mDefaultTips
 com.zqw.mobile.grainfull.mvp.ui.adapter.NineGridAdapter$ViewHolder:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.adapter.NineGridAdapter this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$1:
@@ -17870,6 +17924,8 @@ com.zqw.mobile.grainfull.mvp.ui.fragment.SpecialEffectsFragment_ViewBinding$8:
 androidx.constraintlayout.widget.StateSet:
     public android.util.SparseArray mConstraintSetMap
     public androidx.constraintlayout.widget.ConstraintsChangedListener mConstraintsChangedListener
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding$2:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$20:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.app.tts.util.AutoCheck$PrintConfig:
@@ -17901,6 +17957,8 @@ com.unity3d.scar.adapter.v2000.ScarAdapter$2$1:
     public final synthetic com.unity3d.scar.adapter.v2000.ScarAdapter$2 this$1
 com.zqw.mobile.grainfull.app.config.AppLifecyclesImpl$2:
     public final synthetic com.zqw.mobile.grainfull.app.config.AppLifecyclesImpl this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding$3:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding this$0
 androidx.appcompat.widget.ScrollingTabContainerView:
     public final androidx.appcompat.widget.ScrollingTabContainerView$VisibilityAnimListener mVisAnimListener
     public static final android.view.animation.Interpolator sAlphaInterpolator
@@ -17935,6 +17993,8 @@ androidx.lifecycle.LiveData$AlwaysActiveObserver:
     public final synthetic androidx.lifecycle.LiveData this$0
 androidx.constraintlayout.widget.SharedValues:
     public android.util.SparseIntArray mValues
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding$1:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding this$0
 tyrantgit.explosionfield.ExplosionAnimator$Particle:
     public final synthetic tyrantgit.explosionfield.ExplosionAnimator this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.OneLineToEndActivity_ViewBinding$1:
@@ -18596,6 +18656,8 @@ com.zqw.mobile.grainfull.mvp.ui.widget.zxing.camera.CameraConfigurationUtils:
     public static final java.util.regex.Pattern SEMICOLON
 com.unity3d.scar.adapter.v1920.scarads.ScarInterstitialAdListener$1:
     public final synthetic com.unity3d.scar.adapter.v1920.scarads.ScarInterstitialAdListener this$0
+com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$39:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.airbnb.lottie.LottieImageAsset:
     public final java.lang.String dirName
 com.zqw.mobile.grainfull.mvp.ui.activity.CalculateDistanceActivity_ViewBinding$2:
@@ -18811,6 +18873,8 @@ com.airbnb.lottie.PerformanceTracker$1:
     public final synthetic com.airbnb.lottie.PerformanceTracker this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding$5:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding this$0
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding$4:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.widget.colorpicker.renderer.FlowerColorWheelRenderer:
     public final float sizeJitter
 com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding$2:
@@ -18836,6 +18900,8 @@ lecho.lib.hellocharts.gesture.PieChartTouchHandler$ChartScaleGestureListener:
     public final synthetic lecho.lib.hellocharts.gesture.PieChartTouchHandler this$0
 androidx.constraintlayout.core.LinearSystem:
     public static boolean USE_SYNONYMS
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding$5:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding$3:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.ColorCodeConversionActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.widget.zxing.BeepManager:
@@ -18989,6 +19055,8 @@ com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.BaiduQualityControlActivity_ViewBinding this$0
 androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi21$2:
     public final synthetic androidx.media.MediaBrowserServiceCompat$MediaBrowserServiceImplApi21 this$1
+com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding$5:
+    public final synthetic com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding$2:
     public final synthetic com.zqw.mobile.grainfull.mvp.ui.fragment.HomeFragment_ViewBinding this$0
 com.zqw.mobile.grainfull.mvp.ui.activity.BaiduFaceSettingActivity_ViewBinding$4:
