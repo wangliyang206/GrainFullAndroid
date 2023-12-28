@@ -111,6 +111,16 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
+            android:text="多模型会话：图文识别"
+            android:textColor="@color/common_text_tips_color"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
             android:text="音频模型：语音合成、语音识别（百度）"
             android:textColor="@color/common_text_tips_color"
             android:textSize="12sp" />
