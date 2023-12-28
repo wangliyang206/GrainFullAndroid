@@ -273,6 +273,9 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
      * 发送“语音”消息
      */
     private void onSend(String message) {
+        // 停止语音播报
+        stopVideo();
+
         // 在界面上显示“我”发出的消息
         addRightMsg(message);
         // 在界面上显示一条提示“对方，正在输入中……”

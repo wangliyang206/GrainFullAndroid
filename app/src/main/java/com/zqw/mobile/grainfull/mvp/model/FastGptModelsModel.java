@@ -5,13 +5,9 @@ import android.app.Application;
 import com.blankj.utilcode.util.GsonUtils;
 import com.google.gson.Gson;
 import com.jess.arms.cj.ApiOperator;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
-import com.jess.arms.di.scope.ActivityScope;
-
-import javax.inject.Inject;
-
-import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract;
@@ -27,11 +23,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import timber.log.Timber;
 
 /**
  * ================================================
@@ -109,7 +108,7 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
     @Override
     public Observable<ResponseBody> chatMultipleModels(String imageUrl, String message) {
-        String val = "```img-block{\"src\":\"" + imageUrl + "\"}``` " + message;
+        String val = "```img-block\n{\"src\":\"" + imageUrl + "\"}\n```\n" + message;
         // 组织数据
         List<GptChat.ChatMessages> messages = new ArrayList<>();
         messages.add(new GptChat.ChatMessages("user", val));
@@ -117,12 +116,13 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
         // 封装数据
         GptChat mGptChat = new GptChat();
         mGptChat.setChatId("GrainFullDouYa");
-        mGptChat.setModel("gpt-4-vision-preview");
+//        mGptChat.setModel("gpt-4-vision-preview");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
+//        mGptChat.setDetail(true);
 
         String json = GsonUtils.toJson(mGptChat);
-//        Timber.i("#####json=%s", json);
+        Timber.i("#####json=%s", json);
 
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         return mRepositoryManager.obtainRetrofitService(AccountService.class).chatCreate(Constant.FASTGPT_CHAT_URL, requestBodyJson);

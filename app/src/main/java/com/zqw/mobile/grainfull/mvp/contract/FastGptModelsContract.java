@@ -1,9 +1,7 @@
 package com.zqw.mobile.grainfull.mvp.contract;
 
-import android.app.Activity;
-
-import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
+import com.jess.arms.mvp.IView;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.ImageUploadResponse;
@@ -40,6 +38,7 @@ public interface FastGptModelsContract {
 
         // 语音转文字
         void onLoadVoiceToText(String text);
+
         // 语音播报
         void onVoiceAnnouncements(String text);
 
@@ -54,16 +53,20 @@ public interface FastGptModelsContract {
     interface Model extends IModel {
         // 获取对话日志
         Observable<ChatHistoryResponse> getChatHistory();
+
         // 语音转文字
         Observable<WhisperResponse> voiceToText(File file);
+
         // 文本转语音
         Observable<ResponseBody> textToSpeech(String text);
+
         // 创建“聊天”会话
         Observable<ResponseBody> chatCreate(String message);
+
         // 多模型会话
         Observable<ResponseBody> chatMultipleModels(String imageUrl, String message);
 
         // 上传图片
-        Observable<ImageUploadResponse> uploadChatFiles(ArrayList<String> mPath);
+        Observable<ImageUploadResponse> uploadChatFiles(ArrayList<String> path);
     }
 }

@@ -89,7 +89,7 @@ import top.zibin.luban.OnCompressListener;
  * module name is FastGptModelsActivity
  */
 @RuntimePermissions
-public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> implements FastGptModelsContract.View, AudioRecorderButton.VoiceEvents  {
+public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> implements FastGptModelsContract.View, AudioRecorderButton.VoiceEvents {
 
     /*--------------------------------控件信息--------------------------------*/
 
@@ -302,10 +302,12 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
             synthActivity.stop();
         }
 
+        // 获取选取的图片
         String imageUrl = CommonUtils.isNotEmpty(mImagePaths) ? mImagePaths.get(0) : "";
         // 测试图文识别
 //        String imageUrl = "https://zhaoqianzqn.oss-cn-shenzhen.aliyuncs.com/imgs/inStockVoucherUrlPath/f300816c178d439481ee23aa0ce9f98de.png";
 //        String imageUrl = "https://ai.fastgpt.in/api/system/img/657ffc435eec06aa2a7d0759";
+//        String imageUrl = "https://ai.fastgpt.in/api/system/img/658cf163ab92451fe67cdb61";
 
         // 在界面上显示“我”发出的消息
         addRightMsg(message, imageUrl);
@@ -315,14 +317,12 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
 
         // 正常访问接口
         if (!TextUtils.isEmpty(imageUrl)) {
-            // 有图片链接地址
+            // 清空图片，隐藏布局
+            mImagePaths.clear();
+            showImage();
+            // 访问多模型会话
             if (mPresenter != null) {
-                mPresenter.chatMultipleModels(message, imageUrl, null);
-            }
-        } else if (CommonUtils.isNotEmpty(mImagePaths)) {
-            // 本地图片
-            if (mPresenter != null) {
-                mPresenter.chatMultipleModels(message, "", mImagePaths);
+                mPresenter.chatMultipleModels(message, imageUrl.contains("http"), imageUrl);
             }
         } else {
             // 没有附件，只有文字

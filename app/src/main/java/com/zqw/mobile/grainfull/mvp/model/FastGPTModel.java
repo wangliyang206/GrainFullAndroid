@@ -107,7 +107,7 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
 
     @Override
     public Observable<ResponseBody> chatMultipleModels(String imageUrl, String message) {
-        String val = "```img-block{\"src\":\"" + imageUrl + "\"}``` " + message;
+        String val = "```img-block\n{\"src\":\"" + imageUrl + "\"}\n```\n" + message;
         // 组织数据
         List<GptChat.ChatMessages> messages = new ArrayList<>();
         messages.add(new GptChat.ChatMessages("user", val));
@@ -115,9 +115,10 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
         // 封装数据
         GptChat mGptChat = new GptChat();
         mGptChat.setChatId("GrainFullApp");
-        mGptChat.setModel("gpt-4-vision-preview");
+//        mGptChat.setModel("gpt-4-vision-preview");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
+//        mGptChat.setDetail(true);
 
         String json = GsonUtils.toJson(mGptChat);
 //        Timber.i("#####json=%s", json);

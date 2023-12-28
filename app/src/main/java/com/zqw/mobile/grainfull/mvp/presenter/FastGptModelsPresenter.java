@@ -58,7 +58,7 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
     private ChatCompletionChunk chatCompletionChunk;
     private Gson gson = new Gson();
     // 默认提示语
-    private final String mDefaultTips = "您好，我是你的全能助手豆芽，目前我拥有【查询天气】、【查看微博热搜】、【智能聊天】功能。";
+    private final String mDefaultTips = "您好，我是你的全能助手豆芽，目前我拥有【查询天气】、【图文识别】、【智能聊天】功能。";
 
     @Override
     public void onDestroy() {
@@ -181,10 +181,40 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
 
     /**
      * 多模型会话
+     * @param message        聊天文字对话
+     * @param isNetworkImage 是否为网络图片：true代表前缀是http；false代表为本地图片
+     * @param imageUrl       图片路径
      */
-    public void chatMultipleModels(String message, String imageUrl, ArrayList<String> mPath) {
-        if (TextUtils.isEmpty(imageUrl)) {
-            mModel.uploadChatFiles(mPath)
+    public void chatMultipleModels(String message, boolean isNetworkImage, String imageUrl) {
+        if (isNetworkImage) {
+            mModel.chatMultipleModels(imageUrl, message)
+                    .subscribeOn(Schedulers.io())
+                    .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                    .doOnSubscribe(disposable -> {
+//                    mRootView.showLoadingSubmit();                                                  // 显示进度条
+                    })
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doFinally(() -> {
+//                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
+                    }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                    .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
+                        @Override
+                        public void onError(Throwable t) {
+                            Timber.i("##### t=%s", t.getMessage());
+                            showError(1, t.getMessage());
+                        }
+
+                        @Override
+                        public void onNext(ResponseBody info) {
+                            onAnalysis(info);
+                        }
+                    });
+        } else {
+            ArrayList<String> imagePath = new ArrayList<>();
+            imagePath.add(imageUrl);
+            // 本地图片，需要上传一下得到URL
+            mModel.uploadChatFiles(imagePath)
                     .subscribeOn(Schedulers.io())
                     .retryWhen(new CommonRetryWithDelay(0, 2))                 // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                     .doOnSubscribe(disposable -> {
@@ -214,30 +244,6 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
                                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView));
                     })
                     .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
-                        @Override
-                        public void onNext(ResponseBody info) {
-                            onAnalysis(info);
-                        }
-                    });
-        } else {
-            mModel.chatMultipleModels(imageUrl, message)
-                    .subscribeOn(Schedulers.io())
-                    .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
-                    .doOnSubscribe(disposable -> {
-//                    mRootView.showLoadingSubmit();                                                  // 显示进度条
-                    })
-                    .subscribeOn(AndroidSchedulers.mainThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doFinally(() -> {
-//                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
-                    }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                    .subscribe(new ErrorHandleSubscriber<ResponseBody>(mErrorHandler) {
-                        @Override
-                        public void onError(Throwable t) {
-                            Timber.i("##### t=%s", t.getMessage());
-                            showError(1, t.getMessage());
-                        }
-
                         @Override
                         public void onNext(ResponseBody info) {
                             onAnalysis(info);
