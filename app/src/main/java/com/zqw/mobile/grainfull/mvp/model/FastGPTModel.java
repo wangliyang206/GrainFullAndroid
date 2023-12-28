@@ -115,10 +115,8 @@ public class FastGPTModel extends BaseModel implements FastGPTContract.Model {
         // 封装数据
         GptChat mGptChat = new GptChat();
         mGptChat.setChatId("GrainFullApp");
-//        mGptChat.setModel("gpt-4-vision-preview");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
-//        mGptChat.setDetail(true);
 
         String json = GsonUtils.toJson(mGptChat);
 //        Timber.i("#####json=%s", json);

@@ -116,10 +116,8 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
         // 封装数据
         GptChat mGptChat = new GptChat();
         mGptChat.setChatId("GrainFullDouYa");
-//        mGptChat.setModel("gpt-4-vision-preview");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
-//        mGptChat.setDetail(true);
 
         String json = GsonUtils.toJson(mGptChat);
         Timber.i("#####json=%s", json);
