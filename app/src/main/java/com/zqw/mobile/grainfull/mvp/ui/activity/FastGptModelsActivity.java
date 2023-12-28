@@ -180,6 +180,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
         // 设置API 令牌
         mAccountManager.setFastGptSk(Constant.FASTGPT_DOUYA_KEY);
 
+        // 初始化语音，是否开启外置语音？
         viewVoice.initAudio(true, this);
         lilaChatLayout.setOnTouchListener((v, event) -> {
             hideInput();
@@ -269,7 +270,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
                 onSend();
                 // 测试API 语音转文字
 //                if (mPresenter != null) {
-//                    mPresenter.voiceToText("/storage/emulated/0/Download/GrainFull/8fc9c1d4-c78d-421b-8ca0-60ab079d1bff.mp4");
+//                    mPresenter.voiceToText("/storage/emulated/0/Download/GrainFull/73f9b347-705a-43e6-b97d-08d467a0913b.mp4");
 //                }
                 // 测试API 文字转语音
 //                if (mPresenter != null) {
@@ -538,6 +539,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
             Timber.i("##### filePath =%s", filePath);
             mVoicePath = filePath;
 
+            // 使用内置录音时，请放开注释
 //            if (mPresenter != null) {
 //                mPresenter.voiceToText(filePath);
 //            }
