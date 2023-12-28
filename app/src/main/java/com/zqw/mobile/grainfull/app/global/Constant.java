@@ -81,7 +81,7 @@ public interface Constant {
     /**
      * 获取历史记录
      */
-    String FASTGPT_HISTORY_URL = "https://ai.fastgpt.in/api/core/chat/init";
+    String FASTGPT_HISTORY_URL = "https://ai.fastgpt.in/api/v1/chat/history";
     /**
      * 语音转文字
      */

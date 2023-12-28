@@ -98,7 +98,7 @@ public interface AccountService {
     Observable<HomeInfoResponse> queryHomePageInfo(@Url String Url);
 
     // chatGPT 获取历史记录
-    @POST()
+    @GET()
     Observable<ChatHistoryResponse> getChatHistory(@Url String Url);
 
     // chatGPT 对话
