@@ -32,15 +32,15 @@
         <RadioGroup
             android:id="@+id/radio_chatgpt_group"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="38dp"
             android:layout_centerInParent="true"
             android:background="@drawable/financial_bg_frame"
             android:orientation="horizontal"
             android:padding="5dp">
 
             <RadioButton
-                android:id="@+id/radio_chatgpt_x"
-                android:layout_width="70dp"
+                android:id="@+id/radio_chatgpt_three"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/financial_order_selector"
                 android:button="@null"
@@ -53,8 +53,8 @@
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/radio_chatgpt_d"
-                android:layout_width="70dp"
+                android:id="@+id/radio_chatgpt_four"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:button="@null"
@@ -64,6 +64,20 @@
                 android:text="GPT-4"
                 android:textColor="@color/radio_btn_selector"
                 android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/radio_chatgpt_dall"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:button="@null"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="2"
+                android:text="Dall-e-3"
+                android:textColor="@color/radio_btn_selector"
+                android:textSize="14sp"
+                android:visibility="gone" />
         </RadioGroup>
 
         <LinearLayout

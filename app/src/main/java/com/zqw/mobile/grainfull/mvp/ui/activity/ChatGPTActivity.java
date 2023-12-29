@@ -28,7 +28,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 
-import com.baidu.aip.asrwakeup3.core.inputstream.InFileStream;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
@@ -72,10 +71,12 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
     /*--------------------------------控件信息--------------------------------*/
     @BindView(R.id.radio_chatgpt_group)
     RadioGroup mRadioGroup;                                                                         // 切换版本
-    @BindView(R.id.radio_chatgpt_x)
-    RadioButton radioMinVersion;                                                                    // 小版本
-    @BindView(R.id.radio_chatgpt_d)
-    RadioButton radioMaxVersion;                                                                    // 大版本
+    @BindView(R.id.radio_chatgpt_three)
+    RadioButton radioThreeVersion;                                                                  // 3.5模型
+    @BindView(R.id.radio_chatgpt_four)
+    RadioButton radioFourVersion;                                                                   // 4.0模型
+    @BindView(R.id.radio_chatgpt_dall)
+    RadioButton radioDallVersion;                                                                   // Dall-e-3
 
     @BindView(R.id.imvi_chatgpt_horn)
     ImageView imviHorn;                                                                             // 喇叭
@@ -175,14 +176,22 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         // 初始进来，默认使用3.5。
         mAccountManager.setChatGptVersion(false);
         mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.radio_chatgpt_x) {
+            if (checkedId == R.id.radio_chatgpt_three) {
+                // 3.5
                 mAccountManager.setChatGptVersion(false);
-                radioMinVersion.setBackgroundResource(R.drawable.financial_order_selector);
-                radioMaxVersion.setBackground(null);
-            } else {
+                radioThreeVersion.setBackgroundResource(R.drawable.financial_order_selector);
+                radioFourVersion.setBackground(null);
+                radioDallVersion.setBackground(null);
+            } else if (checkedId == R.id.radio_chatgpt_four) {
+                // 4.0
                 mAccountManager.setChatGptVersion(true);
-                radioMinVersion.setBackground(null);
-                radioMaxVersion.setBackgroundResource(R.drawable.financial_order_selector);
+                radioThreeVersion.setBackground(null);
+                radioFourVersion.setBackgroundResource(R.drawable.financial_order_selector);
+                radioDallVersion.setBackground(null);
+            } else {
+                radioThreeVersion.setBackground(null);
+                radioFourVersion.setBackground(null);
+                radioDallVersion.setBackgroundResource(R.drawable.financial_order_selector);
             }
         });
 
@@ -281,8 +290,22 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
         // 在界面上显示一条提示“对方，正在输入中……”
         addLeftMsg("正在输入中...");
 
-        if (mPresenter != null) {
-            mPresenter.chatCreate(message);
+        // 区分画图与对话
+        if (mRadioGroup.getCheckedRadioButtonId() == R.id.radio_chatgpt_dall) {
+            // 画图
+            if (mPresenter != null) {
+                mPresenter.onSmartMessaging(2, message);
+            }
+        } else {
+            // 对话
+//            if (mPresenter != null) {
+//                mPresenter.onSmartMessaging(1, message);
+//            }
+
+            // 接口包含：对话与画图
+            if (mPresenter != null) {
+                mPresenter.chatCreate(message);
+            }
         }
     }
 
