@@ -77,19 +77,19 @@ public interface Constant {
     /**
      * FastGPT API 地址
      */
-    String FASTGPT_CHAT_URL = "https://ai.fastgpt.in/api/v1/chat/completions";
+    String FASTGPT_CHAT_URL = "https://api.fastgpt.in/api/v1/chat/completions";
     /**
      * 获取历史记录
      */
-    String FASTGPT_HISTORY_URL = "https://ai.fastgpt.in/api/v1/chat/history";
+    String FASTGPT_HISTORY_URL = "https://api.fastgpt.in/api/v1/chat/history";
     /**
      * 语音转文字
      */
-    String FASTGPT_TRANSCRIPTIONS_URL = "https://ai.fastgpt.in/api/v1/audio/transcriptions";
+    String FASTGPT_TRANSCRIPTIONS_URL = "https://api.fastgpt.in/api/v1/audio/transcriptions";
     /**
      * 文字转语音
      */
-    String FASTGPT_SPEECH_URL = "https://ai.fastgpt.in/api/v1/audio/speech";
+    String FASTGPT_SPEECH_URL = "https://api.fastgpt.in/api/v1/audio/speech";
     // 企业智能客服：带有知识库，可以回答企业任何问题
     String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
     String FASTGPT_APPID = "656fce2d993ca09b160e9ea7";
