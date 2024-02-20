@@ -8,6 +8,7 @@ import com.jess.arms.mvp.BasePresenter;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.utils.RxUtils;
 import com.zqw.mobile.grainfull.mvp.contract.HomeContract;
+import com.zqw.mobile.grainfull.mvp.model.entity.LoginFastGptResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 import timber.log.Timber;
 
 
@@ -44,6 +46,27 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
     @Inject
     public HomePresenter(HomeContract.Model model, HomeContract.View rootView) {
         super(model, rootView);
+    }
+
+    /**
+     * FastGPT登录
+     */
+    public void logiFastGpt() {
+        mModel.logiFastGpt("15032134297", "03fa0d59927c5f4bfa00c440cf2aafe153789b374ff1458969077fdf8dc07015")
+                .compose(RxUtils.applySchedulers(mRootView, true, true))     // 切换线程
+                .subscribe(new ErrorHandleSubscriber<LoginFastGptResponse>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        // 不做任何处理
+                    }
+
+                    @Override
+                    public void onNext(LoginFastGptResponse response) {
+                        if (response.getCode() == 200) {
+                            mAccountManager.saveFastGptToken(response.getData().getToken());
+                        }
+                    }
+                });
     }
 
     /**

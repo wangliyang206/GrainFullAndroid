@@ -126,7 +126,7 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
             return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + mAccountManager.getFastGptSk()).build();
         } else if (request.url().toString().contains(Constant.FASTGPT_HISTORY_URL)) {
             // FastGPT - 获取历史记录
-            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("Authorization", "Bearer " + mAccountManager.getFastGptSk()).build();
+            return chain.request().newBuilder().addHeader("Content-Type", "application/json;charset=UTF-8").addHeader("token",mAccountManager.getFastGptToken()).build();
         } else {
             /* 如果需要在请求服务器之前做一些操作, 则重新构建一个做过操作的 Request 并 return, 如增加 Header、Params 等请求信息, 不做操作则直接返回参数 request */
             return chain.request().newBuilder().header("token", CommonUtils.isEmptyReturnStr(mAccountManager.getToken())).header("Content-Type", "application/json;charset=UTF-8").build();

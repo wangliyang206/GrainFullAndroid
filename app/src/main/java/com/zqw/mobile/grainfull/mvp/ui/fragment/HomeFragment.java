@@ -137,7 +137,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
+        // 登录FastGPT
+        if (mPresenter != null) {
+            mPresenter.logiFastGpt();
+        }
     }
 
     /**

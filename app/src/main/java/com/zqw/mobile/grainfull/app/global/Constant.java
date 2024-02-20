@@ -79,9 +79,14 @@ public interface Constant {
      */
     String FASTGPT_CHAT_URL = "https://api.fastgpt.in/api/v1/chat/completions";
     /**
+     * FastGPT 登录
+     */
+    String FASTGPT_TOKEN = "https://api.fastgpt.in/api/support/user/account/loginByPassword";
+    /**
      * 获取历史记录
      */
-    String FASTGPT_HISTORY_URL = "https://api.fastgpt.in/api/v1/chat/history";
+//    String FASTGPT_HISTORY_URL = "https://api.fastgpt.in/api/v1/chat/history";
+    String FASTGPT_HISTORY_URL = "https://api.fastgpt.in/api/core/chat/init";
     /**
      * 语音转文字
      */
