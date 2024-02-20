@@ -318,7 +318,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
         // 在界面上显示“我”发出的消息
         addRightMsg(message, imageUrl);
         // 在界面上显示一条提示“对方，正在输入中……”
-        addLeftMsg("正在输入中...");
+        addLeftMsg("正在输入中...", null);
         onSucc();
 
         // 正常访问接口
@@ -374,12 +374,29 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
     /**
      * 添加左侧消息(显示对方消息)
      */
-    public void addLeftMsg(String text) {
+    public void addLeftMsg(String text, String path) {
         LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.fastgpt_left_textview, null).findViewById(R.id.fastgpt_left_layout);
 
         txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
         txviReceiveMsg.setText(text);
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
+        // 控制文字显示与隐藏
+        txviReceiveMsg.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        // 控制图片显示与隐藏
+        if (TextUtils.isEmpty(path)) {
+            imviReceiveMsg.setVisibility(View.GONE);
+        } else {
+            imviReceiveMsg.setVisibility(View.VISIBLE);
+
+            mImageLoader.loadImage(this,
+                    ImageConfigImpl.builder().url(path)
+                            .placeholder(R.mipmap.mis_default_error)
+                            .errorPic(R.mipmap.mis_default_error)
+                            .imageRadius(ConvertUtils.dp2px(5))
+                            .isUpRadius(true)
+                            .imageView(imviReceiveMsg).build());
+        }
+
         if (viewLeftMsg.getParent() != null) {
             ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
         }
@@ -393,7 +410,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
     @Override
     public void onLoadOpeningRemarks(String tips) {
         // 添加一条消息
-        addLeftMsg(tips);
+        addLeftMsg(tips, null);
         // 播放语音
         onVoiceAnnouncements(tips);
     }
@@ -404,12 +421,13 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
     @Override
     public void onLoadHistory(String tips, List<ChatHistoryInfo> list) {
         // 添加一条提示语
-        addLeftMsg(tips);
+        addLeftMsg(tips, null);
         for (int i = 0; i < list.size(); i++) {
             ChatHistoryInfo item = list.get(i);
             if (i % 2 == 0) {
                 // 内容解析
                 if (item.getValue().contains("img-block")) {
+                    // 图像内容
                     //```img-block\n{\"src\":\"https://zhaoqianzqn.oss-cn-shenzhen.aliyuncs.com/imgs/inStockVoucherUrlPath/1356e0a0974e43dbb57760a5bac5ecfae.png\"}\n```\n这是什么
                     String imgJson = item.getValue().substring(item.getValue().indexOf("{"), item.getValue().lastIndexOf("}") + 1);
                     TranslateInfo info = gson.fromJson(imgJson, TranslateInfo.class);
@@ -419,7 +437,16 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
                     addRightMsg(item.getValue(), "");
                 }
             } else {
-                addLeftMsg(item.getValue());
+                // 内容解析
+                if (item.getValue().contains("![](")) {
+                    // 图像内容
+                    //![](https://oaidalleapiprodscus.blob.core.windows.net/private/org-FaxZ5RcpD6JpNdxi4t1sj2bn/user-HuKBy61PfQ6oshnFr8KKKdSj/img-iGD5m9Hrai0OLRBO6FEU0LSk.png?st=2024-02-20T03%3A22%3A56Z&se=2024-02-20T05%3A22%3A56Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-02-19T16%3A06%3A47Z&ske=2024-02-20T16%3A06%3A47Z&sks=b&skv=2021-08-06&sig=OmmOyb56Xp1%2BZRClPnyvPzCsg9wKc7w5aHYayBIjIMg%3D)
+                    String img = item.getValue().substring(item.getValue().indexOf("https"), item.getValue().lastIndexOf(")"));
+                    addLeftMsg(null, img);
+                } else {
+                    // 普通文字
+                    addLeftMsg(item.getValue(), null);
+                }
             }
         }
 
