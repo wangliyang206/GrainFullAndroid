@@ -60,7 +60,7 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
     @Override
     public Observable<ChatHistoryResponse> getChatHistory() {
-        String addItems = "?appId=" + Constant.FASTGPT_DOUYA_APPID + "&chatId=GrainFullDouYa";
+        String addItems = "?appId=" + Constant.FASTGPT_DOUYA_APPID + "&chatId=DouYaApp";
         return mRepositoryManager.obtainRetrofitService(AccountService.class).getChatHistory(Constant.FASTGPT_HISTORY_URL + addItems);
     }
 
@@ -99,7 +99,7 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
     @Override
     public Observable<ResponseBody> chatCreate(String message) {
         // 转换成Json
-        message = "{\"chatId\": \"GrainFullDouYa\", " +
+        message = "{\"chatId\": \"DouYaApp\", " +
                 "\"messages\": [{\"role\": \"user\", \"content\":  \"" + message + "\"}] , " +
                 "\"stream\" : true," + "\"detail\" : false}";
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);
@@ -115,7 +115,7 @@ public class FastGptModelsModel extends BaseModel implements FastGptModelsContra
 
         // 封装数据
         GptChat mGptChat = new GptChat();
-        mGptChat.setChatId("GrainFullDouYa");
+        mGptChat.setChatId("DouYaApp");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
 

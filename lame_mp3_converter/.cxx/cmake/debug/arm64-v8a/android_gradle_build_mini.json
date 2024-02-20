@@ -1,17 +1,17 @@
 {
   "buildFiles": [
-    "D:\\Android\\SDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
+    "F:\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
     "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
-    "D:\\Android\\SDK\\ndk\\20.0.5594570\\build\\cmake\\platforms.cmake"
+    "F:\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\platforms.cmake"
   ],
   "cleanCommands": [
-    "D:\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\arm64-v8a\" clean"
+    "F:\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\arm64-v8a\" clean"
   ],
-  "buildTargetsCommand": "D:\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommand": "F:\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
   "libraries": {
     "lame-mp3-utils-Debug-arm64-v8a": {
       "artifactName": "lame-mp3-utils",
-      "buildCommand": "D:\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\arm64-v8a\" lame-mp3-utils",
+      "buildCommand": "F:\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\.cxx\\cmake\\debug\\arm64-v8a\" lame-mp3-utils",
       "abi": "arm64-v8a",
       "output": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\src\\main\\jniLibs\\arm64-v8a\\liblame-mp3-utils.so"
     }
