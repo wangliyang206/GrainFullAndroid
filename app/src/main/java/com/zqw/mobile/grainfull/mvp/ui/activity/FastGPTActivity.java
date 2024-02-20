@@ -39,6 +39,7 @@ import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
 import com.baidu.speech.asr.SpeechConstant;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
+import com.google.gson.Gson;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -58,6 +59,7 @@ import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerFastGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
+import com.zqw.mobile.grainfull.mvp.model.entity.TranslateInfo;
 import com.zqw.mobile.grainfull.mvp.presenter.FastGPTPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.AudioRecorderButton;
 
@@ -118,6 +120,8 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
     AccountManager mAccountManager;
     @Inject
     ImageLoader mImageLoader;
+    @Inject
+    Gson gson;
     // FastGPT应用介绍
     private PopupFastGptIntro mPopup;
     // 用于临时保存图片地址
@@ -152,6 +156,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         this.mAccountManager = null;
         this.mPopup = null;
         InFileStream.reset();
+        this.gson = null;
     }
 
     @Override
@@ -398,7 +403,15 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         for (int i = 0; i < list.size(); i++) {
             ChatHistoryInfo item = list.get(i);
             if (i % 2 == 0) {
-                addRightMsg(item.getValue(), "");
+                if (item.getValue().contains("img-block")) {
+                    //```img-block\n{\"src\":\"https://zhaoqianzqn.oss-cn-shenzhen.aliyuncs.com/imgs/inStockVoucherUrlPath/1356e0a0974e43dbb57760a5bac5ecfae.png\"}\n```\n这是什么
+                    String imgJson = item.getValue().substring(item.getValue().indexOf("{"), item.getValue().lastIndexOf("}") + 1);
+                    TranslateInfo info = gson.fromJson(imgJson, TranslateInfo.class);
+                    addRightMsg(item.getValue().substring(item.getValue().lastIndexOf("```") + 4), info.getSrc());
+                } else {
+                    // 普通文字
+                    addRightMsg(item.getValue(), "");
+                }
             } else {
                 addLeftMsg(item.getValue());
             }

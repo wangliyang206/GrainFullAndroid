@@ -48,13 +48,13 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     RxErrorHandler mErrorHandler;
     @Inject
     AccountManager mAccountManager;
-
+    @Inject
+    Gson gson;
     // 用于接收消息，流式输出
     private StringBuffer buffer;
     private ChatCompletionChunk chatCompletionChunk;
     private ChatImg chatImg;
     private ChatToken mChatToken;
-    private Gson gson = new Gson();
 
     @Override
     public void onDestroy() {

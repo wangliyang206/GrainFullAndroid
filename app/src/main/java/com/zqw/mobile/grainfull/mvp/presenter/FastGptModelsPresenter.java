@@ -52,11 +52,12 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
     RxErrorHandler mErrorHandler;
     @Inject
     AccountManager mAccountManager;
-
+    @Inject
+    Gson gson;
     // 用于接收消息，流式输出
     private StringBuffer buffer;
     private ChatCompletionChunk chatCompletionChunk;
-    private Gson gson = new Gson();
+
     // 默认提示语
     private final String mDefaultTips = "您好，我是你的全能助手豆芽，目前我拥有【查询天气】、【图文识别】、【智能聊天】等功能。";
 

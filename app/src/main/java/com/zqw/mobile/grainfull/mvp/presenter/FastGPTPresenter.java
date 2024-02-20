@@ -52,11 +52,12 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
     RxErrorHandler mErrorHandler;
     @Inject
     AccountManager mAccountManager;
-
+    @Inject
+    Gson gson;
     // 用于接收消息，流式输出
     private StringBuffer buffer;
     private ChatCompletionChunk chatCompletionChunk;
-    private Gson gson = new Gson();
+
     // 默认提示语
     private final String mDefaultTips = "您好，我是易收网智能小助手小铅，请问有什么可以帮助您的吗？";
 
