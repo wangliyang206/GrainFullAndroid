@@ -56,6 +56,7 @@ import com.zqw.mobile.grainfull.app.tts.SynthActivity;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
+import com.zqw.mobile.grainfull.app.utils.RxUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerFastGPTComponent;
 import com.zqw.mobile.grainfull.mvp.contract.FastGPTContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
@@ -444,8 +445,25 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
         }
 
         // 滑动到底部
-        mScrollView.post(() -> {
-            mScrollView.fullScroll(View.FOCUS_DOWN);
+        RxUtils.startDelayed(1, this, () -> {
+            // 完整滚动
+//            mScrollView.fullScroll(View.FOCUS_DOWN);
+
+            // 立即滚动到底部
+            mScrollView.post(() -> {
+                // 获取最后一个子视图的底部位置
+                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+                // 设置NestedScrollView滚动到最底部
+                mScrollView.scrollTo(0, bottom);
+            });
+
+            // 平滑滚动到底部
+//            mScrollView.post(() -> {
+//                // 获取最后一个子视图的底部位置
+//                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+//                // 设置NestedScrollView平滑滚动到最底部
+//                mScrollView.smoothScrollTo(0, bottom);
+//            });
         });
     }
 
@@ -545,7 +563,7 @@ public class FastGPTActivity extends BaseActivity<FastGPTPresenter> implements F
      */
     @Override
     public void onSucc() {
-        runOnUiThread(() -> {
+        RxUtils.startDelayed(1, this, () -> {
             mScrollView.fullScroll(View.FOCUS_DOWN);
             // 清空图片，隐藏布局
             mImagePaths.clear();
