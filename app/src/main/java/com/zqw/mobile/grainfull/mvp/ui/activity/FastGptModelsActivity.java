@@ -53,9 +53,11 @@ import com.zqw.mobile.grainfull.app.dialog.PopupFastGptIntro;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
+import com.zqw.mobile.grainfull.app.utils.ChatStyle;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
+import com.zqw.mobile.grainfull.app.utils.RxUtils;
 import com.zqw.mobile.grainfull.di.component.DaggerFastGptModelsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.FastGptModelsContract;
 import com.zqw.mobile.grainfull.mvp.model.entity.ChatHistoryInfo;
@@ -70,6 +72,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import br.tiagohm.markdownview.MarkdownView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import permissions.dispatcher.NeedsPermission;
@@ -83,7 +86,9 @@ import top.zibin.luban.OnCompressListener;
  * <p>
  * 1、利用第三方“FastGPT”实现： ChatGPT。
  * 2、语音识别与语音合成为第三方：百度-智能云。
- * 3、FastGPT语音转文字/文字转语音API、图文识别 未调通。
+ * 3、FastGPT语音转文字/文字转语音API 未调通。
+ * 4、功能：【查询天气】、【图文识别】、【绘图】、【智能聊天】等功能。
+ * 5、渲染库：Markdown
  * <p>
  * Created on 2023/12/26 09:59
  *
@@ -114,7 +119,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
     ImageView imviAttachment;
 
     // 接收的消息
-    private TextView txviReceiveMsg;
+    private MarkdownView txviReceiveMsg;
     private ImageView imviReceiveMsg;
     /*--------------------------------业务信息--------------------------------*/
     @Inject
@@ -375,13 +380,14 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
      * 添加左侧消息(显示对方消息)
      */
     public void addLeftMsg(String text, String path) {
-        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.fastgpt_left_textview, null).findViewById(R.id.fastgpt_left_layout);
+        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.fastgptmodels_left_textview, null).findViewById(R.id.fastgpt_left_layout);
 
         txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
-        txviReceiveMsg.setText(text);
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
         // 控制文字显示与隐藏
         txviReceiveMsg.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        txviReceiveMsg.addStyleSheet(new ChatStyle());
+        txviReceiveMsg.loadMarkdown(text);
         // 控制图片显示与隐藏
         if (TextUtils.isEmpty(path)) {
             imviReceiveMsg.setVisibility(View.GONE);
@@ -438,21 +444,40 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
                 }
             } else {
                 // 内容解析
-                if (item.getValue().contains("![](")) {
-                    // 图像内容
-                    //![](https://oaidalleapiprodscus.blob.core.windows.net/private/org-FaxZ5RcpD6JpNdxi4t1sj2bn/user-HuKBy61PfQ6oshnFr8KKKdSj/img-iGD5m9Hrai0OLRBO6FEU0LSk.png?st=2024-02-20T03%3A22%3A56Z&se=2024-02-20T05%3A22%3A56Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-02-19T16%3A06%3A47Z&ske=2024-02-20T16%3A06%3A47Z&sks=b&skv=2021-08-06&sig=OmmOyb56Xp1%2BZRClPnyvPzCsg9wKc7w5aHYayBIjIMg%3D)
-                    String img = item.getValue().substring(item.getValue().indexOf("https"), item.getValue().lastIndexOf(")"));
-                    addLeftMsg(null, img);
-                } else {
-                    // 普通文字
-                    addLeftMsg(item.getValue(), null);
-                }
+//                if (item.getValue().contains("![](")) {
+//                    // 图像内容
+//                    //![](https://oaidalleapiprodscus.blob.core.windows.net/private/org-FaxZ5RcpD6JpNdxi4t1sj2bn/user-HuKBy61PfQ6oshnFr8KKKdSj/img-iGD5m9Hrai0OLRBO6FEU0LSk.png?st=2024-02-20T03%3A22%3A56Z&se=2024-02-20T05%3A22%3A56Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-02-19T16%3A06%3A47Z&ske=2024-02-20T16%3A06%3A47Z&sks=b&skv=2021-08-06&sig=OmmOyb56Xp1%2BZRClPnyvPzCsg9wKc7w5aHYayBIjIMg%3D)
+//                    String img = item.getValue().substring(item.getValue().indexOf("https"), item.getValue().lastIndexOf(")"));
+//                    addLeftMsg(null, img);
+//                } else {
+//                    // 普通文字
+//                    addLeftMsg(item.getValue(), null);
+//                }
+                // 利用Markdown渲染解析图片
+                addLeftMsg(item.getValue(), null);
             }
         }
 
         // 滑动到底部
-        mScrollView.post(() -> {
-            mScrollView.fullScroll(View.FOCUS_DOWN);
+        RxUtils.startDelayed(1, this, () -> {
+            // 完整滚动
+//            mScrollView.fullScroll(View.FOCUS_DOWN);
+
+            // 立即滚动到底部
+            mScrollView.post(() -> {
+                // 获取最后一个子视图的底部位置
+                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+                // 设置NestedScrollView滚动到最底部
+                mScrollView.scrollTo(0, bottom);
+            });
+
+            // 平滑滚动到底部
+//            mScrollView.post(() -> {
+//                // 获取最后一个子视图的底部位置
+//                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+//                // 设置NestedScrollView平滑滚动到最底部
+//                mScrollView.smoothScrollTo(0, bottom);
+//            });
         });
     }
 
@@ -466,16 +491,21 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
             txviReceiveMsg.setVisibility(View.VISIBLE);
 
             // response返回拼接
-            txviReceiveMsg.setText(info.toString());
+            txviReceiveMsg.loadMarkdown(info.toString());
+            onSucc();
         });
     }
 
+    /**
+     * 属性用于对话过程中显示
+     */
+    private String msg = "";
     /**
      * 加载聊天消息
      */
     @Override
     public void onLoadMessage(StringBuffer info) {
-        txviReceiveMsg.setText("");
+        msg = "";
 
         // 开启线程处理(流式展示)
         new Thread(() -> {
@@ -491,8 +521,10 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
                     imviReceiveMsg.setVisibility(View.GONE);
                     txviReceiveMsg.setVisibility(View.VISIBLE);
 
+                    msg = msg + mChar;
                     // response返回拼接
-                    txviReceiveMsg.append(String.valueOf(mChar));
+                    txviReceiveMsg.loadMarkdown(msg);
+                    onSucc();
                 });
             }
         }).start();
@@ -552,7 +584,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
      */
     @Override
     public void onSucc() {
-        runOnUiThread(() -> {
+        RxUtils.startDelayed(1, this, () -> {
             mScrollView.fullScroll(View.FOCUS_DOWN);
         });
     }

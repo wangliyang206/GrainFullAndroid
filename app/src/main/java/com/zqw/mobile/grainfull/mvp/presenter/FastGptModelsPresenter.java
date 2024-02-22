@@ -59,7 +59,7 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
     private ChatCompletionChunk chatCompletionChunk;
 
     // 默认提示语
-    private final String mDefaultTips = "您好，我是你的全能助手豆芽，目前我拥有【查询天气】、【图文识别】、【智能聊天】等功能。";
+    private final String mDefaultTips = "您好，我是你的全能助手豆芽，目前我拥有【查询天气】、【图文识别】、【绘图】、【智能聊天】等功能。";
 
     @Override
     public void onDestroy() {
@@ -304,7 +304,6 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
             mRootView.onLoadMessage(buffer);
             // 语音播报
             mRootView.onVoiceAnnouncements(buffer.toString());
-            mRootView.onSucc();
 
             Timber.d("onResult: %s", buffer.toString());
         } catch (Exception ignored) {
