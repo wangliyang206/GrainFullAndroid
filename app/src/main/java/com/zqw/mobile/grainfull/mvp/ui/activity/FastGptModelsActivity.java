@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -387,6 +388,14 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
         // 控制文字显示与隐藏
         txviReceiveMsg.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
         txviReceiveMsg.addStyleSheet(new ChatStyle());
+        txviReceiveMsg.getSettings().setUseWideViewPort(true);//自适应窗口，关键点
+        txviReceiveMsg.getSettings().setLoadWithOverviewMode(true);
+        /*
+         * 用WebView显示图片，可使用这个参数 设置网页布局类型：
+         * 1、LayoutAlgorithm.NARROW_COLUMNS:适应内容大小
+         * 2、LayoutAlgorithm.SINGLE_COLUMN:适应屏幕，内容将自动缩放
+         */
+//        txviReceiveMsg.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         txviReceiveMsg.loadMarkdown(text);
         // 控制图片显示与隐藏
         if (TextUtils.isEmpty(path)) {
