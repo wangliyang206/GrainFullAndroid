@@ -6,6 +6,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,6 +41,9 @@ import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
 import com.baidu.speech.asr.SpeechConstant;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.target.Target;
 import com.google.gson.Gson;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
@@ -54,7 +58,6 @@ import com.zqw.mobile.grainfull.app.dialog.PopupFastGptIntro;
 import com.zqw.mobile.grainfull.app.global.AccountManager;
 import com.zqw.mobile.grainfull.app.global.Constant;
 import com.zqw.mobile.grainfull.app.tts.SynthActivity;
-import com.zqw.mobile.grainfull.app.utils.ChatStyle;
 import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.app.utils.MediaStoreUtils;
@@ -73,9 +76,14 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import br.tiagohm.markdownview.MarkdownView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.noties.markwon.Markwon;
+import io.noties.markwon.ext.tables.TablePlugin;
+import io.noties.markwon.ext.tables.TableTheme;
+import io.noties.markwon.image.AsyncDrawable;
+import io.noties.markwon.image.glide.GlideImagesPlugin;
+import io.noties.markwon.utils.Dip;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 import timber.log.Timber;
@@ -120,7 +128,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
     ImageView imviAttachment;
 
     // 接收的消息
-    private MarkdownView txviReceiveMsg;
+    private TextView txviReceiveMsg;
     private ImageView imviReceiveMsg;
     /*--------------------------------业务信息--------------------------------*/
     @Inject
@@ -144,6 +152,8 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
     private String mVoicePath;
     // 是否自动播放语音(默认自动播放)
     private boolean isHorn = true;
+    // 渲染对象
+    private Markwon markwon;
 
     @Override
     protected void onDestroy() {
@@ -164,6 +174,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
         this.mPopup = null;
         InFileStream.reset();
         this.gson = null;
+        this.markwon = null;
     }
 
     @Override
@@ -184,6 +195,38 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("FastGPT 调试模型");
+
+        // 初始化渲染
+        final Dip dip = Dip.create(this);
+        TableTheme tableTheme = TableTheme.buildWithDefaults(this)
+                .tableCellPadding(dip.toPx(4))                                                  // 表格单元格填充
+                .tableBorderWidth(dip.toPx(1))                                                  // 表格边框宽度
+                .tableBorderColor(getResources().getColor(R.color.line_frame_color))                // 表格边框颜色
+                .tableHeaderRowBackgroundColor(Color.WHITE)                                         // 表格标题行背景颜色
+                .tableEvenRowBackgroundColor(Color.WHITE)                                           // 表偶数行背景颜色
+                .tableOddRowBackgroundColor(Color.parseColor("#f7f8fa"))                  // 表奇数行背景颜色
+                .build();
+
+        markwon = Markwon.builder(this)
+                .usePlugin(TablePlugin.create(tableTheme))                                          // 表格
+                .usePlugin(GlideImagesPlugin.create(this))                                          // 图片
+                .usePlugin(GlideImagesPlugin.create(Glide.with(this)))
+                .usePlugin(GlideImagesPlugin.create(new GlideImagesPlugin.GlideStore() {
+                    @NonNull
+                    @Override
+                    public RequestBuilder<Drawable> load(@NonNull AsyncDrawable drawable) {
+                        return Glide.with(FastGptModelsActivity.this).load(drawable.getDestination());
+                    }
+
+                    @Override
+                    public void cancel(@NonNull Target<?> target) {
+                        try {
+                            Glide.with(FastGptModelsActivity.this).clear(target);
+                        } catch (Exception ignored) {
+                        }
+                    }
+                }))
+                .build();
 
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "fastgptmodels_open");
@@ -381,22 +424,13 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
      * 添加左侧消息(显示对方消息)
      */
     public void addLeftMsg(String text, String path) {
-        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.fastgptmodels_left_textview, null).findViewById(R.id.fastgpt_left_layout);
+        LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.fastgpt_left_textview, null).findViewById(R.id.fastgpt_left_layout);
 
         txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
-        // 控制文字显示与隐藏
-        txviReceiveMsg.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
-        txviReceiveMsg.addStyleSheet(new ChatStyle());
-        txviReceiveMsg.getSettings().setUseWideViewPort(true);//自适应窗口，关键点
-        txviReceiveMsg.getSettings().setLoadWithOverviewMode(true);
-        /*
-         * 用WebView显示图片，可使用这个参数 设置网页布局类型：
-         * 1、LayoutAlgorithm.NARROW_COLUMNS:适应内容大小
-         * 2、LayoutAlgorithm.SINGLE_COLUMN:适应屏幕，内容将自动缩放
-         */
-//        txviReceiveMsg.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        txviReceiveMsg.loadMarkdown(text);
+
+        loadMarkwon(text);
+
         // 控制图片显示与隐藏
         if (TextUtils.isEmpty(path)) {
             imviReceiveMsg.setVisibility(View.GONE);
@@ -417,6 +451,14 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
         }
 
         lilaChatLayout.addView(viewLeftMsg);
+    }
+
+    /**
+     * 使用 Markwon 渲染技术
+     */
+    private void loadMarkwon(String val) {
+        // 设置 Markdown 内容
+        markwon.setMarkdown(txviReceiveMsg, val);
     }
 
     /**
@@ -500,7 +542,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
             txviReceiveMsg.setVisibility(View.VISIBLE);
 
             // response返回拼接
-            txviReceiveMsg.loadMarkdown(info.toString());
+            loadMarkwon(info.toString());
             onSucc();
         });
     }
@@ -509,6 +551,7 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
      * 属性用于对话过程中显示
      */
     private String msg = "";
+
     /**
      * 加载聊天消息
      */
@@ -530,9 +573,10 @@ public class FastGptModelsActivity extends BaseActivity<FastGptModelsPresenter> 
                     imviReceiveMsg.setVisibility(View.GONE);
                     txviReceiveMsg.setVisibility(View.VISIBLE);
 
-                    msg = msg + mChar;
                     // response返回拼接
-                    txviReceiveMsg.loadMarkdown(msg);
+//                    txviReceiveMsg.append(String.valueOf(mChar));
+                    msg = msg + mChar;
+                    loadMarkwon(msg);
                     onSucc();
                 });
             }

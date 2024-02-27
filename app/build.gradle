@@ -411,7 +411,10 @@ dependencies {
 
     // Android广告图片轮播控件(https://github.com/youth5201314/banner)
     implementation 'io.github.youth5201314:banner:2.2.2'
-    // Markdown 渲染库(MarkdownView：https://github.com/tiagohm/MarkdownView)
-    implementation 'com.github.tiagohm.MarkdownView:library:0.19.0'
-    implementation 'com.github.tiagohm.MarkdownView:emoji:0.19.0'
+
+    // Markdown 渲染库(https://github.com/noties/Markwon?tab=readme-ov-file)
+    implementation 'io.noties.markwon:core:4.6.2'
+    implementation 'io.noties.markwon:image:4.6.2'
+    implementation 'io.noties.markwon:image-glide:4.6.2'
+    implementation 'io.noties.markwon:recycler-table:4.6.2'
 }
