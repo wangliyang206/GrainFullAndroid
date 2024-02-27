@@ -302,8 +302,14 @@ public class FastGPTPresenter extends BasePresenter<FastGPTContract.Model, FastG
 
             // 流式展示
             mRootView.onLoadMessage(buffer);
-            // 语音播报
-            mRootView.onVoiceAnnouncements(buffer.toString());
+            // 语音播报，有几种情况不需要播报：
+            // 1、图片。
+            // 2、表格。
+
+            if (buffer.toString().contains("![](")||buffer.toString().contains("|-----")) {
+            } else {
+                mRootView.onVoiceAnnouncements(buffer.toString());
+            }
             mRootView.onSucc();
 
             Timber.d("onResult: %s", buffer.toString());

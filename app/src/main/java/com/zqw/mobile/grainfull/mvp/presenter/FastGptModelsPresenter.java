@@ -182,6 +182,7 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
 
     /**
      * 多模型会话
+     *
      * @param message        聊天文字对话
      * @param isNetworkImage 是否为网络图片：true代表前缀是http；false代表为本地图片
      * @param imageUrl       图片路径
@@ -302,8 +303,14 @@ public class FastGptModelsPresenter extends BasePresenter<FastGptModelsContract.
 
             // 流式展示
             mRootView.onLoadMessage(buffer);
-            // 语音播报
-            mRootView.onVoiceAnnouncements(buffer.toString());
+            // 语音播报，有几种情况不需要播报：
+            // 1、图片。
+            // 2、表格。
+
+            if (buffer.toString().contains("![](")||buffer.toString().contains("|-----")) {
+            } else {
+                mRootView.onVoiceAnnouncements(buffer.toString());
+            }
 
             Timber.d("onResult: %s", buffer.toString());
         } catch (Exception ignored) {
