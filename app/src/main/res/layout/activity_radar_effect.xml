@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_radar_effect"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_radareffect_top"
+        layout="@layout/comm_top_layout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="效果一"
+        android:textColor="@color/common_text_color"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.RadarView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:text="效果二"
+        android:textColor="@color/common_text_color"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.RadarTwoView
+        android:id="@+id/view_radareffect_radar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:circleColor="#565cd6"
+        app:circleNum="4"
+        app:flicker="3"
+        app:raindropNum="4"
+        app:showCross="true"
+        app:speed="5"
+        app:sweepColor="#565cd6" />
+
+    <Button
+        android:id="@+id/btn_radareffect_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_bg_selector"
+        android:text="开始扫描"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
