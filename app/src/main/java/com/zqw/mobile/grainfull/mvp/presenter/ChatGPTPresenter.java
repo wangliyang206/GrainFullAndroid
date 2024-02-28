@@ -116,7 +116,7 @@ public class ChatGPTPresenter extends BasePresenter<ChatGPTContract.Model, ChatG
     public void chatCreate(String message) {
         // 判断是文字还是图片，这里使用“模糊匹配”
         // 关键字：制作图片、生成图像、画什么什么
-        String condition = ".*[制作|生成].*[图|照][片|像].*|画.*";
+        String condition = ".*[制作|生成].*[图|照][片|像].*|.*画.*";
         if (message.matches(condition)) {
             // 类型：图片会话
             onSmartMessaging(2, message);

@@ -433,8 +433,10 @@ public class ChatGPTActivity extends BaseActivity<ChatGPTPresenter> implements C
 
                     // response返回拼接
                     txviReceiveMsg.append(String.valueOf(mChar));
-                    // 列表滑动到底部
-                    mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                    if(mScrollView != null){
+                        // 列表滑动到底部
+                        mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                    }
                 });
             }
         }).start();
