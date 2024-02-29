@@ -14,8 +14,6 @@ import androidx.annotation.Nullable;
 
 import com.zqw.mobile.grainfull.R;
 
-import timber.log.Timber;
-
 /**
  * @ProjectName: GrainFullAndroid
  * @Package: com.zqw.mobile.grainfull.mvp.ui.widget
@@ -44,6 +42,8 @@ public class RadarView extends View {
 
     // 是否停止扫描
     private boolean stopScan = false;
+    // 是否正向旋转
+    private boolean isForwardRotation;
 
     public RadarView(Context context) {
         super(context);
@@ -60,7 +60,7 @@ public class RadarView extends View {
         init();
     }
 
-    public void init(){
+    public void init() {
         // 雷达颜色
         scanPaint.setColor(getResources().getColor(R.color.colorPrimary, null));
         scanPaint.setAntiAlias(true);
@@ -86,6 +86,22 @@ public class RadarView extends View {
         stopScan = true;
     }
 
+    public boolean isForwardRotation() {
+        return isForwardRotation;
+    }
+
+    public void setForwardRotation(boolean forwardRotation) {
+        isForwardRotation = forwardRotation;
+
+        if (isForwardRotation) {
+            // 正向
+            mRoration = 0f;
+        } else {
+            // 反向
+            mRoration = 360f;
+        }
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -109,8 +125,14 @@ public class RadarView extends View {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        scanShader = new SweepGradient(getWidth() / 2f, getHeight() / 2f,
-                new int[]{getResources().getColor(R.color.colorPrimary), Color.WHITE},new float[]{0f, 1f});
+        if (isForwardRotation) {
+            scanShader = new SweepGradient(getWidth() / 2f, getHeight() / 2f,
+                    new int[]{Color.WHITE,getResources().getColor(R.color.colorPrimary)},new float[]{0f, 1f});
+        }else {
+            scanShader = new SweepGradient(getWidth() / 2f, getHeight() / 2f,
+                    new int[]{getResources().getColor(R.color.colorPrimary), Color.WHITE},new float[]{0f, 1f});
+        }
+
         scanPaint.setShader(scanShader);
         scanShader.setLocalMatrix(scanMatrix);
     }
@@ -129,10 +151,17 @@ public class RadarView extends View {
      * 改变旋转角度
      */
     public void setRotation() {
-        if (mRoration >= 360) {
-            mRoration = 0f;
+        if (isForwardRotation) {
+            if (mRoration >= 360) {
+                mRoration = 0f;
+            }
+            mRoration += 2;
+        } else {
+            if (mRoration <= 0) {
+                mRoration = 360f;
+            }
+            mRoration -= 2;
         }
-        mRoration += 2;
         scanMatrix.setRotate(mRoration, getWidth() / 2f, getHeight() / 2f);
         scanShader.setLocalMatrix(scanMatrix);
         if (!stopScan) {

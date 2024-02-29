@@ -18,7 +18,8 @@ import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerRadarEffectComponent;
 import com.zqw.mobile.grainfull.mvp.contract.RadarEffectContract;
 import com.zqw.mobile.grainfull.mvp.presenter.RadarEffectPresenter;
-import com.zqw.mobile.grainfull.mvp.ui.widget.RadarTwoView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.RadarView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.RotatingCircleView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,10 +35,13 @@ import butterknife.OnClick;
 public class RadarEffectActivity extends BaseActivity<RadarEffectPresenter> implements RadarEffectContract.View {
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.view_radareffect_radar)
-    RadarTwoView mRadarTwoView;                                                                     // 雷达效果
-
+    RotatingCircleView mRotatingCircleView;                                                                     // 雷达效果
     @BindView(R.id.btn_radareffect_start)
     Button btnStart;
+
+    @BindView(R.id.view_radareffect_radarView)
+    RadarView mRadarView;
+
     /*------------------------------------------------业务区域------------------------------------------------*/
 
     @Override
@@ -59,6 +63,7 @@ public class RadarEffectActivity extends BaseActivity<RadarEffectPresenter> impl
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("雷达效果");
 
+        mRadarView.setForwardRotation(true);
     }
 
     @OnClick({
@@ -68,11 +73,11 @@ public class RadarEffectActivity extends BaseActivity<RadarEffectPresenter> impl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_radareffect_start:                                                        // 开始扫描 or 停止扫描
-                if (mRadarTwoView.isScanning()) {
-                    mRadarTwoView.stop();
+                if (mRotatingCircleView.isScanning()) {
+                    mRotatingCircleView.stop();
                     btnStart.setText("开始扫描");
                 } else {
-                    mRadarTwoView.start();
+                    mRotatingCircleView.start();
                     btnStart.setText("停止扫描");
                 }
                 break;

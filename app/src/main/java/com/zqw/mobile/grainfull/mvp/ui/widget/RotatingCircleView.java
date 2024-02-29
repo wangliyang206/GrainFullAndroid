@@ -25,7 +25,7 @@ import java.util.Iterator;
  * @Author: WLY
  * @CreateDate: 2024/2/28 12:01
  */
-public class RadarTwoView extends View {
+public class RotatingCircleView extends View {
 
     //默认的主题颜色
     private int DEFAULT_COLOR = Color.parseColor("#91D7F4");
@@ -59,18 +59,18 @@ public class RadarTwoView extends View {
     //保存水滴数据
     private ArrayList<Raindrop> mRaindrops = new ArrayList<>();
 
-    public RadarTwoView(Context context) {
+    public RotatingCircleView(Context context) {
         super(context);
         init();
     }
 
-    public RadarTwoView(Context context, @Nullable AttributeSet attrs) {
+    public RotatingCircleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         getAttrs(context, attrs);
         init();
     }
 
-    public RadarTwoView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RotatingCircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         getAttrs(context, attrs);
         init();
@@ -361,7 +361,7 @@ public class RadarTwoView extends View {
          * @return
          */
         public int changeAlpha() {
-            return RadarTwoView.changeAlpha(color, (int) alpha);
+            return RotatingCircleView.changeAlpha(color, (int) alpha);
         }
 
     }

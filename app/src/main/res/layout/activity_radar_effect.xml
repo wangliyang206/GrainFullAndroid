@@ -12,52 +12,99 @@
         android:id="@+id/view_radareffect_top"
         layout="@layout/comm_top_layout" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="效果一"
-        android:textColor="@color/common_text_color"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
-    <com.zqw.mobile.grainfull.mvp.ui.widget.RadarView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:text="效果二"
-        android:textColor="@color/common_text_color"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
-    <com.zqw.mobile.grainfull.mvp.ui.widget.RadarTwoView
-        android:id="@+id/view_radareffect_radar"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:circleColor="#565cd6"
-        app:circleNum="4"
-        app:flicker="3"
-        app:raindropNum="4"
-        app:showCross="true"
-        app:speed="5"
-        app:sweepColor="#565cd6" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_radareffect_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/btn_bg_selector"
-        android:text="开始扫描"
-        android:textColor="@android:color/white" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="效果一"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.RadarView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:text="效果二"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.RotatingCircleView
+                android:id="@+id/view_radareffect_radar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:circleColor="#565cd6"
+                app:circleNum="4"
+                app:flicker="3"
+                app:raindropNum="4"
+                app:showCross="true"
+                app:speed="5"
+                app:sweepColor="#565cd6" />
+
+            <Button
+                android:id="@+id/btn_radareffect_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_bg_selector"
+                android:text="开始扫描"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:text="效果三"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50dp">
+
+                <com.zqw.mobile.grainfull.mvp.ui.widget.RadarView
+                    android:id="@+id/view_radareffect_radarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <View
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/radar_bg_shape" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="体重(--)"
+                    android:textColor="@color/common_text_color"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
