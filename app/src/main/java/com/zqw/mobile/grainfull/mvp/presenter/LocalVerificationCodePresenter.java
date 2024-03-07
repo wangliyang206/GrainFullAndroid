@@ -2,25 +2,26 @@ package com.zqw.mobile.grainfull.mvp.presenter;
 
 import android.app.Application;
 
-import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.zqw.mobile.grainfull.mvp.contract.AudioWaveformContract;
-
-import javax.inject.Inject;
+import com.jess.arms.http.imageloader.ImageLoader;
 
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
+import javax.inject.Inject;
+
+import com.zqw.mobile.grainfull.mvp.contract.LocalVerificationCodeContract;
+
 /**
  * ================================================
- * Description:音频波形
+ * Description:
  * <p>
- * Created by MVPArmsTemplate on 2022/08/03 14:42
+ * Created by MVPArmsTemplate on 2024/03/07 15:35
  * ================================================
  */
 @ActivityScope
-public class AudioWaveformPresenter extends BasePresenter<AudioWaveformContract.Model, AudioWaveformContract.View> {
+public class LocalVerificationCodePresenter extends BasePresenter<LocalVerificationCodeContract.Model, LocalVerificationCodeContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -31,7 +32,7 @@ public class AudioWaveformPresenter extends BasePresenter<AudioWaveformContract.
     AppManager mAppManager;
 
     @Inject
-    public AudioWaveformPresenter(AudioWaveformContract.Model model, AudioWaveformContract.View rootView) {
+    public LocalVerificationCodePresenter(LocalVerificationCodeContract.Model model, LocalVerificationCodeContract.View rootView) {
         super(model, rootView);
     }
 

@@ -10,50 +10,63 @@
         android:id="@+id/view_audiowaveform_top"
         layout="@layout/comm_top_layout" />
 
-
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/layout_bg_shape"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.zqw.mobile.grainfull.mvp.ui.widget.VisualizeView
-            android:id="@+id/vivi_audiowaveform_graphics"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <com.zqw.mobile.grainfull.mvp.ui.widget.WaveRingView
+                android:id="@+id/view_audiowaveform_wave"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@android:color/black" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+            <com.zqw.mobile.grainfull.mvp.ui.widget.AttachmentRingView
+                android:id="@+id/view_audiowaveform_ring"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/black" />
 
-        <Button
-            android:id="@+id/btn_audiowaveform_model"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/btn_bg_selector"
-            android:padding="13dp"
-            android:text="切换模式"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
+            <com.zqw.mobile.grainfull.mvp.ui.widget.SiriView
+                android:id="@+id/view_audiowaveform_siri"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="5dp" />
 
-        <Button
-            android:id="@+id/btn_audiowaveform_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/btn_bg_selector"
-            android:padding="13dp"
-            android:text="播放"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
-    </LinearLayout>
+            <com.zqw.mobile.grainfull.mvp.ui.widget.SoundRotatingCircleView
+                android:id="@+id/view_audiowaveform_rotating"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginTop="5dp" />
 
+            <com.zqw.mobile.grainfull.mvp.ui.widget.DiffusionRingView
+                android:id="@+id/view_audiowaveform_diffusion"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/black" />
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.HorizontalEnergyView
+                android:id="@+id/view_audiowaveform_horizontalEnergyView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/black" />
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.ColumnarView
+                android:id="@+id/view_audiowaveform_columnar"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="35dp"
+                android:background="@android:color/black" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

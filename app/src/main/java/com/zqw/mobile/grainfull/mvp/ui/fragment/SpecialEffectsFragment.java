@@ -30,6 +30,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.LayoutHomeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevelSelectActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LevitationButtonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LoadButtonActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.LocalVerificationCodeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LotteryTurntableActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ProductDisplayActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ProgressViewActivity;
@@ -83,6 +84,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_layout_cardoverlap,                                     // 卡片重叠滑动 - 探探效果
 
             R.id.btn_fragmentspecialeffects_text_serialnumber,                                      // 仿序列号
+            R.id.btn_fragmentspecialeffects_text_localcode,                                         // 本地验证码
 
             R.id.btn_fragmentspecialeffects_button_loadbutton,                                      // 加载按钮
 
@@ -115,6 +117,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
 
             case R.id.btn_fragmentspecialeffects_text_serialnumber:                                 // 仿序列号
                 ActivityUtils.startActivity(SerialNumberActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_text_localcode:                                    // 本地验证码
+                ActivityUtils.startActivity(LocalVerificationCodeActivity.class);
                 break;
 
             case R.id.btn_fragmentspecialeffects_button_loadbutton:                                 // 加载按钮

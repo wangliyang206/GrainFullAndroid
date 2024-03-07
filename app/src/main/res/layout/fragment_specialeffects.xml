@@ -150,17 +150,39 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txvi_fragmentspecialeffects_text_title" />
 
-                <TextView
-                    android:id="@+id/btn_fragmentspecialeffects_text_serialnumber"
-                    android:layout_width="wrap_content"
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/edit_bg_selector"
-                    android:padding="10dp"
-                    android:text="仿序列号"
+                    android:layout_marginBottom="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_text_line" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_fragmentspecialeffects_text_line">
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_text_serialnumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="仿序列号" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_text_localcode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="本地验证码" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

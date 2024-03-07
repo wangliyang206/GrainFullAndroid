@@ -1,16 +1,18 @@
 package com.zqw.mobile.grainfull.mvp.contract;
 
-import com.jess.arms.mvp.IModel;
+import android.app.Activity;
+
 import com.jess.arms.mvp.IView;
+import com.jess.arms.mvp.IModel;
 
 /**
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 2022/08/03 14:42
+ * Created by MVPArmsTemplate on 2024/03/07 15:35
  * ================================================
  */
-public interface AudioWaveformContract {
+public interface LocalVerificationCodeContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View extends IView {
 

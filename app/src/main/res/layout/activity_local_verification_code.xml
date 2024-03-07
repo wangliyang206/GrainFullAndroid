@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:kongqw="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_local_verification_code"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_localverificationcode_top"
+        layout="@layout/comm_top_theme_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.CheckView
+            android:id="@+id/view_localverificationcode_checkView"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            kongqw:bg_color="#FFFFFF00"
+            kongqw:line_num="10"
+            kongqw:point_num="100"
+            kongqw:text_length="6"
+            kongqw:text_size="30dp" />
+
+        <Button
+            android:id="@+id/btn_localverificationcode_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_bg_selector"
+            android:padding="13dp"
+            android:text="刷新"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

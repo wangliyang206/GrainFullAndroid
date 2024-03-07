@@ -185,4 +185,14 @@
         <!--水滴显示和消失的速度-->
         <attr name="flicker" format="float" />
     </declare-styleable>
+
+    <!-- 生成验证码 -->
+    <declare-styleable name="CheckView">
+        <attr name="point_num" format="integer" />
+        <attr name="line_num" format="integer" />
+        <attr name="text_length" format="integer" />
+        <attr name="text_size" format="dimension" />
+        <attr name="text_color" format="color" />
+        <attr name="bg_color" format="color" />
+    </declare-styleable>
 </resources>
