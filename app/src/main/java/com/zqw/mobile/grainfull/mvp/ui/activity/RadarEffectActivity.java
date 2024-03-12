@@ -20,6 +20,7 @@ import com.zqw.mobile.grainfull.mvp.contract.RadarEffectContract;
 import com.zqw.mobile.grainfull.mvp.presenter.RadarEffectPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.RadarView;
 import com.zqw.mobile.grainfull.mvp.ui.widget.RotatingCircleView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.SimpleWaveView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,9 +39,10 @@ public class RadarEffectActivity extends BaseActivity<RadarEffectPresenter> impl
     RotatingCircleView mRotatingCircleView;                                                                     // 雷达效果
     @BindView(R.id.btn_radareffect_start)
     Button btnStart;
-
     @BindView(R.id.view_radareffect_radarView)
     RadarView mRadarView;
+    @BindView(R.id.view_radareffect_wave)
+    SimpleWaveView mSimpleWaveView;
 
     /*------------------------------------------------业务区域------------------------------------------------*/
 

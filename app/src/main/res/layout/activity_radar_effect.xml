@@ -105,6 +105,21 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:text="效果四"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.SimpleWaveView
+                android:id="@+id/view_radareffect_wave"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

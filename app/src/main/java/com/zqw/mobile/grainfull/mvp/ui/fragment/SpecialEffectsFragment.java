@@ -39,6 +39,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ScaleRulerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TemperatureActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.TrendChartActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -104,6 +105,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_temperature,                                      // 升温效果
             R.id.btn_fragmentspecialeffects_other_productdisplay,                                   // 商品 - 横滑动
             R.id.btn_fragmentspecialeffects_other_radar,                                            // 雷达效果
+            R.id.btn_fragmentspecialeffects_other_trendchart,                                       // 趋势图
     })
     @Override
     public void onClick(View v) {
@@ -171,6 +173,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_radar:                                       // 雷达效果
                 ActivityUtils.startActivity(RadarEffectActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_trendchart:                                  // 趋势图
+                ActivityUtils.startActivity(TrendChartActivity.class);
                 break;
         }
     }
