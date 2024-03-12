@@ -38,6 +38,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.RadarEffectActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ScaleRulerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.StatisticalEffectsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TemperatureActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TrendChartActivity;
 
@@ -106,6 +107,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_productdisplay,                                   // 商品 - 横滑动
             R.id.btn_fragmentspecialeffects_other_radar,                                            // 雷达效果
             R.id.btn_fragmentspecialeffects_other_trendchart,                                       // 趋势图
+            R.id.btn_fragmentspecialeffects_other_statisticaleffects,                               // 统计效果
     })
     @Override
     public void onClick(View v) {
@@ -176,6 +178,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_trendchart:                                  // 趋势图
                 ActivityUtils.startActivity(TrendChartActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_statisticaleffects:                          // 统计效果
+                ActivityUtils.startActivity(StatisticalEffectsActivity.class);
                 break;
         }
     }
