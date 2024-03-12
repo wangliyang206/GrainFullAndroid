@@ -498,7 +498,17 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/edit_bg_selector"
                         android:padding="10dp"
-                        android:text="统计" />
+                        android:text="统计效果" />
+
+                    <TextView
+                        android:id="@+id/btn_fragmentspecialeffects_other_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_bg_selector"
+                        android:padding="10dp"
+                        android:text="点赞效果" />
                 </com.google.android.flexbox.FlexboxLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_tiktok_like"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_tiktoklike_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_tiktoklike_top"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg_shape">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="点击区域激发\n【头条】点赞"
+                    android:textColor="@color/common_text_tips_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/btn_tiktoklike_click"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.zqw.mobile.grainfull.mvp.ui.widget.toutiao.ArticleRl
+                    android:id="@+id/view_tiktoklike_article"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg_shape">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="点击区域激发\n【抖音】点赞"
+                    android:textColor="@color/common_text_tips_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <com.zqw.mobile.grainfull.mvp.ui.widget.DYLikeLayout
+                    android:id="@+id/dy_like_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.zqw.mobile.grainfull.mvp.ui.widget.likebutton.DYLikeView
+                    android:id="@+id/dy_like_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    app:anim_scale_factor="2"
+                    app:circle_end_color="@color/color_E94C7F"
+                    app:circle_start_color="@color/color_E7064F"
+                    app:dots_primary_color="@color/color_E7064F"
+                    app:dots_secondary_color="@color/color_E94C7F"
+                    app:icon_size="40dp"
+                    app:like_drawable="@drawable/ic_heart_on"
+                    app:unlike_drawable="@drawable/ic_heart_off" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg_shape">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bg_shape">
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.DYLoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_tiktoklike_top"
+        android:background="@color/fragment_bg_color" />
+</RelativeLayout>

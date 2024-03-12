@@ -66,6 +66,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.TiktokLikeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.StatisticalEffectsActivity"
             android:screenOrientation="portrait" />
         <activity

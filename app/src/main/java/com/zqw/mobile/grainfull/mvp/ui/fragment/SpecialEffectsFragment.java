@@ -40,6 +40,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.StatisticalEffectsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TemperatureActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.TiktokLikeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TrendChartActivity;
 
 import butterknife.BindView;
@@ -108,6 +109,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_radar,                                            // 雷达效果
             R.id.btn_fragmentspecialeffects_other_trendchart,                                       // 趋势图
             R.id.btn_fragmentspecialeffects_other_statisticaleffects,                               // 统计效果
+            R.id.btn_fragmentspecialeffects_other_like,                                             // 点赞效果
     })
     @Override
     public void onClick(View v) {
@@ -182,6 +184,10 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             case R.id.btn_fragmentspecialeffects_other_statisticaleffects:                          // 统计效果
                 ActivityUtils.startActivity(StatisticalEffectsActivity.class);
                 break;
+            case R.id.btn_fragmentspecialeffects_other_like:                                        // 点赞效果
+                ActivityUtils.startActivity(TiktokLikeActivity.class);
+                break;
+
         }
     }
 

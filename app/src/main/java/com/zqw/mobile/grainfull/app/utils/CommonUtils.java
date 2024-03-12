@@ -4,6 +4,7 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -11,20 +12,26 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.core.app.ActivityCompat;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.jess.arms.cj.colorful.Colorful;
 import com.jess.arms.utils.ArmsUtils;
@@ -55,6 +62,65 @@ import java.util.regex.Pattern;
  */
 
 public class CommonUtils {
+
+    /**
+     * 倾斜到像素
+     */
+    public static float dipToPixels(Context context, float dipValue) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
+    }
+
+    /**
+     * 调整绘图大小
+     */
+    public static Drawable resizeDrawable(Context context, Drawable drawable, int width, int height) {
+        Bitmap bitmap = getBitmap(drawable, width, height);
+        return new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, width, height, true));
+    }
+
+    public static Bitmap getBitmap(Drawable drawable, int width, int height) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        } else if (drawable instanceof VectorDrawableCompat) {
+            return getBitmap((VectorDrawableCompat) drawable, width, height);
+        } else if (drawable instanceof VectorDrawable) {
+            return getBitmap((VectorDrawable) drawable, width, height);
+        } else {
+            throw new IllegalArgumentException("Unsupported drawable type");
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private static Bitmap getBitmap(VectorDrawable vectorDrawable, int width, int height) {
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        vectorDrawable.draw(canvas);
+        return bitmap;
+    }
+
+    private static Bitmap getBitmap(VectorDrawableCompat vectorDrawable, int width, int height) {
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        vectorDrawable.draw(canvas);
+        return bitmap;
+    }
+
+    /**
+     * 映射从范围到范围的值
+     */
+    public static double mapValueFromRangeToRange(double value, double fromLow, double fromHigh, double toLow, double toHigh) {
+        return toLow + ((value - fromLow) / (fromHigh - fromLow) * (toHigh - toLow));
+    }
+
+    /**
+     * 夹紧
+     */
+    public static double clamp(double value, double low, double high) {
+        return Math.min(Math.max(value, low), high);
+    }
 
     /**
      * 获取缩放位图
