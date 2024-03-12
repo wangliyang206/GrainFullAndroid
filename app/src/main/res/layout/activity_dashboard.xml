@@ -11,20 +11,84 @@
         android:id="@+id/view_dashboardactivity_top"
         layout="@layout/comm_top_layout" />
 
-    <com.zqw.mobile.grainfull.mvp.ui.widget.DashboardView
-        android:id="@+id/view_dashboardactivity_dashboard"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:layout_margin="20dp" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_dashboardactivity_start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/btn_bg_selector"
-        android:text="start"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.DashboardView
+                android:id="@+id/view_dashboardactivity_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_margin="20dp" />
+
+
+            <com.zqw.mobile.grainfull.mvp.ui.widget.SimpleWrapOffsetWidthView
+                android:id="@+id/view_dashboardactivity_wrapOffsetWidth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorPrimary">
+
+                <com.zqw.mobile.grainfull.mvp.ui.widget.SimpleHalfRingView
+                    android:id="@+id/view_dashboardactivity_halfring"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp" />
+
+            </com.zqw.mobile.grainfull.mvp.ui.widget.SimpleWrapOffsetWidthView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/view_dashboardactivity_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/view_dashboardactivity_opt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/shape_c_bg_ff6600_f39920"
+                    android:paddingStart="11dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="11dp"
+                    android:paddingBottom="3dp"
+                    android:text="收缩"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_dashboardactivity_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/btn_bg_selector"
+                android:text="start"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

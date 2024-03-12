@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +22,8 @@ import com.zqw.mobile.grainfull.di.component.DaggerDashboardComponent;
 import com.zqw.mobile.grainfull.mvp.contract.DashboardContract;
 import com.zqw.mobile.grainfull.mvp.presenter.DashboardPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.DashboardView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.SimpleHalfRingView;
+import com.zqw.mobile.grainfull.mvp.ui.widget.SimpleWrapOffsetWidthView;
 
 import java.util.Random;
 
@@ -39,9 +43,15 @@ public class DashboardActivity extends BaseActivity<DashboardPresenter> implemen
     /*------------------------------------------------控件信息------------------------------------------------*/
     @BindView(R.id.activity_dashboard)
     LinearLayout contentLayout;                                                                     // 主布局
-
     @BindView(R.id.view_dashboardactivity_dashboard)
     DashboardView mDashboardView;
+
+    @BindView(R.id.view_dashboardactivity_wrapOffsetWidth)
+    SimpleWrapOffsetWidthView mSimpleWrapOffsetWidthView;
+    @BindView(R.id.view_dashboardactivity_halfring)
+    SimpleHalfRingView mSimpleHalfRingView;
+    @BindView(R.id.view_dashboardactivity_seekbar)
+    SeekBar mSeekBar;
 
     /*------------------------------------------------业务区域------------------------------------------------*/
     // 生成的随机数
@@ -77,14 +87,51 @@ public class DashboardActivity extends BaseActivity<DashboardPresenter> implemen
 
         // 友盟统计 - 自定义事件
         MobclickAgent.onEvent(getApplicationContext(), "dashboard");
+        loadData();
+    }
+
+    private void loadData(){
+        mSimpleHalfRingView.setOnSimpleHalfRingViewCallBack((percent, total, fromAnimation) -> mSeekBar.setProgress((int) (percent * 100)));
+
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    mSimpleHalfRingView.setData(888, progress * 1.0f / 100, false);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @OnClick({
+            R.id.view_dashboardactivity_opt,                                                        // 收缩或扩展
             R.id.btn_dashboardactivity_start,                                                       // 开始测试
     })
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.view_dashboardactivity_opt:                                                   // 收缩或扩展
+                // 控制视图
+                if (v.getTag() == null) {
+                    mSimpleWrapOffsetWidthView.start(SimpleWrapOffsetWidthView.STATE_COLLAPSED);
+                    v.setTag("");
+                    ((TextView)v).setText("扩展");
+                } else {
+                    mSimpleWrapOffsetWidthView.start(SimpleWrapOffsetWidthView.STATE_EXPANDED);
+                    v.setTag(null);
+                    ((TextView)v).setText("收缩");
+                }
+                break;
             case R.id.btn_dashboardactivity_start:                                                  // 开始测试
                 // 没有开始的情况下才能点击
                 if(!isStart){
@@ -115,6 +162,9 @@ public class DashboardActivity extends BaseActivity<DashboardPresenter> implemen
                         }
                     }.start();
                 }
+
+                // 加载
+                mSimpleHalfRingView.setData(888, mSeekBar.getProgress() * 1.0f / 100, true);
                 break;
         }
     }
