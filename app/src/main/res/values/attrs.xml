@@ -211,6 +211,7 @@
         <attr name="anim_scale_factor" format="float" />
     </declare-styleable>
 
+    <!--抖音加载效果-->
     <declare-styleable name="DYLoadingView">
         <attr name="radius1" format="dimension" />
         <attr name="radius2" format="dimension" />
@@ -226,4 +227,32 @@
         <attr name="scaleEndFraction" format="float" />
     </declare-styleable>
 
+    <!--自定义水波纹效果属性-->
+    <declare-styleable name="WaveView">
+        <!--波浪1的长度、高度、颜色和每次重绘的偏移量-->
+        <attr name="wave1Length" format="integer" />
+        <attr name="wave1Height" format="integer" />
+        <attr name="wave1Color" format="color" />
+        <attr name="wave1Offset" format="integer" />
+        <!--波浪2的长度、高度、颜色和每次重绘的偏移量-->
+        <attr name="wave2Length" format="integer" />
+        <attr name="wave2Height" format="integer" />
+        <attr name="wave2Color" format="color" />
+        <attr name="wave2Offset" format="integer" />
+        <!--边框的宽度和颜色-->
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <!--文字的大小和颜色-->
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <!--水位高度的百分比-->
+        <attr name="precent" format="float" />
+        <!--两次重绘的间隔时间-->
+        <attr name="intervalTime" format="integer" />
+        <!--控件的显示形状，rect矩形、circle圆形-->
+        <attr name="showShape" format="enum">
+            <enum name="rect" value="0" />
+            <enum name="circle" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>
