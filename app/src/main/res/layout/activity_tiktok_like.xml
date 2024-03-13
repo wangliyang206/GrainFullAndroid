@@ -39,7 +39,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="点击区域激发\n【头条】点赞"
+                    android:text="点击区域\n激发【头条】点赞"
                     android:textColor="@color/common_text_tips_color"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -70,7 +70,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="点击区域激发\n【抖音】点赞"
+                    android:text="点击区域\n激发【抖音】点赞"
                     android:textColor="@color/common_text_tips_color"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -104,6 +104,7 @@
             android:layout_height="0dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <RelativeLayout
