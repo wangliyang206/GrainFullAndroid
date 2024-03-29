@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="15dp"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_creditorderitemlayout_use_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/financial_order_selector"
+        android:padding="5dp">
+
+        <!-- 订单号 -->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_orderNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="订单号："
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 状态 -->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="right"
+            android:text=""
+            android:textColor="@color/btn_normal_color"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_creditorderitemlayout_orderNo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txvi_creditorderitemlayout_orderNo" />
+
+        <!-- 分割线-上部 -->
+        <View
+            android:id="@+id/view_creditorderitemlayout_topline"
+            android:layout_width="0dp"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/line_frame_color"
+            app:layout_constraintLeft_toLeftOf="@+id/txvi_creditorderitemlayout_orderNo"
+            app:layout_constraintRight_toRightOf="@+id/txvi_creditorderitemlayout_status"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_creditorderitemlayout_orderNo" />
+
+        <!-- 回收商 -->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_orgname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="回收商："
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/txvi_creditorderitemlayout_shopname"
+            app:layout_constraintTop_toBottomOf="@+id/view_creditorderitemlayout_topline" />
+
+        <!--店铺名称-->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_shopname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="店铺名称"
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_creditorderitemlayout_orgname"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txvi_creditorderitemlayout_orgname" />
+
+        <!-- 回收员 -->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="回收员："
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/txvi_creditorderitemlayout_weight"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_creditorderitemlayout_orgname" />
+
+        <!-- 重量 -->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="0.00"
+            android:textColor="@color/custom_progress_orange_progress"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_creditorderitemlayout_recycler"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txvi_creditorderitemlayout_recycler" />
+
+        <!-- 收单时间 -->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_datetime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="收单时间："
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/txvi_creditorderitemlayout_money"
+            app:layout_constraintTop_toBottomOf="@+id/txvi_creditorderitemlayout_recycler" />
+
+        <!-- 金额 -->
+        <TextView
+            android:id="@+id/txvi_creditorderitemlayout_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="0.00"
+            android:textColor="@color/custom_progress_orange_progress"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txvi_creditorderitemlayout_datetime"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txvi_creditorderitemlayout_datetime" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

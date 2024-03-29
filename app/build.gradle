@@ -417,4 +417,9 @@ dependencies {
     implementation 'io.noties.markwon:image:4.6.2'
     implementation 'io.noties.markwon:image-glide:4.6.2'
     implementation 'io.noties.markwon:recycler-table:4.6.2'
+
+    // BottomSheetDialog 底部弹出框(https://github.com/minibugdev/SheetSelection/tree/master)
+    implementation 'com.github.minibugdev:sheetselection:0.0.3'
+    // 底部弹出列表(https://github.com/andrefrsousa/SuperBottomSheet)
+    implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
 }
