@@ -41,9 +41,7 @@ public class BottomSheetDialogActivity extends BaseActivity<BottomSheetDialogPre
     /*------------------------------------------控件信息------------------------------------------*/
     @BindView(R.id.txvi_bottomsheetdialog_one)
     TextView txviOne;
-//
-//    @BindView(R.id.btn_voicerecog_start)
-//    Button btnStart;
+
     /*------------------------------------------业务信息------------------------------------------*/
     private int onePosition = 2;
 
