@@ -50,6 +50,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.LivenessDetectionActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MagnifierActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.MetalDetectorActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.NewWindowX5Activity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.NinePalacesActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.NoiseMeasurementActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.PictureCompressionActivity;
@@ -208,6 +209,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_intelligent_fastgpt,                                              // FastGPT - 易收网
             R.id.btn_fragmenthome_intelligent_gptmodels,                                            // FastGPT - 调试模型
             R.id.btn_fragmenthome_intelligent_chatgptweb,                                           // ChatGPT Web版
+            R.id.btn_fragmenthome_intelligent_divination,                                           // AI 易经占卜
 
             R.id.btn_fragmenthome_color_colorpicker,                                                // 取色板
             R.id.btn_fragmenthome_color_picturepipette,                                             // 吸管工具
@@ -293,6 +295,15 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_intelligent_chatgptweb:                                      // ChatGPT Web版
                 ActivityUtils.startActivity(ChatGPTWebActivity.class);
                 break;
+            case R.id.btn_fragmenthome_intelligent_divination:                                      // AI 易经占卜
+                Bundle mBundle = new Bundle();
+                mBundle.putString("TITLE", "易经占卜");
+                mBundle.putString("URL", "https://mbd.baidu.com/ma/s/5RaIJvn9");
+                mBundle.putBoolean("isShowTop", true);
+
+                ActivityUtils.startActivity(mBundle, NewWindowX5Activity.class);
+                break;
+
 
             case R.id.btn_fragmenthome_color_colorpicker:                                           // 取色板
                 ActivityUtils.startActivity(ColorPickerActivity.class);
