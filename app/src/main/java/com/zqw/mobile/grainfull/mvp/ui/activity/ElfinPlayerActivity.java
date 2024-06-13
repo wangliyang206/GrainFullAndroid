@@ -25,6 +25,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.unity3d.player.UnityPlayerActivity;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
@@ -89,6 +90,9 @@ public class ElfinPlayerActivity extends BaseActivity<ElfinPlayerPresenter> impl
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("小精灵模块库");
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "elfin_player_open");
 
         ElfinPlayerActivityPermissionsDispatcher.loadDataWithPermissionCheck(this);
     }

@@ -16,6 +16,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.umeng.analytics.MobclickAgent;
 import com.unity3d.player.UnityPlayerActivity;
 import com.zqw.mobile.grainfull.di.component.DaggerARPortalComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ARPortalContract;
@@ -59,6 +60,8 @@ public class ARPortalActivity extends BaseActivity<ARPortalPresenter> implements
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("AR传送门");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "arportal_open");
     }
 
     @OnClick({

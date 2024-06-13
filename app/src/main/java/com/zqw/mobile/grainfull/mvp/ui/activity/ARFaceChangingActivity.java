@@ -15,6 +15,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.unity3d.player.UnityPlayerActivity;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerARFaceChangingComponent;
@@ -58,6 +59,8 @@ public class ARFaceChangingActivity extends BaseActivity<ARFaceChangingPresenter
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("AR脸谱变脸");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "arface_changing_open");
     }
 
     @OnClick({

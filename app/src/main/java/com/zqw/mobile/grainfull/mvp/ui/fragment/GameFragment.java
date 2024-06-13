@@ -15,6 +15,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.unity3d.player.UnityPlayerActivity;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerGameComponent;
@@ -98,6 +99,10 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
 
             case R.id.btn_fragmentgame_unity_stickpin:                                              // 见缝插针
                 mBundle.putInt("layout", 4);
+
+                // 友盟统计 - 自定义事件
+                MobclickAgent.onEvent(getContext(), "unity_stickpin_open");
+
                 ActivityUtils.startActivity(mBundle, UnityPlayerActivity.class);
                 break;
             case R.id.btn_fragmentgame_unity_elfin:                                                 // 小精灵3D模型
