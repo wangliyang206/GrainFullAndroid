@@ -19,6 +19,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.utils.EventBusTags;
 import com.zqw.mobile.grainfull.di.component.DaggerHomeComponent;
@@ -298,8 +299,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             case R.id.btn_fragmenthome_intelligent_divination:                                      // AI 易经占卜
                 Bundle mBundle = new Bundle();
                 mBundle.putString("TITLE", "易经占卜");
-                mBundle.putString("URL", "https://mbd.baidu.com/ma/s/5RaIJvn9");
+//                mBundle.putString("URL", "https://mbd.baidu.com/ma/s/5RaIJvn9");
+                mBundle.putString("URL", "https://mbd.baidu.com/ma/s/fpx2vsVw");
                 mBundle.putBoolean("isShowTop", true);
+
+                // 友盟统计 - 自定义事件
+                MobclickAgent.onEvent(getContext(), "ai_divination_open");
 
                 ActivityUtils.startActivity(mBundle, NewWindowX5Activity.class);
                 break;
