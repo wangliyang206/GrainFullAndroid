@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerTrendChartComponent;
 import com.zqw.mobile.grainfull.mvp.contract.TrendChartContract;
@@ -72,6 +73,9 @@ public class TrendChartActivity extends BaseActivity<TrendChartPresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("趋势图");
 
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "trend_chart_open");
         loadDataOne();
         loadDataTwo();
         loadDataThree();

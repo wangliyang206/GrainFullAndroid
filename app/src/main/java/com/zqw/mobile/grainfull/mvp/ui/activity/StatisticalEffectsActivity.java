@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerStatisticalEffectsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.StatisticalEffectsContract;
@@ -62,6 +63,8 @@ public class StatisticalEffectsActivity extends BaseActivity<StatisticalEffectsP
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("统计效果");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "statistical_effects_open");
         loadDataOne();
         loadDataTwo();
     }

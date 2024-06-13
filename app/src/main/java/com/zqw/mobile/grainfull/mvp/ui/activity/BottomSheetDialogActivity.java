@@ -16,6 +16,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.minibugdev.sheetselection.SheetSelection;
 import com.minibugdev.sheetselection.SheetSelectionItem;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerBottomSheetDialogComponent;
 import com.zqw.mobile.grainfull.mvp.contract.BottomSheetDialogContract;
@@ -64,6 +65,9 @@ public class BottomSheetDialogActivity extends BaseActivity<BottomSheetDialogPre
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("底部弹出框");
 
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "bottom_sheet_dialog_open");
     }
 
     @OnClick({

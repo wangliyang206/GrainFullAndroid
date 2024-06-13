@@ -16,6 +16,7 @@ import com.jess.arms.utils.ArmsUtils;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.di.component.DaggerLocalVerificationCodeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.LocalVerificationCodeContract;
 import com.zqw.mobile.grainfull.mvp.presenter.LocalVerificationCodePresenter;
@@ -74,6 +75,8 @@ public class LocalVerificationCodeActivity extends BaseActivity<LocalVerificatio
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("本地验证码");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "local_verification_code_open");
     }
 
     @OnClick({

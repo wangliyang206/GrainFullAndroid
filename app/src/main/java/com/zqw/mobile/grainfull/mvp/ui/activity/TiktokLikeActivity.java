@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerTiktokLikeComponent;
 import com.zqw.mobile.grainfull.mvp.contract.TiktokLikeContract;
@@ -70,6 +71,9 @@ public class TiktokLikeActivity extends BaseActivity<TiktokLikePresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("点赞效果");
 
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "tiktok_like_open");
         loadTouTiao();
         loadDouYin();
     }

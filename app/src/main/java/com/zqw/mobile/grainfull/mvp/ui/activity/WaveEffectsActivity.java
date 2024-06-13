@@ -16,6 +16,7 @@ import com.jess.arms.utils.ArmsUtils;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.di.component.DaggerWaveEffectsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.WaveEffectsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.WaveEffectsPresenter;
@@ -72,6 +73,9 @@ public class WaveEffectsActivity extends BaseActivity<WaveEffectsPresenter> impl
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("水波纹效果");
 
+
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "wave_effects_open");
         // 代码设置相关属性
         viewSquare.setBorderWidth(2)
                 .setWaveColor1(Color.RED)

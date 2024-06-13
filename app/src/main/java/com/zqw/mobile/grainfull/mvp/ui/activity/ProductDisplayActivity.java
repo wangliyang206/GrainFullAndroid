@@ -20,6 +20,7 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerProductDisplayComponent;
 import com.zqw.mobile.grainfull.mvp.contract.ProductDisplayContract;
@@ -88,6 +89,8 @@ public class ProductDisplayActivity extends BaseActivity<ProductDisplayPresenter
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("商品展示");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "product_display_open");
         initRecyclerView();
         loadData();
     }
