@@ -35,6 +35,10 @@
     },
     {
       "level": "INFO",
+      "message": "Considering F:\\AndroidSDK\\ndk\\21.1.6352462 in SDK ndk folder"
+    },
+    {
+      "level": "INFO",
       "message": "Considering F:\\AndroidSDK\\ndk\\21.4.7075529 in SDK ndk folder"
     },
     {

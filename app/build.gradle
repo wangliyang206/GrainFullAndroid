@@ -135,7 +135,7 @@ android {
 //            buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
 //            buildConfigField "String", "SERVER_URL_VALUE", "\"http://192.168.0.54:6889/\""
             // 路由侠
-            buildConfigField "String", "SERVER_URL_VALUE", "\"http://pb.szjltscm.cn/RecycleOrgApp/\""
+            buildConfigField "String", "SERVER_URL_VALUE", "\"http://47.115.223.27/\""
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME       : "@string/app_name_debug"
@@ -176,7 +176,7 @@ android {
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedGrainFull\""
 
             // 服务地址
-            buildConfigField "String", "SERVER_URL_VALUE", "\"http://pb.szjltscm.cn/RecycleOrgApp/\""
+            buildConfigField "String", "SERVER_URL_VALUE", "\"http://47.115.223.27/\""
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME       : "@string/app_name"
