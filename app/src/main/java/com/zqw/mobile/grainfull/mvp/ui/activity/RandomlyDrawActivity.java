@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerRandomlyDrawComponent;
 import com.zqw.mobile.grainfull.mvp.contract.RandomlyDrawContract;
@@ -57,6 +58,8 @@ public class RandomlyDrawActivity extends BaseActivity<RandomlyDrawPresenter> im
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("随机抽");
 
+        // 友盟统计 - 自定义事件
+        MobclickAgent.onEvent(getApplicationContext(), "randomly_draw_open");
     }
 
     public Activity getActivity() {
