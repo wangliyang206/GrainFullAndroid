@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_randomly_draw"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_randomlydraw_top"
+        layout="@layout/comm_top_layout" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="玩法说明："
+        android:textColor="@color/common_text_color"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="\t每人出一根手指(最大支持10人)，按在黑框区域内，会生成各自的颜色，等待5秒随机抽取结果，赢家的颜色会充满屏幕。"
+        android:textColor="@color/common_text_color"
+        android:textSize="13sp" />
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.ColorTouchView
+        android:id="@+id/view_touch_container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/fragment_black_select">
+
+    </com.zqw.mobile.grainfull.mvp.ui.widget.ColorTouchView>
+
+</LinearLayout>

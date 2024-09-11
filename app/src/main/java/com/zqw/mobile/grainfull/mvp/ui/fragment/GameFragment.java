@@ -27,6 +27,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.AircraftWarActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CardFlippingActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ElfinPlayerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.OneLineToEndActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.RandomlyDrawActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.WhacAMoleActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.klotskiGameActivity;
 
@@ -71,6 +72,7 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
             R.id.btn_fragmentgame_common_whacamole,                                                 // 打地鼠
             R.id.btn_fragmentgame_common_onepen,                                                    // 一笔画完
             R.id.btn_fragmentgame_common_cardflipping,                                              // 卡牌消消乐
+            R.id.btn_fragmentgame_common_randomlyDraw,                                              // 随机抽
 
             R.id.btn_fragmentgame_unity_stickpin,                                                   // 见缝插针
             R.id.btn_fragmentgame_unity_elfin,                                                      // 小精灵3D模型
@@ -95,6 +97,9 @@ public class GameFragment extends BaseFragment<GamePresenter> implements GameCon
                 break;
             case R.id.btn_fragmentgame_common_cardflipping:                                         // 卡牌消消乐
                 ActivityUtils.startActivity(CardFlippingActivity.class);
+                break;
+            case R.id.btn_fragmentgame_common_randomlyDraw:                                         // 随机抽
+                ActivityUtils.startActivity(RandomlyDrawActivity.class);
                 break;
 
             case R.id.btn_fragmentgame_unity_stickpin:                                              // 见缝插针
