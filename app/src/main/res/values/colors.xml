@@ -175,4 +175,6 @@
     <color name="color_E7064F">#E7064F</color>
     <color name="color_388e3c">#388E3C</color>
     <color name="color_0F101F">#0F101F</color>
+
+    <color name="colorHint">#546E7A</color>
 </resources>

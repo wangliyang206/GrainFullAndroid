@@ -40,6 +40,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.ScaleRulerActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SerialNumberActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.SpiderWebGradeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.StatisticalEffectsActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.TableFormatListActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TemperatureActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TiktokLikeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TrendChartActivity;
@@ -114,6 +115,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_like,                                             // 点赞效果
             R.id.btn_fragmentspecialeffects_other_wave,                                             // 水波纹效果
             R.id.btn_fragmentspecialeffects_other_bottomsheet,                                      // 底部弹出框
+            R.id.btn_fragmentspecialeffects_other_TableFormatList,                                  // 表格式列表
     })
     @Override
     public void onClick(View v) {
@@ -196,6 +198,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_bottomsheet:                                 // 底部弹出框
                 ActivityUtils.startActivity(BottomSheetDialogActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_TableFormatList:                             // 表格式列表
+                ActivityUtils.startActivity(TableFormatListActivity.class);
                 break;
         }
     }
