@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -21,7 +22,9 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -33,6 +36,7 @@ import android.widget.ImageView;
 import androidx.core.app.ActivityCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
+import com.huawei.secure.android.common.util.LogsUtil;
 import com.jess.arms.cj.colorful.Colorful;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
@@ -52,6 +56,8 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.regex.Pattern;
 
+import timber.log.Timber;
+
 /**
  * 包名： com.cj.mobile.aptitude.app.utils
  * 对象名： CommonUtils
@@ -62,6 +68,23 @@ import java.util.regex.Pattern;
  */
 
 public class CommonUtils {
+    /**
+     * Gets bitmap from uri.
+     *
+     * @param intent the intent
+     * @param context the context
+     * @return the bitmap from uri
+     */
+    public static Bitmap getBitmapFromUri(Intent intent, Context context) {
+        Uri uri = intent.getData();
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+            return bitmap;
+        } catch (Exception e) {
+            Timber.e(e.getMessage());
+            return null;
+        }
+    }
 
     /**
      * 倾斜到像素

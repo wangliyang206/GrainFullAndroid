@@ -40,147 +40,147 @@ build cmake_object_order_depends_target_lame-mp3-utils: phony
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o: CXX_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lame-mp3-utils.cpp || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lame-mp3-utils.cpp.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/VbrTag.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\VbrTag.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/bitstream.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\bitstream.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/encoder.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\encoder.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/fft.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/fft.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\fft.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/gain_analysis.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\gain_analysis.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/id3tag.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\id3tag.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/lame.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\lame.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/mpglib_interface.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/mpglib_interface.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\mpglib_interface.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/newmdct.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\newmdct.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/presets.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\presets.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/psymodel.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\psymodel.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/quantize.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\quantize.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/quantize_pvt.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\quantize_pvt.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/reservoir.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\reservoir.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/set_get.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\set_get.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/tables.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\tables.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/takehiro.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\takehiro.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/util.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\util.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/vbrquantize.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\vbrquantize.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
 build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o: C_COMPILER__lame-mp3-utils ../../../../src/main/cpp/lamemp3/version.c || cmake_object_order_depends_target_lame-mp3-utils
   DEFINES = -Dlame_mp3_utils_EXPORTS
   DEP_FILE = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3\version.c.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -I../../../../src/main/cpp/lamemp3
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir
   OBJECT_FILE_DIR = CMakeFiles\lame-mp3-utils.dir\src\main\cpp\lamemp3
@@ -192,8 +192,8 @@ build CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o: C_COMPILER
 #############################################
 # Link the shared library ..\..\..\..\src\main\jniLibs\x86\liblame-mp3-utils.so
 
-build ../../../../src/main/jniLibs/x86/liblame-mp3-utils.so: CXX_SHARED_LIBRARY_LINKER__lame-mp3-utils CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/fft.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/mpglib_interface.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o | F$:/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/i686-linux-android/23/liblog.so
-  LANGUAGE_COMPILE_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info
+build ../../../../src/main/jniLibs/x86/liblame-mp3-utils.so: CXX_SHARED_LIBRARY_LINKER__lame-mp3-utils CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/fft.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/mpglib_interface.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o | F$:/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/i686-linux-android/26/liblog.so
+  LANGUAGE_COMPILE_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info
   LINK_FLAGS = -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments -Wl,-z,noexecstack
   LINK_LIBRARIES = -llog -latomic -lm
   OBJECT_DIR = CMakeFiles\lame-mp3-utils.dir

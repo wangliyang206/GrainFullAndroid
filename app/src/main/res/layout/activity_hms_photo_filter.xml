@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg_color"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_hmsphotofilter_top"
+        layout="@layout/comm_top_layout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="过滤器类型"
+        android:textColor="@color/common_text_color"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:id="@+id/rdg_hmsphotofilter_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_start">
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:checked="true"
+                android:tag="1"
+                android:text="黑白"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="2"
+                android:text="棕调"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="3"
+                android:text="慵懒"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="4"
+                android:text="小苍兰"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="5"
+                android:text="富士"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="6"
+                android:text="桃粉"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="7"
+                android:text="海盐"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="8"
+                android:text="薄荷"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="9"
+                android:text="蒹葭"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="10"
+                android:text="复古"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="11"
+                android:text="棉花糖"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="12"
+                android:text="青苔"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="13"
+                android:text="日光"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="14"
+                android:text="时光"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="15"
+                android:text="雾霾蓝"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="16"
+                android:text="向日葵"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="17"
+                android:text="硬朗"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="18"
+                android:text="古铜黄"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="19"
+                android:text="黑白调"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="20"
+                android:text="黄绿调"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="21"
+                android:text="黄调"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="22"
+                android:text="绿调"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="23"
+                android:text="青调"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rdb_hmsphotofilter_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:tag="24"
+                android:text="紫调"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+        </com.google.android.flexbox.FlexboxLayout>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="原图片"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="结果图片"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/frame_img_selector">
+
+            <ImageView
+                android:id="@+id/imvi_hmsphotofilter_primary_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_evaluation_camera"
+                app:layout_constraintBottom_toTopOf="@id/txvi_hmsphotofilter_primary_txt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/txvi_hmsphotofilter_primary_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="添加图片"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imvi_hmsphotofilter_primary_icon"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <ImageView
+                android:id="@+id/imvi_hmsphotofilter_primary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/frame_img_selector">
+
+            <ImageView
+                android:id="@+id/imvi_hmsphotofilter_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_hmsphotofilter_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/btn_bg_selector"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="获取结果"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>

@@ -3,7 +3,7 @@ ext {
     android = [
             compileSdkVersion: 29,
             buildToolsVersion: "29.0.3",
-            minSdkVersion    : 23,
+            minSdkVersion    : 26,// 华为 图像服务，最小版本得是26
             targetSdkVersion : 32,
             versionCode      : 100,
             versionName      : "1.0.0"

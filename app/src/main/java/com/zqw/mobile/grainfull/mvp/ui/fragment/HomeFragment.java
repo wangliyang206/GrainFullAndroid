@@ -45,6 +45,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.FaceComparisonActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FastGPTActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.FastGptModelsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.HandheldBulletScreenActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.HmsPhotoFilterActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyBankCardsActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.IdentifyIdCardActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ImageExtractionTextActivity;
@@ -201,6 +202,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             R.id.btn_fragmenthome_gesture,                                                          // 动态手势识别
             R.id.btn_fragmenthome_livenessdetection,                                                // 活体检测
             R.id.btn_fragmenthome_facecomparison,                                                   // 人脸对比
+            R.id.btn_fragmenthome_photofilter,                                                      // 图片滤镜
 
             R.id.btn_fragmenthome_facerecognition,                                                  // 人脸采集
             R.id.btn_fragmenthome_voicerecog,                                                       // 语音识别
@@ -272,6 +274,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.btn_fragmenthome_facecomparison:                                              // 人脸对比
                 ActivityUtils.startActivity(FaceComparisonActivity.class);
+                break;
+            case R.id.btn_fragmenthome_photofilter:                                                 // 图片滤镜
+                ActivityUtils.startActivity(HmsPhotoFilterActivity.class);
                 break;
 
             case R.id.btn_fragmenthome_facerecognition:                                             // 人脸采集

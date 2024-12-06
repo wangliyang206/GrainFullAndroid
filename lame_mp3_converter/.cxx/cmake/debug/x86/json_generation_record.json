@@ -1,7 +1,7 @@
 [
   {
     "level": "INFO",
-    "message": "Start JSON generation. Platform version: 23 min SDK version: x86",
+    "message": "Start JSON generation. Platform version: 26 min SDK version: x86",
     "file": "E:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\CMakeLists.txt",
     "tag": "debug|x86"
   },

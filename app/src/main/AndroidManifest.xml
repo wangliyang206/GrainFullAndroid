@@ -66,6 +66,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.HmsPhotoFilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.TableFormatListActivity"
             android:screenOrientation="portrait" />
         <activity
