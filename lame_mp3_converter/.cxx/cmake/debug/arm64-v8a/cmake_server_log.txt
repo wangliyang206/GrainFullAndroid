@@ -41,14 +41,14 @@ CMAKE SERVER: {
     "-DCMAKE_TOOLCHAIN_FILE\u003dF:\\AndroidSDK\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
     "-DANDROID_ABI\u003darm64-v8a",
     "-DANDROID_NDK\u003dF:\\AndroidSDK\\ndk\\20.0.5594570",
-    "-DANDROID_PLATFORM\u003dandroid-23",
+    "-DANDROID_PLATFORM\u003dandroid-26",
     "-DCMAKE_ANDROID_ARCH_ABI\u003darm64-v8a",
     "-DCMAKE_ANDROID_NDK\u003dF:\\AndroidSDK\\ndk\\20.0.5594570",
     "-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON",
     "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dE:\\AndroidStudioGit\\GrainFullAndroid\\lame_mp3_converter\\build\\intermediates\\cmake\\debug\\obj\\arm64-v8a",
     "-DCMAKE_MAKE_PROGRAM\u003dF:\\AndroidSDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe",
     "-DCMAKE_SYSTEM_NAME\u003dAndroid",
-    "-DCMAKE_SYSTEM_VERSION\u003d23"
+    "-DCMAKE_SYSTEM_VERSION\u003d26"
   ]
 }
 

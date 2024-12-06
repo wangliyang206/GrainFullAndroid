@@ -21,7 +21,7 @@ ANDROID_ABI:UNINITIALIZED=armeabi-v7a
 ANDROID_NDK:UNINITIALIZED=F:\AndroidSDK\ndk\20.0.5594570
 
 //No help, variable specified on the command line.
-ANDROID_PLATFORM:UNINITIALIZED=android-23
+ANDROID_PLATFORM:UNINITIALIZED=android-26
 
 //No help, variable specified on the command line.
 CMAKE_ANDROID_ARCH_ABI:UNINITIALIZED=armeabi-v7a
@@ -199,7 +199,7 @@ CMAKE_STRIP:FILEPATH=F:/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/win
 CMAKE_SYSTEM_NAME:UNINITIALIZED=Android
 
 //No help, variable specified on the command line.
-CMAKE_SYSTEM_VERSION:UNINITIALIZED=23
+CMAKE_SYSTEM_VERSION:UNINITIALIZED=26
 
 //The CMake toolchain file
 CMAKE_TOOLCHAIN_FILE:FILEPATH=F:/AndroidSDK/ndk/20.0.5594570/build/cmake/android.toolchain.cmake
@@ -217,10 +217,10 @@ Project_BINARY_DIR:STATIC=E:/AndroidStudioGit/GrainFullAndroid/lame_mp3_converte
 Project_SOURCE_DIR:STATIC=E:/AndroidStudioGit/GrainFullAndroid/lame_mp3_converter
 
 //Dependencies for the target
-lame-mp3-utils_LIB_DEPENDS:STATIC=general;F:/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi/23/liblog.so;
+lame-mp3-utils_LIB_DEPENDS:STATIC=general;F:/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi/26/liblog.so;
 
 //Path to a library.
-log-lib:FILEPATH=F:/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi/23/liblog.so
+log-lib:FILEPATH=F:/AndroidSDK/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/arm-linux-androideabi/26/liblog.so
 
 
 ########################

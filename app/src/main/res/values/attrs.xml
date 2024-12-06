@@ -255,4 +255,8 @@
             <enum name="circle" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="GridRadioGroup">
+        <attr name="columnNum" format="integer" />
+    </declare-styleable>
 </resources>

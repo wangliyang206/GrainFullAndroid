@@ -6,38 +6,45 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.huawei.hms.image.vision.ImageVision;
 import com.huawei.hms.image.vision.ImageVisionImpl;
 import com.huawei.hms.image.vision.bean.ImageVisionResult;
 import com.huawei.secure.android.common.util.LogsUtil;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.utils.ArmsUtils;
 import com.lcw.library.imagepicker.ImagePicker;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.app.global.Constant;
-import com.zqw.mobile.grainfull.app.utils.CommonUtils;
 import com.zqw.mobile.grainfull.app.utils.GlideLoader;
 import com.zqw.mobile.grainfull.di.component.DaggerHmsPhotoFilterComponent;
 import com.zqw.mobile.grainfull.mvp.contract.HmsPhotoFilterContract;
 import com.zqw.mobile.grainfull.mvp.presenter.HmsPhotoFilterPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.widget.GridRadioGroup;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -57,18 +64,25 @@ import timber.log.Timber;
 public class HmsPhotoFilterActivity extends BaseActivity<HmsPhotoFilterPresenter> implements HmsPhotoFilterContract.View {
     /*------------------------------------------控件信息------------------------------------------*/
     @BindView(R.id.rdg_hmsphotofilter_group)
-    RadioGroup radioGroup;
+    GridRadioGroup radioGroup;
 
     @BindView(R.id.imvi_hmsphotofilter_primary)
     ImageView imagePrimary;
 
     @BindView(R.id.imvi_hmsphotofilter_result)
     ImageView imageResult;
+    @BindView(R.id.imvi_hmsphotofilter_save)
+    ImageView imageSave;
 
     /*------------------------------------------业务信息------------------------------------------*/
+    @Inject
+    ImageLoader mImageLoader;
     // 对话框
     private MaterialDialog mDialog;
-    private Bitmap bitmap;
+    // 原图片
+    private Bitmap mBitmap;
+    // 过滤后的图片
+    private Bitmap mResult;
     private ImageVisionImpl imageVisionFilterAPI;
     private int initCodeState = -2;
     private int stopCodeState = -2;
@@ -84,7 +98,8 @@ public class HmsPhotoFilterActivity extends BaseActivity<HmsPhotoFilterPresenter
         }
         stopFilter();
         super.onDestroy();
-        this.bitmap = null;
+        this.mBitmap = null;
+        this.mResult = null;
     }
 
     @Override
@@ -138,6 +153,7 @@ public class HmsPhotoFilterActivity extends BaseActivity<HmsPhotoFilterPresenter
             R.id.txvi_hmsphotofilter_primary_txt,
             R.id.imvi_hmsphotofilter_primary,
             R.id.btn_hmsphotofilter_submit,                                                         // 获取结果
+            R.id.imvi_hmsphotofilter_save,                                                          // 保存
     })
     @Override
     public void onClick(View v) {
@@ -151,10 +167,44 @@ public class HmsPhotoFilterActivity extends BaseActivity<HmsPhotoFilterPresenter
             case R.id.btn_hmsphotofilter_submit:                                                    // 获取结果
                 onSubmit();
                 break;
+            case R.id.imvi_hmsphotofilter_save:                                                     // 保存
+                onSaveImage();
+                break;
         }
     }
 
+
+    /**
+     * 将图片进行保存
+     */
+    private void onSaveImage() {
+        if (mResult == null) {
+            showMessage("未检测到结果图片！");
+            return;
+        }
+
+        // 保存图片
+        Runnable runnable = () -> {
+            // 生成文件路径及名称
+            String path = Constant.IMAGE_PATH + TimeUtils.getNowString(new SimpleDateFormat("yyyyMMdd_HHmmss")) + ".png";
+            // 保存图片
+            ImageUtils.save(mResult, path, Bitmap.CompressFormat.PNG);
+
+            runOnUiThread(() -> {
+                // 弹出成功提示
+                showMessage("图片保存成功！路径：" + path);
+            });
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+    }
+
     private void onSubmit() {
+        if (mBitmap == null) {
+            showMessage("请选择原图片！");
+            return;
+        }
+
         if (initCodeState != 0 | stopCodeState == 0) {
             showMessage("服务尚未初始化。请在调用服务之前对其进行初始化。");
             return;
@@ -175,7 +225,7 @@ public class HmsPhotoFilterActivity extends BaseActivity<HmsPhotoFilterPresenter
     private void stopFilter() {
         if (null != imageVisionFilterAPI) {
             int stopCode = imageVisionFilterAPI.stop();
-            bitmap = null;
+            mBitmap = null;
             imageVisionFilterAPI = null;
             stopCodeState = stopCode;
         } else {
@@ -202,15 +252,16 @@ public class HmsPhotoFilterActivity extends BaseActivity<HmsPhotoFilterPresenter
                 jsonObject.put("requestId", "1");
                 jsonObject.put("taskJson", taskJson);
                 jsonObject.put("authJson", authJson);
-                Bitmap newBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+                Bitmap newBitmap = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(newBitmap);
                 canvas.drawColor(0xFFFAFAFA);
-                canvas.drawBitmap(bitmap, 0, 0, null);
+                canvas.drawBitmap(mBitmap, 0, 0, null);
                 final ImageVisionResult visionResult = imageVisionFilterAPI.getColorFilter(jsonObject,
                         newBitmap);
                 imageResult.post(() -> {
-                    Bitmap image = visionResult.getImage();
-                    imageResult.setImageBitmap(image);
+                    mResult = visionResult.getImage();
+                    imageResult.setImageBitmap(mResult);
+                    imageSave.setVisibility(View.VISIBLE);
 //                        tv.setText(visionResult.getResponse().toString() + "resultCode:" + visionResult.getResultCode());
                 });
             } catch (JSONException e) {
@@ -255,8 +306,11 @@ public class HmsPhotoFilterActivity extends BaseActivity<HmsPhotoFilterPresenter
         if (resultCode == RESULT_OK) {
             // 照片
             if (requestCode == Constant.REQUEST_SELECT_IMAGES_CODE) {
-                bitmap = CommonUtils.getBitmapFromUri(data, this);
-                imagePrimary.setImageBitmap(bitmap);
+                ArrayList<String> mImg = data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES);
+
+                mBitmap = BitmapFactory.decodeFile(mImg.get(0));
+                // 显示图片
+                imagePrimary.setImageBitmap(mBitmap);
             }
         }
     }
