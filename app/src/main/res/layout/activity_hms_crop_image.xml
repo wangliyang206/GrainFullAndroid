@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_hmscropimage_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_bg_shape"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="裁剪形状"
+                android:textColor="@color/common_text_color"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <RadioGroup
+                android:id="@+id/ragr_hmscropimage_shape"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_hmscropimage_rectangle"
+                    android:layout_width="70dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/radio_left_bg_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:tag="1"
+                    android:text="矩形"
+                    android:textColor="@color/radio_button_selector"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_hmscropimage_rotundity"
+                    android:layout_width="70dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="-2dp"
+                    android:background="@drawable/radio_right_bg_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:tag="2"
+                    android:text="椭圆形"
+                    android:textColor="@color/radio_button_selector"
+                    android:textSize="13sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="比例"
+            android:textColor="@color/common_text_color"
+            android:textSize="14sp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.GridRadioGroup
+            android:id="@+id/ragr_hmscropimage_proportion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:columnNum="3">
+
+            <RadioButton
+                android:id="@+id/radio_hmscropimage_anyratio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:checked="true"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="1"
+                android:text="任意比率"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/radio_hmscropimage_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="2"
+                android:text="1:1"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/radio_hmscropimage_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="3"
+                android:text="9:16"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/radio_hmscropimage_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="3"
+                android:text="4:3"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/radio_hmscropimage_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:tag="3"
+                android:text="16:9"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+        </com.zqw.mobile.grainfull.mvp.ui.widget.GridRadioGroup>
+    </LinearLayout>
+
+    <!-- 添加图片 -->
+    <LinearLayout
+        android:id="@+id/view_hmscropimage_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_turntable_shape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_add_picture" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="添加图片"
+            android:textColor="@color/rmb_dark_green_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <com.huawei.hms.image.vision.crop.CropLayoutView
+        android:id="@+id/cropImageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        app:cropBackgroundColor="#88AA66CC"
+        app:cropBorderCornerColor="@android:color/holo_blue_bright"
+        app:cropBorderCornerThickness="5dp"
+        app:cropBorderLineColor="@android:color/holo_green_light"
+        app:cropGuidelines="on"
+        app:cropGuidelinesColor="@android:color/holo_red_dark"
+        app:cropSnapRadius="0dp" />
+
+    <Button
+        android:id="@+id/btn_crop_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_bg_selector"
+        android:text="裁剪保存"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+</LinearLayout>
