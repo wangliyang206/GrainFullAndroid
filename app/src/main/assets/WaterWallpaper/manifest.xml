@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root screenWidth="1080">
+    <Image  src="background.jpg"/>
+    <WaterWallpaper xmesh="27" ymesh="48" src="background.jpg" torsion="2" color="#0cf02b" />
+</Root>

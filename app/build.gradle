@@ -373,6 +373,9 @@ dependencies {
     // 华为SDK - 智能设计服务(滤镜服务、图文智能排版服务、图像主题标签服务、贴纸花字服务、图片裁剪服务)
     implementation "com.huawei.hms:image-vision:1.0.3.306"
     implementation "com.huawei.hms:image-vision-fallback:1.0.3.301"
+    // 华为SDK - 场景动效服务
+    implementation 'com.huawei.hms:image-render:1.0.3.301'
+    implementation 'com.huawei.hms:image-render-fallback:1.0.3.301'
     // 百度AI - 人脸采集
     implementation project(path: ':faceplatform-ui')
     // 百度AI - 语音识别

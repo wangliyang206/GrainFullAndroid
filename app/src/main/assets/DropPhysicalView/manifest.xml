@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root screenWidth="1080">
+    <Image src="background.jpg" />
+    <DropPhysicalView airDensity="50" gravityX="6" gravityY="10">
+        <ItemGroup height="#screen_height" width="#screen_width / 2 -80" x="0" y="0">
+            <Alpha height="#screen_height / 5" value="100" width="#screen_width / 2"
+                x="0" y="#screen_height * 4 / 5" />
+            <Item count="20" src="jinbi.png">
+                <Velocity isRandom="true" velocityX="0" velocityY="5" />
+                <Position isRandom="true" />
+                <AngleVelocity angleVelocity="10" isRandom="true" />
+                <weight isRandom="true" value="0.5" />
+            </Item>
+            <Item count="10" src="xx.png">
+                <Velocity isRandom="true" velocityX="0" velocityY="5" />
+                <Position isRandom="true" />
+                <AngleVelocity angleVelocity="0" />
+                <weight isRandom="true" value="0.4" />
+            </Item>
+        </ItemGroup>
+    </DropPhysicalView>
+    <DropPhysicalView gravityX="10" gravityY="6">
+        <ItemGroup height="#screen_height" width="#screen_width / 2 - 50" x="#screen_width /2 - 100"
+            y="0">
+            <Alpha height="#screen_height" value="100" width="300" x="#screen_width-300" y="0" />
+            <Item count="5" src="shiwu.png">
+                <Velocity isRandom="false" velocityX="10" velocityY="6" />
+                <Position isRandom="true" />
+                <Angle angle="0" isRandom="false" />
+                <AngleVelocity angleVelocity="0" isRandom="false" />
+                <weight isRandom="false" value="0.3" />
+            </Item>
+            <Item count="5" src="shiwu.png">
+                <Velocity isRandom="false" velocityX="10" velocityY="6" />
+                <Position isRandom="true" />
+                <Angle angle="0" isRandom="false" />
+                <AngleVelocity angleVelocity="0" isRandom="false" />
+                <weight isRandom="false" value="0.2" />
+            </Item>
+        </ItemGroup>
+    </DropPhysicalView>
+</Root>

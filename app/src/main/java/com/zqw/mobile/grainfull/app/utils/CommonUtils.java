@@ -7,7 +7,6 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -22,9 +21,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Build;
-import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -36,14 +33,16 @@ import android.widget.ImageView;
 import androidx.core.app.ActivityCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
-import com.huawei.secure.android.common.util.LogsUtil;
 import com.jess.arms.cj.colorful.Colorful;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.ref.WeakReference;
@@ -69,21 +68,90 @@ import timber.log.Timber;
 
 public class CommonUtils {
     /**
-     * Gets bitmap from uri.
+     * create demo dir
      *
-     * @param intent the intent
-     * @param context the context
-     * @return the bitmap from uri
+     * @param dirPath dir path
+     * @return result
      */
-    public static Bitmap getBitmapFromUri(Intent intent, Context context) {
-        Uri uri = intent.getData();
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
-            return bitmap;
-        } catch (Exception e) {
-            Timber.e(e.getMessage());
-            return null;
+    public static boolean createResourceDirs(String dirPath) {
+        File dir = new File(dirPath);
+        if (!dir.exists()) {
+            if (dir.getParentFile().mkdir()) {
+                return dir.mkdir();
+            } else {
+                return dir.mkdir();
+            }
         }
+        return false;
+    }
+
+    /**
+     * 将 assets文件夹 复制到 sdCard
+     *
+     * @param context     context
+     * @param foldersName folderName
+     * @param path        path
+     * @return result
+     */
+    public static boolean copyAssetsFilesToDirs(Context context, String foldersName, String path) {
+        try {
+            String[] files = context.getAssets().list(foldersName);
+            for (String file :
+                    files) {
+                if (!copyAssetsFileToDirs(context, foldersName + File.separator + file, path + File.separator + file)) {
+                    Timber.e("复制资源文件失败，请检查权限");
+                    return false;
+                }
+            }
+        } catch (IOException e) {
+            Timber.e(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * copy resource file to sdCard
+     *
+     * @param context  context
+     * @param fileName fileName
+     * @param path     sdCard path
+     * @return result
+     */
+    public static boolean copyAssetsFileToDirs(Context context, String fileName, String path) {
+        InputStream inputStream = null;
+        FileOutputStream outputStream = null;
+        try {
+            inputStream = context.getAssets().open(fileName);
+            File file = new File(path);
+            outputStream = new FileOutputStream(file);
+            byte[] temp = new byte[4096];
+            int n;
+            while (-1 != (n = inputStream.read(temp))) {
+                outputStream.write(temp, 0, n);
+            }
+        } catch (IOException e) {
+            Timber.e(e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                Timber.e(e.getMessage());
+            } finally {
+                if (outputStream != null) {
+                    try {
+                        outputStream.close();
+                    } catch (IOException e) {
+                        Timber.e(e.getMessage());
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     /**

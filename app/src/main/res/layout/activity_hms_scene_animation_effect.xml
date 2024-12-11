@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <include
+        android:id="@+id/view_hmssceneanimationeffect_top"
+        layout="@layout/comm_top_layout" />
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.GridRadioGroup
+        android:id="@+id/ragr_hmssceneanimationeffect_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/layout_bg_shape"
+        app:columnNum="3">
+
+        <RadioButton
+            android:id="@+id/radio_hmssceneanimationeffect_particleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:checked="true"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:tag="1"
+            android:text="粒子视图"
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/radio_hmssceneanimationeffect_waterWallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:tag="2"
+            android:text="水壁纸"
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/radio_hmssceneanimationeffect_particleScatter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:tag="3"
+            android:text="粒子散射"
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/radio_hmssceneanimationeffect_rotateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:tag="3"
+            android:text="旋转视图"
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/radio_hmssceneanimationeffect_dropPhysicalView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:tag="3"
+            android:text="下降物理视图"
+            android:textColor="@color/common_text_color"
+            android:textSize="13sp" />
+    </com.zqw.mobile.grainfull.mvp.ui.widget.GridRadioGroup>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="展示效果区域"
+        android:textColor="@color/common_text_color"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/frame_img_selector"
+        android:padding="5dp">
+
+        <FrameLayout
+            android:id="@+id/view_hmssceneanimationeffect_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root screenWidth="1080">
+	<Image src="bj.jpg" />
+	<ParticleScatter x="50" y="600" w="200" h="200" src="maojiao.png" duration="1200"  style="1" shaketime="150" translateX="3" translateY="4" shape="0" radius="3" reverse="true" />
+	<ParticleScatter x="800" y="600" w="200" h="200" src="maojiao.png" duration="1000"  style="2" shaketime="150" translateX="3" translateY="4" shape="1" radius="3"/>
+	<ParticleScatter x="400" y="600" w="200" h="200" src="maojiao.png" duration="1000"  style="3" shaketime="150" translateX="3" translateY="4" shape="2" radius="1"/>
+	<ParticleScatter x="600" y="1200" w="200" h="200" src="maojiao.png" duration="1000.5"  style="4" shaketime="150" translateX="5.5" translateY="5.5" shape="1" radius="5"/>
+	<ParticleScatter x="400" y="800" w="200" h="200" src="maojiao.png" duration="1000"  style="5" shaketime="150" translateX="3" translateY="4" shape="1.5" radius="2"/>
+	<ParticleScatter x="800" y="800" w="200" h="200" src="maojiao.png" duration="1000"  style="6" shaketime="150.56" translateX="3" translateY="4" shape="0" radius="3"/>
+	<ParticleScatter x="100" y="800" w="300" h="300" src="maojiao.png" duration="1000"  style="7" shaketime="150" translateX="3" translateY="4" shape="0" radius="2"/>
+	<ParticleScatter x="300" y="1200" w="300" h="200" src="maojiao.png" duration="1000"  style="8" shaketime="150"  shape="0" radius="4" />
+	<ParticleScatter x="200" y="1400" w="200" h="200" src="maojiao.png" duration="1000"  style="9" shaketime="150" translateX="2" translateY="2"  radius="6"/>
+</Root>

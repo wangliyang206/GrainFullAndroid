@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root screenWidth="1080">
+    <Image src="background.jpg"/>
+    <ParticleView w="60" h="60" count="6" move_radius="16" speek_sec="2.5" reduce_size="3.0" set_path="false" src="particle.png" />
+</Root>
