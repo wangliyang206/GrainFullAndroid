@@ -177,4 +177,7 @@
     <color name="color_0F101F">#0F101F</color>
 
     <color name="colorHint">#546E7A</color>
+
+    <color name="layout_base_background">#1C1D22</color>
+    <color name="layout_base_light_white">#B2B7C4</color>
 </resources>

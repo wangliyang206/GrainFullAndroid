@@ -44,6 +44,7 @@ import com.zqw.mobile.grainfull.mvp.ui.activity.TableFormatListActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TemperatureActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TiktokLikeActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.TrendChartActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.VoiceAnimationActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.WaveEffectsActivity;
 
 import butterknife.BindView;
@@ -116,6 +117,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_wave,                                             // 水波纹效果
             R.id.btn_fragmentspecialeffects_other_bottomsheet,                                      // 底部弹出框
             R.id.btn_fragmentspecialeffects_other_TableFormatList,                                  // 表格式列表
+            R.id.btn_fragmentspecialeffects_other_voiceAnimation,                                   // 语音动画
     })
     @Override
     public void onClick(View v) {
@@ -201,6 +203,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_TableFormatList:                             // 表格式列表
                 ActivityUtils.startActivity(TableFormatListActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_voiceAnimation:                              // 语音动画
+                ActivityUtils.startActivity(VoiceAnimationActivity.class);
                 break;
         }
     }

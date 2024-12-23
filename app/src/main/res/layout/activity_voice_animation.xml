@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_voice_animation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg_color"
+    android:orientation="vertical">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_voiceanimation_top"
+        layout="@layout/comm_top_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_function_selector"
+        android:orientation="horizontal">
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.GradientTextView
+            android:id="@+id/txvi_voiceanimation_waitfor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_function_selector_selected"
+            android:gravity="center"
+            android:text="等待"
+            android:textColor="@color/layout_base_light_white"
+            android:textSize="14sp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.GradientTextView
+            android:id="@+id/txvi_voiceanimation_hear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="听"
+            android:textColor="@color/layout_base_light_white"
+            android:textSize="14sp" />
+
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.GradientTextView
+            android:id="@+id/txvi_voiceanimation_connect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="连接"
+            android:textColor="@color/layout_base_light_white"
+            android:textSize="14sp" />
+
+        <com.zqw.mobile.grainfull.mvp.ui.widget.GradientTextView
+            android:id="@+id/txvi_voiceanimation_speech"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="讲话"
+            android:textColor="@color/layout_base_light_white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.SpeechAnimationView
+        android:id="@+id/view_voiceanimation_speechAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp" />
+
+</LinearLayout>

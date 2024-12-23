@@ -66,6 +66,9 @@
         android:theme="@style/AppTheme"
         tools:replace="label">
         <activity
+            android:name=".mvp.ui.activity.VoiceAnimationActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.HmsSceneAnimationEffectActivity"
             android:screenOrientation="portrait" />
         <activity
