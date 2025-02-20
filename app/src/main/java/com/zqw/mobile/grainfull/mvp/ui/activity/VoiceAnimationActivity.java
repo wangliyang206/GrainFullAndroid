@@ -67,6 +67,8 @@ public class VoiceAnimationActivity extends BaseActivity<VoiceAnimationPresenter
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("语音动画视图");
 
+        // 默认选中等待
+        setSelectedTextColor(viewWaitfor, true);
     }
 
     @OnClick({

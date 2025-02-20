@@ -92,9 +92,15 @@
 ![](image/CardOverlap.jpg)
 
 ### 文本：
-    仿序列号；
+    仿序列号、本地验证码；
 
 ![](image/SerialNumber.jpg)
+![](image/LocalVerificationCode.jpg)
+
+### 按钮：
+    加载按钮；
+
+![](image/LoadButton.jpg)
 
 ### 时钟：
     时钟、翻转时钟、罗盘时钟、电子时钟；
@@ -118,6 +124,20 @@
 ![](image/LevelSelect.jpg)
 ![](image/Temperature.jpg)
 ![](image/ProductDisplay.jpg)
+![](image/RadarEffect.jpg)
+![](image/TrendChart.jpg)
+![](image/StatisticalEffects.jpg)
+![](image/TiktokLike.jpg)
+![](image/WaveEffects.jpg)
+![](image/BottomSheetDialog1.jpg)
+![](image/BottomSheetDialog2.jpg)
+![](image/TableFormatList.jpg)
+![](image/VoiceAnimation1.jpg)
+![](image/VoiceAnimation2.jpg)
+![](image/VoiceAnimation3.jpg)
+![](image/VoiceAnimation4.jpg)
+
+
 
 ## 首页侧滑
     友盟数据统计、设置、关于；
