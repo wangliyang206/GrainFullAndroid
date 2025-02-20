@@ -9,7 +9,7 @@
 ## 功能介绍
 
 ### 华为平台：
-    识别银行卡、识别身份证、图片提取文字、动态手势识别、活体检测、人脸对比、图片滤镜、图片裁剪；
+    识别银行卡、识别身份证、图片提取文字、动态手势识别、活体检测、人脸对比、图片滤镜、图片裁剪、场景动效；
 
 ![](image/IdentifyBankCards.jpg)
 ![](image/IdentifyIdCard.jpg)
@@ -17,6 +17,9 @@
 ![](image/DynamicGestures.jpg)
 ![](image/LivenessDetection.jpg)
 ![](image/FaceComparison.jpg)
+![](image/HmsPhotoFilter.jpg)
+![](image/HmsCropImage.jpg)
+![](image/HmsSceneAnimationEffect.jpg)
 
 ### 百度平台：
     人脸采集、语音识别、语音合成；
