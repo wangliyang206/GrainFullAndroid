@@ -19,6 +19,7 @@ import com.zqw.mobile.grainfull.app.utils.EventBusTags;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentInfo;
 import com.zqw.mobile.grainfull.mvp.model.entity.HomeContentResponse;
 import com.zqw.mobile.grainfull.mvp.model.entity.MainEvent;
+import com.zqw.mobile.grainfull.mvp.ui.activity.GoodsDetailActivity;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.HomeContentAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.nestedrecyclerview.ChildRecyclerView;
 import com.zqw.mobile.grainfull.mvp.ui.widget.nestedrecyclerview.OnUserVisibleChange;
@@ -96,8 +97,11 @@ public class HomeListContentView extends ChildRecyclerView implements OnUserVisi
         mAdapter = new HomeContentAdapter(mList);
         setAdapter(mAdapter);
         mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
-            HomeContentInfo info = (HomeContentInfo) data;
-            ArmsUtils.makeText(getContext(), info.getName());
+//            HomeContentInfo info = (HomeContentInfo) data;
+//            ArmsUtils.makeText(getContext(), info.getName());
+
+            // 商品详情
+            ArmsUtils.startActivity(GoodsDetailActivity.class);
         });
 
         // 2.添加ItemDecoration

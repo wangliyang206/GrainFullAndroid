@@ -55,7 +55,7 @@ public class GoodsOneItemHolder extends BaseHolder<GoodsBean> implements View.On
     TextView txviPrice;
     @BindView(R.id.txvi_homegoodsitem_lookSimilar)
     TextView txviLookSimilar;
-    @BindView(R.id.imvi_homegoodsitem__shopcart)
+    @BindView(R.id.imvi_homegoodsitem_shopcart)
     ImageView imviShopCart;
 
     /**

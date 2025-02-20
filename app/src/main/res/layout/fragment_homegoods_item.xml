@@ -54,7 +54,7 @@
             android:textSize="10sp" />
 
         <ImageView
-            android:id="@+id/imvi_homegoodsitem__shopcart"
+            android:id="@+id/imvi_homegoodsitem_shopcart"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_below="@+id/txvi_homegoodsitem_content"

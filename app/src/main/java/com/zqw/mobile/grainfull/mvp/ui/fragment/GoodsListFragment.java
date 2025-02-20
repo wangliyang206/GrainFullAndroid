@@ -15,12 +15,14 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout;
 import com.jess.arms.base.BaseFragment;
+import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.zqw.mobile.grainfull.R;
 import com.zqw.mobile.grainfull.di.component.DaggerGoodsListComponent;
 import com.zqw.mobile.grainfull.mvp.contract.GoodsListContract;
 import com.zqw.mobile.grainfull.mvp.presenter.GoodsListPresenter;
+import com.zqw.mobile.grainfull.mvp.ui.activity.GoodsDetailActivity;
 import com.zqw.mobile.grainfull.mvp.ui.adapter.GoodsListAdapter;
 import com.zqw.mobile.grainfull.mvp.ui.widget.SpacesItemDecoration;
 
@@ -97,6 +99,10 @@ public class GoodsListFragment extends BaseFragment<GoodsListPresenter> implemen
         staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         ArmsUtils.configRecyclerView(mRecyclerView, staggeredGridLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener((view, viewType, data, position) -> {
+            // 商品详情
+            ArmsUtils.startActivity(GoodsDetailActivity.class);
+        });
         mRecyclerView.addItemDecoration(new SpacesItemDecoration(10));
     }
 

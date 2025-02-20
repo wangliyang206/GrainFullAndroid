@@ -38,7 +38,7 @@ ext {
             "legacy-support-v4"        : "androidx.legacy:legacy-support-v4:1.0.0",
             "cardview"                 : "androidx.cardview:cardview:1.0.0",
             "annotations"              : "androidx.annotation:annotation:1.2.0",
-            "recyclerview"             : "androidx.recyclerview:recyclerview:1.1.0",
+            "recyclerview"             : "androidx.recyclerview:recyclerview:1.2.1",
 
             //network
             "retrofit"                 : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",

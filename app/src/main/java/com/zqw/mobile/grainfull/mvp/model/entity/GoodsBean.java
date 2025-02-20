@@ -1,5 +1,7 @@
 package com.zqw.mobile.grainfull.mvp.model.entity;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+
 /**
  * @ProjectName: GrainFullAndroid
  * @Package: com.zqw.mobile.grainfull.mvp.model.entity
@@ -8,7 +10,7 @@ package com.zqw.mobile.grainfull.mvp.model.entity;
  * @Author: WLY
  * @CreateDate: 2023/8/30 12:11
  */
-public class GoodsBean{
+public class GoodsBean implements MultiItemEntity {
     public GoodsBean() {
     }
 
@@ -84,5 +86,10 @@ public class GoodsBean{
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    @Override
+    public int getItemType() {
+        return type;
     }
 }

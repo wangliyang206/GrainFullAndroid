@@ -814,3 +814,5 @@ public static java.lang.String TABLENAME;
 }
 
 -keep class com.sina.weibo.sdk.** { *; }
+
+-keep class com.chad.library.adapter.base.** { *; }
