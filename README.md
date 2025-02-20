@@ -84,6 +84,11 @@
 ### 模仿：
     首页2.0、卡片重叠滑动；
 
+![](image/LayoutHome-1.jpg)
+![](image/LayoutHome-2.jpg)
+![](image/LayoutHome-3.jpg)
+![](image/LayoutHome-4.jpg)
+![](image/LayoutHome-5.jpg)
 ![](image/CardOverlap.jpg)
 
 ### 文本：
