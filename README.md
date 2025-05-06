@@ -147,6 +147,38 @@
 ## Wiki
 * [小满APP 升级日志](https://github.com/wangliyang206/GrainFullAndroid/wiki/UpdateLog)
 
+## 项目模块结构清单
+GrainFullAndroid/
+├── app/
+│   ├── build.gradle          # 主模块配置
+│   ├── libs/                 # 本地jar/aar库
+│   │   └── *.jar
+│   ├── keystore/             # 签名证书
+│   │   ├── debug.keystore
+│   │   └── release.keystore
+│   └── src/                  # 源码目录
+├── arms/                     # 核心框架模块
+├── arms-imageloader-glide/   # Glide图片加载模块
+├── loading-drawable/         # 自定义加载动画
+├── camera/                   # 视频拍摄模块
+├── faceplatform-ui/          # 百度人脸采集UI
+├── uiasr/                    # 百度语音识别
+└── lame_mp3_converter/       # MP3转码库
+
+## 运行版本
+* Android Studio Chipmunk | 2021.2.1 Patch 2
+* Gradle JDK 11.0.12
+* Gradle:3.6.0
+* Android Gradle Plugin:gradle-5.6.4-all.zip
+* Android 编译SDK版本:29(Android  10.0)
+* Android 最小SDK版本:26(Android 8.0)
+* Android 最大SDK版本:32(Android 12.0)
+* Android Ndk版本:20.0.5594570
+
+###local.properties文件中的内容
+sdk.dir=F\:\\AndroidSDK
+ndk.dir=F\:\\AndroidSDK\\ndk\\20.0.5594570
+
 ## Donate
     如果它对你帮助很大，在实际开发中切实的提升了您的工作效率和开发能力，并且你很想支持库的后续开发和维护,
     请您点击右上角 Star 支持一下谢谢!

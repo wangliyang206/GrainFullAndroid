@@ -47,6 +47,10 @@
     },
     {
       "level": "INFO",
+      "message": "Considering F:\\AndroidSDK\\ndk\\25.1.8937393 in SDK ndk folder"
+    },
+    {
+      "level": "INFO",
       "message": "Found requested ndk.dir (F:\\AndroidSDK\\ndk\\20.0.5594570) which has version 20.0.5594570"
     }
   ]
