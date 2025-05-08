@@ -148,7 +148,22 @@
 * [小满APP 升级日志](https://github.com/wangliyang206/GrainFullAndroid/wiki/UpdateLog)
 
 ## 项目模块结构清单
-GrainFullAndroid/ ├── app/ │ ├── build.gradle # 主模块配置 │ ├── libs/ # 本地jar/aar库 │ ├── keystore/ # 签名证书 │ │ ├── debug.keystore │ │ └── release.keystore │ └── src/ # 源码目录 ├── arms/ # 核心框架模块 ├── arms-imageloader-glide/ # Glide图片加载模块 ├── loading-drawable/ # 自定义加载动画 ├── camera/ # 视频拍摄模块 ├── faceplatform-ui/ # 百度人脸采集UI ├── uiasr/ # 百度语音识别 └── lame_mp3_converter/ # MP3转码库
+
+GrainFullAndroid/
+├── app/
+│   ├── build.gradle          # 主模块配置
+│   ├── libs/                 # 本地jar/aar库
+│   ├── keystore/             # 签名证书
+│   │   ├── debug.keystore
+│   │   └── release.keystore
+│   └── src/                  # 源码目录
+├── arms/                     # 核心框架模块
+├── arms-imageloader-glide/   # Glide图片加载模块
+├── loading-drawable/         # 自定义加载动画
+├── camera/                   # 视频拍摄模块
+├── faceplatform-ui/          # 百度人脸采集UI
+├── uiasr/                    # 百度语音识别
+└── lame_mp3_converter/       # MP3转码库
 
 ## 运行版本
 * Android Studio Chipmunk | 2021.2.1 Patch 2
