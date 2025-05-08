@@ -165,14 +165,14 @@
     └── lame_mp3_converter/       # MP3转码库
 
 ## 运行版本
-* Android Studio Chipmunk | 2021.2.1 Patch 2
-* Gradle JDK 11.0.12
-* Gradle:3.6.0
-* Android Gradle Plugin:gradle-5.6.4-all.zip
-* Android 编译SDK版本:29(Android  10.0)
-* Android 最小SDK版本:26(Android 8.0)
-* Android 最大SDK版本:32(Android 12.0)
-* Android Ndk版本:20.0.5594570
+    Android Studio Chipmunk | 2021.2.1 Patch 2
+    Gradle JDK 11.0.12
+    Gradle:3.6.0
+    Android Gradle Plugin:gradle-5.6.4-all.zip
+    Android 编译SDK版本:29(Android  10.0)
+    Android 最小SDK版本:26(Android 8.0)
+    Android 最大SDK版本:32(Android 12.0)
+    Android Ndk版本:20.0.5594570
 
 ###local.properties文件中的内容
     sdk.dir=F\:\\AndroidSDK
