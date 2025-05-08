@@ -175,8 +175,8 @@
 * Android Ndk版本:20.0.5594570
 
 ###local.properties文件中的内容
-* sdk.dir=F\:\\AndroidSDK
-* ndk.dir=F\:\\AndroidSDK\\ndk\\20.0.5594570
+    sdk.dir=F\:\\AndroidSDK
+    ndk.dir=F\:\\AndroidSDK\\ndk\\20.0.5594570
 
 ## Donate
     如果它对你帮助很大，在实际开发中切实的提升了您的工作效率和开发能力，并且你很想支持库的后续开发和维护,
