@@ -45,3 +45,5 @@
 470	628	772626527	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o	aadf3370363c3e34
 465	630	772626527	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o	649b35642f83a5e0
 630	978	772626528	../../../../src/main/jniLibs/arm64-v8a/liblame-mp3-utils.so	951fbb7494a2f74b
+0	13	0	clean	94e6e8a6db37d7f
+0	4	0	clean	94e6e8a6db37d7f
