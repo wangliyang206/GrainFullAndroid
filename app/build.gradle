@@ -81,6 +81,8 @@ android {
 
         // 可帮助您添加 Material图标以及将可扩展矢量图形 (SVG) 和 Adobe Photoshop Document (PSD) 文件作为矢量图资源导入到项目中
         vectorDrawables.useSupportLibrary = true
+        // 限制资源配置(只保留中文和xxhdpi资源)
+        resConfigs "zh", "xxhdpi"
     }
 
     // 指定哪些源文件
@@ -182,6 +184,9 @@ android {
             manifestPlaceholders = [APP_NAME       : "@string/app_name"
                                     , BAIDU_API_KEY: "@string/baidu_map_api_key"
                                     , UM_APP_KEY   : "@string/um_app_key_manifest"]
+
+            // 添加资源压缩配置
+            shrinkResources true
         }
     }
 
@@ -224,6 +229,11 @@ android {
 
         // 在打包Release版本的时候进行检测
         checkReleaseBuilds false
+    }
+
+    // 添加AAPT资源过滤配置
+    aaptOptions {
+        ignoreAssetsPattern "!.svn|!CVS|!.DS_Store"
     }
 }
 greendao {

@@ -54,6 +54,9 @@
 -keep class com.jess.arms.cj.** {*;}                                                                #实体类不要混淆
 -dontwarn com.jess.arms.cj.**
 
+# 添加资源压缩白名单（防止误删动态加载资源）
+-keep class com.zqw.mobile.grainfull.R$layout { <fields>; }
+
 #loading-drawable
 -keep class app.dinus.com.loadingdrawable.** {*;}                                                   #实体类不要混淆
 -dontwarn app.dinus.com.loadingdrawable.**
@@ -533,42 +536,21 @@ public static final int *;
 ## ----------------------------------
 ##   ########## Gson混淆    ##########
 ## ----------------------------------
--keepattributes Signature-keepattributes
-
--keep class sun.misc.Unsafe { *; }
--keep class com.google.gson.stream.** { *; }
-
--dontwarn com.google.code.gson.**
--keep class com.google.code.gson.**{*;}
-
--dontwarn com.google.gson.**
--keep class com.google.gson.**{*;}
-
+-keep class com.google.gson.** { *; }
 -keep class com.google.gson.examples.android.model.** { *; }
--keep class com.google.** {
-    <fields>;
-    <methods>;
-}
--dontwarn org.immutables.gson.**
--keep class org.immutables.gson.** { *;}
-
-# 保留JsonObject不被混淆
 -keepclassmembers class * {
-   public <init> (org.json.JSONObject);
+    @com.google.gson.annotations.SerializedName <fields>;
 }
 
-# # -------------------------------------------
-# #  ######## greenDao混淆  ##########
-# # -------------------------------------------
--keep class org.greenrobot.greendao.**{*;}
--keep class de.greenrobot.dao.** {*;}
--keepclassmembers class * extends de.greenrobot.dao.AbstractDao {
-    public static java.lang.String TABLENAME;
-}
--keepclassmembers class * extends org.greenrobot.greendao.AbstractDao {
-public static java.lang.String TABLENAME;
-}
--keep class **$Properties
+# 精简第三方库混淆规则(合并相同库的规则)
+-keep class com.baidu.** { *; }
+-keep class vi.com.** { *; }
+-keep class pvi.com.** { *; }
+-dontwarn com.baidu.**,vi.com.**,pvi.com.**
+
+# 优化华为SDK混淆规则(合并相同库的规则)
+-keep class com.huawei.** { *; }
+-dontwarn com.huawei.**
 
 ## ---------------------------------------
 ##   ########## EventBus混淆    ##########
