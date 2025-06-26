@@ -19,8 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-#指定代码的压缩级别(代码混淆的压缩比例，值在0-7之间)
--optimizationpasses 5
 
 -allowaccessmodification
 
@@ -36,7 +34,7 @@
 #指定不去忽略非公共的库的类的成员
 -dontskipnonpubliclibraryclassmembers
 -printmapping priguardMapping.txt
--optimizations !code/simplification/artithmetic,!field/*,!class/merging/*
+
 # glide 的混淆代码
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
@@ -78,14 +76,7 @@
 #混淆时是否记录日志
 -verbose
 # 混淆时所采用的算法
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
 
--keep public class * extends android.app.Fragment
--keep public class * extends android.app.Activity
--keep public class * extends android.app.Application
--keep public class * extends android.app.Service
--keep public class * extends android.content.BroadcastReceiver
--keep public class * extends android.content.ContentProvider
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
 -keep public class com.google.vending.licensing.ILicensingService
@@ -98,8 +89,8 @@
 -dontwarn com.google.android.maps.**
 
 # 保持内部类
--keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
-#*;
+-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod,JavascriptInterface
+
 -keepclassmembers class * implements java.io.Serializable {
         static final long serialVersionUID;
         private static final java.io.ObjectStreamField[] serialPersistentFields;

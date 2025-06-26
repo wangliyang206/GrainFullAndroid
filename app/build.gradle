@@ -81,6 +81,9 @@ android {
 
         // 可帮助您添加 Material图标以及将可扩展矢量图形 (SVG) 和 Adobe Photoshop Document (PSD) 文件作为矢量图资源导入到项目中
         vectorDrawables.useSupportLibrary = true
+
+        // 保留中文和xxhdpi资源
+        resConfigs "zh", "xxhdpi"
     }
 
     // 指定哪些源文件
