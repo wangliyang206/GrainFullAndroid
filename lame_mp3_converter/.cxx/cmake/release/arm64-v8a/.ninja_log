@@ -1,0 +1,23 @@
+# ninja log v5
+1	803	720684134	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o	a35455fb6a573a7f
+55	907	720684134	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/fft.c.o	7682d60dddaa1b5f
+33	959	720684134	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o	c3ee327e0ea2ea39
+10	989	720684134	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o	59dd4e29e26673dc
+75	1074	720684134	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o	76e7ae895ea08df5
+960	1160	720684135	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/mpglib_interface.c.o	978c44b16048ee63
+990	1623	720684135	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o	f877253787194f15
+1074	2130	720684135	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o	f59bd24cc97e2bb
+907	2364	720684136	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o	a83f08f9639189c2
+1160	2421	720684136	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o	889cee748814837a
+807	2460	720684136	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o	ffe236d8b03f0b2b
+2131	2752	720684136	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o	9a85a6cbf6426122
+2480	3434	720684137	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o	d14c38cf8620cc74
+2422	3532	720684137	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o	e9d5ab3ba6098841
+19	3573	720684137	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o	a460725e1890971d
+3532	3994	720684137	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o	e1af02e09af0417c
+1624	4002	720684137	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o	7338e77146ea2491
+3573	4156	720684137	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o	aff9bed7ec58d9e2
+2752	4464	720684138	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o	ace0c58ed032308
+3434	4660	720684138	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o	3d9491e8fcd0c1f0
+2365	4700	720684138	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o	6864d10adc656e92
+4700	4871	720684138	../../../../src/main/jniLibs/arm64-v8a/liblame-mp3-utils.so	a1296e900a9ee78a

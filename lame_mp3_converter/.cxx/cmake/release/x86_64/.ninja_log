@@ -1,0 +1,23 @@
+# ninja log v5
+21	527	720684143	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lame-mp3-utils.cpp.o	9734bee1498c2a01
+35	594	720684143	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/fft.c.o	2fdebb82221c0e65
+11	765	720684143	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/VbrTag.c.o	e1aae5d07103d50c
+79	855	720684144	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/encoder.c.o	e21fd43d010af419
+528	1207	720684144	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/gain_analysis.c.o	339b400daa832b2
+765	1443	720684144	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/presets.c.o	381b70a477f605bb
+594	1604	720684144	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/newmdct.c.o	9c6b63cf2fed7c08
+1207	1768	720684144	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/mpglib_interface.c.o	86a694d97fe1658
+60	2181	720684145	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/id3tag.c.o	2fce53a115bea3b2
+1612	2277	720684145	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/reservoir.c.o	de595977b93e7c44
+855	2574	720684145	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/lame.c.o	618cbb377459cce7
+0	3290	720684146	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/bitstream.c.o	8fa58ef662ae4df5
+1768	3411	720684146	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/set_get.c.o	6da1ec8252c468db
+2277	3788	720684147	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize_pvt.c.o	a33decbdf1fec9a5
+3290	3993	720684147	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/tables.c.o	f71fa932575d81
+1443	4059	720684147	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/psymodel.c.o	373c08912632668b
+2181	4191	720684147	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/quantize.c.o	361990509d59b9d5
+2576	4266	720684147	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/takehiro.c.o	a78bb2c56e17889a
+3993	4356	720684147	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/version.c.o	eb235a25340b533a
+3788	4551	720684147	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/util.c.o	fdee5cc135d6e350
+3411	4907	720684148	CMakeFiles/lame-mp3-utils.dir/src/main/cpp/lamemp3/vbrquantize.c.o	faa25b80aead1364
+4907	5038	720684148	../../../../src/main/jniLibs/x86_64/liblame-mp3-utils.so	aaed06bd2af21118

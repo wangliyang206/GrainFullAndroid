@@ -33,7 +33,7 @@ public class AntiOverlapDanmakuView extends View {
     }
 
     private static class Track {
-        float lastEndX; // 轨道最后一条弹幕的尾部X坐标
+        float lastEndX; // 记录当前轨道最后一条弹幕的尾部X
     }
 
     private final Paint mTextPaint;
@@ -42,15 +42,15 @@ public class AntiOverlapDanmakuView extends View {
     private final Random mRandom = new Random();
 
     private boolean isRunning = true;
-    private final int mTrackCount = 6; // 保持6行轨道
+    private final int mTrackCount = 6;        // 6条轨道
     private final Track[] mTracks;
     private final float mTextSize = 36;
     private final float mPadding = 16;
     private final float mCornerRadius = 20;
-    private final float mSPEED = 3.2f; // 统一速度，不超车
-    private final float mMIN_GAP = 120; // 同轨道弹幕强制间距（不重叠核心）
+    private final float mSPEED = 3.2f;       // 统一速度（绝不超车）
+    private final float mMIN_GAP = 150;      // 强制安全间距（绝对不重叠核心）
 
-    private final List<String> mExternalDanmakuQueue = new ArrayList<>();
+    private final List<String> mExternalQueue = new ArrayList<>();
     private ScheduledExecutorService mTimer;
 
     public AntiOverlapDanmakuView(Context context) {
@@ -66,78 +66,60 @@ public class AntiOverlapDanmakuView extends View {
         }
 
         // 白色文字
-        mTextPaint = new Paint();
-        mTextPaint.setAntiAlias(true);
+        mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(Color.WHITE);
         mTextPaint.setTextSize(mTextSize);
 
         // 半透明背景
-        mBgPaint = new Paint();
-        mBgPaint.setAntiAlias(true);
+        mBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mBgPaint.setColor(Color.argb(160, 0, 0, 0));
 
         startAutoSend();
     }
 
-    // ====================== 外部调用接口 ======================
-    // 添加单条弹幕
+    // ====================== 外部接口 ======================
     public void addDanmaku(String text) {
-        synchronized (mExternalDanmakuQueue) {
-            mExternalDanmakuQueue.add(text);
+        synchronized (mExternalQueue) {
+            mExternalQueue.add(text);
         }
     }
 
-    // 添加弹幕集合
     public void addDanmakuList(List<String> textList) {
         if (textList == null || textList.isEmpty()) return;
-        synchronized (mExternalDanmakuQueue) {
-            mExternalDanmakuQueue.addAll(textList);
+        synchronized (mExternalQueue) {
+            mExternalQueue.addAll(textList);
         }
     }
 
-    // ====================== 自动发送（1秒1条） ======================
+    // ====================== 1秒自动发1条 ======================
     private void startAutoSend() {
         mTimer = Executors.newSingleThreadScheduledExecutor();
-        mTimer.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                String text = null;
-                synchronized (mExternalDanmakuQueue) {
-                    if (!mExternalDanmakuQueue.isEmpty()) {
-                        text = mExternalDanmakuQueue.remove(0);
-                    }
-                }
-                if (text != null) {
-                    String finalText = text;
-                    post(new Runnable() {
-                        @Override
-                        public void run() {
-                            dispatchDanmaku(finalText);
-                        }
-                    });
-                }
+        mTimer.scheduleAtFixedRate(() -> {
+            String text;
+            synchronized (mExternalQueue) {
+                if (mExternalQueue.isEmpty()) return;
+                text = mExternalQueue.remove(0);
             }
+            post(() -> dispatchDanmaku(text));
         }, 0, 1000, TimeUnit.MILLISECONDS);
     }
 
-    // ====================== 核心：弹幕分发（轨道可重复，绝不重叠） ======================
+    // ====================== 核心：绝对不重叠算法 ======================
     private void dispatchDanmaku(String text) {
         if (!isRunning || getWidth() == 0) return;
 
         float textWidth = mTextPaint.measureText(text);
-        // 随机选轨道 → 轨道可以重复！
-        int trackIndex = mRandom.nextInt(mTrackCount);
+        int trackIndex = mRandom.nextInt(mTrackCount); // 随机轨道（可重复）
         Track track = mTracks[trackIndex];
 
-        // 计算起始X：自动跟上一条拉开间距，保证不重叠
+        // 【关键】新弹幕必须在上一条尾部 + 安全间距之后才出现
         float startX = Math.max(getWidth(), track.lastEndX + mMIN_GAP);
 
-        // 计算垂直居中Y
+        // 垂直居中
         Paint.FontMetrics fm = mTextPaint.getFontMetrics();
-        float lineHeight = getHeight() / (float) mTrackCount;
-        float y = lineHeight * (trackIndex + 0.5f) - (fm.ascent + fm.descent) / 2;
+        float lineH = getHeight() / (float) mTrackCount;
+        float y = lineH * (trackIndex + 0.5f) - (fm.ascent + fm.descent) / 2;
 
-        // 创建弹幕
         DanmakuItem item = new DanmakuItem();
         item.text = text;
         item.textWidth = textWidth;
@@ -146,7 +128,6 @@ public class AntiOverlapDanmakuView extends View {
         item.y = y;
 
         mDanmakuList.add(item);
-        // 更新轨道最后位置
         track.lastEndX = startX + textWidth;
     }
 
@@ -161,24 +142,23 @@ public class AntiOverlapDanmakuView extends View {
         for (int i = mDanmakuList.size() - 1; i >= 0; i--) {
             DanmakuItem item = mDanmakuList.get(i);
 
-            // 绘制背景
+            // 背景
             float left = item.x - mPadding;
             float top = item.y + fm.top - mPadding;
             float right = item.x + item.textWidth + mPadding;
             float bottom = item.y + fm.bottom + mPadding;
-            RectF rect = new RectF(left, top, right, bottom);
-            canvas.drawRoundRect(rect, mCornerRadius, mCornerRadius, mBgPaint);
+            canvas.drawRoundRect(new RectF(left, top, right, bottom), mCornerRadius, mCornerRadius, mBgPaint);
 
-            // 绘制文字
+            // 文字
             canvas.drawText(item.text, item.x, item.y, mTextPaint);
 
             // 匀速移动
             item.x -= mSPEED;
 
-            // 更新轨道尾部坐标（关键：实时计算距离）
+            // 实时更新轨道尾部位置（保证后续弹幕正确计算间距）
             mTracks[item.track].lastEndX = item.x + item.textWidth;
 
-            // 完全滑出屏幕再回收
+            // 完全滑出再回收
             if (item.x + item.textWidth + mPadding * 4 < 0) {
                 mDanmakuList.remove(i);
             }
@@ -186,20 +166,13 @@ public class AntiOverlapDanmakuView extends View {
         invalidate();
     }
 
-    // ====================== 控制方法 ======================
-    public void start() {
-        isRunning = true;
-    }
-
-    public void pause() {
-        isRunning = false;
-    }
+    // ====================== 控制 ======================
+    public void start() { isRunning = true; }
+    public void pause() { isRunning = false; }
 
     public void clear() {
         mDanmakuList.clear();
-        synchronized (mExternalDanmakuQueue) {
-            mExternalDanmakuQueue.clear();
-        }
+        synchronized (mExternalQueue) { mExternalQueue.clear(); }
         for (Track t : mTracks) t.lastEndX = -mMIN_GAP;
         invalidate();
     }
