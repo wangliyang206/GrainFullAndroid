@@ -27,19 +27,15 @@
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\17.2.4988734 in SDK ndk folder"
-    },
-    {
-      "level": "INFO",
       "message": "Considering D:\\Android\\AndroidSDK\\ndk\\20.0.5594570 in SDK ndk folder"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\23.1.7779620 in SDK ndk folder"
+      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\30.0.14904198 in SDK ndk folder"
     },
     {
       "level": "INFO",
-      "message": "Considering D:\\Android\\AndroidSDK\\ndk\\25.1.8937393 in SDK ndk folder"
+      "message": "Rejected D:\\Android\\AndroidSDK\\ndk-bundle in SDK ndk-bundle folder because that location has no source.properties"
     },
     {
       "level": "INFO",

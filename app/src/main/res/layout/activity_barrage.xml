@@ -1,8 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_barrage_top"
+        layout="@layout/comm_top_layout" />
+
+    <!-- 弹幕一 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="弹幕一"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.barrage.DanmakuView
+        android:id="@+id/view_barrage_one"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <!-- 弹幕二 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="弹幕二"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <com.zqw.mobile.grainfull.mvp.ui.widget.barrage.AntiOverlapDanmakuView
+        android:id="@+id/view_barrage_two"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 测试按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_barrage_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:text="发送弹幕"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_barrage_clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg_selector"
+            android:text="清空"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 </LinearLayout>

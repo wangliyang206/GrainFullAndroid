@@ -20,6 +20,7 @@ import com.zqw.mobile.grainfull.di.component.DaggerSpecialEffectsComponent;
 import com.zqw.mobile.grainfull.mvp.contract.SpecialEffectsContract;
 import com.zqw.mobile.grainfull.mvp.presenter.SpecialEffectsPresenter;
 import com.zqw.mobile.grainfull.mvp.ui.activity.AudioWaveformActivity;
+import com.zqw.mobile.grainfull.mvp.ui.activity.BarrageActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BottomSheetDialogActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.CardOverlapActivity;
 import com.zqw.mobile.grainfull.mvp.ui.activity.ClockActivity;
@@ -118,6 +119,7 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
             R.id.btn_fragmentspecialeffects_other_bottomsheet,                                      // 底部弹出框
             R.id.btn_fragmentspecialeffects_other_TableFormatList,                                  // 表格式列表
             R.id.btn_fragmentspecialeffects_other_voiceAnimation,                                   // 语音动画
+            R.id.btn_fragmentspecialeffects_other_barrage,                                          // 弹幕
     })
     @Override
     public void onClick(View v) {
@@ -206,6 +208,9 @@ public class SpecialEffectsFragment extends BaseFragment<SpecialEffectsPresenter
                 break;
             case R.id.btn_fragmentspecialeffects_other_voiceAnimation:                              // 语音动画
                 ActivityUtils.startActivity(VoiceAnimationActivity.class);
+                break;
+            case R.id.btn_fragmentspecialeffects_other_barrage:                                     // 弹幕效果
+                ActivityUtils.startActivity(BarrageActivity.class);
                 break;
         }
     }

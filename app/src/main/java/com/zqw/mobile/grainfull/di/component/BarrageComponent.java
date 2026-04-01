@@ -5,9 +5,9 @@ import dagger.Component;
 
 import com.jess.arms.di.component.AppComponent;
 import com.zqw.mobile.grainfull.di.module.BarrageModule;
-import com.zqw.mobile.grainfull.di.module.BarrageContract;
 
 import com.jess.arms.di.scope.ActivityScope;
+import com.zqw.mobile.grainfull.mvp.contract.BarrageContract;
 import com.zqw.mobile.grainfull.mvp.ui.activity.BarrageActivity;
 
 /**
