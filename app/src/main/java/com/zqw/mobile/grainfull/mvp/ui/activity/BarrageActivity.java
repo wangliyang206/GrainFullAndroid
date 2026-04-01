@@ -110,7 +110,6 @@ public class BarrageActivity extends BaseActivity<BarragePresenter> implements B
         list.add("无第三方依赖");
         list.add("太强了吧！");
         list.add("这效果可以直接上线");
-
         list.add("太强了！这弹幕完全不重叠");
         list.add("原生Java实现就是香");
         list.add("轨道算法太稳定了");
@@ -123,9 +122,7 @@ public class BarrageActivity extends BaseActivity<BarragePresenter> implements B
         viewBarrageOne.addDanmakuList(list);
 
         // 方案二
-        for (String text : list) {
-            viewBarrageTwo.addDanmaku(text);
-        }
+        viewBarrageTwo.addDanmakuList(list);
     }
 
     @Override
